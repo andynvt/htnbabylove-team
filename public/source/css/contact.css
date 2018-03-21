@@ -1,0 +1,76 @@
+#contact-content {
+    font-size: 15px;
+    background: #fff;
+    padding: 1.5%;
+    box-shadow: 1px 1px 1px 2px #ECECEC
+}
+
+.contact-head {
+    font-size: 20px;
+    font-weight: 400;
+    color: black
+}
+
+.contact-b {
+    color: #0F6CB2;
+    font-weight: 600
+}
+
+.contact-b:hover {
+    color: black
+}
+
+.contact-p-content {
+    font-size: 15px;
+    text-align: justify
+}
+
+.contact-list {
+    list-style-type: none;
+    font-size: 15px;
+}
+
+.contact-icon {
+    font-size: 15px;
+    color: #0F6CB2;
+}
+
+.contact-label {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.contact-input {
+    font-size: 15px;
+    padding-bottom: 10px !important;
+}
+
+.contact-title-form {
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: black;
+    background: #d8eeff;
+    width: 80px;
+    padding-top: 8px;
+    padding-bottom: 0
+}
+
+.contact-btn {
+    background: #0F6CB2;
+    font-size: 15px;
+    color: white
+}
+
+.contact-btn:hover {
+    background: #1386dd;
+}
+
+#contactModal {
+    top: 8%;
+}
+
+.cont-modal {
+    margin-top: -80px !important;
+}
