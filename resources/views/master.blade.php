@@ -24,13 +24,13 @@
     <!--    -->
 
     <link href="source/css/style.css" rel="stylesheet" title="style" >
-    <link href='source/trangchu/css/index.css' rel='stylesheet' type='text/css'>
-    <link href='source/trangchu/css/menuscroll.css' rel='stylesheet' type='text/css'>
-    <link href='source/trangchu/css/slideshow.css' rel='stylesheet' type='text/css'>
+    <link href='source/css/index.css' rel='stylesheet' type='text/css'>
+    <link href='source/css/menuscroll.css' rel='stylesheet' type='text/css'>
+    <link href='source/css/slideshow.css' rel='stylesheet' type='text/css'>
     <link href="source/cart/cart.css" rel="stylesheet" >
     <link href="source/css/contact.css" rel="stylesheet"  />
-    <link href="source/trangchu/css/seach.css" rel="stylesheet"  />
-    <link href="source/trangchu/css/responsive_footer2.css" rel="stylesheet"  />
+    <link href="source/css/seach.css" rel="stylesheet"  />
+    <link href="source/css/responsive_footer2.css" rel="stylesheet"  />
     <link href="source/css/header-footer.css" rel="stylesheet"  /> 
 
 </head>
@@ -1576,10 +1576,10 @@
     </div>
     <!--  Modal Mua Nhanh-->
     <script type="text/javascript" src="source/cart/cart.js"></script>
-    <script type="text/javascript" src='source/trangchu/js/modal.js'></script>
-    <script type="text/javascript" src='source/trangchu/js/index.js'></script>
-    <script type="text/javascript" src='source/trangchu/js/timkiemnhanh.js'></script>
-    <script type="text/javascript" src="source/trangchu/js/index.js"></script>
+    <script type="text/javascript" src='source/js/modal.js'></script>
+    <script type="text/javascript" src='source/js/index.js'></script>
+    <script type="text/javascript" src='source/js/timkiemnhanh.js'></script>
+    <script type="text/javascript" src="source/js/index.js"></script>
 
 </body>
 
