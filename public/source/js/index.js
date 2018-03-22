@@ -1,6 +1,5 @@
 jQuery(function ($) {
     function fixDiv() {
-        alert("dsah");
         var $cache = $('#getFixed');
         if ($(window).scrollTop() > 260) $cache.css({
             'position': 'fixed',
