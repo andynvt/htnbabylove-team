@@ -19,3 +19,28 @@ Route::get('index', [
 	'as'=>'trang-chu',
 	'uses'=>'PageController@getIndex'
 ]);
+
+Route::get('loai-san-pham', [
+	'as'=>'loaisanpham',
+	'uses'=>'PageController@getLoaiSP'
+]);
+
+Route::get('chi-tiet-san-pham', [
+	'as'=>'chitietsanpham',
+	'uses'=>'PageController@getChiTiet'
+]);
+
+Route::get('gioi-thieu', [
+	'as' => 'gioi-thieu',
+	'uses' => 'PageController@getAbout'
+]);
+
+Route::get('chinh-sach-bao-mat', [
+	'as' => 'baomat',
+	'uses' => 'PageController@getPolicy'
+]);
+
+Route::get('dieu-khoan-su-dung', [
+	'as' => 'dieukhoan',
+	'uses' => 'PageController@getTerms'
+]);

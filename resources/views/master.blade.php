@@ -39,6 +39,7 @@
 </head>
 
 <body>
+    {{-- Modal liên hệ --}}
     <div class="modal fade cont-modal" id="contactModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -93,6 +94,7 @@
             </div>
         </div>
     </div>
+    {{-- #Modal liên hệ --}}
     <div id="header">
         @include('header')
     </div>
