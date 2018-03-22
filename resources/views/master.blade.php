@@ -1579,7 +1579,6 @@
     <script type="text/javascript" src='source/js/modal.js'></script>
     <script type="text/javascript" src='source/js/index.js'></script>
     <script type="text/javascript" src='source/js/timkiemnhanh.js'></script>
-    <script type="text/javascript" src="source/js/index.js"></script>
 
 </body>
 
