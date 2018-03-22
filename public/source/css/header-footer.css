@@ -9,9 +9,7 @@ body {
     box-sizing: border-box;
 }
 
-.ctn-fluid {
-    
-}
+.ctn-fluid {}
 
 
 /* Header*/
@@ -59,11 +57,11 @@ body {
 
 .menu-li-list:hover {
     color: white !important;
-    background: #FF3E8D;
+    background: #F06292;
 }
 
 .menu-li-list:active {
-    background: #4aaff0;
+    background: #F06292;
 }
 
 .menu-down-icon {
@@ -98,7 +96,7 @@ body {
 }
 
 .info-address a:hover {
-    color: #4aaff0;
+    color: #F06292;
 }
 
 #footer @media (max-width: 991px) {
@@ -211,7 +209,7 @@ body {
 }
 
 .item-drd:hover {
-    background: #4aaff0;
+    background: #F06292;
     color: white;
 }
 
@@ -238,6 +236,7 @@ body {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    z-index: 9999999;
 }
 
 .sidenav a {
@@ -355,9 +354,8 @@ body {
         transform: translateX(-50%);
     }
 }
-.ctn-fluid {
-    
-}
+
+.ctn-fluid {}
 
 .cnt-user {
     padding-right: 30px;

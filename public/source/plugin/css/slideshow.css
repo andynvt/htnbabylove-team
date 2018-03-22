@@ -40,7 +40,7 @@ body {
 }
 
 .ribbon1.hot {
-    background-color: #FF6370;
+    background-color: #FF3E8D;
     color: #fff;
 }
 
@@ -83,7 +83,7 @@ body {
 }
 
 .ribbon-trangthai.hot {
-    background-color: #FF6370;
+    background-color: #FF3E8D;
     color: #fff;
 }
 
@@ -130,6 +130,10 @@ body {
     background-color: #FF4066;
     color: #fff;
 }
+.btn-themvaogio:hover {
+    color: #fff;
+}
+
 
 .slider.slider-horizontal {
     width: 100%;
@@ -195,7 +199,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #0061B8;
+    background-color: #5CAEFD;
     overflow: hidden;
     width: 100%;
     height: 0;
@@ -211,7 +215,7 @@ body {
 .text {
     white-space: nowrap;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     position: absolute;
     overflow: hidden;
     top: 50%;

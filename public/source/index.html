@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="cart/cart.css">
     <link rel="stylesheet" href="css/contact.css" />
     <link rel="stylesheet" href="trangchu/css/seach.css" />
+    <link rel="stylesheet" href="trangchu/css/responsive_footer2.css" />
     <script src="trangchu/js/index.js"></script>
     <link rel="stylesheet" href="css/header-footer.css" /> </head>
 
@@ -201,36 +202,7 @@
             <!-- Trang Chu -->
             <div class="container-fluid">
                 <!-- fluid or full -->
-                <div id="demo" class="carousel slide" data-ride="carousel">
-                    <!-- SlideShow -->
-                    <ul class="carousel-indicators">
-                        <li data-target="#demo" data-slide-to="0" class="active"></li>
-                        <li data-target="#demo" data-slide-to="1"></li>
-                        <li data-target="#demo" data-slide-to="2"></li>
-                    </ul>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active"> <img src="http://placehold.it/1200x400/cccccc/ffffff" alt="Los Angeles" width="100%" height="400">
-                            <div class="carousel-caption">
-                                <h3>Los Angeles</h3>
-                                <p>We had such a great time in LA!</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item"> <img src="http://placehold.it/1200x400/cccccc/ffffff" alt="Chicago" width="100%" height="400">
-                            <div class="carousel-caption">
-                                <h3>Chicago</h3>
-                                <p>Thank you, Chicago!</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item"> <img src="http://placehold.it/1200x400/cccccc/ffffff" alt="New York" width="100%" height="400">
-                            <div class="carousel-caption">
-                                <h3>New York</h3>
-                                <p>We love the Big Apple!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#demo" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a>
-                    <a class="carousel-control-next" href="#demo" data-slide="next"> <span class="carousel-control-next-icon"></span> </a>
-                </div>
+
                 <div class="space30">&nbsp;</div>
                 <!-- End SlideShow -->
                 <div class="container-full">
@@ -290,28 +262,32 @@
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
                                                             <a href="#">Mền</a>
-                                                        </h4> </div>
+                                                        </h4>
+                                                    </div>
                                                 </div>
                                                 <hr>
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
                                                             <a href="#">Gối</a>
-                                                        </h4> </div>
+                                                        </h4>
+                                                    </div>
                                                 </div>
                                                 <hr>
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
                                                             <a href="#">Khăn choàng-Áo choàng</a>
-                                                        </h4> </div>
+                                                        </h4>
+                                                    </div>
                                                 </div>
                                                 <hr>
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
                                                             <a href="#">Combo (nệm+ôm+nằm)</a>
-                                                        </h4> </div>
+                                                        </h4>
+                                                    </div>
                                                 </div>
                                                 <hr> </div>
                                         </div>
@@ -325,9 +301,9 @@
                                             <label for="priceto" class="control-label">Tên sản phẩm:</label>
                                             <input type="text" class="form-control" id="priceto" name="tensp" aria-describedby="basic-addon1"> </div>
                                         <div class="form-group">
-                                            <label for="location1" class="control-label">Tên sản phẩm:</label>
+                                            <label for="location1" class="control-label">Loại sản phẩm:</label>
                                             <select class="form-control" name="" id="location1">
-                                                <option value="">Any</option>
+                                                <option value="#">Chọn loại sản phẩm</option>
                                                 <option value="">1</option>
                                                 <option value="">2</option>
                                             </select>
@@ -364,7 +340,7 @@
                                             <div class='row'>
                                                 <div style="width: 90%; margin-left: 5%">
                                                     <label for="pricefrom" class="control-label">Giá:&nbsp;&nbsp;<b><span id="outputmin"></span> Đồng</b></label>
-                                                    <div class="input-group" style="width: 90%; margin-left: 5%">
+                                                    <div class="input-group" style="width: 90%; margin-left: 5%; top: 10px;">
                                                         <input id="pricefrom" type="text" class="span2" /> </div>
                                                 </div>
                                             </div>

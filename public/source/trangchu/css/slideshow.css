@@ -44,7 +44,7 @@ body {
 }
 
 .ribbon1.hot {
-    background-color: #D30054;
+    background-color: #FF3E8D;
     color: #fff;
 }
 
@@ -87,7 +87,7 @@ body {
 }
 
 .ribbon-trangthai.hot {
-    background-color: #D30054;
+    background-color: #FF3E8D;
     color: #fff;
 }
 
@@ -98,6 +98,8 @@ body {
 
 .search-price {
     color: #000;
+        font-size: 16px;
+
 }
 
 .ribbon-trangthai {
@@ -207,7 +209,7 @@ body {
     bottom: 0px;
     left: 0;
     right: 0;
-    background-color: #0061B8;
+    background-color: #5CAEFD;
     overflow: hidden;
     width: 100%;
     height: 0;
@@ -223,7 +225,7 @@ body {
 .text {
     white-space: nowrap;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     position: absolute;
     overflow: hidden;
     top: 50%;
