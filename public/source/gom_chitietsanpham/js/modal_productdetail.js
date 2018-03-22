@@ -1,3 +1,11 @@
+// Phan modal chitietsanpham
+function alert() {
+    //    $(".modal-dialog").attr("data-dismiss", "modal");
+    $(".alert").fadeIn(700);
+    setTimeout(function () {
+        $(".alert").fadeOut(700);
+    }, 2000)
+}
 $(document).ready(function () {
 
     /* 1. Visualizing things on Hover - See next part for action on click */

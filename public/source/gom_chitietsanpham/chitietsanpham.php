@@ -21,25 +21,12 @@
 	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">	
 	<!-- Css Custom -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" title="style" href="header_footer_pn/css/style.css">
-	<link rel="stylesheet" title="style" href="header_footer_pn/css/reset-style.css">
-	<link rel="stylesheet" title="style" href="header_footer_pn/css/st_lightbox.css">
 <!--	Phan dinh dang cho footer header-->\
 
 <!--ket thuc phan dieu chinh cho footer va header-->
-<!--
-	<link rel="stylesheet" title="style" href="header_footer_pn/css/footer.css">
-	<link rel="stylesheet" type="text/css" href="header_footer_pn/css/responsive_footer.css">
-	<link rel="stylesheet" type="text/css" href="header_footer_pn/css/responsive_header.css">
--->
-	<!-- Phan modal danh gia -->
-	<link rel="stylesheet" href="css/feedback.css">
-	<link rel="stylesheet" href="css/alert.css">
-	<script type="text/javascript" src="js/feedback.js"></script>
-	<script type="text/javascript" src="js/alert.js"></script>
+	<link rel="stylesheet" href="css/chitietsanpham_custom.css">
+	<script type="text/javascript" src="js/modal_productdetail.js"></script>
 	<!-- phan chi tiet san pham -->
-	<link rel="stylesheet" type="text/css" href="product_detail_pn/css/responsive_product_detail.css">
 	<script>
 		function openNav() {
 			document.getElementById("sideNavigation").style.width = "250px";
