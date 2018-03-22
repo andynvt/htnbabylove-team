@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Trang Chủ | HTN Baby Love</title>
+    <link rel="shortcut icon" href="source/image/favicon.png" />
     <base href="{{asset('')}}">
     <link rel="stylesheet" href="">
     <!-- bootstrap 4  -->
