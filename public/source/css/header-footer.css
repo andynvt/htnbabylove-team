@@ -80,11 +80,11 @@ body {
 /*FOOTER CSS*/
 
 #cpr {
-    color: #7b8fa3;
+    color: gray;
 }
 
 #cpr:hover {
-    color: #7b8fa3;
+    color: #F06292
 }
 
 #footer {
