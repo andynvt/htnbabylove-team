@@ -31,7 +31,7 @@ Route::get('chi-tiet-san-pham', [
 ]);
 
 Route::get('gioi-thieu', [
-	'as' => 'gioi-thieu',
+	'as' => 'gioithieu',
 	'uses' => 'PageController@getAbout'
 ]);
 
@@ -43,4 +43,9 @@ Route::get('chinh-sach-bao-mat', [
 Route::get('dieu-khoan-su-dung', [
 	'as' => 'dieukhoan',
 	'uses' => 'PageController@getTerms'
+]);
+
+Route::get('thanh-toan', [
+	'as' => 'thanhtoan',
+	'uses' => 'PageController@getCheckout'
 ]);

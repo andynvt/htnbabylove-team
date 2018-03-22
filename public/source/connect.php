@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost","root","","adress");
+$con = mysqli_connect("localhost","root","","htnbabylove");
 mysqli_set_charset($con, 'UTF8');
 
 // Check connection

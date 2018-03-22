@@ -30,4 +30,9 @@ class PageController extends Controller
     	return view('page.dieukhoan');
     }
 
+    public function getCheckout(){
+        return view('page.thanhtoan');
+    }
+
+
 }

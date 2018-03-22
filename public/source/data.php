@@ -8,7 +8,7 @@
 	if($num > 0){
 		while($row = mysqli_fetch_array($query)){
 ?>
-	<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
+	<option value="<?php echo $row['id']; ?> "><?php echo $row['name']; ?></option>
 <?php
 		}
 	}
