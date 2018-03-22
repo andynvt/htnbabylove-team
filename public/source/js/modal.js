@@ -4,8 +4,7 @@ jQuery(document).ready(function ($) {
             var e = $(window).scrollTop();
             if (e > 400) {
                 $(".btn-top").show()
-            }
-            else {
+            } else {
                 $(".btn-top").hide()
             }
         });
@@ -16,6 +15,7 @@ jQuery(document).ready(function ($) {
         })
     }
 });
+
 
 function openNav() {
     document.getElementById("sideNavigation").style.width = "250px";
@@ -30,17 +30,15 @@ function closeNav() {
 //  $('#myInput').trigger('focus')
 //});
 $(document).on('click', '.input-group button', function () {
-    var btn = $(this)
-        , oldValue = btn.closest('.input-group').find('input').val().trim()
-        , newVal = 0;
+    var btn = $(this),
+        oldValue = btn.closest('.input-group').find('input').val().trim(),
+        newVal = 0;
     if (btn.attr('data-dir') == 'up') {
         newVal = parseInt(oldValue) + 1;
-    }
-    else {
+    } else {
         if (oldValue > 1) {
             newVal = parseInt(oldValue) - 1;
-        }
-        else {
+        } else {
             newVal = 1;
         }
     }
@@ -61,8 +59,7 @@ for (var i = _colors.length - 1; i >= 0; i--) {
         }
         if ($('[name=_color]').val() == undefined) {
             elemnt.next().append("<input type='hidden' name='_color' value='" + color_text + "'>");
-        }
-        else {
+        } else {
             $('[name=_color]').val(color_text);
         }
     })

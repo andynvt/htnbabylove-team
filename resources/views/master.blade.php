@@ -23,17 +23,18 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
     <!--    -->
 
-    <link href="source/css/style.css" rel="stylesheet" title="style" >
+    <link href="source/css/style.css" rel="stylesheet" title="style">
     <link href='source/css/index.css' rel='stylesheet' type='text/css'>
     <link href='source/css/menuscroll.css' rel='stylesheet' type='text/css'>
     <link href='source/css/slideshow.css' rel='stylesheet' type='text/css'>
-    <link href="source/cart/cart.css" rel="stylesheet" >
-    <link href="source/css/contact.css" rel="stylesheet"  />
-    <link href="source/css/seach.css" rel="stylesheet"  />
-    <link href="source/css/responsive_footer2.css" rel="stylesheet"  />
-    <link href="source/css/header-footer.css" rel="stylesheet"  /> 
+    <link href="source/cart/cart.css" rel="stylesheet">
+    <link href="source/css/contact.css" rel="stylesheet" />
+    <link href="source/css/seach.css" rel="stylesheet" />
+    <link href="source/css/responsive_footer2.css" rel="stylesheet" />
+    <link href="source/css/header-footer.css" rel="stylesheet" />
 
 </head>
+
 <body>
     <div class="modal fade cont-modal" id="contactModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -187,14 +188,14 @@
                             <input type="text" name="search" placeholder="Bạn muốn tìm gì ?">
                             <input id="search_submit" value="" type="submit"> </form>
                         <div class="clearfix"></div>
-                        <div class="div-shop-cart" data-toggle="modal" data-target="#modal-cart"> 
-                            <i class="fa fa-shopping-cart shop-cart"></i> 
+                        <div class="div-shop-cart" data-toggle="modal" data-target="#modal-cart">
+                            <i class="fa fa-shopping-cart shop-cart"></i>
                             <span id="number-cart">5</span>
                             <style>
-                                #number-cart{
-                                    position: absolute; 
-                                    top: -5px; 
-                                    right: -10px; 
+                                #number-cart {
+                                    position: absolute;
+                                    top: -5px;
+                                    right: -10px;
                                     color: white;
                                     background: #FF3E8D;
                                     border: 1px solid #FF3E8D;
@@ -203,6 +204,7 @@
                                     font-size: 13px;
                                     font-weight: 600;
                                 }
+
                             </style>
                         </div>
                         <div class="clearfix"></div>
@@ -371,7 +373,7 @@
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                                <hr> 
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
@@ -404,7 +406,7 @@
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                                <hr> 
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
@@ -437,7 +439,7 @@
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                                <hr> 
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
@@ -470,7 +472,7 @@
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                                <hr> 
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
@@ -503,7 +505,7 @@
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                                <hr> 
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
@@ -536,12 +538,12 @@
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                                <hr> 
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <!-- Hang 2 -->
                             <!-- San pham moi -->
@@ -574,7 +576,7 @@
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                                <hr> 
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
@@ -604,7 +606,7 @@
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                                <hr> 
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
@@ -634,7 +636,7 @@
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                                <hr> 
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
@@ -664,7 +666,7 @@
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                                <hr> 
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
@@ -694,7 +696,7 @@
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                                <hr> 
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
@@ -724,14 +726,14 @@
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                                <hr> 
+                                                <hr>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                               
 
-                                
+
+
                             </div>
                             <!-- Hang 3 -->
                             <!-- San pham -->
@@ -935,7 +937,7 @@
     <!-- #content -->
 
     <div class="menuscroll" style="float: right;">
-        <a class="btn btn-up btn-top" href="javascript:void(0);" style="display: inline;"><i class="fa fa-angle-up" style="margin-left:-2px; color: fff !important;"></i></a> 
+        <a class="btn btn-up btn-top" href="javascript:void(0);" style="display: inline;"><i class="fa fa-angle-up" style="margin-left:-2px; color: fff !important;"></i></a>
     </div>
     <div id="footer" class="color-div">
         <div class="container-fluid">
