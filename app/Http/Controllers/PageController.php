@@ -34,5 +34,7 @@ class PageController extends Controller
         return view('page.thanhtoan');
     }
 
-
+    public function getDetail(){
+        return view('page.chitietsp');
+    }
 }

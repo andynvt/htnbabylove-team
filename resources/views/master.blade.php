@@ -35,6 +35,7 @@
     <link href="source/css/responsive_footer2.css" rel="stylesheet" />
     <link href="source/css/header-footer.css" rel="stylesheet" />
     <link href="source/css/checkout.css" rel="stylesheet" />
+    <link href="source/css/responsive_product_detail.css" rel="stylesheet" />
     
 
 </head>

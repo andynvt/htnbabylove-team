@@ -1,5 +1,15 @@
 @extends('master')
 @section('content')
+<?php
+$con = mysqli_connect("localhost","root","","htnbabylove");
+mysqli_set_charset($con, 'UTF8');
+
+// Check connection
+if (mysqli_connect_error())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+?>
 <div class="container-full checkout-body">
         <div class="container-fluid">
             <div class="">
@@ -51,7 +61,24 @@
                                     <div class="col-md-12">
                                         <select class="form-control form_size thanhpho" id="select">
                                             <option value="">Thành phố/Tỉnh </option>
-
+												<?php
+												// require("connect.php");
+										   	 	// include "connect.php";
+												$sql = "select * from thanh_pho";
+												// echo $sql;
+												$query = $con->query($sql);
+												$num = mysqli_num_rows($query);
+												if($num > 0){
+													while($row = mysqli_fetch_array($query)){
+										    ?>
+                                                <option value="<?php echo $row['id']; ?>">
+                                                    <?php echo $row['name']?>
+                                                </option>
+                                                <?php
+										    		}
+												}
+										    ?>
+                                        </select
                                         </select>
                                     </div>
                                 </div>
@@ -206,4 +233,15 @@
         <!--container f-->
     </div>
     <br>
+    <script type="text/javascript">
+        $(".thanhpho").change(function () {
+            var id = $(".thanhpho").val();
+            $.post("source/data.php", {
+                id: id
+            }, function (data) {
+                $(".quan_huyen").html(data);
+            });
+        });
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 @endsection

@@ -1,0 +1,9 @@
+@media (max-width: 574px){
+	.add-cart-block .add-cart-button{
+		width: 93%;
+		margin-left: 5%;
+	}
+	.buy-now-button{
+		margin-left: 5%;
+	}
+}

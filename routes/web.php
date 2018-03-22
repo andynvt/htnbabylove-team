@@ -49,3 +49,8 @@ Route::get('thanh-toan', [
 	'as' => 'thanhtoan',
 	'uses' => 'PageController@getCheckout'
 ]);
+
+Route::get('chi-tiet-san-pham', [
+	'as' => 'chitietsanpham',
+	'uses' => 'PageController@getDetail'
+]);
