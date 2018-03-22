@@ -18,4 +18,16 @@ class PageController extends Controller
     	return view('page.chitiet_sanpham');
     }
 
+    public function getAbout(){
+    	return view('page.gioithieu');
+    }
+
+    public function getPolicy(){
+    	return view('page.chinhsachbaomat');
+    }
+
+    public function getTerms(){
+    	return view('page.dieukhoan');
+    }
+
 }
