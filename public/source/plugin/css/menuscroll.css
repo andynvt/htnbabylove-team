@@ -1,0 +1,133 @@
+.btn-feedback i,
+.btn-user i,
+.btn-bag i,
+.btn-like i,
+.btn-up i {
+    vertical-align: middle
+}
+
+.btn-up {
+    position: fixed;
+    right: 40px !important;
+    bottom: 100px;
+    display: none;
+    /*    animation: faded-out 1s;*/
+    z-index: 999 !important;
+}
+
+.btn-feedback {
+    position: fixed;
+    bottom: 10px;
+    right: 12px !important;
+    display: block;
+    color: #fff;
+    background: #5BA0D0;
+}
+
+@media screen and (min-width:768px) {
+    .list.fixed-top {
+        display: block;
+        animation: faded-in 1s
+    }
+    .btn-up.fixed-top {
+        display: block;
+        animation: faded-in 1s
+    }
+    .btn-bag.fixed-top {
+        display: block;
+        animation: faded-in 1s
+    }
+}
+
+.btn-user {
+    bottom: 70vh;
+    background: #4281e5;
+    color: #f5f5f5;
+    opacity: 0.8
+}
+
+.btn-user i {
+    text-align: center;
+    margin-left: -2px;
+}
+
+.btn-bag {
+    bottom: 45vh;
+    background: #F06292;
+    color: #fff;
+    opacity: 0.8;
+    border: 0;
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+    line-height: 30px;
+    outline: 0 !important;
+    z-index: 999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 1.4);
+    font-size: 2rem;
+    transition: all 0.3s;
+    vertical-align: middle;
+    position: fixed;
+    right: 40px !important;
+    display: none;
+    z-index: 999 !important;
+}
+
+.btn-bag i {
+    text-align: center;
+    margin-left: -5px;
+}
+
+.btn-like {
+    bottom: 56vh;
+    background: #4281e5;
+    color: #fff;
+    opacity: 0.8
+}
+
+.btn-like i {
+    text-align: center;
+    margin-left: -2px;
+}
+
+.btn-user:hover,
+.btn-bag:hover,
+.btn-like:hover {
+    opacity: 1;
+    color: #0d5ee0
+}
+
+.btn-like.no-color,
+.btn-bag.no-color {
+    bottom: 63vh;
+    background: 0;
+    color: #DCD8CF;
+    box-shadow: none !important;
+    margin-left: 8px
+}
+
+.btn-like.no-color .badge,
+.btn-bag.no-color .badge {
+    background: #DCD8CF;
+    color: #8A533D;
+    text-align: center;
+    transform: none
+}
+
+.btn-up {
+    bottom: 9vh;
+    color: #fff;
+    background: #F06292
+}
+
+.btn-feedback {
+    bottom: 1vh;
+}
+
+.btn-bag .badge,
+.btn-like .badge {
+    background: #743A26;
+    color: #F7F1E0;
+    transform: translate(5px, -5px);
+    font-size: 14px;
+}

@@ -1,0 +1,63 @@
+._select_color {
+    font-size: 18px;
+    padding: 0.3rem .75rem;
+    font-weight: 300;
+    line-height: 25px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    -webkit-appearance: none;
+    height: auto;
+    box-shadow: none;
+    text-align: left;
+    background-image: none;
+    color: #796652;
+    background: white;
+}
+
+._select_color_drop {
+    margin: 0;
+    padding: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    top: 99%;
+    border-top: 0;
+    width: 100%;
+}
+
+._select_color_drop > li {
+    display: inline-block;
+    padding: 7px;
+    border-right: 1px solid rgba(192, 192, 192, 0.55);
+    cursor: pointer;
+    float: left;
+}
+
+._select_color_drop > option {
+    display: inline-block;
+    padding: 7px;
+    border-right: 1px solid rgba(192, 192, 192, 0.55);
+    cursor: pointer;
+    float: left;
+}
+
+._select_color_drop > li > .color,
+.btn > span.color {
+    width: 25px;
+    height: 25px;
+    border-radius: 4px;
+    float: left;
+}
+
+._select_color_drop > option > .color,
+.btn > span.color {
+    width: 25px;
+    height: 25px;
+    border-radius: 4px;
+    float: left;
+}
+
+.btn > span.color {
+    margin-right: 10px
+}
+
+.input-color {}
