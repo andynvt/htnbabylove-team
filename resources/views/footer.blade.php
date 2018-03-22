@@ -15,8 +15,8 @@
                     <div class="address-office">
                         <div class="info-address">
                             <h4 class="text_strong"> HỖ TRỢ KHÁCH HÀNG</h4>
-                            <p><span class="text_strong_red">Hotline: 02923895554</span></p>
-                            <p>Di động: 0939058056</p>
+                            <p><span class="text_strong_red">Hotline: <a href="tel:02923895554">0292 389 5554</a></span></p>
+                            <p>Di động: <a href="tel:0939058056">0939 058 056</a></p>
                         </div>
                     </div>
                 </div>
