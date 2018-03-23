@@ -1,0 +1,215 @@
+/*Align tooltip*/
+
+.align-tooltip-feedback .tooltip-inner {
+    max-width: 350px;
+    width: 350px;
+    text-align: justify;
+}
+
+.row-detail-feedback .tooltip-inner {
+    width: auto;
+}
+
+/*End tooltip*/
+
+/*Search feedback*/
+
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
+#wrap {}
+
+.feedback-admin input[type="text"] {
+    width: 50px;
+    height: 65%;
+    display: inline-block;
+    font-weight: 100;
+    border: none;
+    outline: none;
+    color: #555;
+    padding: 3px;
+    padding-right: 60px;
+    width: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: none;
+    z-index: 3;
+    transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+    cursor: pointer;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.feedback-admin input[type="text"]:focus:hover {
+    border-bottom: 1px solid #BBB;
+}
+
+.feedback-admin input[type="text"]:focus {
+    width: 250px;
+    z-index: 1;
+    margin-right: 60px;
+    border-bottom: 1px solid #BBB;
+    cursor: text;
+}
+
+.feedback-admin input[type="submit"] {
+    width: 63px;
+    height: 65%;
+    display: inline-block;
+    color: red;
+    background: url(https://png.icons8.com/android/24/000000/search.png) no-repeat;
+    /*    text-indent: -100000px;*/
+    border: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    cursor: pointer;
+    opacity: 0.4;
+    cursor: pointer;
+    transition: opacity .4s ease;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.feedback-admin input[type="submit"]:hover {
+    opacity: 0.8;
+}
+
+/*end search feedback*/
+
+/*Type product*/
+
+.feedback-typeproduct {}
+
+.feedback-typeproduct-title {
+    text-align: center;
+    margin: 20px 0;
+    /*    border-bottom: 1px solid #DDDDDD;*/
+}
+
+.feedback-typeproduct-title a {
+    text-decoration: none;
+    color: black;
+}
+
+.feedback-typeproduct-name {
+    background: white;
+    border: 1px solid #E0E0E0;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 500;
+    margin: 5px;
+    transition: all 0.3s;
+    height: 50px;
+    line-height: 50px;
+}
+
+.feedback-typeproduct-name p {
+    font-size: 20px !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.feedback-typeproduct-name:hover {
+    background-color: #FAFAFA;
+    transition: all 0.3s;
+    transform: translate(-1px, -1px);
+    text-shadow: rgba(0, 0, 0, 0.3);
+}
+
+.feedback-table {
+    text-align: center;
+}
+
+.feedback-table-content {}
+
+.feedback-item-name p {
+    text-align: left;
+    font-size: 20px !important;
+}
+
+.feedback-typeproduct-content {}
+
+.feedback-search {
+    /*        height: 50px;*/
+    border-top: 1px solid #DDDDDD;
+    /*    background: red;*/
+}
+
+.div-form-search-feedback {
+    margin: 20px 0;
+    height: 40px;
+}
+
+.form-search-feedback {
+    height: 100%;
+    border: 1px solid #DDDDDD;
+    background: #fff;
+}
+
+.feedback-typeproduct-item {
+    text-align: center;
+}
+
+.feedback-content-item {
+    width: 100%;
+    transition: all 0.3s;
+}
+
+.feedback-content-item:hover {
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+}
+
+.feedback-qty {
+    position: absolute;
+    top: 5%;
+    /*    transform: translateY(-50%);*/
+    right: 10%;
+    width: 10%;
+    height: 10%;
+    overflow: hidden;
+    color: #fff;
+    font-size: 1vw;
+    border-radius: 5px;
+    background-color: #FF4066;
+    line-height: 150%;
+}
+
+.feedback-content-item p {
+    font-size: 18px;
+    padding: 5px;
+    color: black;
+}
+
+/*Detail feedback*/
+
+.row-detail-feedback {
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.row-detail-feedback:hover {
+    background-color: #F5F5F5;
+    transition: all 0.3s;
+}
+
+.row-detail-feedback .btn-group .btn {
+    float: none !important;
+}
+
+@media (min-width: 1366px) {
+    /*
+    .feedback-typeproduct-title {
+        text-align: center;
+        font-size: 1.2vw;
+        
+    }
+*/
+}
