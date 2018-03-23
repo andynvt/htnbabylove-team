@@ -7,7 +7,6 @@ Version: 1.0
 
 ============================================================================= */
 
-
 /*===========================================================================
 
     CONTENTS:
@@ -43,7 +42,6 @@ Version: 1.0
         
 
 ============================================================================= */
-
 
 /* ==========================================================================
     1. CSS RESET
@@ -883,13 +881,13 @@ input[type="checkbox"] {
     display: none
 }
 
-input[type="checkbox"]+label {
+input[type="checkbox"] + label {
     position: relative;
     padding-left: 21px;
     width: 100%
 }
 
-input[type="checkbox"]+label span:first-child {
+input[type="checkbox"] + label span:first-child {
     width: 13px;
     height: 13px;
     display: inline-block;
@@ -900,11 +898,11 @@ input[type="checkbox"]+label span:first-child {
     bottom: 3px
 }
 
-input[type="checkbox"]:checked+label {
+input[type="checkbox"]:checked + label {
     color: #000
 }
 
-input[type="checkbox"]:checked+label span:first-child:before {
+input[type="checkbox"]:checked + label span:first-child:before {
     content: "\f00c";
     font-family: 'FontAwesome';
     position: absolute;
@@ -1030,7 +1028,7 @@ sub {
     overflow: hidden
 }
 
-.form-block>* {
+.form-block > * {
     float: left
 }
 
@@ -1203,13 +1201,25 @@ a i {
     border-right: 1px solid #d2d2d2;
 }
 
-.menu-beta li>a {
+.menu-beta li > a {
     padding: 0 20px;
     line-height: 12px;
     height: 30px;
     display: block;
     color: #ECECEC;
+    cursor: pointer;
 }
+
+.menu-beta li > a:hover {
+    /*
+    padding: 0 20px;
+    line-height: 12px;
+    height: 30px;
+    display: block;
+*/
+    color: #ECECEC !important;
+}
+
 
 .menu-beta li .beta-select {
     line-height: 30px;
@@ -1226,7 +1236,7 @@ a i {
     color: #fff;
 }
 
-.menu-beta li a>i {
+.menu-beta li a > i {
     margin-right: 3px;
     color: #999da0;
     color: #fff;
@@ -1311,7 +1321,7 @@ box-shadow:         0px 0px 20px 0px rgba(0, 0, 0, 0.12);}*/
     background: #3a5c83
 }
 
-.main-menu li.current-menu-item>a {
+.main-menu li.current-menu-item > a {
     color: #fff;
     text-transform: uppercase
 }
@@ -1322,7 +1332,7 @@ box-shadow:         0px 0px 20px 0px rgba(0, 0, 0, 0.12);}*/
     font-weight: bold;
 }
 
-.main-menu li:hover>.sub-menu {
+.main-menu li:hover > .sub-menu {
     display: block
 }
 
@@ -1387,8 +1397,8 @@ ul.children ul.children li a {
     color: #505050
 }
 
-ul.sub-menu ul.sub-menu li:hover>a,
-ul.children ul.children li:hover>a {
+ul.sub-menu ul.sub-menu li:hover > a,
+ul.children ul.children li:hover > a {
     color: #fff
 }
 
@@ -1503,13 +1513,13 @@ ul.children ul.children li:hover>a {
     font-size: 10px
 }
 
-.beta-lists>* {
+.beta-lists > * {
     padding: 20px;
     border-bottom: 1px dotted #e1e1e1;
     margin-top: 0
 }
 
-.beta-lists>:last-child {
+.beta-lists > :last-child {
     border-bottom: none;
     padding-bottom: 0
 }
@@ -1544,7 +1554,7 @@ ul.children ul.children li:hover>a {
     padding-bottom: 35px
 }
 
-.your-order>.your-order-head:first-child {
+.your-order > .your-order-head:first-child {
     border-top: none
 }
 
@@ -1682,7 +1692,7 @@ ul.children ul.children li:hover>a {
     overflow: hidden
 }
 
-.single-item-options>* {
+.single-item-options > * {
     float: left
 }
 
@@ -1798,7 +1808,7 @@ ul.children ul.children li:hover>a {
     width: 50px
 }
 
-.cart-item .media-body>span {
+.cart-item .media-body > span {
     display: block;
     margin-bottom: 5px
 }
@@ -2425,7 +2435,7 @@ ul.children ul.children li:hover>a {
     padding-bottom: 0
 }
 
-.beta-blog-2cols .beta-blog-content>a:first-child {
+.beta-blog-2cols .beta-blog-content > a:first-child {
     margin-bottom: 20px;
     display: block
 }
@@ -3169,8 +3179,8 @@ table.shop_table tfoot th .coupon input {
     width: 190px
 }
 
-table.shop_table tfoot td .coupon>*,
-table.shop_table tfoot th .coupon>* {
+table.shop_table tfoot td .coupon > *,
+table.shop_table tfoot th .coupon > * {
     float: left
 }
 
@@ -3199,8 +3209,8 @@ table.shop_table tfoot th .beta-btn i {
     color: #fff
 }
 
-table.shop_table tfoot td .coupon+.beta-btn,
-table.shop_table tfoot th .coupon+.beta-btn {
+table.shop_table tfoot td .coupon + .beta-btn,
+table.shop_table tfoot th .coupon + .beta-btn {
     margin-left: 100px
 }
 
@@ -4120,18 +4130,18 @@ ul.payment_methods,
     border: 1px solid #e1e1e1!important
 }
 
-.panel-default>.panel-heading {
+.panel-default > .panel-heading {
     background: none;
     padding: 0
 }
 
-.panel-default>.panel-heading .panel-title {
+.panel-default > .panel-heading .panel-title {
     font-size: 18px;
     line-height: 20px;
     padding: 0
 }
 
-.panel-default>.panel-heading .panel-title a {
+.panel-default > .panel-heading .panel-title a {
     padding: 13px 40px 13px 15px;
     width: 100%;
     height: 100%;
@@ -4139,16 +4149,16 @@ ul.payment_methods,
     position: relative
 }
 
-.panel-default>.panel-heading .panel-title a:hover .accordion-circle {
+.panel-default > .panel-heading .panel-title a:hover .accordion-circle {
     border: 1px solid #3a5c83
 }
 
-.panel-default>.panel-heading .panel-title a>i {
+.panel-default > .panel-heading .panel-title a > i {
     font-size: 20px;
     color: #999da0
 }
 
-.panel-default>.panel-heading .panel-title a:hover i {
+.panel-default > .panel-heading .panel-title a:hover i {
     color: #3a5c83
 }
 
@@ -4170,24 +4180,24 @@ ul.payment_methods,
     line-height: 30px
 }
 
-.panel-default>.panel-heading.beta-active-tab {
+.panel-default > .panel-heading.beta-active-tab {
     background-color: #3a5c83;
     color: #fff!important
 }
 
-.panel-default>.panel-heading.beta-active-tab .panel-title {
+.panel-default > .panel-heading.beta-active-tab .panel-title {
     color: #fff!important
 }
 
-.panel-default>.panel-heading.beta-active-tab .panel-title a:hover {
+.panel-default > .panel-heading.beta-active-tab .panel-title a:hover {
     color: #fff!important
 }
 
-.panel-default>.panel-heading.beta-active-tab .accordion-circle {
+.panel-default > .panel-heading.beta-active-tab .accordion-circle {
     border: 1px solid #fff!important
 }
 
-.panel-default>.panel-heading.beta-active-tab i {
+.panel-default > .panel-heading.beta-active-tab i {
     color: #fff!important
 }
 
@@ -4196,15 +4206,15 @@ ul.payment_methods,
     border-bottom: 1px solid #e1e1e1!important
 }
 
-.panel-group.beta-accordion-b .panel-default>.panel-heading.beta-active-tab,
-.panel-group.beta-accordion-b .panel-default>.panel-heading.beta-active-tab .panel-title,
-.panel-group.beta-accordion-b .panel-default>.panel-heading.beta-active-tab .accordion-circle,
-.panel-group.beta-accordion-b .panel-default>.panel-heading.beta-active-tab i {
+.panel-group.beta-accordion-b .panel-default > .panel-heading.beta-active-tab,
+.panel-group.beta-accordion-b .panel-default > .panel-heading.beta-active-tab .panel-title,
+.panel-group.beta-accordion-b .panel-default > .panel-heading.beta-active-tab .accordion-circle,
+.panel-group.beta-accordion-b .panel-default > .panel-heading.beta-active-tab i {
     background: none!important;
     color: #3a5c83!important
 }
 
-.panel-group.beta-accordion-b .panel-default>.panel-heading.beta-active-tab .panel-title a:hover {
+.panel-group.beta-accordion-b .panel-default > .panel-heading.beta-active-tab .panel-title a:hover {
     color: #000!important
 }
 
@@ -4450,7 +4460,7 @@ ul.payment_methods,
     padding: 15px 0!important
 }
 
-.beta-pricing.table>thead>tr>th {
+.beta-pricing.table > thead > tr > th {
     border-bottom: none
 }
 
@@ -4458,12 +4468,12 @@ ul.payment_methods,
     font-family: Open Sans
 }
 
-.table>thead>tr>th,
-.table>tbody>tr>th,
-.table>tfoot>tr>th,
-.table>thead>tr>td,
-.table>tbody>tr>td,
-.table>tfoot>tr>td {
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
     border-bottom: 1px solid #e1e1e1
 }
 
@@ -4486,7 +4496,7 @@ tfoot {
     background-color: #f6f6f6
 }
 
-.beta-pricing.table tfoot>tr>td {
+.beta-pricing.table tfoot > tr > td {
     padding: 30px 0!important
 }
 
@@ -4505,12 +4515,12 @@ tfoot td a i {
     border: none
 }
 
-.beta-pricing.beta-pricing-b thead tr>th {
+.beta-pricing.beta-pricing-b thead tr > th {
     border-top: 1px solid #e1e1e1!important
 }
 
-.beta-pricing.beta-pricing-b.table>tbody>tr>td,
-.beta-pricing.beta-pricing-b.table>thead>tr>td {
+.beta-pricing.beta-pricing-b.table > tbody > tr > td,
+.beta-pricing.beta-pricing-b.table > thead > tr > td {
     border-bottom: none!important
 }
 
@@ -4831,7 +4841,7 @@ tfoot td a i {
         z-index: 1010;
         width: 79%
     }
-    .main-menu>ul {
+    .main-menu > ul {
         border: 1px solid #e1e1e1;
         box-shadow: 0 1px 1px rgba(225, 225, 225, 0.3);
         display: none
@@ -4857,7 +4867,7 @@ tfoot td a i {
         background-color: #fff!important;
         color: #000!important
     }
-    .main-menu li.current-menu-item>a {
+    .main-menu li.current-menu-item > a {
         color: #3a5c83;
         font-weight: 700
     }
@@ -5672,13 +5682,11 @@ li.box-port-filter {
 
 /*********************/
 
-
 /*menu*/
-
 
 /*********************/
 
-.main-menu>ul.l-inline> li> a {
+.main-menu > ul.l-inline > li > a {
     padding: 10px 22px;
     -webkit-font-smoothing: antialiased;
     transition: all 0.17s ease-in-out;
@@ -5691,7 +5699,7 @@ li.box-port-filter {
     position: relative;
 }
 
-.main-menu ul.l-inline> li> a:hover {
+.main-menu ul.l-inline > li > a:hover {
     background: #3a5c83;
     color: white;
     transition: all 0.17s ease-in-out;
@@ -5710,7 +5718,7 @@ li.box-port-filter {
     -o-transition: all 0.17s ease-in-out;
 }
 
-.main-menu li:hover>.sub-menu {
+.main-menu li:hover > .sub-menu {
     -webkit-transform: rotateX(0deg);
     -moz-transform: rotateX(0deg);
     -ms-transform: rotateX(0deg);
@@ -5755,9 +5763,7 @@ li.box-port-filter {
 
 /*********/
 
-
 /**price table**/
-
 
 /*********/
 
@@ -5833,7 +5839,7 @@ li.box-port-filter {
     background: #406590;
 }
 
-.main-menu ul li.active> a {
+.main-menu ul li.active > a {
     background: #3a5c83;
     color: white!important;
 }
@@ -5865,7 +5871,7 @@ li.box-port-filter {
     background-color: #58a7c6;
 }
 
-.parent-active>a {
+.parent-active > a {
     background: #3a5c83;
     color: white;
 }
@@ -5875,8 +5881,8 @@ li.box-port-filter {
     background: #3a5c83;
 }
 
-.sub-menu li.parent-active>a,
-.children li.parent-active>a {
+.sub-menu li.parent-active > a,
+.children li.parent-active > a {
     color: white!important;
 }
 
@@ -5998,7 +6004,7 @@ li.box-port-filter {
     border: none;
 }
 
-.panel-group .panel+.panel {
+.panel-group .panel + .panel {
     margin-top: 1px;
 }
 
