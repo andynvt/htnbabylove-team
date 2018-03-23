@@ -1,6 +1,6 @@
 <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-4 ft_pc">
+                <div class="col-sm-4 ft_pc" style="text-align: left;">
                     <div class="address-office">
                         <div class="info-address">
                             <h4 class="text_strong"> ĐỊA CHỈ CỬA HÀNG</h4>
@@ -11,7 +11,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 ft_pc">
+                <div class="col-sm-4 ft_pc" style="text-align: center;">
                     <div class="address-office">
                         <div class="info-address">
                             <h4 class="text_strong"> HỖ TRỢ KHÁCH HÀNG</h4>
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 ft_pc">
+                <div class="col-sm-4 ft_pc" style="text-align: right;">
                     <div class="address-office">
                         <div class="info-address">
                             <h4 class="text_strong"> VỀ CHÚNG TÔI</h4>

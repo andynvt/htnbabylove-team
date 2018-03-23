@@ -1,0 +1,49 @@
+.text-align{
+	text-align: center;
+}
+table tr th,table tr td{
+	text-align: center;
+}
+.tab{
+	/*border:1px solid #C01E1E;*/
+	height: auto;
+	float: left;
+	width: 100%;
+	background: #F4F3EF;
+}
+.tab .tab-product{
+	float: left;
+	display: inline-block;
+	border-left:1px solid #DFDFDF;
+	border-top:1px solid #DFDFDF;
+	border-right:1px solid #DFDFDF;
+	background: #fff;
+	width: auto;
+	height: auto;
+	padding:0.05% 5%;
+}	
+.space10{
+	height: 10px;
+	margin-bottom: 10px;
+	/*border-top: 1px solid #E4E4E4;*/
+	float: left;
+	width: 100%;
+}
+#tab-active{
+	background: #fff;
+}
+#tab-normal{
+	background: #F4F3EF;
+}
+.glyphicon-trash,.glyphicon-edit{
+	width: 20px;
+	height: 20px;
+	/*font-size: 13px;*/
+	margin:5px 0 0 5px;
+	padding-right: 5px;
+}
+.btn-group{
+	/*width: 75px;*/
+	height: 32px;
+	text-align: center;
+}

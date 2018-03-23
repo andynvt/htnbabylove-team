@@ -23,9 +23,8 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
     <!--    -->
 
-    <link href="source/css/about.css" rel="stylesheet"/>
-    <link href="source/css/private-policy.css" rel="stylesheet"/>
-    <link href="source/css/style.css" rel="stylesheet" title="style">
+    <link href="source/css/about.css" rel="stylesheet" />
+    <link href="source/css/private-policy.css" rel="stylesheet" />
     <link href='source/css/index.css' rel='stylesheet' type='text/css'>
     <link href='source/css/menuscroll.css' rel='stylesheet' type='text/css'>
     <link href='source/css/slideshow.css' rel='stylesheet' type='text/css'>
@@ -36,7 +35,10 @@
     <link href="source/css/header-footer.css" rel="stylesheet" />
     <link href="source/css/checkout.css" rel="stylesheet" />
     <link href="source/css/responsive_product_detail.css" rel="stylesheet" />
-    
+    <link href="source/css/style.css" rel="stylesheet" title="style">
+
+
+
 
 </head>
 
@@ -107,7 +109,7 @@
 
     <!-- Content -->
     <div id="content-body">
-    @yield('content')
+        @yield('content')
     </div>
     <!-- #content -->
 

@@ -1,5 +1,52 @@
-@extends('master')
-@section('content')
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Home</title>
+	<link rel="stylesheet" href="">
+	<!-- Css bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<!-- Js -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<!-- Responsive -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+	<!-- Online -->
+	<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">	
+	<!-- Css Custom -->
+<!--	Phan dinh dang cho footer header-->\
+
+<!--ket thuc phan dieu chinh cho footer va header-->
+	<link rel="stylesheet" href="css/chitietsanpham_custom.css">
+	<script type="text/javascript" src="js/modal_productdetail.js"></script>
+	<!-- phan chi tiet san pham -->
+	<script>
+		function openNav() {
+			document.getElementById("sideNavigation").style.width = "250px";
+			document.getElementById("main").style.marginLeft = "250px";
+		}
+
+		function closeNav() {
+			document.getElementById("sideNavigation").style.width = "0";
+			document.getElementById("main").style.marginLeft = "0";
+		}
+	</script>
+
+</head>
+<body>
+<!--	Phan danh cho header-->
+
+<!--ket thuc phan danh cho header-->
+	<div class="space10">&nbsp;</div>
+	
+<!-- #header -->
 <script type="text/javascript">
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
@@ -654,4 +701,34 @@
 						captionText.innerHTML = dots[slideIndex-1].alt;
 					}
 				</script>
-@endsection
+<!-- Phan footer -->
+
+<!-- footer responsive -->
+<!--Ket thuc phan header-->
+<!--Phan back to top-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+	jQuery(document).ready(function() {
+		var offset = 220;
+		var duration = 500;
+		jQuery(window).scroll(function() {
+			if (jQuery(this).scrollTop() > offset) {
+				jQuery('.back-to-top').fadeIn(duration);
+			} else {
+				jQuery('.back-to-top').fadeOut(duration);
+			}
+		});
+
+		jQuery('.back-to-top').click(function(event) {
+			event.preventDefault();
+			jQuery('html, body').animate({scrollTop: 0}, duration);
+			return false;
+		})
+	});
+</script>
+<a class="back-to-top" href="#">
+	<img class="scroll-top" src="images/top.png" style="cursor: pointer; position: fixed; bottom: 3%; right: 60px; z-index: 99999;" width="69" height="69" />
+</a>
+<!--ket thuc phan back to top-->
+</body>
+</html>

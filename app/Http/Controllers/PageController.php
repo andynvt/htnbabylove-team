@@ -14,8 +14,8 @@ class PageController extends Controller
     	return view('page.loai_sanpham');
     }
 
-    public function getChiTiet(){
-    	return view('page.chitiet_sanpham');
+    public function getDetail(){
+        return view('page.chitietsp');
     }
 
     public function getAbout(){
@@ -34,7 +34,5 @@ class PageController extends Controller
         return view('page.thanhtoan');
     }
 
-    public function getDetail(){
-        return view('page.chitietsp');
-    }
+    
 }

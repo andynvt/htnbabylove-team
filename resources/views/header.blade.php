@@ -9,8 +9,8 @@
                 </div>
                 <div class="pull-right auto-width-right header-top-right">
                     <ul class="top-details menu-beta l-inline header-top-row">
-                        <li><a href="about.html"><i class="fa fa-info-circle"></i>Giới Thiệu</a></li>
-                        <li data-toggle="modal" data-target="#contactModal" class="line"><a href="#"><i class="fa fa-phone"></i>Liên Hệ</a></li>
+                        <li><a href="{{ route('gioithieu') }}"><i class="fa fa-info-circle"></i>Giới Thiệu</a></li>
+                        <li data-toggle="modal" data-target="#contactModal" class="line"><a><i class="fa fa-phone"></i>Liên Hệ</a></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="div-menu">
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menu-ul ">
-                            <a href="#" class="menu-list navbar-home">
+                            <a href="{{ route('trang-chu') }}" class="menu-list navbar-home">
                                 <li class="nav-item menu-li-list active hide-mobile">TRANG CHỦ</li>
                             </a>
                             <a class="menu-list" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
