@@ -1,11 +1,4 @@
 // Phan modal chitietsanpham
-function alert() {
-    //    $(".modal-dialog").attr("data-dismiss", "modal");
-    $(".alert").fadeIn(700);
-    setTimeout(function () {
-        $(".alert").fadeOut(700);
-    }, 2000)
-}
 $(document).ready(function () {
 
     /* 1. Visualizing things on Hover - See next part for action on click */
@@ -75,15 +68,3 @@ function addimages(addImg, msg) {
     $('.success-box').html(addImgmsg);
 }
 
-//var fbWarning = new Alert('fb-warning-tip', "You must have login!", 2000);
-//var fbSuccess = new Alert('fb-success-tip', "Thank you!", 2000);
-
-//function sendfb() {
-//    $(".send-fb").attr("data-dismiss", "modal");
-//    //    if (isLogin() == 0) {
-//    //        fbWarning.showAlert();
-//    //    } else {
-//    //        fbSuccess.showAlert();
-//    //    }
-//    //    alert('Idiot alert!!');
-//}

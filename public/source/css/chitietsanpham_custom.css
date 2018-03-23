@@ -430,7 +430,7 @@ body {
 #show-images .modal-img-mini {
   display: none;
   position: fixed;
-  z-index: 999;
+  z-index: 1;
   padding-top: 100px;
   left: 0;
   top: 0;

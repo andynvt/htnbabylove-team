@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 ft_mb" style="background-color: red">
+                <div class="col-sm-12 ft_mb">
                     <div class="container-fluid col-sm-12 info_mb" style="width: 80%;">
                         <ul class="info_mb1">
                             <li><a href=""><i class="fa fa-map-marker"></i> 132 Ba Tháng 2, Ninh Kiều, Cần Thơ</a></li>

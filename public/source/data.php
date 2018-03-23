@@ -1,6 +1,15 @@
 <?php
- 	// require("connect.php");
-	include "connect.php";
+ 	// requiresource/("connect.php");
+	// include "connect.php";
+	$con = mysqli_connect("localhost","root","","htnbabylove");
+	mysqli_set_charset($con, 'UTF8');
+
+	// Check connection
+	if (mysqli_connect_error())
+	{
+	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+	
 	$key = $_POST['id'];
 	$sql = "select * from quan_huyen where id_category = '$key'";
 	$query = $con->query($sql);
