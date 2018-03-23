@@ -25,6 +25,7 @@
 
     <link href="source/css/about.css" rel="stylesheet" />
     <link href="source/css/private-policy.css" rel="stylesheet" />
+    <link href="source/css/style.css" rel="stylesheet" title="style">
     <link href='source/css/index.css' rel='stylesheet' type='text/css'>
     <link href='source/css/menuscroll.css' rel='stylesheet' type='text/css'>
     <link href='source/css/slideshow.css' rel='stylesheet' type='text/css'>
@@ -35,9 +36,7 @@
     <link href="source/css/header-footer.css" rel="stylesheet" />
     <link href="source/css/checkout.css" rel="stylesheet" />
     <link href="source/css/responsive_product_detail.css" rel="stylesheet" />
-    <link href="source/css/style.css" rel="stylesheet" title="style">
-
-
+    <link href="source/css/responsive_footer2.css" rel="stylesheet" />
 
 
 </head>

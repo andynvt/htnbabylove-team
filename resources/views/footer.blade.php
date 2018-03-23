@@ -25,14 +25,14 @@
                         <div class="info-address">
                             <h4 class="text_strong"> VỀ CHÚNG TÔI</h4>
                             <ul>
-                                <li><a href="about.html">Giới thiệu</a></li>
-                                <li><a href="terms-of-use.html">Điều khoản sử dụng</a></li>
-                                <li><a href="privacy-policy.html">Chính sách bảo mật</a></li>
+                                <li><a href="{{ route('gioithieu') }}">Giới thiệu</a></li>
+                                <li><a href="{{ route('dieukhoan') }}">Điều khoản sử dụng</a></li>
+                                <li><a href="{{ route('baomat') }}">Chính sách bảo mật</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 ft_mb">
+                <div class="col-sm-12 ft_mb" style="background-color: red">
                     <div class="container-fluid col-sm-12 info_mb" style="width: 80%;">
                         <ul class="info_mb1">
                             <li><a href=""><i class="fa fa-map-marker"></i> 132 Ba Tháng 2, Ninh Kiều, Cần Thơ</a></li>
