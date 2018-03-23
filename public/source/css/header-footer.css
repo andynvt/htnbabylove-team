@@ -1,5 +1,11 @@
 /*ST Lightbox*/
-.fixed {position:fixed; top:0; left:0;}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 body {
     font-family: Open sans, sans-serif;
     margin: 0;
@@ -99,7 +105,7 @@ body {
     color: #F06292;
 }
 
-#footer @media (max-width: 991px) {
+@media (max-width: 991px) {
     #footer {
         /*text-align: center;*/
     }
@@ -319,6 +325,10 @@ body {
         display: block;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    .ft_pc {
+        display: none;
     }
 }
 
