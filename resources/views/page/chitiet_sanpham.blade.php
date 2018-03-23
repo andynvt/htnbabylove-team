@@ -5,7 +5,8 @@
 		$('[data-toggle="tooltip"]').tooltip()
 	})
 </script>
-<div class="container">
+<div class="cnt-user">
+<div class="container-fluid">
 	<div id="content" class="content-product-link">
 		<div class="row">
 			<div class="col-sm-12" id="bar-prodduct">
@@ -14,34 +15,34 @@
 						<li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
 						<li class="breadcrumb-item"><a href="#">Quần áo bé gái</a></li>
 						<li class="breadcrumb-item"><a href="#">Đồ bộ bé gái</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Bộ voan bé gái trễ vai họa tiết hoa xinh xắn (9 tháng - 9 tuổi)</li>
+						<li class="breadcrumb-item"><a href="#">Bộ voan bé gái trễ vai họa tiết hoa xinh xắn (9 tháng - 9 tuổi)</a></li>
 					</ol>
 				</nav>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container-fluid">
 	<div id="content" >
 		<div class="row" id="content-product-details">
 			<div class="col-sm-9">
 				<div class="row">
 					<div class="col-sm-4" id="show-images">
-						<img src="images/product_1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
+						<img src="source/image/product_1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
 						<!-- <h2 style="text-align:center">Lightbox</h2> -->
 						<div class="img-mini">
 							<div class="row">
 								<div class="column">
-									<img src="images/img1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+									<img src="source/image/img1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 								</div>
 								<div class="column">
-									<img src="images/img2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+									<img src="source/image/img2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
 								</div>
 								<div class="column">
-									<img src="images/img3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+									<img src="source/image/img3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
 								</div>
 								<div class="column">
-									<img src="images/img4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+									<img src="source/image/img4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
 								</div>
 							</div>
 						</div>
@@ -50,22 +51,22 @@
 							<div class="modal-content">
 								<div class="slide-img-mini">
 									<div class="numbertext">1 / 4</div>
-									<img src="images/img1_wide.jpg" style="width:100%">
+									<img src="source/image/img1_wide.jpg" style="width:100%">
 								</div>
 
 								<div class="slide-img-mini">
 									<div class="numbertext">2 / 4</div>
-									<img src="images/img2_wide.jpg" style="width:100%">
+									<img src="source/image/img2_wide.jpg" style="width:100%">
 								</div>
 
 								<div class="slide-img-mini">
 									<div class="numbertext">3 / 4</div>
-									<img src="images/img3_wide.jpg" style="width:100%">
+									<img src="source/image/img3_wide.jpg" style="width:100%">
 								</div>
 
 								<div class="slide-img-mini">
 									<div class="numbertext">4 / 4</div>
-									<img src="images/img4_wide.jpg" style="width:100%">
+									<img src="source/image/img4_wide.jpg" style="width:100%">
 								</div>
 
 								<a style="color: #288AD6" class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -77,16 +78,16 @@
 
 								<div class="row" id="bg-modal-product">
 									<div class="column">
-										<img class="demo cursor" src="images/img1_wide.jpg" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise">
+										<img class="demo cursor" src="source/image/img1_wide.jpg" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise">
 									</div>
 									<div class="column">
-										<img class="demo cursor" src="images/img2_wide.jpg" style="width:100%" onclick="currentSlide(2)" alt="Trolltunga, Norway">
+										<img class="demo cursor" src="source/image/img2_wide.jpg" style="width:100%" onclick="currentSlide(2)" alt="Trolltunga, Norway">
 									</div>
 									<div class="column">
-										<img class="demo cursor" src="images/img3_wide.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+										<img class="demo cursor" src="source/image/img3_wide.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
 									</div>
 									<div class="column">
-										<img class="demo cursor" src="images/img4_wide.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+										<img class="demo cursor" src="source/image/img4_wide.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
 									</div>
 								</div>
 							</div>
@@ -220,16 +221,16 @@
 							<div class="panel" id="tab-description">
 								<p class="intro-product">Bộ đồ bé gái xinh xắn này được thiết kế kiểu trễ vai hiện đại, trẻ trung chắc chắn sẽ là lựa chọn hoàn hảo cho bé yêu dịp hè thu này. Sản phẩm đã có tại Shop, ba mẹ ghé xem ngay nhé! </p>
 								<div class="img-product-show">
-									<img src="images/quanao1.jpg"/>
+									<img src="source/image/quanao1.jpg"/>
 								</div>
 								<div class="img-product-show">
-									<img src="images/quanao2.jpg"/>
+									<img src="source/image/quanao2.jpg"/>
 								</div>
 								<div class="img-product-show">
-									<img src="images/quanao3.jpg"/>
+									<img src="source/image/quanao3.jpg"/>
 								</div>
 								<div class="img-product-show">
-									<img src="images/quanao4.jpg"/>
+									<img src="source/image/quanao4.jpg"/>
 								</div>
 
 							</div>
@@ -343,11 +344,11 @@
 								</div>
 								<div class="star-rate">
 									<div class="start-sum">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="far fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
 									</div>
 									<div class="comment">
 										<p>Bộ đồ nó mới đẹp làm sao. Sẽ ủng hộ shop vì giá mềm đồ lại tốt.</p>
@@ -363,11 +364,11 @@
 								</div>
 								<div class="star-rate">
 									<div class="start-sum">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="far fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
 									</div>
 									<div class="comment">
 										<p>Bộ đồ nó mới đẹp làm sao. Sẽ ủng hộ shop vì giá mềm đồ lại tốt.</p>
@@ -383,11 +384,11 @@
 								</div>
 								<div class="star-rate">
 									<div class="start-sum">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="far fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
 									</div>
 									<div class="comment">
 										<p>Bộ đồ nó mới đẹp làm sao. Sẽ ủng hộ shop vì giá mềm đồ lại tốt.</p>
@@ -425,68 +426,107 @@
 						<div class="related-product">
 							<div class="banner-related-product">
 								<!-- <h4>Sản Phẩm Cùng Loại</h4> -->
-								<img src="images/banner-related-product.png"/>
+								<img src="source/image/banner-related-product.png"/>
 							</div>
 							<div class="row">
 								<div class="col-sm-4">
-									<div class="single-item">
-										<div class="single-item-header">
-											<a href="product.html"><img src="images/bo-ghile-cho-be-gai-sanh-dieu.jpg" alt=""></a>
-										</div>
-										<div class="single-item-body">
-											<p class="single-item-title"><a href="">Bộ vest cho bé gái sành điệu</a></p>
-											<p class="single-item-price">
-												<span>165.000 đ</span>
-											</p>
-										</div>
-										<div class="single-item-click-by">
-											<a href="" class="click-by"><i class="far fa-money-bill-alt"></i> Mua Ngay</a>
-										</div>
-										<div class="single-item-add-to-cart">
-											<a href="" class="ad-to-cart"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a>
-										</div>
-									</div>
+									 <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                            <div class="ribbon1 sale">Sale</div>
+                                        </div>
+                                        <div class="thumbnail">
+                                            <div class="containeroverlay">
+                                                <a href="#"><img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                <div class="overlay">
+                                                    <div class="text">Xem chi tiết</div>
+                                                </div>
+                                            </div>
+                                            <div class="caption">
+                                                <div class="space5">&nbsp;</div>
+                                                <a href="#"> 
+                                                    <b class="text-price">
+                                                        <span class="text-danger ">
+                                                            1,000,000đ
+                                                        </span>  &nbsp;
+                                                        <span class="flash-del">
+                                                         1,000,000đ
+                                                        </span>
+                                                    </b>
+                                                    <div class="space10">&nbsp;</div>
+                                                    <p class='text-right text-title'><b>HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</b>&nbsp;</p>
+                                                </a>
+                                                <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
 								</div>
 								<div class="col-sm-4">
-									<div class="single-item">
-										<div class="single-item-header">
-											<a href="product.html"><img src="images/bo-ghile-cho-be-gai-sanh-dieu.jpg" alt=""></a>
-										</div>
-										<div class="single-item-body">
-											<p class="single-item-title"><a href="">Bộ vest cho bé gái sành điệu</a></p>
-											<p class="single-item-price">
-												<span>165.000 đ</span>
-											</p>
-										</div>
-										<div class="single-item-click-by">
-											<a href="" class="click-by"><i class="far fa-money-bill-alt"></i> Mua Ngay</a>
-										</div>
-										<div class="single-item-add-to-cart">
-											<a href="" class="ad-to-cart"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a>
-										</div>
-									</div>
+									 <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                            <div class="ribbon1 sale">Sale</div>
+                                        </div>
+                                        <div class="thumbnail">
+                                            <div class="containeroverlay">
+                                                <a href="#"><img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                <div class="overlay">
+                                                    <div class="text">Xem chi tiết</div>
+                                                </div>
+                                            </div>
+                                            <div class="caption">
+                                                <div class="space5">&nbsp;</div>
+                                                <a href="#"> 
+                                                    <b class="text-price">
+                                                        <span class="text-danger ">
+                                                            1,000,000đ
+                                                        </span>  &nbsp;
+                                                        <span class="flash-del">
+                                                         1,000,000đ
+                                                        </span>
+                                                    </b>
+                                                    <div class="space10">&nbsp;</div>
+                                                    <p class='text-right text-title'><b>HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</b>&nbsp;</p>
+                                                </a>
+                                                <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
 								</div>
 								<div class="col-sm-4">
-									<div class="single-item">
-										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
-
-										<div class="single-item-header">
-											<a href="#"><img src="images/bo-ghile-cho-be-gai-sanh-dieu.jpg" alt=""></a>
-										</div>
-										<div class="single-item-body">
-											<p class="single-item-title"><a href="">Bộ vest cho bé gái sành điệu</a></p>
-											<p class="single-item-price">
-												<span class="flash-del">165.000 đ</span>
-												<span class="flash-sale">159.000 đ</span>
-											</p>
-										</div>
-										<div class="single-item-click-by">
-											<a href="" class="click-by"><i class="far fa-money-bill-alt"></i> Mua Ngay</a>
-										</div>
-										<div class="single-item-add-to-cart">
-											<a href="" class="ad-to-cart"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a>
-										</div>
-									</div>
+									 <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                            <div class="ribbon1 sale">Sale</div>
+                                        </div>
+                                        <div class="thumbnail">
+                                            <div class="containeroverlay">
+                                                <a href="#"><img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                <div class="overlay">
+                                                    <div class="text">Xem chi tiết</div>
+                                                </div>
+                                            </div>
+                                            <div class="caption">
+                                                <div class="space5">&nbsp;</div>
+                                                <a href="#"> 
+                                                    <b class="text-price">
+                                                        <span class="text-danger ">
+                                                            1,000,000đ
+                                                        </span>  &nbsp;
+                                                        <span class="flash-del">
+                                                         1,000,000đ
+                                                        </span>
+                                                    </b>
+                                                    <div class="space10">&nbsp;</div>
+                                                    <p class='text-right text-title'><b>HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</b>&nbsp;</p>
+                                                </a>
+                                                <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
 								</div>
 							</div>
 						</div> <!-- .beta-products-list -->
@@ -494,11 +534,11 @@
 					</div>
 					<div class="col-sm-3 aside">
 						<div class="widget">
-							<h3 class="widget-title">Sản Phẩm Bán Chạy Nhất</h3>
+							<h3 class="widget-title">Sản Phẩm Bán Chạy</h3>
 							<div class="widget-body">
 								<div class="beta-sales beta-lists">
 									<div class="media beta-sales-item">
-										<a class="pull-left" href="product.html"><img src="images/aosomi.jpg" alt=""></a>
+										<a class="pull-left" href="product.html"><img src="source/image/aosomi.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo sơ mi caro cho bé từ 1-8 màu xanh rêu</a>
 											<span class="beta-sales-price">142.000 đ</span>
@@ -511,7 +551,7 @@
 										</div>
 									</div>
 									<div class="media beta-sales-item">
-										<a class="pull-left" href="product.html"><img src="images/aosomi.jpg" alt=""></a>
+										<a class="pull-left" href="product.html"><img src="source/image/aosomi.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo sơ mi caro cho bé từ 1-8 màu xanh rêu</a>
 											<span class="beta-sales-price">142.000 đ</span>
@@ -524,7 +564,7 @@
 										</div>
 									</div>
 									<div class="media beta-sales-item">
-										<a class="pull-left" href="product.html"><img src="images/aosomi.jpg" alt=""></a>
+										<a class="pull-left" href="product.html"><img src="source/image/aosomi.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo sơ mi caro cho bé từ 1-8 màu xanh rêu</a>
 											<span class="beta-sales-price">142.000 đ</span>
@@ -537,7 +577,7 @@
 										</div>
 									</div>
 									<div class="media beta-sales-item">
-										<a class="pull-left" href="product.html"><img src="images/aosomi.jpg" alt=""></a>
+										<a class="pull-left" href="product.html"><img src="source/image/aosomi.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo sơ mi caro cho bé từ 1-8 màu xanh rêu</a>
 											<span class="beta-sales-price">142.000 đ</span>
@@ -557,7 +597,7 @@
 							<div class="widget-body">
 								<div class="beta-sales beta-lists">
 									<div class="media beta-sales-item">
-										<a class="pull-left" href="product.html"><img src="images/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
+										<a class="pull-left" href="product.html"><img src="source/image/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo dài rồng kèm hoa văn cho bé trai màu đỏ</a><br/>
 											<span class="beta-sales-price">142.000 đ</span>
@@ -570,7 +610,7 @@
 										</div>
 									</div>
 									<div class="media beta-sales-item">
-										<a class="pull-left" href="product.html"><img src="images/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
+										<a class="pull-left" href="product.html"><img src="source/image/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo dài rồng kèm hoa văn cho bé trai màu đỏ</a><br/>
 											<span class="beta-sales-price">142.000 đ</span>
@@ -583,7 +623,7 @@
 										</div>
 									</div>
 									<div class="media beta-sales-item">
-										<a class="pull-left" href="product.html"><img src="images/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
+										<a class="pull-left" href="product.html"><img src="source/image/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo dài rồng kèm hoa văn cho bé trai màu đỏ</a><br/>
 											<span class="beta-sales-price">142.000 đ</span>
@@ -596,7 +636,7 @@
 										</div>
 									</div>
 									<div class="media beta-sales-item">
-										<a class="pull-left" href="product.html"><img src="images/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
+										<a class="pull-left" href="product.html"><img src="source/image/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo dài rồng kèm hoa văn cho bé trai màu đỏ</a><br/>
 											<span class="beta-sales-price">142.000 đ</span>
@@ -654,4 +694,5 @@
 						captionText.innerHTML = dots[slideIndex-1].alt;
 					}
 				</script>
+</div>
 @endsection
