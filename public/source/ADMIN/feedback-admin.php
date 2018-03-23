@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Loại sản phẩm</title>
+    <title>HOÀNG THỦY NGUYÊN</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
@@ -46,7 +46,7 @@
         Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
     -->
             <div class="sidebar-wrapper">
-                <div class="logo"> <a href="http://www.creative-tim.com" class="simple-text">
+                <div class="logo"> <a href="#" class="simple-text">
                     Hoàng Thủy Nguyên
                 </a> </div>
                 <ul class="nav">
@@ -184,7 +184,7 @@
                             <div class="feedback-typeproduct-item clearfix">
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.html"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
+                                        <a href="feedback-admin-detail.php"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
                                             <div class="feedback-qty">
                                                 <div class="qty-feedback">12</div>
                                             </div>
@@ -194,7 +194,7 @@
                                 </div>
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.html"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
+                                        <a href="feedback-admin-detail.php"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
                                             <div class="feedback-qty">
                                                 <div class="qty-feedback">12</div>
                                             </div>
@@ -204,7 +204,7 @@
                                 </div>
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.html"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
+                                        <a href="feedback-admin-detail.php"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
                                             <div class="feedback-qty">
                                                 <div class="qty-feedback">12</div>
                                             </div>
@@ -214,7 +214,7 @@
                                 </div>
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.html"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
+                                        <a href="feedback-admin-detail.php"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
                                             <div class="feedback-qty">
                                                 <div class="qty-feedback">12</div>
                                             </div>
@@ -224,7 +224,7 @@
                                 </div>
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.html"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
+                                        <a href="feedback-admin-detail.php"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
                                             <div class="feedback-qty">
                                                 <div class="qty-feedback">12</div>
                                             </div>
@@ -234,7 +234,7 @@
                                 </div>
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.html"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
+                                        <a href="feedback-admin-detail.php"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
                                             <div class="feedback-qty">
                                                 <div class="qty-feedback">12</div>
                                             </div>
@@ -244,7 +244,7 @@
                                 </div>
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.html"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
+                                        <a href="feedback-admin-detail.php"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
                                             <div class="feedback-qty">
                                                 <div class="qty-feedback">12</div>
                                             </div>
@@ -254,7 +254,7 @@
                                 </div>
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.html"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
+                                        <a href="feedback-admin-detail.php"><img src="plugin/images/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
                                             <div class="feedback-qty">
                                                 <div class="qty-feedback">12</div>
                                             </div>

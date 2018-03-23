@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Sản Phẩm</title>
+    <title>HOÀNG THỦY NGUYÊN</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
@@ -43,7 +43,7 @@
 		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
 	-->
             <div class="sidebar-wrapper">
-                <div class="logo"> <a href="http://www.creative-tim.com" class="simple-text">
+                <div class="logo"> <a href="#" class="simple-text">
             Hoàng Thủy Nguyên
         </a> </div>
                 <ul class="nav">
@@ -123,7 +123,7 @@
             <div class="container-fluid">
                 <div class="space10">&nbsp;</div>
                 <div class="row">
-                    <div class="col-md-3 ">
+                    <div class="col-lg-3 col-md-6 ">
                         <div class="panel panel-default ">
                             <div class="panel-heading "> <strong>
                 <span class="glyphicon glyphicon-th "></span>
@@ -213,7 +213,7 @@
                                                 <td>Đang gữi</td>
                                                 <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
                                                 <td>
-                                                    <div class="btn-group">
+                                                    <div class="btn-group" style="width: 75px;">
                                                         <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                         <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
@@ -228,7 +228,7 @@
                                                 <td>Hoàn thành</td>
                                                 <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
                                                 <td>
-                                                    <div class="btn-group">
+                                                    <div class="btn-group" style="width: 75px;">
                                                         <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                         <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
@@ -243,7 +243,7 @@
                                                 <td>Bi huy</td>
                                                 <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
                                                 <td>
-                                                    <div class="btn-group">
+                                                    <div class="btn-group" style="width: 75px;">
                                                         <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                         <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
@@ -258,7 +258,7 @@
                                                 <td>Chờ xác nhận</td>
                                                 <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
                                                 <td>
-                                                    <div class="btn-group">
+                                                    <div class="btn-group" style="width: 75px;">
                                                         <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                         <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
@@ -267,43 +267,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 ">
-                        <div class="panel panel-default ">
-                            <div class="panel-heading "> <strong>
-                <span class="glyphicon glyphicon-th "></span>
-                <span>Chú thích</span>
-              </strong> </div>
-                            <div class="container-fluid">
-                                <div class="space10">&nbsp;</div>
-                                <table class="table table-bordered text-align">
-                                    <thead>
-                                        <tr class="thead_change_color">
-                                            <th>Màu sắc</th>
-                                            <th>Trangh thái</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="danggui">1</td>
-                                            <td>Đang gữi</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="hoantat">2</td>
-                                            <td>Hoàn thành</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bihuy">3</td>
-                                            <td>Bị huỷ</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="choxacnhan">4</td>
-                                            <td>Chờ xác nhận</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
