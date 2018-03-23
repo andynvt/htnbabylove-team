@@ -231,7 +231,7 @@ if (mysqli_connect_error())
             <!--content-->
         </div>
         <!--container f-->
-    </div>
+</div>
     <br>
     <script type="text/javascript">
         $(".thanhpho").change(function () {

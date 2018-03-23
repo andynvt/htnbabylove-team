@@ -1,12 +1,12 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>HOÀNG THỦY NGUYÊN</title>
+    <title>Loại sản phẩm</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
@@ -25,13 +25,11 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
     <!--  Fonts and icons     -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,300" rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/tabs_table_reset.css" rel="stylesheet">
     <link href="kn_css/reset_css.css" rel="stylesheet">
-    <link rel="stylesheet" href="css_phi/search.css">
-    <link rel="stylesheet" href="css_phi/trangthai.css">
     <script type="text/javascript">
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
@@ -47,7 +45,7 @@
         Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
       -->
             <div class="sidebar-wrapper">
-                <div class="logo"> <a href="#" class="simple-text">
+                <div class="logo"> <a href="http://www.creative-tim.com" class="simple-text">
             Hoàng Thủy Nguyên
           </a> </div>
                 <ul class="nav">
@@ -128,7 +126,7 @@
             <div class="container-fluid ">
                 <div class="space10">&nbsp;</div>
                 <div class="row ">
-                    <div class="col-lg-3 col-md-6 ">
+                    <div class="col-md-3 ">
                         <div class="panel panel-default ">
                             <div class="panel-heading "> <strong>
                 <span class="glyphicon glyphicon-th "></span>
@@ -145,30 +143,11 @@
                     </div>
                     <div class="col-md-12 ">
                         <div class="panel panel-default ">
-                            <div class="panel-heading ">
-                                <div class="row">
-                                    <div class="col-md-8"> <strong>
+                            <div class="panel-heading "> <strong>
                 <span class="glyphicon glyphicon-th "></span>
                 <span>Loại sản phẩm</span>
               </strong> </div>
-                                </div>
-                            </div>
                             <div class="panel-body ">
-                                <div class="row">
-                                    <div class="col-lg-7 col-md-8">
-                                        <p>&nbsp; </p>
-                                    </div>
-                                    <div class="col-lg-1 col-md-1">
-                                        <p> &nbsp;</p>
-                                    </div>
-                                    <div class="col-lg-4 col-md-3 ">
-                                        <div id="wrap">
-                                            <form action="#" autocomplete="on">
-                                                <input id="search" name="search" type="text" placeholder="Search...">
-                                                <input id="search_submit" value="Rechercher" type="submit"> </form>
-                                        </div>
-                                    </div>
-                                </div>
                                 <table class="table table-bordered table-striped table-hover ">
                                     <thead>
                                         <tr>

@@ -22,7 +22,7 @@
             <div class="container beta-relative">
                 <div class="pull-center">
                     <div class="space60">&nbsp;</div>
-                    <a href="index.html" id="logo"><img src="source/image/logo%20main.png" width="350px"></a>
+                    <a href="{{ route('trang-chu') }}" id="logo"><img src="source/image/logo%20main.png" width="350px"></a>
                     <div class="space60">&nbsp;</div>
                 </div>
                 <div class="clearfix"></div>
@@ -34,7 +34,7 @@
             <div class="container-fluid ">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="logo-mobile">
-                        <a href="#"><img src="source/image/logo%20mobile.png"></a>
+                        <a href="{{ route('trang-chu') }}"><img src="source/image/logo%20mobile.png"></a>
                     </div>
                     <div class="div-hamburger">
                         <button class="navbar-toggler btn-humburger" type="button" aria-expanded="false" aria-label="Toggle navigation"> <span class="fa fa-bars hamburger" id="hamburger" onclick="openNav()"></span> </button>

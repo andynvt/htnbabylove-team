@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>HOÀNG THỦY NGUYÊN</title>
+    <title>Cá Nhân</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
@@ -41,7 +41,7 @@
         Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
     -->
             <div class="sidebar-wrapper">
-                <div class="logo"> <a href="#" class="simple-text">
+                <div class="logo"> <a href="http://www.creative-tim.com" class="simple-text">
                     Hoàng Thủy Nguyên
                 </a> </div>
                 <ul class="nav">

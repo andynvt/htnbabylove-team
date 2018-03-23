@@ -66,16 +66,3 @@ function addimages(addImg, msg) {
         '<div class="text-message"><span>' + msg + '</span></div>';
     $('.success-box').html(addImgmsg);
 }
-
-//var fbWarning = new Alert('fb-warning-tip', "You must have login!", 2000);
-//var fbSuccess = new Alert('fb-success-tip', "Thank you!", 2000);
-
-//function sendfb() {
-//    $(".send-fb").attr("data-dismiss", "modal");
-//    //    if (isLogin() == 0) {
-//    //        fbWarning.showAlert();
-//    //    } else {
-//    //        fbSuccess.showAlert();
-//    //    }
-//    //    alert('Idiot alert!!');
-//}
