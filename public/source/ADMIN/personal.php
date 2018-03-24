@@ -6,15 +6,19 @@
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Cá Nhân</title>
+    <title>HOÀNG THỦY NGUYÊN</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+
     <!-- Bootstrap core CSS     -->
-    <!-- <link href="assets/css/bootstrap.min.css" rel="stylesheet" /> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!--Frame link - DON'T DELETE {-->
+
     <!-- Animation library for notifications   -->
     <link href="assets/css/animate.min.css" rel="stylesheet" />
     <!--  Paper Dashboard core CSS    -->
@@ -26,10 +30,15 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/tabs_table_reset.css" rel="stylesheet">
+
+    <!--}-->
+
+
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
+
     </script>
 </head>
 
@@ -41,7 +50,7 @@
         Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
     -->
             <div class="sidebar-wrapper">
-                <div class="logo"> <a href="http://www.creative-tim.com" class="simple-text">
+                <div class="logo"> <a href="#" class="simple-text">
                     Hoàng Thủy Nguyên
                 </a> </div>
                 <ul class="nav">
@@ -148,19 +157,11 @@
     </div>
 </body>
 <!--   Core JS Files   -->
-<!-- <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script> -->
-<!-- <script src="assets/js/bootstrap.min.js" type="text/javascript"></script> -->
 <!--  Checkbox, Radio & Switch Plugins -->
 <script src="assets/js/bootstrap-checkbox-radio.js"></script>
 <!--  Charts Plugin -->
 <script src="assets/js/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-<!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-<script src="assets/js/paper-dashboard.js"></script>
-<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="assets/js/demo.js"></script>
 
 </html>
