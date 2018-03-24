@@ -29,7 +29,7 @@
     <link href='source/css/index.css' rel='stylesheet' type='text/css'>
     <link href='source/css/menuscroll.css' rel='stylesheet' type='text/css'>
     <link href='source/css/slideshow.css' rel='stylesheet' type='text/css'>
-    <link href="source/cart/cart.css" rel="stylesheet">
+    <link href="source/css/cart.css" rel="stylesheet">
     <link href="source/css/contact.css" rel="stylesheet" />
     <link href="source/css/seach.css" rel="stylesheet" />
     <link href="source/css/header-footer.css" rel="stylesheet" />
@@ -700,7 +700,7 @@
         </form>
     </div>
     <!--  Modal Mua Nhanh-->
-    <script type="text/javascript" src="source/cart/cart.js"></script>
+    <script type="text/javascript" src="source/js/cart.js"></script>
     <script type="text/javascript" src='source/js/modal.js'></script>
     <script type="text/javascript" src='source/js/index.js'></script>
     <script type="text/javascript" src='source/js/timkiemnhanh.js'></script>
