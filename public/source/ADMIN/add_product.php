@@ -10,15 +10,11 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-
     <!-- Bootstrap core CSS     -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
     <!--Frame link - DON'T DELETE {-->
-
     <!-- Animation library for notifications   -->
     <link href="assets/css/animate.min.css" rel="stylesheet" />
     <!--  Paper Dashboard core CSS    -->
@@ -30,13 +26,9 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/tabs_table_reset.css" rel="stylesheet">
-
     <!--}-->
-
     <link href="css/reset_css.css" rel="stylesheet">
-    <link href='css/add_product.css' rel='stylesheet'>
-
-</head>
+    <link href='css/add_product.css' rel='stylesheet'> </head>
 
 <body>
     <div class="wrapper">
@@ -104,6 +96,11 @@
             </small> </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-globe"></i>
+                                    <!-- <p class="notification"></p> -->
+                                    <p>Thông Báo</p> <span class="badge" style="background-color:#FF4066">1</span> </a>
+                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="ti-bell"></i>
                                     <!-- <p class="notification"></p> -->
@@ -173,14 +170,13 @@
                                                 </div>
                                             </div>
                                             <script>
-                                                $('.check').on('click', function() {
+                                                $('.check').on('click', function () {
                                                     color1 = $('.select_color input[name="color1"]').val();
                                                     color2 = $('.select_color input[name="color2"]').val();
                                                     string = 'repeating-linear-gradient';
                                                     $('.test').css('background', '' + string + '(' + color1 + ',' + color1 + ' 10%,' + color2 + ' 10%,' + color2 + ' 20%)');
                                                     return false;
                                                 });
-
                                             </script>
                                         </div>
                                         <div class="form-group">
@@ -191,9 +187,8 @@
                                                     <button type="button" onclick="myFunction2()">Xóa tiệp ảnh cuối</button>
                                                     <br>
                                                     <div class="inputadd">
-                                                        <div class="show"> </div>
-                                                    </div>
-                                                    <input type="file" name="img_file[]" multiple="true" onchange="previewImg(event);" id="img_file" accept="image/*">
+                                                        <!--                                                        <div class="show"> </div>--></div>
+                                                    <!--                                                    <input type="file" name="img_file[]" multiple="true" onchange="previewImg(event);" id="img_file" accept="image/*">-->
                                                     <!--
                                                     <button type="reset" class="btn-reset">Làm mới</button>
                                                     <button type="submit" class="btn-submit">Upload</button>
@@ -203,7 +198,7 @@
                                                         i = 1;
 
                                                         function myFunction() {
-                                                            $('#formUpload .inputadd').append("<div><input type='file' class='fi" + i + "' name='img_file[]' multiple='true' onchange='previewImg(event);' id='img_file" + i + "' accept='image/*'></div>");
+                                                            $('#formUpload .inputadd').append("<div><div class='space10'>&nbsp;</div><input type='file' class='fi" + i + "' name='img_file[]' multiple='true' onchange='previewImg(event);' id='img_file" + i + "' accept='image/*'></div>");
                                                             i++;
                                                             $('#formUpload .show').append("<div class='box-preview-img'></div>");
                                                         }
@@ -212,23 +207,22 @@
                                                             $("#formUpload .fi" + i).remove();
                                                             i--;
                                                         }
-
                                                     </script>
                                                     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
                                                 </div>
                                             </div>
                                             <script src="kn_js/main.js"></script>
-                                            <div class="form-group">
-                                                <label class="control-label col-sm-4" for="thongtincoban">Thông tin cơ bản:</label>
-                                                <div class="col-sm-8">
-                                                    <textarea type="text" class="form-control w50" id="thongtincoban" placeholder="Nhập thông tin cơ bản" name="thongtincoban"></textarea>
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4" for="thongtincoban">Thông tin cơ bản:</label>
+                                            <div class="col-sm-8">
+                                                <textarea type="text" class="form-control w50" id="thongtincoban" placeholder="Nhập thông tin cơ bản" name="thongtincoban"></textarea>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-6 col-sm-8">
-                                                    <button type="submit" class="btn btn-primary btn-magrin btn-submit">Lưu lại</button>
-                                                    <button type="submit" class="btn btn-light btn-magrin2"><a href="product.php">Hủy</a></button>
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-6 col-sm-8">
+                                                <button type="submit" class="btn btn-primary btn-magrin btn-submit">Lưu lại</button>
+                                                <button type="submit" class="btn btn-light btn-magrin2"><a href="product.php">Hủy</a></button>
                                             </div>
                                         </div>
                                     </form>
@@ -247,8 +241,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</h4>
-                </div>
+                    <h4 class="modal-title">HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</h4> </div>
                 <div class="modal-body">
                     <div class="container-full">
                         <div class="row">
@@ -308,9 +301,7 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-
 </body>
-
 <!--   Core JS Files   -->
 <!--  Checkbox, Radio & Switch Plugins -->
 <script src="assets/js/bootstrap-checkbox-radio.js"></script>

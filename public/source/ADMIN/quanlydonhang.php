@@ -10,15 +10,11 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-
     <!-- Bootstrap core CSS     -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
     <!--Frame link - DON'T DELETE {-->
-
     <!-- Animation library for notifications   -->
     <link href="assets/css/animate.min.css" rel="stylesheet" />
     <!--  Paper Dashboard core CSS    -->
@@ -30,17 +26,12 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/tabs_table_reset.css" rel="stylesheet">
-
     <!--}-->
-
-
     <link rel='stylesheet' href='css/slideshow.css'>
     <link rel="stylesheet" href="css/reset_css.css">
     <link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="css/trangthai.css">
-    <link rel="stylesheet" href="css/cart.css">
-
-</head>
+    <link rel="stylesheet" href="css/cart.css"> </head>
 
 <body>
     <div class="wrapper">
@@ -192,10 +183,9 @@
                             </div>
                             <div class="content table-responsive table-full-width st_table">
                                 <script type="text/javascript">
-                                    $(function() {
+                                    $(function () {
                                         $('[data-toggle="tooltip"]').tooltip()
                                     })
-
                                 </script>
                                 <div class="container-fluid">
                                     <table class="table table-bordered text-align">
@@ -208,7 +198,7 @@
                                                 <th>Địa chỉ</th>
                                                 <th>Trạng thái</th>
                                                 <th>Xem chi tiết</th>
-                                                <th>Sửa/Xóa</th>
+                                                <th>Xác nhận</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -221,9 +211,8 @@
                                                 <td>Đang gữi</td>
                                                 <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
                                                 <td>
-                                                    <div class="btn-group" style="width: 75px;">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
-                                                        <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                    <div class="">
+                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -236,9 +225,8 @@
                                                 <td>Hoàn thành</td>
                                                 <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
                                                 <td>
-                                                    <div class="btn-group" style="width: 75px;">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
-                                                        <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                    <div class="">
+                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -251,9 +239,8 @@
                                                 <td>Bi huy</td>
                                                 <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
                                                 <td>
-                                                    <div class="btn-group" style="width: 75px;">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
-                                                        <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                    <div class="">
+                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -266,9 +253,8 @@
                                                 <td>Chờ xác nhận</td>
                                                 <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
                                                 <td>
-                                                    <div class="btn-group" style="width: 75px;">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
-                                                        <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                    <div class="">
+                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -292,8 +278,7 @@
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Đơn hàng (có 3 sản phẩm)</h4>
-                    </div>
+                        <h4 class="modal-title">Đơn hàng (có 3 sản phẩm)</h4> </div>
                     <!-- Modal body -->
                     <div class="modal-body cart-center">
                         <div class="row cart-title">
@@ -534,7 +519,6 @@
         </div>
     </form>
 </body>
-
 <!--   Core JS Files   -->
 <!--  Checkbox, Radio & Switch Plugins -->
 <script src="assets/js/bootstrap-checkbox-radio.js"></script>
@@ -542,7 +526,6 @@
 <script src="assets/js/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
-
 <script type="text/javascript" src="js/cart.js"></script>
 
 </html>

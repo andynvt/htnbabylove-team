@@ -10,15 +10,11 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-
     <!-- Bootstrap core CSS     -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
     <!--Frame link - DON'T DELETE {-->
-
     <!-- Animation library for notifications   -->
     <link href="assets/css/animate.min.css" rel="stylesheet" />
     <!--  Paper Dashboard core CSS    -->
@@ -30,15 +26,11 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/tabs_table_reset.css" rel="stylesheet">
-
     <!--}-->
-
-
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
-
     </script>
 </head>
 
@@ -135,17 +127,17 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <div class="panel panel-default">
-                            <div class="panel-heading clearfix"> <span class="glyphicon glyphicon-edit"></span> <span>Edit My Account</span> </div>
+                            <div class="panel-heading clearfix"> <span class="glyphicon glyphicon-edit"></span> <span>Cập nhật tài khoản</span> </div>
                             <div class="panel-body">
                                 <form method="post" action="edit_account.php?id=1" class="clearfix">
                                     <div class="form-group">
-                                        <label for="name" class="control-label">Name</label>
+                                        <label for="name" class="control-label">Tên đăng nhập</label>
                                         <input type="name" class="form-control" name="name" placeholder="Tên đăng nhập"> </div>
                                     <div class="form-group">
-                                        <label for="username" class="control-label">Username</label>
-                                        <input type="text" class="form-control" name="username" placeholder="Mặt khẩu"> </div>
-                                    <div class="form-group clearfix"> <a href="change_password.php" title="change password" class="btn btn-danger pull-right css_changepass">Change Password</a>
-                                        <button type="submit" name="update" class="btn btn-info">Update</button>
+                                        <label for="username" class="control-label">Mật khẩu</label>
+                                        <input type="text" class="form-control" name="username" placeholder="Mật khẩu"> </div>
+                                    <div class="form-group clearfix">
+                                        <button type="submit" name="update" class=" btn btn-danger pull-right css_changepass ">Cập nhật</button>
                                     </div>
                                 </form>
                             </div>
