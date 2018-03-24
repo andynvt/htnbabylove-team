@@ -10,22 +10,25 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+
     <!-- Bootstrap core CSS     -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
     <!--Frame link - DON'T DELETE {-->
+
     <!-- Animation library for notifications   -->
     <link href="assets/css/animate.min.css" rel="stylesheet" />
     <!--  Paper Dashboard core CSS    -->
     <link href="assets/css/paper-dashboard.css" rel="stylesheet" />
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/tabs_table_reset.css" rel="stylesheet">
+
     <!--}-->
     <link rel='stylesheet' href='css/slideshow.css'>
     <link rel="stylesheet" href="css/reset_css.css">
@@ -36,10 +39,7 @@
 <body>
     <div class="wrapper">
         <div class="sidebar" data-background-color="white" data-active-color="danger">
-            <!--
-		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
-		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
-	-->
+
             <div class="sidebar-wrapper">
                 <div class="logo"> <a href="#" class="simple-text">
             Hoàng Thủy Nguyên
@@ -52,37 +52,37 @@
                     </li>
                     <li>
                         <a href="product.php">
-                            <!-- <i class="ti-view-list-alt"></i> --><i class="ti-package"></i>
+                            <i class="ti-package"></i>
                             <p>SẢN PHẨM</p>
                         </a>
                     </li>
                     <li>
                         <a href="catagory_product.php">
-                            <!-- <i class="ti-text"></i> --><i class="glyphicon glyphicon-th-large"></i>
+                            <i class="glyphicon glyphicon-th-large"></i>
                             <p>LOẠI SẢN PHẨM</p>
                         </a>
                     </li>
                     <li class="active">
                         <a href="quanlydonhang.php">
-                            <!-- <i class="ti-text"></i> --><i class="ti-shopping-cart-full"></i>
+                            <i class="ti-shopping-cart-full"></i>
                             <p>Quản lý đơn hàng</p>
                         </a>
                     </li>
                     <li>
                         <a href="quanlykhachang.php">
-                            <!-- <i class="ti-text"></i> --><i class="ti-user"></i>
+                            <i class="ti-user"></i>
                             <p>Quản lý khách hàng</p>
                         </a>
                     </li>
                     <li>
                         <a href="quanlydoanhthu.php">
-                            <!-- <i class="ti-text"></i> --><i class="ti-money"></i>
+                            <i class="ti-money"></i>
                             <p>Quản lý doanh thu</p>
                         </a>
                     </li>
                     <li>
                         <a href="feedback-admin.php">
-                            <!-- <i class="ti-text"></i> --><i class="ti-comment-alt"></i>
+                            <i class="ti-comment-alt"></i>
                             <p>Quản lý đánh giá</p>
                         </a>
                     </li>
@@ -101,12 +101,10 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-globe"></i>
-                                    <!-- <p class="notification"></p> -->
                                     <p>Thông Báo</p> <span class="badge" style="background-color:#FF4066">1</span> </a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="ti-bell"></i>
-                                    <!-- <p class="notification"></p> -->
                                     <p>Admin</p> <b class="caret"></b> </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>Cá Nhân</a></li>
@@ -161,8 +159,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <!-- <h4 class="title">DANH SÁCH SẢN PHẨM</h4>
-                                    <p class="category">Here is a subtitle for this table</p> -->
+
                                 <div class="feedback-item-name">
                                     <div class="row">
                                         <div class="col-md-8">
@@ -183,9 +180,10 @@
                             </div>
                             <div class="content table-responsive table-full-width st_table">
                                 <script type="text/javascript">
-                                    $(function () {
+                                    $(function() {
                                         $('[data-toggle="tooltip"]').tooltip()
                                     })
+
                                 </script>
                                 <div class="container-fluid">
                                     <table class="table table-bordered text-align">
@@ -269,7 +267,6 @@
         </div>
     </div>
     <!-- Phan popup madal cua xem chi tiet -->
-    <!-- Phan popup madal cua xem chi tiet -->
     <form action="" method="post">
         <!-- The Modal -->
         <div class="modal fade modalcart" id="1">
@@ -278,7 +275,8 @@
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Đơn hàng (có 3 sản phẩm)</h4> </div>
+                        <h4 class="modal-title">Đơn hàng (có 3 sản phẩm)</h4>
+                    </div>
                     <!-- Modal body -->
                     <div class="modal-body cart-center">
                         <div class="row cart-title">

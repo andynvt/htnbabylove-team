@@ -23,8 +23,6 @@
     <link href="assets/css/animate.min.css" rel="stylesheet" />
     <!--  Paper Dashboard core CSS    -->
     <link href="assets/css/paper-dashboard.css" rel="stylesheet" />
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
@@ -42,10 +40,6 @@
 <body>
     <div class="wrapper">
         <div class="sidebar" data-background-color="white" data-active-color="danger">
-            <!--
-		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
-		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
-	-->
             <div class="sidebar-wrapper">
                 <div class="logo"> <a href="#" class="simple-text">
             Hoàng Thủy Nguyên
@@ -58,37 +52,37 @@
                     </li>
                     <li class="active">
                         <a href="product.php">
-                            <!-- <i class="ti-view-list-alt"></i> --><i class="ti-package"></i>
+                            <i class="ti-package"></i>
                             <p>SẢN PHẨM</p>
                         </a>
                     </li>
                     <li>
                         <a href="catagory_product.php">
-                            <!-- <i class="ti-text"></i> --><i class="glyphicon glyphicon-th-large"></i>
+                            <i class="glyphicon glyphicon-th-large"></i>
                             <p>LOẠI SẢN PHẨM</p>
                         </a>
                     </li>
                     <li>
                         <a href="quanlydonhang.php">
-                            <!-- <i class="ti-text"></i> --><i class="ti-shopping-cart-full"></i>
+                            <i class="ti-shopping-cart-full"></i>
                             <p>Quản lý đơn hàng</p>
                         </a>
                     </li>
                     <li>
                         <a href="quanlykhachang.php">
-                            <!-- <i class="ti-text"></i> --><i class="ti-user"></i>
+                            <i class="ti-user"></i>
                             <p>Quản lý khách hàng</p>
                         </a>
                     </li>
                     <li>
                         <a href="quanlydoanhthu.php">
-                            <!-- <i class="ti-text"></i> --><i class="ti-money"></i>
+                            <i class="ti-money"></i>
                             <p>Quản lý doanh thu</p>
                         </a>
                     </li>
                     <li>
                         <a href="feedback-admin.php">
-                            <!-- <i class="ti-text"></i> --><i class="ti-comment-alt"></i>
+                            <i class="ti-comment-alt"></i>
                             <p>Quản lý đánh giá</p>
                         </a>
                     </li>
@@ -107,12 +101,10 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-globe"></i>
-                                    <!-- <p class="notification"></p> -->
                                     <p>Thông Báo</p> <span class="badge" style="background-color:#FF4066">1</span> </a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="ti-bell"></i>
-                                    <!-- <p class="notification"></p> -->
                                     <p>Admin</p> <b class="caret"></b> </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>Cá Nhân</a></li>
@@ -145,8 +137,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <h4 class="title">DANH SÁCH SẢN PHẨM</h4>
-                                    <p class="category">Here is a subtitle for this table</p> -->
                             </div>
                             <div class="content table-responsive table-full-width st_table">
                                 <script type="text/javascript">
@@ -300,7 +290,6 @@
                                     <div class="col-lg-6 col-md-6">
                                         <p class=" text-price"><b>&nbsp;Số lượng :  </b>&nbsp; 1</p>
                                     </div>
-                                    <!--   <div class="space30">&nbsp;</div>-->
                                     <div class="col-lg-5 col-md-6">
                                         <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                         <div class="form-group">

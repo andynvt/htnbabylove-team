@@ -10,33 +10,33 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+
     <!-- Bootstrap core CSS     -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
     <!--Frame link - DON'T DELETE {-->
+
     <!-- Animation library for notifications   -->
     <link href="assets/css/animate.min.css" rel="stylesheet" />
     <!--  Paper Dashboard core CSS    -->
     <link href="assets/css/paper-dashboard.css" rel="stylesheet" />
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/tabs_table_reset.css" rel="stylesheet">
+
     <!--}-->
+
     <link href="css/reset_css.css" rel="stylesheet">
     <link href='css/add_product.css' rel='stylesheet'> </head>
 
 <body>
     <div class="wrapper">
         <div class="sidebar" data-background-color="white" data-active-color="danger">
-            <!--
-		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
-		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
-	-->
             <div class="sidebar-wrapper">
                 <div class="logo"> <a href="#" class="simple-text">
             WeShop
@@ -49,37 +49,37 @@
                     </li>
                     <li class="active">
                         <a href="product.php">
-                            <!-- <i class="ti-view-list-alt"></i> --><i class="ti-package"></i>
+                            <i class="ti-package"></i>
                             <p>SẢN PHẨM</p>
                         </a>
                     </li>
                     <li>
                         <a href="catagory_product.php">
-                            <!-- <i class="ti-text"></i> --><i class="glyphicon glyphicon-th-large"></i>
+                            <i class="glyphicon glyphicon-th-large"></i>
                             <p>LOẠI SẢN PHẨM</p>
                         </a>
                     </li>
                     <li>
                         <a href="catagory_product.php">
-                            <!-- <i class="ti-text"></i> --><i class="ti-shopping-cart-full"></i>
+                            <i class="ti-shopping-cart-full"></i>
                             <p>Quản lý đơn hàng</p>
                         </a>
                     </li>
                     <li>
                         <a href="catagory_product.php">
-                            <!-- <i class="ti-text"></i> --><i class="ti-user"></i>
+                            <i class="ti-user"></i>
                             <p>Quản lý khách hàng</p>
                         </a>
                     </li>
                     <li>
                         <a href="catagory_product.php">
-                            <!-- <i class="ti-text"></i> --><i class="ti-money"></i>
+                            <i class="ti-money"></i>
                             <p>Quản lý doanh thu</p>
                         </a>
                     </li>
                     <li>
                         <a href="feedback-admin.php">
-                            <!-- <i class="ti-text"></i> --><i class="ti-comment-alt"></i>
+                            <i class="ti-comment-alt"></i>
                             <p>Quản lý đánh giá</p>
                         </a>
                     </li>
@@ -98,12 +98,10 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-globe"></i>
-                                    <!-- <p class="notification"></p> -->
                                     <p>Thông Báo</p> <span class="badge" style="background-color:#FF4066">1</span> </a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="ti-bell"></i>
-                                    <!-- <p class="notification"></p> -->
                                     <p>Admin</p> <b class="caret"></b> </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>Cá Nhân</a></li>
@@ -121,12 +119,9 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <!-- <h4 class="title">DANH SÁCH SẢN PHẨM</h4>
-                                    <p class="category">Here is a subtitle for this table</p> -->
-                                <!--                                <div class="add_new_product"> <a href="#" class="btn btn-primary" id="btn_add_product">Thêm sản phẩm mới</a> </div>-->
+
                                 <!--                                Phan modal them san pham-->
                                 <div class="container-fluid">
-                                    <!--                                    <h2>Thêm Sản Phẩm</h2>-->
                                     <form class="form-horizontal" action="/action_page.php" enctype="multipart/form-data" id="formUpload" onsubmit="return false;">
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="ma">Mã:</label>
@@ -170,13 +165,14 @@
                                                 </div>
                                             </div>
                                             <script>
-                                                $('.check').on('click', function () {
+                                                $('.check').on('click', function() {
                                                     color1 = $('.select_color input[name="color1"]').val();
                                                     color2 = $('.select_color input[name="color2"]').val();
                                                     string = 'repeating-linear-gradient';
                                                     $('.test').css('background', '' + string + '(' + color1 + ',' + color1 + ' 10%,' + color2 + ' 10%,' + color2 + ' 20%)');
                                                     return false;
                                                 });
+
                                             </script>
                                         </div>
                                         <div class="form-group">
@@ -187,12 +183,7 @@
                                                     <button type="button" onclick="myFunction2()">Xóa tiệp ảnh cuối</button>
                                                     <br>
                                                     <div class="inputadd">
-                                                        <!--                                                        <div class="show"> </div>--></div>
-                                                    <!--                                                    <input type="file" name="img_file[]" multiple="true" onchange="previewImg(event);" id="img_file" accept="image/*">-->
-                                                    <!--
-                                                    <button type="reset" class="btn-reset">Làm mới</button>
-                                                    <button type="submit" class="btn-submit">Upload</button>
--->
+                                                    </div>
                                                     <div class="output"></div>
                                                     <script>
                                                         i = 1;
@@ -207,6 +198,7 @@
                                                             $("#formUpload .fi" + i).remove();
                                                             i--;
                                                         }
+
                                                     </script>
                                                     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
                                                 </div>
@@ -235,13 +227,15 @@
             </div>
         </div>
     </div>
+
     <!-- Phan popup madal cua xem chi tiet -->
     <div class="modal fade " id="1" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</h4> </div>
+                    <h4 class="modal-title">HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</h4>
+                </div>
                 <div class="modal-body">
                     <div class="container-full">
                         <div class="row">
