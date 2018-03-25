@@ -38,6 +38,9 @@ class PageController extends Controller
 
 
     //Admin
+    public function getAdminIndex(){
+        return view('Admin.pageadmin.dangnhap');
+    }
     public function getadminCanhan(){
         return view('Admin.pageadmin.admincanhan');
     }

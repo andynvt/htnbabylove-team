@@ -52,6 +52,11 @@ Route::get('chi-tiet-san-pham', [
 ]);
 
 //Admin
+Route::get('admin-index', [
+	'as' => 'adminindex',
+	'uses' => 'PageController@getAdminIndex'
+]);
+
 Route::get('admin-canhan', [
 	'as' => 'admincanhan',
 	'uses' => 'PageController@getadminCanhan'
