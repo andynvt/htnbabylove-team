@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Đăng nhập | HTN Baby Love</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-
-    <link rel="stylesheet" type="text/css" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/login.css">
-    <!--===============================================================================================-->
-</head>
-
-<body>
-    <div class="limiter">
+@extends('Admin.master')
+@section('contentadmin')
+<div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100 p-t-5 p-b-20">
                 <form class="login100-form validate-form">
@@ -45,14 +30,4 @@
             </div>
         </div>
     </div>
-
-
-
-    <!--===============================================================================================-->
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="vendor/animsition/js/animsition.min.js"></script>
-    <script src="js/login.js"></script>
-
-</body>
-
-</html>
+@endsection
