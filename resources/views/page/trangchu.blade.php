@@ -4,7 +4,6 @@
             <!-- Trang Chu -->
             <div class="container-fluid">
                 <!-- fluid or full -->
-
                 <div class="space30">&nbsp;</div>
                 <!-- End SlideShow -->
                 <div class="container-full">
@@ -18,39 +17,18 @@
                                     <div class="row">
                                         <div class="col-sm col-md">
                                             <div class="panel-group" id="accordion">
+                                                {{-- @foreach($loai_sp as $loai) --}}
                                                 <hr>
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
-                                                            <a href="#">Mền</a>
+                                                            <a href="#">{{-- {{$loai->type_name}} --}}Mền</a>
                                                         </h4>
                                                     </div>
                                                 </div>
                                                 <hr>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a href="#">Gối</a>
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a href="#">Khăn choàng-Áo choàng</a>
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a href="#">Combo (nệm+ôm+nằm)</a>
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                                <hr> </div>
+                                                {{-- @endforeach --}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

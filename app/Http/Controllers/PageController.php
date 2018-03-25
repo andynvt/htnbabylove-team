@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use App\ProductDetail;
 
 class PageController extends Controller
 {
@@ -10,8 +12,10 @@ class PageController extends Controller
     	return view('page.trangchu');
     }
 
-    public function getLoaiSP(){
-    	return view('page.loai_sanpham');
+    public function getLoaiSP($type){
+        $sp_theoloai = Product::where('id_type',$type)->get();
+        // $id_product = DB::table('products')->select('id_product');
+    	return view('page.loai_sanpham',compact('sp_theoloai') );
     }
 
     public function getDetail(){
