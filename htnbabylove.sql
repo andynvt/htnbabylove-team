@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.6
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost
--- Thời gian đã tạo: Th3 19, 2018 lúc 02:12 PM
--- Phiên bản máy phục vụ: 10.1.29-MariaDB
--- Phiên bản PHP: 7.1.12
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th3 23, 2018 lúc 03:19 SA
+-- Phiên bản máy phục vụ: 10.1.21-MariaDB
+-- Phiên bản PHP: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -86,6 +84,13 @@ CREATE TABLE `feedbacks` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `feedbacks`
+--
+
+INSERT INTO `feedbacks` (`id_feedback`, `stars`, `reviewer`, `tel`, `review`, `created_at`, `updated_at`) VALUES
+(1, 5, 'Tai', '123456789', 'Depqua', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -134,6 +139,20 @@ CREATE TABLE `products` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `products`
+--
+
+INSERT INTO `products` (`id_product`, `id_type`, `id_feedback`, `name`, `unit_price`, `promotion_price`, `size`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'Goinam', 100000, 0, '30x30x10', 'Goi nam em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 3, 1, 'Bo Simili', 100000, 0, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 1, 1, 'Goi beo', 100000, 0, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 2, 1, 'Goi om', 100000, 0, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 3, 1, 'Khan choang', 100000, 0, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 4, 1, 'Nem', 100000, 0, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 2, 1, 'Men', 100000, 0, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 1, 1, 'Ao choang', 100000, 0, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -147,6 +166,19 @@ CREATE TABLE `product_detail` (
   `image` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `product_detail`
+--
+
+INSERT INTO `product_detail` (`id_detail`, `id_product`, `color`, `image`) VALUES
+(1, 2, 'Vang', 'Hinh goi1'),
+(2, 2, 'Xanh', 'Hinh goi2'),
+(3, 2, 'Trang', 'Hinh goi4'),
+(4, 2, 'Hong', 'Hinh goi3'),
+(5, 2, 'Do', 'Hinh goi'),
+(6, 1, 'Vang', 'Hinh ao choang1'),
+(7, 1, 'Vang', 'Hinh ao choang2');
+
 -- --------------------------------------------------------
 
 --
@@ -157,6 +189,16 @@ CREATE TABLE `product_type` (
   `id_type` int(10) UNSIGNED NOT NULL,
   `type_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `product_type`
+--
+
+INSERT INTO `product_type` (`id_type`, `type_name`) VALUES
+(1, 'Goi'),
+(2, 'Bo'),
+(3, 'Aochoang'),
+(4, 'Men');
 
 -- --------------------------------------------------------
 
@@ -269,61 +311,51 @@ ALTER TABLE `users`
 --
 ALTER TABLE `bills`
   MODIFY `id_bill` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
   MODIFY `id_bill_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT cho bảng `customers`
 --
 ALTER TABLE `customers`
   MODIFY `id_customer` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT cho bảng `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `id_feedback` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
+  MODIFY `id_feedback` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
+  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT cho bảng `product_detail`
 --
 ALTER TABLE `product_detail`
-  MODIFY `id_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
+  MODIFY `id_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT cho bảng `product_type`
 --
 ALTER TABLE `product_type`
-  MODIFY `id_type` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
+  MODIFY `id_type` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT cho bảng `promotions`
 --
 ALTER TABLE `promotions`
   MODIFY `id_promotion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
@@ -359,7 +391,6 @@ ALTER TABLE `product_detail`
 --
 ALTER TABLE `promotions`
   ADD CONSTRAINT `promotions_id_product_foreign` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
