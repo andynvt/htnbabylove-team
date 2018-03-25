@@ -51,8 +51,6 @@ Route::get('chi-tiet-san-pham', [
 	'uses' => 'PageController@getDetail'
 ]);
 
-
-
 //Admin
 Route::get('admin-canhan', [
 	'as' => 'admincanhan',
