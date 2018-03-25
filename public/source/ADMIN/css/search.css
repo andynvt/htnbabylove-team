@@ -10,7 +10,7 @@ input[type="text"] {
     font-weight: 100;
     border: none;
     outline: none;
-    color: #555;
+    color: black;
     padding: 3px;
     padding-right: 60px;
     width: 0px;
@@ -42,7 +42,7 @@ input[type="submit"] {
     height: 50px;
     width: 63px;
     display: inline-block;
-    color: red;
+    /*color: red;*/
     /*    float: right;*/
     background: url(https://png.icons8.com/android/24/000000/search.png) no-repeat;
     text-indent: -10000px;
@@ -52,7 +52,6 @@ input[type="submit"] {
     right: 0;
     z-index: 2;
     cursor: pointer;
-    opacity: 0.4;
     cursor: pointer;
     transition: opacity .4s ease;
 }

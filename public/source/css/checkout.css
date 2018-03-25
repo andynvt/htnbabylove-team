@@ -2,60 +2,54 @@
     font-family: Open Sans, sans-serif
 }
 
-.beta-form-checkout html,
-.wrapper {
+.beta-form-checkout html,.wrapper{
     background: white;
 }
-
-.beta-form-checkout strong {
+.beta-form-checkout strong{
     font-size: 16px;
 }
-
 .beta-form-checkout h7 {
     font-size: 13px;
 }
-
-.beta-form-checkout hr {
+.beta-form-checkout hr{
     border: 0.8px solid grey;
 }
 
-.span_content {
+.span_content{
     font-size: 20px;
 }
 
-.span_content_body {
+.span_content_body{
     font-size: 18px;
 }
 
-.btn-xs {
+.btn-xs{
     line-height: 28px;
 }
 
-.header-title {
+.header-title{
     padding: 3px;
     font-weight: bold;
     text-align: center;
     color: white;
     color: black;
 }
-
-.header-title-cart {
+.header-title-cart{
     font-weight: bold;
     text-align: center;
     font-size: 10px;
 }
 
-.full-checkout {
+.full-checkout{
     border: 2px solid #ede8e8;
-    padding: 20px;
+    padding:20px;
     background-color: white;
 }
-
-.form_size {
+.form_size{
     font-size: 14px;
-}
 
-.adress-checkout {
+}
+.adress-checkout{
     width: 80%;
     margin-left: 10%
 }
@@ -71,92 +65,77 @@
     overflow-y: auto;
     border: 1px solid #ede8e8;
 }
-
-.body-cart-content-checkout {
+.body-cart-content-checkout{
     width: 90%;
     padding-left: 10%;
     padding-top: 5%;
 }
-
-.text_note {
+.text_note{
     /*font-style: italic;*/
     font-size: 14px;
     color: black;
 }
-
-.title_note {
+.title_note{
     color: black;
     font-size: 16px;
 }
-
-.breadcrumb-item.active {
-    font-size: 15px;
-}
-
-.submitbtn_dathang {
+.submitbtn_dathang{
     background-color: #5CAEFD;
 }
-
-.submitbtn_cart {
+.submitbtn_cart{
     background-color: #5CAEFD;
 }
-
-.bgclor_checkout {
+.bgclor_checkout{
     background-color: none;
     margin-left: 0.05em;
 }
-
-.breadcrumb-item a {
-    font-size: 15px;
+.breadcrumb-item a{
+    font-size: 18px;
+    
 }
-
-.breadcrumb {
+.breadcrumb{
     background: none;
     font-weight: 400;
     padding-left: 0;
 }
 
-
 /*media*/
-
 @media only screen and (max-width: 568px) and (min-width: 320px) {
-    #overflowTest-checkout {
-        display: none;
-        background-color: white;
-    }
-    .adress-checkout {
-        width: 100%;
-        margin-left: -0.1em;
-    }
+#overflowTest-checkout {
+    display: none;
+    background-color: white;
+}
+.adress-checkout{
+    width: 100%;
+    margin-left: -0.1em;
+}
 }
 
-body {
+body{
     background-color: white;
     height: auto;
 }
 
-.hrtitle_TTGH {
-    border: 1px solid grey;
+.hrtitle_TTGH{
+    border: 1px solid grey; 
     width: 100%;
 }
 
-.hrtitle_GH {
-    border: 1px solid grey;
+.hrtitle_GH{
+    border: 1px solid grey; 
     width: 100%;
 }
 
-.container_btncsgh {
+.container_btncsgh{
     text-align: center;
 }
 
-.lbl_TongTien {
+.lbl_TongTien{
     font-size: 18px;
 }
-
-.title_ {
+.title_{
     color: black;
 }
-
-.hr_sp {
+.hr_sp{
     border: 0.2px solid grey;
 }

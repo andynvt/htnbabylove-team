@@ -35,15 +35,24 @@
                 <div class="col-sm-12 ft_mb">
                     <div class="container-fluid col-sm-12 info_mb" style="width: 80%;">
                         <ul class="info_mb1">
-                            <li><a href=""><i class="fa fa-map-marker"></i> 132 Ba Tháng 2, Ninh Kiều, Cần Thơ</a></li>
-                            <li><a href=""><i class="fa fa-mobile"></i> 09191 919 9191</a></li>
+                            <li><a target="_blank" href="https://www.google.com/maps?ll=10.047031,105.762337&amp;z=17&amp;t=m&amp;hl=vi-VN&amp;gl=US&amp;mapclient=embed&amp;cid=15188758633380222862"><i class="fa fa-map-marker"></i>118E Mậu Thân, Q. Ninh Kiều, Tp. Cần Thơ</a></li>
+                            <li><a href="tel:02923895554"><i class="fa fa-phone"></i> 0292 389 5554</a></li>
+                            <li><a href="tel:0939058056"><i class="fa fa-mobile"></i> 0939 058 056</a></li>
+
                         </ul>
                         <ul class="info_mb2">
-                            <li><a href="#"><i class="fa fa-info-circle"></i> Giới Thiệu |</a></li>
-                            <li class="line"><a href="#"><i class="fa fa-phone"></i> Liên Hệ |</a></li>
-                            <li><a href="#"><i class="fa fa-question-circle"></i> Hỗ Trợ</a></li>
+                            <li><a href="#"><i class="fa fa-info-circle"></i>Giới Thiệu &nbsp;|</a></li>
+                            <li class="line"><a href="#"><i class="fa fa-phone"></i>Liên Hệ &nbsp;|</a></li>
+                            <li><a href="#"><i class="fa fa-balance-scale"></i>Điều khoản &nbsp;|</a></li>
+                            <li><a href="#"><i class="fa fa-user-secret"></i>Bảo mật</a></li>
                         </ul>
                         <div class="clearfix"></div>
+                        <style>
+                            .info_mb i{
+                                font-size: 18px !important;
+                            }
+
+                        </style>
                     </div>
                     <p class="pull-center" style="text-align: center;">Privacy policy. (&copy;) 2018 WeShop
                         <br/> Laravel Team 2018</p>
