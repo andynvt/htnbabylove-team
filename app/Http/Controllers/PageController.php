@@ -35,4 +35,27 @@ class PageController extends Controller
     }
 
     
+
+
+    //Admin
+    public function getadminCanhan(){
+        return view('Admin.pageadmin.admincanhan');
+    }
+
+    public function getadminDanhgia(){
+        return view('Admin.pageadmin.admindanhgia');
+    }
+
+    public function getadminChitietDanhgia(){
+        return view('Admin.pageadmin.adminchitietdanhgia');
+    }
+
+    public function getadminSanpham(){
+        return view('Admin.pageadmin.adminsanpham');
+    }
+
+    public function getadminLoaisanpham(){
+        return view('Admin.pageadmin.adminloaisanpham');
+    }
+
 }
