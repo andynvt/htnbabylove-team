@@ -17,17 +17,17 @@
                                     <div class="row">
                                         <div class="col-sm col-md">
                                             <div class="panel-group" id="accordion">
-                                                {{-- @foreach($loai_sp as $loai) --}}
+                                                @foreach($ds_loai as $loai)
                                                 <hr>
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
-                                                            <a href="#">{{-- {{$loai->type_name}} --}}Mền</a>
+                                                            <a href="{{-- {{route('loaisanpham',$idloai)}} --}}"> {{$loai->type_name}}</a>
                                                         </h4>
                                                     </div>
                                                 </div>
-                                                <hr>
-                                                {{-- @endforeach --}}
+                                                {{-- <hr> --}}
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -101,15 +101,23 @@
                             <div class="text-left" style="font-size: 25px; font-weight: 600">Tên loại sản phẩm </div>
                             <div class="space15">&nbsp;</div>
                             <div class="row">
-                            	{{-- @foreach($id_detail as $id) --}}
+                            	@foreach($sp_theoloai as $sp)
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
                                     <div class="single-item">
                                         <div class="ribbon-wrapper">
+                                        	@if($sp->status==1)
                                             <div class="ribbon1 sale">Sale</div>
+                                            @elseif($sp->status==2)
+                                            <div class="ribbon1 new">New</div>
+                                            @elseif($sp->status==3)
+                                            <div class="ribbon1 hot">Hot</div>
+                                            @else
+                                            @endif
+
                                         </div>
                                         <div class="thumbnail">
                                             <div class="containeroverlay">
-                                                <a href="#"><img src="{{-- source/image/{$sp->image} --}}" class="img-responsive"></a>
+                                                <a href="#"><img src="source/image/img_1.jpg" class="img-responsive"></a>
                                                 <div class="overlay">
                                                     <div class="text">Xem chi tiết</div>
                                                 </div>
@@ -118,15 +126,23 @@
                                                 <div class="space5">&nbsp;</div>
                                                 <a href="#"> 
                                                     <b class="text-price">
+														@if($sp->promotion_price==0)
+														<span class="text-danger ">
+                                                            {{number_format($sp->unit_price)}} đ
+                                                        </span> 
+                                                        @else
                                                         <span class="text-danger ">
-                                                            1,000,000đ
+                                                            {{number_format($sp->unit_price)}} đ
                                                         </span>  &nbsp;
                                                         <span class="flash-del">
-                                                         1,000,000đ
+                                                         {{number_format($sp->promotion_price)}}đ
                                                         </span>
+                                                        @endif
                                                     </b>
+
+
                                                     <div class="space10">&nbsp;</div>
-                                                    <p class='text-right text-title'><b>HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</b>&nbsp;</p>
+                                                    <p class='text-left text-title'><b>{{$sp->name}}</b></p>
                                                 </a>
                                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
@@ -135,7 +151,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- @endforeach --}}
+                                @endforeach
                             </div>
                         </div>
                     </div>
