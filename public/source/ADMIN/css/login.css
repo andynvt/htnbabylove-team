@@ -25,15 +25,15 @@
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 
-* {
+.admin-index * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     font-family: Open Sans, sans-serif
 }
 
-body,
-html {
+.admin-index body,
+.admin-index html {
     height: 100%;
     /*    font-family: Open Sans, sans-serif*/
 }
@@ -42,16 +42,16 @@ html {
 
 /*---------------------------------------------*/
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.admin-index h1,
+.admin-index h2,
+.admin-index h3,
+.admin-index h4,
+.admin-index h5,
+.admin-index h6 {
     margin: 0px;
 }
 
-p {
+.admin-index p {
     /*    font-family: Open Sans, sans-serif;*/
     font-size: 14px;
     line-height: 1.7;
@@ -59,8 +59,8 @@ p {
     margin: 0px;
 }
 
-ul,
-li {
+.admin-index ul,
+.admin-index li {
     margin: 0px;
     list-style-type: none;
 }
@@ -68,98 +68,98 @@ li {
 
 /*---------------------------------------------*/
 
-input {
+.admin-index input {
     outline: none;
     border: none;
 }
 
-textarea {
+.admin-index textarea {
     outline: none;
     border: none;
 }
 
-textarea:focus,
-input:focus {
+.admin-index textarea:focus,
+.admin-index input:focus {
     border-color: transparent !important;
 }
 
-input:focus::-webkit-input-placeholder {
+.admin-index input:focus::-webkit-input-placeholder {
     color: transparent;
 }
 
-input:focus:-moz-placeholder {
+.admin-index input:focus:-moz-placeholder {
     color: transparent;
 }
 
-input:focus::-moz-placeholder {
+.admin-index input:focus::-moz-placeholder {
     color: transparent;
 }
 
-input:focus:-ms-input-placeholder {
+.admin-index input:focus:-ms-input-placeholder {
     color: transparent;
 }
 
-textarea:focus::-webkit-input-placeholder {
+.admin-index textarea:focus::-webkit-input-placeholder {
     color: transparent;
 }
 
-textarea:focus:-moz-placeholder {
+.admin-index textarea:focus:-moz-placeholder {
     color: transparent;
 }
 
-textarea:focus::-moz-placeholder {
+.admin-index textarea:focus::-moz-placeholder {
     color: transparent;
 }
 
-textarea:focus:-ms-input-placeholder {
+.admin-index textarea:focus:-ms-input-placeholder {
     color: transparent;
 }
 
-input::-webkit-input-placeholder {
+.admin-index input::-webkit-input-placeholder {
     color: #adadad;
 }
 
-input:-moz-placeholder {
+.admin-index input:-moz-placeholder {
     color: #adadad;
 }
 
-input::-moz-placeholder {
+.admin-index input::-moz-placeholder {
     color: #adadad;
 }
 
-input:-ms-input-placeholder {
+.admin-index input:-ms-input-placeholder {
     color: #adadad;
 }
 
-textarea::-webkit-input-placeholder {
+.admin-index textarea::-webkit-input-placeholder {
     color: #adadad;
 }
 
-textarea:-moz-placeholder {
+.admin-index textarea:-moz-placeholder {
     color: #adadad;
 }
 
-textarea::-moz-placeholder {
+.admin-index textarea::-moz-placeholder {
     color: #adadad;
 }
 
-textarea:-ms-input-placeholder {
+.admin-index textarea:-ms-input-placeholder {
     color: #adadad;
 }
 
 /*---------------------------------------------*/
 
-button {
+.admin-index button {
     outline: none !important;
     border: none;
     background: transparent;
 }
 
-button:hover {
+.admin-index button:hover {
     cursor: pointer;
 }
 
-iframe {
+.admin-index iframe {
     border: none !important;
 }
 
