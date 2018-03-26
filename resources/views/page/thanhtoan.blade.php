@@ -64,14 +64,14 @@ if (mysqli_connect_error())
 												<?php
 												// require("connect.php");
 										   	 	// include "connect.php";
-												$sql = "select * from thanh_pho";
+												$sql = "select * from cities";
 												// echo $sql;
 												$query = $con->query($sql);
 												$num = mysqli_num_rows($query);
 												if($num > 0){
 													while($row = mysqli_fetch_array($query)){
 										    ?>
-                                                <option value="<?php echo $row['id']; ?>">
+                                                <option value="<?php echo $row['id_city']; ?>">
                                                     <?php echo $row['name']?>
                                                 </option>
                                                 <?php

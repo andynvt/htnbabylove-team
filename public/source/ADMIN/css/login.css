@@ -1,39 +1,12 @@
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-/*
-@font-face {
-    font-family: Poppins-Regular;
-    src: url('../fonts/poppins/Poppins-Regular.ttf');
-}
-
-@font-face {
-    font-family: Poppins-Medium;
-    src: url('../fonts/poppins/Poppins-Medium.ttf');
-}
-
-@font-face {
-    font-family: Poppins-Bold;
-    src: url('../fonts/poppins/Poppins-Bold.ttf');
-}
-
-@font-face {
-    font-family: Poppins-SemiBold;
-    src: url('../fonts/poppins/Poppins-SemiBold.ttf');
-}*/
-
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
-
-* {
+.admin-login * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     font-family: Open Sans, sans-serif
 }
 
-body,
-html {
+.admin-login body,
+.admin-login html {
     height: 100%;
     /*    font-family: Open Sans, sans-serif*/
 }
@@ -42,16 +15,16 @@ html {
 
 /*---------------------------------------------*/
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.admin-login h1,
+.admin-login h2,
+.admin-login h3,
+.admin-login h4,
+.admin-login h5,
+.admin-login h6 {
     margin: 0px;
 }
 
-p {
+.admin-login p {
     /*    font-family: Open Sans, sans-serif;*/
     font-size: 14px;
     line-height: 1.7;
@@ -59,8 +32,8 @@ p {
     margin: 0px;
 }
 
-ul,
-li {
+.admin-login ul,
+.admin-login li {
     margin: 0px;
     list-style-type: none;
 }
@@ -68,98 +41,98 @@ li {
 
 /*---------------------------------------------*/
 
-input {
+.admin-login input {
     outline: none;
     border: none;
 }
 
-textarea {
+.admin-login textarea {
     outline: none;
     border: none;
 }
 
-textarea:focus,
-input:focus {
+.admin-login textarea:focus,
+.admin-login input:focus {
     border-color: transparent !important;
 }
 
-input:focus::-webkit-input-placeholder {
+.admin-login input:focus::-webkit-input-placeholder {
     color: transparent;
 }
 
-input:focus:-moz-placeholder {
+.admin-login input:focus:-moz-placeholder {
     color: transparent;
 }
 
-input:focus::-moz-placeholder {
+.admin-login input:focus::-moz-placeholder {
     color: transparent;
 }
 
-input:focus:-ms-input-placeholder {
+.admin-login input:focus:-ms-input-placeholder {
     color: transparent;
 }
 
-textarea:focus::-webkit-input-placeholder {
+.admin-login textarea:focus::-webkit-input-placeholder {
     color: transparent;
 }
 
-textarea:focus:-moz-placeholder {
+.admin-login textarea:focus:-moz-placeholder {
     color: transparent;
 }
 
-textarea:focus::-moz-placeholder {
+.admin-login textarea:focus::-moz-placeholder {
     color: transparent;
 }
 
-textarea:focus:-ms-input-placeholder {
+.admin-login textarea:focus:-ms-input-placeholder {
     color: transparent;
 }
 
-input::-webkit-input-placeholder {
+.admin-login input::-webkit-input-placeholder {
     color: #adadad;
 }
 
-input:-moz-placeholder {
+.admin-login input:-moz-placeholder {
     color: #adadad;
 }
 
-input::-moz-placeholder {
+.admin-login input::-moz-placeholder {
     color: #adadad;
 }
 
-input:-ms-input-placeholder {
+.admin-login input:-ms-input-placeholder {
     color: #adadad;
 }
 
-textarea::-webkit-input-placeholder {
+.admin-login textarea::-webkit-input-placeholder {
     color: #adadad;
 }
 
-textarea:-moz-placeholder {
+.admin-login textarea:-moz-placeholder {
     color: #adadad;
 }
 
-textarea::-moz-placeholder {
+.admin-login textarea::-moz-placeholder {
     color: #adadad;
 }
 
-textarea:-ms-input-placeholder {
+.admin-login textarea:-ms-input-placeholder {
     color: #adadad;
 }
 
 /*---------------------------------------------*/
 
-button {
+.admin-login button {
     outline: none !important;
     border: none;
     background: transparent;
 }
 
-button:hover {
+.admin-login button:hover {
     cursor: pointer;
 }
 
-iframe {
+.admin-login iframe {
     border: none !important;
 }
 
@@ -210,19 +183,10 @@ iframe {
     width: 100%;
 }
 
-.login100-form-title {
-    display: block;
-    font-size: 39px;
-    font-weight: 600;
-    color: #333333;
-    line-height: 1.2;
-    text-align: center;
-}
-
 .login100-form-avatar {
     display: block;
-    width: 150px;
-    height: 150px;
+    width: 300px;
+    height: 500px;
     overflow: hidden;
     margin: 0 auto;
 }

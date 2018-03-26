@@ -11,7 +11,7 @@
 	}
 	
 	$key = $_POST['id'];
-	$sql = "select * from quan_huyen where id_category = '$key'";
+	$sql = "select * from districts where id_city = '$key'";
 	$query = $con->query($sql);
 	$num = mysqli_num_rows($query);
 	if($num > 0){
