@@ -1,13 +1,6 @@
-@extends('Admin.master') @section('contentadmin')
-<<<<<<< HEAD
-<div class="limiter admin-login">
-    <div class="container-login100">
-        <div class="wrap-login100 p-t-5 p-b-20">
-            <form class="login100-form validate-form">
-                <span class="login100-form-avatar">
-						<img src="source/image/logo mobile.png" alt="LOGO">
-					</span>
-=======
+@extends('Admin.master') 
+@section('contentadmin')
+
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-t-5 p-b-20">
@@ -19,7 +12,6 @@
                 <span class="login100-form-avatar">
 						<img class="login100-avatar" src="source/image/favicon.png" alt="LOGO">
 				</span>
->>>>>>> 48d9266ea24db7d85fda65e3d290f4d7ec3f3acb
 
                 <div class="wrap-input100 validate-input m-t-50 m-b-35" data-validate="Chưa nhập Tên đăng nhập">
                     <input class="input100 focus100" type="text" name="username">
