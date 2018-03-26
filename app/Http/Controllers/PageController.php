@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
-use App\ProductDetail;
+use App\ProductType;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -14,8 +15,10 @@ class PageController extends Controller
 
     public function getLoaiSP($type){
         $sp_theoloai = Product::where('id_type',$type)->get();
-        // $id_product = DB::table('products')->select('id_product');
-    	return view('page.loai_sanpham',compact('sp_theoloai') );
+        // $l_sp = DB::table('products')->select('id_product','=',$sp_theoloai)->get();
+        $ds_loai = DB::table('product_type')->select('type_name')->get(); 
+        $id_loai = DB::table('product_type')->select('id_type')->get(); 
+    	return view('page.loai_sanpham',compact('sp_theoloai'), compact('ds_loai'), compact('id_loai'));
     }
 
     public function getDetail(){
