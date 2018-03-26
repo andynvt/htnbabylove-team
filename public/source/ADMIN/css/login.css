@@ -157,7 +157,7 @@
 
 .container-login100 {
     width: 100%;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -183,17 +183,35 @@
     width: 100%;
 }
 
+<<<<<<< HEAD
 .login100-form-avatar {
     display: block;
     width: 300px;
     height: 500px;
+=======
+.login100-form-title {
+    display: block;
+    font-size: 30px;
+    font-weight: 600;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+    margin: 50px 0 50px 0;
+}
+
+.login100-form-avatar {
+    display: block;
+    width: 200px;
+    height: 200px;
+>>>>>>> 48d9266ea24db7d85fda65e3d290f4d7ec3f3acb
     overflow: hidden;
     margin: 0 auto;
 }
 
 .login100-form-avatar img {
-    width: 99%;
+    width: 100%;
 }
+
 
 /*------------------------------------------------------------------
 [ Input ]*/

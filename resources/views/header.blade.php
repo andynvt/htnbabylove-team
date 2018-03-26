@@ -51,22 +51,9 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="row">
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Mền">Mền</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Gối">Gối</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Áo choàng - khăn choàng Áo choàng - khăn choàng">Áo choàng - khăn choàng Áo choàng - khăn choàng</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Mền">Mền</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Mền">Mền</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Áo choàng - khăn choàng Áo choàng - khăn choàng">Áo choàng - khăn choàng</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Áo choàng - khăn choàng Áo choàng - khăn choàng">Áo choàng - khăn choàng</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Mền">Mền</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Mền">Mền</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Gối">Gối</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Áo choàng - khăn choàng Áo choàng - khăn choàng">Áo choàng - khăn choàng Áo choàng - khăn choàng</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Mền">Mền</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Mền">Mền</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Áo choàng - khăn choàng Áo choàng - khăn choàng">Áo choàng - khăn choàng</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Áo choàng - khăn choàng Áo choàng - khăn choàng">Áo choàng - khăn choàng</a> </div>
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="#" title="Mền">Mền</a> </div>
+                                            @foreach($loai_sp as $loai)
+                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="{{route('loaisanpham',$loai->id_type)}}" title="{{$loai->type_name}}">{{$loai->type_name}}</a> </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
