@@ -175,35 +175,58 @@
 
                                             </script>
                                         </div>
+
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="hinhanh">hình ảnh:</label>
                                             <div class="col-sm-8">
                                                 <div class="box-upload">
-                                                    <button type="button" onclick="myFunction()">Thêm tiệp ảnh</button>
-                                                    <button type="button" onclick="myFunction2()">Xóa tiệp ảnh cuối</button>
+                                                    <button type="button" onclick="myFunction()">Thêm tệp ảnh</button>
+                                                    <button type="button" onclick="myFunction2()">Xóa tệp ảnh cuối</button>
                                                     <br>
                                                     <div class="inputadd">
                                                     </div>
                                                     <div class="output"></div>
                                                     <script>
-                                                        i = 1;
+                                                        i = 0;
 
                                                         function myFunction() {
-                                                            $('#formUpload .inputadd').append("<div><div class='space10'>&nbsp;</div><input type='file' class='fi" + i + "' name='img_file[]' multiple='true' onchange='previewImg(event);' id='img_file" + i + "' accept='image/*'></div>");
+                                                            $('#formUpload .inputadd').append("<div><input type='file' class='fi" + i + "' name='img_file[]' multiple='true' onchange='previewImg(event);' id='img_file" + i + "' accept='image/*'></div>");
                                                             i++;
                                                             $('#formUpload .show').append("<div class='box-preview-img'></div>");
                                                         }
 
                                                         function myFunction2() {
-                                                            $("#formUpload .fi" + i).remove();
+                                                            alert("i truoc: " + i);
                                                             i--;
+                                                            $("#formUpload .fi" + i).remove();
+                                                            alert("i sau: " + i);
+                                                        }
+
+                                                        function previewImg(event) {
+                                                            // Gán giá trị các file vào biến files
+                                                            var files = document.getElementById('img_file').files;
+
+                                                            // Show khung chứa ảnh xem trước
+                                                            $('#formUpload .box-preview-img').show();
+
+                                                            // Thêm chữ "Xem trước" vào khung
+                                                            $('#formUpload .box-preview-img').html('<p>Xem trước</p>');
+
+                                                            // Dùng vòng lặp for để thêm các thẻ img vào khung chứa ảnh xem trước
+                                                            for (i = 0; i < files.length; i++) {
+                                                                // Thêm thẻ img theo i
+                                                                $('#formUpload .box-preview-img').append('<img src="" id="' + i + '">');
+
+                                                                // Thêm src vào mỗi thẻ img theo id = i
+                                                                $('#formUpload .box-preview-img img:eq(' + i + ')').attr('src', URL.createObjectURL(event.target.files[i]));
+                                                            }
                                                         }
 
                                                     </script>
                                                     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
                                                 </div>
                                             </div>
-                                            <script src="kn_js/main.js"></script>
+                                            <script src="js/main.js"></script>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="thongtincoban">Thông tin cơ bản:</label>
