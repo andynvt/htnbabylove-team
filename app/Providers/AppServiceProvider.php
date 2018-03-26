@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\ProductType;
+use Illuminate\Support\Facades\Schema;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,14 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('header',function($view){
-            $loai_sp = ProductType::all();
-            $view->with('loai_sp',$loai_sp);
-        });
-        // view()->composer('loai_sanpham',function($view){
-        //     $loai_spp = ProductType::all();
-        //     $view->with('loai_spp',$loai_spp);
-        // });
+        Schema::defaultStringLength(191);
     }
 
     /**
