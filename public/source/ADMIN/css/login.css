@@ -1,12 +1,39 @@
-.admin-login * {
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+/*
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('../fonts/poppins/Poppins-Medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('../fonts/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('../fonts/poppins/Poppins-SemiBold.ttf');
+}*/
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
+* {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     font-family: Open Sans, sans-serif
 }
 
-.admin-login body,
-.admin-login html {
+body,
+html {
     height: 100%;
     /*    font-family: Open Sans, sans-serif*/
 }
@@ -15,16 +42,16 @@
 
 /*---------------------------------------------*/
 
-.admin-login h1,
-.admin-login h2,
-.admin-login h3,
-.admin-login h4,
-.admin-login h5,
-.admin-login h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0px;
 }
 
-.admin-login p {
+p {
     /*    font-family: Open Sans, sans-serif;*/
     font-size: 14px;
     line-height: 1.7;
@@ -32,8 +59,8 @@
     margin: 0px;
 }
 
-.admin-login ul,
-.admin-login li {
+ul,
+li {
     margin: 0px;
     list-style-type: none;
 }
@@ -41,98 +68,98 @@
 
 /*---------------------------------------------*/
 
-.admin-login input {
+input {
     outline: none;
     border: none;
 }
 
-.admin-login textarea {
+textarea {
     outline: none;
     border: none;
 }
 
-.admin-login textarea:focus,
-.admin-login input:focus {
+textarea:focus,
+input:focus {
     border-color: transparent !important;
 }
 
-.admin-login input:focus::-webkit-input-placeholder {
+input:focus::-webkit-input-placeholder {
     color: transparent;
 }
 
-.admin-login input:focus:-moz-placeholder {
+input:focus:-moz-placeholder {
     color: transparent;
 }
 
-.admin-login input:focus::-moz-placeholder {
+input:focus::-moz-placeholder {
     color: transparent;
 }
 
-.admin-login input:focus:-ms-input-placeholder {
+input:focus:-ms-input-placeholder {
     color: transparent;
 }
 
-.admin-login textarea:focus::-webkit-input-placeholder {
+textarea:focus::-webkit-input-placeholder {
     color: transparent;
 }
 
-.admin-login textarea:focus:-moz-placeholder {
+textarea:focus:-moz-placeholder {
     color: transparent;
 }
 
-.admin-login textarea:focus::-moz-placeholder {
+textarea:focus::-moz-placeholder {
     color: transparent;
 }
 
-.admin-login textarea:focus:-ms-input-placeholder {
+textarea:focus:-ms-input-placeholder {
     color: transparent;
 }
 
-.admin-login input::-webkit-input-placeholder {
+input::-webkit-input-placeholder {
     color: #adadad;
 }
 
-.admin-login input:-moz-placeholder {
+input:-moz-placeholder {
     color: #adadad;
 }
 
-.admin-login input::-moz-placeholder {
+input::-moz-placeholder {
     color: #adadad;
 }
 
-.admin-login input:-ms-input-placeholder {
+input:-ms-input-placeholder {
     color: #adadad;
 }
 
-.admin-login textarea::-webkit-input-placeholder {
+textarea::-webkit-input-placeholder {
     color: #adadad;
 }
 
-.admin-login textarea:-moz-placeholder {
+textarea:-moz-placeholder {
     color: #adadad;
 }
 
-.admin-login textarea::-moz-placeholder {
+textarea::-moz-placeholder {
     color: #adadad;
 }
 
-.admin-login textarea:-ms-input-placeholder {
+textarea:-ms-input-placeholder {
     color: #adadad;
 }
 
 /*---------------------------------------------*/
 
-.admin-login button {
+button {
     outline: none !important;
     border: none;
     background: transparent;
 }
 
-.admin-login button:hover {
+button:hover {
     cursor: pointer;
 }
 
-.admin-login iframe {
+iframe {
     border: none !important;
 }
 
@@ -184,6 +211,7 @@
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .login100-form-avatar {
     display: block;
     width: 300px;
@@ -204,6 +232,21 @@
     width: 200px;
     height: 200px;
 >>>>>>> 48d9266ea24db7d85fda65e3d290f4d7ec3f3acb
+=======
+.login100-form-title {
+    display: block;
+    font-size: 39px;
+    font-weight: 600;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.login100-form-avatar {
+    display: block;
+    width: 150px;
+    height: 150px;
+>>>>>>> parent of be8aac0... Sửa thanh toán
     overflow: hidden;
     margin: 0 auto;
 }
