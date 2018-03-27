@@ -89,7 +89,7 @@
                                         </div>
                                         <div class="thumbnail">
                                             <div class="containeroverlay">
-                                                <a href="#"><img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                <a href="#"><img src="http://placehold.it/1024x768/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
                                                 <div class="overlay">
                                                     <div class="text">Xem chi tiết</div>
                                                 </div>
@@ -678,12 +678,13 @@
         var sticky = navbar.offsetTop;
 
         function myFunction() {
-            if (window.pageYOffset >= 160) {
+            if (window.pageYOffset >= 180 ) {
                 navbar.classList.add("sticky")
             }
-            else {
+            else  {
                 navbar.classList.remove("sticky");
             }
+          
         }
     </script>
 @endsection

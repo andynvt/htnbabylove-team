@@ -24,6 +24,11 @@ body {
     /*    content: "\f067";*/
 }
 
+.img-responsive{
+   width: 100%;
+    height: 200px;
+}
+
 .panel-title a {
     color: #000;
 }
@@ -353,32 +358,10 @@ body {
     .menuscroll {
         display: none;
     }
-    /*
-    .well1 {
-        width: 100%;
-        position: relative;
-        min-height: 1px;
-        padding-left: 5px;
-        padding-right: 5px;
-        float: left;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        flex: 0 0 50%;
-        max-width: 100%;
-    }
-    .well {
-        width: 100%;
-        position: relative;
-        min-height: 1px;
-        padding-left: 5px;
-        padding-right: 5px;
-        float: left;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        flex: 0 0 50%;
-        max-width: 100%;
-    }
-*/
+    .img-responsive{
+  
+    height: 200px;
+}
 }
 
 @media screen and (min-device-width: 769px) and (max-device-width: 2560px) {}
