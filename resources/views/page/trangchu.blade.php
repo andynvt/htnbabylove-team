@@ -13,50 +13,9 @@
                         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12  ">
                             <!-- Tim kiem nhanh san pham -->
                             <div id="navbar">
-                                <div class="well1">
-                                    <h5 class="text-left">Menu</h5>
-                                    <div class="row">
-                                        <div class="col-sm col-md">
-                                            <div class="panel-group" id="accordion">
-                                                <hr>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a href="#">Mền</a>
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a href="#">Gối</a>
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a href="#">Khăn choàng-Áo choàng</a>
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a href="#">Combo (nệm+ôm+nằm)</a>
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                                <hr> </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!-- Menu -->
                                 <div class="well">
-                                    <h5 class="text-left">Tìm Kiếm Sản Phẩm</h5>
+                                    <h5 class="text-left">Lọc Sản Phẩm Theo:</h5>
                                     <form class="form-horizontal" action="#" method="">
                                         <div class="form-group">
                                             <label for="priceto" class="control-label">Tên sản phẩm:</label>
@@ -711,4 +670,20 @@
                 </div>
             </div>
 </div>
+ <script>
+        window.onscroll = function () {
+            myFunction()
+        };
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= 160) {
+                navbar.classList.add("sticky")
+            }
+            else {
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
 @endsection
