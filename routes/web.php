@@ -84,7 +84,7 @@ Route::get('admin-loaisanpham', [
 
 Route::get('admin-khachhang', [
 	'as' => 'adminkhachhang',
-	'uses' => 'PageController@getadmiKhachhang'
+	'uses' => 'PageController@getadminKhachhang'
 ]);
 
 Route::get('admin-donhang', [
@@ -96,5 +96,3 @@ Route::get('admin-doanhthu', [
 	'as' => 'admindoanhthu',
 	'uses' => 'PageController@getadminDoanhthu'
 ]);
-
-
