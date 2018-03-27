@@ -25,12 +25,11 @@
     <link href="source/ADMIN/assets/css/demo.css" rel="stylesheet" />
     <!--  Fonts and icons     -->
     {{-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"> --}}
-     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="source/ADMIN/assets/css/themify-icons.css" rel="stylesheet">
     <link href="source/ADMIN/assets/css/tabs_table_reset.css" rel="stylesheet">
-
     <!--}-->
 
     <link rel="stylesheet" href="source/ADMIN/css/reset_css.css">
@@ -39,7 +38,7 @@
     <link rel="stylesheet" href="source/ADMIN/css/color.css">
     <link rel="stylesheet" href="source/ADMIN/css/feedback.css">
     {{-- <link rel="stylesheet" href="source/ADMIN/css/search.css"> --}}
-    <link rel="stylesheet" href="source/ADMIN/css/slideshow.css">
+    {{-- <link rel="stylesheet" href="source/ADMIN/css/slideshow.css"> --}}
     <link rel="stylesheet" href="source/ADMIN/css/trangthai.css">
     <link rel="stylesheet" href="source/ADMIN/css/add_product.css">
     <link rel="stylesheet" href="source/ADMIN/css/util.css">
@@ -138,10 +137,10 @@
 <script src="source/ADMIN/assets/js/bootstrap-notify.js"></script>
 <script src="source/ADMIN/vendor/animsition/js/animsition.min.js"></script>
 
-<script type="text/javascript" src="source/ADMIN/js/main.js"></script>
-<script type="text/javascript" src="source/ADMIN/js/cart.js"></script>
-<script type="text/javascript" src="source/ADMIN/js/modal.js"></script>
-<script src="source/ADMIN/js/login.js"></script>
+<script src="source/ADMIN/js/main.js" type="text/javascript"></script>
+<script src="source/ADMIN/js/cart.js" type="text/javascript"></script>
+<script src="source/ADMIN/js/modal.js" type="text/javascript"></script>
+<script src="source/ADMIN/js/login.js" type="text/javascript"></script>
 
 
 </html>

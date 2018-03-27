@@ -82,19 +82,19 @@ Route::get('admin-loaisanpham', [
 	'uses' => 'PageController@getadminLoaisanpham'
 ]);
 
-Route::get('admin-quanlykhachhang', [
-	'as' => 'adminquanlykhachhang',
-	'uses' => 'PageController@getadminQuanlykhachhang'
+Route::get('admin-khachhang', [
+	'as' => 'adminkhachhang',
+	'uses' => 'PageController@getadmiKhachhang'
 ]);
 
-Route::get('admin-quanlydonhang', [
-	'as' => 'adminquanlydonhang',
-	'uses' => 'PageController@getadminQuanlydonhang'
+Route::get('admin-donhang', [
+	'as' => 'admindonhang',
+	'uses' => 'PageController@getadminDonhang'
 ]);
 
-Route::get('admin-quanlydanhthu', [
-	'as' => 'adminquanlydanhthu',
-	'uses' => 'PageController@getadminQuanlydanhthu'
+Route::get('admin-doanhthu', [
+	'as' => 'admindoanhthu',
+	'uses' => 'PageController@getadminDoanhthu'
 ]);
 
 

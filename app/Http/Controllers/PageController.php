@@ -61,16 +61,16 @@ class PageController extends Controller
         return view('Admin.pageadmin.adminloaisanpham');
     }
 
-    public function getadminQuanlykhachhang(){
-        return view('Admin.pageadmin.adminquanlykhachhang');
+    public function getadminKhachhang(){
+        return view('Admin.pageadmin.adminkhachhang');
     }
 
-    public function getadminQuanlydonhang(){
-        return view('Admin.pageadmin.adminquanlydonhang');
+    public function getadminDonhang(){
+        return view('Admin.pageadmin.admindonhang');
     }
 
-    public function getadminQuanlydanhthu(){
-        return view('Admin.pageadmin.adminquanlydanhthu');
+    public function getadminDoanhthu(){
+        return view('Admin.pageadmin.admindoanhthu');
     }
 
 }
