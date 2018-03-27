@@ -9,13 +9,11 @@
 }
 
 .cart-title {
-    font-size: 16px;
-    font-weight: 500;
     background-color: aliceblue;
     margin-bottom: 20px;
 }
 
-.cart-content{
+.cart-content {
     max-height: 400px;
     overflow: scroll;
     overflow-y: auto;
@@ -38,7 +36,6 @@
 .cart-img {
     object-fit: contain;
     width: 100%;
-    height: 100%;
 }
 
 .cart-item a {
@@ -103,7 +100,7 @@
     float: left;
 }
 
- .modalcart ._select_color_drop > li > .color,
+.modalcart ._select_color_drop > li > .color,
 .btn > span.color {
     width: 25px;
     height: 25px;
@@ -219,8 +216,8 @@
 .btn-order {
     width: 100%;
     border-radius: 5px;
-    background: #5CAEFD;
-    border: 1px solid #5CAEFD;
+    background: #1E88E5;
+    border: 1px solid #1E88E5;
     color: #fff;
     cursor: pointer;
     height: 100%;

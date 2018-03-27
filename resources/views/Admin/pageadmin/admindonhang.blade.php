@@ -245,7 +245,7 @@
                     <div class="modal-body cart-center">
                         <div class="row cart-title">
                             <div class="col-sm-6"> Sản phẩm </div>
-                            <div class="col-sm-2"> Số lượng </div>
+                            <div class="col-sm-2" style="text-align: center"> Số lượng </div>
                             <div class="col-sm-2" style="text-align: right"> Đơn giá </div>
                             <div class="col-sm-2" style="text-align: center"> Xóa </div>
                         </div>
@@ -289,19 +289,17 @@
                                         </div>
                                         <div class="cart-qty col-md-2 col-3">
                                             <div class="cart-input-qty">
-                                                <p> 1</p>
-                                            </div>
-                                            <div class="change-qty">
-                                                <div class="input-group number-spinner input-change-qty">
-                                                    <input type="text" name="soluong" class="form-control text-center" value="1"> </div>
-                                                <div class="div-confirm-change-qty">
-                                                    <button class="confirm-change-qty" type="button"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
-                                                </div>
+                                                1
                                             </div>
                                         </div>
-                                        <div class="unit-price col-md-2" style="text-align: right"> 100,000 VND </div>
-                                        <div class="col-md-2 align-self-center" style="text-align: center"> <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
+                                        <div class="unit-price col-md-2" style="text-align: right;">
+                                            <div style="padding: 35% 0;"> 100,000 VND </div>
+                                        </div>
+                                        <div class="col-md-2 align-self-center" style="text-align: center">
+                                            <div style="padding: 35% 0;"> 
+                                                <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="cart-item">
@@ -341,19 +339,17 @@
                                         </div>
                                         <div class="cart-qty col-md-2 col-3">
                                             <div class="cart-input-qty">
-                                                <p> 1</p>
-                                            </div>
-                                            <div class="change-qty">
-                                                <div class="input-group number-spinner input-change-qty">
-                                                    <input type="text" name="soluong" class="form-control text-center" value="1"> </div>
-                                                <div class="div-confirm-change-qty">
-                                                    <button class="confirm-change-qty" type="button"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
-                                                </div>
+                                                1
                                             </div>
                                         </div>
-                                        <div class="unit-price col-md-2" style="text-align: right"> 100,000 VND </div>
-                                        <div class="col-md-2 align-self-center" style="text-align: center"> <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
+                                        <div class="unit-price col-md-2" style="text-align: right;">
+                                            <div style="padding: 35% 0;"> 100,000 VND </div>
+                                        </div>
+                                        <div class="col-md-2 align-self-center" style="text-align: center">
+                                            <div style="padding: 35% 0;"> 
+                                                <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="cart-item">
@@ -393,19 +389,17 @@
                                         </div>
                                         <div class="cart-qty col-md-2 col-3">
                                             <div class="cart-input-qty">
-                                                <p> 1</p>
-                                            </div>
-                                            <div class="change-qty">
-                                                <div class="input-group number-spinner input-change-qty">
-                                                    <input type="text" name="soluong" class="form-control text-center" value="1"> </div>
-                                                <div class="div-confirm-change-qty">
-                                                    <button class="confirm-change-qty" type="button"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
-                                                </div>
+                                                1
                                             </div>
                                         </div>
-                                        <div class="unit-price col-md-2" style="text-align: right"> 100,000 VND </div>
-                                        <div class="col-md-2 align-self-center" style="text-align: center"> <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
+                                        <div class="unit-price col-md-2" style="text-align: right;">
+                                            <div style="padding: 35% 0;"> 100,000 VND </div>
+                                        </div>
+                                        <div class="col-md-2 align-self-center" style="text-align: center">
+                                            <div style="padding: 35% 0;"> 
+                                                <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="cart-item">
@@ -445,19 +439,17 @@
                                         </div>
                                         <div class="cart-qty col-md-2 col-3">
                                             <div class="cart-input-qty">
-                                                <p> 1</p>
-                                            </div>
-                                            <div class="change-qty">
-                                                <div class="input-group number-spinner input-change-qty">
-                                                    <input type="text" name="soluong" class="form-control text-center" value="1"> </div>
-                                                <div class="div-confirm-change-qty">
-                                                    <button class="confirm-change-qty" type="button"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
-                                                </div>
+                                                1
                                             </div>
                                         </div>
-                                        <div class="unit-price col-md-2" style="text-align: right"> 100,000 VND </div>
-                                        <div class="col-md-2 align-self-center" style="text-align: center"> <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
+                                        <div class="unit-price col-md-2" style="text-align: right;">
+                                            <div style="padding: 35% 0;"> 100,000 VND </div>
+                                        </div>
+                                        <div class="col-md-2 align-self-center" style="text-align: center">
+                                            <div style="padding: 35% 0;"> 
+                                                <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -466,10 +458,9 @@
                     </div>
                     <div class="modal-footer">
                         <div class="cart-order">
-                            <div class="cart-total-price col-md-4 offset-md-6 col-12">
+                            <div class="cart-total-price col-md-6 offset-md-6 col-12">
                                 <div class="row">
-                                    <div class="col-md-5 col-5"> Tổng tiền: </div>
-                                    <div class="col-md-7 col-7 total-price"> 200,000 VND </div>
+                                    <div class="col-md-12 col-12 total-price">Tổng tiền: 22,300,000 VND </div>
                                 </div>
                             </div>
                         </div>
