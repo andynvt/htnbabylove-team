@@ -73,7 +73,7 @@ Route::get('admin-chitietdanhgia', [
 ]);
 
 Route::get('admin-sanpham', [
-	'as' => 'admindanhthu',
+	'as' => 'adminsanpham',
 	'uses' => 'PageController@getadminSanpham'
 ]);
 
