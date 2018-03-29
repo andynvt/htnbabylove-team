@@ -44,6 +44,9 @@
 								<div class="column">
 									<img src="source/image/img4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
 								</div>
+								<div class="column">
+									<img src="source/image/img4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+								</div>
 							</div>
 						</div>
 						<div id="modal-img-mini" class="modal-img-mini">

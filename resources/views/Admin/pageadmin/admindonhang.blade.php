@@ -95,13 +95,13 @@
                                     <thead>
                                         <tr class="thead_change_color">
                                             <th>Màu sắc</th>
-                                            <th>Trangh thái</th>
+                                            <th>Trạng thái</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td class="danggui">1</td>
-                                            <td>Đang gữi</td>
+                                            <td>Đang gửi</td>
                                         </tr>
                                         <tr>
                                             <td class="hoantat">2</td>
@@ -170,11 +170,11 @@
                                                 <td>$36,738</td>
                                                 <td>Niger</td>
                                                 <td>Oud-Turnhout</td>
-                                                <td>Đang gữi</td>
+                                                <td>Đang gửi</td>
                                                 <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
                                                 <td>
                                                     <div class="">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
+                                                        <a href="#" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
                                                     </div>
                                                 </td>
                                             </tr>
