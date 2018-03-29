@@ -26,8 +26,6 @@
 [ RESTYLE TAG ]*/
 
 .admin-index * {
-    margin: 0px;
-    padding: 0px;
     box-sizing: border-box;
     font-family: Open Sans, sans-serif
 }
@@ -152,7 +150,6 @@
 .admin-index button {
     outline: none !important;
     border: none;
-    background: transparent;
 }
 
 .admin-index button:hover {
@@ -212,7 +209,7 @@
 
 .login100-form-title {
     display: block;
-    font-size: 39px;
+    font-size: 35px;
     font-weight: 600;
     color: #333333;
     line-height: 1.2;

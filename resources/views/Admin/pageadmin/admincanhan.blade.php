@@ -88,15 +88,15 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <div class="panel panel-default">
-                            <div class="panel-heading clearfix"> <span class="glyphicon glyphicon-edit"></span> <span>Cập nhật tài khoản</span> </div>
+                            <div class="panel-heading clearfix"> <span class="glyphicon glyphicon-edit"></span> <span>Đổi mật khẩu</span> </div>
                             <div class="panel-body">
                                 <form method="post" action="edit_account.php?id=1" class="clearfix">
                                     <div class="form-group">
-                                        <label for="name" class="control-label">Tên đăng nhập</label>
-                                        <input type="name" class="form-control" name="name" placeholder="Tên đăng nhập"> </div>
+                                        <label for="name" class="control-label">Mật khẩu cũ</label>
+                                        <input type="password" class="form-control" name="oldpass" placeholder="Mật khẩu cũ"> </div>
                                     <div class="form-group">
-                                        <label for="username" class="control-label">Mật khẩu</label>
-                                        <input type="password" class="form-control" name="pwd" placeholder="Mật khẩu"> </div>
+                                        <label for="username" class="control-label">Mật khẩu mới</label>
+                                        <input type="password" class="form-control" name="newpass" placeholder="Mật khẩu mới"> </div>
                                     <div class="form-group clearfix">
                                         <button type="submit" name="update" class=" btn btn-danger pull-right css_changepass ">Cập nhật</button>
                                     </div>

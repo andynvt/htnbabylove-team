@@ -56,22 +56,22 @@ if (mysqli_connect_error())
                                         <input type="text" class="form-control form_size" name="country" value="" /> </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12"><strong>Thành phố/Tỉnh</strong></div>
+                                    <div class="col-md-12"><strong>Tỉnh/Thành Phố</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
                                         <select class="form-control form_size thanhpho" id="select">
-                                            <option value="">Thành phố/Tỉnh </option>
+                                            <option value="">Tỉnh/Thành Phố </option>
 												<?php
 												// require("connect.php");
 										   	 	// include "connect.php";
-												$sql = "select * from thanh_pho";
+												$sql = "select * from cities";
 												// echo $sql;
 												$query = $con->query($sql);
 												$num = mysqli_num_rows($query);
 												if($num > 0){
 													while($row = mysqli_fetch_array($query)){
 										    ?>
-                                                <option value="<?php echo $row['id']; ?>">
+                                                <option value="<?php echo $row['id_city']; ?>">
                                                     <?php echo $row['name']?>
                                                 </option>
                                                 <?php
@@ -83,11 +83,11 @@ if (mysqli_connect_error())
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12"><strong>Quận/huyện</strong></div>
+                                    <div class="col-md-12"><strong>Quận/Huyện</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
                                         <select class="form-control form_size quan_huyen " id="select">
-                                            <option value="0">Quận/huyện</option>
+                                            <option value="0">Quận/Huyện</option>
                                         </select>
                                     </div>
                                 </div>

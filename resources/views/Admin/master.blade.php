@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="source/ADMIN/css/cart.css">
     <link rel="stylesheet" href="source/ADMIN/css/color.css">
     <link rel="stylesheet" href="source/ADMIN/css/feedback.css">
-    <link rel="stylesheet" href="source/ADMIN/css/search.css"> 
+    {{-- <link rel="stylesheet" href="source/ADMIN/css/search.css">  --}}
     {{-- <link rel="stylesheet" href="source/ADMIN/css/slideshow.css"> --}}
     <link rel="stylesheet" href="source/ADMIN/css/trangthai.css">
     <link rel="stylesheet" href="source/ADMIN/css/add_product.css">
@@ -117,8 +117,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary">Lưu lại</button>
                 </div>
             </div>
             <!-- /.modal-content -->
