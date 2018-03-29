@@ -1,6 +1,8 @@
 @extends('Admin.master')
 
 @section('contentadmin')
+<!--    <link rel="stylesheet" href="source/ADMIN/css/search.css"> -->
+
  <div class="wrapper">
         <div class="sidebar" data-background-color="white" data-active-color="danger">
             <div class="sidebar-wrapper">
@@ -117,30 +119,21 @@
                                                 <th>Email</th>
                                             </tr>
                                         </thead>
+                                          @foreach($table as $tb)
                                         <tbody>
                                             <div class="tooltip1">
-                                                <tr class="row-detail-feedback">
-                                                    <td>1</td>
-                                                    <td>Nguyễn Văn Tài</td>
-                                                    <td>Nam</td>
-                                                    <td>0123456789</td>
-                                                    <td>Hà Nội</td>
-                                                    <td style="text-overflow: ellipsis">sdfsdfsd@gmail.com </td>
+                                                <tr class="row-detail-feedback text-left">
+                                                    <td>{{$tb->id_customer}}</td>
+                                                    <td>{{$tb->name}}</td>
+                                                    <td>{{$tb->gender}}</td>
+                                                    <td>{{$tb->phone}}</td>
+                                                    <td>{{$tb->address}}</td>
+                                                    <td style="text-overflow: ellipsis">{{$tb->email}}</td>
                                                 </tr>
                                             </div>
                                         </tbody>
-                                        <tbody>
-                                            <div class="tooltip1">
-                                                <tr class="row-detail-feedback">
-                                                    <td>2</td>
-                                                    <td>Nguyễn Văn Tài</td>
-                                                    <td>Nam</td>
-                                                    <td>0123456789</td>
-                                                    <td>Hà Nội</td>
-                                                    <td style="text-overflow: ellipsis">sdfsdfsd@gmail.com </td>
-                                                </tr>
-                                            </div>
-                                        </tbody>
+                                        @endforeach
+
                                     </table>
                                 </div>
                             </div>

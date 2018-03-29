@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Customer;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -62,7 +62,8 @@ class PageController extends Controller
     }
 
     public function getadminKhachhang(){
-        return view('Admin.pageadmin.adminkhachhang');
+                $table  = Customer::all();
+        return view('Admin.pageadmin.adminkhachhang',compact('table'));
     }
 
     public function getadminDonhang(){
