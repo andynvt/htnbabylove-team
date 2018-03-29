@@ -10,7 +10,7 @@
 						Hoàng Thuỷ Nguyên<br>Baby Love
 					</span>
                     <span class="login100-form-avatar">
-						<img src="source/image/logo mobile.png" alt="LOGO">
+						<img src="source/image/favicon.png" alt="LOGO">
 					</span>
 
                     <div class="wrap-input100 validate-input m-t-50 m-b-35" data-validate="Chưa nhập Tên đăng nhập">
