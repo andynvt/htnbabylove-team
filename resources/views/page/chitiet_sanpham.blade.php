@@ -6,26 +6,23 @@
 	})
 </script>
 <div class="cnt-user">
-<div class="container-fluid">
-	<div id="content" class="content-product-link">
-		<div class="row">
-			<div class="col-sm-12" id="bar-prodduct">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-						<li class="breadcrumb-item"><a href="#">Quần áo bé gái</a></li>
+	<div class="container-fluid">
+            <div class="row">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="#">Quần áo bé gái</a></li>
 						<li class="breadcrumb-item"><a href="#">Đồ bộ bé gái</a></li>
-						<li class="breadcrumb-item"><a href="#">Bộ voan bé gái trễ vai họa tiết hoa xinh xắn (9 tháng - 9 tuổi)</a></li>
-					</ol>
-				</nav>
-			</div>
-		</div>
-	</div>
-</div>
+                        <li class="breadcrumb-item active" aria-current="page">Bộ voan bé gái trễ vai họa tiết hoa xinh xắn (9 tháng - 9 tuổi)</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
 <div class="container-fluid">
-	<div id="content" >
-		<div class="row" id="content-product-details">
-			<div class="col-sm-9">
+	
+		<div class="row" id="about-content">
+			<div class="col-lg-9 col-md-12">
 				<div class="row">
 					<div class="col-sm-4" id="show-images">
 						<img src="source/image/product_1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
@@ -136,16 +133,17 @@
 									}
 								</script>
 							</div>
-							<div class="col-sm-8">
+							<div class="col-md-8 col-sm-12">
 								<form action="" method="POST" accept-charset="utf-8">
 									<div class="single-item-body">
-										<h2>Bộ voan bé gái trễ vai họa tiết hoa xinh xắn (9 tháng - 9 tuổi)</h2>
+										<h3>Bộ voan bé gái trễ vai họa tiết hoa xinh xắn (9 tháng - 9 tuổi)</h3>
 										<p class="summary-product">Bộ trễ vai cho bé gái họa tiết hoa dễ thương - Chất liệu voan cát mềm nhẹ nhàng, thoáng mát giúp bé thật thoải mái khi vui chơi hay đi học.</p><hr/>
 										<p class="single-item-price">
 											<span class="present-price">150.000 đ</span>
 										</p>
 										<div class="select-size-product">
-											<label  class="choose-size">Chọn kích cỡ:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn size quần áo cho bé"></i></label><br/>       
+											<label  class="choose-size">Chọn kích cỡ:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn size quần áo cho bé"></i></label><br/>   
+											<div class="space10">&nbsp;</div>    
 											<select style="float: left;" data-babi-option-type="S" data-babi-option-name="Chọn kích cỡ" name="" class="select-size">                                    
 												<option value="165730" selected="">8.5 - 10.5kg 
 												</option>
@@ -170,6 +168,7 @@
 											</select>
 											<div class="space30">&nbsp;</div>
 											<label class="choose-qty">Chọn số lượng:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn số lượng bạn muốn mua"></i></label><br/>
+											<div class="space10">&nbsp;</div>
 											<select class="select-qty" name="qty-product" id="qty_count">
 												<option value="1">1</option>
 												<option value="2">2</option>
@@ -177,26 +176,55 @@
 												<option value="4">4</option>
 												<option value="5">5</option>
 											</select>
+											<div class="space10">&nbsp;</div>
+                                                <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
+                                                <div class="form-group">
+                                                    <div class="dropdown" style="width: 25%;">
+                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: black"></span></button>
+                                                        <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
+                                                            <li><span class="color " style="background: black"></span></li>
+                                                            <li><span class="color " style="background: red"></span></li>
+                                                            <li><span class="color " style="background: #f90"></span></li>
+                                                            <li><span class="color " style="background: brown"></span></li>
+                                                            <li><span class="color " style="background: orange"></span></li>
+                                                            <li><span class="color " style="background: pink"></span></li>
+                                                            <li><span class="color " style="background: silver"></span></li>
+                                                            <li><span class="color " style="background: blue"></span></li>
+                                                            <li><span class="color " style="background: TEAL"></span></li>
+                                                            <li><span class="color " style="background: repeating-linear-gradient(90deg, transparent,                                     transparent 50px,
+                                                                                            rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px,
+                                                                                            transparent 56px, transparent 63px,
+                                                                                            rgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px,
+                                                                                            transparent 69px, transparent 116px,
+                                                                                            rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),
+                                                                                          repeating-linear-gradient(0deg, transparent, transparent 50px,
+                                                                                            rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px,
+                                                                                            transparent 56px, transparent 63px,
+                                                                                            rgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px,
+                                                                                            transparent 69px, transparent 116px,
+                                                                                            rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),
+                                                                                          repeating-linear-gradient(-45deg, transparent, transparent 5px,
+                                                                                            rgba(143, 77, 63, 0.25) 5px, rgba(143, 77, 63, 0.25) 10px),
+                                                                                          repeating-linear-gradient(45deg, transparent, transparent 5px,
+                                                                                            rgba(143, 77, 63, 0.25) 5px, rgba(143, 77, 63, 0.25) 10px);"></span></li>
+                                                            <li><span class="color " style="background: repeating-linear-gradient( red, red 5px, blue 5px, blue 10px)"></span></li>
+                                                            <input type="hidden" name="_color" value=""> </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="space10">&nbsp;</div>
+                                           
 											
-											<div class="add-cart-block">
+											
 												<div class="row">
-													<div class="col-sm-5">
-														<div class="add-cart-button">
-															<a href=""><button class="add-to-cart">
-																<span class="text"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</span>
-															</button></a>
-														</div>
+													<div class="col-lg-5 col-md-12">
+                                                <button type="button" class="btn btn-themvaogio btn-full "><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
 													</div>
-													<div class="col-sm-5">
-														<div class="buy-now-button">
-															<a href=""><button class="buy-now-item">
-																<span class="text"><i class="far fa-money-bill-alt"></i> Mua Ngay</span>
-															</button></a>
-														</div>
+													<div class="col-lg-5 col-md-12">
+														<button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                
 													</div>	
 												</div>
 
-											</div>
 											<div class="flash"></div>
 											<div class="product-note">
 												<h3>Thông Tin & Khuyến Mãi</h3>
@@ -535,7 +563,7 @@
 						</div> <!-- .beta-products-list -->
 						<hr>
 					</div>
-					<div class="col-sm-3 aside">
+            <div class="col-lg-3 col-md-12 aside">
 						<div class="widget">
 							<h3 class="widget-title">Sản Phẩm Bán Chạy</h3>
 							<div class="widget-body">
@@ -544,52 +572,36 @@
 										<a class="pull-left" href="product.html"><img src="source/image/aosomi.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo sơ mi caro cho bé từ 1-8 màu xanh rêu</a>
-											<span class="beta-sales-price">142.000 đ</span>
-											<div class="single-item-click-by">
-												<a href="" class="click-by"><i class="far fa-money-bill-alt"></i> Mua Ngay</a>
-											</div>
-											<div class="single-item-add-to-cart">
-												<a href="" class="ad-to-cart"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a>
-											</div>
+											<p class="beta-sales-price">142.000 đ</p>
+											 <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
 										</div>
 									</div>
 									<div class="media beta-sales-item">
 										<a class="pull-left" href="product.html"><img src="source/image/aosomi.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo sơ mi caro cho bé từ 1-8 màu xanh rêu</a>
-											<span class="beta-sales-price">142.000 đ</span>
-											<div class="single-item-click-by">
-												<a href="" class="click-by"><i class="far fa-money-bill-alt"></i> Mua Ngay</a>
-											</div>
-											<div class="single-item-add-to-cart">
-												<a href="" class="ad-to-cart"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a>
-											</div>
+											<p class="beta-sales-price">142.000 đ</p>
+											<button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
 										</div>
 									</div>
 									<div class="media beta-sales-item">
 										<a class="pull-left" href="product.html"><img src="source/image/aosomi.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo sơ mi caro cho bé từ 1-8 màu xanh rêu</a>
-											<span class="beta-sales-price">142.000 đ</span>
-											<div class="single-item-click-by">
-												<a href="" class="click-by"><i class="far fa-money-bill-alt"></i> Mua Ngay</a>
-											</div>
-											<div class="single-item-add-to-cart">
-												<a href="" class="ad-to-cart"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a>
-											</div>
+											<p class="beta-sales-price">142.000 đ</p>
+											<button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
 										</div>
 									</div>
 									<div class="media beta-sales-item">
 										<a class="pull-left" href="product.html"><img src="source/image/aosomi.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo sơ mi caro cho bé từ 1-8 màu xanh rêu</a>
-											<span class="beta-sales-price">142.000 đ</span>
-											<div class="single-item-click-by">
-												<a href="" class="click-by"><i class="far fa-money-bill-alt"></i> Mua Ngay</a>
-											</div>
-											<div class="single-item-add-to-cart">
-												<a href="" class="ad-to-cart"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a>
-											</div>
+											<p class="beta-sales-price">142.000 đ</p>
+											<button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
 										</div>
 									</div>
 								</div>
@@ -603,62 +615,45 @@
 										<a class="pull-left" href="product.html"><img src="source/image/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo dài rồng kèm hoa văn cho bé trai màu đỏ</a><br/>
-											<span class="beta-sales-price">142.000 đ</span>
-											<div class="single-item-click-by">
-												<a href="" class="click-by"><i class="far fa-money-bill-alt"></i> Mua Ngay</a>
-											</div>
-											<div class="single-item-add-to-cart">
-												<a href="" class="ad-to-cart"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a>
-											</div>
+											<p class="beta-sales-price">142.000 đ</p>
+											<button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
 										</div>
 									</div>
 									<div class="media beta-sales-item">
 										<a class="pull-left" href="product.html"><img src="source/image/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo dài rồng kèm hoa văn cho bé trai màu đỏ</a><br/>
-											<span class="beta-sales-price">142.000 đ</span>
-											<div class="single-item-click-by">
-												<a href="" class="click-by"><i class="far fa-money-bill-alt"></i> Mua Ngay</a>
-											</div>
-											<div class="single-item-add-to-cart">
-												<a href="" class="ad-to-cart"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a>
-											</div>
+											<p class="beta-sales-price">142.000 đ</p>
+											<button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
 										</div>
 									</div>
 									<div class="media beta-sales-item">
 										<a class="pull-left" href="product.html"><img src="source/image/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo dài rồng kèm hoa văn cho bé trai màu đỏ</a><br/>
-											<span class="beta-sales-price">142.000 đ</span>
-											<div class="single-item-click-by">
-												<a href="" class="click-by"><i class="far fa-money-bill-alt"></i> Mua Ngay</a>
-											</div>
-											<div class="single-item-add-to-cart">
-												<a href="" class="ad-to-cart"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a>
-											</div>
+											<p class="beta-sales-price">142.000 đ</p>
+											<button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
 										</div>
 									</div>
 									<div class="media beta-sales-item">
 										<a class="pull-left" href="product.html"><img src="source/image/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
 										<div class="media-body">
 											<a href="">Áo dài rồng kèm hoa văn cho bé trai màu đỏ</a><br/>
-											<span class="beta-sales-price">142.000 đ</span>
-											<div class="single-item-click-by">
-												<a href="" class="click-by"><i class="far fa-money-bill-alt"></i> Mua Ngay</a>
-											</div>
-											<div class="single-item-add-to-cart">
-												<a href="" class="ad-to-cart"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</a>
-											</div>
+											<p class="beta-sales-price">142.000 đ</p>
+											<button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div> <!-- best sellers widget -->
 					</div>
-				</div>
-			</div> <!-- #content -->
+        </div>
+		
 		</div> <!-- .container -->
-
 		<script>
 			function openModal() {
 				document.getElementById('modal-img-mini').style.display = "block";

@@ -24,9 +24,9 @@ body {
     /*    content: "\f067";*/
 }
 
-.img-responsive{
-   width: 100%;
-    height: 200px;
+.img-responsive {
+    width: 100%;
+    /*    height: ;: 200px;*/
 }
 
 .panel-title a {
@@ -210,7 +210,7 @@ body {
 
 .overlay {
     position: absolute;
-    bottom: 0px;
+    bottom: -4px;
     left: 0;
     right: 0;
     background-color: #5CAEFD;
@@ -358,10 +358,9 @@ body {
     .menuscroll {
         display: none;
     }
-    .img-responsive{
-  
-    height: 200px;
-}
+    .img-responsive {
+        height: 200px;
+    }
 }
 
 @media screen and (min-device-width: 769px) and (max-device-width: 2560px) {}
