@@ -137,7 +137,7 @@
                                     <tbody>
                                         <tr>
                                             <td class="text-center ">1</td>
-                                            <td>Điện thoại iphone</td>
+                                            <td>Gối</td>
                                             <td>1</td>
                                             <td class="text-center ">
                                                 <div class="btn-group ">
@@ -148,7 +148,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center ">2</td>
-                                            <td>Laptop HP</td>
+                                            <td>Áo Choàng</td>
                                             <td>2</td>
                                             <td class="text-center ">
                                                 <div class="btn-group ">
@@ -159,7 +159,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center ">3</td>
-                                            <td>Macbook Pro</td>
+                                            <td>Bộ mền gối</td>
                                             <td>3</td>
                                             <td class="text-center ">
                                                 <div class="btn-group ">
@@ -170,30 +170,8 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center ">4</td>
-                                            <td>Nokia</td>
+                                            <td>Mền</td>
                                             <td>4</td>
-                                            <td class="text-center ">
-                                                <div class="btn-group ">
-                                                    <a href="edit_product.php?id=121 " class="btn btn-info btn-xs edit_icon " title=" " data-toggle="tooltip " data-original-title="Sửa "> <span class="glyphicon glyphicon-edit "></span> </a>
-                                                    <a href="delete_product.php?id=121 " class="btn btn-danger btn-xs del_icon " title=" " data-toggle="tooltip " data-original-title="Xóa "> <span class="glyphicon glyphicon-trash "></span> </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center ">5</td>
-                                            <td>Oppo 3</td>
-                                            <td>13</td>
-                                            <td class="text-center ">
-                                                <div class="btn-group ">
-                                                    <a href="edit_product.php?id=121 " class="btn btn-info btn-xs edit_icon " title=" " data-toggle="tooltip " data-original-title="Sửa "> <span class="glyphicon glyphicon-edit "></span> </a>
-                                                    <a href="delete_product.php?id=121 " class="btn btn-danger btn-xs del_icon " title=" " data-toggle="tooltip " data-original-title="Xóa "> <span class="glyphicon glyphicon-trash "></span> </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center ">6</td>
-                                            <td>Sony</td>
-                                            <td>14</td>
                                             <td class="text-center ">
                                                 <div class="btn-group ">
                                                     <a href="edit_product.php?id=121 " class="btn btn-info btn-xs edit_icon " title=" " data-toggle="tooltip " data-original-title="Sửa "> <span class="glyphicon glyphicon-edit "></span> </a>
