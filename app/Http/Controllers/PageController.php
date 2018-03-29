@@ -15,7 +15,7 @@ class PageController extends Controller
     }
 
     public function getDetail(){
-        return view('page.chitietsp');
+        return view('page.chitiet_sanpham');
     }
 
     public function getAbout(){
