@@ -1,3 +1,5 @@
+var ratingValue = 0;
+var fbgender = "Anh";
 $(document).ready(function () {
 
     /* 1. Visualizing things on Hover - See next part for action on click */
@@ -35,33 +37,38 @@ $(document).ready(function () {
         var addImg = "";
         var msg = "";
         // JUST RESPONSE (Not needed)
-        var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+        ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
         if (ratingValue == 1) {
-            addImg = "plugin/images/toobad-feedback.png";
-            msg = "Quá tệ!!";
-            $("#cmt").attr("placeholder", "Điều gì làm bạn không thích?");
+            addImg = "image/toobad-feedback.png";
+            msg = "Quá xấu!!";
+            $("#star-feedback").val(ratingValue);
         } else if (ratingValue == 2) {
-            addImg = "plugin/images/badservice-feedback.png";
-            msg = "Tệ!!";
-            $("#cmt").attr("placeholder", "Điều gì làm bạn không thích?");
+            addImg = "image/badservice-feedback.png";
+            msg = "Xấu!!";
+            $("#star-feedback").val(ratingValue);
         } else if (ratingValue == 3) {
-            addImg = "plugin/images/normal-feedback.png";
+            addImg = "image/normal-feedback.png";
             msg = "Bình thường!!";
-            $("#cmt").attr("placeholder", "Cho chúng tôi biết bạn muốn cải thiện điều gì?");
+            $("#star-feedback").val(ratingValue);
         } else if (ratingValue == 4) {
-            addImg = "plugin/images/good-feedback.png";
-            msg = "Tốt!!";
-            $("#cmt").attr("placeholder", "Bạn mong muốn gì cho tương lai?");
+            addImg = "image/good-feedback.png";
+            msg = "Đẹp!!";
+            $("#star-feedback").val(ratingValue);
         } else {
-            addImg = "plugin/images/excellent-feedback.png";
-            msg = "Hoàn hảo!!!!";
-            $("#cmt").attr("placeholder", "Bạn mong muốn gì cho tương lai?");
+            addImg = "image/excellent-feedback.png";
+            msg = "Rất đẹp!!!!";
+            $("#star-feedback").val(ratingValue);
         }
-        addimages(addImg, msg);
+        addImage(addImg, msg);
+    });
+
+    $('.gender-feedback input[name="gt"]').on('click', function () {
+        fbgender = $(this).parent().find('span').html();
+        $('#gender').val(fbgender);
     });
 });
 
-function addimages(addImg, msg) {
+function addImage(addImg, msg) {
     var addImgmsg = '<img class="img-feed-back" src="' + addImg + '" />' +
         '<div class="text-message"><span>' + msg + '</span></div>';
     $('.success-box').html(addImgmsg);
