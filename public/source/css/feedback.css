@@ -187,9 +187,13 @@
     transform: translateY(-4px);
 }
 
-@media screen and (max-width: 768px) {
-    .modal-dialog-feed-back {}
+@media (min-width: 1024px) {
+    #feedback .modal-dialog {
+        max-width: 30% !important;
+        margin: 30px auto;
+    }
 }
+
 
 .btn-cancle-feed-back {
     position: absolute;
