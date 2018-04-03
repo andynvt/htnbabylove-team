@@ -1,0 +1,80 @@
+.khungchuamau {
+    position: relative;
+    width: auto;
+    display: inline-block;
+}
+
+.them-mau {
+    border: 1px solid #9A9A9A;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    /*                float: left;*/
+    display: inline-block;
+}
+
+.them-mau i {
+    position: absolute;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    cursor: pointer;
+}
+
+.testcolor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    background: white;
+    min-width: 80px;
+    text-align: center;
+    display: none;
+}
+
+.testcolor input {
+    margin: 5px;
+}
+
+.demo-color {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    border: 1px solid #9A9A9A;
+    margin: 0 5px;
+}
+
+#demo-color1 {
+    /*                display: none;*/
+}
+
+.dehinh {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    background: #fff;
+    border: 1px solid #9A9A9A;
+    ;
+}
+
+.dehinh input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.dehinh i {
+    font-size: 20px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    cursor: pointer;
+}

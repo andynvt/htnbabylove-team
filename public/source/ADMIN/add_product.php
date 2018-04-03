@@ -32,7 +32,9 @@
     <!--}-->
 
     <link href="css/reset_css.css" rel="stylesheet">
-    <link href='css/add_product.css' rel='stylesheet'> </head>
+    <link href='css/add_product.css' rel='stylesheet'>
+    <link href="css/imgcolor-admin.css" rel="stylesheet">
+</head>
 
 <body>
     <div class="wrapper">
@@ -124,20 +126,20 @@
                                 <div class="container-fluid">
                                     <form class="form-horizontal" action="/action_page.php" enctype="multipart/form-data" id="formUpload" onsubmit="return false;">
                                         <div class="form-group">
-                                            <label class="control-label col-sm-4" for="ma">Mã:</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="ma" placeholder="Nhập mã" name="ma"> </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-4" for="maloai">Mã Loại:</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="maloai" placeholder="Nhập mã loại" name="maloai"> </div>
-                                        </div>
-                                        <div class="form-group">
                                             <label class="control-label col-sm-4" for="ten">Tên:</label>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control w50" id="ten" placeholder="Nhập tên" name="ten"> </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4" for="maloai">Loại sản phẩm:</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control w50" name="loaisanpham">
+                                                    <option>Gối</option>
+                                                    <option>Mền</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="giagoc">Giá gốc:</label>
                                             <div class="col-sm-8">
@@ -151,26 +153,46 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="soluong">Số lượng:</label>
                                             <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="soluong" placeholder="Nhập số lượng" name="soluong" min="1"> </div>
+                                                <input type="number" class="form-control w50" id="soluong" placeholder="Nhập số lượng" name="soluong" min="1">
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="mausac">Màu sắc:</label>
-                                            <div class="select_color col-sm-8">
-                                                <input type="color" name="color1" style="width:25px;height:25px;">
-                                                <input type="color" name="color2" style="width:25px;height:25px;">
-                                                <button class="check" type="color" style="background:none;border-radius:50%;"><i class="fa fa-check" style="color:#68b3c8"></i></button>
-                                                <div class="test" style="background: repeating-linear-gradient( #aaa,
-                                            pink 100%,pink 10%,pink 20%); width:90px; height: 50px;border-radius:2px;">
-                                                    <div style="color:#fff;padding:18% 30%; margin-top:2%;">Demo</div>
+
+                                            <div class="khung-mau col-sm-8">
+                                                <div class="khungchuamau w50">
+                                                    <div class="them-mau btn btn-default">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                    <div class="select_color testcolor">
+                                                        <input type="color" name="color1" style="width:25px;height:25px;">
+                                                        <input type="color" name="color2" style="width:25px;height:25px;">
+                                                        <br>
+                                                        <button class="check" type="color" style="background:none;border-radius:50%;"><i class="fa fa-check" style="color:#68b3c8"></i></button>
+                                                    </div>
                                                 </div>
+                                                <div class="demo-color btn btn-default" id="demo-color1" name="add-color[]" mutiple></div>
                                             </div>
+
                                             <script>
+                                                $(".them-mau").on("click", function() {
+                                                    $(this).next(".testcolor").css("display", "block");
+                                                });
+
                                                 $('.check').on('click', function() {
+                                                    var i = 1;
+
+
+                                                    $("#demo-color" + i).clone().appendTo(".khung-mau");
+
                                                     color1 = $('.select_color input[name="color1"]').val();
                                                     color2 = $('.select_color input[name="color2"]').val();
                                                     string = 'repeating-linear-gradient';
-                                                    $('.test').css('background', '' + string + '(' + color1 + ',' + color1 + ' 10%,' + color2 + ' 10%,' + color2 + ' 20%)');
-                                                    return false;
+                                                    $(this).parents(".khungchuamau").next("#demo-color" + i).css('background', '' + string + '(' + color1 + ',' + color1 + ' 10%,' + color2 + ' 10%,' + color2 + ' 20%)');
+
+                                                    $(this).parent(".testcolor").css("display", "none");
+
+                                                    i++;
                                                 });
 
                                             </script>
@@ -180,54 +202,17 @@
                                             <label class="control-label col-sm-4" for="hinhanh">hình ảnh:</label>
                                             <div class="col-sm-8">
                                                 <div class="box-upload">
-                                                    <button type="button" onclick="myFunction()">Thêm tệp ảnh</button>
-                                                    <button type="button" onclick="myFunction2()">Xóa tệp ảnh cuối</button>
-                                                    <br>
-                                                    <div class="inputadd">
+                                                    <div class="themhinh">
+                                                        <button class="btn btn-default dehinh" style="cursor: pointer">
+                                                           <i class="fa fa-plus"></i>
+                                                           <input type="file" name="hinh[]" multiple>
+                                                       </button>
                                                     </div>
-                                                    <div class="output"></div>
-                                                    <script>
-                                                        i = 0;
-
-                                                        function myFunction() {
-                                                            $('#formUpload .inputadd').append("<div><input type='file' class='fi" + i + "' name='img_file[]' multiple='true' onchange='previewImg(event);' id='img_file" + i + "' accept='image/*'></div>");
-                                                            i++;
-                                                            $('#formUpload .show').append("<div class='box-preview-img'></div>");
-                                                        }
-
-                                                        function myFunction2() {
-                                                            alert("i truoc: " + i);
-                                                            i--;
-                                                            $("#formUpload .fi" + i).remove();
-                                                            alert("i sau: " + i);
-                                                        }
-
-                                                        function previewImg(event) {
-                                                            // Gán giá trị các file vào biến files
-                                                            var files = document.getElementById('img_file').files;
-
-                                                            // Show khung chứa ảnh xem trước
-                                                            $('#formUpload .box-preview-img').show();
-
-                                                            // Thêm chữ "Xem trước" vào khung
-                                                            $('#formUpload .box-preview-img').html('<p>Xem trước</p>');
-
-                                                            // Dùng vòng lặp for để thêm các thẻ img vào khung chứa ảnh xem trước
-                                                            for (i = 0; i < files.length; i++) {
-                                                                // Thêm thẻ img theo i
-                                                                $('#formUpload .box-preview-img').append('<img src="" id="' + i + '">');
-
-                                                                // Thêm src vào mỗi thẻ img theo id = i
-                                                                $('#formUpload .box-preview-img img:eq(' + i + ')').attr('src', URL.createObjectURL(event.target.files[i]));
-                                                            }
-                                                        }
-
-                                                    </script>
-                                                    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
                                                 </div>
+                                                <p style="color: #9A9A9A;">(*) Trỏ chuột vào dấu cộng để xem tên các file đã chọn</p>
                                             </div>
-                                            <script src="js/main.js"></script>
                                         </div>
+
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="thongtincoban">Thông tin cơ bản:</label>
                                             <div class="col-sm-8">
@@ -236,8 +221,8 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-offset-6 col-sm-8">
+                                                <button type="button" class="btn btn-light btn-magrin2"><a href="product.php">Hủy</a></button>
                                                 <button type="submit" class="btn btn-primary btn-magrin btn-submit">Lưu lại</button>
-                                                <button type="submit" class="btn btn-light btn-magrin2"><a href="product.php">Hủy</a></button>
                                             </div>
                                         </div>
                                     </form>
