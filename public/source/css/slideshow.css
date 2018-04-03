@@ -23,15 +23,12 @@ body {
 .input-group-addon {
     /*    content: "\f067";*/
 }
-.div-img-home{
-    
-    overflow: hidden;
-}
 
 .img-responsive {
-    width: 100%;
-    /*height: 100%;*/
-    object-fit: contain;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
 }
 
 .panel-title a {
@@ -200,6 +197,9 @@ body {
 
 .containeroverlay {
     position: relative;
+    width: 100%;
+    height: 260px;
+    min-height: 200px;
 }
 
 .thumbnail .image {
@@ -215,7 +215,7 @@ body {
 
 .overlay {
     position: absolute;
-    bottom: -4px;
+    bottom: 0;
     left: 0;
     right: 0;
     background-color: #5CAEFD;
@@ -361,9 +361,7 @@ body {
     .menuscroll {
         display: none;
     }
-    .img-responsive {
-        height: 200px;
-    }
+    .img-responsive {}
 }
 
 @media screen and (min-device-width: 769px) and (max-device-width: 2560px) {}

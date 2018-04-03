@@ -90,9 +90,9 @@
                                         </div>
                                         <div class="thumbnail">
                                             <div class="containeroverlay">
-                                                <div class="div-img-home">
+                                              
                                                     <a href="#"><img src="http://placehold.it/1024x768/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
-                                                </div>
+                                               
                                                 <div class="overlay">
                                                     <div class="text">Xem chi tiết</div>
                                                 </div>
@@ -118,7 +118,176 @@
                                         </div>
                                     </div>
                                 </div>
+<<<<<<< HEAD
                             @endforeach
+=======
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
+                                    <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                            <div class="ribbon1 sale">Sale</div>
+                                        </div>
+                                        <div class="thumbnail">
+                                            <div class="containeroverlay">
+                                                <a href="#"><img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                <div class="overlay">
+                                                    <div class="text">Xem chi tiết</div>
+                                                </div>
+                                            </div>
+                                            <div class="caption">
+                                                <div class="space5">&nbsp;</div>
+                                                <a href="#"> 
+                                                    <b class="text-price">
+                                                        <span class="text-danger ">
+                                                            1,000,000đ
+                                                        </span>  &nbsp;
+                                                        <span class="flash-del">
+                                                         1,000,000đ
+                                                        </span>
+                                                    </b>
+                                                    <div class="space10">&nbsp;</div>
+                                                    <p class='text-right text-title'><b>HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</b>&nbsp;</p>
+                                                </a>
+                                                <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
+                                    <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                            <div class="ribbon1 sale">Sale</div>
+                                        </div>
+                                        <div class="thumbnail">
+                                            <div class="containeroverlay">
+                                                <a href="#"><img src="http://placehold.it/1920x1080/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                <div class="overlay">
+                                                    <div class="text">Xem chi tiết</div>
+                                                </div>
+                                            </div>
+                                            <div class="caption">
+                                                <div class="space5">&nbsp;</div>
+                                                <a href="#"> 
+                                                    <b class="text-price">
+                                                        <span class="text-danger ">
+                                                            1,000,000đ
+                                                        </span>  &nbsp;
+                                                        <span class="flash-del">
+                                                         1,000,000đ
+                                                        </span>
+                                                    </b>
+                                                    <div class="space10">&nbsp;</div>
+                                                    <p class='text-right text-title'><b>HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</b>&nbsp;</p>
+                                                </a>
+                                                <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
+                                    <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                            <div class="ribbon1 sale">Sale</div>
+                                        </div>
+                                        <div class="thumbnail">
+                                            <div class="containeroverlay">
+                                                <a href="#"><img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                <div class="overlay">
+                                                    <div class="text">Xem chi tiết</div>
+                                                </div>
+                                            </div>
+                                            <div class="caption">
+                                                <div class="space5">&nbsp;</div>
+                                                <a href="#"> 
+                                                    <b class="text-price">
+                                                        <span class="text-danger ">
+                                                            1,000,000đ
+                                                        </span>  &nbsp;
+                                                        <span class="flash-del">
+                                                         1,000,000đ
+                                                        </span>
+                                                    </b>
+                                                    <div class="space10">&nbsp;</div>
+                                                    <p class='text-right text-title'><b>HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</b>&nbsp;</p>
+                                                </a>
+                                                <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
+                                    <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                            <div class="ribbon1 sale">Sale</div>
+                                        </div>
+                                        <div class="thumbnail">
+                                            <div class="containeroverlay">
+                                                <a href="#"><img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                <div class="overlay">
+                                                    <div class="text">Xem chi tiết</div>
+                                                </div>
+                                            </div>
+                                            <div class="caption">
+                                                <div class="space5">&nbsp;</div>
+                                                <a href="#"> 
+                                                    <b class="text-price">
+                                                        <span class="text-danger ">
+                                                            1,000,000đ
+                                                        </span>  &nbsp;
+                                                        <span class="flash-del">
+                                                         1,000,000đ
+                                                        </span>
+                                                    </b>
+                                                    <div class="space10">&nbsp;</div>
+                                                    <p class='text-right text-title'><b>HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</b>&nbsp;</p>
+                                                </a>
+                                                <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
+                                    <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                            <div class="ribbon1 sale">Sale</div>
+                                        </div>
+                                        <div class="thumbnail">
+                                            <div class="containeroverlay">
+                                                <a href="#"><img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                <div class="overlay">
+                                                    <div class="text">Xem chi tiết</div>
+                                                </div>
+                                            </div>
+                                            <div class="caption">
+                                                <div class="space5">&nbsp;</div>
+                                                <a href="#"> 
+                                                    <b class="text-price">
+                                                        <span class="text-danger ">
+                                                            1,000,000đ
+                                                        </span>  &nbsp;
+                                                        <span class="flash-del">
+                                                         1,000,000đ
+                                                        </span>
+                                                    </b>
+                                                    <div class="space10">&nbsp;</div>
+                                                    <p class='text-right text-title'><b>HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</b>&nbsp;</p>
+                                                </a>
+                                                <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                                <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+>>>>>>> 2ff636689527e757831264fb1bdf32fc3490f91e
                             </div>
                             <!-- Hang 2 -->
                             <!-- San pham moi -->
