@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
+use App\Product;
+use App\ProductDetail;
 
 class PageController extends Controller
 {
     public function getIndex(){
-    	return view('page.trangchu');
+        $promotion_product = Product::where('promotion_price', '<>', '0')->get();
+        $new_product = Product::where('status', 1)->get();
+        $hot_product = Product::where('status', 2)->get();
+        // dd($new_product);
+        // $detail_product = ProductDetail::where('id_product', 2)->get();
+    	return view('page.trangchu',compact('new_product','hot_product','promotion_product'));
     }
 
     public function getLoaiSP(){
