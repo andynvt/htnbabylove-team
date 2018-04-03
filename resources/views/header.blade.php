@@ -52,7 +52,7 @@
                                     <div class="col-lg-6">
                                         <div class="row">
                                         @foreach($loai_sanpham as $l_sp)
-                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="" title="{{$l_sp->type_name}}">{{$l_sp->type_name}}</a> </div>
+                                            <div class="col-lg-6 div-item"> <a class="dropdown-item item-drd" href="{{ route('loaisanpham',$l_sp->id_type) }}" title="{{$l_sp->type_name}}">{{$l_sp->type_name}}</a> </div>
                                         @endforeach
                                         </div>
                                     </div>

@@ -20,8 +20,15 @@ class PageController extends Controller
     	return view('page.trangchu',compact('new_product','hot_product','promotion_product','lsp'));
     }
 
-    public function getLoaiSP(){
-    	return view('page.loai_sanpham');
+    public function getLoaiSP($type){
+        $lsp = ProductType::all();
+        $sp_theoloai = Product::where('id_type',$type)->get();
+        $detail_product = ProductDetail::all();
+        $id_product = Product::all();
+
+        $loai_ssp = ProductType::where('id_type',$type)->first();
+
+    	return view('page.loai_sanpham',compact('lsp','sp_theoloai','detail_product','id_product','loai_ssp'));
     }
 
     public function getDetail(){
@@ -43,9 +50,6 @@ class PageController extends Controller
     public function getCheckout(){
         return view('page.thanhtoan');
     }
-
-    
-
 
     //Admin
     public function getAdminIndex(){

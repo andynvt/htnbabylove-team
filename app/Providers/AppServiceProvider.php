@@ -18,6 +18,11 @@ class AppServiceProvider extends ServiceProvider
             $loai_sanpham = ProductType::all();
             $view->with('loai_sanpham',$loai_sanpham);
         });
+
+        // view()->composer('page.loai_sanpham',function($view){
+        //     $l_sanpham = ProductType::all();
+        //     $view->with('l_sanpham',$l_sanpham);
+        // });
     }
 
     /**
