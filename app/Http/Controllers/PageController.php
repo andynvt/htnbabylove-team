@@ -12,9 +12,13 @@ class PageController extends Controller
         $promotion_product = Product::where('promotion_price', '<>', '0')->get();
         $new_product = Product::where('status', 1)->get();
         $hot_product = Product::where('status', 2)->get();
-        // dd($new_product);
+
+        $detail_product = ProductDetail::all();
+       
+       
+        // dd($anh);
         // $detail_product = ProductDetail::where('id_product', 2)->get();
-    	return view('page.trangchu',compact('new_product','hot_product','promotion_product'));
+    	return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product'));
     }
 
     public function getLoaiSP(){
