@@ -186,7 +186,7 @@ body {
     border: 0px solid #e1e1e1!important
 }
 
-.panel-default>.panel-heading .panel-title a {
+.panel-default > .panel-heading .panel-title a {
     padding: 0px 15px 5px 15px;
     width: 100%;
     height: 100%;
@@ -246,6 +246,7 @@ body {
 .btn-full {
     width: 100%;
     border-radius: 0%;
+    border: none;
 }
 
 .text-price {

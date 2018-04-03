@@ -30,7 +30,10 @@ class PageController extends Controller
     }
 
     public function getDetail(){
-        return view('page.chitiet_sanpham');
+        $sanpham = Product::where('id_product', $req->id)->first();
+        $getfeedbacksp = Product::all();
+        $feedback = Feedback::all();
+        return view('page.chitiet_sanpham', compact('sanpham','feedback','getfeedbacksp'));
     }
 
     public function getAbout(){

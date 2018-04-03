@@ -12,5 +12,3 @@ class Feedback extends Model
     	return $this->hasOne('App\Product','id_feedback','id_feedback');
     }
 }
-    
-}
