@@ -14,7 +14,7 @@ class PageController extends Controller
         $new_product = Product::where('status', 1)->get();
         $hot_product = Product::where('status', 2)->get();
 
-        $lsp = ProductType::get();
+        $lsp = ProductType::all();
         // dd($new_product);
         // $detail_product = ProductDetail::where('id_product', 2)->get();
     	return view('page.trangchu',compact('new_product','hot_product','promotion_product','lsp'));
