@@ -5,6 +5,7 @@ use App\Customer;
 use Illuminate\Http\Request;
 use App\Product;
 use App\ProductDetail;
+use App\ProductType;
 
 class PageController extends Controller
 {
@@ -12,9 +13,11 @@ class PageController extends Controller
         $promotion_product = Product::where('promotion_price', '<>', '0')->get();
         $new_product = Product::where('status', 1)->get();
         $hot_product = Product::where('status', 2)->get();
+
+        $lsp = ProductType::get();
         // dd($new_product);
         // $detail_product = ProductDetail::where('id_product', 2)->get();
-    	return view('page.trangchu',compact('new_product','hot_product','promotion_product'));
+    	return view('page.trangchu',compact('new_product','hot_product','promotion_product','lsp'));
     }
 
     public function getLoaiSP(){

@@ -24,8 +24,9 @@
                                             <label for="location1" class="control-label">Loại sản phẩm:</label>
                                             <select class="form-control" name="" id="location1">
                                                 <option value="#">Chọn loại sản phẩm</option>
-                                                <option value="">1</option>
-                                                <option value="">2</option>
+                                                @foreach($lsp as $loai)
+                                                    <option value="#">{{$loai->type_name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
