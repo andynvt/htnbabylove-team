@@ -145,6 +145,7 @@
 .info-feedback input {
     border-radius: 5px;
     border: 1px solid black;
+    padding: 0 5px;
 }
 
 .info-feedback textarea {
@@ -189,7 +190,7 @@
 
 @media (min-width: 1024px) {
     #feedback .modal-dialog {
-        max-width: 30% !important;
+        max-width: 35% !important;
         margin: 30px auto;
     }
 }
