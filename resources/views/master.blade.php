@@ -37,6 +37,8 @@
     <link href="source/css/checkout.css" rel="stylesheet" />
     <link href="source/css/responsive_product_detail.css" rel="stylesheet" />
     <link href="source/css/feedback.css" rel="stylesheet" />
+    <link href="source/css/chitietsanpham_custom.css" rel="stylesheet">
+
 
 
 </head>

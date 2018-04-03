@@ -23,10 +23,15 @@ body {
 .input-group-addon {
     /*    content: "\f067";*/
 }
+.div-img-home{
+    
+    overflow: hidden;
+}
 
 .img-responsive {
     width: 100%;
-    /*    height: ;: 200px;*/
+    /*height: 100%;*/
+    object-fit: contain;
 }
 
 .panel-title a {

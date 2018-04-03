@@ -89,7 +89,9 @@
                                         </div>
                                         <div class="thumbnail">
                                             <div class="containeroverlay">
-                                                <a href="#"><img src="http://placehold.it/1024x768/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                <div class="div-img-home">
+                                                    <a href="#"><img src="http://placehold.it/1024x768/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                </div>
                                                 <div class="overlay">
                                                     <div class="text">Xem chi tiết</div>
                                                 </div>
