@@ -1,18 +1,18 @@
 ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #dddddd;
-    opacity: 1;
+    color: black;
+    opacity: 0.6;
     /* Firefox */
 }
 
 :-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: #dddddd;
+    color: black;
 }
 
 ::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: #dddddd;
+    color: black;
 }
 
 .modal-dialog-feed-back {
