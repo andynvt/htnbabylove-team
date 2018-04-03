@@ -84,6 +84,8 @@
                             <div class="space15">&nbsp;</div>
                             <div class="row">
                             @foreach($promotion_product as $promo)
+                            @foreach($detail_product as $anh)
+                            @if($promo->id_product == $anh->id_product)
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
                                     <div class="single-item">
                                         <div class="ribbon-wrapper">
@@ -92,7 +94,7 @@
                                         <div class="thumbnail">
                                             <div class="containeroverlay">
                                               
-                                                    <a href="#"><img src="http://placehold.it/1024x768/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                    <a href="#"><img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive"></a>
                                                
                                                 <div class="overlay">
                                                     <div class="text">Xem chi tiết</div>
@@ -119,6 +121,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
+                            @endforeach
                             @endforeach
                             </div>
                             <!-- Hang 2 -->
@@ -128,6 +132,8 @@
                             <div class="space15">&nbsp;</div>
                             <div class="row">
                             @foreach($new_product as $new)
+                             @foreach($detail_product as $anh)
+                            @if($new->id_product == $anh->id_product)
                                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                                     <div class="single-item">
                                         <div class="ribbon-wrapper">
@@ -141,7 +147,7 @@
                                         </div>
                                         <div class="thumbnail">
                                             <div class="containeroverlay">
-                                                <a href="#"><img src="{{-- source/image/{{$new->image}} --}}http://placehold.it/670x438/cccccc/ffffff" class="img-responsive"></a>
+                                                <a href="#"><img src="source/image/{{$anh->image}}" class="img-responsive"></a>
                                                 <div class="overlay">
                                                     <div class="text">Xem chi tiết</div>
                                                 </div>
@@ -165,6 +171,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                 @endif
+                            @endforeach
                             @endforeach
                             </div>
                             <!-- Hang 3 -->
@@ -174,6 +182,8 @@
                             <div class="space15">&nbsp;</div>
                             <div class="row">
                             @foreach($hot_product as $hot)
+                            @foreach($detail_product as $anh)
+                            @if($hot->id_product == $anh->id_product)
                                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                                     <div class="single-item">
                                         <div class="ribbon-wrapper">
@@ -187,7 +197,7 @@
                                         </div>
                                         <div class="thumbnail">
                                             <div class="containeroverlay">
-                                                <a href="#"><img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
+                                                <a href="#"><img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive"></a>
                                                 <div class="overlay">
                                                     <div class="text">Xem chi tiết</div>
                                                 </div>
@@ -211,6 +221,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
+                                @endforeach
                             @endforeach
                             </div>
                         </div>
