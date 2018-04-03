@@ -10,7 +10,7 @@
         <div class="row">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('trang-chu') }}">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="#">Quần áo bé gái</a></li>
                     <li class="breadcrumb-item"><a href="#">Đồ bộ bé gái</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Bộ voan bé gái trễ vai họa tiết hoa xinh xắn (9 tháng - 9 tuổi)</li>
@@ -100,10 +100,17 @@
                     <div class="col-md-8 col-sm-12">
                         <form action="" method="POST" accept-charset="utf-8">
                             <div class="single-item-body">
-                                <h3>Bộ voan bé gái trễ vai họa tiết hoa xinh xắn (9 tháng - 9 tuổi)</h3>
-                                <p class="summary-product">Bộ trễ vai cho bé gái họa tiết hoa dễ thương - Chất liệu voan cát mềm nhẹ nhàng, thoáng mát giúp bé thật thoải mái khi vui chơi hay đi học.</p>
+                                <h3>{{ $sanpham->name }}</h3>
+                                <p class="summary-product">{{ $sanpham->description }}.</p>
                                 <hr/>
-                                <p class="single-item-price"> <span class="present-price">150.000 đ</span> </p>
+                                <p class="single-item-price">
+                                    <span class="present-price">
+                                        @if($sanpham->promotion_price == 0)
+                                            <span class="text-danger ">{{number_format($sanpham->unit_price)}} đ</span> &nbsp; @else
+                                    <span class="text-danger ">{{number_format($sanpham->promotion_price)}} đ</span> &nbsp;
+                                    <span class="flash-del">{{number_format($sanpham->unit_price)}} đ</span> @endif
+                                    </span>
+                                </p>
                                 <div class="select-size-product">
                                     <label class="choose-qty">Chọn số lượng:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn số lượng bạn muốn mua"></i></label>
                                     <br/>
@@ -182,7 +189,7 @@
                         <h5 class="title-intro-product">Chi Tiết Sản Phẩm</h5>
                     </div>
                     <div class="panel" id="tab-description">
-                        <p class="intro-product">Bộ đồ bé gái xinh xắn này được thiết kế kiểu trễ vai hiện đại, trẻ trung chắc chắn sẽ là lựa chọn hoàn hảo cho bé yêu dịp hè thu này. Sản phẩm đã có tại Shop, ba mẹ ghé xem ngay nhé! </p>
+                        <p class="intro-product">{{ $sanpham->description }}.</p>
                         <div class="img-product-show"> <img src="source/image/quanao1.jpg" /> </div>
                         <div class="img-product-show"> <img src="source/image/quanao2.jpg" /> </div>
                         <div class="img-product-show"> <img src="source/image/quanao3.jpg" /> </div>
@@ -194,7 +201,7 @@
                 <div class="content-rate-product">
                     <div class="title-rate">
                         <div class="title">
-                            <h3>15 Đánh giá sản phẩm abc</h3>
+                            <h3>{{ count($getfeedbacksp) }} Đánh giá sản phẩm {{ $sanpham->name }}</h3>
                         </div>
                         <div class="go-to-rate">
                             <!-- <a href="#text-comment">Gửi đánh giá của bạn</a> -->
@@ -202,36 +209,24 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#feedback"> Gửi đánh giá của bạn </button>
                         </div>
                     </div>
+                    @foreach($getfeedbacksp as $fbsp) @foreach($feedback as $fb) @if($fbsp->id_feedback == $fb->id_feedback)
                     <div class="content-rate">
-                        <div class="name-user"> <span>Đỗ Thị Thu Yến</span> </div>
-                        <div class="time-post"> <span>18:22 | 17/01/2018</span> </div>
+                        <div class="name-user"> <span>{{$fb->reviewer}}</span> </div>
+                        <div class="time-post"> <span>{{$fb->create_at}}</span> </div>
                         <div class="star-rate">
-                            <div class="start-sum"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                            <div class="start-sum">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
                             <div class="comment">
-                                <p>Bộ đồ nó mới đẹp làm sao. Sẽ ủng hộ shop vì giá mềm đồ lại tốt.</p>
+                                <p>{{ $fb->review }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="content-rate">
-                        <div class="name-user"> <span>Đỗ Thị Thu Yến</span> </div>
-                        <div class="time-post"> <span>18:22 | 17/01/2018</span> </div>
-                        <div class="star-rate">
-                            <div class="start-sum"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                            <div class="comment">
-                                <p>Bộ đồ nó mới đẹp làm sao. Sẽ ủng hộ shop vì giá mềm đồ lại tốt.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content-rate">
-                        <div class="name-user"> <span>Đỗ Thị Thu Yến</span> </div>
-                        <div class="time-post"> <span>18:22 | 17/01/2018</span> </div>
-                        <div class="star-rate">
-                            <div class="start-sum"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                            <div class="comment">
-                                <p>Bộ đồ nó mới đẹp làm sao. Sẽ ủng hộ shop vì giá mềm đồ lại tốt.</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endif @endforeach @endforeach
                     <div class="pagination-comment">
                         <div class="row" id="frame-paging">
                             <nav aria-label="Page navigation example">

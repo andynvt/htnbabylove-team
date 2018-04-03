@@ -178,21 +178,32 @@
                                                 $(".them-mau").on("click", function() {
                                                     $(this).next(".testcolor").css("display", "block");
                                                 });
+                                                var i = 1;
 
                                                 $('.check').on('click', function() {
-                                                    var i = 1;
+                                                    if (i == 1) {
+                                                        $(".demo-color").css("display", "inline-block");
+                                                        color1 = $('.select_color input[name="color1"]').val();
+                                                        color2 = $('.select_color input[name="color2"]').val();
+                                                        string = 'repeating-linear-gradient';
+                                                        $("#demo-color1").css('background', '' + string + '(' + color1 + ',' + color1 + ' 10%,' + color2 + ' 10%,' + color2 + ' 20%)');
 
+                                                        $(this).parent(".testcolor").css("display", "none");
 
-                                                    $("#demo-color" + i).clone().appendTo(".khung-mau");
+                                                    } else {
+                                                        var id = $("#demo-color1").clone();
+                                                        id.attr("id", "demo-color" + i);
+                                                        $(".khung-mau").append(id);
 
-                                                    color1 = $('.select_color input[name="color1"]').val();
-                                                    color2 = $('.select_color input[name="color2"]').val();
-                                                    string = 'repeating-linear-gradient';
-                                                    $(this).parents(".khungchuamau").next("#demo-color" + i).css('background', '' + string + '(' + color1 + ',' + color1 + ' 10%,' + color2 + ' 10%,' + color2 + ' 20%)');
+                                                        color1 = $('.select_color input[name="color1"]').val();
+                                                        color2 = $('.select_color input[name="color2"]').val();
+                                                        string = 'repeating-linear-gradient';
+                                                        id.css('background', '' + string + '(' + color1 + ',' + color1 + ' 10%,' + color2 + ' 10%,' + color2 + ' 20%)');
 
-                                                    $(this).parent(".testcolor").css("display", "none");
-
+                                                        $(this).parent(".testcolor").css("display", "none");
+                                                    }
                                                     i++;
+
                                                 });
 
                                             </script>
@@ -209,7 +220,7 @@
                                                        </button>
                                                     </div>
                                                 </div>
-                                                <p style="color: #9A9A9A;">(*) Trỏ chuột vào dấu cộng để xem tên các file đã chọn</p>
+                                                <p style="color: #9A9A9A;">(*) Trỏ chuột vào dấu cộng để xem tên các ảnh đã chọn</p>
                                             </div>
                                         </div>
 
