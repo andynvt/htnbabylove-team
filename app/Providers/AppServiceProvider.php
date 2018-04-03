@@ -14,6 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
+        
         view()->composer('header',function($view){
             $loai_sanpham = ProductType::all();
             $view->with('loai_sanpham',$loai_sanpham);
