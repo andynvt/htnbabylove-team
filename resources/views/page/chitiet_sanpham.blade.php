@@ -1,8 +1,9 @@
 @extends('master') @section('content')
 <script type="text/javascript">
-    $(function () {
+    $(function() {
         $('[data-toggle="tooltip"]').tooltip()
     })
+
 </script>
 <div class="cnt-user">
     <div class="container-fluid">
@@ -29,7 +30,7 @@
                                 <div class="column"> <img src="source/image/img2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor"> </div>
                                 <div class="column"> <img src="source/image/img3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor"> </div>
                                 <div class="column"> <img src="source/image/img4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor"> </div>
-                               
+
                             </div>
                         </div>
                         <div id="modal-img-mini" class="modal-img-mini"> <span class="close cursor" onclick="closeModal()">&times;</span>
@@ -93,6 +94,7 @@
                                 dots[slideIndex - 1].className += " active";
                                 captionText.innerHTML = dots[slideIndex - 1].alt;
                             }
+
                         </script>
                     </div>
                     <div class="col-md-8 col-sm-12">
@@ -103,37 +105,18 @@
                                 <hr/>
                                 <p class="single-item-price"> <span class="present-price">150.000 đ</span> </p>
                                 <div class="select-size-product">
-                                    <label class="choose-size">Chọn kích cỡ:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn size quần áo cho bé"></i></label>
-                                    <br/>
-                                    <div class="space10">&nbsp;</div>
-                                    <div class="input-group mb-3" style="width: 45%;">
-                                        <select class="custom-select" id="inputGroupSelect01">
-                                            <option selected>8.5 - 10.5kg </option>
-                                            <option value="1011">10 - 11.5kg </option>
-                                            <option value="1113">11.5 - 13.5kg </option>
-                                            <option value="1315">13.5 - 15kg </option>
-                                            <option value="1517">15 - 17kg </option>
-                                            <option value="1720">17 - 20kg </option>
-                                            <option value="2023">20 - 23kg </option>
-                                            <option value="2326">23 - 26kg </option>
-                                            <option value="2630">26 - 30kg </option>
-                                            <option value="3035">30 - 35kg </option>
-                                        </select>
-                                    </div>
-                                   
-                                    <div class="space10">&nbsp;</div>
                                     <label class="choose-qty">Chọn số lượng:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn số lượng bạn muốn mua"></i></label>
                                     <br/>
                                     <div class="space10">&nbsp;</div>
                                     <div class="input-group mb-3" style="width: 45%;">
-                                                    <div class="input-group-prepend">
-                                                        <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
-                                                    </div>
-                                                    <input type="text" class="form-control text-center" value="1">
-                                                    <div class="input-group-append">
-                                                        <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
-                                                    </div>
-                                                </div>
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                        <input type="text" class="form-control text-center" value="1">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                    </div>
                                     <div class="space10">&nbsp;</div>
                                     <label class="choose-qty">Chọn màu sắc:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn số lượng bạn muốn mua"></i></label>
                                     <div class="form-group">
@@ -196,7 +179,8 @@
                 <div class="space40">&nbsp;</div>
                 <div class="woocommerce-tabs">
                     <div class="title-of-product">
-                        <h5 class="title-intro-product">Chi Tiết Sản Phẩm</h5> </div>
+                        <h5 class="title-intro-product">Chi Tiết Sản Phẩm</h5>
+                    </div>
                     <div class="panel" id="tab-description">
                         <p class="intro-product">Bộ đồ bé gái xinh xắn này được thiết kế kiểu trễ vai hiện đại, trẻ trung chắc chắn sẽ là lựa chọn hoàn hảo cho bé yêu dịp hè thu này. Sản phẩm đã có tại Shop, ba mẹ ghé xem ngay nhé! </p>
                         <div class="img-product-show"> <img src="source/image/quanao1.jpg" /> </div>
@@ -210,7 +194,8 @@
                 <div class="content-rate-product">
                     <div class="title-rate">
                         <div class="title">
-                            <h3>15 Đánh giá sản phẩm abc</h3> </div>
+                            <h3>15 Đánh giá sản phẩm abc</h3>
+                        </div>
                         <div class="go-to-rate">
                             <!-- <a href="#text-comment">Gửi đánh giá của bạn</a> -->
                             <!-- Button to Open the Modal -->
@@ -497,5 +482,6 @@
             dots[slideIndex - 1].className += " active";
             captionText.innerHTML = dots[slideIndex - 1].alt;
         }
+
     </script>
 </div> @endsection
