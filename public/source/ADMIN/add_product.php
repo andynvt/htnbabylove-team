@@ -220,7 +220,7 @@
                                                        </button>
                                                     </div>
                                                 </div>
-                                                <p style="color: #9A9A9A;">(*) Trỏ chuột vào dấu cộng để xem tên các file đã chọn</p>
+                                                <p style="color: #9A9A9A;">(*) Trỏ chuột vào dấu cộng để xem tên các ảnh đã chọn</p>
                                             </div>
                                         </div>
 
