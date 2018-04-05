@@ -1,8 +1,9 @@
 <head>
-    <title>{{$sanpham->name}} | HTN Baby Love</title>
+    <title>Sản phẩm | {{ $sanpham->name }}</title> 
 </head>
-@extends('master') @section('content')
+@extends('master') 
 
+@section('content')
 <script type="text/javascript">
     $(function() {
         $('[data-toggle="tooltip"]').tooltip()
@@ -15,9 +16,8 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('trang-chu') }}">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="#">Quần áo bé gái</a></li>
-                    <li class="breadcrumb-item"><a href="#">Đồ bộ bé gái</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Bộ voan bé gái trễ vai họa tiết hoa xinh xắn (9 tháng - 9 tuổi)</li>
+                    <li class="breadcrumb-item"><a href="{{ route('loaisanpham', $id_lsp) }}">{{ $type_name }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('chitietsanpham', $sanpham->id_product) }}">{{ $sanpham->name }}</a></li>
                 </ol>
             </nav>
         </div>
@@ -205,7 +205,7 @@
                 <div class="content-rate-product">
                     <div class="title-rate">
                         <div class="title">
-                            <h3>{{ count($getfeedbacksp) }} Đánh giá sản phẩm {{ $sanpham->name }}</h3>
+                            <h3>Đánh giá sản phẩm {{ $sanpham->name }}</h3>
                         </div>
                         <div class="go-to-rate">
                             <!-- <a href="#text-comment">Gửi đánh giá của bạn</a> -->
@@ -213,24 +213,24 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#feedback"> Gửi đánh giá của bạn </button>
                         </div>
                     </div>
-                    @foreach($getfeedbacksp as $fbsp) @foreach($feedback as $fb) @if($fbsp->id_feedback == $fb->id_feedback)
-                    <div class="content-rate">
-                        <div class="name-user"> <span>{{$fb->reviewer}}</span> </div>
-                        <div class="time-post"> <span>{{$fb->create_at}}</span> </div>
-                        <div class="star-rate">
-                            <div class="start-sum">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="comment">
-                                <p>{{ $fb->review }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    @endif @endforeach @endforeach
+                        @foreach($feedback as $fb) 
+                                <div class="content-rate">
+                                    <div class="name-user"> <span>{{$fb->reviewer}}</span> </div>
+                                    <div class="time-post"> <span>{{$fb->create_at}}</span> </div>
+                                    <div class="star-rate">
+                                        <div class="start-sum">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <div class="comment">
+                                            <p>{{ $fb->review }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                        @endforeach 
                     <div class="pagination-comment">
                         <div class="row" id="frame-paging">
                             <nav aria-label="Page navigation example">
@@ -483,4 +483,5 @@
         }
 
     </script>
-</div> @endsection
+</div> 
+@endsection

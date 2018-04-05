@@ -32,14 +32,18 @@ class PageController extends Controller
 
     public function getDetail(Request $req){
         $sanpham = Product::where('id_product', $req->id)->first();
-        $getfeedbacksp = Product::all();
-        $feedback = Feedback::all();
-        return view('page.chitiet_sanpham', compact('sanpham','feedback','getfeedbacksp'));
+        $feedback = Feedback::where('id_product', $req->id)->get();
+
+        $id_sp = Product::where('id_product', $req->id)->value('id_type');
+        $id_lsp = Product::where('id_type', $id_sp)->value('id_type');
+
+        $type_name = ProductType::where('id_type', $id_lsp)->value('type_name');
+
+        return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp'));
     }
 
     public function getAbout(){
-        $lsp = ProductType::all();
-    	return view('page.gioithieu',compact('lsp'));
+    	return view('page.gioithieu');
     }
 
     public function getPolicy(){
