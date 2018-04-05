@@ -16,9 +16,7 @@ class TableProducts extends Migration
         Schema::create('products', function ($table){
             $table->increments('id_product');
             $table->integer('id_type')->unsigned();
-            $table->integer('id_feedback')->unsigned();
             $table->foreign('id_type')->references('id_type')->on('product_type');
-            $table->foreign('id_feedback')->references('id_feedback')->on('feedbacks');
             $table->string('name');
             $table->integer('unit_price');
             $table->integer('promotion_price');

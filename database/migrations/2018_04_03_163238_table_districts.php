@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TableSlide extends Migration
+class TableDistricts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class TableSlide extends Migration
      */
     public function up()
     {
-        Schema::create('slides', function($table){
-            $table->increments('id_slide');
-            $table->text('image');
+        Schema::create('districts', function ($table){
+            $table->increments('id_district');
+            $table->string('name');
+            $table->integer('id_city')->unsigned();
+            $table->foreign('id_city')->references('id_city')->on('cities');
         });
     }
 
@@ -26,6 +28,6 @@ class TableSlide extends Migration
      */
     public function down()
     {
-        Schema::drop('slides');
+        Schema::drop('districts');
     }
 }

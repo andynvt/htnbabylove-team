@@ -15,6 +15,8 @@ class TableFeedbacks extends Migration
     {
         Schema::create('feedbacks', function ($table){
             $table->increments('id_feedback');
+            $table->integer('id_product')->unsigned();
+            $table->foreign('id_product')->references('id_product')->on('products');
             $table->integer('stars');
             $table->string('reviewer');
             $table->string('tel');
