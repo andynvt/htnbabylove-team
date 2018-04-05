@@ -158,20 +158,21 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="mausac">Màu sắc:</label>
-
-                                            <div class="khung-mau col-sm-8">
-                                                <div class="khungchuamau w50">
-                                                    <div class="them-mau btn btn-default">
-                                                        <i class="fa fa-plus"></i>
+                                            <div class="col-sm-4">
+                                                <div class="khung-mau">
+                                                    <div class="khungchuamau w50">
+                                                        <div class="them-mau btn btn-default">
+                                                            <i class="fa fa-plus"></i>
+                                                        </div>
+                                                        <div class="select_color testcolor">
+                                                            <input type="color" name="color1" style="width:25px;height:25px;">
+                                                            <input type="color" name="color2" style="width:25px;height:25px;">
+                                                            <br>
+                                                            <button class="check" type="color" style="background:none;border-radius:50%;"><i class="fa fa-check" style="color:#68b3c8"></i></button>
+                                                        </div>
                                                     </div>
-                                                    <div class="select_color testcolor">
-                                                        <input type="color" name="color1" style="width:25px;height:25px;">
-                                                        <input type="color" name="color2" style="width:25px;height:25px;">
-                                                        <br>
-                                                        <button class="check" type="color" style="background:none;border-radius:50%;"><i class="fa fa-check" style="color:#68b3c8"></i></button>
-                                                    </div>
+                                                    <div class="demo-color btn btn-default" id="demo-color1" name="add-color[]" mutiple></div>
                                                 </div>
-                                                <div class="demo-color btn btn-default" id="demo-color1" name="add-color[]" mutiple></div>
                                             </div>
 
                                             <script>
