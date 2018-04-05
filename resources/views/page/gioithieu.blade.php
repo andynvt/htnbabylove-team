@@ -30,7 +30,10 @@
                             <li>Mức giá cạnh tranh: rất nhiều sản phẩm được giảm giá từ 10% trở lên</li>
                         </ul>
                         <p class="about-p-content">
-                            <br><b>Các sản phẩm chúng tôi kinh doanh chủ yếu là:</b></p> <a href="#" class="button btn about-btn">1. Chăn (mền)</a> <a href="#" class="button btn about-btn">2. Bộ mền gối</a> <a href="#" class="button btn about-btn">3. Áo choàng</a> <a href="#" class="button btn about-btn">4. Khăn choàng</a>
+                            <br><b>Các sản phẩm chúng tôi kinh doanh chủ yếu là:</b></p> 
+                            @foreach($lsp as $loai)
+                                <a href="#" class="button btn about-btn">{{$loai->id_type}}. {{$loai->type_name}}</a> 
+                            @endforeach
                         <p class="about-p-content">
                             <br>Quý khách có nhu cầu liên lạc, trao đổi hoặc đóng góp ý kiến, vui lòng tham khảo các thông tin sau:</p>
                         <ul class="about-list">

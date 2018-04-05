@@ -28,14 +28,14 @@
     padding: 4px 10px;
     font-weight: bold;
     font-size: 15px;
-    color: #0F6CB2;
+    color: #C2185B;
     background: none;
-    border: 1px solid #0F6CB2
+    border: 1px solid #C2185B
 }
 
 .about-btn:hover {
     color: #FFFFFF;
-    background: #0F6CB2
+    background: #C2185B
 }
 
 .about-list {
@@ -45,7 +45,7 @@
 }
 
 .about-b {
-    color: #0F6CB2;
+    color: #C2185B;
     font-weight: 600
 }
 

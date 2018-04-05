@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\ProductDetail;
 use App\ProductType;
+use App\Feedback;
 
 class PageController extends Controller
 {
@@ -29,7 +30,7 @@ class PageController extends Controller
     	return view('page.loai_sanpham',compact('lsp','sp_theoloai','detail_product','id_product','loai_ssp'));
     }
 
-    public function getDetail(){
+    public function getDetail(Request $req){
         $sanpham = Product::where('id_product', $req->id)->first();
         $getfeedbacksp = Product::all();
         $feedback = Feedback::all();
@@ -37,7 +38,8 @@ class PageController extends Controller
     }
 
     public function getAbout(){
-    	return view('page.gioithieu');
+        $lsp = ProductType::all();
+    	return view('page.gioithieu',compact('lsp'));
     }
 
     public function getPolicy(){

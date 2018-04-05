@@ -1,4 +1,8 @@
+<head>
+    <title>{{$sanpham->name}} | HTN Baby Love</title>
+</head>
 @extends('master') @section('content')
+
 <script type="text/javascript">
     $(function() {
         $('[data-toggle="tooltip"]').tooltip()

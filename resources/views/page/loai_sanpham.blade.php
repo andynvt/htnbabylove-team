@@ -1,3 +1,6 @@
+<head>
+    <title>{{$loai_ssp->type_name}} | HTN Baby Love</title>
+</head>
 @extends('master')
 @section('content')
 
