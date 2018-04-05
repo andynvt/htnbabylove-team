@@ -12,16 +12,12 @@ class Product extends Model
     	return $this->belongsTo('App\ProductType','id_type','id_product');
     }
 
-    public function bill_detail(){
-    	return $this->hasMany('App\BillDetail','id_product','id_bill_detail');	
-    }
-
     public function promotions(){
     	return $this->hasOne('App\Promotion','id_product','id_product');	
     }
 
     public function feedbacks(){
-    	return $this->belongsToMany('App\Feedback','id_feedback','id_product');	
+    	return $this->hasMany('App\Feedback','id_product','id_product');	
     }
 
     public function product_detail(){
