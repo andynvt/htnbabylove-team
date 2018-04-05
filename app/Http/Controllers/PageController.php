@@ -7,6 +7,7 @@ use App\Product;
 use App\ProductDetail;
 use App\ProductType;
 use App\Feedback;
+use DB;
 
 class PageController extends Controller
 {
@@ -16,6 +17,11 @@ class PageController extends Controller
         $hot_product = Product::where('status', 2)->get();
         $detail_product = ProductDetail::all();
         $lsp = ProductType::all();
+
+        // $array_product = Product::select('id_product')->get();
+        // $array_image = DB::table('products')->join('product_detail','products.id_product','=','product_detail.id_product')->select('product_detail.image')->get();
+
+
     	return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp'));
     }
 
@@ -83,7 +89,7 @@ class PageController extends Controller
     }
 
     public function getadminKhachhang(){
-                $table  = Customer::all();
+        $table  = Customer::all();
         return view('Admin.pageadmin.adminkhachhang',compact('table'));
     }
 
