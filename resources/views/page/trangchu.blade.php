@@ -82,10 +82,9 @@
                     <div class="text-left" style="font-size: 25px; font-weight: 600"> Sản Phẩm Khuyến Mãi ({{count('$promotion_product')}} sản phẩm)</div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
-                        @foreach($promotion_product as $promo) 
-                        {{-- @foreach($array_image as $anh) --}}
-                        @foreach($detail_product as $anh) 
-                        @if($promo->id_product == $anh->id_product)
+                        @foreach($promotion_product as $promo ) 
+                        @foreach($detail_product as $anh ) 
+                        @if($promo->id_product == $anh->id_product  )
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
@@ -94,9 +93,7 @@
                                 <div class="thumbnail">
                                     <a href="{{ route('chitietsanpham', $promo->id_product) }}">
                                         <div class="containeroverlay">
-
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive">
-
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>
                                             </div>
@@ -123,8 +120,11 @@
                                 </div>
                             </div>
                         </div>
-                        @endif @endforeach 
-                        {{-- @endforeach --}}
+                        @if($anh->image == $anh->image )
+                            @break
+                        @endif
+                        @endif 
+                        @endforeach 
                         @endforeach
                     </div>
                     <!-- Hang 2 -->
@@ -173,6 +173,9 @@
                                 </div>
                             </div>
                         </div>
+                        @if($anh->image == $anh->image )
+                            @break
+                        @endif
                         @endif @endforeach @endforeach
                     </div>
                     <!-- Hang 3 -->
@@ -221,6 +224,9 @@
                                 </div>
                             </div>
                         </div>
+                        @if($anh->image == $anh->image )
+                            @break
+                        @endif
                         @endif @endforeach @endforeach
                     </div>
                 </div>
