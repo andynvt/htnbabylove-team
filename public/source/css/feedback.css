@@ -79,11 +79,11 @@
 }
 
 .rate-feed-back .rating-stars ul > li.star.hover > i.fa {
-    color: #FFCC36;
+    color: #F48FB1
 }
 
 .rate-feed-back .rating-stars ul > li.star.selected > i.fa {
-    color: #FF912C;
+    color: #F06292;
 }
 
 
@@ -183,7 +183,7 @@
 
 .send-fb:hover {
     color: #fff;
-    background: black;
+    background: #F06292;
     transition: all 0.3s;
     transform: translateY(-4px);
 }

@@ -419,7 +419,7 @@ body {
 }
 
 .content-rate-product .content-rate .star-rate .start-sum .fa-star {
-    color: #288AD6;
+    color: #F06292;
 }
 
 .content-rate-product .content-rate .star-rate .start-sum .fa-star-o {}
@@ -639,4 +639,18 @@ img {
 
 #show-images .hover-shadow:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+
+.btn-sendfb{
+    background: #F06292;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-sendfb:hover{
+    background: #E91E63;
 }
