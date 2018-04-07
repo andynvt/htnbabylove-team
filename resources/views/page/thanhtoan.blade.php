@@ -10,28 +10,20 @@ if (mysqli_connect_error())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 ?>
+<div class="cnt-user">
+     <div class="container-fluid">
+            <div class="row">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Đặt hàng</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
 <div class="container-full checkout-body">
         <div class="container-fluid">
-            <div class="">
-                <div id="" class="content-product-link">
-                    <div class="row">
-                        <p></p>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12" id="bar-prodduct">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb bgclor_checkout">
-                                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Đặt hàng</a></li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <p></p>
-            </div>
+          
             <div class="clearfix"></div>
             <form action="#" method="post" class="beta-form-checkout">
                 <div class="row">
@@ -231,6 +223,7 @@ if (mysqli_connect_error())
             <!--content-->
         </div>
         <!--container f-->
+</div>
 </div>
     <br>
     <script type="text/javascript">

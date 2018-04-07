@@ -29,6 +29,7 @@ body {
     position: relative;
     background-size: cover;
     background-position: center;
+    overflow:hidden;
 }
 
 .panel-title a {
@@ -143,11 +144,6 @@ body {
     color: #fff;
 }
 
-.btn-themvaogio:hover{
-    background: #E91E63;
-    color: #fff;
-}
-
 .slider.slider-horizontal {
     width: 100%;
 }
@@ -252,7 +248,6 @@ body {
     width: 100%;
     border-radius: 0%;
     border: none;
-    cursor: pointer;
 }
 
 .text-price {
@@ -323,15 +318,12 @@ body {
     #navbar {}
     .sticky {
         position: fixed;
+        padding-top: 0;
         width: 18%;
-        /*        width: 174px;*/
         left: 11%;
         margin-top: -250px;
     }
-    .sticky {
-        padding-top: 0;
-        margin-top: -250px;
-    }
+    
 }
 
 

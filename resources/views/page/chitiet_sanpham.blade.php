@@ -30,10 +30,10 @@
                         <!-- <h2 style="text-align:center">Lightbox</h2> -->
                         <div class="img-mini">
                             <div class="row">
-                                <div class="column"> <img src="source/image/img1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> </div>
-                                <div class="column"> <img src="source/image/img2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor"> </div>
-                                <div class="column"> <img src="source/image/img3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor"> </div>
-                                <div class="column"> <img src="source/image/img4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor"> </div>
+                                <div class="column"> <img src="source/image/img1.jpg" style="width:100%; height: 50px"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> </div>
+                                <div class="column"> <img src="source/image/img2.jpg" style="width:100%; height: 50px" onclick="openModal();currentSlide(2)" class="hover-shadow cursor"> </div>
+                                <div class="column"> <img src="source/image/img3.jpg" style="width:100%; height: 50px" onclick="openModal();currentSlide(3)" class="hover-shadow cursor"> </div>
+                                <div class="column"> <img src="source/image/img4.jpg" style="width:100%; height: 50px" onclick="openModal();currentSlide(4)" class="hover-shadow cursor"> </div>
 
                             </div>
                         </div>
@@ -205,18 +205,12 @@
                 <div class="content-rate-product">
                     <div class="title-rate">
                         <div class="title">
-                            <h3 style="text-transform: initial;">
-                                @if(count($feedback) == 0)
-                                    Không có đánh giá nào
-                                @else
-                                    Có {{ count($feedback) }} đánh giá sản phẩm {{ $sanpham->name }}
-                                @endif
-                            </h3>
+                            <h3>Đánh giá sản phẩm {{ $sanpham->name }}</h3>
                         </div>
                         <div class="go-to-rate">
                             <!-- <a href="#text-comment">Gửi đánh giá của bạn</a> -->
                             <!-- Button to Open the Modal -->
-                            <button type="button" class="btn-sendfb" data-toggle="modal" data-target="#feedback"> Gửi đánh giá của bạn </button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#feedback"> Gửi đánh giá của bạn </button>
                         </div>
                     </div>
                         @foreach($feedback as $fb) 
@@ -225,21 +219,18 @@
                                     <div class="time-post"> <span>{{$fb->create_at}}</span> </div>
                                     <div class="star-rate">
                                         <div class="start-sum">
-                                            <input id="{{ $fb->id_feedback }}" type="hidden" value="{{ $fb->stars }}">
-                                            <div class="khong-duoc-xoa"></div>
-                                            <script>
-                                                for($i=0; $i < {{ $fb->stars }} ; $i++){
-                                                    $('#{{ $fb->id_feedback }}').next('.khong-duoc-xoa').append('<i class="fa fa-star fa-fw"></i>');
-                                                }
-                                            </script>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
                                         </div>
                                         <div class="comment">
                                             <p>{{ $fb->review }}</p>
                                         </div>
                                     </div>
                                 </div>
-                        @endforeach
-
+                        @endforeach 
                     <div class="pagination-comment">
                         <div class="row" id="frame-paging">
                             <nav aria-label="Page navigation example">

@@ -93,7 +93,7 @@
                                 <div class="thumbnail">
                                     <a href="{{ route('chitietsanpham', $promo->id_product) }}">
                                         <div class="containeroverlay">
-                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive">
+                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>
                                             </div>
@@ -113,7 +113,7 @@
                                                     <div class="space10">&nbsp;</div>
                                                     <p class='text-left text-title'><b>{{$promo->name}}</b>&nbsp;</p>
                                                 </a>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$promo->id_product}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr>
                                     </div>
@@ -148,7 +148,7 @@
                                 <div class="thumbnail">
                                     <a href="{{ route('chitietsanpham', $new->id_product) }}">
                                         <div class="containeroverlay">
-                                            <img src="source/image/{{$anh->image}}" class="img-responsive">
+                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>
                                             </div>
@@ -166,7 +166,7 @@
                                                 </b>
                                         <div class="space10">&nbsp;</div>
                                         <p class='text-left text-title'><b>{{$new->name}}</b>&nbsp;</p>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$new->id_product}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr>
                                     </div>
@@ -199,7 +199,7 @@
                                 <div class="thumbnail">
                                     <a href="{{ route('chitietsanpham', $hot->id_product) }}">
                                         <div class="containeroverlay">
-                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive">
+                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>
                                             </div>
@@ -218,7 +218,7 @@
                                                     <div class="space10">&nbsp;</div>
                                                     <p class='text-left text-title'><b>{{$hot->name}}</b>&nbsp;</p>
                                                 </a>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$hot->id_product}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr> </div>
                                 </div>

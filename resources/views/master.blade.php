@@ -39,9 +39,6 @@
     <link href="source/css/responsive_product_detail.css" rel="stylesheet" />
     <link href="source/css/feedback.css" rel="stylesheet" />
     <link href="source/css/chitietsanpham_custom.css" rel="stylesheet">
-
-
-
 </head>
 
 <body>
@@ -596,14 +593,17 @@
             </div>
         </div>
     </form>
-    <!--  Modal Mua Nhanh-->
-    <div class="modal fade" id="1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!--  Modal Mua Nhanh promotion-->
+    @foreach($promotion_product as $promo ) 
+        @foreach($detail_product as $anh ) 
+            @if($promo->id_product == $anh->id_product  )
+    <div class="modal fade" id="{{$promo->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
-        <form action="checkout.php" method="post">
+        <form action="#" method="post">      
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-title-modal " id="exampleModalLongTitle">HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</h5>
+                        <h5 class="modal-title text-title-modal " id="exampleModalLongTitle">{{$promo->name}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                     </div>
                     <div class="modal-body">
@@ -612,16 +612,29 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="single-item">
                                         <div class="ribbon-wrapper">
-                                            <div class="ribbon1 sale buy-item">Sale</div>
+                                            @if($promo->promotion_price != 0)
+                                        <div class="ribbon1 sale">Sale</div>
+                                        @elseif($promo->status == 1)
+                                        <div class="ribbon1 new">New</div>
+                                        @elseif($promo->status == 2)
+                                        <div class="ribbon1 hot">Hot</div>
+                                        @endif
                                         </div>
                                         <div class="thumbnail">
-                                            <div class="containeroverlay"> <img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"> </div>
+                                            <div class="containeroverlay"> <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive"> </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-offset-0">
                                     <div class="space10">&nbsp;</div>
-                                    <p class="text-danger text-price-model"><b>&nbsp; 1,000,000đ</b></p>
+                                   <b class="text-price">
+                                                @if($promo->promotion_price == 0)
+                                                            <span class="text-danger ">{{number_format($promo->unit_price)}} đ</span> &nbsp;
+                                                        @else
+                                                            <span class="text-danger ">{{number_format($promo->promotion_price)}} đ</span> &nbsp;
+                                                            <span class="flash-del">{{number_format($promo->unit_price)}} đ</span>
+                                                        @endif
+                                                </b>
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6">
@@ -642,34 +655,17 @@
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
                                                     <div class="dropdown">
-                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: black"></span></button>
+                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: none
+                                                        "></span></button>
                                                         <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
-                                                            <li><span class="color " style="background: black"></span></li>
-                                                            <li><span class="color " style="background: red"></span></li>
-                                                            <li><span class="color " style="background: #f90"></span></li>
-                                                            <li><span class="color " style="background: brown"></span></li>
-                                                            <li><span class="color " style="background: orange"></span></li>
-                                                            <li><span class="color " style="background: pink"></span></li>
-                                                            <li><span class="color " style="background: silver"></span></li>
-                                                            <li><span class="color " style="background: blue"></span></li>
-                                                            <li><span class="color " style="background: TEAL"></span></li>
-                                                            <li><span class="color " style="background: repeating-linear-gradient(90deg, transparent,                                     transparent 50px,
-                                                                                            rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px,
-                                                                                            transparent 56px, transparent 63px,
-                                                                                            rgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px,
-                                                                                            transparent 69px, transparent 116px,
-                                                                                            rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),
-                                                                                          repeating-linear-gradient(0deg, transparent, transparent 50px,
-                                                                                            rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px,
-                                                                                            transparent 56px, transparent 63px,
-                                                                                            rgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px,
-                                                                                            transparent 69px, transparent 116px,
-                                                                                            rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),
-                                                                                          repeating-linear-gradient(-45deg, transparent, transparent 5px,
-                                                                                            rgba(143, 77, 63, 0.25) 5px, rgba(143, 77, 63, 0.25) 10px),
-                                                                                          repeating-linear-gradient(45deg, transparent, transparent 5px,
-                                                                                            rgba(143, 77, 63, 0.25) 5px, rgba(143, 77, 63, 0.25) 10px);"></span></li>
-                                                            <li><span class="color " style="background: repeating-linear-gradient( red, red 5px, blue 5px, blue 10px)"></span></li>
+                                                            @foreach($promotion_product as $pro ) 
+                                                            @foreach($detail_product as $mau ) 
+                                                            @if($pro->id_product == $mau->id_product  )
+                                                            <li><span class="color " style="background: {{$mau->color}}"></span></li>
+                                                            @endif
+                                                            @endforeach
+                                                            @endforeach
+                                                            
                                                             <input type="hidden" name="_color" value=""> </ul>
                                                     </div>
                                                 </div>
@@ -701,10 +697,240 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>             
         </form>
     </div>
-    <!--  Modal Mua Nhanh-->
+       @break
+    @endif 
+    @endforeach 
+    @endforeach
+    <!--  Modal Mua Nhanh promotion-->
+
+    <!--  Modal Mua Nhanh new-->
+    @foreach($new_product as $new ) 
+        @foreach($detail_product as $anh ) 
+            @if($new->id_product == $anh->id_product  )
+    <div class="modal fade" id="{{$new->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <!--  Modal Mua Nhanh-->
+        <form action="#" method="post">      
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-title-modal " id="exampleModalLongTitle">{{$new->name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-full">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                            @if($new->promotion_price != 0)
+                                        <div class="ribbon1 sale">Sale</div>
+                                        @elseif($new->status == 1)
+                                        <div class="ribbon1 new">New</div>
+                                        @elseif($new->status == 2)
+                                        <div class="ribbon1 hot">Hot</div>
+                                        @endif
+                                        </div>
+                                        <div class="thumbnail">
+                                            <div class="containeroverlay"> <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-offset-0">
+                                    <div class="space10">&nbsp;</div>
+                                   <b class="text-price">
+                                                @if($new->promotion_price == 0)
+                                                            <span class="text-danger ">{{number_format($new->unit_price)}} đ</span> &nbsp;
+                                                        @else
+                                                            <span class="text-danger ">{{number_format($new->promotion_price)}} đ</span> &nbsp;
+                                                            <span class="flash-del">{{number_format($new->unit_price)}} đ</span>
+                                                        @endif
+                                                </b>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <p class=" text-price"><b>&nbsp;Số lượng:</b></p>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                    <input type="text" class="form-control text-center" value="1">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="space15">&nbsp;</div>
+                                            </div>
+                                            <!--   <div class="space30">&nbsp;</div>-->
+                                            <div class="col-lg-6 col-md-6">
+                                                <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
+                                                <div class="form-group">
+                                                    <div class="dropdown">
+                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: none
+                                                        "></span></button>
+                                                        <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
+                                                            @foreach($new_product as $pro ) 
+                                                            @foreach($detail_product as $mau ) 
+                                                            @if($pro->id_product == $mau->id_product  )
+                                                            <li><span class="color " style="background: {{$mau->color}}"></span></li>
+                                                            @endif
+                                                            @endforeach
+                                                            @endforeach
+                                                            
+                                                            <input type="hidden" name="_color" value=""> </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="space10">&nbsp;</div>
+                                            </div>
+                                            <p class=" text-price"><b>&nbsp;Thông tin cơ bản:</b></p>
+                                            <div class="col-lg-12 ">Balo Thời Trang PRAZA được thiết kế tinh tế, hiện đại mang phong cách Hàn Quốc vừa thời trang vừa gọn nhẹ lại vừa năng động lịch lãm cho các hoạt động ngoài trời hay đi gặp đối tác tự tin mà vẫn lịch sự thời trang. Gam màu của Balo PRAZA mang lại cho bạn nét thanh lịch, trẻ trung đầy sức hút. </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3 col-xs-12">
+                                    <button class="btn btn-danger btn-full " data-dismiss="modal">Huỷ</button>
+                                </div>
+                                <div class="col"> &nbsp; </div>
+                                <div class="col-lg-3 col-md-4 col-xs-12">
+                                    <button class="btn btn-buy btn-full ">Thêm Vào Giỏ</button>
+                                    <div class="space10">&nbsp;</div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-xs-12">
+                                    <button class="btn btn-buy btn-full button" type="submit"><span>Thanh Toán</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>             
+        </form>
+    </div>
+       @break
+    @endif 
+    @endforeach 
+    @endforeach
+    <!--  Modal Mua Nhanh new-->
+
+    <!--  Modal Mua Nhanh hot-->
+    @foreach($hot_product as $hot ) 
+        @foreach($detail_product as $anh ) 
+            @if($hot->id_product == $anh->id_product  )
+    <div class="modal fade" id="{{$hot->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <!--  Modal Mua Nhanh-->
+        <form action="#" method="post">      
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-title-modal " id="exampleModalLongTitle">{{$hot->name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-full">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                            @if($hot->promotion_price != 0)
+                                        <div class="ribbon1 sale">Sale</div>
+                                        @elseif($hot->status == 1)
+                                        <div class="ribbon1 new">New</div>
+                                        @elseif($hot->status == 2)
+                                        <div class="ribbon1 hot">Hot</div>
+                                        @endif
+                                        </div>
+                                        <div class="thumbnail">
+                                            <div class="containeroverlay"> <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-offset-0">
+                                    <div class="space10">&nbsp;</div>
+                                   <b class="text-price">
+                                                @if($hot->promotion_price == 0)
+                                                            <span class="text-danger ">{{number_format($hot->unit_price)}} đ</span> &nbsp;
+                                                        @else
+                                                            <span class="text-danger ">{{number_format($hot->promotion_price)}} đ</span> &nbsp;
+                                                            <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
+                                                        @endif
+                                                </b>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <p class=" text-price"><b>&nbsp;Số lượng:</b></p>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                    <input type="text" class="form-control text-center" value="1">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="space15">&nbsp;</div>
+                                            </div>
+                                            <!--   <div class="space30">&nbsp;</div>-->
+                                            <div class="col-lg-6 col-md-6">
+                                                <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
+                                                <div class="form-group">
+                                                    <div class="dropdown">
+                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: none
+                                                        "></span></button>
+                                                        <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
+                                                            @foreach($hot_product as $pro ) 
+                                                            @foreach($detail_product as $mau ) 
+                                                            @if($pro->id_product == $mau->id_product  )
+                                                            <li><span class="color " style="background: {{$mau->color}}"></span></li>
+                                                            @endif
+                                                            @endforeach
+                                                            @endforeach
+                                                            
+                                                            <input type="hidden" name="_color" value=""> </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="space10">&nbsp;</div>
+                                            </div>
+                                            <p class=" text-price"><b>&nbsp;Thông tin cơ bản:</b></p>
+                                            <div class="col-lg-12 ">Balo Thời Trang PRAZA được thiết kế tinh tế, hiện đại mang phong cách Hàn Quốc vừa thời trang vừa gọn nhẹ lại vừa năng động lịch lãm cho các hoạt động ngoài trời hay đi gặp đối tác tự tin mà vẫn lịch sự thời trang. Gam màu của Balo PRAZA mang lại cho bạn nét thanh lịch, trẻ trung đầy sức hút. </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3 col-xs-12">
+                                    <button class="btn btn-danger btn-full " data-dismiss="modal">Huỷ</button>
+                                </div>
+                                <div class="col"> &nbsp; </div>
+                                <div class="col-lg-3 col-md-4 col-xs-12">
+                                    <button class="btn btn-buy btn-full ">Thêm Vào Giỏ</button>
+                                    <div class="space10">&nbsp;</div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-xs-12">
+                                    <button class="btn btn-buy btn-full button" type="submit"><span>Thanh Toán</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>             
+        </form>
+    </div>
+       @break
+    @endif 
+    @endforeach 
+    @endforeach
+    <!--  Modal Mua Nhanh hot-->
 
     {{-- Modal feedback --}}
     <form action="" method="post">
