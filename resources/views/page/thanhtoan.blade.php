@@ -164,7 +164,7 @@ if (mysqli_connect_error())
                                                     <hr class="hr_sp" /> </div>
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div class="col-sm-3 col-xs-3"> <img class="img-responsive" src="http://2.bp.blogspot.com/-SF88cGyLIfs/VGg1Zt5C2YI/AAAAAAAACzU/SLeejuMtmK8/s1600/B%E1%BB%99%2B%E1%BA%A3nh%2Bnh%E1%BB%AFng%2Bem%2Bb%C3%A9%2B%C4%91%C3%A1ng%2By%C3%AAu%2B11%2BBlog%2BDesigners.jpg" /> </div>
+                                                        <div class="col-sm-3 col-xs-3"> <img class="rounded" src="http://2.bp.blogspot.com/-SF88cGyLIfs/VGg1Zt5C2YI/AAAAAAAACzU/SLeejuMtmK8/s1600/B%E1%BB%99%2B%E1%BA%A3nh%2Bnh%E1%BB%AFng%2Bem%2Bb%C3%A9%2B%C4%91%C3%A1ng%2By%C3%AAu%2B11%2BBlog%2BDesigners.jpg" /> </div>
                                                         <div class="col-sm-5 col-xs-5 span_content_body">
                                                             <div class="col-xs-12"><strong>Sản phẩm</strong></div>
                                                             <div class="col-xs-12">
