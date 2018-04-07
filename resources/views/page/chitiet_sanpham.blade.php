@@ -26,34 +26,36 @@
         <div class="row" id="about-content">
             <div class="col-lg-9 col-md-12">
                 <div class="row">
-                    <div class="col-sm-4" id="show-images"> <img src="source/image/product_1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
+                    <div class="col-sm-4" id="show-images"> 
+                        <img src="source/image/{{ $get1_proimg }}" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
                         <!-- <h2 style="text-align:center">Lightbox</h2> -->
                         <div class="img-mini">
                             <div class="row">
-                                <div class="column"> <img src="source/image/img1.jpg" style="width:100%; height: 50px"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> </div>
-                                <div class="column"> <img src="source/image/img2.jpg" style="width:100%; height: 50px" onclick="openModal();currentSlide(2)" class="hover-shadow cursor"> </div>
-                                <div class="column"> <img src="source/image/img3.jpg" style="width:100%; height: 50px" onclick="openModal();currentSlide(3)" class="hover-shadow cursor"> </div>
-                                <div class="column"> <img src="source/image/img4.jpg" style="width:100%; height: 50px" onclick="openModal();currentSlide(4)" class="hover-shadow cursor"> </div>
-
+                                @foreach($product_img as $pro_img)
+                                <div class="column"> <img src="source/image/{{ $pro_img->image }}" style="width:100%; height: 50px"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> 
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div id="modal-img-mini" class="modal-img-mini"> <span class="close cursor" onclick="closeModal()">&times;</span>
                             <div class="modal-content">
+                                @foreach($product_img as $pro_img)
                                 <div class="slide-img-mini">
-                                    <div class="numbertext">1 / 4</div> <img src="source/image/img1_wide.jpg" style="width:100%"> </div>
-                                <div class="slide-img-mini">
-                                    <div class="numbertext">2 / 4</div> <img src="source/image/img2_wide.jpg" style="width:100%"> </div>
-                                <div class="slide-img-mini">
-                                    <div class="numbertext">3 / 4</div> <img src="source/image/img3_wide.jpg" style="width:100%"> </div>
-                                <div class="slide-img-mini">
-                                    <div class="numbertext">4 / 4</div> <img src="source/image/img4_wide.jpg" style="width:100%"> </div> <a style="color: #288AD6" class="prev" onclick="plusSlides(-1)">&#10094;</a> <a style="color: #288AD6" class="next" onclick="plusSlides(1)">&#10095;</a>
+                                    <div class="numbertext">1 / 4</div> <img src="source/image/{{ $pro_img->image }}" style="width:100%"> 
+                                </div>
+                                @endforeach
+                                <a style="color: #288AD6" class="prev" onclick="plusSlides(-1)">&#10094;</a> 
+                                <a style="color: #288AD6" class="next" onclick="plusSlides(1)">&#10095;</a>
+
                                 <div class="caption-container">
                                     <p id="caption"></p>
                                 </div>
+
                                 <div class="row" id="bg-modal-product">
-                                    <div class="column"> <img class="demo cursor" src="source/image/img1_wide.jpg" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise"> </div>
-                                    <div class="column"> <img class="demo cursor" src="source/image/img2_wide.jpg" style="width:100%" onclick="currentSlide(2)" alt="Trolltunga, Norway"> </div>
-                                    <div class="column"> <img class="demo cursor" src="source/image/img3_wide.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords"> </div>
+                                    @foreach($product_img as $pro_img)
+                                    <div class="column"> <img class="demo cursor" src="source/image/{{ $pro_img->image }}" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise"> 
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
