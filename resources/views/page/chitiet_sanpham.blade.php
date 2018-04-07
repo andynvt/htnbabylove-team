@@ -196,10 +196,9 @@
                     </div>
                     <div class="panel" id="tab-description">
                         <p class="intro-product">{{ $sanpham->description }}.</p>
-                        <div class="img-product-show"> <img src="source/image/quanao1.jpg" /> </div>
-                        <div class="img-product-show"> <img src="source/image/quanao2.jpg" /> </div>
-                        <div class="img-product-show"> <img src="source/image/quanao3.jpg" /> </div>
-                        <div class="img-product-show"> <img src="source/image/quanao4.jpg" /> </div>
+                        @foreach($product_img as $pro_img)
+                        <div class="img-product-show"> <img src="source/image/{{ $pro_img->image }}" /> </div>
+                        @endforeach
                     </div>
                 </div>
                 <!-- <div class="space50">&nbsp;</div> -->
