@@ -167,6 +167,7 @@ body {
     z-index: 99;
     height: 100%;
     float: right;
+    width: 100%;
 }
 
 .btn-humburger {
@@ -225,6 +226,7 @@ body {
 
 .bg-light {
     background: white !important;
+    height: 100%;
 }
 
 .logo-mobile {
