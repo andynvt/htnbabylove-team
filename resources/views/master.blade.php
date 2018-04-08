@@ -612,7 +612,7 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="single-item">
                                         <div class="ribbon-wrapper">
-                                            @if($promo->promotion_price != 0)
+                                        @if($promo->promotion_price != 0)
                                         <div class="ribbon1 sale">Sale</div>
                                         @elseif($promo->status == 1)
                                         <div class="ribbon1 new">New</div>
@@ -621,7 +621,7 @@
                                         @endif
                                         </div>
                                         <div class="thumbnail">
-                                            <div class="containeroverlay"> <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive"> </div>
+                                            <div class="containeroverlay"> <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="100%"> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -655,16 +655,19 @@
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
                                                     <div class="dropdown">
-                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: none
+                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: {{$anh->color}}
                                                         "></span></button>
                                                         <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
-                                                            @foreach($promotion_product as $pro ) 
-                                                            @foreach($detail_product as $mau ) 
-                                                            @if($pro->id_product == $mau->id_product  )
-                                                            <li><span class="color " style="background: {{$mau->color}}"></span></li>
+                                                            @foreach($detail_product as $anh ) 
+                                                            @if($promo->id_product == $anh->id_product  )
+                                                            @if($anh->color == $anh->color)
+                                                            <li><span class="color " style="background: {{$anh->color}}"></span></li>
+                                                            @endif
                                                             @endif
                                                             @endforeach
-                                                            @endforeach
+                                                            
+                                                            
+                                                           
                                                             
                                                             <input type="hidden" name="_color" value=""> </ul>
                                                     </div>
@@ -672,7 +675,7 @@
                                                 <div class="space10">&nbsp;</div>
                                             </div>
                                             <p class=" text-price"><b>&nbsp;Thông tin cơ bản:</b></p>
-                                            <div class="col-lg-12 ">Balo Thời Trang PRAZA được thiết kế tinh tế, hiện đại mang phong cách Hàn Quốc vừa thời trang vừa gọn nhẹ lại vừa năng động lịch lãm cho các hoạt động ngoài trời hay đi gặp đối tác tự tin mà vẫn lịch sự thời trang. Gam màu của Balo PRAZA mang lại cho bạn nét thanh lịch, trẻ trung đầy sức hút. </div>
+                                            <div class="col-lg-12 ">{{$promo->description}}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -734,7 +737,7 @@
                                         @endif
                                         </div>
                                         <div class="thumbnail">
-                                            <div class="containeroverlay"> <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive"> </div>
+                                            <div class="containeroverlay"> <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="100%"> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -768,24 +771,23 @@
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
                                                     <div class="dropdown">
-                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: none
+                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: {{$anh->color}}
                                                         "></span></button>
                                                         <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
-                                                            @foreach($new_product as $pro ) 
-                                                            @foreach($detail_product as $mau ) 
-                                                            @if($pro->id_product == $mau->id_product  )
-                                                            <li><span class="color " style="background: {{$mau->color}}"></span></li>
+                                                            @foreach($detail_product as $anh ) 
+                                                            @if($new->id_product == $anh->id_product  )
+                                                            @if($anh->color == $anh->color)
+                                                            <li><span class="color " style="background: {{$anh->color}}"></span></li>
+                                                            @endif
                                                             @endif
                                                             @endforeach
-                                                            @endforeach
-                                                            
                                                             <input type="hidden" name="_color" value=""> </ul>
                                                     </div>
                                                 </div>
                                                 <div class="space10">&nbsp;</div>
                                             </div>
                                             <p class=" text-price"><b>&nbsp;Thông tin cơ bản:</b></p>
-                                            <div class="col-lg-12 ">Balo Thời Trang PRAZA được thiết kế tinh tế, hiện đại mang phong cách Hàn Quốc vừa thời trang vừa gọn nhẹ lại vừa năng động lịch lãm cho các hoạt động ngoài trời hay đi gặp đối tác tự tin mà vẫn lịch sự thời trang. Gam màu của Balo PRAZA mang lại cho bạn nét thanh lịch, trẻ trung đầy sức hút. </div>
+                                            <div class="col-lg-12 ">{{$new->description}}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -847,7 +849,7 @@
                                         @endif
                                         </div>
                                         <div class="thumbnail">
-                                            <div class="containeroverlay"> <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive"> </div>
+                                            <div class="containeroverlay"> <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="100%"> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -881,24 +883,24 @@
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
                                                     <div class="dropdown">
-                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: none
+                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: {{$anh->color}}
                                                         "></span></button>
                                                         <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
-                                                            @foreach($hot_product as $pro ) 
-                                                            @foreach($detail_product as $mau ) 
-                                                            @if($pro->id_product == $mau->id_product  )
-                                                            <li><span class="color " style="background: {{$mau->color}}"></span></li>
+
+                                                            @foreach($detail_product as $anh ) 
+                                                            @if($hot->id_product == $anh->id_product  )
+                                                            @if($anh->color == $anh->color)
+                                                            <li><span class="color " style="background: {{$anh->color}}"></span></li>
+                                                            @endif
                                                             @endif
                                                             @endforeach
-                                                            @endforeach
-                                                            
                                                             <input type="hidden" name="_color" value=""> </ul>
                                                     </div>
                                                 </div>
                                                 <div class="space10">&nbsp;</div>
                                             </div>
                                             <p class=" text-price"><b>&nbsp;Thông tin cơ bản:</b></p>
-                                            <div class="col-lg-12 ">Balo Thời Trang PRAZA được thiết kế tinh tế, hiện đại mang phong cách Hàn Quốc vừa thời trang vừa gọn nhẹ lại vừa năng động lịch lãm cho các hoạt động ngoài trời hay đi gặp đối tác tự tin mà vẫn lịch sự thời trang. Gam màu của Balo PRAZA mang lại cho bạn nét thanh lịch, trẻ trung đầy sức hút. </div>
+                                            <div class="col-lg-12 ">{{$hot->description}}</div>
                                         </div>
                                     </div>
                                 </div>
