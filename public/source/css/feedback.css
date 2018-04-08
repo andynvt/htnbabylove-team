@@ -186,6 +186,7 @@
     background: #F06292;
     transition: all 0.3s;
     transform: translateY(-4px);
+    border-color: #F06292;
 }
 
 @media (min-width: 1024px) {
@@ -195,8 +196,17 @@
     }
 }
 
-
 .btn-cancle-feed-back {
     position: absolute;
     width: 30%;
+}
+
+.info-feedback input:focus,
+.info-feedback textarea:focus{
+    color: #495057;
+    background-color: #fff;
+    border-color: #ff498d;
+    outline: 10px;
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 141,.25);
+    transition: all 0.3s;
 }

@@ -142,6 +142,12 @@ body {
 .btn-themvaogio {
     background-color: #FF3E8D;
     color: #fff;
+    cursor: pointer;
+}
+
+.btn-themvaogio:hover{
+    background: #E91E63;
+    color: #fff;
 }
 
 .slider.slider-horizontal {
