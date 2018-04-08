@@ -14,10 +14,10 @@ class PageController extends Controller
         $promotion_product = Product::where('promotion_price', '<>', '0')->get();
         $new_product = Product::where('status', 1)->get();
         $hot_product = Product::where('status', 2)->get();
+        $product = Product::all();
         $detail_product = ProductDetail::all();
-       
         $lsp = ProductType::all();
-    	return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp'));
+    	return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product'));
     }
 
     public function getLoaiSP($type){
@@ -66,6 +66,14 @@ class PageController extends Controller
 
     public function getCheckout(){
         return view('page.thanhtoan');
+    }
+
+    public function getTimkiem(Request $req){
+        $product = Product::where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)->get();
+        $detail_product = ProductDetail::all();
+        $lsp = ProductType::all();
+        return view('page.timkiem',compact('detail_product','lsp','product'));
+       
     }
 
     //Admin

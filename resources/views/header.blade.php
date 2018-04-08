@@ -79,7 +79,7 @@
                         </ul>
                     </div>
                     <div class=" menu-right">
-                        <form class=" search-form">
+                        <form class=" search-form" action="{{route('timkiem')}}">
                             <input type="text" name="search" placeholder="Bạn muốn tìm gì ?">
                             <input id="search_submit" value="" type="submit"> </form>
                         <div class="clearfix"></div>

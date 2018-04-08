@@ -51,6 +51,11 @@ Route::get('chi-tiet-san-pham/{id}', [
 	'uses' => 'PageController@getDetail'
 ]);
 
+Route::get('tim-kiem', [
+	'as' => 'timkiem',
+	'uses' => 'PageController@getTimkiem'
+]);
+
 //Admin
 Route::get('admin-index', [
 	'as' => 'adminindex',

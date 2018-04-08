@@ -79,7 +79,7 @@
                     <!-- San pham -->
                     <!-- Hang 1 -->
                     <!-- San pham khuyen mai -->
-                    <div class="text-left" style="font-size: 25px; font-weight: 600"> Sản Phẩm Khuyến Mãi ({{count('$promotion_product')}} sản phẩm)</div>
+                    <div class="text-left" style="font-size: 25px; font-weight: 600"> Sản Phẩm Khuyến Mãi ({{count("$promotion_product")}} sản phẩm)</div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
                         @foreach($promotion_product as $promo ) 
@@ -130,7 +130,7 @@
                     <!-- Hang 2 -->
                     <!-- San pham moi -->
                     <div class="space10">&nbsp;</div>
-                    <div class="text-left" style="font-size: 25px; font-weight: 600"> Sản Phẩm Mới ({{count('$new_product')}} sản phẩm)</div>
+                    <div class="text-left" style="font-size: 25px; font-weight: 600"> Sản Phẩm Mới ({{count("$new_product")}} sản phẩm)</div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
                         @foreach($new_product as $new) @foreach($detail_product as $anh) @if($new->id_product == $anh->id_product)
@@ -181,7 +181,7 @@
                     <!-- Hang 3 -->
                     <!-- San pham -->
                     <div class="space10">&nbsp;</div>
-                    <div class="text-left" style="font-size: 25px; font-weight: 600">Sản Phẩm Hot ({{count('$hot_product')}} sản phẩm)</div>
+                    <div class="text-left" style="font-size: 25px; font-weight: 600">Sản Phẩm Hot ({{count("$hot_product")}} sản phẩm)</div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
                         @foreach($hot_product as $hot) @foreach($detail_product as $anh) @if($hot->id_product == $anh->id_product)
