@@ -263,101 +263,52 @@
                 </div>
                 <div class="related-product">
                     <div class="banner-related-product">
-                        <!-- <h4>Sản Phẩm Cùng Loại</h4> --><img src="source/image/banner-related-product.png" /> </div>
+                        <!-- <h4>Sản Phẩm Cùng Loại</h4> --><img src="source/image/related.png" /> </div>
                     <div class="row">
+                        @foreach($same_product as $new) @foreach($detail_product as $anh) @if($new->id_product == $anh->id_product)
                         <div class="col-sm-4">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
+                                    @if($new->promotion_price != 0)
                                     <div class="ribbon1 sale">Sale</div>
+                                    @elseif($new->status == 1)
+                                    <div class="ribbon1 new">New</div>
+                                    @elseif($new->status == 2)
+                                    <div class="ribbon1 hot">Hot</div>
+                                    @endif
                                 </div>
                                 <div class="thumbnail">
-                                    <div class="containeroverlay">
-                                        <a href="#"><img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
-                                        <div class="overlay">
-                                            <div class="text">Xem chi tiết</div>
+                                    <a href="{{ route('chitietsanpham', $new->id_product) }}">
+                                        <div class="containeroverlay">
+                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                            <div class="overlay">
+                                                <div class="text">Xem chi tiết</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                     <div class="caption">
                                         <div class="space5">&nbsp;</div>
-                                        <a href="#"> <b class="text-price">
-                                                        <span class="text-danger ">
-                                                            1,000,000đ
-                                                        </span>  &nbsp;
-                                                        <span class="flash-del">
-                                                         1,000,000đ
-                                                        </span>
-                                                    </b>
-                                            <div class="space10">&nbsp;</div>
-                                            <p class='text-right text-title'><b>HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</b>&nbsp;</p>
-                                        </a>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                        <b class="text-price">
+                                                @if($new->promotion_price == 0)
+                                                    <span class="text-danger ">{{number_format($new->unit_price)}} đ</span> &nbsp;
+                                                @else
+                                                    <span class="text-danger ">{{number_format($new->promotion_price)}} đ</span> &nbsp;
+                                                    <span class="flash-del">{{number_format($new->unit_price)}} đ</span>
+                                                @endif
+                                                </b>
+                                        <div class="space10">&nbsp;</div>
+                                        <p class='text-left text-title'><b>{{$new->name}}</b>&nbsp;</p>
+                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$new->id_product}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                        <hr> </div>
+                                        <hr>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="single-item">
-                                <div class="ribbon-wrapper">
-                                    <div class="ribbon1 sale">Sale</div>
-                                </div>
-                                <div class="thumbnail">
-                                    <div class="containeroverlay">
-                                        <a href="#"><img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
-                                        <div class="overlay">
-                                            <div class="text">Xem chi tiết</div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <div class="space5">&nbsp;</div>
-                                        <a href="#"> <b class="text-price">
-                                                        <span class="text-danger ">
-                                                            1,000,000đ
-                                                        </span>  &nbsp;
-                                                        <span class="flash-del">
-                                                         1,000,000đ
-                                                        </span>
-                                                    </b>
-                                            <div class="space10">&nbsp;</div>
-                                            <p class='text-right text-title'><b>HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</b>&nbsp;</p>
-                                        </a>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
-                                        <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                        <hr> </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="single-item">
-                                <div class="ribbon-wrapper">
-                                    <div class="ribbon1 sale">Sale</div>
-                                </div>
-                                <div class="thumbnail">
-                                    <div class="containeroverlay">
-                                        <a href="#"><img src="http://placehold.it/670x438/cccccc/ffffff" alt="Thumbnail Image 1" class="img-responsive"></a>
-                                        <div class="overlay">
-                                            <div class="text">Xem chi tiết</div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <div class="space5">&nbsp;</div>
-                                        <a href="#"> <b class="text-price">
-                                                        <span class="text-danger ">
-                                                            1,000,000đ
-                                                        </span>  &nbsp;
-                                                        <span class="flash-del">
-                                                         1,000,000đ
-                                                        </span>
-                                                    </b>
-                                            <div class="space10">&nbsp;</div>
-                                            <p class='text-right text-title'><b>HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</b>&nbsp;</p>
-                                        </a>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
-                                        <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                        <hr> </div>
-                                </div>
-                            </div>
-                        </div>
+                        @if($anh->image == $anh->image )
+                            @break
+                        @endif
+                        @endif @endforeach @endforeach
                     </div>
                 </div>
                 <!-- .beta-products-list -->
@@ -367,38 +318,26 @@
                     <h3 class="widget-title">Sản Phẩm Bán Chạy</h3>
                     <div class="widget-body">
                         <div class="beta-sales beta-lists">
+                        @foreach($hot_product as $hot) @foreach($detail_product as $anh) @if($hot->id_product == $anh->id_product)
                             <div class="media beta-sales-item">
-                                <a class="pull-left" href="product.html"><img src="source/image/aosomi.jpg" alt=""></a>
-                                <div class="media-body"> <a href="">Áo sơ mi caro cho bé từ 1-8 màu xanh rêu</a>
-                                    <p class="beta-sales-price">142.000 đ</p>
+                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id_product) }}"><img src="source/image/{{$anh->image}}" alt=""></a>
+                                <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id_product) }}">{{$hot->name}}</a>
+                                    <p class="beta-sales-price">
+                                        @if($hot->promotion_price == 0)
+                                            <span class="text-danger ">{{number_format($hot->unit_price)}} đ</span> &nbsp;
+                                        @else
+                                            <span class="text-danger ">{{number_format($hot->promotion_price)}} đ</span> &nbsp;
+                                            <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
+                                        @endif
+                                    </p>
                                     <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>
-                            <div class="media beta-sales-item">
-                                <a class="pull-left" href="product.html"><img src="source/image/aosomi.jpg" alt=""></a>
-                                <div class="media-body"> <a href="">Áo sơ mi caro cho bé từ 1-8 màu xanh rêu</a>
-                                    <p class="beta-sales-price">142.000 đ</p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
-                                    <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                            <div class="media beta-sales-item">
-                                <a class="pull-left" href="product.html"><img src="source/image/aosomi.jpg" alt=""></a>
-                                <div class="media-body"> <a href="">Áo sơ mi caro cho bé từ 1-8 màu xanh rêu</a>
-                                    <p class="beta-sales-price">142.000 đ</p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
-                                    <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                            <div class="media beta-sales-item">
-                                <a class="pull-left" href="product.html"><img src="source/image/aosomi.jpg" alt=""></a>
-                                <div class="media-body"> <a href="">Áo sơ mi caro cho bé từ 1-8 màu xanh rêu</a>
-                                    <p class="beta-sales-price">142.000 đ</p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
-                                    <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                </div>
-                            </div>
+                            @if($anh->image == $anh->image )
+                            @break
+                        @endif
+                        @endif @endforeach @endforeach
                         </div>
                     </div>
                 </div>
@@ -407,42 +346,28 @@
                     <h3 class="widget-title">Sản Phẩm Mới Nhất</h3>
                     <div class="widget-body">
                         <div class="beta-sales beta-lists">
+                        @foreach($new_product as $hot) @foreach($detail_product as $anh) @if($hot->id_product == $anh->id_product)
                             <div class="media beta-sales-item">
-                                <a class="pull-left" href="product.html"><img src="source/image/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
-                                <div class="media-body"> <a href="">Áo dài rồng kèm hoa văn cho bé trai màu đỏ</a>
-                                    <br/>
-                                    <p class="beta-sales-price">142.000 đ</p>
+                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id_product) }}"><img src="source/image/{{$anh->image}}" alt=""></a>
+                                <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id_product) }}">{{$hot->name}}</a>
+                                    <p class="beta-sales-price">
+                                        @if($hot->promotion_price == 0)
+                                            <span class="text-danger ">{{number_format($hot->unit_price)}} đ</span> &nbsp;
+                                        @else
+                                            <span class="text-danger ">{{number_format($hot->promotion_price)}} đ</span> &nbsp;
+                                            <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
+                                        @endif
+                                    </p>
                                     <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>
-                            <div class="media beta-sales-item">
-                                <a class="pull-left" href="product.html"><img src="source/image/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
-                                <div class="media-body"> <a href="">Áo dài rồng kèm hoa văn cho bé trai màu đỏ</a>
-                                    <br/>
-                                    <p class="beta-sales-price">142.000 đ</p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
-                                    <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                            <div class="media beta-sales-item">
-                                <a class="pull-left" href="product.html"><img src="source/image/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
-                                <div class="media-body"> <a href="">Áo dài rồng kèm hoa văn cho bé trai màu đỏ</a>
-                                    <br/>
-                                    <p class="beta-sales-price">142.000 đ</p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
-                                    <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                            <div class="media beta-sales-item">
-                                <a class="pull-left" href="product.html"><img src="source/image/ao_dai_rong_kem_hoa_van.jpg" alt=""></a>
-                                <div class="media-body"> <a href="">Áo dài rồng kèm hoa văn cho bé trai màu đỏ</a>
-                                    <br/>
-                                    <p class="beta-sales-price">142.000 đ</p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
-                                    <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                </div>
-                            </div>
+                            @if($anh->image == $anh->image )
+                            @break
+                        @endif
+                        @endif @endforeach @endforeach
+                        </div>
+
                         </div>
                     </div>
                 </div>

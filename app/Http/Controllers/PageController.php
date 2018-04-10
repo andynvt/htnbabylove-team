@@ -47,9 +47,12 @@ class PageController extends Controller
         $get1_proimg = ProductDetail::where('id_product', $getid_ctsp)->value('image');
         // dd($get1_proimg);
 
-        
+        $same_product = Product::where('id_type', $id_lsp)->take(6)->get();
+        $detail_product = ProductDetail::all();
+        $hot_product = Product::where('status', 2)->get();
+        $new_product = Product::where('status', 1)->get();
 
-        return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get1_proimg'));
+        return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get1_proimg','same_product','detail_product','hot_product','new_product'));
     }
 
     public function getAbout(){
