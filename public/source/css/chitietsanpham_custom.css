@@ -535,13 +535,16 @@ body {
 #show-images .modal-content {
     position: relative;
     background-color: #fefefe;
-    margin: auto;
+    margin: -5% auto;
     padding: 0;
     width: 90%;
-    max-width: 1200px;
+    max-width: 800px;
 }
 
-
+#show-images .slide-img-mini img{
+    width: 100%;
+    height: 600px;
+}
 /* The Close Button */
 
 #show-images .close {
@@ -571,14 +574,13 @@ body {
 
 /* Next & previous buttons */
 
-#show-images .prev,
-.next {
+#show-images .prev,.next {
     cursor: pointer;
     position: absolute;
     top: 50%;
     width: auto;
     padding: 16px;
-    margin-top: -50px;
+    margin-top: -150px;
     color: white;
     font-weight: bold;
     font-size: 20px;
