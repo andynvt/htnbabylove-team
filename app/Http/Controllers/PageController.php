@@ -12,6 +12,7 @@ class PageController extends Controller
 {
     public function getIndex(){
         $promotion_product = Product::where('promotion_price', '<>', '0')->get();
+        // dd($promotion_product);
         $new_product = Product::where('status', 1)->get();
         $hot_product = Product::where('status', 2)->get();
         $product = Product::all();

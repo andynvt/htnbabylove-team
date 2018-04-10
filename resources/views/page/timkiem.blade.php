@@ -78,7 +78,7 @@
                 <div class="col-lg-9 col-md-12">
                    
                     <div class="space10">&nbsp;</div>
-                    <div class="text-left" style="font-size: 25px; font-weight: 600"> Tìm Thấy Sản Phẩm {{count("$product")}}</div>
+                    <div class="text-left" style="font-size: 25px; font-weight: 600"> Tìm Thấy {{count($product)}} Sản Phẩm </div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
                         @foreach($product as $pro) @foreach($detail_product as $anh) @if($pro->id_product == $anh->id_product)

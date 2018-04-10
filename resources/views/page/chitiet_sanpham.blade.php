@@ -1,5 +1,5 @@
 <head>
-    <title>Sản phẩm | {{ $sanpham->name }}</title> 
+    <title>{{ $sanpham->name }} | HTN Baby Love</title> 
 </head>
 @extends('master') 
 
