@@ -104,6 +104,10 @@ class PageController extends Controller
         return view('Admin.pageadmin.adminloaisanpham');
     }
 
+        public function getadminThemsanpham(){
+        return view('Admin.pageadmin.adminthemsanpham');
+    }
+
     public function getadminKhachhang(){
                 $table  = Customer::all();
         return view('Admin.pageadmin.adminkhachhang',compact('table'));
