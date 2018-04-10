@@ -74,7 +74,7 @@
         </div>
         <div class="col-lg-9 col-md-12">
             <div class="space10">&nbsp;</div>
-            <div class="text-left" style="font-size: 25px; font-weight: 600"> {{$loai_ssp->type_name}} ({{count("$sp_theoloai")}} sản phẩm)</div>
+            <div class="text-left" style="font-size: 25px; font-weight: 600"> {{$loai_ssp->type_name}} ({{count($sp_theoloai)}} sản phẩm)</div>
             <div class="space15">&nbsp;</div>
             <div class="row">
             
@@ -96,7 +96,7 @@
                         </div>
                         <div class="thumbnail">
                             <div class="containeroverlay">
-                                <a href="#"><img src="source/image/{{ $detail->image }}" class="img-responsive" width="480px"></a>
+                                <a href="{{ route('chitietsanpham', $product->id_product) }}"><img src="source/image/{{ $detail->image }}" class="img-responsive" width="480px"></a>
                                 <div class="overlay">
                                     <div class="text">Xem chi tiết</div>
                                 </div>
