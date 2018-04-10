@@ -134,34 +134,15 @@
                                     <label class="choose-qty">Chọn màu sắc:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn số lượng bạn muốn mua"></i></label>
                                     <div class="form-group">
                                         <div class="dropdown" style="width: 45%;">
-                                            <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: black"></span></button>
+                                            <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background:   @foreach($detail_product as $color ) @if($sanpham->id_product == $color->id_product  ) {{$color->color}} @break @endif @endforeach "></span></button>
                                             <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
-                                                <li><span class="color " style="background: black"></span></li>
-                                                <li><span class="color " style="background: red"></span></li>
-                                                <li><span class="color " style="background: #f90"></span></li>
-                                                <li><span class="color " style="background: brown"></span></li>
-                                                <li><span class="color " style="background: orange"></span></li>
-                                                <li><span class="color " style="background: pink"></span></li>
-                                                <li><span class="color " style="background: silver"></span></li>
-                                                <li><span class="color " style="background: blue"></span></li>
-                                                <li><span class="color " style="background: TEAL"></span></li>
-                                                <li><span class="color " style="background: repeating-linear-gradient(90deg, transparent,                                     transparent 50px,
-                                                                                            rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px,
-                                                                                            transparent 56px, transparent 63px,
-                                                                                            rgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px,
-                                                                                            transparent 69px, transparent 116px,
-                                                                                            rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),
-                                                                                          repeating-linear-gradient(0deg, transparent, transparent 50px,
-                                                                                            rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px,
-                                                                                            transparent 56px, transparent 63px,
-                                                                                            rgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px,
-                                                                                            transparent 69px, transparent 116px,
-                                                                                            rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),
-                                                                                          repeating-linear-gradient(-45deg, transparent, transparent 5px,
-                                                                                            rgba(143, 77, 63, 0.25) 5px, rgba(143, 77, 63, 0.25) 10px),
-                                                                                          repeating-linear-gradient(45deg, transparent, transparent 5px,
-                                                                                            rgba(143, 77, 63, 0.25) 5px, rgba(143, 77, 63, 0.25) 10px);"></span></li>
-                                                <li><span class="color " style="background: repeating-linear-gradient( red, red 5px, blue 5px, blue 10px)"></span></li>
+                                                @foreach($detail_product as $anh ) 
+                                                            @if($sanpham->id_product == $anh->id_product  )
+                                                            @if($anh->color == $anh->color)
+                                                            <li><span class="color " style="background: {{$anh->color}}"></span></li>
+                                                            @endif
+                                                            @endif
+                                                            @endforeach
                                                 <input type="hidden" name="_color" value=""> </ul>
                                         </div>
                                     </div>
@@ -171,7 +152,7 @@
                                             <button type="button" class="btn btn-themvaogio btn-full "><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
                                         </div>
                                         <div class="col-lg-5 col-md-12">
-                                            <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                            <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$sanpham->id_product}}"><span>Mua Ngay </span></button>
                                         </div>
                                     </div>
                                     <div class="flash"></div>
@@ -330,13 +311,13 @@
                                             <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
                                         @endif
                                     </p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#{{$hot->id_product}}"><span>Mua Ngay </span></button>
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>
-                            @if($anh->image == $anh->image )
+                           
                             @break
-                        @endif
+                        
                         @endif @endforeach @endforeach
                         </div>
                     </div>
@@ -358,13 +339,13 @@
                                             <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
                                         @endif
                                     </p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#1"><span>Mua Ngay </span></button>
+                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#{{$hot->id_product}}"><span>Mua Ngay </span></button>
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>
-                            @if($anh->image == $anh->image )
+                            
                             @break
-                        @endif
+                        
                         @endif @endforeach @endforeach
                         </div>
 
