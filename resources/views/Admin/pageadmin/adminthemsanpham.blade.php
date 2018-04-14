@@ -190,15 +190,29 @@
                                                         $("#demo-color1").css('background', '' + string + '(' + color1 + ',' + color1 + ' 10%,' + color2 + ' 10%,' + color2 + ' 20%)');
 
                                                         $(this).parent(".testcolor").css("display", "none");
+                                                        removecolor.push("demo-color1");
 
-                                                        $('#demo-color1').on('click', function(){
+
+
+                                                        $('#demo-color1').on('click', function() {
                                                             $(this).remove();
-                                                            $(".khung-mau").append('<div class="demo-color btn btn-default" id="demo-color1" name="add-color[]" mutiple><span><i class="fa fa-close"></i></span></div>');
-                                                            i = 1;
+                                                            var deleteE = "demo-color1";
+
+                                                            var demoten = removecolor.indexOf(deleteE);
+
+
+                                                            if (demoten != -1) {
+                                                                removecolor.splice(demoten, 1);
+                                                            }
+
+                                                            if (removecolor == "") {
+                                                                i = 1;
+                                                                $(".khung-mau").append('<div class="demo-color btn btn-default" id="demo-color1" name="add-color[]" mutiple><span><i class="fa fa-close"></i></span></div>');
+                                                            }
                                                         });
 
                                                     } else {
-                                                        var id = $("#demo-color1").clone();
+                                                        var id = $("#demo-color" + (i - 1)).clone();
                                                         id.attr("id", "demo-color" + i);
                                                         $(".khung-mau").append(id);
 
@@ -209,15 +223,27 @@
 
                                                         $(this).parent(".testcolor").css("display", "none");
 
-                                                        id.on('click', function(){
+                                                        var demoid = id.attr('id');
+                                                        removecolor.push(demoid);
+
+
+                                                        id.on('click', function() {
+                                                            var deleteElmt = demoid;
+                                                            var demoname = removecolor.indexOf(deleteElmt);
+
                                                             id.remove();
+                                                            if (demoname != -1) {
+                                                                removecolor.splice(demoname, 1);
+                                                            }
+                                                            if (removecolor == "") {
+                                                                i = 1;
+                                                                $(".khung-mau").append('<div class="demo-color btn btn-default" id="demo-color1" name="add-color[]" mutiple><span><i class="fa fa-close"></i></span></div>');
+                                                            }
                                                         });
                                                     }
-
-                                                    removecolor.push(i);
                                                     i++;
                                                 });
-                                                    
+
                                             </script>
                                         </div>
 
