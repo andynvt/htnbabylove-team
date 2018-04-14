@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 03, 2018 at 05:03 AM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Máy chủ: localhost
+-- Thời gian đã tạo: Th4 08, 2018 lúc 07:04 AM
+-- Phiên bản máy phục vụ: 10.1.28-MariaDB
+-- Phiên bản PHP: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `htnbabylove`
+-- Cơ sở dữ liệu: `htnbabylove`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bills`
+-- Cấu trúc bảng cho bảng `bills`
 --
 
 CREATE TABLE `bills` (
@@ -38,7 +38,7 @@ CREATE TABLE `bills` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `bills`
+-- Đang đổ dữ liệu cho bảng `bills`
 --
 
 INSERT INTO `bills` (`id_bill`, `id_customer`, `total_price`, `total_product`, `created_at`, `updated_at`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `bills` (`id_bill`, `id_customer`, `total_price`, `total_product`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill_detail`
+-- Cấu trúc bảng cho bảng `bill_detail`
 --
 
 CREATE TABLE `bill_detail` (
@@ -62,7 +62,7 @@ CREATE TABLE `bill_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `bill_detail`
+-- Đang đổ dữ liệu cho bảng `bill_detail`
 --
 
 INSERT INTO `bill_detail` (`id_bill_detail`, `id_bill`, `id_detail`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES
@@ -72,16 +72,16 @@ INSERT INTO `bill_detail` (`id_bill_detail`, `id_bill`, `id_detail`, `quantity`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cities`
+-- Cấu trúc bảng cho bảng `cities`
 --
 
 CREATE TABLE `cities` (
-  `id_city` int(11) NOT NULL,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `id_city` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `cities`
+-- Đang đổ dữ liệu cho bảng `cities`
 --
 
 INSERT INTO `cities` (`id_city`, `name`) VALUES
@@ -152,7 +152,7 @@ INSERT INTO `cities` (`id_city`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customers`
+-- Cấu trúc bảng cho bảng `customers`
 --
 
 CREATE TABLE `customers` (
@@ -167,7 +167,7 @@ CREATE TABLE `customers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `customers`
+-- Đang đổ dữ liệu cho bảng `customers`
 --
 
 INSERT INTO `customers` (`id_customer`, `name`, `gender`, `email`, `address`, `phone`, `created_at`, `updated_at`) VALUES
@@ -177,17 +177,17 @@ INSERT INTO `customers` (`id_customer`, `name`, `gender`, `email`, `address`, `p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `districts`
+-- Cấu trúc bảng cho bảng `districts`
 --
 
 CREATE TABLE `districts` (
-  `id_district` int(11) NOT NULL,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `id_city` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `id_district` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_city` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `districts`
+-- Đang đổ dữ liệu cho bảng `districts`
 --
 
 INSERT INTO `districts` (`id_district`, `name`, `id_city`) VALUES
@@ -878,11 +878,12 @@ INSERT INTO `districts` (`id_district`, `name`, `id_city`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feedbacks`
+-- Cấu trúc bảng cho bảng `feedbacks`
 --
 
 CREATE TABLE `feedbacks` (
   `id_feedback` int(10) UNSIGNED NOT NULL,
+  `id_product` int(10) UNSIGNED NOT NULL,
   `stars` int(11) NOT NULL,
   `reviewer` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tel` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -892,16 +893,17 @@ CREATE TABLE `feedbacks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `feedbacks`
+-- Đang đổ dữ liệu cho bảng `feedbacks`
 --
 
-INSERT INTO `feedbacks` (`id_feedback`, `stars`, `reviewer`, `tel`, `review`, `created_at`, `updated_at`) VALUES
-(1, 5, 'Tai', '123456789', 'Depqua', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `feedbacks` (`id_feedback`, `id_product`, `stars`, `reviewer`, `tel`, `review`, `created_at`, `updated_at`) VALUES
+(1, 2, 3, 'Tìa', '01222130554', 'Như cớt', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 3, 1, 'Duy', '01222150657', 'như cẹt', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Cấu trúc bảng cho bảng `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -911,31 +913,31 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Đang đổ dữ liệu cho bảng `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
-(2, '2018_01_25_154015_table_feedbacks', 1),
-(3, '2018_01_25_155233_table_product_type', 1),
-(4, '2018_01_25_155547_table_products', 1),
-(5, '2018_01_25_155721_table_product_detail', 1),
-(6, '2018_01_25_162154_table_customers', 1),
-(7, '2018_01_25_162207_table_slide', 1),
-(8, '2018_01_25_162439_table_bills', 1),
-(9, '2018_01_25_162451_table_bill_detail', 1),
-(10, '2018_02_02_143155_table_promotions', 1);
+(2, '2018_04_03_162829_table_product_type', 1),
+(3, '2018_04_03_162940_table_products', 1),
+(4, '2018_04_03_162957_table_feedbacks', 1),
+(5, '2018_04_03_163009_table_product_detail', 1),
+(6, '2018_04_03_163022_table_customers', 1),
+(7, '2018_04_03_163052_table_bills', 1),
+(8, '2018_04_03_163103_table_bill_detail', 1),
+(9, '2018_04_03_163131_table_promotions', 1),
+(10, '2018_04_03_163221_table_cities', 1),
+(11, '2018_04_03_163238_table_districts', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
 CREATE TABLE `products` (
   `id_product` int(10) UNSIGNED NOT NULL,
   `id_type` int(10) UNSIGNED NOT NULL,
-  `id_feedback` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `unit_price` int(11) NOT NULL,
   `promotion_price` int(11) NOT NULL,
@@ -947,49 +949,54 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `products`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
-INSERT INTO `products` (`id_product`, `id_type`, `id_feedback`, `name`, `unit_price`, `promotion_price`, `size`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Gối nằm', 100000, 0, '30x30x10', 'Goi nam em be', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 3, 1, 'Bo Simili', 100000, 0, '30x30x10', 'Bo cho em be', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 1, 1, 'Goi beo', 50000, 0, '30x30x10', 'Bo cho em be', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 2, 1, 'Gối Ôm', 10000, 1000, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 3, 1, 'Khan choang', 100000, 0, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 4, 1, 'Nem', 80000, 69999, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 2, 1, 'Men', 120000, 0, '30x30x10', 'Bo cho em be', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(8, 1, 1, 'Áo Choàng', 900000, 899999, '30x30x10', 'Bo cho em be', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `products` (`id_product`, `id_type`, `name`, `unit_price`, `promotion_price`, `size`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(1, 3, 'Áo Ấm', 10000, 0, '30x30x30', 'Đẹp quá đẹp', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 1, 'Gối nằm', 100000, 0, '30x30x10', 'Goi nam em be', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 3, 'Bo Simili', 100000, 0, '30x30x10', 'Bo cho em be', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 1, 'Goi beo', 50000, 0, '30x30x10', 'Bo cho em be', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 2, 'Gối Ôm', 10000, 1000, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 3, 'Khan choang', 100000, 0, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 4, 'Nem', 80000, 69999, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 2, 'Men', 120000, 0, '30x30x10', 'Bo cho em be', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 1, 'Áo Choàng', 900000, 899999, '30x30x10', 'Bo cho em be', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_detail`
+-- Cấu trúc bảng cho bảng `product_detail`
 --
 
 CREATE TABLE `product_detail` (
   `id_detail` int(10) UNSIGNED NOT NULL,
   `id_product` int(10) UNSIGNED NOT NULL,
-  `color` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `product_detail`
+-- Đang đổ dữ liệu cho bảng `product_detail`
 --
 
 INSERT INTO `product_detail` (`id_detail`, `id_product`, `color`, `image`) VALUES
-(1, 2, 'Vang', 'img_1.jpg'),
-(2, 2, 'Xanh', 'goi.jpg'),
-(3, 2, 'Trang', 'product_1.jpg'),
-(4, 2, 'Hong', 'quanao1.jpg'),
-(5, 2, 'Do', 'quanao2.jpg'),
-(6, 1, 'Vang', 'quanao3.jpg'),
-(7, 1, 'Vang', 'quanao4.jpg');
+(1, 6, 'orange', 'img_1.jpg'),
+(2, 8, 'blue', 'goi.jpg'),
+(3, 3, 'brown', 'product_1.jpg'),
+(4, 4, '#f90', 'quanao1.jpg'),
+(5, 2, 'red', 'quanao2.jpg'),
+(6, 5, 'orange', 'quanao3.jpg'),
+(7, 1, 'black', 'quanao4.jpg'),
+(8, 7, 'pink', 'aosomi.jpg'),
+(9, 5, 'repeating-linear-gradient( red, red 5px, blue 5px, blue 10px)', 'quanao3.jpg'),
+(10, 5, 'blue', 'quanao3.jpg'),
+(11, 5, 'repeating-linear-gradient(90deg, transparent,transparent 50px,rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px,transparent 56px, transparent 63px,rgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px,transparent 69px, transparent 116px,rgba(255, 206, 0,0.25)116px,rgba(255, 206, 0, 0.25) 166px),repeating-linear-gradient(0deg, transparent, transparent 50px,rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px,transparent 56px, transparent 63px,\r\nrgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px,transparent 69px, transparent 116px,rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),repeating-linear-gradient(-45deg, transparent, transparent 5px,rgba(143, 77, 63, 0.25) 5px, rgba(143, 77, 63, 0.25) 10px),repeating-linear-gradient(45deg, transparent, transparent 5px,rgba(143, 77, 63, 0.25) 5px, rgba(143, 77, 63, 0.25) 10px)', 'quanao3.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_type`
+-- Cấu trúc bảng cho bảng `product_type`
 --
 
 CREATE TABLE `product_type` (
@@ -998,7 +1005,7 @@ CREATE TABLE `product_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `product_type`
+-- Đang đổ dữ liệu cho bảng `product_type`
 --
 
 INSERT INTO `product_type` (`id_type`, `type_name`) VALUES
@@ -1010,7 +1017,7 @@ INSERT INTO `product_type` (`id_type`, `type_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `promotions`
+-- Cấu trúc bảng cho bảng `promotions`
 --
 
 CREATE TABLE `promotions` (
@@ -1022,7 +1029,7 @@ CREATE TABLE `promotions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `promotions`
+-- Đang đổ dữ liệu cho bảng `promotions`
 --
 
 INSERT INTO `promotions` (`id_promotion`, `id_product`, `promotion_desc`, `created_at`, `updated_at`) VALUES
@@ -1032,7 +1039,7 @@ INSERT INTO `promotions` (`id_promotion`, `id_product`, `promotion_desc`, `creat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -1046,18 +1053,18 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `bills`
+-- Chỉ mục cho bảng `bills`
 --
 ALTER TABLE `bills`
   ADD PRIMARY KEY (`id_bill`),
   ADD KEY `bills_id_customer_foreign` (`id_customer`);
 
 --
--- Indexes for table `bill_detail`
+-- Chỉ mục cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD PRIMARY KEY (`id_bill_detail`),
@@ -1065,185 +1072,190 @@ ALTER TABLE `bill_detail`
   ADD KEY `bill_detail_id_detail_foreign` (`id_detail`);
 
 --
--- Indexes for table `cities`
+-- Chỉ mục cho bảng `cities`
 --
 ALTER TABLE `cities`
   ADD PRIMARY KEY (`id_city`);
 
 --
--- Indexes for table `customers`
+-- Chỉ mục cho bảng `customers`
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`id_customer`);
 
 --
--- Indexes for table `districts`
+-- Chỉ mục cho bảng `districts`
 --
 ALTER TABLE `districts`
   ADD PRIMARY KEY (`id_district`),
-  ADD KEY `id_city` (`id_city`);
+  ADD KEY `districts_id_city_foreign` (`id_city`);
 
 --
--- Indexes for table `feedbacks`
+-- Chỉ mục cho bảng `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  ADD PRIMARY KEY (`id_feedback`);
+  ADD PRIMARY KEY (`id_feedback`),
+  ADD KEY `feedbacks_id_product_foreign` (`id_product`);
 
 --
--- Indexes for table `migrations`
+-- Chỉ mục cho bảng `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products`
+-- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id_product`),
-  ADD KEY `products_id_type_foreign` (`id_type`),
-  ADD KEY `products_id_feedback_foreign` (`id_feedback`);
+  ADD KEY `products_id_type_foreign` (`id_type`);
 
 --
--- Indexes for table `product_detail`
+-- Chỉ mục cho bảng `product_detail`
 --
 ALTER TABLE `product_detail`
   ADD PRIMARY KEY (`id_detail`),
   ADD KEY `product_detail_id_product_foreign` (`id_product`);
 
 --
--- Indexes for table `product_type`
+-- Chỉ mục cho bảng `product_type`
 --
 ALTER TABLE `product_type`
   ADD PRIMARY KEY (`id_type`);
 
 --
--- Indexes for table `promotions`
+-- Chỉ mục cho bảng `promotions`
 --
 ALTER TABLE `promotions`
   ADD PRIMARY KEY (`id_promotion`),
   ADD KEY `promotions_id_product_foreign` (`id_product`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `bills`
+-- AUTO_INCREMENT cho bảng `bills`
 --
 ALTER TABLE `bills`
   MODIFY `id_bill` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `bill_detail`
+-- AUTO_INCREMENT cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
   MODIFY `id_bill_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `cities`
+-- AUTO_INCREMENT cho bảng `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id_city` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_city` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
--- AUTO_INCREMENT for table `customers`
+-- AUTO_INCREMENT cho bảng `customers`
 --
 ALTER TABLE `customers`
   MODIFY `id_customer` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `districts`
+-- AUTO_INCREMENT cho bảng `districts`
 --
 ALTER TABLE `districts`
-  MODIFY `id_district` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=687;
+  MODIFY `id_district` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=687;
 
 --
--- AUTO_INCREMENT for table `feedbacks`
+-- AUTO_INCREMENT cho bảng `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `id_feedback` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_feedback` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `product_detail`
+-- AUTO_INCREMENT cho bảng `product_detail`
 --
 ALTER TABLE `product_detail`
-  MODIFY `id_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `product_type`
+-- AUTO_INCREMENT cho bảng `product_type`
 --
 ALTER TABLE `product_type`
   MODIFY `id_type` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `promotions`
+-- AUTO_INCREMENT cho bảng `promotions`
 --
 ALTER TABLE `promotions`
   MODIFY `id_promotion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `bills`
+-- Các ràng buộc cho bảng `bills`
 --
 ALTER TABLE `bills`
   ADD CONSTRAINT `bills_id_customer_foreign` FOREIGN KEY (`id_customer`) REFERENCES `customers` (`id_customer`);
 
 --
--- Constraints for table `bill_detail`
+-- Các ràng buộc cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD CONSTRAINT `bill_detail_id_bill_foreign` FOREIGN KEY (`id_bill`) REFERENCES `bills` (`id_bill`),
   ADD CONSTRAINT `bill_detail_id_detail_foreign` FOREIGN KEY (`id_detail`) REFERENCES `product_detail` (`id_detail`);
 
 --
--- Constraints for table `districts`
+-- Các ràng buộc cho bảng `districts`
 --
 ALTER TABLE `districts`
-  ADD CONSTRAINT `districts_ibfk_1` FOREIGN KEY (`id_city`) REFERENCES `cities` (`id_city`);
+  ADD CONSTRAINT `districts_id_city_foreign` FOREIGN KEY (`id_city`) REFERENCES `cities` (`id_city`);
 
 --
--- Constraints for table `products`
+-- Các ràng buộc cho bảng `feedbacks`
+--
+ALTER TABLE `feedbacks`
+  ADD CONSTRAINT `feedbacks_id_product_foreign` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`);
+
+--
+-- Các ràng buộc cho bảng `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_id_feedback_foreign` FOREIGN KEY (`id_feedback`) REFERENCES `feedbacks` (`id_feedback`),
   ADD CONSTRAINT `products_id_type_foreign` FOREIGN KEY (`id_type`) REFERENCES `product_type` (`id_type`);
 
 --
--- Constraints for table `product_detail`
+-- Các ràng buộc cho bảng `product_detail`
 --
 ALTER TABLE `product_detail`
   ADD CONSTRAINT `product_detail_id_product_foreign` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`);
 
 --
--- Constraints for table `promotions`
+-- Các ràng buộc cho bảng `promotions`
 --
 ALTER TABLE `promotions`
   ADD CONSTRAINT `promotions_id_product_foreign` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`);
