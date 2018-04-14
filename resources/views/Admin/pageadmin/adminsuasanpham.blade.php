@@ -243,8 +243,8 @@
                                                     }
                                                     i++;
                                                 });
-
                                             </script>
+                                            
                                         </div>
 
                                         <div class="form-group">

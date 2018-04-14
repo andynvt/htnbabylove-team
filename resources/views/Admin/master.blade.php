@@ -37,12 +37,12 @@
     <link rel="stylesheet" href="source/ADMIN/css/cart.css">
     <link rel="stylesheet" href="source/ADMIN/css/color.css">
     <link rel="stylesheet" href="source/ADMIN/css/feedback.css">
-    {{-- <link rel="stylesheet" href="source/ADMIN/css/search.css">  --}}
-    {{-- <link rel="stylesheet" href="source/ADMIN/css/slideshow.css"> --}}
     <link rel="stylesheet" href="source/ADMIN/css/trangthai.css">
     <link rel="stylesheet" href="source/ADMIN/css/add_product.css">
     <link rel="stylesheet" href="source/ADMIN/css/util.css">
     <link rel="stylesheet" href="source/ADMIN/css/login.css">
+    <link rel="stylesheet" href="source/ADMIN/css/imgcolor-admin.css">
+    
 
 </head>
 

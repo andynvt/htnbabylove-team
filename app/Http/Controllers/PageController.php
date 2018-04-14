@@ -12,7 +12,6 @@ class PageController extends Controller
 {
     public function getIndex(){
         $promotion_product = Product::where('promotion_price', '<>', '0')->get();
-        // dd($promotion_product);
         $new_product = Product::where('status', 1)->get();
         $hot_product = Product::where('status', 2)->get();
         $product = Product::all();
@@ -48,12 +47,9 @@ class PageController extends Controller
         $get1_proimg = ProductDetail::where('id_product', $getid_ctsp)->value('image');
         // dd($get1_proimg);
 
-        $same_product = Product::where('id_type', $id_lsp)->take(6)->get();
-        $detail_product = ProductDetail::all();
-        $hot_product = Product::where('status', 2)->get();
-        $new_product = Product::where('status', 1)->get();
+        
 
-        return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get1_proimg','same_product','detail_product','hot_product','new_product'));
+        return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get1_proimg'));
     }
 
     public function getAbout(){
@@ -104,10 +100,6 @@ class PageController extends Controller
         return view('Admin.pageadmin.adminloaisanpham');
     }
 
-        public function getadminThemsanpham(){
-        return view('Admin.pageadmin.adminthemsanpham');
-    }
-
     public function getadminKhachhang(){
                 $table  = Customer::all();
         return view('Admin.pageadmin.adminkhachhang',compact('table'));
@@ -119,6 +111,14 @@ class PageController extends Controller
 
     public function getadminDoanhthu(){
         return view('Admin.pageadmin.admindoanhthu');
+    }
+
+    public function getadminThemsanpham(){
+        return view('Admin.pageadmin.adminthemsanpham');
+    }
+
+    public function getadminSuasanpham(){
+        return view('Admin.pageadmin.adminsuasanpham');
     }
 
 }

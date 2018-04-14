@@ -106,3 +106,8 @@ Route::get('admin-themsanpham', [
 	'as' => 'adminthemsanpham',
 	'uses' => 'PageController@getadminThemsanpham'
 ]);
+
+Route::get('admin-suasanpham', [
+	'as' => 'adminsuasanpham',
+	'uses' => 'PageController@getadminSuasanpham'
+]);

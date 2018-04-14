@@ -1,4 +1,5 @@
 @extends('Admin.master')
+<link rel="stylesheet" href="source/ADMIN/css/search.css">
 
 @section('contentadmin')
 <div class="wrapper">
@@ -10,42 +11,42 @@
           </a> </div>
                 <ul class="nav">
                     <li>
-                        <a href="personal.php"> <i class="ti-unlock"></i>
+                        <a href="{{ route('admincanhan') }}"> <i class="ti-unlock"></i>
                             <p>CÁ NHÂN</p>
                         </a>
                     </li>
                     <li>
-                        <a href="product.php">
+                        <a href="{{ route('adminsanpham') }}">
                             <i class="ti-package"></i>
                             <p>SẢN PHẨM</p>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="catagory_product.php">
+                        <a href="{{ route('adminloaisanpham') }}">
                             <i class="glyphicon glyphicon-th-large"></i>
                             <p>LOẠI SẢN PHẨM</p>
                         </a>
                     </li>
                     <li>
-                        <a href="quanlydonhang.php">
+                        <a href="{{ route('admindonhang') }}">
                             <i class="ti-shopping-cart-full"></i>
                             <p>Quản lý đơn hàng</p>
                         </a>
                     </li>
                     <li>
-                        <a href="quanlykhachang.php">
+                        <a href="{{ route('adminkhachhang') }}">
                             <i class="ti-user"></i>
                             <p>Quản lý khách hàng</p>
                         </a>
                     </li>
                     <li>
-                        <a href="quanlydoanhthu.php">
+                        <a href="{{ route('admindoanhthu') }}">
                             <i class="ti-money"></i>
                             <p>Quản lý doanh thu</p>
                         </a>
                     </li>
                     <li>
-                        <a href="feedback-admin.php">
+                        <a href="{{ route('admindanhgia') }}">
                             <i class="ti-comment-alt"></i>
                             <p>Quản lý đánh giá</p>
                         </a>

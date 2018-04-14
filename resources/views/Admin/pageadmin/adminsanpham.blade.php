@@ -1,4 +1,5 @@
 @extends('Admin.master')
+<link rel="stylesheet" href="source/ADMIN/css/search.css">
 
 @section('contentadmin')
 <div class="wrapper">
@@ -9,42 +10,42 @@
         </a> </div>
                 <ul class="nav">
                     <li>
-                        <a href="personal.php"> <i class="ti-unlock"></i>
+                        <a href="{{ route('admincanhan') }}"> <i class="ti-unlock"></i>
                             <p>CÁ NHÂN</p>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="product.php">
+                        <a href="{{ route('adminsanpham') }}">
                             <i class="ti-package"></i>
                             <p>SẢN PHẨM</p>
                         </a>
                     </li>
                     <li>
-                        <a href="catagory_product.php">
+                        <a href="{{ route('adminloaisanpham') }}">
                             <i class="glyphicon glyphicon-th-large"></i>
                             <p>LOẠI SẢN PHẨM</p>
                         </a>
                     </li>
                     <li>
-                        <a href="quanlydonhang.php">
+                        <a href="{{ route('admindonhang') }}">
                             <i class="ti-shopping-cart-full"></i>
                             <p>Quản lý đơn hàng</p>
                         </a>
                     </li>
                     <li>
-                        <a href="quanlykhachang.php">
+                        <a href="{{ route('adminkhachhang') }}">
                             <i class="ti-user"></i>
                             <p>Quản lý khách hàng</p>
                         </a>
                     </li>
                     <li>
-                        <a href="quanlydoanhthu.php">
+                        <a href="{{ route('admindoanhthu') }}">
                             <i class="ti-money"></i>
                             <p>Quản lý doanh thu</p>
                         </a>
                     </li>
                     <li>
-                        <a href="feedback-admin.php">
+                        <a href="{{ route('admindanhgia') }}">
                             <i class="ti-comment-alt"></i>
                             <p>Quản lý đánh giá</p>
                         </a>
@@ -87,7 +88,7 @@
                             <div class="header">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <div class="add_new_product"> <a href="add_product.php" class="btn btn-primary" id="btn_add_product">Thêm sản phẩm mới</a> </div>
+                                        <div class="add_new_product"> <a href="{{ route('adminthemsanpham') }}" class="btn btn-primary" id="btn_add_product">Thêm sản phẩm mới</a> </div>
                                     </div>
                                     <div class="col-md-1">
                                         <p></p>
@@ -133,82 +134,127 @@
                                                 <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a></td>
                                                 <td class="text-center">
                                                     <div class="">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                        <a href="{{ route('adminsuasanpham') }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                         <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>Sinaai-Waas</td>
-                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>Dakota Rice</td>
+                                                <td>$36,738</td>
+                                                <td>Niger</td>
+                                                <td>Oud-Turnhout</td>
+                                                <td>1</td>
                                                 <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a></td>
                                                 <td class="text-center">
                                                     <div class="">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                        <a href="{{ route('adminsuasanpham') }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                         <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>$56,142</td>
-                                                <td>Netherlands</td>
-                                                <td>Baileux</td>
-                                                <td>3</td>
+                                                <td>1</td>
+                                                <td>Dakota Rice</td>
+                                                <td>$36,738</td>
+                                                <td>Niger</td>
+                                                <td>Oud-Turnhout</td>
+                                                <td>1</td>
                                                 <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a></td>
                                                 <td class="text-center">
                                                     <div class="">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                        <a href="{{ route('adminsuasanpham') }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                         <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>$38,735</td>
-                                                <td>Korea, South</td>
-                                                <td>Overland Park</td>
-                                                <td>4</td>
+                                                <td>1</td>
+                                                <td>Dakota Rice</td>
+                                                <td>$36,738</td>
+                                                <td>Niger</td>
+                                                <td>Oud-Turnhout</td>
+                                                <td>1</td>
                                                 <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a></td>
                                                 <td class="text-center">
                                                     <div class="">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                        <a href="{{ route('adminsuasanpham') }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                         <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>5</td>
-                                                <td>Doris Greene</td>
-                                                <td>$63,542</td>
-                                                <td>Malawi</td>
-                                                <td>Feldkirchen in Kärnten</td>
-                                                <td>5</td>
+                                                <td>1</td>
+                                                <td>Dakota Rice</td>
+                                                <td>$36,738</td>
+                                                <td>Niger</td>
+                                                <td>Oud-Turnhout</td>
+                                                <td>1</td>
                                                 <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a></td>
                                                 <td class="text-center">
                                                     <div class="">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                        <a href="{{ route('adminsuasanpham') }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                         <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>6</td>
-                                                <td>Mason Porter</td>
-                                                <td>$78,615</td>
-                                                <td>Chile</td>
-                                                <td>Gloucester</td>
-                                                <td>6</td>
-                                                <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a> </td>
+                                                <td>1</td>
+                                                <td>Dakota Rice</td>
+                                                <td>$36,738</td>
+                                                <td>Niger</td>
+                                                <td>Oud-Turnhout</td>
+                                                <td>1</td>
+                                                <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a></td>
                                                 <td class="text-center">
                                                     <div class="">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                        <a href="{{ route('adminsuasanpham') }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                        <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Dakota Rice</td>
+                                                <td>$36,738</td>
+                                                <td>Niger</td>
+                                                <td>Oud-Turnhout</td>
+                                                <td>1</td>
+                                                <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a></td>
+                                                <td class="text-center">
+                                                    <div class="">
+                                                        <a href="{{ route('adminsuasanpham') }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                        <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Dakota Rice</td>
+                                                <td>$36,738</td>
+                                                <td>Niger</td>
+                                                <td>Oud-Turnhout</td>
+                                                <td>1</td>
+                                                <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a></td>
+                                                <td class="text-center">
+                                                    <div class="">
+                                                        <a href="{{ route('adminsuasanpham') }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                        <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Dakota Rice</td>
+                                                <td>$36,738</td>
+                                                <td>Niger</td>
+                                                <td>Oud-Turnhout</td>
+                                                <td>1</td>
+                                                <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a></td>
+                                                <td class="text-center">
+                                                    <div class="">
+                                                        <a href="{{ route('adminsuasanpham') }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                         <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
                                                 </td>
