@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductDetail extends Model
 {
     protected $table = "product_detail";
-    $timestamps = false;
+    public $timestamps = false;
     
 
     public function bill_detail(){
