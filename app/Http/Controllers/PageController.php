@@ -111,7 +111,7 @@ class PageController extends Controller
         $bill = Bill::all();
         $bill_detail = BillDetail::all();
         $customer = Customer::all();
-        return view('Admin.pageadmin.admindonhang', compact('bill','bill_detail'));
+        return view('Admin.pageadmin.admindonhang', compact('bill','bill_detail','customer'));
     }
 
     public function getadminDoanhthu(){

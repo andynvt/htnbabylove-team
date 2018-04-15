@@ -156,8 +156,8 @@
                                             <tr class="thead_change_color">
                                                 <th>Mã hoá đơn</th>
                                                 <th>Khách hàng</th>
-                                                <th>Giá</th>
-                                                <th>Số lượng</th>
+                                                <th>Tổng tiền</th>
+                                                <th>Số lượng sản phẩm</th>
                                                 <th>Địa chỉ</th>
                                                 <th>Trạng thái</th>
                                                 <th>Xem chi tiết</th>
@@ -165,62 +165,46 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="danggui">
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                                <td>Oud-Turnhout</td>
-                                                <td>Đang gửi</td>
-                                                <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
-                                                <td>
-                                                    <div class="">
-                                                        <a href="#" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
-                                                    </div>
-                                                </td>
+                                        @foreach($bill as $b)
+                                        @foreach($customer as $c)
+                                        @if($b->id_customer  == $c->id_customer)
+                                            @if($b->status == 1)
+                                                <tr class="danggui">
+                                            @elseif($b->status == 2)
+                                                <tr class="hoantat">
+                                            @elseif($b->status == 3)
+                                                <tr class="bihuy">
+                                            @elseif($b->status == 4)
+                                                <tr class="choxacnhan">
+                                            @endif
+                                            <td>{{$b->id_bill}}</td>
+                                            <td>{{$c->name}}</td>
+                                            <td>{{ number_format($b->total_price) }} đ</td>
+                                            <td>{{ $b->total_product }}</td>
+                                            <td>{{ $b->address }}</td>
+                                            <td>
+                                                @if($b->status == 1)
+                                                    Đang gửi
+                                                @elseif($b->status == 2)
+                                                    Hoàn tất
+                                                @elseif($b->status == 3)
+                                                    Bị huỷ
+                                                @elseif($b->status == 4)
+                                                    Chờ xác nhận
+                                                @endif
+
+                                            </td>
+                                            <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
+                                            <td>
+                                                <div class="">
+                                                    <a href="#" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
+                                                </div>
+                                            </td>
                                             </tr>
-                                            <tr class="hoantat">
-                                                <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>Sinaai-Waas</td>
-                                                <td>Hoàn thành</td>
-                                                <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
-                                                <td>
-                                                    <div class="">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="bihuy">
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>$56,142</td>
-                                                <td>Netherlands</td>
-                                                <td>Baileux</td>
-                                                <td>Bi huy</td>
-                                                <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
-                                                <td>
-                                                    <div class="">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="choxacnhan">
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>$38,735</td>
-                                                <td>Korea, South</td>
-                                                <td>Overland Park</td>
-                                                <td>Chờ xác nhận</td>
-                                                <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
-                                                <td>
-                                                    <div class="">
-                                                        <a href="edit_product.php?id=121" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+
+                                        @endif
+                                        @endforeach
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
