@@ -7,6 +7,8 @@ use App\Product;
 use App\ProductDetail;
 use App\ProductType;
 use App\Feedback;
+use App\Bill;
+use App\BillDetail;
 
 class PageController extends Controller
 {
@@ -106,7 +108,10 @@ class PageController extends Controller
     }
 
     public function getadminDonhang(){
-        return view('Admin.pageadmin.admindonhang');
+        $bill = Bill::all();
+        $bill_detail = BillDetail::all();
+        $customer = Customer::all();
+        return view('Admin.pageadmin.admindonhang', compact('bill','bill_detail'));
     }
 
     public function getadminDoanhthu(){
