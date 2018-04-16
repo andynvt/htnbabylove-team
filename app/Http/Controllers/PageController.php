@@ -9,6 +9,7 @@ use App\ProductType;
 use App\Feedback;
 use App\Bill;
 use App\BillDetail;
+use DB;
 
 class PageController extends Controller
 {
