@@ -19,7 +19,10 @@ class PageController extends Controller
         $product = Product::all();
         $detail_product = ProductDetail::all();
         $lsp = ProductType::all();
-    	return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product'));
+
+        $same_product = Product::where('id_type', $id_lsp)->take(6)->get();
+        $detail_product = ProductDetail::all();
+        return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get1_proimg','same_product','detail_product','hot_product','new_product'));
     }
 
     public function getLoaiSP($type){
