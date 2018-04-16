@@ -19,10 +19,7 @@ class PageController extends Controller
         $product = Product::all();
         $detail_product = ProductDetail::all();
         $lsp = ProductType::all();
-
-        $same_product = Product::where('id_type', $id_lsp)->take(6)->get();
-        $detail_product = ProductDetail::all();
-        return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get1_proimg','same_product','detail_product','hot_product','new_product'));
+        return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product'));
     }
 
     public function getLoaiSP($type){
@@ -37,6 +34,8 @@ class PageController extends Controller
     }
 
     public function getDetail(Request $req){
+        $detail_product = ProductDetail::all();
+
         $sanpham = Product::where('id_product', $req->id)->first();
         $feedback = Feedback::where('id_product', $req->id)->get();
 
@@ -51,10 +50,13 @@ class PageController extends Controller
         $product_img = ProductDetail::where('id_product', $getid_ctsp)->get();
         $get1_proimg = ProductDetail::where('id_product', $getid_ctsp)->value('image');
         // dd($get1_proimg);
+        $new_product = Product::where('status', 1)->get();
+        $hot_product = Product::where('status', 2)->get();
 
-        
+        $same_product = Product::where('id_type', $id_lsp)->take(6)->get();
 
-        return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get1_proimg'));
+
+        return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get1_proimg','same_product','detail_product','hot_product','new_product'));
     }
 
     public function getAbout(){
