@@ -92,7 +92,17 @@ class PageController extends Controller
     }
 
     public function getadminDanhgia(){
-        return view('Admin.pageadmin.admindanhgia');
+        $getlsp = ProductType::all();
+
+        $getsp = DB::table('products as sp')
+                    ->leftjoin('product_detail as ctsp', 'sp.id_product', '=', 'ctsp.id_product')
+                    ->select('sp.id_product','sp.name','ctsp.image')
+                    ->get();
+
+        dd($getsp);
+
+        return view('Admin.pageadmin.admindanhgia', compact('getlsp','getsp'));
+
     }
 
     public function getadminChitietDanhgia(){
@@ -104,11 +114,13 @@ class PageController extends Controller
     }
 
     public function getadminLoaisanpham(){
-        return view('Admin.pageadmin.adminloaisanpham');
+        $adminlsp = ProductType::all();
+
+        return view('Admin.pageadmin.adminloaisanpham', compact('adminlsp'));
     }
 
     public function getadminKhachhang(){
-                $table  = Customer::all();
+        $table  = Customer::all();
         return view('Admin.pageadmin.adminkhachhang',compact('table'));
     }
 
@@ -129,6 +141,16 @@ class PageController extends Controller
 
     public function getadminSuasanpham(){
         return view('Admin.pageadmin.adminsuasanpham');
+    }
+
+    public function postThemloaisanpham(Request $req){
+        $producttype = new ProductType;
+        $producttype->type_name = $req->categoriename;
+        $producttype->save();
+
+        $adminlsp = ProductType::all();
+
+        return view('Admin.pageadmin.adminloaisanpham', compact('adminlsp'));
     }
 
 }
