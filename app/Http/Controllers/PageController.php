@@ -61,7 +61,8 @@ class PageController extends Controller
     }
 
     public function getAbout(){
-    	return view('page.gioithieu');
+        $lsp = ProductType::all();
+    	return view('page.gioithieu', compact('lsp'));
     }
 
     public function getPolicy(){
@@ -129,6 +130,15 @@ class PageController extends Controller
         $bill = Bill::all();
         $bill_detail = BillDetail::all();
         $customer = Customer::all();
+
+        $promotion_product = DB::table('products as sp')
+                    ->Join('product_detail as ctsp', 'sp.id_product', '=', 'ctsp.id_product')
+                    ->select('sp.id_product','sp.name','sp.promotion_price','sp.unit_price','ctsp.image')
+                    ->where('promotion_price', '<>', '0')
+                    ->distinct()
+                    ->get();
+        // dd($promotion_product);
+
         return view('Admin.pageadmin.admindonhang', compact('bill','bill_detail','customer'));
     }
 

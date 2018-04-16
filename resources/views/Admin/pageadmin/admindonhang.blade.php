@@ -124,7 +124,6 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-
                                 <div class="feedback-item-name">
                                     <div class="row">
                                         <div class="col-md-8">
@@ -176,7 +175,7 @@
                                                 <tr class="bihuy">
                                             @elseif($b->status == 4)
                                                 <tr class="choxacnhan">
-                                            @endif
+                                        @endif
                                             <td>{{$b->id_bill}}</td>
                                             <td>{{$c->name}}</td>
                                             <td>{{ number_format($b->total_price) }} đ</td>
@@ -246,7 +245,7 @@
                                         <div class="cart-product col-md-6 col-12">
                                             <div class="row">
                                                 <div class="cart-div-img col-md-3 col-3">
-                                                    <a href="#"> <img class="img-fluid cart-img" src="source/ADMIN/image/products/2.jpg"> </a>
+                                                    <a href="#"> <img class="img-fluid cart-img" src="source/ADMIN/image/products/team_projects2.jpg"> </a>
                                                 </div>
                                                 <div class="col-md-9 col-9">
                                                     <div class="container-filud">
@@ -294,7 +293,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                         <button type="button" class="btn btn-primary">Duyệt đơn hàng</button>
                     </div>
                 </div>
