@@ -84,48 +84,15 @@
             <div class="container-fluid">
                 <div class="feedback-admin">
                     <div class="feedback-typeproduct-title form-group clearfix">
+                        @foreach($getlsp as $fblsp)
                         <div class="col-md-3">
                             <a href="#" data-toggle="tooltip" title="Mền">
                                 <div class="feedback-typeproduct-name">
-                                    <p> Mền </p>
+                                    <p>{{ $fblsp->type_name }}</p>
                                 </div>
                             </a>
                         </div>
-                        <div class="col-md-3">
-                            <a href="#" data-toggle="tooltip" title="Gối">
-                                <div class="feedback-typeproduct-name">
-                                    <p> Gối </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" data-toggle="tooltip" title="Khăn choàng - Áo choàng">
-                                <div class="feedback-typeproduct-name">
-                                    <p> Khăn choàng - Áo choàng </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" data-toggle="tooltip" title="Bộ">
-                                <div class="feedback-typeproduct-name">
-                                    <p> Bộ </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" data-toggle="tooltip" title="Bộ">
-                                <div class="feedback-typeproduct-name">
-                                    <p> Bộ </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" data-toggle="tooltip" title="Bộ">
-                                <div class="feedback-typeproduct-name">
-                                    <p> Bộ </p>
-                                </div>
-                            </a>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="feedback-typeproduct-content clearfix">
                         <div class="col-md-12">
@@ -139,86 +106,21 @@
                         </div>
                         <div class="col-md-12">
                             <div class="feedback-typeproduct-item clearfix">
+                                @foreach($getsp as $fbsp)
+                                {{-- @if($fbsp->id_product ) --}}
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.php"><img src="source/ADMIN/image/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
+                                        <a href="{{ route('adminchitietdanhgia') }}"><img src="source/image/{{ $fbsp->image }}" alt="Thumbnail Image 1" class="img-responsive">
                                             <div class="feedback-qty">
                                                 <div class="qty-feedback">12</div>
                                             </div>
-                                            <p>Item's Name</p>
+                                            <p>{{ $fbsp->name }}</p>
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-md-3 align-feedback-item">
-                                    <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.php"><img src="source/ADMIN/image/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
-                                            <div class="feedback-qty">
-                                                <div class="qty-feedback">12</div>
-                                            </div>
-                                            <p>Item's Name</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 align-feedback-item">
-                                    <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.php"><img src="source/ADMIN/image/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
-                                            <div class="feedback-qty">
-                                                <div class="qty-feedback">12</div>
-                                            </div>
-                                            <p>Item's Name</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 align-feedback-item">
-                                    <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.php"><img src="source/ADMIN/image/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
-                                            <div class="feedback-qty">
-                                                <div class="qty-feedback">12</div>
-                                            </div>
-                                            <p>Item's Name</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 align-feedback-item">
-                                    <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.php"><img src="source/ADMIN/image/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
-                                            <div class="feedback-qty">
-                                                <div class="qty-feedback">12</div>
-                                            </div>
-                                            <p>Item's Name</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 align-feedback-item">
-                                    <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.php"><img src="source/ADMIN/image/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
-                                            <div class="feedback-qty">
-                                                <div class="qty-feedback">12</div>
-                                            </div>
-                                            <p>Item's Name</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 align-feedback-item">
-                                    <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.php"><img src="source/ADMIN/image/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
-                                            <div class="feedback-qty">
-                                                <div class="qty-feedback">12</div>
-                                            </div>
-                                            <p>Item's Name</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 align-feedback-item">
-                                    <div class="feedback-content-item">
-                                        <a href="feedback-admin-detail.php"><img src="source/ADMIN/image/portfolio/4.jpg" alt="Thumbnail Image 1" class="img-responsive">
-                                            <div class="feedback-qty">
-                                                <div class="qty-feedback">12</div>
-                                            </div>
-                                            <p>Item's Name</p>
-                                        </a>
-                                    </div>
-                                </div>
+                                {{-- @endif --}}
+                                
+                                @endforeach
                             </div>
                         </div>
                     </div>

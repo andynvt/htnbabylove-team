@@ -92,10 +92,12 @@
                 <span>Thêm loại mới</span>
               </strong> </div>
                             <div class="panel-body ">
-                                <form method="post " action="categorie.php ">
+                                <form method="post" action="{{ route('adminthemloaisanpham') }}">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group ">
-                                        <input type="text " class="form-control " name="categorie-name " placeholder="Tên loại sản phẩm "> </div>
-                                    <button type="submit " name="add_cat " class="btn btn-primary ">Thêm</button>
+                                        <input type="text " class="form-control" name="categoriename" placeholder="Tên loại sản phẩm "> 
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Thêm</button>
                                 </form>
                             </div>
                         </div>
@@ -130,16 +132,17 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center " style="width: 50px; ">STT</th>
-                                            <th>Tên Loại</th>
                                             <th>Mã Loại</th>
+                                            <th>Tên Loại</th>
                                             <th class="text-center " style="width: 100px; ">Sửa/Xóa</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($adminlsp as $adlsp)
                                         <tr>
                                             <td class="text-center ">1</td>
-                                            <td>Gối</td>
-                                            <td>1</td>
+                                            <td>{{ $adlsp->id_type }}</td>
+                                            <td>{{ $adlsp->type_name }}</td>
                                             <td class="text-center ">
                                                 <div class="btn-group ">
                                                     <a href="edit_product.php?id=121 " class="btn btn-info btn-xs edit_icon " title=" " data-toggle="tooltip " data-original-title="Sửa "> <span class="glyphicon glyphicon-edit "></span> </a>
@@ -147,39 +150,8 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="text-center ">2</td>
-                                            <td>Áo Choàng</td>
-                                            <td>2</td>
-                                            <td class="text-center ">
-                                                <div class="btn-group ">
-                                                    <a href="edit_product.php?id=121 " class="btn btn-info btn-xs edit_icon " title=" " data-toggle="tooltip " data-original-title="Sửa "> <span class="glyphicon glyphicon-edit "></span> </a>
-                                                    <a href="delete_product.php?id=121 " class="btn btn-danger btn-xs del_icon " title=" " data-toggle="tooltip " data-original-title="Xóa "> <span class="glyphicon glyphicon-trash "></span> </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center ">3</td>
-                                            <td>Bộ mền gối</td>
-                                            <td>3</td>
-                                            <td class="text-center ">
-                                                <div class="btn-group ">
-                                                    <a href="edit_product.php?id=121 " class="btn btn-info btn-xs edit_icon " title=" " data-toggle="tooltip " data-original-title="Sửa "> <span class="glyphicon glyphicon-edit "></span> </a>
-                                                    <a href="delete_product.php?id=121 " class="btn btn-danger btn-xs del_icon " title=" " data-toggle="tooltip " data-original-title="Xóa "> <span class="glyphicon glyphicon-trash "></span> </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center ">4</td>
-                                            <td>Mền</td>
-                                            <td>4</td>
-                                            <td class="text-center ">
-                                                <div class="btn-group ">
-                                                    <a href="edit_product.php?id=121 " class="btn btn-info btn-xs edit_icon " title=" " data-toggle="tooltip " data-original-title="Sửa "> <span class="glyphicon glyphicon-edit "></span> </a>
-                                                    <a href="delete_product.php?id=121 " class="btn btn-danger btn-xs del_icon " title=" " data-toggle="tooltip " data-original-title="Xóa "> <span class="glyphicon glyphicon-trash "></span> </a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @endforeach
+                                        
                                     </tbody>
                                 </table>
                             </div>
