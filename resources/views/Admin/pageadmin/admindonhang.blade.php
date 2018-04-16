@@ -194,7 +194,7 @@
                                                 @endif
 
                                             </td>
-                                            <td><a href="" data-toggle="modal" data-target="#1">Chi Tiết đơn hàng</a></td>
+                                            <td><a href="" data-toggle="modal" data-target="#{{$b->id_bill}}">Chi Tiết đơn hàng</a></td>
                                             <td>
                                                 <div class="">
                                                     <a href="#" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
@@ -218,13 +218,15 @@
     <!-- Phan popup madal cua xem chi tiet -->
     <form action="" method="post">
         <!-- The Modal -->
-        <div class="modal fade modalcart" id="1">
+        @foreach($bill as $b)
+        @foreach($customer as $c)
+        <div class="modal fade modalcart" id="{{$b->id_bill}}">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Đơn hàng (có 3 sản phẩm)</h4>
+                        <h4 class="modal-title">Đơn hàng {{$b->id_bill}} (có {{$b->total_product}} sản phẩm)</h4>
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body cart-center">
@@ -237,6 +239,8 @@
                         <div class="cart-content">
                             <!--desktop-->
                             <div class="desktop-cart">
+                            @foreach($bill as $bi)
+                            @foreach($bill_detail as $bd)
                                 <div class="cart-item">
                                     <div class="row align-items-center">
                                         <div class="cart-product col-md-6 col-12">
@@ -253,17 +257,6 @@
                                                             <div class="form-group change-color">
                                                                 <div class="color-dropdown">
                                                                     <button class="btn _select_color dropdowncolor" type="button"> <span class="color" style="background-color: green"></span> </button>
-                                                                    <ul class="_select_color_drop">
-                                                                        <li><span class="color " style="background-color: green"></span></li>
-                                                                        <li><span class="color " style="background-color: red"></span></li>
-                                                                        <li><span class="color " style="background-color: #f90"></span></li>
-                                                                        <li><span class="color " style="background-color: brown"></span></li>
-                                                                        <li><span class="color " style="background-color: orange"></span></li>
-                                                                        <li><span class="color " style="background-color: pink"></span></li>
-                                                                        <li><span class="color " style="background-color: silver"></span></li>
-                                                                        <li><span class="color " style="background-color: blue"></span></li>
-                                                                        <li><span class="color " style="background-color: TEAL"></span></li>
-                                                                        <input type="hidden" name="_color" value=""> </ul>
                                                                 </div>
                                                             </div>
                                                             <div> Kích thước: 30x30cm </div>
@@ -274,11 +267,11 @@
                                         </div>
                                         <div class="cart-qty col-md-2 col-3">
                                             <div class="cart-input-qty">
-                                                1
+                                                {{ $bd->quantity}}
                                             </div>
                                         </div>
                                         <div class="unit-price col-md-2" style="text-align: right;">
-                                            <div style="padding: 35% 0;"> 100,000 VND </div>
+                                            <div style="padding: 35% 0;"> {{ number_format($bd->unit_price) }} </div>
                                         </div>
                                         <div class="col-md-2 align-self-center" style="text-align: center">
                                             <div style="padding: 35% 0;"> 
@@ -287,156 +280,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cart-item">
-                                    <div class="row align-items-center">
-                                        <div class="cart-product col-md-6 col-12">
-                                            <div class="row">
-                                                <div class="cart-div-img col-md-3 col-3">
-                                                    <a href="#"> <img class="img-fluid cart-img" src="source/ADMIN/image/products/2.jpg"> </a>
-                                                </div>
-                                                <div class="col-md-9 col-9">
-                                                    <div class="container-filud">
-                                                        <div class="cart-product-name text-title"> <a href="#">
-                                                                   HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062
-                                                               </a> </div>
-                                                        <div class="cart-product-info">
-                                                            <div class="form-group change-color">
-                                                                <div class="color-dropdown">
-                                                                    <button class="btn _select_color dropdowncolor" type="button"> <span class="color" style="background-color: green"></span> </button>
-                                                                    <ul class="_select_color_drop">
-                                                                        <li><span class="color " style="background-color: green"></span></li>
-                                                                        <li><span class="color " style="background-color: red"></span></li>
-                                                                        <li><span class="color " style="background-color: #f90"></span></li>
-                                                                        <li><span class="color " style="background-color: brown"></span></li>
-                                                                        <li><span class="color " style="background-color: orange"></span></li>
-                                                                        <li><span class="color " style="background-color: pink"></span></li>
-                                                                        <li><span class="color " style="background-color: silver"></span></li>
-                                                                        <li><span class="color " style="background-color: blue"></span></li>
-                                                                        <li><span class="color " style="background-color: TEAL"></span></li>
-                                                                        <input type="hidden" name="_color" value=""> </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div> Kích thước: 30x30cm </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cart-qty col-md-2 col-3">
-                                            <div class="cart-input-qty">
-                                                1
-                                            </div>
-                                        </div>
-                                        <div class="unit-price col-md-2" style="text-align: right;">
-                                            <div style="padding: 35% 0;"> 100,000 VND </div>
-                                        </div>
-                                        <div class="col-md-2 align-self-center" style="text-align: center">
-                                            <div style="padding: 35% 0;"> 
-                                                <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item">
-                                    <div class="row align-items-center">
-                                        <div class="cart-product col-md-6 col-12">
-                                            <div class="row">
-                                                <div class="cart-div-img col-md-3 col-3">
-                                                    <a href="#"> <img class="img-fluid cart-img" src="source/ADMIN/image/products/2.jpg"> </a>
-                                                </div>
-                                                <div class="col-md-9 col-9">
-                                                    <div class="container-filud">
-                                                        <div class="cart-product-name text-title"> <a href="#">
-                                                                   HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062
-                                                               </a> </div>
-                                                        <div class="cart-product-info">
-                                                            <div class="form-group change-color">
-                                                                <div class="color-dropdown">
-                                                                    <button class="btn _select_color dropdowncolor" type="button"> <span class="color" style="background-color: green"></span> </button>
-                                                                    <ul class="_select_color_drop">
-                                                                        <li><span class="color " style="background-color: green"></span></li>
-                                                                        <li><span class="color " style="background-color: red"></span></li>
-                                                                        <li><span class="color " style="background-color: #f90"></span></li>
-                                                                        <li><span class="color " style="background-color: brown"></span></li>
-                                                                        <li><span class="color " style="background-color: orange"></span></li>
-                                                                        <li><span class="color " style="background-color: pink"></span></li>
-                                                                        <li><span class="color " style="background-color: silver"></span></li>
-                                                                        <li><span class="color " style="background-color: blue"></span></li>
-                                                                        <li><span class="color " style="background-color: TEAL"></span></li>
-                                                                        <input type="hidden" name="_color" value=""> </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div> Kích thước: 30x30cm </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cart-qty col-md-2 col-3">
-                                            <div class="cart-input-qty">
-                                                1
-                                            </div>
-                                        </div>
-                                        <div class="unit-price col-md-2" style="text-align: right;">
-                                            <div style="padding: 35% 0;"> 100,000 VND </div>
-                                        </div>
-                                        <div class="col-md-2 align-self-center" style="text-align: center">
-                                            <div style="padding: 35% 0;"> 
-                                                <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item">
-                                    <div class="row align-items-center">
-                                        <div class="cart-product col-md-6 col-12">
-                                            <div class="row">
-                                                <div class="cart-div-img col-md-3 col-3">
-                                                    <a href="#"> <img class="img-fluid cart-img" src="source/ADMIN/image/products/2.jpg"> </a>
-                                                </div>
-                                                <div class="col-md-9 col-9">
-                                                    <div class="container-filud">
-                                                        <div class="cart-product-name text-title"> <a href="#">
-                                                                   HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062
-                                                               </a> </div>
-                                                        <div class="cart-product-info">
-                                                            <div class="form-group change-color">
-                                                                <div class="color-dropdown">
-                                                                    <button class="btn _select_color dropdowncolor" type="button"> <span class="color" style="background-color: green"></span> </button>
-                                                                    <ul class="_select_color_drop">
-                                                                        <li><span class="color " style="background-color: green"></span></li>
-                                                                        <li><span class="color " style="background-color: red"></span></li>
-                                                                        <li><span class="color " style="background-color: #f90"></span></li>
-                                                                        <li><span class="color " style="background-color: brown"></span></li>
-                                                                        <li><span class="color " style="background-color: orange"></span></li>
-                                                                        <li><span class="color " style="background-color: pink"></span></li>
-                                                                        <li><span class="color " style="background-color: silver"></span></li>
-                                                                        <li><span class="color " style="background-color: blue"></span></li>
-                                                                        <li><span class="color " style="background-color: TEAL"></span></li>
-                                                                        <input type="hidden" name="_color" value=""> </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div> Kích thước: 30x30cm </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cart-qty col-md-2 col-3">
-                                            <div class="cart-input-qty">
-                                                1
-                                            </div>
-                                        </div>
-                                        <div class="unit-price col-md-2" style="text-align: right;">
-                                            <div style="padding: 35% 0;"> 100,000 VND </div>
-                                        </div>
-                                        <div class="col-md-2 align-self-center" style="text-align: center">
-                                            <div style="padding: 35% 0;"> 
-                                                <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            @endforeach
+                            @endforeach
                             </div>
                             <!--end desktop-->
                         </div>
@@ -445,7 +290,7 @@
                         <div class="cart-order">
                             <div class="cart-total-price col-md-6 offset-md-6 col-12">
                                 <div class="row">
-                                    <div class="col-md-12 col-12 total-price">Tổng tiền: 22,300,000 VND </div>
+                                    <div class="col-md-12 col-12 total-price">Tổng tiền: </div>
                                 </div>
                             </div>
                         </div>
@@ -453,8 +298,11 @@
                         <button type="button" class="btn btn-primary">Duyệt đơn hàng</button>
                     </div>
                 </div>
+                
             </div>
         </div>
+        @endforeach
+        @endforeach
     </form>
 
     @endsection
