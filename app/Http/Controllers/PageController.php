@@ -97,11 +97,12 @@ class PageController extends Controller
         $getlsp = ProductType::all();
 
         $getsp = DB::table('products as sp')
-                    ->leftjoin('product_detail as ctsp', 'sp.id_product', '=', 'ctsp.id_product')
-                    ->select('sp.id_product','sp.name','ctsp.image')
+                    ->join('product_detail as ctsp', 'sp.id_product', '=', 'ctsp.id_product')
+                    ->join('product_image as asp', 'ctsp.id_detail', '=' , 'asp.id_detail')
+                    ->select('sp.id_product','sp.name','asp.image')
                     ->get();
 
-        dd($getsp);
+        // dd($getsp);
 
         return view('Admin.pageadmin.admindanhgia', compact('getlsp','getsp'));
 
@@ -109,6 +110,14 @@ class PageController extends Controller
 
     public function getadminChitietDanhgia(){
         return view('Admin.pageadmin.adminchitietdanhgia');
+    }
+
+    public function getadminDanhgiatheoloai($fbtype){
+        $getlsp = ProductType::all();
+
+        $fb_theoloai = Product::where('id_type', $fbtype)->get();
+
+        return view('Admin.pageadmin.admindanhgiatheoloai', compact('getlsp','fb_theoloai'));
     }
 
     public function getadminSanpham(){

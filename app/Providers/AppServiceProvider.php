@@ -43,6 +43,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with('detail_product',$detail_product);
         });
 
+        view()->composer('Admin.pageadmin.admindanhgia', function($view){
+            $loai_sp = ProductType::all();
+            $view->with('loai_sp',$loai_sp);
+        });
+
         // view()->composer('page.loai_sanpham',function($view){
         //     $l_sanpham = ProductType::all();
         //     $view->with('l_sanpham',$l_sanpham);

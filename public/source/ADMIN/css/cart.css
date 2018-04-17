@@ -118,6 +118,7 @@
 
 .cart-input-qty {
     position: relative;
+    text-align: center;
 }
 
 .cart-input-qty input {
@@ -210,7 +211,7 @@
 }
 
 .total-price {
-    text-align: right;
+    text-align: left;
 }
 
 .btn-order {

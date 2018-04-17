@@ -284,12 +284,16 @@
                         <div class="cart-order">
                             <div class="cart-total-price col-md-6 offset-md-6 col-12">
                                 <div class="row">
+<<<<<<< HEAD
                                     <div class="col-md-12 col-12 total-price">Tổng tiền: {{number_format( $gb->total_price)}} đ </div>
+=======
+                                    <div class="col-md-12 col-12 total-price">Tổng tiền: 99999999 vnd</div>
+>>>>>>> 722b037429b1fa20a9e4798f59979868b41454ec
                                 </div>
                             </div>
                         </div>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-primary">Duyệt đơn hàng</button>
+                        <button type="submit" class="btn btn-primary">Duyệt đơn hàng</button>
                     </div>
                     
                 </div>
