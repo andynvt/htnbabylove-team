@@ -289,12 +289,12 @@
                         <div class="cart-order">
                             <div class="cart-total-price col-md-6 offset-md-6 col-12">
                                 <div class="row">
-                                    <div class="col-md-12 col-12 total-price">Tổng tiền: </div>
+                                    <div class="col-md-12 col-12 total-price">Tổng tiền: 99999999 vnd</div>
                                 </div>
                             </div>
                         </div>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-primary">Duyệt đơn hàng</button>
+                        <button type="submit" class="btn btn-primary">Duyệt đơn hàng</button>
                     </div>
                 </div>
                 
