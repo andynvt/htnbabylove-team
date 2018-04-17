@@ -3,11 +3,12 @@
 @section('contentadmin')
 <div class="wrapper">
         <div class="sidebar" data-background-color="white" data-active-color="danger">
-
             <div class="sidebar-wrapper">
-                <div class="logo"> <a href="#" class="simple-text">
-                    Hoàng Thủy Nguyên
-                </a> </div>
+                <div class="logo"> 
+                    <a href="http://www.creative-tim.com" class="simple-text">
+                        hoàng thủy nguyên
+                    </a> 
+                </div>
                 <ul class="nav">
                     <li>
                         <a href="{{ route('admincanhan') }}"> <i class="ti-unlock"></i>
@@ -38,13 +39,13 @@
                             <p>Quản lý khách hàng</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="{{ route('admindoanhthu') }}">
                             <i class="ti-money"></i>
                             <p>Quản lý doanh thu</p>
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="{{ route('admindanhgia') }}">
                             <i class="ti-comment-alt"></i>
                             <p>Quản lý đánh giá</p>
@@ -84,9 +85,9 @@
             <div class="container-fluid">
                 <div class="feedback-admin">
                     <div class="feedback-typeproduct-title form-group clearfix">
-                        @foreach($loai_sp as $fblsp)
+                        @foreach($getlsp as $fblsp)
                         <div class="col-md-3">
-                            <a href="{{ route('admindanhgiatheoloai', $fblsp->id_type) }}" data-toggle="tooltip" title="{{ $fblsp->type_name }}">
+                            <a href="#" data-toggle="tooltip" title="Mền">
                                 <div class="feedback-typeproduct-name">
                                     <p>{{ $fblsp->type_name }}</p>
                                 </div>
@@ -106,24 +107,24 @@
                         </div>
                         <div class="col-md-12">
                             <div class="feedback-typeproduct-item clearfix">
-                                @foreach($getsp as $fbsp)
-                                {{-- @if($fbsp->id_product ) --}}
+
+                                @foreach($fb_theoloai as $fbloai)
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="{{ route('adminchitietdanhgia') }}"><img src="source/image/{{ $fbsp->image }}" alt="Thumbnail Image 1" class="img-responsive">
+                                        <a href="#"><img src="source/image/aosomi.jpg" alt="Thumbnail Image 1" class="img-responsive">
                                             <div class="feedback-qty">
                                                 <div class="qty-feedback">12</div>
                                             </div>
-                                            <p>{{ $fbsp->name }}</p>
+                                            <p>Áo</p>
                                         </a>
                                     </div>
                                 </div>
-                                {{-- @endif --}}
-                                
                                 @endforeach
+
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

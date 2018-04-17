@@ -77,6 +77,11 @@ Route::get('admin-chitietdanhgia', [
 	'uses' => 'PageController@getadminChitietDanhgia'
 ]);
 
+Route::get('admin-danhgiatheoloai/{fbtype}', [
+	'as' => 'admindanhgiatheoloai',
+	'uses' => 'PageController@getadminDanhgiatheoloai'
+]);
+
 Route::get('admin-sanpham', [
 	'as' => 'adminsanpham',
 	'uses' => 'PageController@getadminSanpham'
@@ -110,4 +115,9 @@ Route::get('admin-themsanpham', [
 Route::get('admin-suasanpham', [
 	'as' => 'adminsuasanpham',
 	'uses' => 'PageController@getadminSuasanpham'
+]);
+
+Route::post('admin-themloaisanpham', [
+	'as' => 'adminthemloaisanpham',
+	'uses' => 'PageController@postThemloaisanpham'
 ]);
