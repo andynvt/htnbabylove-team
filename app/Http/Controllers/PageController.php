@@ -127,19 +127,19 @@ class PageController extends Controller
     }
 
     public function getadminDonhang(){
-        $bill = Bill::all();
-        $bill_detail = BillDetail::all();
-        $customer = Customer::all();
-
-        $promotion_product = DB::table('products as sp')
-                    ->Join('product_detail as ctsp', 'sp.id_product', '=', 'ctsp.id_product')
-                    ->select('sp.id_product','sp.name','sp.promotion_price','sp.unit_price','ctsp.image')
-                    ->where('promotion_price', '<>', '0')
+        $get_bill = DB::table('bills as b')
+                    ->Join('bill_detail as bd', 'b.id_bill', '=', 'bd.id_bill')
+                    ->Join('customers as c', 'b.id_customer', '=', 'c.id_customer')
+                    ->Join('product_detail as pd', 'bd.id_detail','=','pd.id_detail')
+                    ->Join('products as p', 'pd.id_product', '=', 'p.id_product')
+                    ->Join('product_color as pc','pd.id_detail','pc.id_detail')
+                    ->Join('product_image as pi','pd.id_detail','pi.id_detail')
+                    ->select('b.id_bill','b.total_price','b.total_product','b.status','b.address','bd.quantity','bd.unit_price','c.name','p.name as pname','bd.unit_price','p.size')
                     ->distinct()
+                    ->orderby('b.status')
                     ->get();
-        // dd($promotion_product);
-
-        return view('Admin.pageadmin.admindonhang', compact('bill','bill_detail','customer'));
+        // dd($get_bill);
+        return view('Admin.pageadmin.admindonhang', compact('get_bill'));
     }
 
     public function getadminDoanhthu(){

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TableCustomers extends Migration
+class Districts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class TableCustomers extends Migration
      */
     public function up()
     {
-        Schema::create('customers', function($table){
-            $table->increments('id_customer');
+        Schema::create('districts', function ($table){
+            $table->increments('id_district');
             $table->string('name');
-            $table->string('gender');
-            $table->string('email');
-            $table->string('address');
-            $table->string('phone');
-            $table->timestamps();
-            
+            $table->integer('id_city')->unsigned();
+            $table->foreign('id_city')->references('id_city')->on('cities');
         });
     }
 
@@ -32,6 +28,6 @@ class TableCustomers extends Migration
      */
     public function down()
     {
-        Schema::drop('customers');
+        Schema::drop('districts');
     }
 }

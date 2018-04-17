@@ -17,4 +17,13 @@ class ProductDetail extends Model
     public function products(){
     	return $this->belongsTo('App\Product','id_product','id_detail');
     }
+
+    public function product_color(){
+    	return $this->hasMany('App\ProductColor','id_detail','id_detail');
+    }
+
+    public function product_image(){
+    	return $this->hasMany('App\ProductImage','id_detail','id_detail');
+    }
+
 }

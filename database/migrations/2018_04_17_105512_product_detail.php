@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TableProductType extends Migration
+class ProductDetail extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class TableProductType extends Migration
      */
     public function up()
     {
-        Schema::create('product_type', function ($table){
-            $table->increments('id_type');
-            $table->string('type_name');
+        Schema::create('product_detail', function ($table){
+            $table->increments('id_detail');
+            $table->integer('id_product')->unsigned();
+            $table->foreign('id_product')->references('id_product')->on('products');
         });
     }
 
@@ -26,6 +27,6 @@ class TableProductType extends Migration
      */
     public function down()
     {
-        Schema::drop('product_type');
+        Schema::drop('product_detail');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TableDistricts extends Migration
+class Cities extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class TableDistricts extends Migration
      */
     public function up()
     {
-        Schema::create('districts', function ($table){
-            $table->increments('id_district');
+        Schema::create('cities', function ($table){
+            $table->increments('id_city');
             $table->string('name');
-            $table->integer('id_city')->unsigned();
-            $table->foreign('id_city')->references('id_city')->on('cities');
         });
     }
 

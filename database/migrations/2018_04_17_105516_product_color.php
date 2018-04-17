@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TableCities extends Migration
+class ProductColor extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class TableCities extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function ($table){
-            $table->increments('id_city');
-            $table->string('name');
+        Schema::create('product_color', function ($table){
+            $table->increments('id_color');
+            $table->integer('id_detail')->unsigned();
+            $table->foreign('id_detail')->references('id_detail')->on('product_detail');
+            $table->string('color');
         });
     }
 
@@ -26,6 +28,6 @@ class TableCities extends Migration
      */
     public function down()
     {
-        Schema::drop('cities');
+        Schema::drop('product_color');
     }
 }
