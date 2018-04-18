@@ -56,6 +56,11 @@ Route::get('tim-kiem', [
 	'uses' => 'PageController@getTimkiem'
 ]);
 
+Route::get('tim-kiem-loai/{pro}', [
+	'as' => 'timkiemloai',
+	'uses' => 'PageController@getTimkiemloai'
+]);
+
 //Admin
 Route::get('admin-index', [
 	'as' => 'adminindex',

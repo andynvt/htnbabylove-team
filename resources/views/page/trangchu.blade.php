@@ -11,69 +11,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12  ">
                     <!-- Tim kiem nhanh san pham -->
-                    <div id="navbar">
-                        <!-- Menu -->
-                        <div class="well">
-                            <h5 class="text-left">Lọc Sản Phẩm Theo:</h5>
-                            <form class="form-horizontal" action="#" method="">
-                                <div class="form-group">
-                                    <label for="priceto" class="control-label">Tên sản phẩm:</label>
-                                    <input type="text" class="form-control" id="priceto" name="tensp" aria-describedby="basic-addon1"> </div>
-                                <div class="form-group">
-                                    <label for="location1" class="control-label">Loại sản phẩm:</label>
-                                    <select class="form-control" name="" id="location1">
-                                                <option value="#">Chọn loại sản phẩm</option>
-                                                @foreach($lsp as $loai)
-                                                    <option value="#">{{$loai->type_name}}</option>
-                                                @endforeach
-                                            </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="priceto" class="control-label">Trạng thái:</label>
-                                    <br>
-                                    <div class="space10">&nbsp;</div>
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <a href="#">
-                                                <div class="ribbon-trangthai sale">Sale</div>
-                                            </a>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <a href="#">
-                                                <div class="ribbon-trangthai new">New</div>
-                                            </a>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <a href="#">
-                                                <div class="ribbon-trangthai hot">Hot</div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-6"> <a href="#" class="search-price">Giá giảm dần <i class="fa fa-sort-amount-desc"></i></a> </div>
-                                        <div class="col-sm-6"> <a href="#" class="search-price">Giá tăng dần <i class="fa fa-sort-amount-asc"></i></a> </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class='row'>
-                                        <div style="width: 90%; margin-left: 5%">
-                                            <label for="pricefrom" class="control-label">Giá:&nbsp;&nbsp;<b><span id="outputmin"></span> Đồng</b></label>
-                                            <div class="input-group" style="width: 90%; margin-left: 5%; top: 10px;">
-                                                <input id="pricefrom" type="text" class="span2" /> </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="space10">&nbsp;</div>
-                                <div class="form-group">
-                                    <p class="text-center"><a href="#" class="btn btn-themvaogio" role="button">Tìm Kiếm </a></p>
-                                </div>
-                                <!-- Form tim kiem -->
-                            </form>
-                            <!-- Tim kiem -->
-                        </div>
-                    </div>
+                    @include('filter')
                 </div>
                 <div class="col-lg-9 col-md-12">
                     <!-- San pham -->

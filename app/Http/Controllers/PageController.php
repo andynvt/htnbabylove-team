@@ -78,11 +78,131 @@ class PageController extends Controller
     }
 
     public function getTimkiem(Request $req){
+        $tensp =$req->search;
+        $value = $req->members;
         $product = Product::where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)->get();
-        $detail_product = ProductDetail::all();
-        $lsp = ProductType::all();
-        return view('page.timkiem',compact('detail_product','lsp','product'));
+
+//cắt chuỗi của giá tiền
+        
+        $giatien = explode(',', $req->price);
+        
+        // dd($giatien[0]);
+
+//tìm kiếm theo các tuỳ chọn
+        if(!empty($req->price)){
+        switch(  $tensp || $giatien || $value)  {
+            case $tensp :
+                $product = Product::where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)->get();
+            break;
+
+            case $value ;
+                $product = DB::table('products as sp')
+                    ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id_type')
+                    ->Join('product_detail as detail','sp.id_product','=','detail.id_product')
+                    ->select('sp.id_product','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
+                    ->where('sp.id_type','=',$value)
+                    ->distinct()
+                    ->get();
+            break;
+
+            case $giatien :
+                $product = DB::table('products')->whereBetween('unit_price', [$giatien[0],$giatien[1]] )->get();
+            break;
+
+            case ($tensp && $value) :
+                $product = DB::table('products as sp')
+                    ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id_type')
+                    ->Join('product_detail as detail','sp.id_product','=','detail.id_product')
+                    ->Where('sp.name','like','%'.$tensp.'%')
+                    ->orwhere('sp.id_type','=',$value)
+                    ->select('sp.id_product','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
+                    ->distinct()
+                    ->get();
+            break;
+
+            case ($tensp && $giatien) :
+                $product = DB::table('products as sp')
+                    ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id_type')
+                    ->Join('product_detail as detail','sp.id_product','=','detail.id_product')
+                    ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
+                    ->orWhere('sp.name','like','%'.$tensp.'%')
+                    ->select('sp.id_product','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
+                    ->distinct()
+                    ->get();
+            break;
+
+            case ($value && $giatien) :
+                $product = DB::table('products as sp')
+                    ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id_type')
+                    ->Join('product_detail as detail','sp.id_product','=','detail.id_product')
+                    ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
+                    ->orwhere('sp.id_type','=',$value)
+                    ->select('sp.id_product','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
+                    ->distinct()
+                    ->get();
+            break;
+
+            case ($tensp && $value && $giatien) :
+                $product = DB::table('products as sp')
+                    ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id_type')
+                    ->Join('product_detail as detail','sp.id_product','=','detail.id_product')
+                    ->Where('sp.name','like','%'.$tensp.'%')
+                    ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
+                    ->orwhere('sp.id_type','=',$value)
+                    ->select('sp.id_product','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
+                    ->distinct()
+                    ->get();
+            break;
+            default:
+
+        }
+    }
+
+    
+     // dd($product);
+    
+    $detail_product = ProductDetail::all();
+    $lsp = ProductType::all();
+
+    return view('page.timkiem',compact('detail_product','lsp','product'));
        
+       
+    }
+
+
+    public function getTimkiemloai(Request $req){
+
+        if($req->pro === 'sale'){
+            $product = Product::where('promotion_price', '<>', '0')->get();
+
+        }
+        if($req->pro === 'new'){
+            $product = Product::where('status', 1)->get();
+
+        }
+        if($req->pro === 'hot'){
+            $product = Product::where('status', 2)->get();
+
+        }
+        if($req->pro === 'giagiam'){
+            $product = DB::table('products')
+                ->orderByRaw('unit_price  DESC')
+                ->get();
+
+        }
+        if($req->pro === 'giatang'){
+            $product = DB::table('products')
+                ->orderByRaw('unit_price  ASC')
+                ->get();
+
+        }
+
+
+     // dd($product);
+    
+    $detail_product = ProductDetail::all();
+    $lsp = ProductType::all();
+        return view('page.timkiemloai',compact('detail_product','lsp','product'));
     }
 
     //Admin
