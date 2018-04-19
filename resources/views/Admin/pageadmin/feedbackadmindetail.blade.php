@@ -4,54 +4,7 @@
 <div class="wrapper">
         <div class="sidebar" data-background-color="white" data-active-color="danger">
 
-            <div class="sidebar-wrapper">
-                <div class="logo"> <a href="#" class="simple-text">
-            hoàng thủy nguyên
-        </a> </div>
-                <ul class="nav">
-                    <li>
-                        <a href="{{ route('admincanhan') }}"> <i class="ti-unlock"></i>
-                            <p>CÁ NHÂN</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('adminsanpham') }}">
-                            <i class="ti-package"></i>
-                            <p>SẢN PHẨM</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('adminloaisanpham') }}">
-                            <i class="glyphicon glyphicon-th-large"></i>
-                            <p>LOẠI SẢN PHẨM</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admindonhang') }}">
-                            <i class="ti-shopping-cart-full"></i>
-                            <p>Quản lý đơn hàng</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('adminkhachhang') }}">
-                            <i class="ti-user"></i>
-                            <p>Quản lý khách hàng</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admindoanhthu') }}">
-                            <i class="ti-money"></i>
-                            <p>Quản lý doanh thu</p>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="{{ route('admindanhgia') }}">
-                            <i class="ti-comment-alt"></i>
-                            <p>Quản lý đánh giá</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            @include('Admin.pageadmin.menu')
         </div>
         <div class="main-panel">
             <nav class="navbar navbar-default">

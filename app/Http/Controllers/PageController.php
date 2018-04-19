@@ -212,6 +212,7 @@ class PageController extends Controller
         return view('Admin.pageadmin.admindangnhap');
     }
     public function getadminCanhan(){
+        
         return view('Admin.pageadmin.admincanhan');
     }
 
