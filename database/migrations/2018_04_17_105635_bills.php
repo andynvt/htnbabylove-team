@@ -14,9 +14,9 @@ class Bills extends Migration
     public function up()
     {
         Schema::create('bills',function($table){
-            $table->increments('id_bill');
+            $table->increments('id');
             $table->integer('id_customer')->unsigned();
-            $table->foreign('id_customer')->references('id_customer')->on('customers');
+            $table->foreign('id_customer')->references('id')->on('customers');
             $table->integer('total_price');
             $table->integer('total_product');
             $table->integer('status');

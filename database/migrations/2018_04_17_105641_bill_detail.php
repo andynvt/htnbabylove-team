@@ -14,13 +14,15 @@ class BillDetail extends Migration
     public function up()
     {
         Schema::create('bill_detail',function($table){
-            $table->increments('id_bill_detail');
+            $table->increments('id');
             $table->integer('id_bill')->unsigned();
-            $table->foreign('id_bill')->references('id_bill')->on('bills');
-            $table->integer('id_detail')->unsigned();
-            $table->foreign('id_detail')->references('id_detail')->on('product_detail');
+            $table->foreign('id_bill')->references('id')->on('bills');
+            $table->string('product_name');
+            $table->string('color');
+            $table->string('image');
+            $table->string('size');
             $table->integer('quantity');
-            $table->integer('unit_price');
+            $table->integer('price');
             $table->timestamps();
         });
     }

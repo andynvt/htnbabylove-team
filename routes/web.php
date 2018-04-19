@@ -107,6 +107,11 @@ Route::get('admin-donhang', [
 	'uses' => 'PageController@getadminDonhang'
 ]);
 
+Route::post('admin-donhang1', [
+	'as' => 'admindonhang1',
+	'uses' => 'PageController@postadminSuadonhang'
+]);
+
 Route::get('admin-doanhthu', [
 	'as' => 'admindoanhthu',
 	'uses' => 'PageController@getadminDoanhthu'

@@ -8,8 +8,8 @@
             <div class="sidebar-wrapper">
                 <div class="logo"> <a href="#" class="simple-text">
             Hoàng Thủy Nguyên
-        </a> 
-    </div>
+                </a> 
+                </div>
                 <ul class="nav">
                     <li>
                         <a href="{{ route('admincanhan') }}"> <i class="ti-unlock"></i>
@@ -141,17 +141,17 @@
                                         <thead>
                                             <tr class="thead_change_color">
                                                 <th>Mã hoá đơn</th>
-                                                <th>Khách hàng</th>
+                                                <th>Trạng thái</th>
                                                 <th>Tổng tiền</th>
                                                 <th>Số lượng sản phẩm</th>
                                                 <th>Địa chỉ</th>
-                                                <th>Trạng thái</th>
-                                                <th>Xem chi tiết</th>
-                                                <th>Xác nhận</th>
+                                                <th>Đơn hàng</th>
+                                                <th>Khách hàng</th>
+                                                <th>Thao tác</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($get_bill as $b)
+                                        @foreach($bills as $b)
                                             @if($b->status == 1)
                                                 <tr class="danggui">
                                             @elseif($b->status == 2)
@@ -161,11 +161,7 @@
                                             @elseif($b->status == 4)
                                                 <tr class="choxacnhan">
                                         @endif
-                                            <td>{{ $b->id_bill }}</td>
-                                            <td>{{ $b->name }}</td>
-                                            <td>{{ number_format($b->total_price) }} đ</td>
-                                            <td>{{ $b->total_product }}</td>
-                                            <td>{{ $b->address }}</td>
+                                            <td>{{ $b->id }}</td>
                                             <td>
                                                 @if($b->status == 1)
                                                     Đang gửi
@@ -178,10 +174,27 @@
                                                 @endif
 
                                             </td>
-                                            <td><a href="" data-toggle="modal" data-target="#{{$b->id_bill}}">Chi Tiết đơn hàng</a></td>
+                                            <td>{{ number_format($b->total_price) }} đ</td>
+                                            <td>{{ $b->total_product }}</td>
+                                            <td>{{ $b->address }}</td>
+
+                                            <td><a href="" data-toggle="modal" data-target="#{{$b->id}}">Xem</a>
+                                            </td>
+                                            <td><a href="" data-toggle="modal" data-target="#c{{$b->id}}">Xem</a>
+                                            </td>
                                             <td>
                                                 <div class="">
-                                                    <a href="#" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận"> <i class="fa fa-check"></i> </a>
+                                                @if($b->status == 1 || $b->status == 4)
+                                                    <form action="{{route('admindonhang1')}}">
+                                                        <input type="hidden" name="stt" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" value="{{$b->status}}" data-original-title="Xác nhận đơn hàng"> 
+
+                                                        <a class="btn btn-info btn-xs edit_icon" type="submit">
+                                                            <i class="fa fa-check"></i>
+                                                        </a>
+                                                    </form>
+                                                    
+                                                    <a href="#" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Huỷ đơn hàng"> <i class="fa fa-times"></i> </a>
+                                                @endif
                                                 </div>
                                             </td>
                                             </tr>
@@ -196,89 +209,34 @@
             </div>
         </div>
 </div>
-    <!-- Phan popup madal cua xem chi tiet -->
+<!-- Modal xem khách hàng -->
     <form action="" method="post">
         <!-- The Modal -->
-        @foreach($get_bill as $b)
-        @foreach($get_bill as $gb)
-        @if($b->id_bill == $gb->id_bill)
-        <div class="modal fade modalcart" id="{{$b->id_bill}}">
+        @foreach($bills as $b)
+        @foreach($customers as $c)
+        @if($b->id == $c->id)
+        <div class="modal fade modalcart" id="c{{$b->id}}">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Đơn hàng {{$b->id_bill}} (có {{$b->total_product}} sản phẩm)</h4>
+                        <h4 class="modal-title">Khách hàng {{$c->name}} đã mua <a href="" data-toggle="modal" data-target="#{{$b->id}}"><u>đơn hàng {{$b->id}}</u></a></h4>
                     </div>
                     <!-- Modal body -->
-                                        <div class="modal-body cart-center">
-                        <div class="row cart-title">
-                            <div class="col-sm-6"> Sản phẩm </div>
-                            <div class="col-sm-2" style="text-align: center"> Số lượng </div>
-                            <div class="col-sm-2" style="text-align: right"> Đơn giá </div>
-                            <div class="col-sm-2" style="text-align: center"> Xóa </div>
-                        </div>
-                        <div class="cart-content">
-                            <!--desktop-->
-                            <div class="desktop-cart">
-                            
-                                <div class="cart-item">
-                                    <div class="row align-items-center">
-                                        <div class="cart-product col-md-6 col-12">
-                                            <div class="row">
-                                                <div class="cart-div-img col-md-3 col-3">
-                                                    <a href="#"> <img class="img-fluid cart-img" src="source/ADMIN/image/.."> </a>
-                                                </div>
-                                                <div class="col-md-9 col-9">
-                                                    <div class="container-filud">
-                                                        <div class="cart-product-name text-title"> <a href="#">
-                                                                   {{$gb->pname}}
-                                                               </a> </div>
-                                                        <div class="cart-product-info">
-                                                            <div class="form-group change-color">
-                                                                <div class="color-dropdown">
-                                                                    <button class="btn _select_color dropdowncolor" type="button"> <span class="color" style="background-color: green"></span> </button>
-                                                                </div>
-                                                            </div>
-                                                            <div> Kích thước: {{$gb->size}} </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cart-qty col-md-2 col-3">
-                                            <div class="cart-input-qty">
-                                                {{ $gb->quantity}}
-                                            </div>
-                                        </div>
-                                        <div class="unit-price col-md-2" style="text-align: right;">
-                                            <div style="padding: 35% 0;"> {{ number_format($gb->unit_price) }} đ</div>
-                                        </div>
-                                        <div class="col-md-2 align-self-center" style="text-align: center">
-                                            <div style="padding: 35% 0;"> 
-                                                <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                            </div>
-                            <!--end desktop-->
-                        </div>
+                    <div class="modal-body cart-center">
+                        <ul>
+                            <li>Họ tên: {{$c->name}}</li>
+                            <li>Giới tính: {{$c->gender}}</li>
+                            <li>SĐT: {{$c->phone}}</li>
+                            <li>Email: {{$c->email}}</li>
+                            <li>Địa chỉ: {{$c->address}}</li>
+
+                        </ul>
                     </div>
                     <div class="modal-footer">
-                        <div class="cart-order">
-                            <div class="cart-total-price col-md-6 offset-md-6 col-12">
-                                <div class="row">
-<<<<<<< HEAD
-                                    <div class="col-md-12 col-12 total-price">Tổng tiền: {{number_format( $gb->total_price)}} đ </div>
-=======
-                                    <div class="col-md-12 col-12 total-price">Tổng tiền: 99999999 vnd</div>
->>>>>>> 722b037429b1fa20a9e4798f59979868b41454ec
-                                </div>
-                            </div>
-                        </div>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary">Huỷ đơn hàng</button>
                         <button type="submit" class="btn btn-primary">Duyệt đơn hàng</button>
                     </div>
                     
@@ -289,5 +247,101 @@
         @endforeach
         @endforeach
     </form>
+    <!-- Modal xem đơn hàng -->
+    <form action="" method="post">
+        <!-- The Modal -->
+        @foreach($get_bill as $gb)
+        @foreach($bills as $b)
+        @if($gb->bid == $b->id)
+        <div class="modal fade modalcart" id="{{$b->id}}">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Đơn hàng {{$b->id_bill}} (có {{$b->total_product}} sản phẩm) </h4>
+                    </div>
+                    <!-- Modal body -->
+                    
+                        <div class="modal-body cart-center">
+                        <div class="row cart-title">
+                            <div class="col-sm-6"> Sản phẩm </div>
+                            <div class="col-sm-2" style="text-align: center"> Số lượng </div>
+                            <div class="col-sm-2" style="text-align: right"> Đơn giá </div>
+                            <div class="col-sm-2" style="text-align: center"> Xóa </div>
+                        </div>
+                        <div class="cart-content">
+                            <!--desktop-->
+                            <div class="desktop-cart">
+                            @foreach($get_bill as $gbb)
+                            @if($gbb->bid == $b->id)
+                                <div class="cart-item">
+                                    <div class="row align-items-center">
+                                        <div class="cart-product col-md-6 col-12">
+                                            <div class="row">
+                                                <div class="cart-div-img col-md-3 col-3">
+                                                    <a href="#"> <img class="img-fluid cart-img" src="source/image/{{$gbb->image}}"> </a>
+                                                </div>
+                                                <div class="col-md-9 col-9">
+                                                    <div class="container-filud">
+                                                        <div class="cart-product-name text-title"> <a href="#">
+                                                                  <b style="font-size:15px;">{{$gbb->product_name}}
+</b>                                                                </a> </div>
+                                                        <div class="cart-product-info">
+                                                            <div class="form-group change-color">
+                                                                <div class="color-dropdown">
+                                                                    <button class="btn _select_color dropdowncolor" type="button"> <span class="color" style="background-color: {{$gbb->color}}"></span> </button>
+                                                                </div>
+                                                            </div>
+                                                            <div> Size: {{$gbb->size}} </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cart-qty col-md-2 col-3">
+                                            <div class="cart-input-qty">
+                                                {{ $gbb->quantity}}
+                                            </div>
+                                        </div>
+                                        <div class="unit-price col-md-2" style="text-align: right;">
+                                            <div style="padding: 35% 0;"> {{ number_format($gbb->price) }} đ</div>
+                                        </div>
+                                        <div class="col-md-2 align-self-center" style="text-align: center">
+                                            <div style="padding: 35% 0;"> 
+                                                <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                            @endforeach
+                            </div>
+                            <!--end desktop-->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="cart-order">
+                            <div class="cart-total-price col-md-6 offset-md-6 col-12">
+                                <div class="row">
+                                    <div class="col-md-12 col-12 total-price"><b style="font-size: 18px">Tổng tiền: {{number_format($b->total_price) }} đ </b></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary">Huỷ đơn hàng</button>
+                        <button type="submit" class="btn btn-primary">Duyệt đơn hàng</button>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        @endif
+        @endforeach
+        @endforeach
+    </form>
+        
+    </script>
 
     @endsection

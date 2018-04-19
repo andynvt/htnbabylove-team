@@ -14,7 +14,7 @@ class ProductType extends Migration
     public function up()
     {
         Schema::create('product_type', function ($table){
-            $table->increments('id_type');
+            $table->increments('id');
             $table->string('type_name');
         });
     }

@@ -14,9 +14,9 @@ class Feedbacks extends Migration
     public function up()
     {
         Schema::create('feedbacks', function ($table){
-            $table->increments('id_feedback');
+            $table->increments('id');
             $table->integer('id_product')->unsigned();
-            $table->foreign('id_product')->references('id_product')->on('products');
+            $table->foreign('id_product')->references('id')->on('products');
             $table->integer('stars');
             $table->string('reviewer');
             $table->string('tel');

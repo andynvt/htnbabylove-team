@@ -14,9 +14,9 @@ class Products extends Migration
     public function up()
     {
         Schema::create('products', function ($table){
-            $table->increments('id_product');
+            $table->increments('id');
             $table->integer('id_type')->unsigned();
-            $table->foreign('id_type')->references('id_type')->on('product_type');
+            $table->foreign('id_type')->references('id')->on('product_type');
             $table->string('name');
             $table->integer('unit_price');
             $table->integer('promotion_price');
