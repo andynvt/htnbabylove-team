@@ -10,7 +10,7 @@ class ProductImage extends Model
     public $timestamps = false;
 
     public function product_detail(){
-    	return $this->belongsTo('App\ProductDetail','id_detail','id_image');
+    	return $this->belongsTo('App\ProductDetail','id_detail','id');
     }
 
 }

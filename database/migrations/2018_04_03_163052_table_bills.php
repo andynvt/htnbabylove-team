@@ -19,6 +19,8 @@ class TableBills extends Migration
             $table->foreign('id_customer')->references('id_customer')->on('customers');
             $table->integer('total_price');
             $table->integer('total_product');
+            $table->integer('status');
+            $table->text('address');
             $table->timestamps();
         });
     }

@@ -10,6 +10,6 @@ class ProductColor extends Model
     public $timestamps = false;
 
     public function product_detail(){
-    	return $this->belongsTo('App\ProductDetail','id_detail','id_color');
+    	return $this->belongsTo('App\ProductDetail','id_detail','id');
     }
 }

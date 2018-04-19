@@ -63,7 +63,21 @@
               <?php date_default_timezone_set('Asia/Ho_Chi_Minh');echo date('d/m/Y - H:i\p\m'); ?>
             </small> </div>
                     <div class="collapse navbar-collapse ">
-                        @include('Admin.pageadmin.nav')
+                        <ul class="nav navbar-nav navbar-right ">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-globe"></i>
+                                    <p>Thông Báo</p> <span class="badge" style="background-color:#FF4066">1</span> </a>
+                            </li>
+                            <li class="dropdown ">
+                                <a href="# " class="dropdown-toggle " data-toggle="dropdown "> <i class="ti-bell "></i>
+                                    <p>Admin</p> <b class="caret "></b> </a>
+                                <ul class="dropdown-menu ">
+                                    <li><a href="# "><i class="fa fa-user " aria-hidden="true "></i>Cá Nhân</a></li>
+                                    <li><a href="# "><i class="fa fa-cogs " aria-hidden="true "></i>Cài Đặt</a></li>
+                                    <li><a href="# "><i class="fa fa-sign-out " aria-hidden="true "></i>Đăng Xuất</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>
@@ -110,7 +124,8 @@
                                         <div id="wrap">
                                             <form action="#" autocomplete="on">
                                                 <input id="search" name="search" type="text" placeholder="Search...">
-                                                <input id="search_submit" value="Rechercher" type="submit"> </form>
+                                                <input id="search_submit" value="Rechercher" type="submit"> 
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

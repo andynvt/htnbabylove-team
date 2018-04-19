@@ -9,6 +9,8 @@ use App\ProductType;
 use App\Feedback;
 use App\Bill;
 use App\BillDetail;
+use App\ProductColor;
+use App\ProductImage;
 use DB;
 
 class PageController extends Controller
@@ -29,7 +31,7 @@ class PageController extends Controller
         $detail_product = ProductDetail::all();
         $id_product = Product::all();
 
-        $loai_ssp = ProductType::where('id_type',$type)->first();
+        $loai_ssp = ProductType::where('id',$type)->first();
 
     	return view('page.loai_sanpham',compact('lsp','sp_theoloai','detail_product','id_product','loai_ssp'));
     }
@@ -37,16 +39,16 @@ class PageController extends Controller
     public function getDetail(Request $req){
         $detail_product = ProductDetail::all();
 
-        $sanpham = Product::where('id_product', $req->id)->first();
+        $sanpham = Product::where('id', $req->id)->first();
         $feedback = Feedback::where('id_product', $req->id)->get();
 
-        $id_sp = Product::where('id_product', $req->id)->value('id_type');
+        $id_sp = Product::where('id', $req->id)->value('id_type');
         $id_lsp = Product::where('id_type', $id_sp)->value('id_type');
 
-        $type_name = ProductType::where('id_type', $id_lsp)->value('type_name');
+        $type_name = ProductType::where('id', $id_lsp)->value('type_name');
 
-        $getid_sp = Product::where('id_product', $req->id)->value('id_product');
-        $getid_ctsp = Product::where('id_product', $getid_sp)->value('id_product');
+        $getid_sp = Product::where('id', $req->id)->value('id');
+        $getid_ctsp = Product::where('id', $getid_sp)->value('id');
 
         $product_img = ProductDetail::where('id_product', $getid_ctsp)->get();
         $get1_proimg = ProductDetail::where('id_product', $getid_ctsp)->value('image');
@@ -217,13 +219,15 @@ class PageController extends Controller
         $getlsp = ProductType::all();
 
         $getsp = DB::table('products as sp')
-                    ->join('product_detail as ctsp', 'sp.id_product', '=', 'ctsp.id_product')
-                    ->join('product_image as asp', 'ctsp.id_detail', '=' , 'asp.id_detail')
-                    ->select('sp.id_product','sp.name','asp.image')
+                    ->join('product_detail as ctsp', 'sp.id', '=', 'ctsp.id_product')
+                    ->join('product_image as asp', 'ctsp.id', '=' , 'asp.id_detail')
+                    ->select('sp.id','sp.name','asp.image')
                     ->get();
 
-        // dd($getsp);
-
+        $image = Product::find(8);
+        foreach($image->product_image as $img){
+            echo $img->image;
+        }
         return view('Admin.pageadmin.admindanhgia', compact('getlsp','getsp'));
 
     }
@@ -276,7 +280,44 @@ class PageController extends Controller
     }
 
     public function getadminThemsanpham(){
-        return view('Admin.pageadmin.adminthemsanpham');
+        $addlsp = ProductType::all();
+        return view('Admin.pageadmin.adminthemsanpham', compact('addlsp'));
+    }
+
+    public function postadminThemsanpham(Request $req){
+        $sanpham = new Product;
+        $sanpham->name = $req->ten;
+        $sanpham->unit_price = $req->giagoc;
+        $sanpham->promotion_price = $req->giakhuyenmai;
+        $sanpham->size = $req->kichthuoc;
+        $sanpham->status = $req->trangthai;
+        $sanpham->description = $req->mota;
+        $typename = $req->loaisanpham;
+        $getidloai = ProductType::where('type_name','=',$typename)->value('id');
+        $sanpham->id_type = $getidloai;
+        $sanpham->save();
+
+        $ctsanpham = new ProductDetail;
+        $ctsanpham->id_product = $sanpham->id;
+        // $ctsanpham->save();
+        $sa = $sanpham->id;
+        dd($sa);
+
+        // $colorsp = $req->mausp;
+        // foreach ($req->mausp as $key) {
+        //     $getidsp = new Product;
+        //     $getidctsp = new ProductDetail;
+        //     $getidcolor = new ProductColor;
+            
+        //     $getidsp->id_product = $getidctsp->id_product;
+        //     // $getidctsp->id_detail = $getidcolor->id_detail;
+        //     $getidcolor->color = $key;
+        //     $getidcolor->save();
+        // }
+        
+
+        // dd($colorsp);
+        return redirect()->back();
     }
 
     public function getadminSuasanpham(){
@@ -290,7 +331,8 @@ class PageController extends Controller
 
         $adminlsp = ProductType::all();
 
-        return view('Admin.pageadmin.adminloaisanpham', compact('adminlsp'));
+        // return view('Admin.pageadmin.adminloaisanpham', compact('adminlsp'));
+        return redirect()->back();
     }
 
 }

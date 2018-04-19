@@ -1,71 +1,45 @@
-.khungchuamau {
+.admin-add-color{
     position: relative;
-    width: auto;
     display: inline-block;
 }
 
-.them-mau {
+.admin-add-color button{
     border: 1px solid #9A9A9A;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    position: relative;
-    cursor: pointer;
-    /*                float: left;*/
-    display: inline-block;
 }
 
-.them-mau i {
+.admin-num-color{
     position: absolute;
-    font-size: 20px;
-    transform: translate(-50%, -50%);
+    display: none;
+    padding: 5px;
+    background: #fff;
     top: 50%;
-    left: 50%;
-    cursor: pointer;
-}
-
-.testcolor {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid black;
-    background: white;
+    left: 0;
+    transform: translateY(-50%);
+    border-radius: 5px;
     min-width: 80px;
+    width: 50%;
+}
+
+.admin-num-color input{
+    width: 60%;
+    display: inline-block;
+}
+
+.admin-num-color button{
+    display: inline-block;
+    width: 30%;
+    height: 40px;
     text-align: center;
+}
+
+.admin-color{
     display: none;
 }
 
-.testcolor input {
-    margin: 5px;
-}
-
-.demo-color {
-    width: 50px;
-    height: 50px;
-    display: none;
-    border: 1px solid #9A9A9A;
-    margin: 10px 10px;
-    position: relative;
-}
-
-.demo-color span {
-    background: white;
-    text-align: center;
-    border: 1px solid black;
-    border-radius: 100%;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-}
-
-.demo-color i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+.admin-color input{
+    display: inline-block !important;
+    margin: 5px 10px 5px 0;
+    width: 20%;
 }
 
 .dehinh {

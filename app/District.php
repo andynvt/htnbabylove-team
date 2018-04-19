@@ -10,6 +10,6 @@ class District extends Model
     public $timestamps = false;
 
     public function cities(){
-    	return $this->belongsTo('App\City','id_city','id_district');
+    	return $this->belongsTo('App\City','id_city','id');
     }
 }

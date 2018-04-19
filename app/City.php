@@ -11,7 +11,7 @@ class City extends Model
     
 
     public function districts(){
-    	return $this->hasMany('App\District','id_city','id_city');
+    	return $this->hasMany('App\District','id_city','id');
     }
 
 }

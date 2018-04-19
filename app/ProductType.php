@@ -10,6 +10,6 @@ class ProductType extends Model
     public $timestamps = false;
 
     public function products(){
-    	return $this->hasMany('App\Product','id_type','id_type');
+    	return $this->hasMany('App\Product','id_type','id');
     }
 }

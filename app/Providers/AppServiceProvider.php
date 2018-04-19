@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Schema;
 use App\ProductType;
 use App\Product;
 use App\ProductDetail;
-use App\Bill;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -53,11 +52,6 @@ class AppServiceProvider extends ServiceProvider
         //     $l_sanpham = ProductType::all();
         //     $view->with('l_sanpham',$l_sanpham);
         // });
-
-        view()->composer('Admin.pageadmin.nav',function($view){
-            $confirm_bill = Bill::where('status', 4)->get();
-            $view->with('confirm_bill',$confirm_bill);
-        });
     }
 
     /**
