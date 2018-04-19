@@ -299,24 +299,22 @@ class PageController extends Controller
 
         $ctsanpham = new ProductDetail;
         $ctsanpham->id_product = $sanpham->id;
-        // $ctsanpham->save();
-        $sa = $sanpham->id;
-        dd($sa);
+        $ctsanpham->save();
 
-        // $colorsp = $req->mausp;
-        // foreach ($req->mausp as $key) {
-        //     $getidsp = new Product;
-        //     $getidctsp = new ProductDetail;
-        //     $getidcolor = new ProductColor;
-            
-        //     $getidsp->id_product = $getidctsp->id_product;
-        //     // $getidctsp->id_detail = $getidcolor->id_detail;
-        //     $getidcolor->color = $key;
-        //     $getidcolor->save();
-        // }
+        foreach ($req->mausp as $key) {
+            $colorsp = new ProductColor;
+            $colorsp->id_detail = $ctsanpham->id;
+            $colorsp->color = $key;
+            $colorsp->save();
+        }
+
+        foreach ($req->hinh as $key) {
+            $imgsp = new ProductImage;
+            $imgsp->id_detail = $ctsanpham->id;
+            $imgsp->image = $key;
+            $imgsp->save();
+        }
         
-
-        // dd($colorsp);
         return redirect()->back();
     }
 
