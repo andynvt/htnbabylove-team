@@ -260,19 +260,14 @@ class PageController extends Controller
     }
 
     public function getadminDonhang(){
-        $get_bill = DB::table('bills as b')
-                    ->Join('bill_detail as bd', 'b.id_bill', '=', 'bd.id_bill')
-                    ->Join('customers as c', 'b.id_customer', '=', 'c.id_customer')
-                    ->Join('product_detail as pd', 'bd.id_detail','=','pd.id_detail')
-                    ->Join('products as p', 'pd.id_product', '=', 'p.id_product')
-                    ->Join('product_color as pc','pd.id_detail','pc.id_detail')
-                    ->Join('product_image as pi','pd.id_detail','pi.id_detail')
-                    ->select('b.id_bill','b.total_price','b.total_product','b.status','b.address','bd.quantity','bd.unit_price','c.name','p.name as pname','bd.unit_price','p.size')
-                    ->distinct()
-                    ->orderby('b.status')
-                    ->get();
-        // dd($get_bill);
-        return view('Admin.pageadmin.admindonhang', compact('get_bill'));
+        $customers = Customer::all();
+        $bills = Bill::all();
+        $bill_detail = BillDetail::all();
+
+        $get_bill = DB::select(DB::raw('SELECT bd.id as bdid, b.id as bid, b.total_price, bd.product_name, bd.color, bd.image, bd.size, bd.quantity, bd.price, c.name FROM bill_detail as bd, customers as c, bills as b WHERE bd.id_bill in (SELECT b.id FROM bills WHERE b.id_customer in (SELECT c.id FROM customers))'));
+
+                        // dd($get_bill);
+        return view('Admin.pageadmin.admindonhang', compact('get_bill','bills','customers','bill_detail'));
     }
 
     public function getadminDoanhthu(){

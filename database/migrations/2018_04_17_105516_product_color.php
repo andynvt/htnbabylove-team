@@ -14,9 +14,9 @@ class ProductColor extends Migration
     public function up()
     {
         Schema::create('product_color', function ($table){
-            $table->increments('id_color');
+            $table->increments('id');
             $table->integer('id_detail')->unsigned();
-            $table->foreign('id_detail')->references('id_detail')->on('product_detail');
+            $table->foreign('id_detail')->references('id')->on('product_detail');
             $table->string('color');
         });
     }

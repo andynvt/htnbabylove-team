@@ -14,9 +14,9 @@ class ProductDetail extends Migration
     public function up()
     {
         Schema::create('product_detail', function ($table){
-            $table->increments('id_detail');
+            $table->increments('id');
             $table->integer('id_product')->unsigned();
-            $table->foreign('id_product')->references('id_product')->on('products');
+            $table->foreign('id_product')->references('id')->on('products');
         });
     }
 

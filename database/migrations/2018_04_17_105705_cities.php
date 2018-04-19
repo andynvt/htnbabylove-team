@@ -14,7 +14,7 @@ class Cities extends Migration
     public function up()
     {
         Schema::create('cities', function ($table){
-            $table->increments('id_city');
+            $table->increments('id');
             $table->string('name');
         });
     }

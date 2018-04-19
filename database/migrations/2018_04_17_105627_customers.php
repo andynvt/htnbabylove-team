@@ -14,7 +14,7 @@ class Customers extends Migration
     public function up()
     {
         Schema::create('customers', function($table){
-            $table->increments('id_customer');
+            $table->increments('id');
             $table->string('name');
             $table->string('gender');
             $table->string('email');

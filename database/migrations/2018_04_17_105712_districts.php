@@ -14,10 +14,10 @@ class Districts extends Migration
     public function up()
     {
         Schema::create('districts', function ($table){
-            $table->increments('id_district');
+            $table->increments('id');
             $table->string('name');
             $table->integer('id_city')->unsigned();
-            $table->foreign('id_city')->references('id_city')->on('cities');
+            $table->foreign('id_city')->references('id')->on('cities');
         });
     }
 
