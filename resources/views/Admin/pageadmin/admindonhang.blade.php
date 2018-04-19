@@ -199,7 +199,14 @@
                                             <td>
                                                 <div class="">
                                                 @if($b->status == 1 || $b->status == 4)
-                                                    <a href="#" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Xác nhận đơn hàng"> <i class="fa fa-check"></i> </a>
+                                                    <form action="{{route('admindonhang1')}}">
+                                                        <input type="hidden" name="stt" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" value="{{$b->status}}" data-original-title="Xác nhận đơn hàng"> 
+
+                                                        <a class="btn btn-info btn-xs edit_icon" type="submit">
+                                                            <i class="fa fa-check"></i>
+                                                        </a>
+                                                    </form>
+                                                    
                                                     <a href="#" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Huỷ đơn hàng"> <i class="fa fa-times"></i> </a>
                                                 @endif
                                                 </div>
@@ -348,7 +355,7 @@
         @endforeach
         @endforeach
     </form>
-
-    
+        
+    </script>
 
     @endsection

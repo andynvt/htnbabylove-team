@@ -11,6 +11,7 @@ use App\Bill;
 use App\BillDetail;
 use App\ProductColor;
 use App\ProductImage;
+use Illuminate\Console\Scheduling\Schedule;
 use DB;
 
 class PageController extends Controller
@@ -270,6 +271,15 @@ class PageController extends Controller
         return view('Admin.pageadmin.admindonhang', compact('get_bill','bills','customers','bill_detail'));
     }
 
+    public function postadminSuadonhang(Request $req){
+        $bills = new Bill;
+
+        $bills->status = $req->stt +1;
+        dd($req->stt);
+        $b->save();
+        // return redirect()->back();
+    }
+
     public function getadminDoanhthu(){
         return view('Admin.pageadmin.admindoanhthu');
     }
@@ -312,6 +322,8 @@ class PageController extends Controller
         
         return redirect()->back();
     }
+
+
 
     public function getadminSuasanpham(){
         return view('Admin.pageadmin.adminsuasanpham');
