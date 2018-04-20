@@ -8,6 +8,9 @@ use App\ProductType;
 use App\Product;
 use App\ProductDetail;
 use App\Bill;
+use App\ProductImage;
+use App\ProductColor;
+use DB;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +26,26 @@ class AppServiceProvider extends ServiceProvider
             $loai_sanpham = ProductType::all();
             $view->with('loai_sanpham',$loai_sanpham);
         });
+
+        view()->composer('master',function($view){
+            $product_image = ProductImage::all();
+            $view->with('product_image',$product_image);
+        });
+
+        view()->composer('master',function($view){
+            // $product_color = DB::select(DB::raw('SELECT color FROM product_color WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products ))'));
+
+            $product_color = DB::table('products as sp')
+                        ->Join('product_detail as detail','sp.id','=','detail.id_product')
+                        ->Join('product_color as color','detail.id','=','color.id_detail')
+                        ->select('color.id_detail','color.id','color.color')
+                        ->distinct()
+                        ->get();
+            // dd($product_color);
+
+            $view->with('product_color',$product_color);
+        });
+
 
         view()->composer('master',function($view){
             $promotion_product = Product::where('promotion_price', '<>', '0')->get();
