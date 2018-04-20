@@ -595,9 +595,9 @@
     </form>
     <!--  Modal Mua Nhanh promotion-->
     @foreach($promotion_product as $promo ) 
-        @foreach($detail_product as $anh ) 
-            @if($promo->id_product == $anh->id_product  )
-    <div class="modal fade" id="{{$promo->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        @foreach($detail_product as $det ) 
+            @if($promo->id == $det->id  )
+    <div class="modal fade" id="{{$promo->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
         <form action="#" method="post">      
             <div class="modal-dialog" role="document">
@@ -621,7 +621,11 @@
                                         @endif
                                         </div>
                                         <div class="thumbnail">
-                                            <div class="containeroverlay"> <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="100%"> </div>
+                                            @foreach($product_image as $anh )
+                                                @if($det->id == $anh->id  )
+                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -655,20 +659,20 @@
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
                                                     <div class="dropdown">
-                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: {{$anh->color}}
+                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: 
+                                                        @foreach($product_color as $anh )
+                                                            @if($anh->id_detail === $promo->id  )
+                                                                {{$anh->color}}
+                                                            @endif
+                                                        @endforeach
                                                         "></span></button>
                                                         <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
-                                                            @foreach($detail_product as $anh ) 
-                                                            @if($promo->id_product == $anh->id_product  )
-                                                            @if($anh->color == $anh->color)
-                                                            <li><span class="color " style="background: {{$anh->color}}"></span></li>
-                                                            @endif
-                                                            @endif
-                                                            @endforeach
-                                                            
-                                                            
                                                            
-                                                            
+                                                            @foreach($product_color as $anh )
+                                                            @if($anh->id_detail == $promo->id )  
+                                                                <li><span class="color " style="background: {{$anh->color}}"></span></li>
+                                                                @endif
+                                                             @endforeach      
                                                             <input type="hidden" name="_color" value=""> </ul>
                                                     </div>
                                                 </div>
@@ -711,9 +715,9 @@
 
     <!--  Modal Mua Nhanh new-->
     @foreach($new_product as $new ) 
-        @foreach($detail_product as $anh ) 
-            @if($new->id_product == $anh->id_product  )
-    <div class="modal fade" id="{{$new->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        @foreach($detail_product as $det ) 
+            @if($new->id == $det->id  )
+    <div class="modal fade" id="{{$new->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
         <form action="#" method="post">      
             <div class="modal-dialog" role="document">
@@ -737,7 +741,11 @@
                                         @endif
                                         </div>
                                         <div class="thumbnail">
-                                            <div class="containeroverlay"> <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="100%"> </div>
+                                             @foreach($product_image as $anh )
+                                                @if($det->id == $anh->id  )
+                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -771,16 +779,18 @@
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
                                                     <div class="dropdown">
-                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: {{$anh->color}}
+                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: @foreach($product_color as $anh )
+                                                            @if($anh->id_detail === $new->id  )
+                                                                {{$anh->color}}
+                                                            @endif
+                                                        @endforeach
                                                         "></span></button>
                                                         <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
-                                                            @foreach($detail_product as $anh ) 
-                                                            @if($new->id_product == $anh->id_product  )
-                                                            @if($anh->color == $anh->color)
-                                                            <li><span class="color " style="background: {{$anh->color}}"></span></li>
-                                                            @endif
-                                                            @endif
-                                                            @endforeach
+                                                             @foreach($product_color as $anh )
+                                                            @if($new->id == $anh->id_detail)  
+                                                                <li><span class="color " style="background: {{$anh->color}}"></span></li>
+                                                                @endif
+                                                             @endforeach 
                                                             <input type="hidden" name="_color" value=""> </ul>
                                                     </div>
                                                 </div>
@@ -823,9 +833,9 @@
 
     <!--  Modal Mua Nhanh hot-->
     @foreach($hot_product as $hot ) 
-        @foreach($detail_product as $anh ) 
-            @if($hot->id_product == $anh->id_product  )
-    <div class="modal fade" id="{{$hot->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        @foreach($detail_product as $det ) 
+            @if($hot->id == $det->id  )
+    <div class="modal fade" id="{{$hot->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
         <form action="#" method="post">      
             <div class="modal-dialog" role="document">
@@ -849,7 +859,11 @@
                                         @endif
                                         </div>
                                         <div class="thumbnail">
-                                            <div class="containeroverlay"> <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="100%"> </div>
+                                            @foreach($product_image as $anh )
+                                                @if($det->id == $anh->id  )
+                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -883,17 +897,19 @@
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
                                                     <div class="dropdown">
-                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: {{$anh->color}}
+                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background:  @foreach($product_color as $anh )
+                                                            @if($anh->id_detail === $hot->id  )
+                                                                {{$anh->color}}
+                                                            @endif
+                                                        @endforeach
                                                         "></span></button>
                                                         <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
 
-                                                            @foreach($detail_product as $anh ) 
-                                                            @if($hot->id_product == $anh->id_product  )
-                                                            @if($anh->color == $anh->color)
-                                                            <li><span class="color " style="background: {{$anh->color}}"></span></li>
-                                                            @endif
-                                                            @endif
-                                                            @endforeach
+                                                            @foreach($product_color as $anh )
+                                                            @if($hot->id == $anh->id_detail)  
+                                                                <li><span class="color " style="background: {{$anh->color}}"></span></li>
+                                                                @endif
+                                                             @endforeach 
                                                             <input type="hidden" name="_color" value=""> </ul>
                                                     </div>
                                                 </div>

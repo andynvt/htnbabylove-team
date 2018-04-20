@@ -21,17 +21,21 @@
                     <div class="space15">&nbsp;</div>
                     <div class="row">
                         @foreach($promotion_product as $promo ) 
-                        @foreach($detail_product as $anh ) 
-                        @if($promo->id_product == $anh->id_product  )
+                        @foreach($detail_product as $det ) 
+                        @if($promo->id == $det->id  )
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
                                     <div class="ribbon1 sale">Sale</div>
                                 </div>
                                 <div class="thumbnail">
-                                    <a href="{{ route('chitietsanpham', $promo->id_product) }}">
+                                    <a href="{{ route('chitietsanpham', $promo->id) }}">
                                         <div class="containeroverlay">
+                                            @foreach($product_image as $anh )
+                                                @if($det->id == $anh->id  )
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                                @endif
+                                            @endforeach
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>
                                             </div>
@@ -51,16 +55,16 @@
                                                     <div class="space10">&nbsp;</div>
                                                     <p class='text-left text-title'><b>{{$promo->name}}</b>&nbsp;</p>
                                                 </a>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$promo->id_product}}"><span>Mua Ngay </span></button>
+                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$promo->id}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @if($anh->image == $anh->image )
+                        
                             @break
-                        @endif
+                        
                         @endif 
                         @endforeach 
                         @endforeach
@@ -71,7 +75,7 @@
                     <div class="text-left" style="font-size: 25px; font-weight: 600"> Sản Phẩm Mới ({{count($new_product)}} sản phẩm)</div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
-                        @foreach($new_product as $new) @foreach($detail_product as $anh) @if($new->id_product == $anh->id_product)
+                        @foreach($new_product as $new) @foreach($detail_product as $det) @if($new->id == $det->id)
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
@@ -84,9 +88,13 @@
                                     @endif
                                 </div>
                                 <div class="thumbnail">
-                                    <a href="{{ route('chitietsanpham', $new->id_product) }}">
+                                    <a href="{{ route('chitietsanpham', $new->id) }}">
                                         <div class="containeroverlay">
+                                            @foreach($product_image as $anh )
+                                                @if($det->id == $anh->id  )
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                                @endif
+                                            @endforeach
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>
                                             </div>
@@ -104,7 +112,7 @@
                                                 </b>
                                         <div class="space10">&nbsp;</div>
                                         <p class='text-left text-title'><b>{{$new->name}}</b>&nbsp;</p>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$new->id_product}}"><span>Mua Ngay </span></button>
+                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$new->id}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr>
                                     </div>
@@ -122,7 +130,7 @@
                     <div class="text-left" style="font-size: 25px; font-weight: 600">Sản Phẩm Hot ({{count($hot_product)}} sản phẩm)</div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
-                        @foreach($hot_product as $hot) @foreach($detail_product as $anh) @if($hot->id_product == $anh->id_product)
+                        @foreach($hot_product as $hot) @foreach($detail_product as $det) @if($hot->id == $det->id)
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
@@ -135,9 +143,13 @@
                                     @endif
                                 </div>
                                 <div class="thumbnail">
-                                    <a href="{{ route('chitietsanpham', $hot->id_product) }}">
+                                    <a href="{{ route('chitietsanpham', $hot->id) }}">
                                         <div class="containeroverlay">
+                                           @foreach($product_image as $anh )
+                                                @if($det->id == $anh->id  )
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                                @endif
+                                            @endforeach
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>
                                             </div>
@@ -156,7 +168,7 @@
                                                     <div class="space10">&nbsp;</div>
                                                     <p class='text-left text-title'><b>{{$hot->name}}</b>&nbsp;</p>
                                                 </a>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$hot->id_product}}"><span>Mua Ngay </span></button>
+                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$hot->id}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr> </div>
                                 </div>

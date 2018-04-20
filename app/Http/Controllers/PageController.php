@@ -22,8 +22,10 @@ class PageController extends Controller
         $hot_product = Product::where('status', 2)->get();
         $product = Product::all();
         $detail_product = ProductDetail::all();
+        $product_image = ProductImage::all();
+        $product_color = ProductColor::all();
         $lsp = ProductType::all();
-        return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product'));
+        return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product','product_image'));
     }
 
     public function getLoaiSP($type){
@@ -83,6 +85,8 @@ class PageController extends Controller
     public function getTimkiem(Request $req){
         $tensp =$req->search;
         $value = $req->members;
+        $product_image = ProductImage::all();
+
         $product = Product::where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)->get();
 
         //cắt chuỗi của giá tiền
@@ -100,9 +104,9 @@ class PageController extends Controller
 
                 case $value ;
                     $product = DB::table('products as sp')
-                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id_type')
-                        ->Join('product_detail as detail','sp.id_product','=','detail.id_product')
-                        ->select('sp.id_product','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
+                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id')
+                        ->Join('product_detail as detail','sp.id','=','detail.id_product')
+                        ->select('sp.id','sp.name','sp.id','sp.promotion_price','sp.unit_price','sp.status')
                         ->where('sp.id_type','=',$value)
                         ->distinct()
                         ->get();
@@ -114,45 +118,45 @@ class PageController extends Controller
 
                 case ($tensp && $value) :
                     $product = DB::table('products as sp')
-                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id_type')
-                        ->Join('product_detail as detail','sp.id_product','=','detail.id_product')
+                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id')
+                        ->Join('product_detail as detail','sp.id','=','detail.id_product')
                         ->Where('sp.name','like','%'.$tensp.'%')
                         ->orwhere('sp.id_type','=',$value)
-                        ->select('sp.id_product','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
+                        ->select('sp.id','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
                         ->distinct()
                         ->get();
                 break;
 
                 case ($tensp && $giatien) :
                     $product = DB::table('products as sp')
-                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id_type')
-                        ->Join('product_detail as detail','sp.id_product','=','detail.id_product')
+                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id')
+                        ->Join('product_detail as detail','sp.id','=','detail.id_product')
                         ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
                         ->orWhere('sp.name','like','%'.$tensp.'%')
-                        ->select('sp.id_product','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
+                        ->select('sp.id','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
                         ->distinct()
                         ->get();
                 break;
 
                 case ($value && $giatien) :
                     $product = DB::table('products as sp')
-                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id_type')
-                        ->Join('product_detail as detail','sp.id_product','=','detail.id_product')
+                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id')
+                        ->Join('product_detail as detail','sp.id','=','detail.id_product')
                         ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
                         ->orwhere('sp.id_type','=',$value)
-                        ->select('sp.id_product','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
+                        ->select('sp.id','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
                         ->distinct()
                         ->get();
                 break;
 
                 case ($tensp && $value && $giatien) :
                     $product = DB::table('products as sp')
-                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id_type')
-                        ->Join('product_detail as detail','sp.id_product','=','detail.id_product')
+                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id')
+                        ->Join('product_detail as detail','sp.id','=','detail.id_product')
                         ->Where('sp.name','like','%'.$tensp.'%')
                         ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
                         ->orwhere('sp.id_type','=',$value)
-                        ->select('sp.id_product','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
+                        ->select('sp.id','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
                         ->distinct()
                         ->get();
                 break;
@@ -167,13 +171,14 @@ class PageController extends Controller
         $detail_product = ProductDetail::all();
         $lsp = ProductType::all();
 
-        return view('page.timkiem',compact('detail_product','lsp','product'));
+        return view('page.timkiem',compact('detail_product','lsp','product','product_image'));
        
        
     }
 
 
     public function getTimkiemloai(Request $req){
+        $product_image = ProductImage::all();
 
         if($req->pro === 'sale'){
             $product = Product::where('promotion_price', '<>', '0')->get();
@@ -205,7 +210,7 @@ class PageController extends Controller
     
         $detail_product = ProductDetail::all();
         $lsp = ProductType::all();
-        return view('page.timkiemloai',compact('detail_product','lsp','product'));
+        return view('page.timkiemloai',compact('detail_product','lsp','product','product_image'));
     }
 
     //Admin
