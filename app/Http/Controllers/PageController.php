@@ -320,8 +320,18 @@ class PageController extends Controller
         $product_type = ProductType::all();
         $id_product_edit = Product::where('id', $idsp)->get();
         $product_name = Product::where('id', $idsp)->value('name');
+
+        $adminlsp = ProductType::all();
+
+        $editsp = Product::where('id', $idsp)->get();
+
+        $getcl = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=', 'ctsp.id')
+                            ->leftjoin('products as sp', 'ctsp.id_product', '=' , 'sp.id')
+                            ->where('sp.id', '=', $idsp)
+                            ->select('product_color.color')
+                            ->get();
         // dd($id_type_edit);
-        return view('Admin.pageadmin.adminsuasanpham', compact('product_type', 'id_product_edit', 'product_name'));
+        return view('Admin.pageadmin.adminsuasanpham', compact('product_type', 'id_product_edit', 'product_name', 'adminlsp', 'editsp', 'getcl'));
     }
 
     public function postadminSuasanpham($idsp, Request $req){
@@ -371,6 +381,11 @@ class PageController extends Controller
         $edittype->type_name  = $req->newtypename;
         $edittype->save();
 
+        return redirect()->back();
+    }
+
+    public function getadminXoaloaisanpham($idtype){
+        ProductType::find($idtype)->delete();
         return redirect()->back();
     }
     
