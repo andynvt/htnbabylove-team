@@ -243,15 +243,8 @@ class PageController extends Controller
 
     public function getadminDanhgia(){
         $getlsp = ProductType::all();
-
-        $getsp = DB::table('products as sp')
-                    ->join('product_detail as ctsp', 'sp.id', '=', 'ctsp.id_product')
-                    ->join('product_image as asp', 'ctsp.id', '=' , 'asp.id_detail')
-                    ->select('sp.id','sp.name','asp.image')
-                    ->get();
-
+        $getsp = DB::select(DB::raw('SELECT sp.id as spid, sp.name, asp.image FROM products as sp LEFT JOIN product_detail as ctsp ON sp.id = ctsp.id_product LEFT JOIN product_image as asp ON ctsp.id = asp.id_detail GROUP BY spid'));
         return view('Admin.pageadmin.admindanhgia', compact('getlsp','getsp'));
-
     }
 
     public function getadminChitietDanhgia($idfb){
@@ -324,11 +317,38 @@ class PageController extends Controller
     }
 
     public function getadminSuasanpham($idsp){
-        $adminlsp = ProductType::all();
+        $product_type = ProductType::all();
+        $id_product_edit = Product::where('id', $idsp)->get();
+        $product_name = Product::where('id', $idsp)->value('name');
+        // dd($id_type_edit);
+        return view('Admin.pageadmin.adminsuasanpham', compact('product_type', 'id_product_edit', 'product_name'));
+    }
 
-        $editsp = Product::where('id', $idsp)->get();
-        // dd($editsp);
-        return view('Admin.pageadmin.adminsuasanpham', compact('adminlsp', 'editsp'));
+    public function postadminSuasanpham($idsp, Request $req){
+        $id_product = Product::find($idsp);
+        $id_product->name = $req->newname;
+        $id_product->id_type = $req->newtype;
+        $id_product->unit_price = $req->new_unit_price;
+        $id_product->promotion_price = $req->new_promotion_price;
+        $id_product->size = $req->newsize;
+        $id_product->description = $req->newdesc;
+
+        $id_product->save();
+
+        foreach ($req->mausp as $key) {
+            $colorsp = new ProductColor;
+            $colorsp->id_detail = $ctsanpham->id;
+            $colorsp->color = $key;
+            $colorsp->save();
+        }
+
+        foreach ($req->hinh as $key) {
+            $imgsp = new ProductImage;
+            $imgsp->id_detail = $ctsanpham->id;
+            $imgsp->image = $key;
+            $imgsp->save();
+        }
+        return redirect()->back();
     }
 
     public function getadminLoaisanpham(){

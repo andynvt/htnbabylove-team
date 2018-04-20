@@ -99,13 +99,13 @@
                                     <table class="table table-bordered text-align">
                                         <thead>
                                             <tr class="thead_change_color">
-                                                <th>Mã sản phẩm</th>
+                                                <th>Mã số</th>
                                                 <th>Loại</th>
                                                 <th>Tên</th>
                                                 <th>Giá Gốc</th>
                                                 <th>Giá Khuyến Mãi</th>
                                                 <th>Kích thước</th>
-                                                <th>Xem chi tiết</th>
+                                                <th>Chi tiết</th>
                                                 <th>Sửa/Xóa</th>
                                             </tr>
                                         </thead>
@@ -118,7 +118,7 @@
                                                 <td>{{ $sp->unit_price }}</td>
                                                 <td>{{ $sp->promotion_price }}</td>
                                                 <td>{{ $sp->size }}</td>
-                                                <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a></td>
+                                                <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Xem</a></td>
                                                 <td class="text-center">
                                                     <div class="">
                                                         <a href="{{ route('adminsuasanpham', $sp->spid) }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>

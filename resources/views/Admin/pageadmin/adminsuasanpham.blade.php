@@ -58,7 +58,7 @@
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar bar1"></span> <span class="icon-bar bar2"></span> <span class="icon-bar bar3"></span> </button>
-                        <h3 class="title_of_manager_product">THÊM SẢN PHẨM</h3> <small id="now_time">
+                        <h3 class="title_of_manager_product">SỬA SẢN PHẨM {{$product_name}}</h3> <small id="now_time">
                 <?php date_default_timezone_set('Asia/Ho_Chi_Minh');echo date('d/m/Y - H:i\p\m'); ?>
             </small> </div>
                     <div class="collapse navbar-collapse">
@@ -86,22 +86,24 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                @foreach($editsp as $sp)
-                                <form class="form-horizontal" action="#" enctype="multipart/form-data">
+                                @foreach($id_product_edit as $sp)
+
+
+                                <form method="post" class="form-horizontal" action="{{route('adminsuasp',$sp->id)}}" enctype="multipart/form-data">
                                 <!-- Phan modal them san pham-->
                                 <div class="container-fluid">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="ten">Tên:</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="ten" name="newten" value="{{ $sp->name }}"> </div>
+                                                <input type="text" class="form-control w50" id="ten" name="newname" value="{{ $sp->name }}"> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="maloai">Loại sản phẩm:</label>
                                             <div class="col-sm-8">
-                                                <select class="form-control w50" name="newloaisanpham">
-                                                    @foreach($adminlsp as $lsp)
-                                                    <option>{{ $lsp->type_name }}</option>
+                                                <select class="form-control w50" name="newtype">
+                                                    @foreach($product_type as $lsp)
+                                                    <option value="{{$lsp->id}}">{{ $lsp->type_name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -110,18 +112,18 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="giagoc">Giá gốc:</label>
                                             <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="giagoc" placeholder="VD: 100000" name="newgiagoc" min="0" value="{{ $sp->unit_price }}"> </div>
+                                                <input type="number" class="form-control w50" id="giagoc" placeholder="VD: 100000" name="new_unit_price" min="0" value="{{ $sp->unit_price }}"> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="magiamgia">Giá khuyến mãi (Nếu có):</label>
                                             <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="newgiakhuyenmai" min="0" value="{{ $sp->promotion_price }}"> 
+                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="new_promotion_price" min="0" value="{{ $sp->promotion_price }}"> 
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="soluong">Kích thước:</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="soluong" placeholder="VD: 30x30x30" name="newkichthuoc" value="{{ $sp->size }}">
+                                                <input type="text" class="form-control w50" id="soluong" placeholder="VD: 30x30x30" name="newsize" value="{{ $sp->size }}">
                                             </div>
                                         </div>
                                         {{-- <input type="hidden" value="1" name="trangthai"> --}}
@@ -155,7 +157,7 @@
                                             });
 
                                             $('.btn-selected-number').on('click', function(){
-                                                var ip = '<input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newmausp[]" multiple>';
+                                                var ip = '<input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newcolor[]" multiple>';
                                                 var qtycolor = $('.admin-num-color input').val();
 
                                                 $('.admin-num-color').css('display', 'none');
@@ -182,7 +184,7 @@
                                                     <div class="themhinh">
                                                         <button class="btn btn-default dehinh" style="cursor: pointer">
                                                            <i class="fa fa-plus"></i>
-                                                           <input type="file" name="newhinh[]" multiple>
+                                                           <input type="file" name="newimage[]" multiple>
                                                        </button>
                                                     </div>
                                                 </div>
@@ -193,7 +195,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="thongtincoban">Thông tin sản phẩm:</label>
                                             <div class="col-sm-8">
-                                                <textarea class="form-control w50" id="{{ $sp->id }}" name="newmota" value="" placeholder=""></textarea>
+                                                <textarea class="form-control w50" id="{{ $sp->id }}" name="newdesc" value="" placeholder=""></textarea>
                                             </div>
                                             <script>
                                                 $('#{{ $sp->id }}').val('{{ $sp->description }}');
@@ -201,13 +203,15 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-offset-6 col-sm-8">
-                                                <button type="button" class="btn btn-light btn-magrin2"><a href="product.php">Hủy</a></button>
+                                                <button type="button" class="btn btn-light btn-magrin2"><a href="{{route('adminsanpham')}}">Hủy</a></button>
                                                 <button type="submit" class="btn btn-primary btn-magrin btn-submit">Lưu lại</button>
                                             </div>
                                         </div>
                                     </div>
-                                <!-- ket thuc phan modal them san pham-->
+                                <!-- ket thuc phan sưa san pham-->
                                 </form>
+
+
                                 @endforeach
                             </div>
                         </div>

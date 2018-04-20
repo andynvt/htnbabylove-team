@@ -110,7 +110,7 @@
                                 {{-- @if($fbsp->id_product ) --}}
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="{{ route('adminchitietdanhgia', $fbsp->id) }}"><img src="source/image/{{ $fbsp->image }}" alt="Thumbnail Image 1" class="img-responsive">
+                                        <a href="{{ route('adminchitietdanhgia', $fbsp->spid) }}"><img src="source/image/{{ $fbsp->image }}" alt="Thumbnail Image 1" class="img-responsive">
                                             <div class="feedback-qty">
                                                 <div class="qty-feedback">12</div>
                                             </div>
