@@ -226,10 +226,6 @@ class PageController extends Controller
                     ->select('sp.id','sp.name','asp.image')
                     ->get();
 
-        $image = Product::find(8);
-        foreach($image->product_image as $img){
-            echo $img->image;
-        }
         return view('Admin.pageadmin.admindanhgia', compact('getlsp','getsp'));
 
     }
@@ -247,7 +243,11 @@ class PageController extends Controller
     }
 
     public function getadminSanpham(){
-        return view('Admin.pageadmin.adminsanpham');
+        $takesp = DB::table('products as sp')
+                    ->join('product_type as lsp', 'sp.id_type' , '=', 'lsp.id')
+                    ->get();
+
+        return view('Admin.pageadmin.adminsanpham', compact('takesp'));
     }
 
     public function getadminLoaisanpham(){
@@ -330,10 +330,12 @@ class PageController extends Controller
         return redirect()->back();
     }
 
+    public function getadminSuasanpham($idtype){
+        $adminlsp = ProductType::all();
 
+        $editsp = Product::where('id', $idtype)->value('id');
 
-    public function getadminSuasanpham(){
-        return view('Admin.pageadmin.adminsuasanpham');
+        return view('Admin.pageadmin.adminsuasanpham', compact('adminlsp', 'editsp'));
     }
 
     public function postThemloaisanpham(Request $req){
@@ -342,8 +344,6 @@ class PageController extends Controller
         $producttype->save();
 
         $adminlsp = ProductType::all();
-
-        // return view('Admin.pageadmin.adminloaisanpham', compact('adminlsp'));
         return redirect()->back();
     }
 

@@ -5,7 +5,7 @@
         <div class="sidebar" data-background-color="white" data-active-color="danger">
             <div class="sidebar-wrapper">
                 <div class="logo"> <a href="#" class="simple-text">
-            WeShop
+            Hoàng Thuỷ Nguyên
         </a> </div>
                 <ul class="nav">
                     <li>
@@ -61,7 +61,21 @@
                 <?php date_default_timezone_set('Asia/Ho_Chi_Minh');echo date('d/m/Y - H:i\p\m'); ?>
             </small> </div>
                     <div class="collapse navbar-collapse">
-                        @include('Admin.pageadmin.nav')
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-globe"></i>
+                                    <p>Thông Báo</p> <span class="badge" style="background-color:#FF4066">1</span> </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="ti-bell"></i>
+                                    <p>Admin</p> <b class="caret"></b> </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>Cá Nhân</a></li>
+                                    <li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>Cài Đặt</a></li>
+                                    <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng Xuất</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>
@@ -74,7 +88,8 @@
 
                                 <!--                                Phan modal them san pham-->
                                 <div class="container-fluid">
-                                    <form class="form-horizontal" action="/action_page.php" enctype="multipart/form-data" id="formUpload" onsubmit="return false;">
+                                    <form class="form-horizontal" action="#" enctype="multipart/form-data" id="formUpload">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="ten">Tên:</label>
                                             <div class="col-sm-8">
@@ -84,8 +99,9 @@
                                             <label class="control-label col-sm-4" for="maloai">Loại sản phẩm:</label>
                                             <div class="col-sm-8">
                                                 <select class="form-control w50" name="loaisanpham">
-                                                    <option>Gối</option>
-                                                    <option>Mền</option>
+                                                    @foreach($adminlsp as $lsp)
+                                                    <option>{{ $lsp->type_name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -93,112 +109,64 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="giagoc">Giá gốc:</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="giagoc" placeholder="Nhập giá gốc" name="giagoc"> </div>
+                                                <input type="number" class="form-control w50" id="giagoc" placeholder="VD: 100000" name="giagoc" min="0"> </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-4" for="magiamgia">Mã giảm giá:</label>
+                                            <label class="control-label col-sm-4" for="magiamgia">Giá khuyến mãi (Nếu có):</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="magiamgia" placeholder="Nhập mã giảm giá" name="magiamgia"> </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-4" for="soluong">Số lượng:</label>
-                                            <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="soluong" placeholder="Nhập số lượng" name="soluong" min="1">
+                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="giakhuyenmai" min="0"> 
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4" for="soluong">Kích thước:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control w50" id="soluong" placeholder="VD: 30x30x30" name="kichthuoc">
+                                            </div>
+                                        </div>
+                                        <input type="hidden" value="1" name="trangthai">
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="mausac">Màu sắc:</label>
-
-                                            <div class="khung-mau col-sm-4">
-                                                <div class="khungchuamau w50">
-                                                    <div class="them-mau btn btn-default">
-                                                        <i class="fa fa-plus"></i>
+                                            <div class="admin-add-color col-sm-8">
+                                                <div class="w50">
+                                                    <button class=" btn btn-default btn-number-color" type="button">Chọn số lượng màu</button>
+                                                    <div class="admin-num-color">
+                                                        <input type="number" class="form-control" placeholder="Nhập số lượng màu" min="0">
+                                                        <button class="btn btn-default btn-selected-number" type="button">OK</button>
                                                     </div>
-                                                    <div class="select_color testcolor">
-                                                        <input type="color" name="color1" style="width:25px;height:25px;">
-                                                        <input type="color" name="color2" style="width:25px;height:25px;">
-                                                        <br>
-                                                        <button class="check" type="color" style="background:none;border-radius:50%;"><i class="fa fa-check" style="color:#68b3c8"></i></button>
-                                                    </div>
-                                                </div>
-                                                <div class="demo-color btn btn-default" id="demo-color1" name="add-color[]" mutiple>
-                                                    <span><i class="fa fa-close"></i></span>
                                                 </div>
                                             </div>
-
+                                        </div>
+                                        <div class="form-group admin-color">
+                                            <label class="control-label col-sm-4" for="soluong">Nhập màu:</label>
+                                            <div class="col-sm-4 type-color">
+                                            </div>
+                                            <p class="col-sm-8 col-sm-offset-4" style="color: #9A9A9A;">(*) Mỗi ô một màu</p>
+                                        </div>
                                             <script>
-                                                $(".them-mau").on("click", function() {
-                                                    $(this).next(".testcolor").css("display", "block");
+                                                $('.btn-number-color').on('click',function(){
+                                                    $('.admin-num-color').css('display', 'block');
                                                 });
-                                                var i = 1;
-                                                var removecolor = [];
 
-                                                $('.check').on('click', function() {
-                                                    if (i == 1) {
-                                                        $(".demo-color").css("display", "inline-block");
-                                                        color1 = $('.select_color input[name="color1"]').val();
-                                                        color2 = $('.select_color input[name="color2"]').val();
-                                                        string = 'repeating-linear-gradient';
-                                                        $("#demo-color1").css('background', '' + string + '(' + color1 + ',' + color1 + ' 10%,' + color2 + ' 10%,' + color2 + ' 20%)');
+                                                $('.btn-selected-number').on('click', function(){
+                                                    var ip = '<input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="mausp[]" multiple>';
+                                                    var qtycolor = $('.admin-num-color input').val();
 
-                                                        $(this).parent(".testcolor").css("display", "none");
-                                                        removecolor.push("demo-color1");
+                                                    $('.admin-num-color').css('display', 'none');
+                                                    $('.type-color').empty();
+                                                    
+                                                    $('.admin-color').css('display', 'block');
 
-
-
-                                                        $('#demo-color1').on('click', function() {
-                                                            $(this).remove();
-                                                            var deleteE = "demo-color1";
-
-                                                            var demoten = removecolor.indexOf(deleteE);
-
-
-                                                            if (demoten != -1) {
-                                                                removecolor.splice(demoten, 1);
-                                                            }
-
-                                                            if (removecolor == "") {
-                                                                i = 1;
-                                                                $(".khung-mau").append('<div class="demo-color btn btn-default" id="demo-color1" name="add-color[]" mutiple><span><i class="fa fa-close"></i></span></div>');
-                                                            }
-                                                        });
-
-                                                    } else {
-                                                        var id = $("#demo-color" + (i - 1)).clone();
-                                                        id.attr("id", "demo-color" + i);
-                                                        $(".khung-mau").append(id);
-
-                                                        color1 = $('.select_color input[name="color1"]').val();
-                                                        color2 = $('.select_color input[name="color2"]').val();
-                                                        string = 'repeating-linear-gradient';
-                                                        id.css('background', '' + string + '(' + color1 + ',' + color1 + ' 10%,' + color2 + ' 10%,' + color2 + ' 20%)');
-
-                                                        $(this).parent(".testcolor").css("display", "none");
-
-                                                        var demoid = id.attr('id');
-                                                        removecolor.push(demoid);
-
-
-                                                        id.on('click', function() {
-                                                            var deleteElmt = demoid;
-                                                            var demoname = removecolor.indexOf(deleteElmt);
-
-                                                            id.remove();
-                                                            if (demoname != -1) {
-                                                                removecolor.splice(demoname, 1);
-                                                            }
-                                                            if (removecolor == "") {
-                                                                i = 1;
-                                                                $(".khung-mau").append('<div class="demo-color btn btn-default" id="demo-color1" name="add-color[]" mutiple><span><i class="fa fa-close"></i></span></div>');
-                                                            }
-                                                        });
+                                                    if(qtycolor > 0){
+                                                        for($i = 1; $i<=qtycolor; $i++){
+                                                            $('.type-color').append(ip);
+                                                        }
                                                     }
-                                                    i++;
+                                                    else{
+                                                        $('.admin-color').css('display', 'none');
+                                                    }
+                                                    
                                                 });
                                             </script>
-                                            
-                                        </div>
-
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="hinhanh">hình ảnh:</label>
                                             <div class="col-sm-8">
@@ -215,9 +183,9 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="control-label col-sm-4" for="thongtincoban">Thông tin cơ bản:</label>
+                                            <label class="control-label col-sm-4" for="thongtincoban">Thông tin sản phẩm:</label>
                                             <div class="col-sm-8">
-                                                <textarea type="text" class="form-control w50" id="thongtincoban" placeholder="Nhập thông tin cơ bản" name="thongtincoban"></textarea>
+                                                <textarea type="text" class="form-control w50" id="thongtincoban" placeholder="Nhập thông tin mô tả" name="mota"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -304,4 +272,5 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
 @endsection

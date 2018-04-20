@@ -132,7 +132,7 @@ Route::get('admin-themsp', [
 	'uses' => 'PageController@postadminThemsanpham'
 ]);
 
-Route::get('admin-suasanpham', [
+Route::get('admin-suasanpham/{idtype}', [
 	'as' => 'adminsuasanpham',
 	'uses' => 'PageController@getadminSuasanpham'
 ]);
