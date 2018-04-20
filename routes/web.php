@@ -117,6 +117,11 @@ Route::get('admin-suasanpham/{idsp}', [
 	'uses' => 'PageController@getadminSuasanpham'
 ]);
 
+// Route::post('admin-suasp/{sp}', [
+// 	'as' => 'adminsuasp',
+// 	'uses' => 'PageController@postadminSuasanpham'
+// ]);
+
 Route::post('admin-themloaisanpham', [
 	'as' => 'adminthemloaisanpham',
 	'uses' => 'PageController@postThemloaisanpham'
@@ -165,3 +170,7 @@ Route::get('admin-doanhthu', [
 Route::get('dangxuat',['as'=>'dangxuat','uses'=>'UserController@getDangXuatAdmin']);
 Route::get('admin-index', 'UserController@getdangnhapAdmin');
 Route::post('admin-index', 'UserController@postdangnhapAdmin');
+Route::post('sua/{id}',[
+	'as' => 'suaAdmin',
+	'uses' => 'UserController@postSuaAdmin'
+]);
