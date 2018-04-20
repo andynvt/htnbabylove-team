@@ -25,7 +25,7 @@ class PageController extends Controller
         $product_image = ProductImage::all();
         $product_color = ProductColor::all();
         $lsp = ProductType::all();
-        return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product','product_image'));
+        return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product','product_image',,'product_color'));
     }
 
     public function getLoaiSP($type){
@@ -254,8 +254,12 @@ class PageController extends Controller
 
     }
 
-    public function getadminChitietDanhgia(){
-        return view('Admin.pageadmin.adminchitietdanhgia');
+    public function getadminChitietDanhgia($idfb){
+        $getlsp = ProductType::all();
+
+        $fbsp = Feedback::where('id_product','=',$idfb)->get();
+
+        return view('Admin.pageadmin.adminchitietdanhgia', compact('fbsp', 'getlsp'));
     }
 
     public function getadminDanhgiatheoloai($fbtype){
@@ -264,6 +268,11 @@ class PageController extends Controller
         $fb_theoloai = Product::where('id_type', $fbtype)->get();
 
         return view('Admin.pageadmin.admindanhgiatheoloai', compact('getlsp','fb_theoloai'));
+    }
+
+    public function getadminXoadanhgia($fb){
+        Feedback::find($fb)->delete();
+        return redirect()->back();
     }
 
     public function getadminSanpham(){
@@ -314,11 +323,11 @@ class PageController extends Controller
         return redirect()->back();
     }
 
-    public function getadminSuasanpham($idtype){
+    public function getadminSuasanpham($idsp){
         $adminlsp = ProductType::all();
 
-        $editsp = Product::where('id', $idtype)->value('id');
-
+        $editsp = Product::where('id', $idsp)->get();
+        // dd($editsp);
         return view('Admin.pageadmin.adminsuasanpham', compact('adminlsp', 'editsp'));
     }
 

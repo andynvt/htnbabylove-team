@@ -71,55 +71,32 @@
                         </small> 
                     </div>
                     <div class="collapse navbar-collapse">
-                        @include('Admin.pageadmin.adminnav')
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="ti-bell"></i>
+                                    <p>Admin</p> <b class="caret"></b> </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>Cá Nhân</a></li>
+                                    <li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>Cài Đặt</a></li>
+                                    <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng Xuất</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>
             <div class="container-fluid">
                 <div class="feedback-admin">
                     <div class="feedback-typeproduct-title form-group clearfix">
+                         @foreach($getlsp as $fblsp)
                         <div class="col-md-3">
-                            <a href="#" data-toggle="tooltip" title="Mền">
+                            <a href="{{ route('admindanhgiatheoloai', $fblsp->id) }}" data-toggle="tooltip" title="{{ $fblsp->type_name }}">
                                 <div class="feedback-typeproduct-name">
-                                    <p> Mền </p>
+                                    <p>{{ $fblsp->type_name }}</p>
                                 </div>
                             </a>
                         </div>
-                        <div class="col-md-3">
-                            <a href="#" data-toggle="tooltip" title="Gối">
-                                <div class="feedback-typeproduct-name">
-                                    <p> Gối </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" data-toggle="tooltip" title="Khăn choàng - Áo choàng">
-                                <div class="feedback-typeproduct-name">
-                                    <p> Khăn choàng - Áo choàng </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" data-toggle="tooltip" title="Bộ">
-                                <div class="feedback-typeproduct-name">
-                                    <p> Bộ </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" data-toggle="tooltip" title="Bộ">
-                                <div class="feedback-typeproduct-name">
-                                    <p> Bộ </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" data-toggle="tooltip" title="Bộ">
-                                <div class="feedback-typeproduct-name">
-                                    <p> Bộ </p>
-                                </div>
-                            </a>
-                        </div>
+                    @endforeach
                     </div>
                     <div class="feedback-table clearfix">
                         <div class="col-md-12">
@@ -152,84 +129,28 @@
                                                     <th>Mã đánh giá</th>
                                                     <th>Người đánh giá</th>
                                                     <th>Số diện thoại</th>
-                                                    <th>Số điểm</th>
+                                                    <th>Số sao</th>
                                                     <th>Nội dung</th>
                                                     <th>Xóa</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="row-detail-feedback" data-toggle="tooltip" data-html="true" title="<p>Nội dung đánh giá:</p><p>Sản phẩm quá tuyệt vời!!!</p>">
-                                                    <td>1</td>
-                                                    <td>Nguyễn Văn Tài</td>
-                                                    <td>0123456789</td>
-                                                    <td>5</td>
-                                                    <td> Sản phẩm quá tuyệt vời!!! </td>
+                                                @foreach($fbsp as $fb)
+                                                <tr class="row-detail-feedback" data-toggle="tooltip" data-html="true" title="<p>Nội dung đánh giá:</p><p>{{ $fb->review }}</p>">
+                                                    <td>{{ $fb->id }}</td>
+                                                    <td>{{ $fb->reviewer }}</td>
+                                                    <td>{{ $fb->tel }}</td>
+                                                    <td>{{ $fb->stars }}</td>
+                                                    <td>{{ $fb->review }}</td>
                                                     <td>
                                                         <div class="btn-group">
-                                                            <a href="#" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                            <a href="{{ route('adminxoadanhgia',$fb->id) }}" class="btn btn-danger btn-xs del_icon">
+                                                                <span class="glyphicon glyphicon-trash"></span> 
+                                                            </a>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <tr class="row-detail-feedback" data-toggle="tooltip" data-html="true" title="<p>Nội dung đánh giá:</p><p>Sản phẩm quá tuyệt vời!!!</p>">
-                                                    <td>1</td>
-                                                    <td>Nguyễn Văn Tài</td>
-                                                    <td>0123456789</td>
-                                                    <td>5</td>
-                                                    <td> Sản phẩm quá tuyệt vời!!! </td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <a href="#" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="row-detail-feedback" data-toggle="tooltip" data-html="true" title="<p>Nội dung đánh giá:</p><p>Sản phẩm quá tuyệt vời!!!</p>">
-                                                    <td>1</td>
-                                                    <td>Nguyễn Văn Tài</td>
-                                                    <td>0123456789</td>
-                                                    <td>5</td>
-                                                    <td> Sản phẩm quá tuyệt vời!!! </td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <a href="#" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="row-detail-feedback" data-toggle="tooltip" data-html="true" title="<p>Nội dung đánh giá:</p><p>Sản phẩm quá tuyệt vời!!!</p>">
-                                                    <td>1</td>
-                                                    <td>Nguyễn Văn Tài</td>
-                                                    <td>0123456789</td>
-                                                    <td>5</td>
-                                                    <td> Sản phẩm quá tuyệt vời!!! </td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <a href="#" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="row-detail-feedback" data-toggle="tooltip" data-html="true" title="<p>Nội dung đánh giá:</p><p>Sản phẩm quá tuyệt vời!!!</p>">
-                                                    <td>1</td>
-                                                    <td>Nguyễn Văn Tài</td>
-                                                    <td>0123456789</td>
-                                                    <td>5</td>
-                                                    <td> Sản phẩm quá tuyệt vời!!! </td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <a href="#" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="row-detail-feedback" data-toggle="tooltip" data-html="true" title="<p>Nội dung đánh giá:</p><p>Sản phẩm quá tuyệt vời!!!</p>">
-                                                    <td>1</td>
-                                                    <td>Nguyễn Văn Tài</td>
-                                                    <td>0123456789</td>
-                                                    <td>5</td>
-                                                    <td> Sản phẩm quá tuyệt vời!!! </td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <a href="#" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

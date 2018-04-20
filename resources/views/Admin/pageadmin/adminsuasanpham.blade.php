@@ -62,7 +62,21 @@
                 <?php date_default_timezone_set('Asia/Ho_Chi_Minh');echo date('d/m/Y - H:i\p\m'); ?>
             </small> </div>
                     <div class="collapse navbar-collapse">
-                        @include('Admin.pageadmin.adminnav')
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-globe"></i>
+                                    <p>Thông Báo</p> <span class="badge" style="background-color:#FF4066">1</span> </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="ti-bell"></i>
+                                    <p>Admin</p> <b class="caret"></b> </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>Cá Nhân</a></li>
+                                    <li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>Cài Đặt</a></li>
+                                    <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng Xuất</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>
@@ -72,20 +86,20 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-
+                                @foreach($editsp as $sp)
+                                <form class="form-horizontal" action="#" enctype="multipart/form-data">
                                 <!-- Phan modal them san pham-->
                                 <div class="container-fluid">
-                                    <form class="form-horizontal" action="#" enctype="multipart/form-data" id="formUpload">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="ten">Tên:</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="ten" placeholder="Nhập tên" name="ten"> </div>
+                                                <input type="text" class="form-control w50" id="ten" name="newten" value="{{ $sp->name }}"> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="maloai">Loại sản phẩm:</label>
                                             <div class="col-sm-8">
-                                                <select class="form-control w50" name="loaisanpham">
+                                                <select class="form-control w50" name="newloaisanpham">
                                                     @foreach($adminlsp as $lsp)
                                                     <option>{{ $lsp->type_name }}</option>
                                                     @endforeach
@@ -96,21 +110,21 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="giagoc">Giá gốc:</label>
                                             <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="giagoc" placeholder="VD: 100000" name="giagoc" min="0"> </div>
+                                                <input type="number" class="form-control w50" id="giagoc" placeholder="VD: 100000" name="newgiagoc" min="0" value="{{ $sp->unit_price }}"> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="magiamgia">Giá khuyến mãi (Nếu có):</label>
                                             <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="giakhuyenmai" min="0"> 
+                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="newgiakhuyenmai" min="0" value="{{ $sp->promotion_price }}"> 
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="soluong">Kích thước:</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="soluong" placeholder="VD: 30x30x30" name="kichthuoc">
+                                                <input type="text" class="form-control w50" id="soluong" placeholder="VD: 30x30x30" name="newkichthuoc" value="{{ $sp->size }}">
                                             </div>
                                         </div>
-                                        <input type="hidden" value="1" name="trangthai">
+                                        {{-- <input type="hidden" value="1" name="trangthai"> --}}
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="mausac">Màu sắc:</label>
                                             <div class="admin-add-color col-sm-8">
@@ -129,31 +143,38 @@
                                             </div>
                                             <p class="col-sm-8 col-sm-offset-4" style="color: #9A9A9A;">(*) Mỗi ô một màu</p>
                                         </div>
-                                            <script>
-                                                $('.btn-number-color').on('click',function(){
-                                                    $('.admin-num-color').css('display', 'block');
-                                                });
 
-                                                $('.btn-selected-number').on('click', function(){
-                                                    var ip = '<input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="mausp[]" multiple>';
-                                                    var qtycolor = $('.admin-num-color input').val();
+                                        <style>
+                                            .admin-color{
+                                                display: block;
+                                            }
+                                        </style>
+                                        <script>
+                                            $('.btn-number-color').on('click',function(){
+                                                $('.admin-num-color').css('display', 'block');
+                                            });
 
-                                                    $('.admin-num-color').css('display', 'none');
-                                                    $('.type-color').empty();
-                                                    
-                                                    $('.admin-color').css('display', 'block');
+                                            $('.btn-selected-number').on('click', function(){
+                                                var ip = '<input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newmausp[]" multiple>';
+                                                var qtycolor = $('.admin-num-color input').val();
 
-                                                    if(qtycolor > 0){
-                                                        for($i = 1; $i<=qtycolor; $i++){
-                                                            $('.type-color').append(ip);
-                                                        }
+                                                $('.admin-num-color').css('display', 'none');
+                                                $('.type-color').empty();
+                                                
+                                                $('.admin-color').css('display', 'block');
+
+                                                if(qtycolor > 0){
+                                                    for($i = 1; $i<=qtycolor; $i++){
+                                                        $('.type-color').append(ip);
                                                     }
-                                                    else{
-                                                        $('.admin-color').css('display', 'none');
-                                                    }
-                                                    
-                                                });
-                                            </script>
+                                                }
+                                                else{
+                                                    $('.admin-color').css('display', 'none');
+                                                }
+                                                
+                                            });
+                                        </script>
+
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="hinhanh">hình ảnh:</label>
                                             <div class="col-sm-8">
@@ -161,19 +182,22 @@
                                                     <div class="themhinh">
                                                         <button class="btn btn-default dehinh" style="cursor: pointer">
                                                            <i class="fa fa-plus"></i>
-                                                           <input type="file" name="hinh[]" multiple>
+                                                           <input type="file" name="newhinh[]" multiple>
                                                        </button>
                                                     </div>
                                                 </div>
-                                                <p style="color: #9A9A9A;">(*) Trỏ chuột vào dấu cộng để xem tên các ảnh đã chọn</p>
+                                                <p style="color: #9A9A9A;">(*) Chọn ảnh mới</p>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="thongtincoban">Thông tin sản phẩm:</label>
                                             <div class="col-sm-8">
-                                                <textarea type="text" class="form-control w50" id="thongtincoban" placeholder="Nhập thông tin mô tả" name="mota"></textarea>
+                                                <textarea class="form-control w50" id="{{ $sp->id }}" name="newmota" value="" placeholder=""></textarea>
                                             </div>
+                                            <script>
+                                                $('#{{ $sp->id }}').val('{{ $sp->description }}');
+                                            </script>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-offset-6 col-sm-8">
@@ -181,9 +205,10 @@
                                                 <button type="submit" class="btn btn-primary btn-magrin btn-submit">Lưu lại</button>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
-                                <!--                           ket thuc phan modal them san pham-->
+                                    </div>
+                                <!-- ket thuc phan modal them san pham-->
+                                </form>
+                                @endforeach
                             </div>
                         </div>
                     </div>

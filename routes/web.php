@@ -82,7 +82,7 @@ Route::get('admin-danhgia', [
 	'uses' => 'PageController@getadminDanhgia'
 ])->middleware('adminLogin');
 
-Route::get('admin-chitietdanhgia', [
+Route::get('admin-chitietdanhgia/{idfb}', [
 	'as' => 'adminchitietdanhgia',
 	'uses' => 'PageController@getadminChitietDanhgia'
 ])->middleware('adminLogin');
@@ -91,6 +91,11 @@ Route::get('admin-danhgiatheoloai/{fbtype}', [
 	'as' => 'admindanhgiatheoloai',
 	'uses' => 'PageController@getadminDanhgiatheoloai'
 ])->middleware('adminLogin');
+
+Route::get('admin-xoadanhgia/{fb}', [
+	'as' => 'adminxoadanhgia',
+	'uses' => 'PageController@getadminXoadanhgia'
+]);
 
 Route::get('admin-sanpham', [
 	'as' => 'adminsanpham',
@@ -107,10 +112,10 @@ Route::get('admin-themsanpham', [
 	'uses' => 'PageController@getadminThemsanpham'
 ])->middleware('adminLogin');
 
-Route::get('admin-suasanpham', [
+Route::get('admin-suasanpham/{idsp}', [
 	'as' => 'adminsuasanpham',
 	'uses' => 'PageController@getadminSuasanpham'
-])->middleware('adminLogin');
+]);
 
 Route::post('admin-themloaisanpham', [
 	'as' => 'adminthemloaisanpham',
