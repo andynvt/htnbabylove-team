@@ -44,10 +44,10 @@ class PageController extends Controller
         $detail_product = ProductDetail::all();
 
         $sanpham = Product::where('id', $req->id)->first();
-        $feedback = Feedback::where('id', $req->id)->get();
 
         $id_sp = Product::where('id', $req->id)->value('id');
         $id_lsp = Product::where('id', $id_sp)->value('id');
+        $feedback = Feedback::where('id_product', $req->id)->get();
 
         $type_name = ProductType::where('id', $id_lsp)->value('type_name');
 
@@ -69,6 +69,19 @@ class PageController extends Controller
 
 
         return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get2_proimg','same_product','detail_product','hot_product','new_product','product_image','product_color'));
+    }
+
+    public function postDanhGia(Request $req, $id){
+        $fb = new Feedback;
+
+        $fb->id_product = $id;
+        $fb->stars = $req->ratingValue;
+        $fb->reviewer = $req->name;
+        $fb->review = $req->review;
+        $fb->tel = $req->phone;
+        $fb->save();
+
+        return redirect()->back();
     }
 
     public function getAbout(){
