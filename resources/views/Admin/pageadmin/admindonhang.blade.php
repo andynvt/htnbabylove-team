@@ -185,15 +185,19 @@
                                             <td>
                                                 <div class="">
                                                 @if($b->status == 1 || $b->status == 4)
-                                                    <form action="{{route('admindonhang1')}}">
-                                                        <input type="hidden" name="stt" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" value="{{$b->status}}" data-original-title="Xác nhận đơn hàng"> 
-
-                                                        <a class="btn btn-info btn-xs edit_icon" type="submit">
-                                                            <i class="fa fa-check"></i>
-                                                        </a>
+                                              
+                                                    <form action="{{ route('completedUpdate', $b->id) }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('PATCH') }}
+                                                        <a class="btn btn-info btn-xs edit_icon" type="submit" data-toggle="tooltip" data-original-title="Duyệt đơn hàng">
+                                                            <i class="fa fa-check"></i></a>
                                                     </form>
-                                                    
-                                                    <a href="#" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Huỷ đơn hàng"> <i class="fa fa-times"></i> </a>
+                                                    <form action="{{ route('completedUpdateCancel', $b->id) }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('PATCH') }}
+                                                        <a class="btn btn-info btn-xs edit_icon" type="submit" data-toggle="tooltip" data-original-title="Huỷ đơn hàng">
+                                                            <i class="fa fa-times"></i></a>
+                                                    </form>
                                                 @endif
                                                 </div>
                                             </td>
@@ -214,7 +218,7 @@
         <!-- The Modal -->
         @foreach($bills as $b)
         @foreach($customers as $c)
-        @if($b->id == $c->id)
+        @if($b->id_customer == $c->id)
         <div class="modal fade modalcart" id="c{{$b->id}}">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -236,8 +240,18 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="submit" class="btn btn-primary">Huỷ đơn hàng</button>
-                        <button type="submit" class="btn btn-primary">Duyệt đơn hàng</button>
+                        @if($b->status == 1 || $b->status == 4)
+                        <form action="{{ route('completedUpdateCancel', $b->id) }}" method="POST" style="display: inline-block;">
+                            {{ csrf_field() }}
+                            {{ method_field('PATCH') }}
+                            <button class="btn btn-primary" type="submit">Huỷ đơn hàng</button>
+                        </form>
+                        <form action="{{ route('completedUpdate', $b->id) }}" method="POST" style="display: inline-block;">
+                            {{ csrf_field() }}
+                            {{ method_field('PATCH') }}
+                            <button class="btn btn-primary" type="submit">Duyệt đơn hàng</button>
+                        </form>
+                        @endif
                     </div>
                     
                 </div>
@@ -329,9 +343,18 @@
                             </div>
                         </div>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="submit" class="btn btn-primary">Huỷ đơn hàng</button>
-                        <button type="submit" class="btn btn-primary">Duyệt đơn hàng</button>
-
+                        @if($b->status == 1 || $b->status == 4)
+                        <form action="{{ route('completedUpdateCancel', $b->id) }}" method="POST" style="display: inline-block;">
+                            {{ csrf_field() }}
+                            {{ method_field('PATCH') }}
+                            <button class="btn btn-primary" type="submit">Huỷ đơn hàng</button>
+                        </form>
+                        <form action="{{ route('completedUpdate', $b->id) }}" method="POST" style="display: inline-block;">
+                            {{ csrf_field() }}
+                            {{ method_field('PATCH') }}
+                            <button class="btn btn-primary" type="submit">Duyệt đơn hàng</button>
+                        </form>
+                        @endif
                     </div>
                     
                 </div>

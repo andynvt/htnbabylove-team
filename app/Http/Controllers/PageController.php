@@ -267,18 +267,24 @@ class PageController extends Controller
         $bill_detail = BillDetail::all();
 
         $get_bill = DB::select(DB::raw('SELECT bd.id as bdid, b.id as bid, b.total_price, bd.product_name, bd.color, bd.image, bd.size, bd.quantity, bd.price, c.name FROM bill_detail as bd, customers as c, bills as b WHERE bd.id_bill in (SELECT b.id FROM bills WHERE b.id_customer in (SELECT c.id FROM customers))'));
-
                         // dd($get_bill);
         return view('Admin.pageadmin.admindonhang', compact('get_bill','bills','customers','bill_detail'));
     }
 
-    public function postadminSuadonhang(Request $req){
-        $bills = new Bill;
-
-        $bills->status = $req->stt +1;
-        dd($req->stt);
-        $b->save();
-        // return redirect()->back();
+    // public function postadminSuadonhang(Request $req){
+    //     $bills = new Bill;
+    //     $bills->status = $req->stt +1;
+    //     dd($req->stt);
+    //     $b->save();
+    //     // return redirect()->back();
+    // }
+    public function completedUpdate($id){
+        DB::table('bills')->where('id', $id)-> update(['status' => 2]);
+        return redirect()->back();
+    }
+    public function completedUpdateCancel($id){
+        DB::table('bills')->where('id', $id)-> update(['status' => 3]);
+        return redirect()->back();
     }
 
     public function getadminDoanhthu(){

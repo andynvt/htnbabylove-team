@@ -107,9 +107,14 @@ Route::get('admin-donhang', [
 	'uses' => 'PageController@getadminDonhang'
 ]);
 
-Route::post('admin-donhang1', [
-	'as' => 'admindonhang1',
-	'uses' => 'PageController@postadminSuadonhang'
+Route::patch('admin-donhang/{id}', [
+	'as' => 'completedUpdate',
+	'uses' => 'PageController@completedUpdate'
+]);
+
+Route::patch('/tasks/completed/{id}', [
+	'as' => 'completedUpdateCancel',
+	'uses' => 'PageController@completedUpdateCancel'
 ]);
 
 Route::get('admin-doanhthu', [
