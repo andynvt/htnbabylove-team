@@ -31,18 +31,22 @@
                         <!-- <h2 style="text-align:center">Lightbox</h2> -->
                         <div class="img-mini">
                             <div class="row">
-                                @foreach($product_img as $pro_img)
-                                <div class="column"> <img src="source/image/{{ $pro_img->image }}" style="width:100%; height: 50px"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> 
+                                @foreach($product_image as $anh)
+                                @if($sanpham->id == $anh->id )
+                                <div class="column"> <img src="source/image/{{ $anh->image }}" style="width:100%; height: 50px"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> 
                                 </div>
+                                @endif
                                 @endforeach
                             </div>
                         </div>
                         <div id="modal-img-mini" class="modal-img-mini"> <span class="close cursor" onclick="closeModal()">&times;</span>
                             <div class="modal-content">
-                                @foreach($product_img as $pro_img)
+                                @foreach($product_image as $pro_img)
+                                @if($sanpham->id == $pro_img->id )
                                 <div class="slide-img-mini">
                                     <div class="numbertext">1 / 4</div> <img src="source/image/{{ $pro_img->image }}" style="width:100%"> 
                                 </div>
+                                @endif
                                 @endforeach
                                 <a style="color: #288AD6" class="prev" onclick="plusSlides(-1)">&#10094;</a> 
                                 <a style="color: #288AD6" class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -52,9 +56,11 @@
                                 </div>
 
                                 <div class="row" id="bg-modal-product">
-                                    @foreach($product_img as $pro_img)
+                                    @foreach($product_image as $pro_img)
+                                    @if($sanpham->id == $pro_img->id )
                                     <div class="column"> <img class="demo cursor" src="source/image/{{ $pro_img->image }}" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise"> 
                                     </div>
+                                    @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -134,15 +140,18 @@
                                     <label class="choose-qty">Chọn màu sắc:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn số lượng bạn muốn mua"></i></label>
                                     <div class="form-group">
                                         <div class="dropdown" style="width: 45%;">
-                                            <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background:   @foreach($detail_product as $color ) @if($sanpham->id == $color->id_product  ) {{$color->color}} @break @endif @endforeach "></span></button>
+                                            <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background:  @foreach($product_color as $anh )
+                                                            @if($anh->id_detail === $sanpham->id  )
+                                                                {{$anh->color}}
+                                                                @break
+                                                            @endif
+                                                        @endforeach "></span></button>
                                             <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
-                                                @foreach($detail_product as $anh ) 
-                                                            @if($sanpham->id == $anh->id_product  )
-                                                            @if($anh->color == $anh->color)
-                                                            <li><span class="color " style="background: {{$anh->color}}"></span></li>
-                                                            @endif
-                                                            @endif
-                                                            @endforeach
+                                                 @foreach($product_color as $anh )
+                                                            @if($sanpham->id == $anh->id_detail)  
+                                                                <li><span class="color " style="background: {{$anh->color}}"></span></li>
+                                                                @endif
+                                                             @endforeach 
                                                 <input type="hidden" name="_color" value=""> </ul>
                                         </div>
                                     </div>
@@ -177,8 +186,12 @@
                     </div>
                     <div class="panel" id="tab-description">
                         <p class="intro-product">{{ $sanpham->description }}.</p>
-                        @foreach($product_img as $pro_img)
-                        <div class="img-product-show"> <img src="source/image/{{ $pro_img->image }}" /> </div>
+                        @foreach($product_image as $anh )
+                            @if($sanpham->id == $anh->id  )
+
+                        <div class="img-product-show"> <img src="source/image/{{ $anh->image }}" /> </div>
+                        @endif
+                        
                         @endforeach
                     </div>
                 </div>
@@ -201,93 +214,8 @@
 
                             <button type="button" class="btn-sendfb" data-toggle="modal" data-target="#feedback"> Gửi đánh giá của bạn </button>
                         </div>
-                    
-                        {{-- Modal feedback --}}
-                        <form action=" {{ route('danhgia', $sanpham->id)}} " method="post">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <!-- The Modal -->
-                            <div class="modal fade" id="feedback">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                                            <div class="check-star-feed-back">
-                                                <h4>Đánh giá {{$sanpham->name}}</h4>
-                                                <section class='rating-widget'>
-                                                    <!-- Rating Stars Box -->
-
-                                                    <div class="rate-feed-back clearfix">
-                                                        <div class='rating-stars'>
-                                                            <ul id='stars' style="cursor: pointer">
-                                                                <li class='star' title='Poor' data-value='1'>
-                                                                    <i class='fa fa-star fa-fw'></i>
-                                                                </li>
-                                                                <li class='star' title='Fair' data-value='2'>
-                                                                    <i class='fa fa-star fa-fw'></i>
-                                                                </li>
-                                                                <li class='star' title='Good' data-value='3'>
-                                                                    <i class='fa fa-star fa-fw'></i>
-                                                                </li>
-                                                                <li class='star' title='Excellent' data-value='4'>
-                                                                    <i class='fa fa-star fa-fw'></i>
-                                                                </li>
-                                                                <li class='star' title='WOW!!!' data-value='5'>
-                                                                    <i class='fa fa-star fa-fw'></i>
-                                                                </li>
-                                                            </ul>
-                                                            <input type="hidden" name="ratingValue" id="star-feedback">
-                                                        </div>
-                                                        <div class='success-box'>
-                                                            <div class="text-message"></div>
-                                                        </div>
-                                                    </div>
-                                                </section>
-                                            </div>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <h3 id="change-feed-back">Viết đánh giá của bạn</h3>
-                                            <div class="content-feed-back row clearfix">
-                                                {{-- <div class="radio col-sm-12 gender-feedback">
-                                                    <label><input type="radio" name="gt"><span>Anh</span></label>
-                                                    <label><input type="radio" name="gt"><span>Chị</span></label>
-                                                </div> --}}
-                                                <input type="hidden" name="gender" id="gender">
-                                                <div class="info-feedback col-sm-12">
-                                                    <div class="row">
-                                                        <label class="col-md-4 col-xs-12">Họ tên:</label>
-                                                        <input class="col-md-8 col-xs-12" type="text" placeholder="Bắt buộc" name="name" required>
-                                                        <label class="col-md-4 col-xs-12">Số điện thoại:</label>
-                                                        <input class="col-md-8 col-xs-12" type="tel" placeholder="Để chúng tôi phục vụ bạn tốt hơn" name="phone">
-                                                        <br>
-                                                        <textarea class="col-xs-12" rows="5" name="review" placeholder="Đánh giá của bạn cho sản phẩm"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                            <div class="btn-feed-back">
-                                                <button class="send-fb" data-dismiss="modal" type="button">
-                                Hủy
-                            </button>
-                                            </div>
-                                            <div class="btn-feed-back">
-                                                <input class="send-fb" type="submit" value="Gửi" name="send">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-
                     </div>
                         @foreach($feedback as $fb) 
-                        @if($fb->id_product == $sanpham->id)
                                 <div class="content-rate">
                                     <div class="name-user"> <span>{{$fb->reviewer}}</span> </div>
                                     <div class="time-post"> <span>{{$fb->create_at}}</span> </div>
@@ -306,7 +234,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endif
                         @endforeach 
                     <div class="pagination-comment">
                         <div class="row" id="frame-paging">
@@ -332,8 +259,8 @@
                     <div class="banner-related-product">
                         <!-- <h4>Sản Phẩm Cùng Loại</h4> --><img src="source/image/related.png" /> </div>
                     <div class="row">
-                        @foreach($same_product as $new) @foreach($detail_product as $anh) @if($new->id == $anh->id_product)
-                        <div class="col-sm-4">
+                          @foreach($same_product as $new) @foreach($detail_product as $det) @if($new->id == $det->id)
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
                                     @if($new->promotion_price != 0)
@@ -347,7 +274,11 @@
                                 <div class="thumbnail">
                                     <a href="{{ route('chitietsanpham', $new->id) }}">
                                         <div class="containeroverlay">
+                                            @foreach($product_image as $anh )
+                                                @if($det->id == $anh->id  )
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                                @endif
+                                            @endforeach
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>
                                             </div>
@@ -387,7 +318,13 @@
                         <div class="beta-sales beta-lists">
                         @foreach($hot_product as $hot) @foreach($detail_product as $anh) @if($hot->id == $anh->id_product)
                             <div class="media beta-sales-item">
-                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id) }}"><img src="source/image/{{$anh->image}}" alt=""></a>
+                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id) }}">
+                                    @foreach($product_image as $anh )
+                                                @if($hot->id == $anh->id  )
+                                    <img src="source/image/{{$anh->image}}" alt="">
+                                    @endif
+                                    @endforeach
+                                </a>
                                 <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id) }}">{{$hot->name}}</a>
                                     <p class="beta-sales-price">
                                         @if($hot->promotion_price == 0)
@@ -415,7 +352,13 @@
                         <div class="beta-sales beta-lists">
                         @foreach($new_product as $hot) @foreach($detail_product as $anh) @if($hot->id == $anh->id_product)
                             <div class="media beta-sales-item">
-                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id) }}"><img src="source/image/{{$anh->image}}" alt=""></a>
+                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id) }}">
+                                    @foreach($product_image as $anh )
+                                                @if($hot->id == $anh->id  )
+                                    <img src="source/image/{{$anh->image}}" alt="">
+                                    @endif
+                                    @endforeach
+                                </a>
                                 <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id) }}">{{$hot->name}}</a>
                                     <p class="beta-sales-price">
                                         @if($hot->promotion_price == 0)
@@ -443,7 +386,6 @@
         </div>
     </div>
     <!-- .container -->
-    
     <script>
         function openModal() {
             document.getElementById('modal-img-mini').style.display = "block";

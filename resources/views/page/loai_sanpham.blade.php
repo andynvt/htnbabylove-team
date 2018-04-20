@@ -34,7 +34,11 @@
                         </div>
                         <div class="thumbnail">
                             <div class="containeroverlay">
-                                <a href="{{ route('chitietsanpham', $product->id) }}"><img src="source/image/{{ $detail->image }}" class="img-responsive" width="480px"></a>
+                                <a href="{{ route('chitietsanpham', $product->id) }}"> @foreach($product_image as $anh )
+                                                @if($product->id == $anh->id  )
+                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                                @endif
+                                            @endforeach</a>
                                 <div class="overlay">
                                     <div class="text">Xem chi tiết</div>
                                 </div>
