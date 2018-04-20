@@ -42,5 +42,24 @@ class UserController extends Controller
         return redirect('admin-index');
     }
 
+    public function postSuaAdmin(Request $request,$id){
+        $user = User::find($id);
+        $this->validate($request,
+            [
+                'oldpass'=>'required',
+                'newpass'=>'required|same:oldpass'
+            ], 
+            [
+                'oldpass.required'=>'Bạn chưa nhập mật khẩu cũ',
+                'newpass.required'=>'Bạn chưa nhập mật khẩu mới',
+                'newpass.same'=>'Mật khẩu nhập lại chưa trùng khớp'
+                
+            ]);
+
+            $user->password = bcrypt($request->oldpass);
+            $user->save();
+            return redirect('admin-canhan')->with('thongbao', 'Sửa thành công');
+
+    }
 
 }

@@ -61,7 +61,7 @@
                 <?php date_default_timezone_set('Asia/Ho_Chi_Minh');echo date('d/m/Y - H:i\p\m'); ?>
             </small> </div>
                     <div class="collapse navbar-collapse">
-                        @include('Admin.pageadmin.nav')
+                        @@include('Admin.pageadmin.adminnav')
                     </div>
                 </div>
             </nav>
