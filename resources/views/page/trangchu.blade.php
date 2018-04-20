@@ -21,13 +21,8 @@
                     <div class="space15">&nbsp;</div>
                     <div class="row">
                         @foreach($promotion_product as $promo ) 
-<<<<<<< HEAD
-                        @foreach($detail_product as $anh ) 
-                        @if($promo->id == $anh->id  )
-=======
                         @foreach($detail_product as $det ) 
                         @if($promo->id == $det->id  )
->>>>>>> 4c6770dfd27853a83054ea9d99a6d75fa3551b0f
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">

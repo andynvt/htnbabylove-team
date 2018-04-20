@@ -30,39 +30,41 @@ class PageController extends Controller
 
     public function getLoaiSP($type){
         $lsp = ProductType::all();
-        $sp_theoloai = Product::where('id_type',$type)->get();
+        $sp_theoloai = Product::where('id',$type)->get();
         $detail_product = ProductDetail::all();
-        $id_product = Product::all();
+        $products = Product::all();
 
         $loai_ssp = ProductType::where('id',$type)->first();
 
-        return view('page.loai_sanpham',compact('lsp','sp_theoloai','detail_product','id_product','loai_ssp'));
+        return view('page.loai_sanpham',compact('lsp','sp_theoloai','detail_product','products','loai_ssp'));
     }
 
     public function getDetail(Request $req){
         $detail_product = ProductDetail::all();
 
         $sanpham = Product::where('id', $req->id)->first();
-        $feedback = Feedback::where('id_product', $req->id)->get();
+        $feedback = Feedback::where('id', $req->id)->get();
 
-        $id_sp = Product::where('id', $req->id)->value('id_type');
-        $id_lsp = Product::where('id_type', $id_sp)->value('id_type');
+        $id_sp = Product::where('id', $req->id)->value('id');
+        $id_lsp = Product::where('id', $id_sp)->value('id');
 
         $type_name = ProductType::where('id', $id_lsp)->value('type_name');
 
         $getid_sp = Product::where('id', $req->id)->value('id');
         $getid_ctsp = Product::where('id', $getid_sp)->value('id');
 
-        $product_img = ProductDetail::where('id_product', $getid_ctsp)->get();
-        $get1_proimg = ProductDetail::where('id_product', $getid_ctsp)->value('image');
+        $product_img = ProductDetail::where('id', $getid_ctsp)->get();
+        $get1_proimg = ProductDetail::where('id', $getid_ctsp)->value('id');
+        $get2_proimg = ProductImage::where('id', $get1_proimg)->value('image');
+
         // dd($get1_proimg);
         $new_product = Product::where('status', 1)->get();
         $hot_product = Product::where('status', 2)->get();
 
-        $same_product = Product::where('id_type', $id_lsp)->take(6)->get();
+        $same_product = Product::where('id', $id_lsp)->take(6)->get();
 
 
-        return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get1_proimg','same_product','detail_product','hot_product','new_product'));
+        return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get2_proimg','same_product','detail_product','hot_product','new_product'));
     }
 
     public function getAbout(){

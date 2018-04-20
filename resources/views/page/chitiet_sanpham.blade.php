@@ -17,7 +17,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('trang-chu') }}">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('loaisanpham', $id_lsp) }}">{{ $type_name }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('chitietsanpham', $sanpham->id_product) }}">{{ $sanpham->name }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('chitietsanpham', $sanpham->id) }}">{{ $sanpham->name }}</a></li>
                 </ol>
             </nav>
         </div>
@@ -27,7 +27,7 @@
             <div class="col-lg-9 col-md-12">
                 <div class="row">
                     <div class="col-sm-4" id="show-images"> 
-                        <img src="source/image/{{ $get1_proimg }}" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
+                        <img src="source/image/{{ $get2_proimg }}" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
                         <!-- <h2 style="text-align:center">Lightbox</h2> -->
                         <div class="img-mini">
                             <div class="row">
@@ -134,10 +134,10 @@
                                     <label class="choose-qty">Chọn màu sắc:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn số lượng bạn muốn mua"></i></label>
                                     <div class="form-group">
                                         <div class="dropdown" style="width: 45%;">
-                                            <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background:   @foreach($detail_product as $color ) @if($sanpham->id_product == $color->id_product  ) {{$color->color}} @break @endif @endforeach "></span></button>
+                                            <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background:   @foreach($detail_product as $color ) @if($sanpham->id == $color->id_product  ) {{$color->color}} @break @endif @endforeach "></span></button>
                                             <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
                                                 @foreach($detail_product as $anh ) 
-                                                            @if($sanpham->id_product == $anh->id_product  )
+                                                            @if($sanpham->id == $anh->id_product  )
                                                             @if($anh->color == $anh->color)
                                                             <li><span class="color " style="background: {{$anh->color}}"></span></li>
                                                             @endif
@@ -152,7 +152,7 @@
                                             <button type="button" class="btn btn-themvaogio btn-full "><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
                                         </div>
                                         <div class="col-lg-5 col-md-12">
-                                            <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$sanpham->id_product}}"><span>Mua Ngay </span></button>
+                                            <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$sanpham->id}}"><span>Mua Ngay </span></button>
                                         </div>
                                     </div>
                                     <div class="flash"></div>
@@ -208,11 +208,11 @@
                                     <div class="time-post"> <span>{{$fb->create_at}}</span> </div>
                                     <div class="star-rate">
                                         <div class="start-sum">
-                                            <input id="{{ $fb->id_feedback }}" type="hidden" value="{{ $fb->stars }}">
+                                            <input id="{{ $fb->id }}" type="hidden" value="{{ $fb->stars }}">
                                             <div class="khong-duoc-xoa"></div>
                                             <script>
                                                 for($i=0; $i < {{ $fb->stars }} ; $i++){
-                                                    $('#{{ $fb->id_feedback }}').next('.khong-duoc-xoa').append('<i class="fa fa-star fa-fw"></i>');
+                                                    $('#{{ $fb->id }}').next('.khong-duoc-xoa').append('<i class="fa fa-star fa-fw"></i>');
                                                 }
                                             </script>
                                         </div>
@@ -246,7 +246,7 @@
                     <div class="banner-related-product">
                         <!-- <h4>Sản Phẩm Cùng Loại</h4> --><img src="source/image/related.png" /> </div>
                     <div class="row">
-                        @foreach($same_product as $new) @foreach($detail_product as $anh) @if($new->id_product == $anh->id_product)
+                        @foreach($same_product as $new) @foreach($detail_product as $anh) @if($new->id == $anh->id_product)
                         <div class="col-sm-4">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
@@ -259,7 +259,7 @@
                                     @endif
                                 </div>
                                 <div class="thumbnail">
-                                    <a href="{{ route('chitietsanpham', $new->id_product) }}">
+                                    <a href="{{ route('chitietsanpham', $new->id) }}">
                                         <div class="containeroverlay">
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                             <div class="overlay">
@@ -279,7 +279,7 @@
                                                 </b>
                                         <div class="space10">&nbsp;</div>
                                         <p class='text-left text-title'><b>{{$new->name}}</b>&nbsp;</p>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$new->id_product}}"><span>Mua Ngay </span></button>
+                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$new->id}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr>
                                     </div>
@@ -299,10 +299,10 @@
                     <h3 class="widget-title">Sản Phẩm Bán Chạy</h3>
                     <div class="widget-body">
                         <div class="beta-sales beta-lists">
-                        @foreach($hot_product as $hot) @foreach($detail_product as $anh) @if($hot->id_product == $anh->id_product)
+                        @foreach($hot_product as $hot) @foreach($detail_product as $anh) @if($hot->id == $anh->id_product)
                             <div class="media beta-sales-item">
-                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id_product) }}"><img src="source/image/{{$anh->image}}" alt=""></a>
-                                <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id_product) }}">{{$hot->name}}</a>
+                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id) }}"><img src="source/image/{{$anh->image}}" alt=""></a>
+                                <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id) }}">{{$hot->name}}</a>
                                     <p class="beta-sales-price">
                                         @if($hot->promotion_price == 0)
                                             <span class="text-danger ">{{number_format($hot->unit_price)}} đ</span> &nbsp;
@@ -311,7 +311,7 @@
                                             <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
                                         @endif
                                     </p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#{{$hot->id_product}}"><span>Mua Ngay </span></button>
+                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#{{$hot->id}}"><span>Mua Ngay </span></button>
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>
@@ -327,10 +327,10 @@
                     <h3 class="widget-title">Sản Phẩm Mới Nhất</h3>
                     <div class="widget-body">
                         <div class="beta-sales beta-lists">
-                        @foreach($new_product as $hot) @foreach($detail_product as $anh) @if($hot->id_product == $anh->id_product)
+                        @foreach($new_product as $hot) @foreach($detail_product as $anh) @if($hot->id == $anh->id_product)
                             <div class="media beta-sales-item">
-                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id_product) }}"><img src="source/image/{{$anh->image}}" alt=""></a>
-                                <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id_product) }}">{{$hot->name}}</a>
+                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id) }}"><img src="source/image/{{$anh->image}}" alt=""></a>
+                                <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id) }}">{{$hot->name}}</a>
                                     <p class="beta-sales-price">
                                         @if($hot->promotion_price == 0)
                                             <span class="text-danger ">{{number_format($hot->unit_price)}} đ</span> &nbsp;
@@ -339,7 +339,7 @@
                                             <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
                                         @endif
                                     </p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#{{$hot->id_product}}"><span>Mua Ngay </span></button>
+                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#{{$hot->id}}"><span>Mua Ngay </span></button>
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>
