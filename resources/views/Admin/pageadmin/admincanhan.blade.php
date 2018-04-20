@@ -62,7 +62,7 @@
                         <?php date_default_timezone_set('Asia/Ho_Chi_Minh');echo date('d/m/Y - H:i\p\m'); ?>
                     </small> </div>
                     <div class="collapse navbar-collapse">
-                        @include('Admin.pageadmin.nav')
+                        @include('Admin.pageadmin.adminnav')
                     </div>
                 </div>
             </nav>
@@ -76,13 +76,33 @@
                         <div class="panel panel-default">
                             <div class="panel-heading clearfix"> <span class="glyphicon glyphicon-edit"></span> <span>Đổi mật khẩu</span> </div>
                             <div class="panel-body">
-                                <form method="post" action="edit_account.php?id=1" class="clearfix">
+                                @if(count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        @foreach($errors->all() as $err)
+                                            {{$err}}<br>
+                                        @endforeach
+                                    </div>
+                                @endif
+
+                                @if(session('thongbao'))
+                                    <div class="alert alert-success">
+                                            {{session('thongbao')}}<br>
+                                    </div>
+                                @endif
+                                <form method="post" action="{{route('suaAdmin', Auth::user()->id)}}" class="clearfix">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <div class="form-group">
-                                        <label for="name" class="control-label">Mật khẩu cũ</label>
-                                        <input type="password" class="form-control" name="oldpass" placeholder="Mật khẩu cũ"> </div>
+                                        <label for="username" class="control-label">Tên tài khoản</label>
+                                        <input type="text" class="form-control" name="name" placeholder="Tên tài khoản" value="{{Auth::user()->name}}" disabled="">
+                                    </div>
                                     <div class="form-group">
-                                        <label for="username" class="control-label">Mật khẩu mới</label>
-                                        <input type="password" class="form-control" name="newpass" placeholder="Mật khẩu mới"> </div>
+                                        <label for="username" class="control-label">Mật khẩu</label>
+                                        <input type="password" class="form-control" name="oldpass" placeholder="Mật khẩu thay đổi">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="username" class="control-label">Nhập lại mật khẩu</label>
+                                        <input type="password" class="form-control" name="newpass" placeholder="Nhập lại mật khẩu">
+                                    </div>
                                     <div class="form-group clearfix">
                                         <button type="submit" name="update" class=" btn btn-danger pull-right css_changepass ">Cập nhật</button>
                                     </div>
