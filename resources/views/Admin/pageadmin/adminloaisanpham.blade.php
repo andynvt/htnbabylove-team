@@ -131,7 +131,7 @@
                                             <td class="text-center ">
                                                 <div class="btn-group ">
                                                     <a class="btn btn-info btn-xs edit_icon" data-toggle="modal" data-target="#{{ $adlsp->id }}"> <span class="glyphicon glyphicon-edit"></span> </a>
-                                                    <a class="btn btn-danger btn-xs del_icon" data-toggle="modal" data-target="#editlsp"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                    <a href="{{ route('adminxoaloaisanpham', $adlsp->id) }}" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                 </div>
                                             </td>
                                         </tr>
