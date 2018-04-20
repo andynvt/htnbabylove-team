@@ -70,74 +70,64 @@ Route::get('admin-index', [
 Route::get('admin-canhan', [
 	'as' => 'admincanhan',
 	'uses' => 'PageController@getadminCanhan'
-]);
+])->middleware('adminLogin');
 
 Route::get('admin-danhgia', [
 	'as' => 'admindanhgia',
 	'uses' => 'PageController@getadminDanhgia'
-]);
+])->middleware('adminLogin');
 
 Route::get('admin-chitietdanhgia', [
 	'as' => 'adminchitietdanhgia',
 	'uses' => 'PageController@getadminChitietDanhgia'
-]);
+])->middleware('adminLogin');
+
+Route::get('admin-sanpham', [
+	'as' => 'adminsanpham',
+	'uses' => 'PageController@getadminSanpham'
+])->middleware('adminLogin');
+
+Route::get('admin-loaisanpham', [
+	'as' => 'adminloaisanpham',
+	'uses' => 'PageController@getadminLoaisanpham'
+])->middleware('adminLogin');
+
+Route::get('admin-khachhang', [
+	'as' => 'adminkhachhang',
+	'uses' => 'PageController@getadminKhachhang'
+])->middleware('adminLogin');
+
+Route::get('admin-donhang', [
+	'as' => 'admindonhang',
+	'uses' => 'PageController@getadminDonhang'
+])->middleware('adminLogin');
+
+Route::get('admin-doanhthu', [
+	'as' => 'admindoanhthu',
+	'uses' => 'PageController@getadminDoanhthu'
+])->middleware('adminLogin');
+
+Route::get('admin-themsanpham', [
+	'as' => 'adminthemsanpham',
+	'uses' => 'PageController@getadminThemsanpham'
+])->middleware('adminLogin');
+
+Route::get('admin-suasanpham', [
+	'as' => 'adminsuasanpham',
+	'uses' => 'PageController@getadminSuasanpham'
+])->middleware('adminLogin');
+
+Route::post('admin-themloaisanpham', [
+	'as' => 'adminthemloaisanpham',
+	'uses' => 'PageController@postThemloaisanpham'
+])->middleware('adminLogin');
 
 Route::get('admin-danhgiatheoloai/{fbtype}', [
 	'as' => 'admindanhgiatheoloai',
 	'uses' => 'PageController@getadminDanhgiatheoloai'
 ]);
 
-Route::get('admin-sanpham', [
-	'as' => 'adminsanpham',
-	'uses' => 'PageController@getadminSanpham'
-]);
-
-Route::get('admin-loaisanpham', [
-	'as' => 'adminloaisanpham',
-	'uses' => 'PageController@getadminLoaisanpham'
-]);
-
-Route::get('admin-khachhang', [
-	'as' => 'adminkhachhang',
-	'uses' => 'PageController@getadminKhachhang'
-]);
-
-Route::get('admin-donhang', [
-	'as' => 'admindonhang',
-	'uses' => 'PageController@getadminDonhang'
-]);
-
-Route::patch('admin-donhang/{id}', [
-	'as' => 'completedUpdate',
-	'uses' => 'PageController@completedUpdate'
-]);
-
-Route::patch('/tasks/completed/{id}', [
-	'as' => 'completedUpdateCancel',
-	'uses' => 'PageController@completedUpdateCancel'
-]);
-
-Route::get('admin-doanhthu', [
-	'as' => 'admindoanhthu',
-	'uses' => 'PageController@getadminDoanhthu'
-]);
-
-Route::get('admin-themsanpham', [
-	'as' => 'adminthemsanpham',
-	'uses' => 'PageController@getadminThemsanpham'
-]);
-
-Route::get('admin-themsp', [
-	'as' => 'adminthemsp',
-	'uses' => 'PageController@postadminThemsanpham'
-]);
-
-Route::get('admin-suasanpham/{idtype}', [
-	'as' => 'adminsuasanpham',
-	'uses' => 'PageController@getadminSuasanpham'
-]);
-
-Route::post('admin-themloaisanpham', [
-	'as' => 'adminthemloaisanpham',
-	'uses' => 'PageController@postThemloaisanpham'
-]);
+/*Admin*/
+Route::get('dangxuat',['as'=>'dangxuat','uses'=>'UserController@getDangXuatAdmin']);
+Route::get('admin-index', 'UserController@getdangnhapAdmin');
+Route::post('admin-index', 'UserController@postdangnhapAdmin');
