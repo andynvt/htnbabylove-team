@@ -116,7 +116,7 @@
                                         <tbody>
                                             <div class="tooltip1">
                                                 <tr class="row-detail-feedback text-left">
-                                                    <td>{{$tb->id_customer}}</td>
+                                                    <td>{{$tb->id}}</td>
                                                     <td>{{$tb->name}}</td>
                                                     <td>{{$tb->gender}}</td>
                                                     <td>{{$tb->phone}}</td>

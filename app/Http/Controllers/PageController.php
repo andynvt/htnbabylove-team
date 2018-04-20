@@ -34,7 +34,7 @@ class PageController extends Controller
 
         $loai_ssp = ProductType::where('id',$type)->first();
 
-    	return view('page.loai_sanpham',compact('lsp','sp_theoloai','detail_product','id_product','loai_ssp'));
+        return view('page.loai_sanpham',compact('lsp','sp_theoloai','detail_product','id_product','loai_ssp'));
     }
 
     public function getDetail(Request $req){
@@ -65,15 +65,15 @@ class PageController extends Controller
 
     public function getAbout(){
         $lsp = ProductType::all();
-    	return view('page.gioithieu', compact('lsp'));
+        return view('page.gioithieu', compact('lsp'));
     }
 
     public function getPolicy(){
-    	return view('page.chinhsachbaomat');
+        return view('page.chinhsachbaomat');
     }
 
     public function getTerms(){
-    	return view('page.dieukhoan');
+        return view('page.dieukhoan');
     }
 
     public function getCheckout(){
@@ -244,52 +244,11 @@ class PageController extends Controller
 
     public function getadminSanpham(){
         $takesp = DB::table('products as sp')
-                    ->join('product_type as lsp', 'sp.id_type' , '=', 'lsp.id')
+                    ->leftjoin('product_type as lsp', 'sp.id_type' , '=', 'lsp.id')
+                    ->select('sp.id as spid', 'lsp.type_name' , 'sp.name' , 'sp.unit_price' , 'sp.promotion_price' ,'sp.size' , 'sp.description' , 'sp.status')
                     ->get();
 
         return view('Admin.pageadmin.adminsanpham', compact('takesp'));
-    }
-
-    public function getadminLoaisanpham(){
-        $adminlsp = ProductType::all();
-
-        return view('Admin.pageadmin.adminloaisanpham', compact('adminlsp'));
-    }
-
-    public function getadminKhachhang(){
-        $table  = Customer::all();
-        return view('Admin.pageadmin.adminkhachhang',compact('table'));
-    }
-
-    public function getadminDonhang(){
-        $customers = Customer::all();
-        $bills = Bill::all();
-        $bill_detail = BillDetail::all();
-
-        $get_bill = DB::select(DB::raw('SELECT bd.id as bdid, b.id as bid, b.total_price, bd.product_name, bd.color, bd.image, bd.size, bd.quantity, bd.price, c.name FROM bill_detail as bd, customers as c, bills as b WHERE bd.id_bill in (SELECT b.id FROM bills WHERE b.id_customer in (SELECT c.id FROM customers))'));
-                        // dd($get_bill);
-        return view('Admin.pageadmin.admindonhang', compact('get_bill','bills','customers','bill_detail'));
-    }
-
-    // public function postadminSuadonhang(Request $req){
-    //     $bills = new Bill;
-    //     $bills->status = $req->stt +1;
-    //     dd($req->stt);
-    //     $b->save();
-    //     // return redirect()->back();
-    // }
-    public function completedUpdate($id){
-        DB::table('bills')->where('id', $id)->update(['status' => 2]);
-        return redirect()->back();
-    }
-
-    public function cancelUpdate($id){
-        DB::table('bills')->where('id', $id)->update(['status' => 3]);
-        return redirect()->back();
-    }
-
-    public function getadminDoanhthu(){
-        return view('Admin.pageadmin.admindoanhthu');
     }
 
     public function getadminThemsanpham(){
@@ -339,6 +298,12 @@ class PageController extends Controller
         return view('Admin.pageadmin.adminsuasanpham', compact('adminlsp', 'editsp'));
     }
 
+    public function getadminLoaisanpham(){
+        $adminlsp = ProductType::all();
+
+        return view('Admin.pageadmin.adminloaisanpham', compact('adminlsp'));
+    }
+
     public function postThemloaisanpham(Request $req){
         $producttype = new ProductType;
         $producttype->type_name = $req->categoriename;
@@ -348,4 +313,40 @@ class PageController extends Controller
         return redirect()->back();
     }
 
+    public function postadminSualoaisanpham($idtype, Request $req){
+        $edittype = ProductType::find($idtype);
+        $edittype->type_name  = $req->newtypename;
+        $edittype->save();
+
+        return redirect()->back();
+    }
+    
+    public function getadminKhachhang(){
+        $table  = Customer::all();
+        return view('Admin.pageadmin.adminkhachhang',compact('table'));
+    }
+
+    public function getadminDonhang(){
+        $customers = Customer::all();
+        $bills = Bill::all();
+        $bill_detail = BillDetail::all();
+
+        $get_bill = DB::select(DB::raw('SELECT bd.id as bdid, b.id as bid, b.total_price, bd.product_name, bd.color, bd.image, bd.size, bd.quantity, bd.price, c.name FROM bill_detail as bd, customers as c, bills as b WHERE bd.id_bill in (SELECT b.id FROM bills WHERE b.id_customer in (SELECT c.id FROM customers))'));
+                        // dd($get_bill);
+        return view('Admin.pageadmin.admindonhang', compact('get_bill','bills','customers','bill_detail'));
+    }
+
+    public function completedUpdate($id){
+        DB::table('bills')->where('id', $id)->update(['status' => 2]);
+        return redirect()->back();
+    }
+
+    public function cancelUpdate($id){
+        DB::table('bills')->where('id', $id)->update(['status' => 3]);
+        return redirect()->back();
+    }
+
+    public function getadminDoanhthu(){
+        return view('Admin.pageadmin.admindoanhthu');
+    }
 }

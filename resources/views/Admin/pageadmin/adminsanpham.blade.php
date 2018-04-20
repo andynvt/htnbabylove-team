@@ -126,7 +126,7 @@
                                         <tbody>
                                             @foreach($takesp as $sp)
                                             <tr>
-                                                <td>{{ $sp->id }}</td>
+                                                <td>{{ $sp->spid }}</td>
                                                 <td>{{ $sp->type_name }}</td>
                                                 <td>{{ $sp->name }}</td>
                                                 <td>{{ $sp->unit_price }}</td>
@@ -135,7 +135,7 @@
                                                 <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a></td>
                                                 <td class="text-center">
                                                     <div class="">
-                                                        <a href="{{ route('adminsuasanpham', $sp->id) }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                        <a href="{{ route('adminsuasanpham', $sp->spid) }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                         <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
                                                 </td>

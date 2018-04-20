@@ -82,16 +82,50 @@ Route::get('admin-chitietdanhgia', [
 	'uses' => 'PageController@getadminChitietDanhgia'
 ])->middleware('adminLogin');
 
+Route::get('admin-danhgiatheoloai/{fbtype}', [
+	'as' => 'admindanhgiatheoloai',
+	'uses' => 'PageController@getadminDanhgiatheoloai'
+])->middleware('adminLogin');
+
 Route::get('admin-sanpham', [
 	'as' => 'adminsanpham',
 	'uses' => 'PageController@getadminSanpham'
 ])->middleware('adminLogin');
 
+Route::get('admin-themsp', [
+	'as' => 'adminthemsp',
+	'uses' => 'PageController@postadminThemsanpham'
+])->middleware('adminLogin');
+
+Route::get('admin-themsanpham', [
+	'as' => 'adminthemsanpham',
+	'uses' => 'PageController@getadminThemsanpham'
+])->middleware('adminLogin');
+
+Route::get('admin-suasanpham', [
+	'as' => 'adminsuasanpham',
+	'uses' => 'PageController@getadminSuasanpham'
+])->middleware('adminLogin');
+
+Route::post('admin-themloaisanpham', [
+	'as' => 'adminthemloaisanpham',
+	'uses' => 'PageController@postThemloaisanpham'
+])->middleware('adminLogin');
 
 Route::get('admin-loaisanpham', [
 	'as' => 'adminloaisanpham',
 	'uses' => 'PageController@getadminLoaisanpham'
 ])->middleware('adminLogin');
+
+Route::post('admin-themloaisanpham', [
+	'as' => 'adminthemloaisanpham',
+	'uses' => 'PageController@postThemloaisanpham'
+]);
+
+Route::post('admin-sualoaisanpham/{idtype}', [
+	'as' => 'adminsualoaisanpham',
+	'uses' => 'PageController@postadminSualoaisanpham'
+]);
 
 Route::get('admin-khachhang', [
 	'as' => 'adminkhachhang',
@@ -118,34 +152,6 @@ Route::get('admin-doanhthu', [
 	'uses' => 'PageController@getadminDoanhthu'
 ])->middleware('adminLogin');
 
-Route::get('admin-themsanpham', [
-	'as' => 'adminthemsanpham',
-	'uses' => 'PageController@getadminThemsanpham'
-])->middleware('adminLogin');
-
-Route::get('admin-suasanpham', [
-	'as' => 'adminsuasanpham',
-	'uses' => 'PageController@getadminSuasanpham'
-])->middleware('adminLogin');
-
-Route::post('admin-themloaisanpham', [
-	'as' => 'adminthemloaisanpham',
-	'uses' => 'PageController@postThemloaisanpham'
-])->middleware('adminLogin');
-
-Route::get('admin-themsp', [
-	'as' => 'adminthemsp',
-	'uses' => 'PageController@postadminThemsanpham'
-])->middleware('adminLogin');
-
-
-
-Route::get('admin-danhgiatheoloai/{fbtype}', [
-	'as' => 'admindanhgiatheoloai',
-	'uses' => 'PageController@getadminDanhgiatheoloai'
-])->middleware('adminLogin');
-
-/*Admin*/
 Route::get('dangxuat',['as'=>'dangxuat','uses'=>'UserController@getDangXuatAdmin']);
 Route::get('admin-index', 'UserController@getdangnhapAdmin');
 Route::post('admin-index', 'UserController@postdangnhapAdmin');
