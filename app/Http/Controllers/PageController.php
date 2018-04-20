@@ -43,10 +43,12 @@ class PageController extends Controller
         $detail_product = ProductDetail::all();
 
         $sanpham = Product::where('id', $req->id)->first();
-        $feedback = Feedback::where('id', $req->id)->get();
 
         $id_sp = Product::where('id', $req->id)->value('id');
         $id_lsp = Product::where('id', $id_sp)->value('id');
+
+        $feedback = Feedback::where('id_product', $req->id)->get();
+
 
         $type_name = ProductType::where('id', $id_lsp)->value('type_name');
 
@@ -65,6 +67,20 @@ class PageController extends Controller
 
 
         return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get2_proimg','same_product','detail_product','hot_product','new_product'));
+    }
+
+    public function postDanhGia(Request $req, $id){
+        $fb = new Feedback;
+
+        $fb->id_product = $id;
+        $fb->stars = $req->ratingValue;
+        $fb->reviewer = $req->name;
+        $fb->review = $req->review;
+        $fb->tel = $req->phone;
+
+        $fb->save();
+
+        return redirect()->back();
     }
 
     public function getAbout(){
@@ -299,9 +315,7 @@ class PageController extends Controller
 
     public function getadminSuasanpham($idtype){
         $adminlsp = ProductType::all();
-
         $editsp = Product::where('id', $idtype)->value('id');
-
         return view('Admin.pageadmin.adminsuasanpham', compact('adminlsp', 'editsp'));
     }
 
@@ -315,7 +329,6 @@ class PageController extends Controller
         $producttype = new ProductType;
         $producttype->type_name = $req->categoriename;
         $producttype->save();
-
         $adminlsp = ProductType::all();
         return redirect()->back();
     }
@@ -324,7 +337,6 @@ class PageController extends Controller
         $edittype = ProductType::find($idtype);
         $edittype->type_name  = $req->newtypename;
         $edittype->save();
-
         return redirect()->back();
     }
     
@@ -337,9 +349,7 @@ class PageController extends Controller
         $customers = Customer::all();
         $bills = Bill::all();
         $bill_detail = BillDetail::all();
-
         $get_bill = DB::select(DB::raw('SELECT bd.id as bdid, b.id as bid, b.total_price, bd.product_name, bd.color, bd.image, bd.size, bd.quantity, bd.price, c.name FROM bill_detail as bd, customers as c, bills as b WHERE bd.id_bill in (SELECT b.id FROM bills WHERE b.id_customer in (SELECT c.id FROM customers))'));
-                        // dd($get_bill);
         return view('Admin.pageadmin.admindonhang', compact('get_bill','bills','customers','bill_detail'));
     }
 

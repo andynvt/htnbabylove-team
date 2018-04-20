@@ -51,6 +51,11 @@ Route::get('chi-tiet-san-pham/{id}', [
 	'uses' => 'PageController@getDetail'
 ]);
 
+Route::post('danh-gia/{id}',[
+	'as' => 'danhgia',
+	'uses' => 'PageController@postDanhGia'
+]);
+
 Route::get('tim-kiem', [
 	'as' => 'timkiem',
 	'uses' => 'PageController@getTimkiem'

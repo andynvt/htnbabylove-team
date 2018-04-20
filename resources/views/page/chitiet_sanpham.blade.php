@@ -201,8 +201,93 @@
 
                             <button type="button" class="btn-sendfb" data-toggle="modal" data-target="#feedback"> Gửi đánh giá của bạn </button>
                         </div>
+                    
+                        {{-- Modal feedback --}}
+                        <form action=" {{ route('danhgia', $sanpham->id)}} " method="post">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <!-- The Modal -->
+                            <div class="modal fade" id="feedback">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                            <div class="check-star-feed-back">
+                                                <h4>Đánh giá {{$sanpham->name}}</h4>
+                                                <section class='rating-widget'>
+                                                    <!-- Rating Stars Box -->
+
+                                                    <div class="rate-feed-back clearfix">
+                                                        <div class='rating-stars'>
+                                                            <ul id='stars' style="cursor: pointer">
+                                                                <li class='star' title='Poor' data-value='1'>
+                                                                    <i class='fa fa-star fa-fw'></i>
+                                                                </li>
+                                                                <li class='star' title='Fair' data-value='2'>
+                                                                    <i class='fa fa-star fa-fw'></i>
+                                                                </li>
+                                                                <li class='star' title='Good' data-value='3'>
+                                                                    <i class='fa fa-star fa-fw'></i>
+                                                                </li>
+                                                                <li class='star' title='Excellent' data-value='4'>
+                                                                    <i class='fa fa-star fa-fw'></i>
+                                                                </li>
+                                                                <li class='star' title='WOW!!!' data-value='5'>
+                                                                    <i class='fa fa-star fa-fw'></i>
+                                                                </li>
+                                                            </ul>
+                                                            <input type="hidden" name="ratingValue" id="star-feedback">
+                                                        </div>
+                                                        <div class='success-box'>
+                                                            <div class="text-message"></div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <h3 id="change-feed-back">Viết đánh giá của bạn</h3>
+                                            <div class="content-feed-back row clearfix">
+                                                {{-- <div class="radio col-sm-12 gender-feedback">
+                                                    <label><input type="radio" name="gt"><span>Anh</span></label>
+                                                    <label><input type="radio" name="gt"><span>Chị</span></label>
+                                                </div> --}}
+                                                <input type="hidden" name="gender" id="gender">
+                                                <div class="info-feedback col-sm-12">
+                                                    <div class="row">
+                                                        <label class="col-md-4 col-xs-12">Họ tên:</label>
+                                                        <input class="col-md-8 col-xs-12" type="text" placeholder="Bắt buộc" name="name" required>
+                                                        <label class="col-md-4 col-xs-12">Số điện thoại:</label>
+                                                        <input class="col-md-8 col-xs-12" type="tel" placeholder="Để chúng tôi phục vụ bạn tốt hơn" name="phone">
+                                                        <br>
+                                                        <textarea class="col-xs-12" rows="5" name="review" placeholder="Đánh giá của bạn cho sản phẩm"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <div class="btn-feed-back">
+                                                <button class="send-fb" data-dismiss="modal" type="button">
+                                Hủy
+                            </button>
+                                            </div>
+                                            <div class="btn-feed-back">
+                                                <input class="send-fb" type="submit" value="Gửi" name="send">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                         @foreach($feedback as $fb) 
+                        @if($fb->id_product == $sanpham->id)
                                 <div class="content-rate">
                                     <div class="name-user"> <span>{{$fb->reviewer}}</span> </div>
                                     <div class="time-post"> <span>{{$fb->create_at}}</span> </div>
@@ -221,6 +306,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                         @endforeach 
                     <div class="pagination-comment">
                         <div class="row" id="frame-paging">
@@ -357,6 +443,7 @@
         </div>
     </div>
     <!-- .container -->
+    
     <script>
         function openModal() {
             document.getElementById('modal-img-mini').style.display = "block";
