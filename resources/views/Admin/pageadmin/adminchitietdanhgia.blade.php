@@ -5,9 +5,11 @@
         <div class="sidebar" data-background-color="white" data-active-color="danger">
 
             <div class="sidebar-wrapper">
-                <div class="logo"> <a href="#" class="simple-text">
-            hoàng thủy nguyên
-        </a> </div>
+                <div class="logo"> 
+                    <a href="#" class="simple-text">
+                        hoàng thủy nguyên
+                    </a> 
+                </div>
                 <ul class="nav">
                     <li>
                         <a href="{{ route('admincanhan') }}"> <i class="ti-unlock"></i>
@@ -57,12 +59,29 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar bar1"></span> <span class="icon-bar bar2"></span> <span class="icon-bar bar3"></span> </button>
-                        <h3 class="title_of_manager_product">QUẢN LÝ ĐÁNH GIÁ</h3> <small id="now_time">
-                <?php date_default_timezone_set('Asia/Ho_Chi_Minh');echo date('d/m/Y - H:i\p\m'); ?>
-            </small> </div>
+                        <button type="button" class="navbar-toggle"> 
+                            <span class="sr-only">Toggle navigation</span> 
+                            <span class="icon-bar bar1"></span> 
+                            <span class="icon-bar bar2"></span> 
+                            <span class="icon-bar bar3"></span> 
+                        </button>
+                        <h3 class="title_of_manager_product">QUẢN LÝ ĐÁNH GIÁ</h3> 
+                        <small id="now_time">
+                            <?php date_default_timezone_set('Asia/Ho_Chi_Minh');echo date('d/m/Y - H:i\p\m'); ?>
+                        </small> 
+                    </div>
                     <div class="collapse navbar-collapse">
-                        @include('Admin.pageadmin.nav')
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="ti-bell"></i>
+                                    <p>Admin</p> <b class="caret"></b> </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>Cá Nhân</a></li>
+                                    <li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>Cài Đặt</a></li>
+                                    <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng Xuất</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>

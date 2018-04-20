@@ -62,7 +62,21 @@
                 <?php date_default_timezone_set('Asia/Ho_Chi_Minh');echo date('d/m/Y - H:i\p\m'); ?>
             </small> </div>
                     <div class="collapse navbar-collapse">
-                        @include('Admin.pageadmin.nav')
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-globe"></i>
+                                    <p>Thông Báo</p> <span class="badge" style="background-color:#FF4066">1</span> </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="ti-bell"></i>
+                                    <p>Admin</p> <b class="caret"></b> </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>Cá Nhân</a></li>
+                                    <li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>Cài Đặt</a></li>
+                                    <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng Xuất</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>
@@ -99,33 +113,34 @@
                                     <table class="table table-bordered text-align">
                                         <thead>
                                             <tr class="thead_change_color">
-                                                <th>Mã</th>
-                                                <th>Mã Loại</th>
+                                                <th>Mã sản phẩm</th>
+                                                <th>Loại</th>
                                                 <th>Tên</th>
                                                 <th>Giá Gốc</th>
                                                 <th>Giá Khuyến Mãi</th>
-                                                <th>Trạng thái</th>
+                                                <th>Kích thước</th>
                                                 <th>Xem chi tiết</th>
                                                 <th>Sửa/Xóa</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($takesp as $sp)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                                <td>Oud-Turnhout</td>
-                                                <td>1</td>
+                                                <td>{{ $sp->id }}</td>
+                                                <td>{{ $sp->type_name }}</td>
+                                                <td>{{ $sp->name }}</td>
+                                                <td>{{ $sp->unit_price }}</td>
+                                                <td>{{ $sp->promotion_price }}</td>
+                                                <td>{{ $sp->size }}</td>
                                                 <td><a href="" data-toggle="modal" data-target="#modal-admin-product-detail">Chi Tiết Sản Phẩm</a></td>
                                                 <td class="text-center">
                                                     <div class="">
-                                                        <a href="{{ route('adminsuasanpham') }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                        <a href="{{ route('adminsuasanpham', $sp->id) }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                         <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
                                                 </td>
                                             </tr>
-                                        	
+                                        	@endforeach
                                         </tbody>
                                     </table>
                                 </div>
