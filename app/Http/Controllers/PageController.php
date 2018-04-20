@@ -279,11 +279,12 @@ class PageController extends Controller
     //     // return redirect()->back();
     // }
     public function completedUpdate($id){
-        DB::table('bills')->where('id', $id)-> update(['status' => 2]);
+        DB::table('bills')->where('id', $id)->update(['status' => 2]);
         return redirect()->back();
     }
-    public function completedUpdateCancel($id){
-        DB::table('bills')->where('id', $id)-> update(['status' => 3]);
+
+    public function cancelUpdate($id){
+        DB::table('bills')->where('id', $id)->update(['status' => 3]);
         return redirect()->back();
     }
 

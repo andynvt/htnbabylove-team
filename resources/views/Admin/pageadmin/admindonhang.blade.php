@@ -189,14 +189,14 @@
                                                     <form action="{{ route('completedUpdate', $b->id) }}" method="POST">
                                                         {{ csrf_field() }}
                                                         {{ method_field('PATCH') }}
-                                                        <a class="btn btn-info btn-xs edit_icon" type="submit" data-toggle="tooltip" data-original-title="Duyệt đơn hàng">
-                                                            <i class="fa fa-check"></i></a>
+                                                        <button class="btn btn-info btn-xs edit_icon" type="submit" data-toggle="tooltip" data-original-title="Duyệt đơn hàng">
+                                                            <i class="fa fa-check"></i></button>
                                                     </form>
-                                                    <form action="{{ route('completedUpdateCancel', $b->id) }}" method="POST">
+                                                    <form action="{{ route('cancelUpdate', $b->id) }}" method="POST">
                                                         {{ csrf_field() }}
                                                         {{ method_field('PATCH') }}
-                                                        <a class="btn btn-info btn-xs edit_icon" type="submit" data-toggle="tooltip" data-original-title="Huỷ đơn hàng">
-                                                            <i class="fa fa-times"></i></a>
+                                                        <button class="btn btn-info btn-xs edit_icon" type="submit" data-toggle="tooltip" data-original-title="Huỷ đơn hàng">
+                                                            <i class="fa fa-times"></i></button>
                                                     </form>
                                                 @endif
                                                 </div>
@@ -241,7 +241,9 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                         @if($b->status == 1 || $b->status == 4)
-                        <form action="{{ route('completedUpdateCancel', $b->id) }}" method="POST" style="display: inline-block;">
+                        <form action=""></form>
+                        
+                        <form action="{{ route('cancelUpdate', $b->id) }}" method="POST" style="display: inline-block;">
                             {{ csrf_field() }}
                             {{ method_field('PATCH') }}
                             <button class="btn btn-primary" type="submit">Huỷ đơn hàng</button>
@@ -344,16 +346,21 @@
                         </div>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                         @if($b->status == 1 || $b->status == 4)
-                        <form action="{{ route('completedUpdateCancel', $b->id) }}" method="POST" style="display: inline-block;">
+                        <form action=""></form>
+
+                        <form action="{{ route('cancelUpdate', $b->id) }}" method="POST" style="display: inline-block;">
                             {{ csrf_field() }}
                             {{ method_field('PATCH') }}
                             <button class="btn btn-primary" type="submit">Huỷ đơn hàng</button>
                         </form>
+
                         <form action="{{ route('completedUpdate', $b->id) }}" method="POST" style="display: inline-block;">
                             {{ csrf_field() }}
                             {{ method_field('PATCH') }}
                             <button class="btn btn-primary" type="submit">Duyệt đơn hàng</button>
                         </form>
+                        
+
                         @endif
                     </div>
                     

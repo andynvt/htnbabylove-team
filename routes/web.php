@@ -106,12 +106,12 @@ Route::get('admin-donhang', [
 Route::patch('admin-donhang/{id}', [
 	'as' => 'completedUpdate',
 	'uses' => 'PageController@completedUpdate'
-])->middleware('adminLogin');
+]);
 
 Route::patch('/tasks/completed/{id}', [
-	'as' => 'completedUpdateCancel',
-	'uses' => 'PageController@completedUpdateCancel'
-])->middleware('adminLogin');
+	'as' => 'cancelUpdate',
+	'uses' => 'PageController@cancelUpdate'
+]);
 
 Route::get('admin-doanhthu', [
 	'as' => 'admindoanhthu',
