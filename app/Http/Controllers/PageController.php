@@ -321,6 +321,9 @@ class PageController extends Controller
         $id_product_edit = Product::where('id', $idsp)->get();
         $product_name = Product::where('id', $idsp)->value('name');
 
+        $id_type = Product::where('id',$idsp)->value('id_type');
+        $type_name = ProductType::where('id',$id_type)->value('type_name');
+
         $adminlsp = ProductType::all();
 
         $editsp = Product::where('id', $idsp)->get();
@@ -331,33 +334,44 @@ class PageController extends Controller
                             ->select('product_color.color')
                             ->get();
         // dd($id_type_edit);
-        return view('Admin.pageadmin.adminsuasanpham', compact('product_type', 'id_product_edit', 'product_name', 'adminlsp', 'editsp', 'getcl'));
+        return view('Admin.pageadmin.adminsuasanpham', compact('product_type', 'id_product_edit', 'product_name', 'id_type', 'type_name','not_type_name', 'adminlsp', 'editsp', 'getcl'));
     }
 
     public function postadminSuasanpham($idsp, Request $req){
         $id_product = Product::find($idsp);
-        $id_product->name = $req->newname;
-        $id_product->id_type = $req->newtype;
-        $id_product->unit_price = $req->new_unit_price;
-        $id_product->promotion_price = $req->new_promotion_price;
-        $id_product->size = $req->newsize;
-        $id_product->description = $req->newdesc;
+
+        Product::where('id',$idsp)->update([
+            'name'=>$req->newname,
+            'id_type'=>$req->newtype,
+            'unit_price'=>$req->new_unit_price,
+            'promotion_price'=>$req->new_promotion_price,
+            'size'=>$req->newsize,
+            'description'=>$req->newdesc
+        ]);
 
         $id_product->save();
 
-        foreach ($req->mausp as $key) {
-            $colorsp = new ProductColor;
-            $colorsp->id_detail = $ctsanpham->id;
-            $colorsp->color = $key;
-            $colorsp->save();
-        }
+        $ctsanpham = new ProductDetail;
+        $ctsanpham->id_product = $id_product->id;
+        $ctsanpham->save();
 
-        foreach ($req->hinh as $key) {
-            $imgsp = new ProductImage;
-            $imgsp->id_detail = $ctsanpham->id;
-            $imgsp->image = $key;
-            $imgsp->save();
-        }
+        $id_detail = ProductDetail::where('id_product',$idsp)->value('id');
+        $id_color = ProductColor::where('id',$id_detail)->value('id');
+
+
+        // foreach ($req->newcolor as $key) {
+        //     $colorsp = new ProductColor;
+        //     $colorsp->id_detail = $ctsanpham->id;
+        //     $colorsp->color = $key;
+        //     $colorsp->save();
+        // }
+
+        // foreach ($req->newimage as $key) {
+        //     $imgsp = new ProductImage;
+        //     $imgsp->id_detail = $ctsanpham->id;
+        //     $imgsp->image = $key;
+        //     $imgsp->save();
+        // }
         return redirect()->back();
     }
 

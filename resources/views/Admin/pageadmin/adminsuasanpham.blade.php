@@ -103,7 +103,11 @@
                                             <div class="col-sm-8">
                                                 <select class="form-control w50" name="newtype">
                                                     @foreach($product_type as $lsp)
-                                                    <option value="{{$lsp->id}}">{{ $lsp->type_name }}</option>
+                                                    @if($lsp->id == $sp->id_type)
+                                                        <option value="{{$id_type}}" selected>{{ $type_name }}</option>
+                                                    @else
+                                                        <option value="{{$lsp->id}}">{{ $lsp->type_name }}</option>
+                                                    @endif
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -181,7 +185,7 @@
                                         </script>
 
                                         <div class="form-group">
-                                            <label class="control-label col-sm-4" for="hinhanh">hình ảnh:</label>
+                                            <label class="control-label col-sm-4" for="hinhanh">Hình ảnh:</label>
                                             <div class="col-sm-8">
                                                 <div class="box-upload">
                                                     <div class="themhinh">
