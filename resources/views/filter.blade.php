@@ -12,7 +12,7 @@
                         <option value="">Chọn loại sản phẩm</option>
                           @if ($lsp->count())
                             @foreach($lsp as $loai)
-                                <option value="{{$loai->id_type}}">{{$loai->type_name}}</option>
+                                <option value="{{$loai->id}}">{{$loai->type_name}}</option>
                             @endforeach
                           @endif
                     </select>
