@@ -119,6 +119,7 @@
 .cart-input-qty {
     position: relative;
     text-align: center;
+    padding: 35% 0;
 }
 
 .cart-input-qty input {
