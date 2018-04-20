@@ -87,6 +87,7 @@ Route::get('admin-sanpham', [
 	'uses' => 'PageController@getadminSanpham'
 ])->middleware('adminLogin');
 
+
 Route::get('admin-loaisanpham', [
 	'as' => 'adminloaisanpham',
 	'uses' => 'PageController@getadminLoaisanpham'
@@ -100,6 +101,16 @@ Route::get('admin-khachhang', [
 Route::get('admin-donhang', [
 	'as' => 'admindonhang',
 	'uses' => 'PageController@getadminDonhang'
+])->middleware('adminLogin');
+
+Route::patch('admin-donhang/{id}', [
+	'as' => 'completedUpdate',
+	'uses' => 'PageController@completedUpdate'
+])->middleware('adminLogin');
+
+Route::patch('/tasks/completed/{id}', [
+	'as' => 'completedUpdateCancel',
+	'uses' => 'PageController@completedUpdateCancel'
 ])->middleware('adminLogin');
 
 Route::get('admin-doanhthu', [
@@ -122,10 +133,17 @@ Route::post('admin-themloaisanpham', [
 	'uses' => 'PageController@postThemloaisanpham'
 ])->middleware('adminLogin');
 
+Route::get('admin-themsp', [
+	'as' => 'adminthemsp',
+	'uses' => 'PageController@postadminThemsanpham'
+])->middleware('adminLogin');
+
+
+
 Route::get('admin-danhgiatheoloai/{fbtype}', [
 	'as' => 'admindanhgiatheoloai',
 	'uses' => 'PageController@getadminDanhgiatheoloai'
-]);
+])->middleware('adminLogin');
 
 /*Admin*/
 Route::get('dangxuat',['as'=>'dangxuat','uses'=>'UserController@getDangXuatAdmin']);
