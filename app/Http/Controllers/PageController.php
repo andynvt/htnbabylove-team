@@ -25,7 +25,7 @@ class PageController extends Controller
         $product_image = ProductImage::all();
         $product_color = ProductColor::all();
         $lsp = ProductType::all();
-        return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product','product_image',,'product_color'));
+        return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product','product_image','product_color'));
     }
 
     public function getLoaiSP($type){
