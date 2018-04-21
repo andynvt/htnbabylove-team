@@ -93,22 +93,16 @@
                         <div class="col-md-12">
                             <div class="feedback-typeproduct-item clearfix">
                                 @foreach($getsp as $fbsp)
-                                {{-- @if($fbsp->id_product ) --}}
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
                                         <a href="{{ route('adminchitietdanhgia', $fbsp->spid) }}"><img src="source/image/{{ $fbsp->image }}" alt="Thumbnail Image 1" class="img-responsive">
-                                            @foreach($getnumfb as $cntfb)
-                                                @if($cntfb->id_product == $fbsp->spid)
-                                                <div class="feedback-qty">
-                                                    <div class="qty-feedback">{{ count($cntfb) }}</div>
-                                                </div>
-                                                @endif
-                                            @endforeach
+                                            {{-- <div class="feedback-qty">
+                                                <div class="qty-feedback"></div>
+                                            </div> --}}
                                             <p>{{ $fbsp->name }}</p>
                                         </a>
                                     </div>
                                 </div>
-                                {{-- @endif --}}
                                 
                                 @endforeach
                             </div>
