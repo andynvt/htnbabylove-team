@@ -156,7 +156,8 @@
 }
 
 .align-feedback-item{
-    margin-bottom: 20px;
+    height: 20vw;
+    /*margin-bottom: 20px;*/
 }
 
 .feedback-content-item {
@@ -178,7 +179,6 @@
 .feedback-qty {
     position: absolute;
     top: 10px;
-    /*    transform: translateY(-50%);*/
     right: 10px;
     width: 2em;
     height: 2em;
@@ -187,7 +187,6 @@
     font-size: 1vw;
     border-radius: 5px;
     background-color: #FF4066;
-    /*line-height: 150%;*/
 }
 
 .qty-feedback{
@@ -221,3 +220,8 @@
     float: none !important;
 }
 
+@media (min-width: 1536px){
+    .align-feedback-item{
+        height: 24vw;
+    }
+}
