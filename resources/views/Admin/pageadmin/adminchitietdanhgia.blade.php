@@ -56,39 +56,22 @@
             </div>
         </div>
         <div class="main-panel">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle"> 
-                            <span class="sr-only">Toggle navigation</span> 
-                            <span class="icon-bar bar1"></span> 
-                            <span class="icon-bar bar2"></span> 
-                            <span class="icon-bar bar3"></span> 
-                        </button>
-                        <h3 class="title_of_manager_product">QUẢN LÝ ĐÁNH GIÁ</h3> 
-                        <small id="now_time">
-                            <?php date_default_timezone_set('Asia/Ho_Chi_Minh');echo date('d/m/Y - H:i\p\m'); ?>
-                        </small> 
-                    </div>
-                    <div class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="ti-bell"></i>
-                                    <p>Admin</p> <b class="caret"></b> </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>Cá Nhân</a></li>
-                                    <li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>Cài Đặt</a></li>
-                                    <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng Xuất</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+            <nav class="navbar navbar-default ">
+                <div class="container-fluid ">
+                    <div class="navbar-header ">
+                        <button type="button " class="navbar-toggle "> <span class="sr-only ">Toggle navigation</span> <span class="icon-bar bar1 "></span> <span class="icon-bar bar2 "></span> <span class="icon-bar bar3 "></span> </button>
+                        <h3 class="title_of_manager_product ">QUẢN LÝ LOẠI SẢN PHẨM</h3> <small id="now_time ">
+              <?php date_default_timezone_set('Asia/Ho_Chi_Minh');echo date('d/m/Y - H:i\p\m'); ?>
+            </small> </div>
+                    <div class="collapse navbar-collapse ">
+                        @include('Admin.pageadmin.adminnav')
                     </div>
                 </div>
             </nav>
             <div class="container-fluid">
                 <div class="feedback-admin">
                     <div class="feedback-typeproduct-title form-group clearfix">
-                         @foreach($getlsp as $fblsp)
+                        @foreach($getlsp as $fblsp)
                         <div class="col-md-3">
                             <a href="{{ route('admindanhgiatheoloai', $fblsp->id) }}" data-toggle="tooltip" title="{{ $fblsp->type_name }}">
                                 <div class="feedback-typeproduct-name">
@@ -96,7 +79,7 @@
                                 </div>
                             </a>
                         </div>
-                    @endforeach
+                        @endforeach
                     </div>
                     <div class="feedback-table clearfix">
                         <div class="col-md-12">
@@ -113,7 +96,7 @@
                                 <div>
                                     <div class="header">
                                         <div class="feedback-item-name">
-                                            <p>Sản phẩm XXX</p>
+                                            <p>Đánh giá sản phẩm {{ $getsp }} ({{ count($fbsp) }} đánh giá)</p>
                                         </div>
                                     </div>
                                     <div class="content table-responsive table-full-width st_table">
