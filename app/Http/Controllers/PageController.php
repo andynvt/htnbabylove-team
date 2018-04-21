@@ -13,6 +13,8 @@ use App\ProductColor;
 use App\ProductImage;
 use Illuminate\Console\Scheduling\Schedule;
 use DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class PageController extends Controller
 {
@@ -279,6 +281,7 @@ class PageController extends Controller
 
     public function getadminThemsanpham(){
         $addlsp = ProductType::all();
+        // $image = ProductImage::all();
         return view('Admin.pageadmin.adminthemsanpham', compact('addlsp'));
     }
 
@@ -299,6 +302,8 @@ class PageController extends Controller
         $ctsanpham->id_product = $sanpham->id;
         $ctsanpham->save();
 
+                
+
         foreach ($req->mausp as $key) {
             $colorsp = new ProductColor;
             $colorsp->id_detail = $ctsanpham->id;
@@ -307,10 +312,25 @@ class PageController extends Controller
         }
 
         foreach ($req->hinh as $key) {
-            $imgsp = new ProductImage;
-            $imgsp->id_detail = $ctsanpham->id;
-            $imgsp->image = $key;
-            $imgsp->save();
+            // $imgsp = new ProductImage;
+            // $imgsp->id_detail = $ctsanpham->id;
+            // $imgsp->image = $key;
+            // $imgsp->save();
+
+            $file = $key;
+            Storage::disk('local')->put($file->getFilename().'.'.$extension,  File::get($file));
+
+            $entry = new ProductImage;
+            $entry->id_detail = $ctsanpham->id;
+
+            // $entry->mime = $file->getClientMimeType();
+            // $entry->original_filename = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $entry->image = $file->getFilename().'.'.$extension;
+
+            dd($entry->image);
+     
+            $entry->save();
         }
         
         return redirect()->back();
