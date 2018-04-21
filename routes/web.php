@@ -122,6 +122,11 @@ Route::post('admin-edit/{idsp}', [
 	'uses' => 'PageController@postadminSuasanpham'
 ]);
 
+Route::get('admin-xoasanpham/{idsp}', [
+	'as' => 'adminxoasanpham',
+	'uses' => 'PageController@getadminXoasanpham'
+]);
+
 Route::post('admin-themloaisanpham', [
 	'as' => 'adminthemloaisanpham',
 	'uses' => 'PageController@postThemloaisanpham'

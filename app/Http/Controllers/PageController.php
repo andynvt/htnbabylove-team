@@ -375,6 +375,46 @@ class PageController extends Controller
         return redirect()->back();
     }
 
+    public function getadminXoasanpham($idsp){
+        $cl = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=', 'ctsp.id')
+                            ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
+                            ->where('sp.id', $idsp)
+                            ->select('product_color.id')
+                            ->get();
+
+        $img = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
+                            ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
+                            ->where('sp.id', $idsp)
+                            ->select('product_image.id')
+                            ->get();
+
+        $dt = ProductDetail::leftjoin('products as sp', 'product_detail.id_product', '=', 'sp.id')
+                            ->where('sp.id', $idsp)
+                            ->select('product_detail.id')
+                            ->get();
+
+        if($cl){
+            foreach($cl as $key){
+                $key->delete();
+            }
+        }
+        
+        if($img){
+            foreach($img as $key){
+                $key->delete();
+            }
+        }
+
+        if($dt){
+            foreach($dt as $key){
+                $key->delete();
+            }
+        }
+        
+        Product::find($idsp)->delete();
+        return redirect()->back();
+    }
+
     public function getadminLoaisanpham(){
         $adminlsp = ProductType::all();
 

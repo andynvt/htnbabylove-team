@@ -122,7 +122,7 @@
                                                 <td class="text-center">
                                                     <div class="">
                                                         <a href="{{ route('adminsuasanpham', $sp->spid) }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
-                                                        <a href="delete_product.php?id=121" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                        <a href="{{ route('adminxoasanpham', $sp->spid) }}" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
                                                     </div>
                                                 </td>
                                             </tr>
