@@ -351,7 +351,7 @@ class PageController extends Controller
 
         $id_product->save();
 
-        $ctsanpham = new ProductDetail;
+        $ctsanpham = ProductDetail::find($idsp);
         $ctsanpham->id_product = $id_product->id;
         $ctsanpham->save();
 
@@ -359,19 +359,19 @@ class PageController extends Controller
         $id_color = ProductColor::where('id',$id_detail)->value('id');
 
 
-        // foreach ($req->newcolor as $key) {
-        //     $colorsp = new ProductColor;
-        //     $colorsp->id_detail = $ctsanpham->id;
-        //     $colorsp->color = $key;
-        //     $colorsp->save();
-        // }
+        foreach ($req->newcolor as $key) {
+            $colorsp = ProductColor::find($idsp);
+            $colorsp->id_detail = $ctsanpham->id;
+            $colorsp->color = $key;
+            $colorsp->save();
+        }
 
-        // foreach ($req->newimage as $key) {
-        //     $imgsp = new ProductImage;
-        //     $imgsp->id_detail = $ctsanpham->id;
-        //     $imgsp->image = $key;
-        //     $imgsp->save();
-        // }
+        foreach ($req->newimage as $key) {
+            $imgsp = ProductImage::find($idsp);
+            $imgsp->id_detail = $ctsanpham->id;
+            $imgsp->image = $key;
+            $imgsp->save();
+        }
         return redirect()->back();
     }
 

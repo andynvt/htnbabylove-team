@@ -147,7 +147,7 @@
                                             <label class="control-label col-sm-4" for="soluong">Nhập màu:</label>
                                             <div class="col-sm-4 type-color">
                                                 @foreach($getcl as $cl)
-                                                <input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newmausp[]" multiple value="{{ $cl->color }}">
+                                                <input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newcolor[]" multiple value="{{ $cl->color }}">
                                                 @endforeach
                                             </div>
                                             <p class="col-sm-8 col-sm-offset-4" style="color: #9A9A9A;">(*) Mỗi ô một màu</p>
