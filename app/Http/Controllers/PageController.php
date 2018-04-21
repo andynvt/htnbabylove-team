@@ -13,8 +13,6 @@ use App\ProductColor;
 use App\ProductImage;
 use Illuminate\Console\Scheduling\Schedule;
 use DB;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 
 class PageController extends Controller
 {
@@ -245,16 +243,29 @@ class PageController extends Controller
 
     public function getadminDanhgia(){
         $getlsp = ProductType::all();
-        $getsp = DB::select(DB::raw('SELECT sp.id as spid, sp.name, asp.image FROM products as sp LEFT JOIN product_detail as ctsp ON sp.id = ctsp.id_product LEFT JOIN product_image as asp ON ctsp.id = asp.id_detail GROUP BY spid'));
-        return view('Admin.pageadmin.admindanhgia', compact('getlsp','getsp'));
+
+        $getsp = Product::leftjoin('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                        ->leftjoin('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                        ->select('products.id as spid', 'products.name', 'asp.image')
+                        ->groupBy('spid')
+                        ->get();
+
+        $getnumfb = Feedback::all();
+        // dd($getnumfb);
+
+        return view('Admin.pageadmin.admindanhgia', compact('getlsp','getsp', 'getnumfb'));
+
     }
 
     public function getadminChitietDanhgia($idfb){
         $getlsp = ProductType::all();
 
+        $getsp = Product::where('id', '=', $idfb)->value('name') ;
+        // dd($getsp);
+
         $fbsp = Feedback::where('id_product','=',$idfb)->get();
 
-        return view('Admin.pageadmin.adminchitietdanhgia', compact('fbsp', 'getlsp'));
+        return view('Admin.pageadmin.adminchitietdanhgia', compact('fbsp', 'getlsp', 'getsp'));
     }
 
     public function getadminDanhgiatheoloai($fbtype){
@@ -281,7 +292,6 @@ class PageController extends Controller
 
     public function getadminThemsanpham(){
         $addlsp = ProductType::all();
-        // $image = ProductImage::all();
         return view('Admin.pageadmin.adminthemsanpham', compact('addlsp'));
     }
 
@@ -302,8 +312,6 @@ class PageController extends Controller
         $ctsanpham->id_product = $sanpham->id;
         $ctsanpham->save();
 
-                
-
         foreach ($req->mausp as $key) {
             $colorsp = new ProductColor;
             $colorsp->id_detail = $ctsanpham->id;
@@ -312,25 +320,10 @@ class PageController extends Controller
         }
 
         foreach ($req->hinh as $key) {
-            // $imgsp = new ProductImage;
-            // $imgsp->id_detail = $ctsanpham->id;
-            // $imgsp->image = $key;
-            // $imgsp->save();
-
-            $file = $key;
-            Storage::disk('local')->put($file->getFilename().'.'.$extension,  File::get($file));
-
-            $entry = new ProductImage;
-            $entry->id_detail = $ctsanpham->id;
-
-            // $entry->mime = $file->getClientMimeType();
-            // $entry->original_filename = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-            $entry->image = $file->getFilename().'.'.$extension;
-
-            dd($entry->image);
-     
-            $entry->save();
+            $imgsp = new ProductImage;
+            $imgsp->id_detail = $ctsanpham->id;
+            $imgsp->image = $key;
+            $imgsp->save();
         }
         
         return redirect()->back();
@@ -371,7 +364,7 @@ class PageController extends Controller
 
         $id_product->save();
 
-        $ctsanpham = ProductDetail::find($idsp);
+        $ctsanpham = new ProductDetail;
         $ctsanpham->id_product = $id_product->id;
         $ctsanpham->save();
 
@@ -379,19 +372,19 @@ class PageController extends Controller
         $id_color = ProductColor::where('id',$id_detail)->value('id');
 
 
-        foreach ($req->newcolor as $key) {
-            $colorsp = ProductColor::find($idsp);
-            $colorsp->id_detail = $ctsanpham->id;
-            $colorsp->color = $key;
-            $colorsp->save();
-        }
+        // foreach ($req->newcolor as $key) {
+        //     $colorsp = new ProductColor;
+        //     $colorsp->id_detail = $ctsanpham->id;
+        //     $colorsp->color = $key;
+        //     $colorsp->save();
+        // }
 
-        foreach ($req->newimage as $key) {
-            $imgsp = ProductImage::find($idsp);
-            $imgsp->id_detail = $ctsanpham->id;
-            $imgsp->image = $key;
-            $imgsp->save();
-        }
+        // foreach ($req->newimage as $key) {
+        //     $imgsp = new ProductImage;
+        //     $imgsp->id_detail = $ctsanpham->id;
+        //     $imgsp->image = $key;
+        //     $imgsp->save();
+        // }
         return redirect()->back();
     }
 
