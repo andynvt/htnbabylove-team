@@ -82,11 +82,15 @@
                                         <div class="col-md-12">
                                             <div class="card">
                                                 <div class="header">
-                                                    <h4 class="title">Số lượng sản phẩm bán ra, đơn hàng theo năm
-                                                        <select style="border: none">
-                                            <option>2016</option><option>2017</option><option>2018</option>
-                                        </select>
-                                                    </h4> </div>
+                                                    <h4 class="title">
+                                                        <input id="spdh" type="text" style="width: 100%; border: none; background: none" disabled>
+                                                    </h4> 
+                                                </div>
+                                                    <script>
+                                                            var d = new Date();
+                                                            var n = d.getUTCFullYear();
+                                                            $('#spdh').val('Số lượng sản phẩm bán ra, đơn hàng năm ' + n);
+                                                    </script>
                                                 <div class="content">
                                                     <canvas id="line-chart"></canvas>
                                                     <script>
@@ -95,12 +99,20 @@
                                                             , data: {
                                                                 labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"]
                                                                 , datasets: [{
-                                                                    data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478, 768, 240]
+                                                                    data: [
+                                                                        @foreach($getmonth as $mnt)
+                                                                            {{ $mnt->month }},
+                                                                        @endforeach
+                                                                        ]
                                                                     , label: "Đơn hàng"
                                                                     , borderColor: "#3e95cd"
                                                                     , fill: false
                                                                 }, {
-                                                                    data: [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267, 2040, 1024]
+                                                                    data: [
+                                                                        @foreach($getdate as $day)
+                                                                            {{ $day->day }},
+                                                                        @endforeach
+                                                                        ]
                                                                     , label: "Sản phẩm bán ra"
                                                                     , borderColor: "#8e5ea2"
                                                                     , fill: false
@@ -124,11 +136,15 @@
                                         <div class="col-md-12">
                                             <div class="card ">
                                                 <div class="header">
-                                                    <h4 class="title">Doanh thu năm
-                                                        <select style="border: none">
-                                            <option>2016</option><option>2017</option><option>2018</option>
-                                        </select>
-                                                    </h4> </div>
+                                                    <h4 class="title">
+                                                        <input id="dt" type="text" style="width: 100%; border: none; background: none" disabled>
+                                                    </h4> 
+                                                    <script>
+                                                            var d = new Date();
+                                                            var n = d.getUTCFullYear();
+                                                            $('#dt').val('Doanh thu năm ' + n);
+                                                    </script>
+                                                </div>
                                                 <div class="content">
                                                     <canvas id="bar-chart"></canvas>
                                                     <script>
@@ -139,7 +155,12 @@
                                                                 , datasets: [{
                                                                     label: "Doanh thu (Triệu)"
                                                                     , backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#dddddd", "#eeeeee", "#FF8A80", "#F48FB1", "#BA68C8", "#B39DDB", "#90CAF9"]
-                                                                    , data: [2478, 5267, 734, 784, 433, 144, 240, 360, 1024, 1366, 1200, 1568]
+                                                                    , data: [
+                                                                                @foreach($gettprice as $price)
+                                                                                    {{ $price->total_price }},
+                                                                                @endforeach
+
+                                                                            ]
                                                                 }]
                                                             }
                                                             , options: {

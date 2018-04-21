@@ -510,6 +510,10 @@ class PageController extends Controller
     }
 
     public function getadminDoanhthu(){
-        return view('Admin.pageadmin.admindoanhthu');
+        $getmonth = DB::select(DB::raw('SELECT month(created_at) as month FROM bills'));
+        $getdate = DB::select(DB::raw('SELECT day(created_at) as day FROM bills'));
+        $gettprice = Bill::all();
+        
+        return view('Admin.pageadmin.admindoanhthu', compact('getmonth', 'getdate','gettprice'));
     }
 }
