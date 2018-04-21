@@ -22,7 +22,7 @@
                     <div class="row">
                         @foreach($promotion_product as $promo ) 
                         @foreach($detail_product as $det ) 
-                        @if($promo->id == $det->id  )
+                        @if($promo->id == $det->id_product  )
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
@@ -32,8 +32,9 @@
                                     <a href="{{ route('chitietsanpham', $promo->id) }}">
                                         <div class="containeroverlay">
                                             @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id  )
+                                                @if($det->id == $anh->id_detail  )
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                            @break
                                                 @endif
                                             @endforeach
                                             <div class="overlay">
@@ -75,7 +76,7 @@
                     <div class="text-left" style="font-size: 25px; font-weight: 600"> Sản Phẩm Mới ({{count($new_product)}} sản phẩm)</div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
-                        @foreach($new_product as $new) @foreach($detail_product as $det) @if($new->id == $det->id)
+                        @foreach($new_product as $new) @foreach($detail_product as $det) @if($new->id == $det->id_product)
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
@@ -91,8 +92,9 @@
                                     <a href="{{ route('chitietsanpham', $new->id) }}">
                                         <div class="containeroverlay">
                                             @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id  )
+                                                @if($det->id == $anh->id_detail  )
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                            @break
                                                 @endif
                                             @endforeach
                                             <div class="overlay">
@@ -119,9 +121,9 @@
                                 </div>
                             </div>
                         </div>
-                        @if($anh->image == $anh->image )
+                       
                             @break
-                        @endif
+                       
                         @endif @endforeach @endforeach
                     </div>
                     <!-- Hang 3 -->
@@ -130,7 +132,7 @@
                     <div class="text-left" style="font-size: 25px; font-weight: 600">Sản Phẩm Hot ({{count($hot_product)}} sản phẩm)</div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
-                        @foreach($hot_product as $hot) @foreach($detail_product as $det) @if($hot->id == $det->id)
+                        @foreach($hot_product as $hot) @foreach($detail_product as $det) @if($hot->id == $det->id_product)
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
@@ -146,8 +148,9 @@
                                     <a href="{{ route('chitietsanpham', $hot->id) }}">
                                         <div class="containeroverlay">
                                            @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id  )
+                                                @if($det->id == $anh->id_detail  )
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                            @break
                                                 @endif
                                             @endforeach
                                             <div class="overlay">
@@ -174,9 +177,9 @@
                                 </div>
                             </div>
                         </div>
-                        @if($anh->image == $anh->image )
+                        
                             @break
-                        @endif
+                        
                         @endif @endforeach @endforeach
                     </div>
                 </div>

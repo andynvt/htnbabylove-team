@@ -27,26 +27,22 @@
             <div class="col-lg-9 col-md-12">
                 <div class="row">
                     <div class="col-sm-4" id="show-images"> 
-                        <img src="source/image/{{ $get2_proimg }}" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
+                        <img src="source/image/{{ $get1_proimg }}" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
                         <!-- <h2 style="text-align:center">Lightbox</h2> -->
                         <div class="img-mini">
                             <div class="row">
-                                @foreach($product_image as $anh)
-                                @if($sanpham->id == $anh->id )
-                                <div class="column"> <img src="source/image/{{ $anh->image }}" style="width:100%; height: 50px"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> 
+                                @foreach($getimg as $img)
+                                <div class="column"> <img src="source/image/{{ $img->image }}" style="width:100%; height: 50px"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> 
                                 </div>
-                                @endif
                                 @endforeach
                             </div>
                         </div>
                         <div id="modal-img-mini" class="modal-img-mini"> <span class="close cursor" onclick="closeModal()">&times;</span>
                             <div class="modal-content">
-                                @foreach($product_image as $pro_img)
-                                @if($sanpham->id == $pro_img->id )
+                                @foreach($getimg as $img)
                                 <div class="slide-img-mini">
-                                    <div class="numbertext">1 / 4</div> <img src="source/image/{{ $pro_img->image }}" style="width:100%"> 
+                                    <div class="numbertext">1 / 4</div> <img src="source/image/{{ $img->image }}" style="width:100%"> 
                                 </div>
-                                @endif
                                 @endforeach
                                 <a style="color: #288AD6" class="prev" onclick="plusSlides(-1)">&#10094;</a> 
                                 <a style="color: #288AD6" class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -56,11 +52,9 @@
                                 </div>
 
                                 <div class="row" id="bg-modal-product">
-                                    @foreach($product_image as $pro_img)
-                                    @if($sanpham->id == $pro_img->id )
-                                    <div class="column"> <img class="demo cursor" src="source/image/{{ $pro_img->image }}" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise"> 
+                                    @foreach($getimg as $img)
+                                    <div class="column"> <img class="demo cursor" src="source/image/{{ $img->image }}" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise"> 
                                     </div>
-                                    @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -139,21 +133,13 @@
                                     <div class="space10">&nbsp;</div>
                                     <label class="choose-qty">Chọn màu sắc:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn số lượng bạn muốn mua"></i></label>
                                     <div class="form-group">
-                                        <div class="dropdown" style="width: 45%;">
-                                            <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background:  @foreach($product_color as $anh )
-                                                            @if($anh->id_detail === $sanpham->id  )
-                                                                {{$anh->color}}
-                                                                @break
-                                                            @endif
-                                                        @endforeach "></span></button>
-                                            <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
-                                                 @foreach($product_color as $anh )
-                                                            @if($sanpham->id == $anh->id_detail)  
-                                                                <li><span class="color " style="background: {{$anh->color}}"></span></li>
-                                                                @endif
-                                                             @endforeach 
-                                                <input type="hidden" name="_color" value=""> </ul>
-                                        </div>
+                                        <select>
+                                            @foreach($getcl as $cl)
+                                                <option>
+                                                    {{$cl->color}}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="row">
@@ -186,12 +172,8 @@
                     </div>
                     <div class="panel" id="tab-description">
                         <p class="intro-product">{{ $sanpham->description }}.</p>
-                        @foreach($product_image as $anh )
-                            @if($sanpham->id == $anh->id  )
-
-                        <div class="img-product-show"> <img src="source/image/{{ $anh->image }}" /> </div>
-                        @endif
-                        
+                        @foreach($getimg as $img)
+                            <div class="img-product-show"> <img src="source/image/{{ $img->image }}" /> </div>
                         @endforeach
                     </div>
                 </div>
@@ -216,26 +198,24 @@
                         </div>
                     </div>
                         @foreach($feedback as $fb) 
-                        @if($fb->id_product == $sanpham->id)
-                                <div class="content-rate">
-                                    <div class="name-user"> <span>{{$fb->reviewer}}</span> </div>
-                                    <div class="time-post"> <span>{{$fb->create_at}}</span> </div>
-                                    <div class="star-rate">
-                                        <div class="start-sum">
-                                            <input id="{{ $fb->id }}" type="hidden" value="{{ $fb->stars }}">
-                                            <div class="khong-duoc-xoa"></div>
-                                            <script>
-                                                for($i=0; $i < {{ $fb->stars }} ; $i++){
-                                                    $('#{{ $fb->id }}').next('.khong-duoc-xoa').append('<i class="fa fa-star fa-fw"></i>');
-                                                }
-                                            </script>
-                                        </div>
-                                        <div class="comment">
-                                            <p>{{ $fb->review }}</p>
-                                        </div>
+                            <div class="content-rate">
+                                <div class="name-user"> <span>{{$fb->reviewer}}</span> </div>
+                                <div class="time-post"> <span>{{$fb->create_at}}</span> </div>
+                                <div class="star-rate">
+                                    <div class="start-sum">
+                                        <input id="{{ $fb->id }}" type="hidden" value="{{ $fb->stars }}">
+                                        <div class="khong-duoc-xoa"></div>
+                                        <script>
+                                            for($i=0; $i < {{ $fb->stars }} ; $i++){
+                                                $('#{{ $fb->id }}').next('.khong-duoc-xoa').append('<i class="fa fa-star fa-fw"></i>');
+                                            }
+                                        </script>
+                                    </div>
+                                    <div class="comment">
+                                        <p>{{ $fb->review }}</p>
                                     </div>
                                 </div>
-                                @endif
+                            </div>
                         @endforeach 
 
                         {{-- Modal feedback --}}
@@ -345,54 +325,47 @@
                     <div class="banner-related-product">
                         <!-- <h4>Sản Phẩm Cùng Loại</h4> --><img src="source/image/related.png" /> </div>
                     <div class="row">
-                          @foreach($same_product as $new) @foreach($detail_product as $det) @if($new->id == $det->id)
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
-                            <div class="single-item">
-                                <div class="ribbon-wrapper">
-                                    @if($new->promotion_price != 0)
-                                    <div class="ribbon1 sale">Sale</div>
-                                    @elseif($new->status == 1)
-                                    <div class="ribbon1 new">New</div>
-                                    @elseif($new->status == 2)
-                                    <div class="ribbon1 hot">Hot</div>
-                                    @endif
-                                </div>
-                                <div class="thumbnail">
-                                    <a href="{{ route('chitietsanpham', $new->id) }}">
-                                        <div class="containeroverlay">
-                                            @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id  )
-                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
-                                                @endif
-                                            @endforeach
-                                            <div class="overlay">
-                                                <div class="text">Xem chi tiết</div>
+                        @foreach($same_product as $same) 
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+                                <div class="single-item">
+                                    <div class="ribbon-wrapper">
+                                        @if($same->promotion_price != 0)
+                                        <div class="ribbon1 sale">Sale</div>
+                                        @elseif($same->status == 1)
+                                        <div class="ribbon1 new">New</div>
+                                        @elseif($same->status == 2)
+                                        <div class="ribbon1 hot">Hot</div>
+                                        @endif
+                                    </div>
+                                    <div class="thumbnail">
+                                        <a href="{{ route('chitietsanpham', $same->id) }}">
+                                            <div class="containeroverlay">
+                                                <img src="source/image/{{$same->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                                <div class="overlay">
+                                                    <div class="text">Xem chi tiết</div>
+                                                </div>
                                             </div>
+                                        </a>
+                                        <div class="caption">
+                                            <div class="space5">&nbsp;</div>
+                                            <b class="text-price">
+                                                    @if($same->promotion_price == 0)
+                                                        <span class="text-danger ">{{number_format($same->unit_price)}} đ</span> &nbsp;
+                                                    @else
+                                                        <span class="text-danger ">{{number_format($same->promotion_price)}} đ</span> &nbsp;
+                                                        <span class="flash-del">{{number_format($same->unit_price)}} đ</span>
+                                                    @endif
+                                                    </b>
+                                            <div class="space10">&nbsp;</div>
+                                            <p class='text-left text-title'><b>{{$same->name}}</b>&nbsp;</p>
+                                            <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$same->id}}"><span>Mua Ngay </span></button>
+                                            <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                            <hr>
                                         </div>
-                                    </a>
-                                    <div class="caption">
-                                        <div class="space5">&nbsp;</div>
-                                        <b class="text-price">
-                                                @if($new->promotion_price == 0)
-                                                    <span class="text-danger ">{{number_format($new->unit_price)}} đ</span> &nbsp;
-                                                @else
-                                                    <span class="text-danger ">{{number_format($new->promotion_price)}} đ</span> &nbsp;
-                                                    <span class="flash-del">{{number_format($new->unit_price)}} đ</span>
-                                                @endif
-                                                </b>
-                                        <div class="space10">&nbsp;</div>
-                                        <p class='text-left text-title'><b>{{$new->name}}</b>&nbsp;</p>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$new->id}}"><span>Mua Ngay </span></button>
-                                        <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
-                                        <hr>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        @if($anh->image == $anh->image )
-                            @break
-                        @endif
-                        @endif @endforeach @endforeach
+                        @endforeach
                     </div>
                 </div>
                 <!-- .beta-products-list -->
@@ -402,14 +375,10 @@
                     <h3 class="widget-title">Sản Phẩm Bán Chạy</h3>
                     <div class="widget-body">
                         <div class="beta-sales beta-lists">
-                        @foreach($hot_product as $hot) @foreach($detail_product as $anh) @if($hot->id == $anh->id_product)
+                        @foreach($hot_product as $hot) 
                             <div class="media beta-sales-item">
                                 <a class="pull-left" href="{{ route('chitietsanpham', $hot->id) }}">
-                                    @foreach($product_image as $anh )
-                                                @if($hot->id == $anh->id  )
-                                    <img src="source/image/{{$anh->image}}" alt="">
-                                    @endif
-                                    @endforeach
+                                    <img src="source/image/{{$hot->image}}" alt="">
                                 </a>
                                 <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id) }}">{{$hot->name}}</a>
                                     <p class="beta-sales-price">
@@ -424,10 +393,7 @@
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>
-                           
-                            @break
-                        
-                        @endif @endforeach @endforeach
+                        @endforeach
                         </div>
                     </div>
                 </div>
@@ -436,32 +402,25 @@
                     <h3 class="widget-title">Sản Phẩm Mới Nhất</h3>
                     <div class="widget-body">
                         <div class="beta-sales beta-lists">
-                        @foreach($new_product as $hot) @foreach($detail_product as $anh) @if($hot->id == $anh->id_product)
+                        @foreach($new_product as $new)
                             <div class="media beta-sales-item">
-                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id) }}">
-                                    @foreach($product_image as $anh )
-                                                @if($hot->id == $anh->id  )
-                                    <img src="source/image/{{$anh->image}}" alt="">
-                                    @endif
-                                    @endforeach
+                                <a class="pull-left" href="{{ route('chitietsanpham', $new->id) }}">
+                                    <img src="source/image/{{$new->image}}" alt="">
                                 </a>
-                                <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id) }}">{{$hot->name}}</a>
+                                <div class="media-body"> <a href="{{ route('chitietsanpham', $new->id) }}">{{$new->name}}</a>
                                     <p class="beta-sales-price">
-                                        @if($hot->promotion_price == 0)
-                                            <span class="text-danger ">{{number_format($hot->unit_price)}} đ</span> &nbsp;
+                                        @if($new->promotion_price == 0)
+                                            <span class="text-danger ">{{number_format($new->unit_price)}} đ</span> &nbsp;
                                         @else
-                                            <span class="text-danger ">{{number_format($hot->promotion_price)}} đ</span> &nbsp;
-                                            <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
+                                            <span class="text-danger ">{{number_format($new->promotion_price)}} đ</span> &nbsp;
+                                            <span class="flash-del">{{number_format($new->unit_price)}} đ</span>
                                         @endif
                                     </p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#{{$hot->id}}"><span>Mua Ngay </span></button>
+                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#{{$new->id}}"><span>Mua Ngay </span></button>
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>
-                            
-                            @break
-                        
-                        @endif @endforeach @endforeach
+                        @endforeach
                         </div>
 
                         </div>

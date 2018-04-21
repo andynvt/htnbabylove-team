@@ -62,12 +62,15 @@
     </script>
 
 
-    <div class="modal fade " id="modal-admin-product-detail" tabindex="-1" role="dialog">
+    @foreach($takesp as $sp)
+    @foreach($detail_product as $det ) 
+            @if($sp->spid == $det->id_product  )
+    <div class="modal fade " id="{{ $sp->spid }}" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</h4>
+                    <h4 class="modal-title">{{$sp->name}}</h4>
                 </div>
                 <div class="modal-body">
                     <div class="container-full">
@@ -75,43 +78,55 @@
                             <div class="col-lg-6 col-md-12">
                                 <div class="single-item">
                                     <div class="ribbon-wrapper">
-                                        <div class="ribbon1 sale buy-item">Sale</div>
+                                        {{-- <div class="ribbon1 sale buy-item">Sale</div> --}}
                                     </div>
                                     <div class="thumbnail">
-                                        <div class="containeroverlay"> <img src="source/ADMIN/image/portfolio/2col/1.jpg" alt="Thumbnail Image 1" class="img-responsive"> </div>
+                                        <div class="containeroverlay"> 
+                                            @foreach($product_image as $anh )
+                                                @if($det->id == $anh->id_detail  )
+                                                <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">@break @endif
+                                            @endforeach </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-offset-0">
                                 <div class="space10">&nbsp;</div>
-                                <p class="text-danger text-price-model"><b>&nbsp;1,000,000đ</b></p>
+                                <p class="text-danger text-price-model"><b class="text-price">
+                                                @if($sp->promotion_price == 0)
+                                                            <span class="text-danger ">{{number_format($sp->unit_price)}} đ</span> &nbsp;
+                                                        @else
+                                                            <span class="text-danger ">{{number_format($sp->promotion_price)}} đ</span> &nbsp;
+                                                            <span class="flash-del">{{number_format($sp->unit_price)}} đ</span>
+                                                        @endif
+                                                </b></p>
                                 <div class="container-filud">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <p class=" text-price"><b>&nbsp;Số lượng :  </b>&nbsp; 1</p>
                                         </div>
-                                        <div class="col-lg-5 col-md-6">
+                                        <div class="col-lg-6 col-md-6">
                                             <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                             <div class="form-group">
                                                 <div class="dropdown">
-                                                    <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: black"></span></button>
+                                                    <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: @foreach($product_color as $anh )
+                                                            @if($anh->id_detail == $sp->spid  )
+                                                                {{$anh->color}}
+                                                                @break
+                                                            @endif
+                                                        @endforeach"></span></button>
                                                     <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
-                                                        <li><span class="color " style="background: black"></span></li>
-                                                        <li><span class="color " style="background: red"></span></li>
-                                                        <li><span class="color " style="background: #f90"></span></li>
-                                                        <li><span class="color " style="background: brown"></span></li>
-                                                        <li><span class="color " style="background: orange"></span></li>
-                                                        <li><span class="color " style="background: pink"></span></li>
-                                                        <li><span class="color " style="background: silver"></span></li>
-                                                        <li><span class="color " style="background: blue"></span></li>
-                                                        <li><span class="color " style="background: TEAL"></span></li>
+                                                        @foreach($product_color as $anh )
+                                                            @if($anh->id_detail == $sp->spid )  
+                                                                <li><span class="color " style="background: {{$anh->color}}"></span></li>
+                                                                @endif
+                                                             @endforeach      
                                                         <input type="hidden" name="_color" value=""> </ul>
                                                 </div>
                                             </div>
                                             <div class="space10">&nbsp;</div>
                                         </div>
                                         <p class=" text-price"><b>&nbsp;Thông tin cơ bản:</b></p>
-                                        <div class="col-lg-12 ">Balo Thời Trang PRAZA được thiết kế tinh tế, hiện đại mang phong cách Hàn Quốc vừa thời trang vừa gọn nhẹ lại vừa năng động lịch lãm cho các hoạt động ngoài trời hay đi gặp đối tác tự tin mà vẫn lịch sự thời trang. Gam màu của Balo PRAZA mang lại cho bạn nét thanh lịch, trẻ trung đầy sức hút. </div>
+                                        <div class="col-lg-12 ">{{$sp->description}} </div>
                                     </div>
                                 </div>
                             </div>
@@ -120,13 +135,16 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary">Lưu lại</button>
+                   
                 </div>
             </div>
             <!-- /.modal-content -->
         </div>
     <!-- /.modal-dialog -->
     </div>
+    @endif
+    @endforeach
+    @endforeach
 
 </body>
 

@@ -81,6 +81,28 @@ class AppServiceProvider extends ServiceProvider
             $confirm_bill = Bill::where('status', 4)->get();
             $view->with('confirm_bill',$confirm_bill);
         });
+
+        view()->composer('Admin.master',function($view){
+                $takesp = DB::table('products as sp')
+                    ->leftjoin('product_type as lsp', 'sp.id_type' , '=', 'lsp.id')
+                    ->select('sp.id as spid', 'lsp.type_name' , 'sp.name' , 'sp.unit_price' , 'sp.promotion_price' ,'sp.size' , 'sp.description' , 'sp.status')
+                    ->get();            
+                // dd($takesp);
+                $view->with('takesp',$takesp);
+        });
+        view()->composer('Admin.master',function($view){
+            $detail_product = ProductDetail::all();
+            $view->with('detail_product',$detail_product);
+        });
+        view()->composer('Admin.master',function($view){
+            $product_image = ProductImage::all();
+            $view->with('product_image',$product_image);
+        });
+
+        view()->composer('Admin.master',function($view){
+            $product_color = ProductColor::all();
+            $view->with('product_color',$product_color);
+        });
     }
 
     /**

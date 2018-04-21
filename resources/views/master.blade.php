@@ -596,7 +596,7 @@
     <!--  Modal Mua Nhanh promotion-->
     @foreach($promotion_product as $promo ) 
         @foreach($detail_product as $det ) 
-            @if($promo->id == $det->id  )
+            @if($promo->id == $det->id_product  )
     <div class="modal fade" id="{{$promo->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
         <form action="#" method="post">      
@@ -622,7 +622,7 @@
                                         </div>
                                         <div class="thumbnail">
                                             @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id  )
+                                                @if($det->id == $anh->id_detail  )
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="" width="480px">
                                                 @endif
                                             @endforeach
@@ -717,7 +717,7 @@
     <!--  Modal Mua Nhanh new-->
     @foreach($new_product as $new ) 
         @foreach($detail_product as $det ) 
-            @if($new->id == $det->id  )
+            @if($new->id == $det->id_product  )
     <div class="modal fade" id="{{$new->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
         <form action="#" method="post">      
@@ -743,7 +743,7 @@
                                         </div>
                                         <div class="thumbnail">
                                              @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id  )
+                                                @if($det->id == $anh->id_detail  )
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="" width="480px">
                                                 @endif
                                             @endforeach
@@ -836,7 +836,7 @@
     <!--  Modal Mua Nhanh hot-->
     @foreach($hot_product as $hot ) 
         @foreach($detail_product as $det ) 
-            @if($hot->id == $det->id  )
+            @if($hot->id == $det->id_product  )
     <div class="modal fade" id="{{$hot->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
         <form action="#" method="post">      
@@ -862,7 +862,7 @@
                                         </div>
                                         <div class="thumbnail">
                                             @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id  )
+                                                @if($det->id == $anh->id_detail  )
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="" width="480px">
                                                 @endif
                                             @endforeach

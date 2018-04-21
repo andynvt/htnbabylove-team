@@ -21,7 +21,7 @@
                     <div class="row">
                           @foreach($product as $promo ) 
                         @foreach($detail_product as $det ) 
-                        @if($promo->id == $det->id  )
+                        @if($promo->id == $det->id_product  )
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
@@ -37,7 +37,7 @@
                                     <a href="{{ route('chitietsanpham', $promo->id) }}">
                                         <div class="containeroverlay">
                                             @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id  )
+                                                @if($det->id == $anh->id_detail  )
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                                 @endif
                                             @endforeach

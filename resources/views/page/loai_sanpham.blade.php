@@ -12,7 +12,7 @@
         </div>
         <div class="col-lg-9 col-md-12">
             <div class="space10">&nbsp;</div>
-            <div class="text-left" style="font-size: 25px; font-weight: 600"> {{$loai_ssp->type_name}} ({{count($sp_theoloai)}} sản phẩm)</div>
+            <div class="text-left" style="font-size: 25px; font-weight: 600"> {{$loai_ssp->type_name}} ({{count($sp_theoloai)}}  sản phẩm)</div>
             <div class="space15">&nbsp;</div>
             <div class="row">
             
@@ -35,8 +35,9 @@
                         <div class="thumbnail">
                             <div class="containeroverlay">
                                 <a href="{{ route('chitietsanpham', $product->id) }}"> @foreach($product_image as $anh )
-                                                @if($product->id == $anh->id  )
+                                                @if($product->id == $anh->id_detail  )
                                             <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                            @break
                                                 @endif
                                             @endforeach</a>
                                 <div class="overlay">
@@ -62,12 +63,11 @@
                         </div>
                     </div>
                 </div>      
-                               
+                              @break 
                             @endif
                         @endforeach
-                        @break
+                        
                     @endif
-
                 @endforeach
             @endforeach
             </div>

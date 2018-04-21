@@ -42,35 +42,61 @@ class PageController extends Controller
         return view('page.loai_sanpham',compact('lsp','sp_theoloai','detail_product','products','loai_ssp','product_color','product_image'));
     }
 
-    public function getDetail(Request $req){
+    public function getDetail($id){
         $detail_product = ProductDetail::all();
 
-        $sanpham = Product::where('id', $req->id)->first();
+        $sanpham = Product::where('id', $id)->first();
 
-        $id_sp = Product::where('id', $req->id)->value('id');
-        $id_lsp = Product::where('id', $id_sp)->value('id');
-        $feedback = Feedback::where('id_product', $req->id)->get();
+        $feedback = Feedback::leftjoin('products as sp', 'feedbacks.id_product', '=' ,'sp.id')
+                            ->where('sp.id', $id)
+                            ->get();
 
-        $type_name = ProductType::where('id', $id_lsp)->value('type_name');
+        $type_name = ProductType::join('products as sp', 'product_type.id', '=', 'sp.id_type')
+                            ->where('sp.id', $id)
+                            ->value('type_name');
 
-        $getid_sp = Product::where('id', $req->id)->value('id');
-        $getid_ctsp = Product::where('id', $getid_sp)->value('id');
+        $id_lsp = Product::join('product_type as lsp', 'products.id_type', '=', 'lsp.id')
+                            ->where('products.id', $id)
+                            ->value('id_type');
 
-        $product_img = ProductDetail::where('id', $getid_ctsp)->get();
-        $get1_proimg = ProductDetail::where('id', $getid_ctsp)->value('id');
-        $get2_proimg = ProductImage::where('id', $get1_proimg)->value('image');
+        $same_product = Product::leftjoin('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->leftjoin('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->leftjoin('product_type as lsp' , 'lsp.id', '=', 'products.id_type')
+                            ->where('products.id_type', $id_lsp)
+                            ->groupBy('products.id')
+                            ->take(6)
+                            ->get();
 
-        // dd($get1_proimg);
-        $new_product = Product::where('status', 1)->get();
-        $hot_product = Product::where('status', 2)->get();
-        $product_image = ProductImage::all();
-        $product_color = ProductColor::all();
+        $get1_proimg = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
+                            ->join('products as sp', 'ctsp.id_product', '=', 'sp.id')
+                            ->where('sp.id', $id)
+                            ->value('image');
 
+        $new_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('status', 1)
+                            ->groupBy('products.id')
+                            ->get();
 
-        $same_product = Product::where('id', $id_lsp)->take(6)->get();
+        $hot_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('status', 2)
+                            ->groupBy('products.id')
+                            ->get();
 
+        $getcl = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=' , 'ctsp.id')
+                            ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
+                            ->where('sp.id', $id)
+                            ->select('sp.id as spid', 'product_color.color')
+                            ->get();
 
-        return view('page.chitiet_sanpham', compact('sanpham','feedback','type_name', 'id_lsp', 'product_img', 'get2_proimg','same_product','detail_product','hot_product','new_product','product_image','product_color'));
+        $getimg = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=' , 'ctsp.id')
+                            ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
+                            ->where('sp.id', $id)
+                            ->select('sp.id as spid', 'product_image.image')
+                            ->get();
+
+        return view('page.chitiet_sanpham', compact('detail_product', 'sanpham','feedback','type_name', 'id_lsp', 'same_product', 'get1_proimg', 'hot_product','new_product','getcl', 'getimg'));
     }
 
     public function postDanhGia(Request $req, $id){
