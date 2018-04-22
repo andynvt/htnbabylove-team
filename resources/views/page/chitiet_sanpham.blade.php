@@ -104,19 +104,22 @@
                         </script>
                     </div>
                     <div class="col-md-8 col-sm-12">
-                        <form action="" method="POST" accept-charset="utf-8">
-                            <div class="single-item-body">
-                                <h3>{{ $sanpham->name }}</h3>
-                                <p class="summary-product">{{ $sanpham->description }}.</p>
-                                <hr/>
-                                <p class="single-item-price">
-                                    <span class="present-price">
-                                        @if($sanpham->promotion_price == 0)
-                                            <span class="text-danger ">{{number_format($sanpham->unit_price)}} đ</span> &nbsp; @else
-                                    <span class="text-danger ">{{number_format($sanpham->promotion_price)}} đ</span> &nbsp;
-                                    <span class="flash-del">{{number_format($sanpham->unit_price)}} đ</span> @endif
-                                    </span>
-                                </p>
+                        <div class="single-item-body">
+                            <h3>{{ $sanpham->name }}</h3>
+                            <p class="summary-product">{{ $sanpham->description }}.</p>
+                            <hr/>
+                            <p class="single-item-price">
+                                <span class="present-price">
+                                    @if($sanpham->promotion_price == 0)
+                                        <span class="text-danger ">{{number_format($sanpham->unit_price)}} đ</span> &nbsp; 
+                                    @else
+                                        <span class="text-danger ">{{number_format($sanpham->promotion_price)}} đ</span> &nbsp;
+                                        <span class="flash-del">{{number_format($sanpham->unit_price)}} đ</span> 
+                                    @endif
+                                </span>
+                            </p>
+                            <form action="{{ route('chitietsp', $sanpham->id) }}" method="POST" accept-charset="utf-8">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="select-size-product">
                                     <label class="choose-qty">Chọn số lượng:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn số lượng bạn muốn mua"></i></label>
                                     <br/>
@@ -125,7 +128,7 @@
                                         <div class="input-group-prepend">
                                             <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
                                         </div>
-                                        <input type="text" class="form-control text-center" value="1">
+                                        <input type="text" class="form-control text-center" name="qtyspbuy">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
                                         </div>
@@ -133,7 +136,7 @@
                                     <div class="space10">&nbsp;</div>
                                     <label class="choose-qty">Chọn màu sắc:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn số lượng bạn muốn mua"></i></label>
                                     <div class="form-group">
-                                        <select>
+                                        <select name="colorbuy">
                                             @foreach($getcl as $cl)
                                                 <option>
                                                     {{$cl->color}}
@@ -147,19 +150,7 @@
                                             <button type="button" class="btn btn-themvaogio btn-full "><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
                                         </div>
                                         <div class="col-lg-5 col-md-12">
-                                            <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="
-                                            
-                                            
-                                            @if($sanpham->promotion_price != 0)
-                                            #pro{{$sanpham->id}}
-                                            @elseif($sanpham->status == 1)
-                                            #new{{$sanpham->id}}
-                                            @elseif($sanpham->status == 2)
-                                            #hot{{$sanpham->id}}
-                                            @endif
-
-
-                                            "><span>Mua Ngay </span></button>
+                                            <button type="submit" class="btn btn-buy btn-full button"><span>Mua Ngay </span></button>
                                         </div>
                                     </div>
                                     <div class="flash"></div>
@@ -171,10 +162,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="clearfix"></div>
-                                <!-- <div class="space20">&nbsp;</div>	 --></div>
-                            <!-- <div class="space20">&nbsp;</div> -->
-                        </form>
+                            </form>
+                        </div>                        
                     </div>
                 </div>
                 <div class="space40">&nbsp;</div>
@@ -215,11 +204,11 @@
                                 <div class="time-post"> <span>{{$fb->create_at}}</span> </div>
                                 <div class="star-rate">
                                     <div class="start-sum">
-                                        <input id="{{ $fb->id }}" type="hidden" value="{{ $fb->stars }}">
+                                        <input id="{{ $fb->fbid }}" type="hidden" value="{{ $fb->stars }}">
                                         <div class="khong-duoc-xoa"></div>
                                         <script>
                                             for($i=0; $i < {{ $fb->stars }} ; $i++){
-                                                $('#{{ $fb->id }}').next('.khong-duoc-xoa').append('<i class="fa fa-star fa-fw"></i>');
+                                                $('#{{ $fb->fbid }}').next('.khong-duoc-xoa').append('<i class="fa fa-star fa-fw"></i>');
                                             }
                                         </script>
                                     </div>
@@ -371,14 +360,16 @@
                                                     </b>
                                             <div class="space10">&nbsp;</div>
                                             <p class='text-left text-title'><b>{{$same->name}}</b>&nbsp;</p>
-                                            <button type="button" class="btn btn-buy btn-full button {{ $same->id_product }}" data-toggle="modal" data-target=" @if($same->promotion_price != 0)
-                                            #pro{{$same->id_product}}
-                                            @elseif($same->status == 1)
-                                            #new{{$same->id_product}}
-                                            @elseif($same->status == 2)
-                                            #hot{{$same->id_product}}
-                                            @endif"><span>Mua Ngay </span></button>
-                                            
+                                            <button type="button" class="btn btn-buy btn-full button {{ $same->id_product }}" data-toggle="modal" data-target=" 
+                                                @if($same->promotion_price != 0)
+                                                    #pro{{$same->id_product}}
+                                                @elseif($same->status == 1)
+                                                    #new{{$same->id_product}}
+                                                @elseif($same->status == 2)
+                                                    #hot{{$same->id_product}}
+                                                @endif">
+                                                <span>Mua Ngay </span>
+                                            </button>
                                             <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                             <hr>
                                         </div>
@@ -424,7 +415,6 @@
                     <div class="widget-body">
                         <div class="beta-sales beta-lists">
                         @foreach($new_product as $new)
-
                             <div class="media beta-sales-item">
                                 <a class="pull-left" href="{{ route('chitietsanpham', $new->id_product) }}">
                                     <img src="storage/product/{{$new->image}}" alt="">
@@ -438,11 +428,7 @@
                                             <span class="flash-del">{{number_format($new->unit_price)}} đ</span>
                                         @endif
                                     </p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="
-                                         
-                                            #new{{$new->id_product}}
-                                            
-                                            "><span>Mua Ngay </span></button>
+                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#new{{$new->id_product}}"><span>Mua Ngay </span></button>
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>

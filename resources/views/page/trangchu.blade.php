@@ -1,4 +1,37 @@
 @extends('master') @section('content')
+
+@if (session('success'))
+    <script>
+        function alertbabyproject() {
+            $(".modal-dialog").attr("data-dismiss", "modal");
+            $(".alert-babyproject").fadeIn(700);
+                setTimeout(function () {
+               $(".alert-babyproject").fadeOut(700);
+            }, 2000)
+        }
+    </script>
+    <body onload="alertbabyproject()"><div class="alert-babyproject">Cám ơn bạn đã đặt hàng của chúng tôi</div></body>
+    <style>
+        .alert-babyproject {
+            padding: 10px 10px;
+            font-size: 20px;
+            white-space: nowrap;
+            margin: 0 auto;
+            color: #fff;
+            background-color: #FF3E8D;;
+            border: 1px #5D4037 solid;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .9);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            display: none;
+            z-index: 9999999;
+        }
+    </style>
+@endif
+
 <div class="container-full">
     <!-- Trang Chu -->
     <div class="container-fluid">

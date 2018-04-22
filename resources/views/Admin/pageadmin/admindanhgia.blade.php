@@ -95,7 +95,7 @@
                                 @foreach($getsp as $fbsp)
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="{{ route('adminchitietdanhgia', $fbsp->spid) }}"><img src="source/image/{{ $fbsp->image }}" alt="Thumbnail Image 1" class="img-responsive">
+                                        <a href="{{ route('adminchitietdanhgia', $fbsp->spid) }}"><img src="storage/product/{{ $fbsp->image }}" alt="Thumbnail Image 1" class="img-responsive">
                                             {{-- <div class="feedback-qty">
                                                 <div class="qty-feedback"></div>
                                             </div> --}}

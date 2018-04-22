@@ -15,6 +15,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use App\Mail;
 
 class PageController extends Controller
 {
@@ -33,7 +34,6 @@ class PageController extends Controller
     public function getLoaiSP($type){
         $lsp = ProductType::all();
         $sp_theoloai = Product::where('id',$type)->get();
-        // dd($sp_theoloai);
         $detail_product = ProductDetail::all();
         $products = Product::all();
         $product_image = ProductImage::all();
@@ -47,10 +47,10 @@ class PageController extends Controller
         $detail_product = ProductDetail::all();
 
         $sanpham = Product::where('id', $id)->first();
-        // dd($sanpham);
 
         $feedback = Feedback::leftjoin('products as sp', 'feedbacks.id_product', '=' ,'sp.id')
                             ->where('sp.id', $id)
+                            ->select('sp.id as spid', 'feedbacks.id as fbid', 'feedbacks.stars', 'feedbacks.reviewer', 'feedbacks.tel', 'feedbacks.review', 'feedbacks.created_at')
                             ->get();
 
         $type_name = ProductType::join('products as sp', 'product_type.id', '=', 'sp.id_type')
@@ -68,7 +68,6 @@ class PageController extends Controller
                             ->groupBy('products.id')
                             ->take(6)
                             ->get();
-        // dd($same_product);
 
         $get1_proimg = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
                             ->join('products as sp', 'ctsp.id_product', '=', 'sp.id')
@@ -128,8 +127,47 @@ class PageController extends Controller
         return view('page.dieukhoan');
     }
 
-    public function getCheckout(){
-        return view('page.thanhtoan');
+    public function postCheckout(Request $req){
+        $cus = new Customer;
+        $cus->name = $req->cusname;
+        $cus->email = $req->email;
+        $cus->address = $req->address;
+        $cus->phone = $req->phone;
+        $cus->save();
+
+        $bill = new Bill;
+        $bill->id_customer = $cus->id;
+        $bill->total_product = $req->qty;
+        $bill->total_price = $req->tongtien;
+        $bill->address = $req->address;
+        $bill->status = 4;
+        $bill->save();
+
+        $bill_detail = new BillDetail;
+        $bill_detail->id_bill = $bill->id;
+        $bill_detail->product_name = $req->proname;
+        $bill_detail->color = $req->color;
+        $bill_detail->quantity = $req->qty;
+        $bill_detail->size = $req->size;
+        $bill_detail->price = $req->tongtien;
+        $bill_detail->save();
+
+        // dd($req->tongtien);
+
+        return redirect()->action('PageController@getIndex')->with('success', 'Cám ơn bạn đã đặt hàng');
+    }
+
+    public function postChitietsp($id, Request $req){
+        $spmua = Product::leftjoin('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                        ->leftjoin('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                        ->where('products.id', $id)
+                        ->select('products.id as spid', 'products.name', 'products.unit_price', 'products.promotion_price', 'products.size', 'asp.image')
+                        ->groupBy('products.id')
+                        ->get();
+        $qtymua = $req->qtyspbuy;
+        $colormua = $req->colorbuy;
+
+        return view('page.thanhtoan', compact('spmua','qtymua', 'colormua'));
     }
 
     public function getTimkiem(Request $req){
@@ -397,8 +435,6 @@ class PageController extends Controller
         ]);
         $id_product->save();
         $ctsanpham = ProductDetail::find($idsp);
-        // dd($ctsanpham);
-        // dd($id_product->id);
         $ctsanpham->id_product = $id_product->id;
         $ctsanpham->save();
 

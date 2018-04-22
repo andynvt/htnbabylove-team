@@ -25,7 +25,9 @@ if (mysqli_connect_error())
         <div class="container-fluid">
           
             <div class="clearfix"></div>
-            <form action="#" method="post" class="beta-form-checkout">
+
+            <form action="{{ route('thanhtoan') }}" method="post" class="beta-form-checkout">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class=" col-lg-7">
                         <div class="full-checkout">
@@ -39,38 +41,35 @@ if (mysqli_connect_error())
                                     <div class="col-md-12"><strong>Email đặt hàng</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12 col-xs-12">
-                                        <input type="text" class="form-control form_size" name="country" value="" /> </div>
+                                        <input type="text" class="form-control form_size" name="email" value="" /> </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Họ và tên</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control form_size" name="country" value="" /> </div>
+                                        <input type="text" class="form-control form_size" name="cusname" value="" /> </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Tỉnh/Thành Phố</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <select class="form-control form_size thanhpho" id="select">
+                                        <select class="form-control form_size thanhpho" id="select" name="city">
                                             <option value="">Tỉnh/Thành Phố </option>
 												<?php
-												// require("connect.php");
-										   	 	// include "connect.php";
 												$sql = "select * from cities";
-												// echo $sql;
 												$query = $con->query($sql);
 												$num = mysqli_num_rows($query);
 												if($num > 0){
 													while($row = mysqli_fetch_array($query)){
 										    ?>
-                                                <option value="<?php echo $row['id_city']; ?>">
-                                                    <?php echo $row['name']?>
+                                                <option value="<?php echo $row['id']; ?>">
+                                                    <?php echo $row['name']; ?>
                                                 </option>
+
                                                 <?php
 										    		}
 												}
 										    ?>
-                                        </select
                                         </select>
                                     </div>
                                 </div>
@@ -78,7 +77,7 @@ if (mysqli_connect_error())
                                     <div class="col-md-12"><strong>Quận/Huyện</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <select class="form-control form_size quan_huyen " id="select">
+                                        <select class="form-control form_size quan_huyen " id="select" name="hometown">
                                             <option value="0">Quận/Huyện</option>
                                         </select>
                                     </div>
@@ -88,13 +87,13 @@ if (mysqli_connect_error())
                                         <div class="space10">&nbsp;</div>
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="text" name="state" class="form-control form_size" value="" /> </div>
+                                        <input type="text" name="address" class="form-control form_size" value="" /> </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Số điện thoại:</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <input type="text" name="phone_number" class="form-control form_size" value="" /> </div>
+                                        <input type="text" name="phone" class="form-control form_size" value="" /> </div>
                                 </div>
                                 <div class="space30">&nbsp;</div>
                                 <div class="form-group">
@@ -116,9 +115,10 @@ if (mysqli_connect_error())
                     <div class="col-lg-5">
                         <div class="full-checkout">
                             <div class="header-title-cart">
-                                <h5 class="title_">Thông tin đơn hàng (3 sản phẩm)</h5>
+                                <h5 class="title_">Thông tin đơn hàng ({{ count($spmua) }} sản phẩm)</h5>
                                 <hr class="hrtitle_GH"> </div>
                             <div class="space10">&nbsp;</div>
+                            @foreach($spmua as $mua)
                             <div class="body-cart">
                                 <div class="panel panel-info">
                                     <div class="panel-body">
@@ -126,70 +126,42 @@ if (mysqli_connect_error())
                                             <div class="body-cart-content-checkout">
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div class="col-sm-3 col-xs-3"> <img class="rounded" src="http://2.bp.blogspot.com/-SF88cGyLIfs/VGg1Zt5C2YI/AAAAAAAACzU/SLeejuMtmK8/s1600/B%E1%BB%99%2B%E1%BA%A3nh%2Bnh%E1%BB%AFng%2Bem%2Bb%C3%A9%2B%C4%91%C3%A1ng%2By%C3%AAu%2B11%2BBlog%2BDesigners.jpg" /> </div>
+                                                        <div class="col-sm-3 col-xs-3"> <img class="rounded" src="storage/product/{{ $mua->image }}"/> </div>
                                                         <div class="col-sm-5 col-xs-5 span_content_body">
-                                                            <div class="col-xs-12 "><strong>Sản phẩm</strong></div>
+                                                            
+                                                            <div class="col-xs-12 "><input type="hidden" name="proname" value="{{ $mua->name }}"><strong>{{ $mua->name }}</strong></div>
                                                             <div class="col-xs-12 span_content_body">
-                                                                <h7>Số lượng: <span>1</span></h7>
+                                                                <h7>Số lượng: <span><input type="hidden" name="qty" value="{{ $qtymua }}">{{ $qtymua }}</span></h7>
                                                             </div>
                                                             <div class="col-xs-12">
-                                                                <h7>Kích thước: <span>M</span></h7>
+                                                                <h7>Màu: <span><input type="hidden" name="color" value="{{ $colormua }}">{{ $colormua }}</span></h7>
                                                             </div>
+                                                            <input type="hidden" name="size" value="{{ $mua->size }}">
                                                         </div>
                                                         <div class="col-sm-3 col-xs-3 text-right ">
-                                                            <p><span>25000</span>đ</p>
+                                                            @if($mua->promotion_price == 0)
+                                                                <p><span>{{ number_format($mua->unit_price) }}</span>đ</p>
+                                                            @else
+                                                                <p><span>{{ number_format($mua->promotion_price) }}</span>đ</p> 
+                                                            @endif
                                                         </div>
+                                                        
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <hr class="hr_sp" /> </div>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-xs-3"> <img class="rounded" src="http://2.bp.blogspot.com/-SF88cGyLIfs/VGg1Zt5C2YI/AAAAAAAACzU/SLeejuMtmK8/s1600/B%E1%BB%99%2B%E1%BA%A3nh%2Bnh%E1%BB%AFng%2Bem%2Bb%C3%A9%2B%C4%91%C3%A1ng%2By%C3%AAu%2B11%2BBlog%2BDesigners.jpg" /> </div>
-                                                        <div class="col-sm-5 col-xs-5 span_content_body">
-                                                            <div class="col-xs-12 "><strong>Sản phẩm</strong></div>
-                                                            <div class="col-xs-12 span_content_body">
-                                                                <h7>Số lượng: <span>1</span></h7>
-                                                            </div>
-                                                            <div class="col-xs-12">
-                                                                <h7>Kích thước: <span>M</span></h7>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3 col-xs-3 text-right ">
-                                                            <p><span>25000</span>đ</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <hr class="hr_sp" /> </div>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-xs-3"> <img class="rounded" src="http://2.bp.blogspot.com/-SF88cGyLIfs/VGg1Zt5C2YI/AAAAAAAACzU/SLeejuMtmK8/s1600/B%E1%BB%99%2B%E1%BA%A3nh%2Bnh%E1%BB%AFng%2Bem%2Bb%C3%A9%2B%C4%91%C3%A1ng%2By%C3%AAu%2B11%2BBlog%2BDesigners.jpg" /> </div>
-                                                        <div class="col-sm-5 col-xs-5 span_content_body">
-                                                            <div class="col-xs-12"><strong>Sản phẩm</strong></div>
-                                                            <div class="col-xs-12">
-                                                                <h7>Số lượng: <span>1</span></h7>
-                                                            </div>
-                                                            <div class="col-xs-12 ">
-                                                                <h7>Kích thước: <span>M</span></h7>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3 col-xs-3 text-right">
-                                                            <p><span>25000</span>đ</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                {{-- <div class="form-group">
+                                                    <hr class="hr_sp" /> 
+                                                </div> --}}
                                                 <!-- </div> -->
                                                 <!-- </div> -->
                                             </div>
                                             <!-- body-cart-content-checkout -->
                                         </div>
                                         <div class="space20">&nbsp;</div>
-                                        <div class="">
+                                        {{-- <div class="">
                                             <div class="col-md-12 col-sm-12 col-xs-12 container_btncsgh">
                                                 <button type="submit" class="btn btn-primary btn-submit-fix submitbtn_cart">Chỉnh sửa giỏ hàng </button>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="">
                                             <hr class="hrtitle_GH" /> </div>
                                         <div class="form-group">
@@ -197,9 +169,14 @@ if (mysqli_connect_error())
                                                 <div class="col-md-5"> <strong><b class="lbl_TongTien">Tổng Tiền</b></strong> </div>
                                                 <div class="col-md-6">
                                                     <div class="pull-right span_content">
-                                                        <p><span>25000</span>đ</p>
+                                                        @if($mua->promotion_price == 0)
+                                                            <p><span><input type="hidden" name="tongtien" value="{{ ($mua->unit_price * $qtymua) }}">{{ ($mua->unit_price * $qtymua) }}</span>đ</p>
+                                                        @else
+                                                            <p><span><input type="hidden" name="tongtien" value="{{ ($mua->promotion_price * $qtymua) }}">{{ ($mua->promotion_price* $qtymua) }}</span>đ</p>
+                                                        @endif
                                                     </div>
-                                                    <br> </div>
+                                                    <br> 
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="space30">&nbsp;</div>
@@ -212,6 +189,7 @@ if (mysqli_connect_error())
                                 </div>
                                 <!-- panel-info -->
                             </div>
+                            @endforeach
                             <!-- body-cart -->
                         </div>
                         <!--full checkout-->

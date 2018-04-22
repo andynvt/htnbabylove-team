@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="shortcut icon" href="source/image/favicon.png" />
+    <link rel="shortcut icon" href="storage/product/favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <base href="{{asset('')}}">
     <title>HOÀNG THỦY NGUYÊN</title>
@@ -84,7 +84,7 @@
                                         <div class="containeroverlay"> 
                                             @foreach($product_image as $anh )
                                                 @if($det->id == $anh->id_detail  )
-                                                <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">@break @endif
+                                                <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">@break @endif
                                             @endforeach </div>
                                     </div>
                                 </div>

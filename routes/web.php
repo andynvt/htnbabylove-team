@@ -41,9 +41,14 @@ Route::get('dieu-khoan-su-dung', [
 	'uses' => 'PageController@getTerms'
 ]);
 
-Route::get('thanh-toan', [
+Route::post('thanh-toan', [
 	'as' => 'thanhtoan',
-	'uses' => 'PageController@getCheckout'
+	'uses' => 'PageController@postCheckout'
+]);
+
+Route::post('chi-tiet-sp/{id}', [
+	'as' => 'chitietsp',
+	'uses' => 'PageController@postChitietsp'
 ]);
 
 Route::get('chi-tiet-san-pham/{id}', [
