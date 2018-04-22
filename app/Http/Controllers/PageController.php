@@ -47,6 +47,7 @@ class PageController extends Controller
         $detail_product = ProductDetail::all();
 
         $sanpham = Product::where('id', $id)->first();
+        // dd($sanpham);
 
         $feedback = Feedback::leftjoin('products as sp', 'feedbacks.id_product', '=' ,'sp.id')
                             ->where('sp.id', $id)
