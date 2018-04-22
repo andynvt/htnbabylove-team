@@ -36,7 +36,7 @@
                             <div class="containeroverlay">
                                 <a href="{{ route('chitietsanpham', $product->id) }}"> @foreach($product_image as $anh )
                                                 @if($product->id == $anh->id_detail  )
-                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                             @break
                                                 @endif
                                             @endforeach</a>

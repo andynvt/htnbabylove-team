@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Trang Chủ | HTN Baby Love</title>
-    <link rel="shortcut icon" href="source/image/favicon.png" />
+    <link rel="shortcut icon" href="storage/product/favicon.png" />
     <base href="{{asset('')}}">
     <link rel="stylesheet" href="">
     <!-- bootstrap 4  -->
@@ -597,7 +597,7 @@
     @foreach($promotion_product as $promo ) 
         @foreach($detail_product as $det ) 
             @if($promo->id == $det->id_product  )
-    <div class="modal fade" id="{{$promo->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="pro{{$promo->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
         <form action="#" method="post">      
             <div class="modal-dialog" role="document">
@@ -623,7 +623,7 @@
                                         <div class="thumbnail">
                                             @foreach($product_image as $anh )
                                                 @if($det->id == $anh->id_detail  )
-                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="" width="480px">
+                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="" width="480px">
                                             @break
                                                 @endif
                                             @endforeach
@@ -708,7 +708,7 @@
     @foreach($new_product as $new ) 
         @foreach($detail_product as $det ) 
             @if($new->id == $det->id_product  )
-    <div class="modal fade" id="{{$new->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="new{{$new->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
         <form action="#" method="post">      
             <div class="modal-dialog" role="document">
@@ -734,7 +734,7 @@
                                         <div class="thumbnail">
                                              @foreach($product_image as $anh )
                                                 @if($det->id == $anh->id_detail  )
-                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="" width="480px">
+                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="" width="480px">
                                             @break
                                                 @endif
                                             @endforeach
@@ -819,7 +819,7 @@
     @foreach($hot_product as $hot ) 
         @foreach($detail_product as $det ) 
             @if($hot->id == $det->id_product  )
-    <div class="modal fade" id="{{$hot->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="hot{{$hot->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
         <form action="#" method="post">      
             <div class="modal-dialog" role="document">
@@ -845,7 +845,7 @@
                                         <div class="thumbnail">
                                             @foreach($product_image as $anh )
                                                 @if($det->id == $anh->id_detail  )
-                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="" width="480px">
+                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="" width="480px">
                                             @break
                                                 @endif
                                             @endforeach

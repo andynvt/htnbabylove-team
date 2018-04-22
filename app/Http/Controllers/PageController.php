@@ -33,6 +33,7 @@ class PageController extends Controller
     public function getLoaiSP($type){
         $lsp = ProductType::all();
         $sp_theoloai = Product::where('id',$type)->get();
+        // dd($sp_theoloai);
         $detail_product = ProductDetail::all();
         $products = Product::all();
         $product_image = ProductImage::all();
@@ -66,6 +67,7 @@ class PageController extends Controller
                             ->groupBy('products.id')
                             ->take(6)
                             ->get();
+        // dd($same_product);
 
         $get1_proimg = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
                             ->join('products as sp', 'ctsp.id_product', '=', 'sp.id')

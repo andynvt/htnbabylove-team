@@ -33,7 +33,7 @@
                                         <div class="containeroverlay">
                                             @foreach($product_image as $anh )
                                                 @if($det->id == $anh->id_detail  )
-                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                             @break
                                                 @endif
                                             @endforeach
@@ -56,7 +56,7 @@
                                                     <div class="space10">&nbsp;</div>
                                                     <p class='text-left text-title'><b>{{$promo->name}}</b>&nbsp;</p>
                                                 </a>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$promo->id}}"><span>Mua Ngay </span></button>
+                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#pro{{$promo->id}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr>
                                     </div>
@@ -93,7 +93,7 @@
                                         <div class="containeroverlay">
                                             @foreach($product_image as $anh )
                                                 @if($det->id == $anh->id_detail  )
-                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                             @break
                                                 @endif
                                             @endforeach
@@ -114,7 +114,7 @@
                                                 </b>
                                         <div class="space10">&nbsp;</div>
                                         <p class='text-left text-title'><b>{{$new->name}}</b>&nbsp;</p>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$new->id}}"><span>Mua Ngay </span></button>
+                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#new{{$new->id}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr>
                                     </div>
@@ -149,7 +149,7 @@
                                         <div class="containeroverlay">
                                            @foreach($product_image as $anh )
                                                 @if($det->id == $anh->id_detail  )
-                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                             @break
                                                 @endif
                                             @endforeach
@@ -171,7 +171,7 @@
                                                     <div class="space10">&nbsp;</div>
                                                     <p class='text-left text-title'><b>{{$hot->name}}</b>&nbsp;</p>
                                                 </a>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$hot->id}}"><span>Mua Ngay </span></button>
+                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#hot{{$hot->id}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr> </div>
                                 </div>

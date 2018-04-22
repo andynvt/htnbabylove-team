@@ -38,7 +38,7 @@
                                         <div class="containeroverlay">
                                             @foreach($product_image as $anh )
                                                 @if($det->id == $anh->id_detail  )
-                                            <img src="source/image/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                             @break
                                                 @endif
                                             @endforeach

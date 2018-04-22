@@ -22,7 +22,7 @@
             <div class="container beta-relative">
                 <div class="pull-center">
                     <div class="space60">&nbsp;</div>
-                    <a href="{{ route('trang-chu') }}" id="logo"><img src="source/image/logo%20main.png" width="350px"></a>
+                    <a href="{{ route('trang-chu') }}" id="logo"><img src="storage/product/logo%20main.png" width="350px"></a>
                     <div class="space60">&nbsp;</div>
                 </div>
                 <div class="clearfix"></div>
@@ -34,7 +34,7 @@
             <div class="container-fluid ">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="logo-mobile">
-                        <a href="{{ route('trang-chu') }}"><img src="source/image/logo%20mobile.png"></a>
+                        <a href="{{ route('trang-chu') }}"><img src="storage/product/logo%20mobile.png"></a>
                     </div>
                     <div class="div-hamburger">
                         <button class="navbar-toggler btn-humburger" type="button" aria-expanded="false" aria-label="Toggle navigation"> <span class="fa fa-bars hamburger" id="hamburger" onclick="openNav()"></span> </button>
@@ -61,13 +61,13 @@
                                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                             <div class="carousel-inner" role="listbox">
                                                 <div class="carousel-item active">
-                                                    <a href="#"><img class="d-block img-fluid img-slide" src="source/image/product_1.jpg"></a>
+                                                    <a href="#"><img class="d-block img-fluid img-slide" src="storage/product/product_1.jpg"></a>
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <a href="#"><img class="d-block img-fluid img-slide" src="source/image/goi.jpg"></a>
+                                                    <a href="#"><img class="d-block img-fluid img-slide" src="storage/product/goi.jpg"></a>
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <a href="#"><img class="d-block img-fluid img-slide" src="source/image/goi.jpg"></a>
+                                                    <a href="#"><img class="d-block img-fluid img-slide" src="storage/product/goi.jpg"></a>
                                                 </div>
                                             </div>
                                             <a class="carousel-control-prev"  href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>

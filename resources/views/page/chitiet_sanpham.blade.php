@@ -27,12 +27,12 @@
             <div class="col-lg-9 col-md-12">
                 <div class="row">
                     <div class="col-sm-4" id="show-images"> 
-                        <img src="source/image/{{ $get1_proimg }}" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
+                        <img src="storage/product/{{ $get1_proimg }}" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
                         <!-- <h2 style="text-align:center">Lightbox</h2> -->
                         <div class="img-mini">
                             <div class="row">
                                 @foreach($getimg as $img)
-                                <div class="column"> <img src="source/image/{{ $img->image }}" style="width:100%; height: 50px"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> 
+                                <div class="column"> <img src="storage/product/{{ $img->image }}" style="width:100%; height: 50px"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> 
                                 </div>
                                 @endforeach
                             </div>
@@ -41,7 +41,7 @@
                             <div class="modal-content">
                                 @foreach($getimg as $img)
                                 <div class="slide-img-mini">
-                                    <div class="numbertext">1 / 4</div> <img src="source/image/{{ $img->image }}" style="width:100%"> 
+                                    <div class="numbertext">1 / 4</div> <img src="storage/product/{{ $img->image }}" style="width:100%"> 
                                 </div>
                                 @endforeach
                                 <a style="color: #288AD6" class="prev" onclick="plusSlides(-1)">&#10094;</a> 
@@ -53,7 +53,7 @@
 
                                 <div class="row" id="bg-modal-product">
                                     @foreach($getimg as $img)
-                                    <div class="column"> <img class="demo cursor" src="source/image/{{ $img->image }}" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise"> 
+                                    <div class="column"> <img class="demo cursor" src="storage/product/{{ $img->image }}" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise"> 
                                     </div>
                                     @endforeach
                                 </div>
@@ -173,7 +173,7 @@
                     <div class="panel" id="tab-description">
                         <p class="intro-product">{{ $sanpham->description }}.</p>
                         @foreach($getimg as $img)
-                            <div class="img-product-show"> <img src="source/image/{{ $img->image }}" /> </div>
+                            <div class="img-product-show"> <img src="storage/product/{{ $img->image }}" /> </div>
                         @endforeach
                     </div>
                 </div>
@@ -324,7 +324,7 @@
 
                 <div class="related-product">
                     <div class="banner-related-product">
-                        <!-- <h4>Sản Phẩm Cùng Loại</h4> --><img src="source/image/related.png" /> </div>
+                        <!-- <h4>Sản Phẩm Cùng Loại</h4> --><img src="storage/product/related.png" /> </div>
                     <div class="row">
                         @foreach($same_product as $same) 
                             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
@@ -341,7 +341,7 @@
                                     <div class="thumbnail">
                                         <a href="{{ route('chitietsanpham', $same->id) }}">
                                             <div class="containeroverlay">
-                                                <img src="source/image/{{$same->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                                <img src="storage/product/{{$same->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                                 <div class="overlay">
                                                     <div class="text">Xem chi tiết</div>
                                                 </div>
@@ -359,11 +359,27 @@
                                                     </b>
                                             <div class="space10">&nbsp;</div>
                                             <p class='text-left text-title'><b>{{$same->name}}</b>&nbsp;</p>
-                                            <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$same->id}}"><span>Mua Ngay </span></button>
+                                            <button type="button" class="btn btn-buy btn-full button {{ $same->id }}" data-toggle="modal" data-target="#pro{{ $same->id }}"><span>Mua Ngay </span></button>
+                                            {{-- <script>
+                                        var stt = {{ $same->status }};
+                                        alert(stt);
+
+                                        if(stt = 1){
+                                            $('.{{ $same->id }}').attr('data-target', 'new{{ $same->id }}');
+                                        }
+                                        else if(stt = 2){
+                                            $('.{{ $same->id }}').attr('data-target', 'hot{{ $same->id }}');
+                                        }
+                                        else{
+                                            $('.{{ $same->id }}').attr('data-target', 'pro{{ $same->id }}');
+                                        }
+                                        
+                                    </script> --}}
                                             <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                             <hr>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         @endforeach
@@ -379,7 +395,7 @@
                         @foreach($hot_product as $hot) 
                             <div class="media beta-sales-item">
                                 <a class="pull-left" href="{{ route('chitietsanpham', $hot->id) }}">
-                                    <img src="source/image/{{$hot->image}}" alt="">
+                                    <img src="storage/product/{{$hot->image}}" alt="">
                                 </a>
                                 <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id) }}">{{$hot->name}}</a>
                                     <p class="beta-sales-price">
@@ -390,7 +406,7 @@
                                             <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
                                         @endif
                                     </p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#{{$hot->id}}"><span>Mua Ngay </span></button>
+                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#hot{{$hot->id}}"><span>Mua Ngay </span></button>
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>
@@ -406,7 +422,7 @@
                         @foreach($new_product as $new)
                             <div class="media beta-sales-item">
                                 <a class="pull-left" href="{{ route('chitietsanpham', $new->id) }}">
-                                    <img src="source/image/{{$new->image}}" alt="">
+                                    <img src="storage/product/{{$new->image}}" alt="">
                                 </a>
                                 <div class="media-body"> <a href="{{ route('chitietsanpham', $new->id) }}">{{$new->name}}</a>
                                     <p class="beta-sales-price">
@@ -417,7 +433,7 @@
                                             <span class="flash-del">{{number_format($new->unit_price)}} đ</span>
                                         @endif
                                     </p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#{{$new->id}}"><span>Mua Ngay </span></button>
+                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#new{{$new->id}}"><span>Mua Ngay </span></button>
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>
