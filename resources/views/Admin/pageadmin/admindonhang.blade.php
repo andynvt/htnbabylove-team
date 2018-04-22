@@ -296,7 +296,7 @@
                                         <div class="cart-product col-md-6 col-12">
                                             <div class="row">
                                                 <div class="cart-div-img col-md-3 col-3">
-                                                    <a href="#"> <img class="img-fluid cart-img" src="source/image/{{$gbb->image}}"> </a>
+                                                    <a href="#"> <img class="img-fluid cart-img" src="storage/product/{{$gbb->image}}"> </a>
                                                 </div>
                                                 <div class="col-md-9 col-9">
                                                     <div class="container-filud">
@@ -304,11 +304,7 @@
                                                                   <b style="font-size:15px;">{{$gbb->product_name}}
 </b>                                                                </a> </div>
                                                         <div class="cart-product-info">
-                                                            <div class="form-group change-color">
-                                                                <div class="color-dropdown">
-                                                                    <button class="btn _select_color dropdowncolor" type="button"> <span class="color" style="background-color: {{$gbb->color}}"></span> </button>
-                                                                </div>
-                                                            </div>
+                                                            <div>Màu: {{$gbb->color}}</div>
                                                             <div> Size: {{$gbb->size}} </div>
                                                         </div>
                                                     </div>

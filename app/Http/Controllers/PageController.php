@@ -150,7 +150,7 @@ class PageController extends Controller
         $bill_detail->color = $req->color;
         $bill_detail->quantity = $req->qty;
         $bill_detail->size = $req->size;
-        $bill_detail->price = $req->tongtien;
+        $bill_detail->price = $req->price;
         $bill_detail->save();
 
         // dd($req->tongtien);

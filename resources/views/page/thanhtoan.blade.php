@@ -140,8 +140,10 @@ if (mysqli_connect_error())
                                                         </div>
                                                         <div class="col-sm-3 col-xs-3 text-right ">
                                                             @if($mua->promotion_price == 0)
+                                                                <input type="hidden" name="price" value="{{ $mua->unit_price }}">
                                                                 <p><span>{{ number_format($mua->unit_price) }}</span>đ</p>
                                                             @else
+                                                                <input type="hidden" name="price" value="{{ $mua->promotion_price }}">
                                                                 <p><span>{{ number_format($mua->promotion_price) }}</span>đ</p> 
                                                             @endif
                                                         </div>
