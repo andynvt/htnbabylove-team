@@ -15,7 +15,8 @@ use Illuminate\Console\Scheduling\Schedule;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-use App\Mail;
+use Mail;
+use App\Mail\MyMail;
 
 class PageController extends Controller
 {

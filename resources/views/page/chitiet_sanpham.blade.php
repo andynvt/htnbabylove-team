@@ -128,13 +128,13 @@
                                         <div class="input-group-prepend">
                                             <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
                                         </div>
-                                        <input type="text" class="form-control text-center" name="qtyspbuy">
+                                        <input value="1" type="text" class="form-control text-center" name="qtyspbuy">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </div>
                                     <div class="space10">&nbsp;</div>
-                                    <label class="choose-qty">Chọn màu sắc:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn số lượng bạn muốn mua"></i></label>
+                                    <label class="choose-qty">Chọn màu sắc:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn màu bạn muốn mua"></i></label>
                                     <div class="form-group">
                                         <select name="colorbuy">
                                             @foreach($getcl as $cl)
