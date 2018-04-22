@@ -501,11 +501,41 @@ class PageController extends Controller
 
     public function completedUpdate($id){
         DB::table('bills')->where('id', $id)->update(['status' => 2]);
+		$customers = Customer::all();
+        $bills = Bill::all();
+
+        $e = Customer::join('bills as b','customers.id','=','b.id_customer')->where('b.id',$id)->value('email');
+        // $to =  $customers->email;
+        $subject = 'Đơn Hàng Đã Được Xác Nhận';
+        $data = array(
+            'contents' => ''
+        );
+        
+
+        Mail::send('email.xacnhan', $data, function($message) use ($e, $subject) {
+            $message->from('ngodangdt@gmail.com', 'HTN_BabyLove');
+            $message->to($e,'')->subject($subject);
+        });
         return redirect()->back();
     }
 
     public function cancelUpdate($id){
         DB::table('bills')->where('id', $id)->update(['status' => 3]);
+		$customers = Customer::all();
+        $bills = Bill::all();
+
+        $e = Customer::join('bills as b','customers.id','=','b.id_customer')->where('b.id',$id)->value('email');
+        // $to =  $customers->email;
+        $subject = 'Đơn Hàng Bị Huỷ';
+        $data = array(
+            'contents' => ''
+        );
+        
+
+        Mail::send('email.huydonhang', $data, function($message) use ($e, $subject) {
+            $message->from('ngodangdt@gmail.com', 'HTN_BabyLove');
+            $message->to($e,'')->subject($subject);
+        });
         return redirect()->back();
     }
 
