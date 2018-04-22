@@ -151,6 +151,7 @@ class PageController extends Controller
         $bill_detail->quantity = $req->qty;
         $bill_detail->size = $req->size;
         $bill_detail->price = $req->price;
+        $bill_detail->image = $req->img;
         $bill_detail->save();
 
         // dd($req->tongtien);
@@ -547,6 +548,7 @@ class PageController extends Controller
         $bill_detail = BillDetail::all();
 
         $get_bill = DB::select(DB::raw('SELECT bd.id as bdid, b.id as bid, b.total_price, bd.product_name, bd.color, bd.image, bd.size, bd.quantity, bd.price, c.name FROM bill_detail as bd, customers as c, bills as b WHERE bd.id_bill in (SELECT b.id FROM bills WHERE b.id_customer in (SELECT c.id FROM customers))'));
+        // dd($get_bill);
                         // dd($get_bill);
         return view('Admin.pageadmin.admindonhang', compact('get_bill','bills','customers','bill_detail'));
     }

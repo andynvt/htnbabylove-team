@@ -127,6 +127,7 @@ if (mysqli_connect_error())
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-sm-3 col-xs-3"> <img class="rounded" src="storage/product/{{ $mua->image }}"/> </div>
+                                                        <input type="hidden" name="img" value="{{ $mua->image }}">
                                                         <div class="col-sm-5 col-xs-5 span_content_body">
                                                             
                                                             <div class="col-xs-12 "><input type="hidden" name="proname" value="{{ $mua->name }}"><strong>{{ $mua->name }}</strong></div>
