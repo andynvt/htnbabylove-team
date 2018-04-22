@@ -394,6 +394,8 @@ class PageController extends Controller
         ]);
         $id_product->save();
         $ctsanpham = ProductDetail::find($idsp);
+        // dd($ctsanpham);
+        // dd($id_product->id);
         $ctsanpham->id_product = $id_product->id;
         $ctsanpham->save();
 
