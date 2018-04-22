@@ -147,7 +147,19 @@
                                             <button type="button" class="btn btn-themvaogio btn-full "><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
                                         </div>
                                         <div class="col-lg-5 col-md-12">
-                                            <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$sanpham->id}}"><span>Mua Ngay </span></button>
+                                            <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="
+                                            
+                                            
+                                            @if($sanpham->promotion_price != 0)
+                                            #pro{{$sanpham->id}}
+                                            @elseif($sanpham->status == 1)
+                                            #new{{$sanpham->id}}
+                                            @elseif($sanpham->status == 2)
+                                            #hot{{$sanpham->id}}
+                                            @endif
+
+
+                                            "><span>Mua Ngay </span></button>
                                         </div>
                                     </div>
                                     <div class="flash"></div>
@@ -339,7 +351,7 @@
                                         @endif
                                     </div>
                                     <div class="thumbnail">
-                                        <a href="{{ route('chitietsanpham', $same->id) }}">
+                                        <a href="{{ route('chitietsanpham', $same->id_product) }}">
                                             <div class="containeroverlay">
                                                 <img src="storage/product/{{$same->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                                 <div class="overlay">
@@ -359,22 +371,14 @@
                                                     </b>
                                             <div class="space10">&nbsp;</div>
                                             <p class='text-left text-title'><b>{{$same->name}}</b>&nbsp;</p>
-                                            <button type="button" class="btn btn-buy btn-full button {{ $same->id }}" data-toggle="modal" data-target="#pro{{ $same->id }}"><span>Mua Ngay </span></button>
-                                            {{-- <script>
-                                        var stt = {{ $same->status }};
-                                        alert(stt);
-
-                                        if(stt = 1){
-                                            $('.{{ $same->id }}').attr('data-target', 'new{{ $same->id }}');
-                                        }
-                                        else if(stt = 2){
-                                            $('.{{ $same->id }}').attr('data-target', 'hot{{ $same->id }}');
-                                        }
-                                        else{
-                                            $('.{{ $same->id }}').attr('data-target', 'pro{{ $same->id }}');
-                                        }
-                                        
-                                    </script> --}}
+                                            <button type="button" class="btn btn-buy btn-full button {{ $same->id_product }}" data-toggle="modal" data-target=" @if($same->promotion_price != 0)
+                                            #pro{{$same->id_product}}
+                                            @elseif($same->status == 1)
+                                            #new{{$same->id_product}}
+                                            @elseif($same->status == 2)
+                                            #hot{{$same->id_product}}
+                                            @endif"><span>Mua Ngay </span></button>
+                                            
                                             <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                             <hr>
                                         </div>
@@ -394,10 +398,10 @@
                         <div class="beta-sales beta-lists">
                         @foreach($hot_product as $hot) 
                             <div class="media beta-sales-item">
-                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id) }}">
+                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id_product) }}">
                                     <img src="storage/product/{{$hot->image}}" alt="">
                                 </a>
-                                <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id) }}">{{$hot->name}}</a>
+                                <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id_product) }}">{{$hot->name}}</a>
                                     <p class="beta-sales-price">
                                         @if($hot->promotion_price == 0)
                                             <span class="text-danger ">{{number_format($hot->unit_price)}} đ</span> &nbsp;
@@ -406,7 +410,7 @@
                                             <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
                                         @endif
                                     </p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#hot{{$hot->id}}"><span>Mua Ngay </span></button>
+                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#hot{{$hot->id_product}}"><span>Mua Ngay </span></button>
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>
@@ -420,11 +424,12 @@
                     <div class="widget-body">
                         <div class="beta-sales beta-lists">
                         @foreach($new_product as $new)
+
                             <div class="media beta-sales-item">
-                                <a class="pull-left" href="{{ route('chitietsanpham', $new->id) }}">
+                                <a class="pull-left" href="{{ route('chitietsanpham', $new->id_product) }}">
                                     <img src="storage/product/{{$new->image}}" alt="">
                                 </a>
-                                <div class="media-body"> <a href="{{ route('chitietsanpham', $new->id) }}">{{$new->name}}</a>
+                                <div class="media-body"> <a href="{{ route('chitietsanpham', $new->id_product) }}">{{$new->name}}</a>
                                     <p class="beta-sales-price">
                                         @if($new->promotion_price == 0)
                                             <span class="text-danger ">{{number_format($new->unit_price)}} đ</span> &nbsp;
@@ -433,7 +438,11 @@
                                             <span class="flash-del">{{number_format($new->unit_price)}} đ</span>
                                         @endif
                                     </p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#new{{$new->id}}"><span>Mua Ngay </span></button>
+                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="
+                                         
+                                            #new{{$new->id_product}}
+                                            
+                                            "><span>Mua Ngay </span></button>
                                     <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 </div>
                             </div>

@@ -61,7 +61,13 @@
                                                     <div class="space10">&nbsp;</div>
                                                     <p class='text-left text-title'><b>{{$promo->name}}</b>&nbsp;</p>
                                                 </a>
-                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$promo->id}}"><span>Mua Ngay </span></button>
+                                        <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="@if($promo->promotion_price != 0)
+                                                #pro{{$promo->id}}
+                                                @elseif($promo->status == 1)
+                                                #new{{$promo->id}}
+                                                @elseif($promo->status == 2)
+                                                #hot{{$promo->id}}
+                                                @endif"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr>
                                     </div>

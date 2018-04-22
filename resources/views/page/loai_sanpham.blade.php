@@ -35,7 +35,7 @@
                         <div class="thumbnail">
                             <div class="containeroverlay">
                                 <a href="{{ route('chitietsanpham', $product->id) }}"> @foreach($product_image as $anh )
-                                                @if($product->id == $anh->id_detail  )
+                                                @if($detail->id == $anh->id_detail  )
                                             <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                             @break
                                                 @endif
@@ -56,7 +56,13 @@
                                 </b>
                                 <div class="space10">&nbsp;</div>
                                 <p class='text-left text-title'><b>{{$product->name}}</b>&nbsp;</p>
-                                <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#{{$product->id}}"><span>Mua Ngay </span></button>
+                                <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="@if($product->promotion_price != 0)
+                                            #pro{{$product->id}}
+                                            @elseif($product->status == 1)
+                                            #new{{$product->id}}
+                                            @elseif($product->status == 2)
+                                            #hot{{$product->id}}
+                                            @endif"><span>Mua Ngay </span></button>
                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 <hr>
                             </div>
