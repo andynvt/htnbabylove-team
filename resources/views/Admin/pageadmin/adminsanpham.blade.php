@@ -118,7 +118,7 @@
                                                 <td>{{ $sp->unit_price }}</td>
                                                 <td>{{ $sp->promotion_price }}</td>
                                                 <td>{{ $sp->size }}</td>
-                                                <td><a href="" data-toggle="modal" data-target="#{{ $sp->spid }}">Xem</a></td>
+                                                <td><a href="" data-toggle="modal" data-target="#ctsp_{{ $sp->spid }}">Xem</a></td>
                                                 <td class="text-center">
                                                     <div class="">
                                                         <a href="{{ route('adminsuasanpham', $sp->spid) }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>

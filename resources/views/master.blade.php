@@ -770,22 +770,6 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
-                                                    <div class="dropdown">
-                                                        <button class="btn _select_color " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret _right"></span> <span class="color" style="background: @foreach($product_color as $anh )
-                                                            @if($anh->id_detail === $new->id  )
-                                                                {{$anh->color}}
-                                                                @break
-                                                            @endif
-                                                        @endforeach
-                                                        "></span></button>
-                                                        <ul class="dropdown-menu _select_color_drop " aria-labelledby="dropdownMenu1">
-                                                             @foreach($product_color as $anh )
-                                                            @if($new->id == $anh->id_detail)  
-                                                                <li><span class="color " style="background: {{$anh->color}}"></span></li>
-                                                                @endif
-                                                             @endforeach 
-                                                            <input type="hidden" name="_color" value=""> </ul>
-                                                    </div>
                                                     <select style="height: 38px">
                                                         @foreach($product_color as $anh)
                                                         @if($anh->id_detail == $new->id ) 
