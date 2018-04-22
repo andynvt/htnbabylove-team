@@ -325,18 +325,25 @@ class PageController extends Controller
 
     public function postadminThemsanpham(Request $req){
         $sanpham = new Product;
+        $ctsanpham = new ProductDetail;
+        if($req->hasfile('images')){
+            foreach($req->file('images') as $image){
+                $name=date('Y-m-d-H:i:s')."-".$image->getClientOriginalName();
+                $image->move('storage/product', $name);  
+                $img[] = $name;  
+            }
+        }
+
         $sanpham->name = $req->ten;
         $sanpham->unit_price = $req->giagoc;
         $sanpham->promotion_price = $req->giakhuyenmai;
         $sanpham->size = $req->kichthuoc;
         $sanpham->status = $req->trangthai;
         $sanpham->description = $req->mota;
-        $typename = $req->loaisanpham;
-        $getidloai = ProductType::where('type_name','=',$typename)->value('id');
-        $sanpham->id_type = $getidloai;
+        $id_type = $req->loaisanpham;
+        $sanpham->id_type = $id_type;
         $sanpham->save();
 
-        $ctsanpham = new ProductDetail;
         $ctsanpham->id_product = $sanpham->id;
         $ctsanpham->save();
 
@@ -346,16 +353,13 @@ class PageController extends Controller
             $colorsp->color = $key;
             $colorsp->save();
         }
-
-        foreach ($req->hinh as $key) {
-            $imgsp = new ProductImage;
-            $imgsp->id_detail = $ctsanpham->id;
-            $imgsp->image = $key;
-            $imgsp->save();
+        foreach($img as $i){
+            ProductImage::insert( [
+                'id_detail'=>$ctsanpham->id,
+                'image'=>$i,
+            ]);
         }
-        
-        return redirect()->back();
-    }
+        return redirect()->back();    }
 
     public function getadminSuasanpham($idsp){
         $product_type = ProductType::all();
@@ -380,7 +384,6 @@ class PageController extends Controller
 
     public function postadminSuasanpham($idsp, Request $req){
         $id_product = Product::find($idsp);
-
         Product::where('id',$idsp)->update([
             'name'=>$req->newname,
             'id_type'=>$req->newtype,
@@ -389,29 +392,36 @@ class PageController extends Controller
             'size'=>$req->newsize,
             'description'=>$req->newdesc
         ]);
-
         $id_product->save();
-
         $ctsanpham = ProductDetail::find($idsp);
         $ctsanpham->id_product = $id_product->id;
         $ctsanpham->save();
 
         $id_detail = ProductDetail::where('id_product',$idsp)->value('id');
         $id_color = ProductColor::where('id',$id_detail)->value('id');
-
-
+        $id_image = ProductImage::where('id_detail',$id_detail)->get();
+        foreach ($id_image as $idi) {
+            $idim[] = $idi->id;
+        }
         foreach ($req->newcolor as $key) {
             $colorsp = ProductColor::find($idsp);
             $colorsp->id_detail = $ctsanpham->id;
             $colorsp->color = $key;
             $colorsp->save();
         }
-
-        foreach ($req->newimage as $key) {
-            $imgsp = ProductImage::find($idsp);
-            $imgsp->id_detail = $ctsanpham->id;
-            $imgsp->image = $key;
-            $imgsp->save();
+        if($req->hasfile('newimage')){
+            foreach($req->file('newimage') as $image){
+                $name=date('Y-m-d-H:i:s')."-".$image->getClientOriginalName();
+                $image->move('storage/product', $name);  
+                $img[] = $name;  
+            }
+        }
+        $i=0; 
+        foreach($idim as $idm){
+            ProductImage::where('id',$idm)->update([
+                'image'=>$img[$i]
+            ]);
+            $i++;
         }
         return redirect()->back();
     }

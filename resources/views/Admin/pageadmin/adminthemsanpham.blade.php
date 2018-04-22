@@ -74,7 +74,7 @@
 
                                 <!--                                Phan modal them san pham-->
                                 <div class="container-fluid">
-                                    <form class="form-horizontal" action="{{ route('adminthemsp') }}" enctype="multipart/form-data" id="formUpload">
+                                    <form method="POST" class="form-horizontal" action="{{ route('adminthemsp') }}" enctype="multipart/form-data" id="formUpload">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="ten">Tên:</label>
@@ -86,7 +86,7 @@
                                             <div class="col-sm-8">
                                                 <select class="form-control w50" name="loaisanpham">
                                                     @foreach($addlsp as $lsp)
-                                                    <option>{{ $lsp->type_name }}</option>
+                                                    <option value="{{$lsp->id}}">{{ $lsp->type_name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -158,14 +158,17 @@
                                             <div class="col-sm-8">
                                                 <div class="box-upload">
                                                     <div class="themhinh">
-                                                        {{-- <button class="btn btn-default dehinh" style="cursor: pointer">
+                                                        <button class="btn btn-default dehinh" style="cursor: pointer">
                                                            <i class="fa fa-plus"></i>
-                                                           <input type="file" name="hinh[]" multiple="true" accept="image/png, image/jpg, image/jpeg">
-                                                       </button> --}}
-                                                       {!! Form::open(array('route' => 'fileUpload','enctype' => 'multipart/form-data')) !!}
+                                                           <input type="file" name="images[]" multiple accept="image/png, image/jpg, image/jpeg">
+                                                       </button>
+    
+                                                        {{-- {!! Form::file('image', array('class' => 'image')) !!} --}}
+
+                                                       {{-- {!! Form::open(array('route' => 'fileUpload','enctype' => 'multipart/form-data')) !!}
                                                        {!! Form::file('image', array('class' => 'image')) !!}
                                                        {!! Form::close() !!}
-                                                    </div>
+ --}}                                                    </div>
                                                 </div>
                                                 <p style="color: #9A9A9A;">(*) Trỏ chuột vào dấu cộng để xem tên các ảnh đã chọn</p>
                                             </div>

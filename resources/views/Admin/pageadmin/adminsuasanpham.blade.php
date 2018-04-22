@@ -191,7 +191,7 @@
                                                     <div class="themhinh">
                                                         <button class="btn btn-default dehinh" style="cursor: pointer">
                                                            <i class="fa fa-plus"></i>
-                                                           <input type="file" name="newimage[]" multiple>
+                                                           <input type="file" name="newimage[]" multiple accept="image/png, image/jpg, image/jpeg">
                                                        </button>
                                                     </div>
                                                 </div>

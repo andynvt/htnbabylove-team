@@ -102,7 +102,7 @@ Route::get('admin-sanpham', [
 	'uses' => 'PageController@getadminSanpham'
 ])->middleware('adminLogin');
 
-Route::get('admin-themsp', [
+Route::post('admin-themsp', [
 	'as' => 'adminthemsp',
 	'uses' => 'PageController@postadminThemsanpham'
 ])->middleware('adminLogin');
