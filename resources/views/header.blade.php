@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="row"> </div>
-                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                        <div id="carouselExampleControls" class="carousel slide slider-index" data-ride="carousel">
                                             <div class="carousel-inner" role="listbox">
                                                 <div class="carousel-item active">
                                                     <a href="#"><img class="d-block img-fluid img-slide" src="storage/product/product_1.jpg"></a>
@@ -87,6 +87,11 @@
                             <i class="fa fa-shopping-cart shop-cart"></i>
                             <span id="number-cart">5</span>
                             <style>
+                                .slider-index .carousel-item img{
+                                    margin: 0 auto;
+                                    display: block;
+                                    /*width: 60%;*/
+                                }
                                 #number-cart {
                                     position: absolute;
                                     top: -5px;
@@ -106,6 +111,10 @@
                     </div>
                 </nav>
             </div>
-            <div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> <a href="#">Mền</a> <a href="#">Áo Gối</a> <a href="#">Gối</a> <a href="#">Áo choàng - Khăn choàng</a> <a href="#">Mền</a> <a href="#">Mền</a> </div>
+            <div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> 
+                @foreach($loai_sanpham as $l_sp)
+                <a href="{{ route('loaisanpham',$l_sp->id) }}">{{$l_sp->type_name}}</a>  
+                @endforeach
+            </div>
         </div>
         <div class="clearfix"></div>

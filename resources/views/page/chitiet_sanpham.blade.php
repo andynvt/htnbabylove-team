@@ -219,7 +219,7 @@
                             </div>
                         @endforeach 
 
-                    <div class="pagination-comment">
+                    {{-- <div class="pagination-comment">
                         <div class="row" id="frame-paging">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
@@ -235,7 +235,7 @@
                                 </ul>
                             </nav>
                         </div>
-                    </div>
+                    </div> --}}
                     <hr>
                     <div class="text-comment" id="text-comment"> </div>
                 </div>

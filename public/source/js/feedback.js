@@ -39,23 +39,23 @@ $(document).ready(function () {
         // JUST RESPONSE (Not needed)
         ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
         if (ratingValue == 1) {
-            addImg = "source/image/toobad-feedback.png";
+            addImg = "storage/product/toobad-feedback.png";
             msg = "Quá xấu!!";
             $("#star-feedback").val(ratingValue);
         } else if (ratingValue == 2) {
-            addImg = "source/image/badservice-feedback.png";
+            addImg = "storage/product/badservice-feedback.png";
             msg = "Xấu!!";
             $("#star-feedback").val(ratingValue);
         } else if (ratingValue == 3) {
-            addImg = "source/image/normal-feedback.png";
+            addImg = "storage/product/normal-feedback.png";
             msg = "Bình thường!!";
             $("#star-feedback").val(ratingValue);
         } else if (ratingValue == 4) {
-            addImg = "source/image/good-feedback.png";
+            addImg = "storage/product/good-feedback.png";
             msg = "Đẹp!!";
             $("#star-feedback").val(ratingValue);
         } else {
-            addImg = "source/image/excellent-feedback.png";
+            addImg = "storage/product/excellent-feedback.png";
             msg = "Rất đẹp!!!!";
             $("#star-feedback").val(ratingValue);
         }
