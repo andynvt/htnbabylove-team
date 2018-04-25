@@ -53,7 +53,7 @@
 
                                 <div class="row" id="bg-modal-product">
                                     @foreach($getimg as $img)
-                                    <div class="column"> <img class="demo cursor" src="storage/product/{{ $img->image }}" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise"> 
+                                    <div class="column"> <img class="demo cursor" src="storage/product/{{ $img->image }}" style="width:100%" onclick="currentSlide(1)" alt="{{ $img->name }}"> 
                                     </div>
                                     @endforeach
                                 </div>

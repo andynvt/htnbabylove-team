@@ -97,21 +97,25 @@
                                                         new Chart(document.getElementById("line-chart"), {
                                                             type: 'line'
                                                             , data: {
-                                                                labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"]
+                                                                labels: [
+                                                                            @foreach($getmonth as $month)
+                                                                                "Tháng {{ $month->month }}",
+                                                                            @endforeach
+                                                                ]
                                                                 , datasets: [{
                                                                     data: [
-                                                                        @foreach($getmonth as $mnt)
-                                                                            {{ $mnt->month }},
-                                                                        @endforeach
+                                                                            @foreach($dtdh as $dh)
+                                                                                {{ $dh->numbill }},
+                                                                            @endforeach
                                                                         ]
                                                                     , label: "Đơn hàng"
                                                                     , borderColor: "#3e95cd"
                                                                     , fill: false
                                                                 }, {
                                                                     data: [
-                                                                        @foreach($getdate as $day)
-                                                                            {{ $day->day }},
-                                                                        @endforeach
+                                                                            @foreach($dtdh as $sp)
+                                                                                {{ $sp->tongsp }},
+                                                                            @endforeach
                                                                         ]
                                                                     , label: "Sản phẩm bán ra"
                                                                     , borderColor: "#8e5ea2"
@@ -151,15 +155,18 @@
                                                         new Chart(document.getElementById("bar-chart"), {
                                                             type: 'bar'
                                                             , data: {
-                                                                labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"]
+                                                                labels: [
+                                                                            @foreach($getmonth as $month)
+                                                                                "Tháng {{ $month->month }}",
+                                                                            @endforeach
+                                                                ]
                                                                 , datasets: [{
                                                                     label: "Doanh thu (Triệu)"
                                                                     , backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#dddddd", "#eeeeee", "#FF8A80", "#F48FB1", "#BA68C8", "#B39DDB", "#90CAF9"]
                                                                     , data: [
-                                                                                @foreach($gettprice as $price)
-                                                                                    {{ $price->total_price }},
+                                                                                @foreach($dtdh as $price)
+                                                                                    {{ $price->tongtien }},
                                                                                 @endforeach
-
                                                                             ]
                                                                 }]
                                                             }

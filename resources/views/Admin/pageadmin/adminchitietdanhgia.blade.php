@@ -1,5 +1,9 @@
 @extends('Admin.master')
 
+@if (session('deletefb'))
+    <body onload="alertbabyproject()"><div class="alert-babyproject">Đã xoá</div></body>
+@endif
+
 @section('contentadmin')
 <div class="wrapper">
         <div class="sidebar" data-background-color="white" data-active-color="danger">
