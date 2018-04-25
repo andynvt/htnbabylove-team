@@ -371,7 +371,7 @@ class PageController extends Controller
         $ctsanpham = new ProductDetail;
         if($req->hasfile('images')){
             foreach($req->file('images') as $image){
-                $name=date('Y-m-d-H:i:s')."-".$image->getClientOriginalName();
+                $name=date('Y-m-d-H-i-s')."-".$image->getClientOriginalName();
                 $image->move('storage/product', $name);  
                 $img[] = $name;  
             }
@@ -454,7 +454,7 @@ class PageController extends Controller
         }
         if($req->hasfile('newimage')){
             foreach($req->file('newimage') as $image){
-                $name=date('Y-m-d-H:i:s')."-".$image->getClientOriginalName();
+                $name=date('Y-m-d-H-i-s')."-".$image->getClientOriginalName();
                 $image->move('storage/product', $name);  
                 $img[] = $name;  
             }
