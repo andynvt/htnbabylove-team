@@ -19,9 +19,8 @@
                     <div class="text-left" style="font-size: 25px; font-weight: 600"> Tìm Thấy {{count($product)}} Sản Phẩm </div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
-                          @foreach($product as $promo ) 
-                        @foreach($detail_product as $det ) 
-                        @if($promo->id == $det->id_product  )
+                        @foreach($product as $promo ) 
+                       
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
@@ -34,14 +33,11 @@
                                     @endif
                                 </div>
                                 <div class="thumbnail">
-                                    <a href="{{ route('chitietsanpham', $promo->id) }}">
+                                    <a href="{{ route('chitietsanpham', $promo->id_product) }}">
                                         <div class="containeroverlay">
-                                            @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id_detail  )
-                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
-                                            @break
-                                                @endif
-                                            @endforeach
+                                           
+                                            <img src="storage/product/{{$promo->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                            
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>
                                             </div>
@@ -62,11 +58,11 @@
                                                     <p class='text-left text-title'><b>{{$promo->name}}</b>&nbsp;</p>
                                                 </a>
                                         <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="@if($promo->promotion_price != 0)
-                                                #pro{{$promo->id}}
+                                                #pro{{$promo->id_product}}
                                                 @elseif($promo->status == 1)
-                                                #new{{$promo->id}}
+                                                #new{{$promo->id_product}}
                                                 @elseif($promo->status == 2)
-                                                #hot{{$promo->id}}
+                                                #hot{{$promo->id_product}}
                                                 @endif"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr>
@@ -75,10 +71,7 @@
                             </div>
                         </div>
                         
-                            @break
-                        
-                        @endif 
-                        @endforeach 
+                       
                         @endforeach
                     </div>
                     

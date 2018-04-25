@@ -21,13 +21,23 @@ use App\Mail\MyMail;
 class PageController extends Controller
 {
     public function getIndex(){
-        $promotion_product = Product::where('promotion_price', '<>', '0')->get();
-        $new_product = Product::where('status', 1)->get();
-        $hot_product = Product::where('status', 2)->get();
-        $product = Product::all();
-        $detail_product = ProductDetail::all();
-        $product_image = ProductImage::all();
-        $product_color = ProductColor::all();
+        $promotion_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('promotion_price', '<>', '0')
+                            ->groupBy('products.id')
+                            ->get();
+        $new_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('status', 1)
+                            ->groupBy('products.id')
+                            ->get();
+        $hot_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('status', 2)
+                            ->groupBy('products.id')
+                            ->get();
+
+
         $lsp = ProductType::all();
         return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product','product_image','product_color'));
     }
@@ -36,12 +46,19 @@ class PageController extends Controller
         $lsp = ProductType::all();
         $sp_theoloai = Product::where('id',$type)->get();
         $detail_product = ProductDetail::all();
-        $products = Product::all();
+        // $products = Product::all();
         $product_image = ProductImage::all();
         $product_color = ProductColor::all();
         $loai_ssp = ProductType::where('id',$type)->first();
 
-        return view('page.loai_sanpham',compact('lsp','sp_theoloai','detail_product','products','loai_ssp','product_color','product_image'));
+        $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->where('ty.id','=',$type)
+                            ->groupBy('products.id')
+                            ->get();
+
+        return view('page.loai_sanpham',compact('lsp','sp_theoloai','detail_product','product','loai_ssp','product_color','product_image'));
     }
 
     public function getDetail($id){
@@ -175,9 +192,13 @@ class PageController extends Controller
     public function getTimkiem(Request $req){
         $tensp =$req->search;
         $value = $req->members;
-        $product_image = ProductImage::all();
+        $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)
+                            ->groupBy('products.id')
+                            ->get();
 
-        $product = Product::where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)->get();
+        // $product = Product::where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)->get();
 
         //cắt chuỗi của giá tiền
         
@@ -189,66 +210,82 @@ class PageController extends Controller
         if(!empty($req->price)){
             switch(  $tensp || $giatien || $value)  {
                 case $tensp :
-                    $product = Product::where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)->get();
+                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)
+                            ->groupBy('products.id')
+                            ->get();
                 break;
 
                 case $value ;
-                    $product = DB::table('products as sp')
-                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id')
-                        ->Join('product_detail as detail','sp.id','=','detail.id_product')
-                        ->select('sp.id','sp.name','sp.id','sp.promotion_price','sp.unit_price','sp.status')
-                        ->where('sp.id_type','=',$value)
-                        ->distinct()
-                        ->get();
+                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->where('ty.id','=',$value)
+                            ->groupBy('products.id')
+                            ->get();
+
+                    
+
                 break;
 
                 case $giatien :
-                    $product = DB::table('products')->whereBetween('unit_price', [$giatien[0],$giatien[1]] )->get();
+                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->whereBetween('unit_price', [$giatien[0],$giatien[1]] )
+                            ->groupBy('products.id')
+                            ->get();
+
                 break;
 
                 case ($tensp && $value) :
-                    $product = DB::table('products as sp')
-                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id')
-                        ->Join('product_detail as detail','sp.id','=','detail.id_product')
-                        ->Where('sp.name','like','%'.$tensp.'%')
-                        ->orwhere('sp.id_type','=',$value)
-                        ->select('sp.id','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
-                        ->distinct()
-                        ->get();
+                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->Where('sp.name','like','%'.$tensp.'%')
+                            ->orwhere('ty.id','=',$value)
+                            ->groupBy('products.id')
+                            ->get();
+                            dd($product);
+
+                   
                 break;
 
                 case ($tensp && $giatien) :
-                    $product = DB::table('products as sp')
-                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id')
-                        ->Join('product_detail as detail','sp.id','=','detail.id_product')
-                        ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
-                        ->orWhere('sp.name','like','%'.$tensp.'%')
-                        ->select('sp.id','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
-                        ->distinct()
-                        ->get();
+                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
+                            ->orWhere('sp.name','like','%'.$tensp.'%')
+                            ->groupBy('products.id')
+                            ->get();
+
+                    
                 break;
 
                 case ($value && $giatien) :
-                    $product = DB::table('products as sp')
-                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id')
-                        ->Join('product_detail as detail','sp.id','=','detail.id_product')
-                        ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
-                        ->orwhere('sp.id_type','=',$value)
-                        ->select('sp.id','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
-                        ->distinct()
-                        ->get();
+                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
+                            ->orwhere('ty.id','=',$value)
+                            ->groupBy('products.id')
+                            ->get();
+
+
+               
                 break;
 
                 case ($tensp && $value && $giatien) :
-                    $product = DB::table('products as sp')
-                        ->Join('product_type as ctsp', 'sp.id_type', '=', 'ctsp.id')
-                        ->Join('product_detail as detail','sp.id','=','detail.id_product')
-                        ->Where('sp.name','like','%'.$tensp.'%')
-                        ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
-                        ->orwhere('sp.id_type','=',$value)
-                        ->select('sp.id','sp.name','sp.id_type','sp.promotion_price','sp.unit_price','sp.status')
-                        ->distinct()
-                        ->get();
+                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->Where('sp.name','like','%'.$tensp.'%')
+                            ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
+                            ->orwhere('ty.id','=',$value)
+                            ->groupBy('products.id')
+                            ->get();
+
+                   
                 break;
                 default:
 
@@ -258,49 +295,70 @@ class PageController extends Controller
     
      // dd($product);
     
-        $detail_product = ProductDetail::all();
+        
         $lsp = ProductType::all();
 
-        return view('page.timkiem',compact('detail_product','lsp','product','product_image'));
+        return view('page.timkiem',compact('lsp','product'));
        
        
     }
 
 
     public function getTimkiemloai(Request $req){
-        $product_image = ProductImage::all();
+        $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->groupBy('products.id')
+                            ->get();
 
         if($req->pro === 'sale'){
-            $product = Product::where('promotion_price', '<>', '0')->get();
+            $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('promotion_price', '<>', '0')
+                            ->groupBy('products.id')
+                            ->get();
 
         }
         if($req->pro === 'new'){
-            $product = Product::where('status', 1)->get();
+            $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('status', 1)
+                            ->groupBy('products.id')
+                            ->get();
 
         }
         if($req->pro === 'hot'){
-            $product = Product::where('status', 2)->get();
+            $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('status', 2)
+                            ->groupBy('products.id')
+                            ->get();
 
         }
         if($req->pro === 'giagiam'){
-            $product = DB::table('products')
-                ->orderByRaw('unit_price  DESC')
-                ->get();
+            $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->orderByRaw('unit_price  DESC')
+                            ->groupBy('products.id')
+                            ->get();
+            // $product = DB::table('products')
+            //     ->orderByRaw('unit_price  DESC')
+            //     ->get();
 
         }
         if($req->pro === 'giatang'){
-            $product = DB::table('products')
-                ->orderByRaw('unit_price  ASC')
-                ->get();
+            $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->orderByRaw('unit_price  ASC')
+                            ->groupBy('products.id')
+                            ->get();
+            // $product = DB::table('products')
+            //     ->orderByRaw('unit_price  ASC')
+            //     ->get();
 
         }
-
-
-     // dd($product);
-    
-        $detail_product = ProductDetail::all();
+        
         $lsp = ProductType::all();
-        return view('page.timkiemloai',compact('detail_product','lsp','product','product_image'));
+        return view('page.timkiemloai',compact('lsp','product'));
     }
 
     //Admin
