@@ -61,7 +61,7 @@
                                     <div class="ribbon1 sale">Sale</div>
                                 </div>
                                 <div class="thumbnail">
-                                    <a href="{{ route('chitietsanpham', $promo->id) }}">
+                                    <a href="{{ route('chitietsanpham', $promo->id_product) }}">
                                         <div class="containeroverlay">
                                            
                                             <img src="storage/product/{{$promo->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
@@ -115,7 +115,7 @@
                                     @endif
                                 </div>
                                 <div class="thumbnail">
-                                    <a href="{{ route('chitietsanpham', $new->id) }}">
+                                    <a href="{{ route('chitietsanpham', $new->id_product) }}">
                                         <div class="containeroverlay">
                                             
                                             <img src="storage/product/{{$new->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
@@ -166,7 +166,7 @@
                                     @endif
                                 </div>
                                 <div class="thumbnail">
-                                    <a href="{{ route('chitietsanpham', $hot->id) }}">
+                                    <a href="{{ route('chitietsanpham', $hot->id_product) }}">
                                         <div class="containeroverlay">
                                             <img src="storage/product/{{$hot->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                            
