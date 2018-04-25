@@ -11,8 +11,6 @@ use App\Bill;
 use App\ProductImage;
 use App\ProductColor;
 use DB;
-use Cart;
-use Session;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,11 +24,7 @@ class AppServiceProvider extends ServiceProvider
         
         view()->composer('header',function($view){
             $loai_sanpham = ProductType::all();
-            if(Session('cart')){
-                $oldCart = Session::get('cart');
-                $cart = new Cart($oldCart);
-            }
-            $view->with(['loai_sanpham',$loai_sanpham, 'cart'=>Session::get('cart'),'product_cart'=>$cart->items, 'totalPrice'=>$cart->totalPrice, 'totalQty'=>$cart->totalQty]);
+            $view->with('loai_sanpham',$loai_sanpham);
         });
 
         view()->composer('master',function($view){
@@ -78,10 +72,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('loai_sp',$loai_sp);
         });
 
-        view()->composer('Admin.pageadmin.admindanhgia', function($view){
-            $loai_sp = ProductType::all();
-            $view->with('loai_sp',$loai_sp);
-        });  
+        // view()->composer('page.loai_sanpham',function($view){
+        //     $l_sanpham = ProductType::all();
+        //     $view->with('l_sanpham',$l_sanpham);
+        // });
 
         view()->composer('Admin.pageadmin.adminnav',function($view){
             $confirm_bill = Bill::where('status', 4)->get();
