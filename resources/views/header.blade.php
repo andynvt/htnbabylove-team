@@ -10,7 +10,7 @@
                 <div class="pull-right auto-width-right header-top-right">
                     <ul class="top-details menu-beta l-inline header-top-row">
                         <li><a href="{{ route('gioithieu') }}"><i class="fa fa-info-circle"></i>Giới Thiệu</a></li>
-                        <li data-toggle="modal" data-target="#contactModal" class="line"><a><i class="fa fa-phone"></i>Liên Hệ</a></li>
+                        <li style="cursor: pointer;" data-toggle="modal" data-target="#contactModal" class="line"><a><i class="fa fa-phone"></i>Liên Hệ</a></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
