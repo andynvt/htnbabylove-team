@@ -12,34 +12,27 @@
         </div>
         <div class="col-lg-9 col-md-12">
             <div class="space10">&nbsp;</div>
-            <div class="text-left" style="font-size: 25px; font-weight: 600"> {{$loai_ssp->type_name}}</div>
+            <div class="text-left" style="font-size: 25px; font-weight: 600">Tìm Thấy {{count($product)}} Sản Phẩm Loại: {{$loai_ssp->type_name}}</div>
             <div class="space15">&nbsp;</div>
             <div class="row">
-            
-                @foreach($products as $product)
-                @foreach($sp_theoloai as $sp)
-                    @if($product->id_type ==$sp->id )
-                        @foreach($detail_product as $detail)
-                            @if($product->id == $detail->id_product)
+             
+                @foreach($product as $pro)
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                     <div class="single-item">
                         <div class="ribbon-wrapper">
-                        @if($product->promotion_price != 0)
+                        @if($pro->promotion_price != 0)
                             <div class="ribbon1 sale">Sale</div>
-                        @elseif($product->status == 1)
+                        @elseif($pro->status == 1)
                             <div class="ribbon1 new">New</div>
-                        @elseif($product->status == 2)
+                        @elseif($pro->status == 2)
                             <div class="ribbon1 hot">Hot</div>
                         @endif
                         </div>
                         <div class="thumbnail">
                             <div class="containeroverlay">
-                                <a href="{{ route('chitietsanpham', $product->id) }}"> @foreach($product_image as $anh )
-                                                @if($detail->id == $anh->id_detail  )
-                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
-                                            @break
-                                                @endif
-                                            @endforeach</a>
+                                <a href="{{ route('chitietsanpham', $pro->id_product) }}"> 
+                                            <img src="storage/product/{{$pro->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                           </a>
                                 <div class="overlay">
                                     <div class="text">Xem chi tiết</div>
                                 </div>
@@ -47,21 +40,21 @@
                             <div class="caption">
                                 <div class="space5">&nbsp;</div>
                                 <b class="text-price">
-                                @if($product->promotion_price == 0)
-                                    <span class="text-danger ">{{number_format($product->unit_price)}} đ</span> &nbsp;
+                                @if($pro->promotion_price == 0)
+                                    <span class="text-danger ">{{number_format($pro->unit_price)}} đ</span> &nbsp;
                                 @else
-                                    <span class="text-danger ">{{number_format($product->promotion_price)}} đ</span> &nbsp;
-                                    <span class="flash-del">{{number_format($product->unit_price)}} đ</span>
+                                    <span class="text-danger ">{{number_format($pro->promotion_price)}} đ</span> &nbsp;
+                                    <span class="flash-del">{{number_format($pro->unit_price)}} đ</span>
                                 @endif
                                 </b>
                                 <div class="space10">&nbsp;</div>
-                                <p class='text-left text-title'><b>{{$product->name}}</b>&nbsp;</p>
-                                <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="@if($product->promotion_price != 0)
-                                            #pro{{$product->id}}
-                                            @elseif($product->status == 1)
-                                            #new{{$product->id}}
-                                            @elseif($product->status == 2)
-                                            #hot{{$product->id}}
+                                <p class='text-left text-title'><b>{{$pro->name}}</b>&nbsp;</p>
+                                <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="@if($pro->promotion_price != 0)
+                                            #pro{{$pro->id_product}}
+                                            @elseif($pro->status == 1)
+                                            #new{{$pro->id_product}}
+                                            @elseif($pro->status == 2)
+                                            #hot{{$pro->id_product}}
                                             @endif"><span>Mua Ngay </span></button>
                                 <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                 <hr>
@@ -69,12 +62,7 @@
                         </div>
                     </div>
                 </div>      
-                              @break 
-                            @endif
-                        @endforeach
-                        
-                    @endif
-                @endforeach
+                     
             @endforeach
             </div>
        
