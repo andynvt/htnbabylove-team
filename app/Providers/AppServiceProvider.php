@@ -11,7 +11,7 @@ use App\Bill;
 use App\ProductImage;
 use App\ProductColor;
 use DB;
-use Cart;
+use App\Cart;
 use Session;
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +27,14 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('header',function($view){
             $loai_sanpham = ProductType::all();
             $view->with('loai_sanpham',$loai_sanpham);
+        });
+
+	view()->composer('header',function($view){
+            if(Session('cart')){
+                $oldCart = Session::get('cart');
+                $cart = new Cart($oldCart);
+                $view->with(['cart'=>Session::get('cart'), 'product_cart'=>$cart->items, 'totalPrice'=>$cart->totalPrice, 'totalQty'=>$cart->totalQty]);
+            }
         });
 
         view()->composer('master',function($view){

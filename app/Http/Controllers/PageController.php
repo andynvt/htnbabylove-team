@@ -20,6 +20,65 @@ use App\Mail\MyMail;
 
 class PageController extends Controller
 {
+	public function getAddtoCart(Request $req, $id){
+        $product = Product::find($id);
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $id);
+        $req->session()->put('cart',$cart);
+        return redirect()->back();
+    }
+
+    public function getDelItemCart($id){
+        $oldCart = Session::has('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+        if(count($cart->items) > 0){
+            Session::put('cart',$cart);
+        }
+        else{
+            Session::forget('cart');
+        }
+        return redirect()->back();
+    }
+
+    public function getThanhToan(){
+        return view('page.thanhtoan');
+    }
+
+    public function postDatHang(Request $req){
+        $cart = Session::get('cart');
+
+        $cus = new Customer;
+        $cus->name = $req->cusname;
+        $cus->email = $req->email;
+        $cus->address = $req->address;
+        $cus->phone = $req->phone;
+        $cus->save();
+
+        $bill = new Bill;
+        $bill->id_customer = $cus->id;
+        $bill->total_product = $cart->totalQty;
+        $bill->total_price = $cart->totalPrice;
+        $bill->address = $req->address;
+        $bill->status = 4;
+        $bill->save();
+
+        foreach ($cart->items as $key => $value) {
+            $bill_detail = new BillDetail;
+            $bill_detail->id_bill = $bill->id;
+            $bill_detail->product_name = $value['proname'];
+            $bill_detail->color = $value['color'];
+            $bill_detail->quantity = $value['qty'];
+            $bill_detail->size = $value['valuesize'];
+            $bill_detail->price = ($value['price']/$value['valuesize']);
+            // $bill_detail->image = $value['img'];
+            $bill_detail->save(); 
+        }
+        Session::forget('cart');
+        return redirect()->action('PageController@getIndex')->with('success', 'Đặt hàng thàng công. Bạn chờ nhận mail xác nhận nhé!');
+    }
+
     public function getIndex(){
         $promotion_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
