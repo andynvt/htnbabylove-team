@@ -11,6 +11,8 @@ use App\Bill;
 use App\ProductImage;
 use App\ProductColor;
 use DB;
+use Cart;
+use Session;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -72,10 +74,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('loai_sp',$loai_sp);
         });
 
-        // view()->composer('page.loai_sanpham',function($view){
-        //     $l_sanpham = ProductType::all();
-        //     $view->with('l_sanpham',$l_sanpham);
-        // });
+        view()->composer('Admin.pageadmin.admindanhgia', function($view){
+            $loai_sp = ProductType::all();
+            $view->with('loai_sp',$loai_sp);
+        });  
 
         view()->composer('Admin.pageadmin.adminnav',function($view){
             $confirm_bill = Bill::where('status', 4)->get();
