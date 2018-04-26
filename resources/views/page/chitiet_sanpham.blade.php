@@ -370,7 +370,7 @@
                                                 @endif">
                                                 <span>Mua Ngay </span>
                                             </button>
-                                            <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                            <a class="btn btn-themvaogio btn-full ">Thêm vào giỏ</a>
                                             <hr>
                                         </div>
                                     </div>
@@ -402,7 +402,7 @@
                                         @endif
                                     </p>
                                     <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#hot{{$hot->id_product}}"><span>Mua Ngay </span></button>
-                                    <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                    <a class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</a>
                                 </div>
                             </div>
                         @endforeach
@@ -429,7 +429,7 @@
                                         @endif
                                     </p>
                                     <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#new{{$new->id_product}}"><span>Mua Ngay </span></button>
-                                    <button type="button" class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                    <a class="btn-ms btn-themvaogio btn-full ">Thêm vào giỏ</a>
                                 </div>
                             </div>
                         @endforeach

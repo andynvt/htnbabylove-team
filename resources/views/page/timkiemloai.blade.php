@@ -63,7 +63,7 @@
                                                 @elseif($new->status == 2)
                                                 #hot{{$new->id_product}}
                                                 @endif"><span>Mua Ngay </span></button>
-                                        <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
+                                        <a class="btn btn-themvaogio btn-full ">Thêm vào giỏ</a>
                                         <hr>
                                     </div>
                                 </div>

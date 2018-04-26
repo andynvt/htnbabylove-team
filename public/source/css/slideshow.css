@@ -141,7 +141,7 @@ body {
 
 .btn-themvaogio {
     background-color: #FF3E8D;
-    color: #fff;
+    color: #fff !important;
     cursor: pointer;
 }
 
