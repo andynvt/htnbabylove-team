@@ -372,14 +372,14 @@ class PageController extends Controller
     public function getadminDanhgia(){
         $getlsp = ProductType::all();
 
-        $getsp = Product::leftjoin('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
-                        ->leftjoin('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
-                        ->select('products.id as spid', 'products.name', 'asp.image')
+        $getsp = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                        ->join('feedbacks as fb', 'fb.id_product', '=', 'products.id')
+                        ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                        ->select('products.id as spid', 'products.name', 'asp.image', 'fb.id as fbid')
                         ->groupBy('spid')
                         ->get();
 
         $getnumfb = Feedback::all();
-        // dd($getnumfb);
 
         return view('Admin.pageadmin.admindanhgia', compact('getlsp','getsp', 'getnumfb'));
 
@@ -389,8 +389,7 @@ class PageController extends Controller
         $getlsp = ProductType::all();
 
         $getsp = Product::where('id', '=', $idfb)->value('name') ;
-        // dd($getsp);
-
+        
         $fbsp = Feedback::where('id_product','=',$idfb)->get();
 
         return view('Admin.pageadmin.adminchitietdanhgia', compact('fbsp', 'getlsp', 'getsp'));
@@ -399,7 +398,13 @@ class PageController extends Controller
     public function getadminDanhgiatheoloai($fbtype){
         $getlsp = ProductType::all();
 
-        $fb_theoloai = Product::where('id_type', $fbtype)->get();
+        $fb_theoloai = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                        ->join('feedbacks as fb', 'fb.id_product', '=', 'products.id')
+                        ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                        ->select('products.id as spid', 'products.name', 'asp.image', 'fb.id as fbid')
+                        ->where('id_type', $fbtype)
+                        ->groupBy('spid')
+                        ->get();
 
         return view('Admin.pageadmin.admindanhgiatheoloai', compact('getlsp','fb_theoloai'));
     }

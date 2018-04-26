@@ -95,10 +95,10 @@
                             @foreach($fb_theoloai as $fbloai)
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
-                                        <a href="{{ route('adminchitietdanhgia', $fbloai->id) }}"><img src="storage/product/aosomi.jpg" alt="Thumbnail Image 1" class="img-responsive">
-                                            <div class="feedback-qty">
-                                                <div class="qty-feedback">12</div>
-                                            </div>
+                                        <a href="{{ route('adminchitietdanhgia', $fbloai->spid) }}"><img src="storage/product/{{ $fbloai->image }}" alt="Thumbnail Image 1" class="img-responsive">
+                                            {{-- <div class="feedback-qty">
+                                                <div class="qty-feedback">{{ count($fbloai->fbid) }}</div>
+                                            </div> --}}
                                             <p>{{ $fbloai->name }}</p>
                                         </a>
                                     </div>
