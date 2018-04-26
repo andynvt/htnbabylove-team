@@ -30,11 +30,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('master',function($view){
-            $product_image = ProductImage::all();
-            $view->with('product_image',$product_image);
-        });
-
-        view()->composer('master',function($view){
             // $product_color = DB::select(DB::raw('SELECT color FROM product_color WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products ))'));
 
             $product_color = DB::table('products as sp')
@@ -67,6 +62,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('master',function($view){
             $detail_product = ProductDetail::all();
             $view->with('detail_product',$detail_product);
+        });
+        view()->composer('master',function($view){
+            $product_image = ProductImage::all();
+            $view->with('product_image',$product_image);
         });
 
         view()->composer('Admin.pageadmin.admindanhgia', function($view){
