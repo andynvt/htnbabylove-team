@@ -39,6 +39,7 @@
                             </div>
                             <div class="caption">
                                 <div class="space5">&nbsp;</div>
+                                <a href="{{ route('chitietsanpham', $pro->id_product) }}"> 
                                 <b class="text-price">
                                 @if($pro->promotion_price == 0)
                                     <span class="text-danger ">{{number_format($pro->unit_price)}} đ</span> &nbsp;
@@ -49,6 +50,7 @@
                                 </b>
                                 <div class="space10">&nbsp;</div>
                                 <p class='text-left text-title'><b>{{$pro->name}}</b>&nbsp;</p>
+                                </a>
                                 <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="@if($pro->promotion_price != 0)
                                             #pro{{$pro->id_product}}
                                             @elseif($pro->status == 1)

@@ -61,7 +61,7 @@
                                     <div class="ribbon1 sale">Sale</div>
                                 </div>
                                 <div class="thumbnail">
-                                    <a href="{{ route('chitietsanpham', $promo->id) }}">
+                                    <a href="{{ route('chitietsanpham', $promo->id_product) }}">
                                         <div class="containeroverlay">
                                            
                                             <img src="storage/product/{{$promo->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
@@ -73,7 +73,7 @@
                                     </a>
                                     <div class="caption">
                                         <div class="space5">&nbsp;</div>
-                                        <a href="#"> 
+                                        <a href="{{ route('chitietsanpham', $promo->id_product) }}"> 
                                                     <b class="text-price">
                                                         @if($promo->promotion_price == 0)
                                                             <span class="text-danger ">{{number_format($promo->unit_price)}} đ</span> &nbsp;
@@ -83,7 +83,10 @@
                                                         @endif
                                                     </b>
                                                     <div class="space10">&nbsp;</div>
-                                                    <p class='text-left text-title'><b>{{$promo->name}}</b>&nbsp;</p>
+                                                    <p class='text-left text-title'>
+                                                        <b>{{$promo->name}}
+                                                        </b>&nbsp;
+                                                    </p>
                                                 </a>
                                         <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#pro{{$promo->id_product}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
@@ -115,7 +118,7 @@
                                     @endif
                                 </div>
                                 <div class="thumbnail">
-                                    <a href="{{ route('chitietsanpham', $new->id) }}">
+                                    <a href="{{ route('chitietsanpham', $new->id_product) }}">
                                         <div class="containeroverlay">
                                             
                                             <img src="storage/product/{{$new->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
@@ -128,6 +131,7 @@
                                     </a>
                                     <div class="caption">
                                         <div class="space5">&nbsp;</div>
+                                        <a href="{{ route('chitietsanpham', $new->id_product) }}">
                                         <b class="text-price">
                                                 @if($new->promotion_price == 0)
                                                     <span class="text-danger ">{{number_format($new->unit_price)}} đ</span> &nbsp;
@@ -137,7 +141,11 @@
                                                 @endif
                                                 </b>
                                         <div class="space10">&nbsp;</div>
-                                        <p class='text-left text-title'><b>{{$new->name}}</b>&nbsp;</p>
+                                        <p class='text-left text-title'>
+                                            <b>{{$new->name}}
+                                            </b>&nbsp;
+                                        </p>
+                                        </a>
                                         <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#new{{$new->id_product}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr>
@@ -166,7 +174,7 @@
                                     @endif
                                 </div>
                                 <div class="thumbnail">
-                                    <a href="{{ route('chitietsanpham', $hot->id) }}">
+                                    <a href="{{ route('chitietsanpham', $hot->id_product) }}">
                                         <div class="containeroverlay">
                                             <img src="storage/product/{{$hot->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
                                            
@@ -177,7 +185,7 @@
                                     </a>
                                     <div class="caption">
                                         <div class="space5">&nbsp;</div>
-                                        <a href="#"> <b class="text-price">
+                                        <a href="{{ route('chitietsanpham', $hot->id_product) }}"> <b class="text-price">
                                                     @if($hot->promotion_price == 0)
                                                         <span class="text-danger ">{{number_format($hot->unit_price)}} đ</span> &nbsp;
                                                     @else
@@ -187,7 +195,7 @@
                                                 </b>
                                                     <div class="space10">&nbsp;</div>
                                                     <p class='text-left text-title'><b>{{$hot->name}}</b>&nbsp;</p>
-                                                </a>
+                                            </a>
                                         <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#hot{{$hot->id_product}}"><span>Mua Ngay </span></button>
                                         <button type="button" class="btn btn-themvaogio btn-full ">Thêm vào giỏ</button>
                                         <hr> </div>

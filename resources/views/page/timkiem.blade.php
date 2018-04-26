@@ -45,7 +45,7 @@
                                     </a>
                                     <div class="caption">
                                         <div class="space5">&nbsp;</div>
-                                        <a href="#"> 
+                                        <a href="{{ route('chitietsanpham', $promo->id_product) }}"> 
                                                     <b class="text-price">
                                                         @if($promo->promotion_price == 0)
                                                             <span class="text-danger ">{{number_format($promo->unit_price)}} đ</span> &nbsp;

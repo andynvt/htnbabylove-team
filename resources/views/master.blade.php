@@ -127,7 +127,8 @@
             @if($promo->id == $det->id_product  )
     <div class="modal fade" id="pro{{$promo->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
-        <form action="#" method="post">      
+        <form action="{{ route('chitietsp', $promo->id) }}" method="post">    
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">  
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -176,7 +177,7 @@
                                                     <div class="input-group-prepend">
                                                         <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
                                                     </div>
-                                                    <input type="text" class="form-control text-center" value="1">
+                                                    <input type="text" class="form-control text-center" name="qtyspbuy" value="1">
                                                     <div class="input-group-append">
                                                         <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
                                                     </div>
@@ -187,7 +188,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
-                                                    <select style="height: 38px">
+                                                    <select name="colorbuy" style="height: 38px">
                                                         @foreach($product_color as $anh)
                                                         @if($anh->id_detail == $promo->id ) 
                                                             <option>{{$anh->color}}</option>
@@ -238,7 +239,8 @@
             @if($new->id == $det->id_product  )
     <div class="modal fade" id="new{{$new->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
-        <form action="#" method="post">      
+        <form action="{{ route('chitietsp', $new->id) }}" method="post">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -287,7 +289,7 @@
                                                     <div class="input-group-prepend">
                                                         <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
                                                     </div>
-                                                    <input type="text" class="form-control text-center" value="1">
+                                                    <input type="text" class="form-control text-center" name="qtyspbuy" value="1">
                                                     <div class="input-group-append">
                                                         <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
                                                     </div>
@@ -298,7 +300,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
-                                                    <select style="height: 38px">
+                                                    <select name="colorbuy" style="height: 38px">
                                                         @foreach($product_color as $anh)
                                                         @if($anh->id_detail == $new->id ) 
                                                             <option>{{$anh->color}}</option>
@@ -349,7 +351,8 @@
             @if($hot->id == $det->id_product  )
     <div class="modal fade" id="hot{{$hot->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
-        <form action="#" method="post">      
+        <form action="{{ route('chitietsp', $hot->id) }}" method="post">
+           <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -398,7 +401,7 @@
                                                     <div class="input-group-prepend">
                                                         <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
                                                     </div>
-                                                    <input type="text" class="form-control text-center" value="1">
+                                                    <input type="text" class="form-control text-center" name="qtyspbuy" value="1">
                                                     <div class="input-group-append">
                                                         <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
                                                     </div>
@@ -409,7 +412,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
-                                                    <select style="height: 38px">
+                                                    <select name="colorbuy" style="height: 38px">
                                                         @foreach($product_color as $anh)
                                                         @if($hot->id == $anh->id_detail) 
                                                             <option>{{$anh->color}}</option>

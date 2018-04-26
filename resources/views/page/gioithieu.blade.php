@@ -32,7 +32,7 @@
                         <p class="about-p-content">
                             <br><b>Các sản phẩm chúng tôi kinh doanh chủ yếu là:</b></p> 
                             @foreach($lsp as $loai)
-                                <a href="#" class="button btn about-btn">{{$loai->id_type}}. {{$loai->type_name}}</a> 
+                                <a href="{{ route('loaisanpham', $loai->id) }}" class="button btn about-btn">{{$loai->id_type}} {{$loai->type_name}}</a> 
                             @endforeach
                         <p class="about-p-content">
                             <br>Quý khách có nhu cầu liên lạc, trao đổi hoặc đóng góp ý kiến, vui lòng tham khảo các thông tin sau:</p>

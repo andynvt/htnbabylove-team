@@ -43,8 +43,7 @@
     <link rel="stylesheet" href="source/ADMIN/css/util.css">
     <link rel="stylesheet" href="source/ADMIN/css/login.css">
     <link rel="stylesheet" href="source/ADMIN/css/imgcolor-admin.css">
-    
-
+    <link rel="stylesheet" href="source/ADMIN/css/alert.css">
 </head>
 
 <body>
@@ -59,6 +58,13 @@
             $('[data-toggle="tooltip"]').tooltip();
         });
 
+        function alertbabyproject() {
+            $(".modal-dialog").attr("data-dismiss", "modal");
+            $(".alert-babyproject").fadeIn(700);
+                setTimeout(function () {
+               $(".alert-babyproject").fadeOut(700);
+            }, 2000)
+        }
     </script>
 
 

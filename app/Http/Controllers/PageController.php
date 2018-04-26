@@ -37,7 +37,6 @@ class PageController extends Controller
                             ->groupBy('products.id')
                             ->get();
 
-
         $lsp = ProductType::all();
         return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product','product_image','product_color'));
     }
@@ -113,7 +112,7 @@ class PageController extends Controller
         $getimg = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=' , 'ctsp.id')
                             ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
                             ->where('sp.id', $id)
-                            ->select('sp.id as spid', 'product_image.image')
+                            ->select('sp.id as spid', 'sp.name', 'product_image.id as imgid' , 'product_image.image')
                             ->get();
 
         return view('page.chitiet_sanpham', compact('detail_product', 'sanpham','feedback','type_name', 'id_lsp', 'same_product', 'get1_proimg', 'hot_product','new_product','getcl', 'getimg'));
@@ -407,7 +406,7 @@ class PageController extends Controller
 
     public function getadminXoadanhgia($fb){
         Feedback::find($fb)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('deletefb', 'Đã xoá đánh giá');
     }
 
     public function getadminSanpham(){
@@ -579,7 +578,7 @@ class PageController extends Controller
         $producttype->save();
 
         $adminlsp = ProductType::all();
-        return redirect()->back();
+        return redirect()->back()->with('add', 'Đã thêm loại sản phẩm');
     }
 
     public function postadminSualoaisanpham($idtype, Request $req){
@@ -587,12 +586,12 @@ class PageController extends Controller
         $edittype->type_name  = $req->newtypename;
         $edittype->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('edit', 'Đã sửa thông tin loại sản phẩm');
     }
 
     public function getadminXoaloaisanpham($idtype){
         ProductType::find($idtype)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('delete', 'Đã xoá loại sản phẩm!');
     }
     
     public function getadminKhachhang(){
@@ -628,7 +627,7 @@ class PageController extends Controller
             $message->from('ngodangdt@gmail.com', 'HTN_BabyLove');
             $message->to($e,'')->subject($subject);
         });
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Đơn hàng được xác nhận');
     }
 
     public function cancelUpdate($id){
@@ -648,14 +647,12 @@ class PageController extends Controller
             $message->from('ngodangdt@gmail.com', 'HTN_BabyLove');
             $message->to($e,'')->subject($subject);
         });
-        return redirect()->back();
+        return redirect()->back()->with('cancle', 'Đơn hàng bị huỷ');
     }
 
     public function getadminDoanhthu(){
-        $getmonth = DB::select(DB::raw('SELECT month(created_at) as month FROM bills'));
-        $getdate = DB::select(DB::raw('SELECT day(created_at) as day FROM bills'));
-        $gettprice = Bill::all();
-        
-        return view('Admin.pageadmin.admindoanhthu', compact('getmonth', 'getdate','gettprice'));
+        $getmonth = DB::select(DB::raw('SELECT month(created_at) as month FROM bills GROUP BY month'));
+        $dtdh = DB::select(DB::raw('SELECT month(created_at) as month, sum(total_price) as tongtien, sum(total_product) as tongsp, count(*) as numbill FROM bills GROUP BY month(created_at)'));
+        return view('Admin.pageadmin.admindoanhthu', compact('dtdh', 'getmonth'));
     }
 }

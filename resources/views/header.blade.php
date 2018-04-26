@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 <div class="header-top">
     <div class="container-full">
         <div class="pull-left auto-width-left">
@@ -12,6 +13,25 @@
                 <li><a href="{{ route('gioithieu') }}"><i class="fa fa-info-circle"></i>Giới Thiệu</a></li>
                 <li data-toggle="modal" data-target="#contactModal" class="line"><a><i class="fa fa-phone"></i>Liên Hệ</a></li>
             </ul>
+=======
+        <div class="header-top">
+            <div class="container-full">
+                <div class="pull-left auto-width-left">
+                    <ul class="top-menu menu-beta l-inline header-top-row">
+                        <li><a target="_blank" href="https://www.google.com/maps?ll=10.047031,105.762337&z=17&t=m&hl=vi-VN&gl=US&mapclient=embed&cid=15188758633380222862"><i class="fa fa-map-marker"></i>118E Mậu Thân, Q. Ninh Kiều, Tp. Cần Thơ</a></li>
+                        <li><a href="tel:02923895554"><i class="fa fa-mobile"></i> 0292 389 5554</a></li>
+                    </ul>
+                </div>
+                <div class="pull-right auto-width-right header-top-right">
+                    <ul class="top-details menu-beta l-inline header-top-row">
+                        <li><a href="{{ route('gioithieu') }}"><i class="fa fa-info-circle"></i>Giới Thiệu</a></li>
+                        <li style="cursor: pointer;" data-toggle="modal" data-target="#contactModal" class="line"><a><i class="fa fa-phone"></i>Liên Hệ</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- .container -->
+>>>>>>> e06fb97e7045f8fafc297b146c04f5233301bdc6
         </div>
         <div class="clearfix"></div>
     </div>

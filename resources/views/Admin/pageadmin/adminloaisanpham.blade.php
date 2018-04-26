@@ -1,6 +1,14 @@
 @extends('Admin.master')
 <link rel="stylesheet" href="source/ADMIN/css/search.css">
 
+@if (session('delete'))
+    <body onload="alertbabyproject()"><div class="alert-babyproject">Đã xoá</div></body>
+@elseif (session('edit'))
+    <body onload="alertbabyproject()"><div class="alert-babyproject">Đã sửa</div></body>
+@elseif(session('add'))
+    <body onload="alertbabyproject()"><div class="alert-babyproject">Đã thêm</div></body>
+@endif
+
 @section('contentadmin')
 <div class="wrapper">
         <div class="sidebar" data-background-color="white" data-active-color="danger">
