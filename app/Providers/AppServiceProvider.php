@@ -30,43 +30,43 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('master',function($view){
-            // $product_color = DB::select(DB::raw('SELECT color FROM product_color WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products ))'));
-
-            $product_color = DB::table('products as sp')
-                        ->Join('product_detail as detail','sp.id','=','detail.id_product')
-                        ->Join('product_color as color','detail.id','=','color.id_detail')
-                        ->select('color.id_detail','color.id','color.color')
-                        ->distinct()
-                        ->get();
-            // dd($product_color);
-
+            $product_color = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=' , 'ctsp.id')
+                            ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
+                            ->select('sp.id as spid', 'product_color.color')
+                            ->get();
             $view->with('product_color',$product_color);
         });
 
 
         view()->composer('master',function($view){
-            $promotion_product = Product::where('promotion_price', '<>', '0')->get();
+            $promotion_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('promotion_price', '<>', '0')
+                            ->groupBy('products.id')
+                            ->get();
+                           
             $view->with('promotion_product',$promotion_product);
         });
 
         view()->composer('master',function($view){
-            $new_product = Product::where('status', 1)->get();
+            $new_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('status', 1)
+                            ->groupBy('products.id')
+                            ->get();
             $view->with('new_product',$new_product);
         });
 
         view()->composer('master',function($view){
-            $hot_product = Product::where('status', 2)->get();
+            $hot_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('status', 2)
+                            ->groupBy('products.id')
+                            ->get();
             $view->with('hot_product',$hot_product);
         });
 
-        view()->composer('master',function($view){
-            $detail_product = ProductDetail::all();
-            $view->with('detail_product',$detail_product);
-        });
-        view()->composer('master',function($view){
-            $product_image = ProductImage::all();
-            $view->with('product_image',$product_image);
-        });
+       
 
         view()->composer('Admin.pageadmin.admindanhgia', function($view){
             $loai_sp = ProductType::all();
@@ -84,26 +84,21 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('Admin.master',function($view){
-                $takesp = DB::table('products as sp')
-                    ->leftjoin('product_type as lsp', 'sp.id_type' , '=', 'lsp.id')
-                    ->select('sp.id as spid', 'lsp.type_name' , 'sp.name' , 'sp.unit_price' , 'sp.promotion_price' ,'sp.size' , 'sp.description' , 'sp.status')
-                    ->get();            
-                // dd($takesp);
-                $view->with('takesp',$takesp);
+                $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->groupBy('products.id')
+                            ->get();         
+          
+                $view->with('product',$product);
         });
         view()->composer('Admin.master',function($view){
-            $detail_product = ProductDetail::all();
-            $view->with('detail_product',$detail_product);
-        });
-        view()->composer('Admin.master',function($view){
-            $product_image = ProductImage::all();
-            $view->with('product_image',$product_image);
-        });
-
-        view()->composer('Admin.master',function($view){
-            $product_color = ProductColor::all();
+            $product_color = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=' , 'ctsp.id')
+                            ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
+                            ->select('sp.id as spid', 'product_color.color')
+                            ->get();
             $view->with('product_color',$product_color);
         });
+       
     }
 
     /**

@@ -123,11 +123,10 @@
     
     <!--  Modal Mua Nhanh promotion-->
     @foreach($promotion_product as $promo ) 
-        @foreach($detail_product as $det ) 
-            @if($promo->id == $det->id_product  )
-    <div class="modal fade" id="pro{{$promo->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+       
+    <div class="modal fade" id="pro{{$promo->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
-        <form action="{{ route('chitietsp', $promo->id) }}" method="post">    
+        <form action="{{ route('chitietsp', $promo->id_product) }}" method="post">    
         <input type="hidden" name="_token" value="{{ csrf_token() }}">  
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -150,12 +149,9 @@
                                         @endif
                                         </div>
                                         <div class="thumbnail">
-                                            @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id_detail  )
-                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="" width="480px">
-                                            @break
-                                                @endif
-                                            @endforeach
+                                          
+                                            <img src="storage/product/{{$promo->image}}" alt="Thumbnail Image 1" class="" width="480px">
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -189,10 +185,10 @@
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
                                                     <select name="colorbuy" style="height: 38px">
-                                                        @foreach($product_color as $anh)
-                                                        @if($anh->id_detail == $promo->id ) 
-                                                            <option>{{$anh->color}}</option>
-                                                        @endif
+                                                        @foreach($product_color as $pro)
+                                                            @if($promo->id_product == $pro->spid)
+                                                                <option>{{$pro->color}}</option>
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -227,19 +223,17 @@
             </div>             
         </form>
     </div>
-       @break
-    @endif 
-    @endforeach 
+       
+  
     @endforeach
     <!--  Modal Mua Nhanh promotion-->
 
     <!--  Modal Mua Nhanh new-->
     @foreach($new_product as $new ) 
-        @foreach($detail_product as $det ) 
-            @if($new->id == $det->id_product  )
-    <div class="modal fade" id="new{{$new->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    
+    <div class="modal fade" id="new{{$new->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
-        <form action="{{ route('chitietsp', $new->id) }}" method="post">
+        <form action="{{ route('chitietsp', $new->id_product) }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -262,12 +256,9 @@
                                         @endif
                                         </div>
                                         <div class="thumbnail">
-                                             @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id_detail  )
-                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="" width="480px">
-                                            @break
-                                                @endif
-                                            @endforeach
+                                            
+                                            <img src="storage/product/{{$new->image}}" alt="Thumbnail Image 1" class="" width="480px">
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -301,10 +292,10 @@
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
                                                     <select name="colorbuy" style="height: 38px">
-                                                        @foreach($product_color as $anh)
-                                                        @if($anh->id_detail == $new->id ) 
-                                                            <option>{{$anh->color}}</option>
-                                                        @endif
+                                                        @foreach($product_color as $pro)
+                                                            @if($new->id_product == $pro->spid)
+                                                                <option>{{$pro->color}}</option>
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -339,19 +330,15 @@
             </div>             
         </form>
     </div>
-       @break
-    @endif 
-    @endforeach 
+   
     @endforeach
     <!--  Modal Mua Nhanh new-->
 
     <!--  Modal Mua Nhanh hot-->
     @foreach($hot_product as $hot ) 
-        @foreach($detail_product as $det ) 
-            @if($hot->id == $det->id_product  )
-    <div class="modal fade" id="hot{{$hot->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="hot{{$hot->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
-        <form action="{{ route('chitietsp', $hot->id) }}" method="post">
+        <form action="{{ route('chitietsp', $hot->id_product) }}" method="post">
            <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -374,12 +361,9 @@
                                         @endif
                                         </div>
                                         <div class="thumbnail">
-                                            @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id_detail  )
-                                            <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="" width="480px">
-                                            @break
-                                                @endif
-                                            @endforeach
+                                           
+                                            <img src="storage/product/{{$hot->image}}" alt="Thumbnail Image 1" class="" width="480px">
+    
                                         </div>
                                     </div>
                                 </div>
@@ -413,10 +397,10 @@
                                                 <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group">
                                                     <select name="colorbuy" style="height: 38px">
-                                                        @foreach($product_color as $anh)
-                                                        @if($hot->id == $anh->id_detail) 
-                                                            <option>{{$anh->color}}</option>
-                                                        @endif
+                                                        @foreach($product_color as $pro)
+                                                            @if($hot->id_product == $pro->spid)
+                                                                <option>{{$pro->color}}</option>
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -451,9 +435,6 @@
             </div>             
         </form>
     </div>
-       @break
-    @endif 
-    @endforeach 
     @endforeach
     <!--  Modal Mua Nhanh hot-->
 

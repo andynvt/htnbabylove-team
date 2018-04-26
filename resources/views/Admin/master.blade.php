@@ -68,10 +68,8 @@
     </script>
 
 
-    @foreach($takesp as $sp)
-    @foreach($detail_product as $det ) 
-            @if($sp->spid == $det->id_product  )
-    <div class="modal fade " id="ctsp_{{ $sp->spid }}" tabindex="-1" role="dialog">
+    @foreach($product as $sp)
+    <div class="modal fade " id="ctsp_{{ $sp->id_product }}" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -88,10 +86,8 @@
                                     </div>
                                     <div class="thumbnail">
                                         <div class="containeroverlay"> 
-                                            @foreach($product_image as $anh )
-                                                @if($det->id == $anh->id_detail  )
-                                                <img src="storage/product/{{$anh->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">@break @endif
-                                            @endforeach </div>
+                                            
+                                                <img src="storage/product/{{$sp->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px"></div>
                                     </div>
                                 </div>
                             </div>
@@ -113,13 +109,13 @@
                                         <div class="col-lg-6 col-md-6">
                                             <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                             <div class="form-group">
-                                                <select>
-                                                    @foreach($product_color as $anh )
-                                                    @if($anh->id_detail == $sp->spid )
-                                                    <option>{{$anh->color}}</option>
-                                                    @endif
-                                                    @endforeach   
-                                                </select>
+                                                <select name="colorbuy" style="height: 38px">
+                                                        @foreach($product_color as $pro)
+                                                            @if($sp->id_product == $pro->spid)
+                                                                <option>{{$pro->color}}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
                                             </div>
                                             <div class="space10">&nbsp;</div>
                                         </div>
@@ -140,8 +136,7 @@
         </div>
     <!-- /.modal-dialog -->
     </div>
-    @endif
-    @endforeach
+   
     @endforeach
 
 </body>
