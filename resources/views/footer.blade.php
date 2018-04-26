@@ -41,10 +41,10 @@
 
                         </ul>
                         <ul class="info_mb2">
-                            <li><a href="#"><i class="fa fa-info-circle"></i>Giới Thiệu &nbsp;|</a></li>
-                            <li class="line"><a href="#"><i class="fa fa-phone"></i>Liên Hệ &nbsp;|</a></li>
-                            <li><a href="#"><i class="fa fa-balance-scale"></i>Điều khoản &nbsp;|</a></li>
-                            <li><a href="#"><i class="fa fa-user-secret"></i>Bảo mật</a></li>
+                            <li><a href="{{ route('gioithieu') }}"><i class="fa fa-info-circle"></i>Giới Thiệu &nbsp;|</a></li>
+                            <li style="cursor: pointer" class="line"><a data-toggle="modal" data-target="#contactModal"><i class="fa fa-phone"></i>Liên Hệ &nbsp;|</a></li>
+                            <li><a href="{{ route('dieukhoan') }}"><i class="fa fa-balance-scale"></i>Điều khoản &nbsp;|</a></li>
+                            <li><a href="{{ route('baomat') }}"><i class="fa fa-user-secret"></i>Bảo mật</a></li>
                         </ul>
                         <div class="clearfix"></div>
                         <style>
