@@ -41,12 +41,12 @@ Route::get('dieu-khoan-su-dung', [
 	'uses' => 'PageController@getTerms'
 ]);
 
-Route::post('thanh-toan', [
-	'as' => 'thanhtoan',
+Route::post('thanhtoan', [
+	'as' => 'thanhtoantest',
 	'uses' => 'PageController@postCheckout'
 ]);
 
-Route::post('chi-tiet-sp/{id}', [
+Route::post('dathang/{id}', [
 	'as' => 'chitietsp',
 	'uses' => 'PageController@postChitietsp'
 ]);
@@ -69,6 +69,26 @@ Route::get('tim-kiem', [
 Route::get('tim-kiem-loai/{pro}', [
 	'as' => 'timkiemloai',
 	'uses' => 'PageController@getTimkiemloai'
+]);
+
+Route::get('add-to-cart/{id}',[
+	'as'=>'themgiohang',
+	'uses'=>'PageController@getAddtoCart'
+]);
+
+Route::get('del-cart/{id}',[
+	'as'=>'xoagiohang',
+	'uses'=>'PageController@getDelItemCart'
+]);
+
+Route::get('thanh-toan',[
+	'as' => 'thanhtoan',
+	'uses' => 'PageController@getThanhToan'
+]);
+
+Route::post('dat-hang',[
+	'as' => 'dathang',
+	'uses' => 'PageController@postDatHang'
 ]);
 
 //Admin
@@ -182,7 +202,11 @@ Route::get('admin-doanhthu', [
 	'uses' => 'PageController@getadminDoanhthu'
 ])->middleware('adminLogin');
 
-Route::get('dangxuat',['as'=>'dangxuat','uses'=>'UserController@getDangXuatAdmin']);
+Route::get('dangxuat',[
+	'as'=>'dangxuat',
+	'uses'=>'UserController@getDangXuatAdmin'
+]);
+
 Route::get('admin-index', 'UserController@getdangnhapAdmin');
 Route::post('admin-index', 'UserController@postdangnhapAdmin');
 Route::post('sua/{id}',[

@@ -85,7 +85,7 @@
                 <div class="clearfix"></div>
                 <div class="div-shop-cart" data-toggle="modal" data-target="#modal-cart">
                     <i class="fa fa-shopping-cart shop-cart"></i>
-                    <span id="number-cart">5</span>
+                    <span id="number-cart">@if(Session::has('cart')){{Session('cart')->totalQty}} @else 0 @endif</span>
                     <style>
                         .slider-index .carousel-item img{
                             margin: 0 auto;
@@ -119,59 +119,48 @@
 </div>
 <div class="clearfix"></div>
     <!-- Gio hang-->
-<form action="" method="post">
+<form action="{{route('thanhtoan')}}" method="get">
     <!-- The Modal -->
     <div class="modal fade modalcart" id="modal-cart">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Giỏ hàng (có 3 sản phẩm)</h4>
+                    <h4 class="modal-title">Giỏ hàng @if(Session::has('cart')) (có {{Session('cart')->totalQty}} sản phẩm) @else Trống @endif</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+                @if(Session::has('cart'))
                 <!-- Modal body -->
                 <div class="modal-body cart-center">
                     <div class="row cart-title">
                         <div class="col-sm-6"> Sản phẩm </div>
                         <div class="col-sm-2"> Số lượng </div>
                         <div class="col-sm-2" style="text-align: right"> Đơn giá </div>
-                        <div class="col-sm-2" style="text-align: center"> Xóa </div>
+                        <div class="col-sm-2" style="text-align: center"> Xóa </div>    
                     </div>
+                    
+
                     <div class="cart-content">
                         <!--desktop-->
                         <div class="desktop-cart">
-                        @if(Session::has('cart'))
                         @foreach($product_cart as $product)
+                        
                             <div class="cart-item">
                                 <div class="row align-items-center">
                                     <div class="cart-product col-md-6 col-12">
                                         <div class="row">
                                             <div class="cart-div-img col-md-3 col-3">
-                                                <a href="#"> <img class="img-fluid cart-img" src="http://placehold.it/270x320/cccccc/ffffff"> </a>
+                                                <a href="#"> <img class="img-fluid cart-img" src="storage/product/quanao1.jpg"> </a>
                                             </div>
                                             <div class="col-md-9 col-9">
                                                 <div class="container">
-                                                    <div class="cart-product-name text-title"> <a href="#">
-                                                               HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062
-                                                           </a> </div>
+                                                    <div class="cart-product-name text-title"> 
+                                                        <a href="#"></a>{{$product['item']['name']}}</div>
                                                     <div class="cart-product-info">
                                                         <div class="form-group change-color">
-                                                            <div class="color-dropdown">
-                                                                <button class="btn _select_color dropdowncolor" type="button"> <span class="color" style="background-color: green"></span> </button>
-                                                                <ul class="_select_color_drop">
-                                                                    <li><span class="color " style="background-color: green"></span></li>
-                                                                    <li><span class="color " style="background-color: red"></span></li>
-                                                                    <li><span class="color " style="background-color: #f90"></span></li>
-                                                                    <li><span class="color " style="background-color: brown"></span></li>
-                                                                    <li><span class="color " style="background-color: orange"></span></li>
-                                                                    <li><span class="color " style="background-color: pink"></span></li>
-                                                                    <li><span class="color " style="background-color: silver"></span></li>
-                                                                    <li><span class="color " style="background-color: blue"></span></li>
-                                                                    <li><span class="color " style="background-color: TEAL"></span></li>
-                                                                    <input type="hidden" name="_color" value=""> </ul>
-                                                            </div>
+                                                            Đỏ
                                                         </div>
-                                                        <div> Kích thước: 30x30cm </div>
+                                                        <div>Size: {{$product['item']['size']}} </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -179,30 +168,52 @@
                                     </div>
                                     <div class="cart-qty col-md-2 col-3">
                                         <div class="cart-input-qty">
-                                            <input type="text" name="soluong" class="form-control text-center new-qty" value="1" readonly> <i class="fa fa-angle-double-down" aria-hidden="true"></i> </div>
+                                            <input type="text" name="soluong" class="form-control text-center new-qty" value="{{$product['qty']}}" readonly> <i class="fa fa-angle-double-down" aria-hidden="true"></i></div>
                                         <div class="change-qty">
-                                            <div class="input-group number-spinner input-change-qty"> <span class="input-group-btn">
+                                            <div class="input-group number-spinner input-change-qty"> 
+                                                <span class="input-group-btn">
                                                     <button type="button" class="btn btn-change-qty" data-dir="dwn"><i class="fa fa-minus"></i></button>
                                                 </span>
-                                                <input type="text" name="soluong" class="form-control text-center" value="1"> <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-change-qty" data-dir="up">&nbsp;<i class="fa fa-plus"></i></button>
-                                                </span> </div>
+
+                                                <input type="text" name="" class="form-control text-center" value="1"> 
+
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-change-qty" data-dir="up">&nbsp;
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                </span> 
+                                            </div>
                                             <div class="div-confirm-change-qty">
-                                                <button class="confirm-change-qty" type="button"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                                <button class="confirm-change-qty" type="button"><i class="fa fa-check"></i></button>
                                                 <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
                                             </div>
+                                            <script>
+                                                $(".confirm-change-qty").on('click', function () {
+                                                    $(this).parents(".change-qty").css("display", "none");
+                                                    var qtyproduct =  $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').val();
+                                                    $(this).parents('.change-qty').prev('.cart-input-qty').find('input').val(qtyproduct);
+                                                });
+
+                                            </script>
                                         </div>
                                     </div>
-                                    <div class="unit-price col-md-2" style="text-align: right"> 100,000 VND </div>
-                                    <div class="col-md-2 align-self-center" style="text-align: center"> <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
+                                    <div class="unit-price col-md-2" style="text-align: right"> 
+                                        @if($product['item']['promotion_price'] == 0)
+                                            {{number_format( $product['item']['unit_price'] )}} đ
+                                        @else
+                                            {{number_format( $product['item']['promotion_price'] )}} đ
+                                        @endif
+                                    </div>
+                                    <div class="col-md-2 align-self-center" style="text-align: center"> <a class="" href="{{route('xoagiohang',$product['item']['id'])}}"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
                                 </div>
                             </div>
                         @endforeach
-                        @endif
+
                         </div>
                         <!--end desktop-->
                         <!--mobile-->
                         <div class="mobile-cart">
+                        @foreach($product_cart as $product)
                             <div class="cart-item">
                                 <div class="container">
                                     <div class="row mobile-cart-title">
@@ -210,15 +221,17 @@
                                             <a href="#"> <img class="img-fluid cart-img" src="{{-- storage/product/{{$product}} --}}"> </a>
                                         </div>
                                         <div class="cart-product-info col-6 offset-1">
-                                            <div class="cart-product-name text-title"> <a href="#">HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</a> </div>
-                                            <div class="cart-price"> 100,000 VND </div>
+                                            <div class="cart-product-name text-title"> 
+                                                <a href="#">{{$product['item']['name']}}</a> 
+                                            </div>
+                                            <div class="cart-price"> {{$product['item']['unit_price']}} </div>
                                         </div>
                                         <div class="col-1" style="text-align: right"> <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
                                     </div>
                                     <div class="row mobile-cart-info">
-                                        <label class="col-5">Kích thước:</label>
-                                        <label class="col-7">30x30x30</label>
-                                        <label class="col-5">Số lượng:</label>
+                                        <label class="col-5">Size:</label>
+                                        <label class="col-7">{{$product['item']['size']}}</label>
+                                        <label class="col-5">Số lượng: 1</label>
                                         <div class="col-7 cart-qty">
                                             <div class="cart-input-qty">
                                                 <input type="text" name="soluong" class="form-control text-center new-qty" value="1" readonly> <i class="fa fa-angle-double-down" aria-hidden="true"></i> </div>
@@ -237,182 +250,15 @@
                                         </div>
                                         <label class="col-5">Màu:</label>
                                         <div class="form-group change-color col-7">
-                                            <div class="color-dropdown">
-                                                <button class="btn _select_color dropdowncolor" type="button"> <span class="color" style="background-color: green"></span> </button>
-                                                <ul class="_select_color_drop">
-                                                    <li><span class="color " style="background-color: green"></span></li>
-                                                    <li><span class="color " style="background-color: red"></span></li>
-                                                    <li><span class="color " style="background-color: #f90"></span></li>
-                                                    <li><span class="color " style="background-color: brown"></span></li>
-                                                    <li><span class="color " style="background-color: orange"></span></li>
-                                                    <li><span class="color " style="background-color: pink"></span></li>
-                                                    <li><span class="color " style="background-color: silver"></span></li>
-                                                    <li><span class="color " style="background-color: blue"></span></li>
-                                                    <li><span class="color " style="background-color: TEAL"></span></li>
-                                                    <input type="hidden" name="_color" value=""> </ul>
-                                            </div>
+                                            Đỏ
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="cart-item">
-                                <div class="container">
-                                    <div class="row mobile-cart-title">
-                                        <div class="cart-div-img col-3">
-                                            <a href="#"> <img class="img-fluid cart-img" src="http://placehold.it/270x320/cccccc/ffffff"> </a>
-                                        </div>
-                                        <div class="cart-product-info col-6 offset-1">
-                                            <div class="cart-product-name text-title"> <a href="#">HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</a> </div>
-                                            <div class="cart-price"> 100,000 VND </div>
-                                        </div>
-                                        <div class="col-1" style="text-align: right"> <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
-                                    </div>
-                                    <div class="row mobile-cart-info">
-                                        <label class="col-5">Kích thước:</label>
-                                        <label class="col-7">30x30x30</label>
-                                        <label class="col-5">Số lượng:</label>
-                                        <div class="col-7 cart-qty">
-                                            <div class="cart-input-qty">
-                                                <input type="text" name="soluong" class="form-control text-center new-qty" value="1" readonly> <i class="fa fa-angle-double-down" aria-hidden="true"></i> </div>
-                                            <div class="change-qty col-3">
-                                                <div class="input-group number-spinner input-change-qty"> <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-change-qty" data-dir="dwn"><i class="fa fa-minus"></i></button>
-                                                </span>
-                                                    <input type="text" name="soluong" class="form-control text-center" value="1"> <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-change-qty" data-dir="up">&nbsp;<i class="fa fa-plus"></i></button>
-                                                </span> </div>
-                                                <div class="div-confirm-change-qty">
-                                                    <button class="confirm-change-qty" type="button"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <label class="col-5">Màu:</label>
-                                        <div class="form-group change-color col-7">
-                                            <div class="color-dropdown">
-                                                <button class="btn _select_color dropdowncolor" type="button"> <span class="color" style="background-color: green"></span> </button>
-                                                <ul class="_select_color_drop">
-                                                    <li><span class="color " style="background-color: green"></span></li>
-                                                    <li><span class="color " style="background-color: red"></span></li>
-                                                    <li><span class="color " style="background-color: #f90"></span></li>
-                                                    <li><span class="color " style="background-color: brown"></span></li>
-                                                    <li><span class="color " style="background-color: orange"></span></li>
-                                                    <li><span class="color " style="background-color: pink"></span></li>
-                                                    <li><span class="color " style="background-color: silver"></span></li>
-                                                    <li><span class="color " style="background-color: blue"></span></li>
-                                                    <li><span class="color " style="background-color: TEAL"></span></li>
-                                                    <input type="hidden" name="_color" value=""> </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cart-item">
-                                <div class="container">
-                                    <div class="row mobile-cart-title">
-                                        <div class="cart-div-img col-3">
-                                            <a href="#"> <img class="img-fluid cart-img" src="http://placehold.it/270x320/cccccc/ffffff"> </a>
-                                        </div>
-                                        <div class="cart-product-info col-6 offset-1">
-                                            <div class="cart-product-name text-title"> <a href="#">HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</a> </div>
-                                            <div class="cart-price"> 100,000 VND </div>
-                                        </div>
-                                        <div class="col-1" style="text-align: right"> <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
-                                    </div>
-                                    <div class="row mobile-cart-info">
-                                        <label class="col-5">Kích thước:</label>
-                                        <label class="col-7">30x30x30</label>
-                                        <label class="col-5">Số lượng:</label>
-                                        <div class="col-7 cart-qty">
-                                            <div class="cart-input-qty">
-                                                <input type="text" name="soluong" class="form-control text-center new-qty" value="1" readonly> <i class="fa fa-angle-double-down" aria-hidden="true"></i> </div>
-                                            <div class="change-qty col-3">
-                                                <div class="input-group number-spinner input-change-qty"> <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-change-qty" data-dir="dwn"><i class="fa fa-minus"></i></button>
-                                                </span>
-                                                    <input type="text" name="soluong" class="form-control text-center" value="1"> <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-change-qty" data-dir="up">&nbsp;<i class="fa fa-plus"></i></button>
-                                                </span> </div>
-                                                <div class="div-confirm-change-qty">
-                                                    <button class="confirm-change-qty" type="button"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <label class="col-5">Màu:</label>
-                                        <div class="form-group change-color col-7">
-                                            <div class="color-dropdown">
-                                                <button class="btn _select_color dropdowncolor" type="button"> <span class="color" style="background-color: green"></span> </button>
-                                                <ul class="_select_color_drop">
-                                                    <li><span class="color " style="background-color: green"></span></li>
-                                                    <li><span class="color " style="background-color: red"></span></li>
-                                                    <li><span class="color " style="background-color: #f90"></span></li>
-                                                    <li><span class="color " style="background-color: brown"></span></li>
-                                                    <li><span class="color " style="background-color: orange"></span></li>
-                                                    <li><span class="color " style="background-color: pink"></span></li>
-                                                    <li><span class="color " style="background-color: silver"></span></li>
-                                                    <li><span class="color " style="background-color: blue"></span></li>
-                                                    <li><span class="color " style="background-color: TEAL"></span></li>
-                                                    <input type="hidden" name="_color" value=""> </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cart-item">
-                                <div class="container">
-                                    <div class="row mobile-cart-title">
-                                        <div class="cart-div-img col-3">
-                                            <a href="#"> <img class="img-fluid cart-img" src="http://placehold.it/270x320/cccccc/ffffff"> </a>
-                                        </div>
-                                        <div class="cart-product-info col-6 offset-1">
-                                            <div class="cart-product-name text-title"> <a href="#">HY1062 ĐẦM XÒE TRÊN REN DƯỚI TÙNG VOAN HOA - HY1062</a> </div>
-                                            <div class="cart-price"> 100,000 VND </div>
-                                        </div>
-                                        <div class="col-1" style="text-align: right"> <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
-                                    </div>
-                                    <div class="row mobile-cart-info">
-                                        <label class="col-5">Kích thước:</label>
-                                        <label class="col-7">30x30x30</label>
-                                        <label class="col-5">Số lượng:</label>
-                                        <div class="col-7 cart-qty">
-                                            <div class="cart-input-qty">
-                                                <input type="text" name="soluong" class="form-control text-center new-qty" value="1" readonly> <i class="fa fa-angle-double-down" aria-hidden="true"></i> </div>
-                                            <div class="change-qty col-3">
-                                                <div class="input-group number-spinner input-change-qty"> <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-change-qty" data-dir="dwn"><i class="fa fa-minus"></i></button>
-                                                </span>
-                                                    <input type="text" name="soluong" class="form-control text-center" value="1"> <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-change-qty" data-dir="up">&nbsp;<i class="fa fa-plus"></i></button>
-                                                </span> </div>
-                                                <div class="div-confirm-change-qty">
-                                                    <button class="confirm-change-qty" type="button"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <label class="col-5">Màu:</label>
-                                        <div class="form-group change-color col-7">
-                                            <div class="color-dropdown">
-                                                <button class="btn _select_color dropdowncolor" type="button"> <span class="color" style="background-color: green"></span> </button>
-                                                <ul class="_select_color_drop">
-                                                    <li><span class="color " style="background-color: green"></span></li>
-                                                    <li><span class="color " style="background-color: red"></span></li>
-                                                    <li><span class="color " style="background-color: #f90"></span></li>
-                                                    <li><span class="color " style="background-color: brown"></span></li>
-                                                    <li><span class="color " style="background-color: orange"></span></li>
-                                                    <li><span class="color " style="background-color: pink"></span></li>
-                                                    <li><span class="color " style="background-color: silver"></span></li>
-                                                    <li><span class="color " style="background-color: blue"></span></li>
-                                                    <li><span class="color " style="background-color: TEAL"></span></li>
-                                                    <input type="hidden" name="_color" value=""> </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <hr> 
+                        @endforeach
                             <!--end cart-item-->
-                            <hr> </div>
+                        </div>
                         <!--end mobile-->
                     </div>
                 </div>
@@ -420,12 +266,13 @@
                     <div class="cart-total-price col-md-4 offset-md-6 col-12">
                         <div class="row">
                             <div class="col-md-5 col-5"> Tổng tiền: </div>
-                            <div class="col-md-7 col-7 total-price"> 200,000 VND </div>
+                            <div class="col-md-7 col-7 total-price"> {{number_format( Session('cart')->totalPrice )}} đ </div>
                         </div>
                     </div>
                     <div class="div-btn-order col-md-4 offset-md-6">
                         <input class="btn-order" type="submit" value="đặt hàng" name="order"> </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>

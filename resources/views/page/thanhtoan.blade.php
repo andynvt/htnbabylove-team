@@ -26,7 +26,7 @@ if (mysqli_connect_error())
           
             <div class="clearfix"></div>
 
-            <form action="{{ route('thanhtoan') }}" method="post" class="beta-form-checkout">
+            <form action="{{ route('dathang') }}" method="post" class="beta-form-checkout">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class=" col-lg-7">
@@ -114,6 +114,82 @@ if (mysqli_connect_error())
                     </div>
                     <div class="col-lg-5">
                         <div class="full-checkout">
+                        @if(Session::has('cart'))
+                            <div class="header-title-cart">
+                                <h5 class="title_">Thông tin đơn hàng @if(Session::has('cart')) ({{Session('cart')->totalQty}} sản phẩm) @endif</h5>
+                                <hr class="hrtitle_GH"> </div>
+                            <div class="space10">&nbsp;</div>
+                            @foreach($product_cart as $product)
+                            <div class="body-cart">
+                                <div class="panel panel-info">
+                                    <div class="panel-body">
+                                        <div id="overflowTest-checkout">
+                                            <div class="body-cart-content-checkout">
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-xs-3"> <img class="rounded" src="storage/product/quanao1.jpg"/> </div>
+                                                        {{-- <input type="hidden" name="img" value="{{ $mua->image }}"> --}}
+                                                        <div class="col-sm-5 col-xs-5 span_content_body">
+                                                            
+                                                            <div class="col-xs-12 "><input type="hidden" name="proname" value="{{$product['item']['name']}}"><strong>{{ $product['item']['name'] }}</strong></div>
+                                                            <div class="col-xs-12 span_content_body">
+                                                                <h7>Số lượng: <span><input type="hidden" name="qty" value="{{$product['qty']}}">{{$product['qty']}}</span></h7>
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <h7>Màu: <span><input type="hidden" name="color" value="red">red</span></h7>
+                                                            </div>
+                                                            <input type="hidden" name="size" value="{{ $product['item']['size'] }}">
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-3 text-right ">
+                                                            @if($$product['item']['promotion_price'] == 0)
+                                                                <input type="hidden" name="price" value="{{ $product['item']['unit_price'] }}">
+                                                                <p><span>{{ number_format($product['item']['unit_price']) }}</span>đ</p>
+                                                            @else
+                                                                <input type="hidden" name="price" value="{{ $product['item']['promotion_price'] }}">
+                                                                <p><span>{{ number_format($$product['item']['unit_price']) }}</span>đ</p> 
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- <div class="form-group">
+                                                    <hr class="hr_sp" /> 
+                                                </div> --}}
+                                                <!-- </div> -->
+                                                <!-- </div> -->
+                                            </div>
+                                            <!-- body-cart-content-checkout -->
+                                        </div>
+                                        <div class="space20">&nbsp;</div>
+                                        {{-- <div class="">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 container_btncsgh">
+                                                <button type="submit" class="btn btn-primary btn-submit-fix submitbtn_cart">Chỉnh sửa giỏ hàng </button>
+                                            </div>
+                                        </div> --}}
+                                        <div class="">
+                                            <hr class="hrtitle_GH" /> </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-5"> <strong><b class="lbl_TongTien">Tổng Tiền</b></strong> </div>
+                                                <div class="col-md-6">
+                                                    <div class="pull-right span_content">
+                                                        <p><span><input type="hidden" name="tongtien" value="{{Session('cart')->totalPrice}}">{{number_format( Session('cart')->totalPrice )}}</span> đ</p>
+                                                    </div>
+                                                    <br> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="space30">&nbsp;</div>
+                                        <div class="form-group">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 container_btncsgh">
+                                                <button type="submit" class="btn btn-primary btn-submit-fix submitbtn_dathang">Đặt hàng</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- panel-info -->
+                            </div>
+                            @endforeach
+                        @else
                             <div class="header-title-cart">
                                 <h5 class="title_">Thông tin đơn hàng ({{ count($spmua) }} sản phẩm)</h5>
                                 <hr class="hrtitle_GH"> </div>
@@ -148,7 +224,6 @@ if (mysqli_connect_error())
                                                                 <p><span>{{ number_format($mua->promotion_price) }}</span>đ</p> 
                                                             @endif
                                                         </div>
-                                                        
                                                     </div>
                                                 </div>
                                                 {{-- <div class="form-group">
@@ -193,6 +268,7 @@ if (mysqli_connect_error())
                                 <!-- panel-info -->
                             </div>
                             @endforeach
+                        @endif
                             <!-- body-cart -->
                         </div>
                         <!--full checkout-->
