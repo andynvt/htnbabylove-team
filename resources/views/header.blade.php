@@ -150,7 +150,7 @@
                                     <div class="cart-product col-md-6 col-12">
                                         <div class="row">
                                             <div class="cart-div-img col-md-3 col-3">
-                                                <a href="#"> <img class="img-fluid cart-img" src="storage/product/quanao1.jpg"> </a>
+                                                <a href="#"> <img class="img-fluid cart-img" src="storage/product/{{$product['item']['img']}}"> </a>
                                             </div>
                                             <div class="col-md-9 col-9">
                                                 <div class="container">
@@ -158,7 +158,7 @@
                                                         <a href="#"></a>{{$product['item']['name']}}</div>
                                                     <div class="cart-product-info">
                                                         <div class="form-group change-color">
-                                                            Đỏ
+                                                            {{$product['item']['color']}}
                                                         </div>
                                                         <div>Size: {{$product['item']['size']}} </div>
                                                     </div>
@@ -175,7 +175,7 @@
                                                     <button type="button" class="btn btn-change-qty" data-dir="dwn"><i class="fa fa-minus"></i></button>
                                                 </span>
 
-                                                <input type="text" name="" class="form-control text-center" value="1"> 
+                                                <input type="text" name="" class="form-control text-center" value="{{$product['qty']}}"> 
 
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-change-qty" data-dir="up">&nbsp;
@@ -193,7 +193,6 @@
                                                     var qtyproduct =  $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').val();
                                                     $(this).parents('.change-qty').prev('.cart-input-qty').find('input').val(qtyproduct);
                                                 });
-
                                             </script>
                                         </div>
                                     </div>
@@ -277,3 +276,332 @@
         </div>
     </div>
 </form>
+
+<!--  Modal Mua Nhanh promotion-->
+    @foreach($promotion_product as $promo ) 
+       
+    <div class="modal fade" id="pro{{$promo->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <!--  Modal Mua Nhanh-->
+        <form action="{{ route('chitietsp', $promo->id_product) }}" method="post">    
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">  
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-title-modal " id="exampleModalLongTitle">{{$promo->name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-full">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                        @if($promo->promotion_price != 0)
+                                        <div class="ribbon1 sale">Sale</div>
+                                        @elseif($promo->status == 1)
+                                        <div class="ribbon1 new">New</div>
+                                        @elseif($promo->status == 2)
+                                        <div class="ribbon1 hot">Hot</div>
+                                        @endif
+                                        </div>
+                                        <div class="thumbnail">
+                                          
+                                            <img src="storage/product/{{$promo->image}}" alt="Thumbnail Image 1" class="" width="480px">
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-offset-0">
+                                    <div class="space10">&nbsp;</div>
+                                   <b class="text-price">
+                                                @if($promo->promotion_price == 0)
+                                                            <span class="text-danger ">{{number_format($promo->unit_price)}} đ</span> &nbsp;
+                                                        @else
+                                                            <span class="text-danger ">{{number_format($promo->promotion_price)}} đ</span> &nbsp;
+                                                            <span class="flash-del">{{number_format($promo->unit_price)}} đ</span>
+                                                        @endif
+                                                </b>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <p class=" text-price"><b>&nbsp;Số lượng:</b></p>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                    <input type="text" class="form-control text-center" name="qtyspbuy" value="1">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="space15">&nbsp;</div>
+                                            </div>
+                                            <!--   <div class="space30">&nbsp;</div>-->
+                                            <div class="col-lg-6 col-md-6">
+                                                <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
+                                                <div class="form-group">
+                                                    <select name="colorbuy" style="height: 38px">
+                                                        @foreach($product_color as $pro)
+                                                            @if($promo->id_product == $pro->spid)
+                                                                <option>{{$pro->color}}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="space10">&nbsp;</div>
+                                            </div>
+                                            <p class=" text-price"><b>&nbsp;Thông tin cơ bản:</b></p>
+                                            <div class="col-lg-12 ">{{$promo->description}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3 col-xs-12">
+                                    <button class="btn btn-danger btn-full " data-dismiss="modal">Huỷ</button>
+                                </div>
+                                <div class="col"> &nbsp; </div>
+                                <div class="col-lg-3 col-md-4 col-xs-12">
+                                    <a class="btn btn-buy btn-full " href="{{route('themgiohang',$promo->id_product)}}">Thêm Vào Giỏ</a>
+                                    <div class="space10">&nbsp;</div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-xs-12">
+                                    @if(Session::has('cart'))
+                                        <a class="btn btn-buy btn-full button" href="{{route('themgiohang',$promo->id_product)}}"><span>Thanh Toán</span></a>
+                                    @else
+                                        <button class="btn btn-buy btn-full button" type="submit"><span>Thanh Toán</span></button>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>             
+        </form>
+    </div>
+       
+  
+    @endforeach
+    <!--  Modal Mua Nhanh promotion-->
+
+    <!--  Modal Mua Nhanh new-->
+    @foreach($new_product as $new ) 
+    
+    <div class="modal fade" id="new{{$new->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <!--  Modal Mua Nhanh-->
+        <form action="{{ route('chitietsp', $new->id_product) }}" method="post">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-title-modal " id="exampleModalLongTitle">{{$new->name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-full">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                            @if($new->promotion_price != 0)
+                                        <div class="ribbon1 sale">Sale</div>
+                                        @elseif($new->status == 1)
+                                        <div class="ribbon1 new">New</div>
+                                        @elseif($new->status == 2)
+                                        <div class="ribbon1 hot">Hot</div>
+                                        @endif
+                                        </div>
+                                        <div class="thumbnail">
+                                            
+                                            <img src="storage/product/{{$new->image}}" alt="Thumbnail Image 1" class="" width="480px">
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-offset-0">
+                                    <div class="space10">&nbsp;</div>
+                                   <b class="text-price">
+                                                @if($new->promotion_price == 0)
+                                                            <span class="text-danger ">{{number_format($new->unit_price)}} đ</span> &nbsp;
+                                                        @else
+                                                            <span class="text-danger ">{{number_format($new->promotion_price)}} đ</span> &nbsp;
+                                                            <span class="flash-del">{{number_format($new->unit_price)}} đ</span>
+                                                        @endif
+                                                </b>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <p class=" text-price"><b>&nbsp;Số lượng:</b></p>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                    <input type="text" class="form-control text-center" name="qtyspbuy" value="1">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="space15">&nbsp;</div>
+                                            </div>
+                                            <!--   <div class="space30">&nbsp;</div>-->
+                                            <div class="col-lg-6 col-md-6">
+                                                <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
+                                                <div class="form-group">
+                                                    <select name="colorbuy" style="height: 38px">
+                                                        @foreach($product_color as $pro)
+                                                            @if($new->id_product == $pro->spid)
+                                                                <option>{{$pro->color}}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="space10">&nbsp;</div>
+                                            </div>
+                                            <p class=" text-price"><b>&nbsp;Thông tin cơ bản:</b></p>
+                                            <div class="col-lg-12 ">{{$new->description}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3 col-xs-12">
+                                    <button class="btn btn-danger btn-full " data-dismiss="modal">Huỷ</button>
+                                </div>
+                                <div class="col"> &nbsp; </div>
+                                <div class="col-lg-3 col-md-4 col-xs-12">
+                                    <a class="btn btn-buy btn-full " href="{{route('themgiohang',$new->id_product)}}">Thêm Vào Giỏ</a>
+                                    <div class="space10">&nbsp;</div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-xs-12">
+                                    @if(Session::has('cart'))
+                                        <a class="btn btn-buy btn-full button" href="{{route('themgiohang',$promo->id_product)}}"><span>Thanh Toán</span></a>
+                                    @else
+                                        <button class="btn btn-buy btn-full button" type="submit"><span>Thanh Toán</span></button>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>             
+        </form>
+    </div>
+   
+    @endforeach
+    <!--  Modal Mua Nhanh new-->
+
+    <!--  Modal Mua Nhanh hot-->
+    @foreach($hot_product as $hot ) 
+    <div class="modal fade" id="hot{{$hot->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <!--  Modal Mua Nhanh-->
+        <form action="{{ route('chitietsp', $hot->id_product) }}" method="post">
+           <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-title-modal " id="exampleModalLongTitle">{{$hot->name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-full">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                            @if($hot->promotion_price != 0)
+                                        <div class="ribbon1 sale">Sale</div>
+                                        @elseif($hot->status == 1)
+                                        <div class="ribbon1 new">New</div>
+                                        @elseif($hot->status == 2)
+                                        <div class="ribbon1 hot">Hot</div>
+                                        @endif
+                                        </div>
+                                        <div class="thumbnail">
+                                           
+                                            <img src="storage/product/{{$hot->image}}" alt="Thumbnail Image 1" class="" width="480px">
+    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-offset-0">
+                                    <div class="space10">&nbsp;</div>
+                                   <b class="text-price">
+                                                @if($hot->promotion_price == 0)
+                                                            <span class="text-danger ">{{number_format($hot->unit_price)}} đ</span> &nbsp;
+                                                        @else
+                                                            <span class="text-danger ">{{number_format($hot->promotion_price)}} đ</span> &nbsp;
+                                                            <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
+                                                        @endif
+                                                </b>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <p class=" text-price"><b>&nbsp;Số lượng:</b></p>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                    <input type="text" class="form-control text-center" name="qtyspbuy" value="1">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="space15">&nbsp;</div>
+                                            </div>
+                                            <!--   <div class="space30">&nbsp;</div>-->
+                                            <div class="col-lg-6 col-md-6">
+                                                <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
+                                                <div class="form-group">
+                                                    <select name="colorbuy" style="height: 38px">
+                                                        @foreach($product_color as $pro)
+                                                            @if($hot->id_product == $pro->spid)
+                                                                <option>{{$pro->color}}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="space10">&nbsp;</div>
+                                            </div>
+                                            <p class=" text-price"><b>&nbsp;Thông tin cơ bản:</b></p>
+                                            <div class="col-lg-12 ">{{$hot->description}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3 col-xs-12">
+                                    <button class="btn btn-danger btn-full " data-dismiss="modal">Huỷ</button>
+                                </div>
+                                <div class="col"> &nbsp; </div>
+                                <div class="col-lg-3 col-md-4 col-xs-12">
+                                    <a class="btn btn-buy btn-full " href="{{route('themgiohang',$hot->id_product)}}">Thêm Vào Giỏ</a>
+                                    <div class="space10">&nbsp;</div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-xs-12">
+                                    @if(Session::has('cart'))
+                                        <a class="btn btn-buy btn-full button" href="{{route('themgiohang',$promo->id_product)}}"><span>Thanh Toán</span></a>
+                                    @else
+                                        <button class="btn btn-buy btn-full button" type="submit"><span>Thanh Toán</span></button>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>             
+        </form>
+    </div>
+    @endforeach
+    <!--  Modal Mua Nhanh hot-->

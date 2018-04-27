@@ -89,7 +89,7 @@
                                                     </p>
                                                 </a>
                                         <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#pro{{$promo->id_product}}"><span>Mua Ngay </span></button>
-                                        <a class="btn btn-themvaogio btn-full " href="{{route('themgiohang',$promo->id)}}" style="color: white">Thêm vào giỏ</a>
+                                        <a class="btn btn-themvaogio btn-full " href="{{route('themgiohang',$promo->id_product)}}" style="color: white">Thêm vào giỏ</a>
                                         <hr>
                                     </div>
                                 </div>
@@ -147,7 +147,7 @@
                                         </p>
                                         </a>
                                         <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#new{{$new->id_product}}"><span>Mua Ngay </span></button>
-                                        <a class="btn btn-themvaogio btn-full " href="{{route('themgiohang',$promo->id)}}" style="color: white">Thêm vào giỏ</a>
+                                        <a class="btn btn-themvaogio btn-full " href="{{route('themgiohang',$new->id_product)}}" style="color: white">Thêm vào giỏ</a>
                                         <hr>
                                     </div>
                                 </div>
@@ -197,7 +197,7 @@
                                                     <p class='text-left text-title'><b>{{$hot->name}}</b>&nbsp;</p>
                                             </a>
                                         <button type="button" class="btn btn-buy btn-full button" data-toggle="modal" data-target="#hot{{$hot->id_product}}"><span>Mua Ngay </span></button>
-                                        <a class="btn btn-themvaogio btn-full " href="{{route('themgiohang',$promo->id)}}" style="color: white">Thêm vào giỏ</a>
+                                        <a class="btn btn-themvaogio btn-full " href="{{route('themgiohang',$hot->id_product)}}" style="color: white">Thêm vào giỏ</a>
                                         <hr> </div>
                                 </div>
                             </div>

@@ -131,16 +131,16 @@ body {
 }
 
 .btn-buy {
-    background-color: #5CAEFD;
+    background: #5CAEFD;
     color: #fff;
 }
 
 .btn-buy:hover {
-    background-color: #6793ED;
+    background: #6793ED;
 }
 
 .btn-themvaogio {
-    background-color: #FF3E8D;
+    background: #FF3E8D !important;
     color: #fff !important;
     cursor: pointer;
 }

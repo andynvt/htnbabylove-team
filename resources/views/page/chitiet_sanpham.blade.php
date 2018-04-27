@@ -147,7 +147,7 @@
                                     <div class="space10">&nbsp;</div>
                                     <div class="row">
                                         <div class="col-lg-5 col-md-12">
-                                            <button type="button" class="btn btn-themvaogio btn-full "><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
+                                            <a class="btn btn-themvaogio btn-full " href="{{route('themgiohang',$sanpham->id)}}"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
                                         </div>
                                         <div class="col-lg-5 col-md-12">
                                             <button type="submit" class="btn btn-buy btn-full button"><span>Mua Ngay </span></button>
@@ -370,7 +370,7 @@
                                                 @endif">
                                                 <span>Mua Ngay </span>
                                             </button>
-                                            <a class="btn btn-themvaogio btn-full ">Thêm vào giỏ</a>
+                                            <a class="btn btn-themvaogio btn-full " href="{{route('themgiohang',$same->id_product)}}">Thêm vào giỏ</a>
                                             <hr>
                                         </div>
                                     </div>
@@ -402,7 +402,7 @@
                                         @endif
                                     </p>
                                     <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#hot{{$hot->id_product}}"><span>Mua Ngay </span></button>
-                                    <a class="btn-ms btn-themvaogio-a btn-full ">Thêm vào giỏ</a>
+                                    <a class="btn-ms btn-themvaogio-a btn-full " href="{{route('themgiohang',$hot->id_product)}}">Thêm vào giỏ</a>
                                 </div>
                             </div>
                         @endforeach
@@ -429,7 +429,7 @@
                                         @endif
                                     </p>
                                     <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#new{{$new->id_product}}"><span>Mua Ngay </span></button>
-                                    <a class="btn-ms btn-themvaogio-a btn-full ">Thêm vào giỏ</a>
+                                    <a class="btn-ms btn-themvaogio-a btn-full " href="{{route('themgiohang',$new->id_product)}}">Thêm vào giỏ</a>
                                 </div>
                             </div>
                         @endforeach

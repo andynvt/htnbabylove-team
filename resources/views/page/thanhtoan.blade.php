@@ -119,15 +119,16 @@ if (mysqli_connect_error())
                                 <h5 class="title_">Thông tin đơn hàng @if(Session::has('cart')) ({{Session('cart')->totalQty}} sản phẩm) @endif</h5>
                                 <hr class="hrtitle_GH"> </div>
                             <div class="space10">&nbsp;</div>
-                            @foreach($product_cart as $product)
                             <div class="body-cart">
                                 <div class="panel panel-info">
                                     <div class="panel-body">
+                                    @foreach($product_cart as $product)
+
                                         <div id="overflowTest-checkout">
                                             <div class="body-cart-content-checkout">
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div class="col-sm-3 col-xs-3"> <img class="rounded" src="storage/product/quanao1.jpg"/> </div>
+                                                        <div class="col-sm-3 col-xs-3"> <img class="rounded" src="storage/product/{{$product['item']['img']}}"/> </div>
                                                         {{-- <input type="hidden" name="img" value="{{ $mua->image }}"> --}}
                                                         <div class="col-sm-5 col-xs-5 span_content_body">
                                                             
@@ -136,17 +137,17 @@ if (mysqli_connect_error())
                                                                 <h7>Số lượng: <span><input type="hidden" name="qty" value="{{$product['qty']}}">{{$product['qty']}}</span></h7>
                                                             </div>
                                                             <div class="col-xs-12">
-                                                                <h7>Màu: <span><input type="hidden" name="color" value="red">red</span></h7>
+                                                                <h7>Màu: <span><input type="hidden" name="color" value="{{$product['item']['color']}}">{{$product['item']['color']}}</span></h7>
                                                             </div>
                                                             <input type="hidden" name="size" value="{{ $product['item']['size'] }}">
                                                         </div>
                                                         <div class="col-sm-3 col-xs-3 text-right ">
-                                                            @if($$product['item']['promotion_price'] == 0)
+                                                            @if($product['item']['promotion_price'] == 0)
                                                                 <input type="hidden" name="price" value="{{ $product['item']['unit_price'] }}">
-                                                                <p><span>{{ number_format($product['item']['unit_price']) }}</span>đ</p>
+                                                                <p><span>{{ number_format($product['item']['unit_price']) }}</span> đ</p>
                                                             @else
                                                                 <input type="hidden" name="price" value="{{ $product['item']['promotion_price'] }}">
-                                                                <p><span>{{ number_format($$product['item']['unit_price']) }}</span>đ</p> 
+                                                                <p><span>{{ number_format($product['item']['promotion_price']) }}</span> đ</p> 
                                                             @endif
                                                         </div>
                                                     </div>
@@ -159,6 +160,7 @@ if (mysqli_connect_error())
                                             </div>
                                             <!-- body-cart-content-checkout -->
                                         </div>
+                                    @endforeach
                                         <div class="space20">&nbsp;</div>
                                         {{-- <div class="">
                                             <div class="col-md-12 col-sm-12 col-xs-12 container_btncsgh">
@@ -188,7 +190,6 @@ if (mysqli_connect_error())
                                 </div>
                                 <!-- panel-info -->
                             </div>
-                            @endforeach
                         @else
                             <div class="header-title-cart">
                                 <h5 class="title_">Thông tin đơn hàng ({{ count($spmua) }} sản phẩm)</h5>

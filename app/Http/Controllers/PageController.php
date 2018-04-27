@@ -24,10 +24,17 @@ class PageController extends Controller
 {
 	public function getAddtoCart(Request $req, $id){
         $product = Product::find($id);
+        $img = DB::select(DB::raw('SELECT image FROM product_image WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products WHERE id='.$id.')) LIMIT 1'));
+        $color = DB::select(DB::raw('SELECT color FROM product_color WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products WHERE id='.$id.')) LIMIT 1'));
+
+        $product['img'] = $img[0]->image;
+        $product['color'] = $color[0]->color;
+        
         $oldCart = Session('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->add($product, $id);
         $req->session()->put('cart',$cart);
+        // dd($cart);
         return redirect()->back();
     }
 
@@ -69,12 +76,12 @@ class PageController extends Controller
         foreach ($cart->items as $key => $value) {
             $bill_detail = new BillDetail;
             $bill_detail->id_bill = $bill->id;
-            $bill_detail->product_name = $value['proname'];
-            $bill_detail->color = $value['color'];
+            $bill_detail->product_name = $value['item']['name'];
+            $bill_detail->color = $value['item']['color'];
             $bill_detail->quantity = $value['qty'];
-            $bill_detail->size = $value['valuesize'];
-            $bill_detail->price = ($value['price']/$value['valuesize']);
-            // $bill_detail->image = $value['img'];
+            $bill_detail->size = $value['item']['size'];
+            $bill_detail->price = ($value['price']/$value['qty']);
+            $bill_detail->image = $value['item']['img'];
             $bill_detail->save(); 
         }
         Session::forget('cart');
@@ -155,13 +162,13 @@ class PageController extends Controller
         $new_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('status', 1)
-                            ->groupBy('products.id')
+                            ->groupBy('products.id')->take(5)
                             ->get();
 
         $hot_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('status', 2)
-                            ->groupBy('products.id')
+                            ->groupBy('products.id')->take(5)
                             ->get();
 
         $getcl = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=' , 'ctsp.id')
