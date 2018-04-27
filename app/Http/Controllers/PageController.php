@@ -728,4 +728,40 @@ class PageController extends Controller
         $dtdh = DB::select(DB::raw('SELECT month(created_at) as month, sum(total_price) as tongtien, sum(total_product) as tongsp, count(*) as numbill FROM bills GROUP BY month(created_at)'));
         return view('Admin.pageadmin.admindoanhthu', compact('dtdh', 'getmonth'));
     }
+	
+	public function gettimkiemall(Request $request){
+        
+        $tukhoa = $request->tukhoa;
+        $tk_lsp = $request->tk_lsp;
+        $tk_kh = $request->tk_kh;
+
+        if(!empty($tukhoa)){
+            $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                ->where('name','like','%'.$tukhoa.'%')
+                ->groupBy('products.id')
+                ->get();
+
+        }
+
+        if(!empty($tk_lsp)){
+            $pro_type = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                ->where('type_name','like','%'.$tk_lsp.'%')
+                ->groupBy('ty.id')
+                ->get();
+        }
+
+        if(!empty($tk_kh)){
+            // $product = Customer::where('name','like','%'.$tk_kh.'%')->orWhere('email','like','%'.$tk_kh.'%')->groupBy('id')
+            //     ->get();
+
+            $pro = DB::select(DB::raw("SELECT * FROM customers WHERE name LIKE '%".$tk_kh."%' GROUP BY id"));
+        }
+        
+        return view('Admin.pageadmin.admintimkiem', compact('product','pro_type','tukhoa','tk_lsp', 'tk_kh','pro'));
+
+    }
 }

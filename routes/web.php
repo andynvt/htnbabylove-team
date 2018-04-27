@@ -213,3 +213,8 @@ Route::post('sua/{id}',[
 	'as' => 'suaAdmin',
 	'uses' => 'UserController@postSuaAdmin'
 ]);
+
+Route::get('admin-timkiem', [
+	'as' => 'admintimkiem',
+	'uses' => 'PageController@gettimkiemall'
+]);

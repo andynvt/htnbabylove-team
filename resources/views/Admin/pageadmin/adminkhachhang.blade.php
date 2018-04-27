@@ -85,9 +85,11 @@
                                         </div>
                                         <div class="col-md-3 ">
                                             <div id="wrap">
-                                                <form action="#" autocomplete="on">
-                                                    <input id="search" name="search" type="text" placeholder="Search...">
-                                                    <input id="search_submit" value="Rechercher" type="submit"> </form>
+                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                <form action="{{route('admintimkiem')}}"  method="get">
+                                                    <input id="search" name="tk_kh" type="text" placeholder="Tìm kiếm..." required="">
+                                                    <button id="search_submit" value="Rechercher" type="submit"></button> 
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -101,15 +103,14 @@
 
                                 </script>
                                 <div class="container-fluid">
-                                    <table class="table table-bordered text-align">
+                                    <table class="table table-bordered text-align" id="myTable">
                                         <thead>
                                             <tr class="thead_change_color">
-                                                <th>Mã Khách Hàng</th>
-                                                <th>Họ và Tên</th>
-                                                <th>Giới Tính</th>
+                                                <th onclick="sortTable(0)">Mã Khách Hàng <span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6"></span></th>
+                                                <th onclick="sortTable(1)">Họ và Tên <span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6"></span></th>
                                                 <th>Số Điện Thoại</th>
-                                                <th>Địa Chỉ</th>
-                                                <th>Email</th>
+                                                <th >Địa Chỉ</th>
+                                                <th onclick="sortTable(4)">Email <span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6"></span></th>
                                             </tr>
                                         </thead>
                                           @foreach($table as $tb)
@@ -118,7 +119,6 @@
                                                 <tr class="row-detail-feedback text-left">
                                                     <td>{{$tb->id}}</td>
                                                     <td>{{$tb->name}}</td>
-                                                    <td>{{$tb->gender}}</td>
                                                     <td>{{$tb->phone}}</td>
                                                     <td>{{$tb->address}}</td>
                                                     <td style="text-overflow: ellipsis">{{$tb->email}}</td>
@@ -142,4 +142,5 @@
         });
 
     </script>
+
 @endsection

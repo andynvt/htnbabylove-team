@@ -95,7 +95,7 @@
                                     <tbody>
                                         <tr>
                                             <td class="danggui">1</td>
-                                            <td>Đang gửi</td>
+                                            <td>Hàng đang gửi</td>
                                         </tr>
                                         <tr>
                                             <td class="hoantat">2</td>
@@ -126,11 +126,8 @@
                                             <p></p>
                                         </div>
                                         <div class="col-md-3 ">
-                                            <div id="wrap">
-                                                <form action="#" autocomplete="on">
-                                                    <input id="search" name="search" type="text" placeholder="Search...">
                                                     <input id="search_submit" value="Rechercher" type="submit"> </form>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -143,11 +140,11 @@
 
                                 </script>
                                 <div class="container-fluid">
-                                    <table class="table table-bordered text-align">
+                                    <table class="table table-bordered text-align" id="myTable">
                                         <thead>
                                             <tr class="thead_change_color">
                                                 <th>Mã hoá đơn</th>
-                                                <th>Trạng thái</th>
+                                                <th  onclick="sortTable(1)">Trạng thái <span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6"></span></th>
                                                 <th>Tổng tiền</th>
                                                 <th>Số lượng sản phẩm</th>
                                                 <th>Địa chỉ</th>
@@ -170,7 +167,7 @@
                                             <td>{{ $b->id }}</td>
                                             <td>
                                                 @if($b->status == 1)
-                                                    Đang gửi
+                                                    Hàng đang gửi
                                                 @elseif($b->status == 2)
                                                     Hoàn tất
                                                 @elseif($b->status == 3)
@@ -375,5 +372,7 @@
     </form>
         
     </script>
+
+    
 
     @endsection

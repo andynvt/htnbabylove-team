@@ -109,24 +109,25 @@
                             <div class="panel-body ">
                                 <div class="row">
                                     <div class="col-lg-7 col-md-8">
-                                        <p>Có {{ count($adminlsp) }} sản phẩm</p>
+                                        <p>Có {{ count($adminlsp) }} loại sản phẩm</p>
                                     </div>
                                     <div class="col-lg-1 col-md-1">
                                         <p> &nbsp;</p>
                                     </div>
                                     <div class="col-lg-4 col-md-3 ">
                                         <div id="wrap">
-                                            <form action="#" autocomplete="on">
-                                                <input id="search" name="search" type="text" placeholder="Search...">
-                                                <input id="search_submit" value="Rechercher" type="submit"> 
+                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                            <form action="{{route('admintimkiem')}}"  method="get">
+                                                <input id="search" name="tk_lsp" type="text" placeholder="Tìm kiếm..." required="">
+                                                <button id="search_submit" value="Rechercher" type="submit"></button> 
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table table-bordered table-striped table-hover ">
+                                <table class="table table-bordered table-striped table-hover " id="myTable">
                                     <thead>
                                         <tr>
-                                            <th>Mã Loại</th>
+                                            <th onclick="sortTable(0)">Mã Loại<span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6; height: 1px; width: 1px; margin-top: 0.3em"></span></th>
                                             <th>Tên Loại</th>
                                             <th class="text-center " style="width: 100px; ">Sửa/Xóa</th>
                                         </tr>
@@ -210,5 +211,6 @@
         cursor: text;
     }
 </style>
+
 
 @endsection

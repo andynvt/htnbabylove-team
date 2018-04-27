@@ -81,9 +81,11 @@
                                     </div>
                                     <div class="col-md-3 ">
                                         <div id="wrap">
-                                            <form action="#" autocomplete="on">
-                                                <input id="search" name="search" type="text" placeholder="Search...">
-                                                <input id="search_submit" value="Rechercher" type="submit"> </form>
+                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                            <form action="{{route('admintimkiem')}}"  method="get">
+                                                <input id="search" name="tukhoa" type="text" placeholder="Tìm kiếm..." required="" />
+                                                <button id="search_submit" value="Rechercher" type="submit"></button> 
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -96,11 +98,11 @@
 
                                 </script>
                                 <div class="container-fluid">
-                                    <table class="table table-bordered text-align">
+                                    <table class="table table-bordered text-align" id="myTable" >
                                         <thead>
                                             <tr class="thead_change_color">
                                                 <th>Mã số</th>
-                                                <th>Loại</th>
+                                                <th onclick="sortTable(1)">Loại <span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6"></span></th>
                                                 <th>Tên</th>
                                                 <th>Giá Gốc</th>
                                                 <th>Giá Khuyến Mãi</th>
@@ -137,4 +139,5 @@
             </div>
         </div>
 </div>
+
 @endsection
