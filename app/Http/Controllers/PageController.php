@@ -11,6 +11,8 @@ use App\Bill;
 use App\BillDetail;
 use App\ProductColor;
 use App\ProductImage;
+use App\Cart;
+use Session;
 use Illuminate\Console\Scheduling\Schedule;
 use DB;
 use Illuminate\Support\Facades\Storage;
