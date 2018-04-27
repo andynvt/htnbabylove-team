@@ -25,8 +25,12 @@ if (mysqli_connect_error())
         <div class="container-fluid">
           
             <div class="clearfix"></div>
-
-            <form action="{{ route('dathang') }}" method="post" class="beta-form-checkout">
+            @if(Session::has('cart'))
+                <form action="{{ route('dathang') }}" method="post" class="beta-form-checkout">
+            @else
+                <form action="{{ route('thanhtoantest') }}" method="post" class="beta-form-checkout">
+                
+            @endif
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class=" col-lg-7">
