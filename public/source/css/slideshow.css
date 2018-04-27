@@ -145,6 +145,26 @@ body {
     cursor: pointer;
 }
 
+/*.btn-themvaogio-a {
+    background-color: #FF3E8D;
+    color: #fff !important;
+    cursor: pointer;
+}*/
+
+.btn-themvaogio-a, .btn-themvaogio-a:visited {
+    background-color: #FF3E8D;
+    color: #fff !important;;
+    padding: 1px 1px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+.btn-themvaogio-a:hover, .btn-themvaogio-a:active {
+    background-color: #E91E63;
+}
+
 .btn-themvaogio:hover{
     background: #E91E63;
     color: #fff;
