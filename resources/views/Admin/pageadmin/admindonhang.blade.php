@@ -126,7 +126,6 @@
                                             <p></p>
                                         </div>
                                         <div class="col-md-3 ">
-                                                    <input id="search_submit" value="Rechercher" type="submit"> </form>
                                             
                                         </div>
                                     </div>
