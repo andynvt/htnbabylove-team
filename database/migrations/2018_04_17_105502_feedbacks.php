@@ -21,6 +21,7 @@ class Feedbacks extends Migration
             $table->string('reviewer');
             $table->string('tel');
             $table->text('review');
+            $table->text('status');
             $table->timestamps();
         });
     }
