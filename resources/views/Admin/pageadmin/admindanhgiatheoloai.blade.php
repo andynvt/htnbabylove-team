@@ -96,9 +96,14 @@
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
                                         <a href="{{ route('adminchitietdanhgia', $fbloai->spid) }}"><img src="storage/product/{{ $fbloai->image }}" alt="Thumbnail Image 1" class="img-responsive">
-                                            {{-- <div class="feedback-qty">
-                                                <div class="qty-feedback">{{ count($fbloai->fbid) }}</div>
-                                            </div> --}}
+                                            @foreach($getnumfb as $numfb)
+                                            @if($fbloai->spid == $numfb->id)
+                                                <div class="feedback-qty">
+                                                    <div class="qty-feedback">{{ $numfb->numfb }}</div>
+                                                </div>
+                                            @else
+                                            @endif
+                                            @endforeach
                                             <p>{{ $fbloai->name }}</p>
                                         </a>
                                     </div>

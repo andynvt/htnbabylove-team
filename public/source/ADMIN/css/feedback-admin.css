@@ -157,7 +157,7 @@
 
 .align-feedback-item{
     height: 20vw;
-    /*margin-bottom: 20px;*/
+    margin-bottom: 20px;
 }
 
 .feedback-content-item {
@@ -169,6 +169,13 @@
 .feedback-content-item img{
     margin: 0 auto;
     display: block;
+    height: 85%;
+}
+
+.feedback-content-item p{
+    margin: 0 auto;
+    display: block;
+    height: 15%;
 }
 
 .feedback-content-item:hover {

@@ -96,9 +96,14 @@
                                 <div class="col-md-3 align-feedback-item">
                                     <div class="feedback-content-item">
                                         <a href="{{ route('adminchitietdanhgia', $fbsp->spid) }}"><img src="storage/product/{{ $fbsp->image }}" alt="Thumbnail Image 1" class="img-responsive">
-                                            {{-- <div class="feedback-qty">
-                                                <div class="qty-feedback"></div>
-                                            </div> --}}
+                                            @foreach($getnumfb as $numfb)
+                                            @if($fbsp->spid == $numfb->id)
+                                                <div class="feedback-qty">
+                                                    <div class="qty-feedback">{{ $numfb->numfb }}</div>
+                                                </div>
+                                            @else
+                                            @endif
+                                            @endforeach
                                             <p>{{ $fbsp->name }}</p>
                                         </a>
                                     </div>

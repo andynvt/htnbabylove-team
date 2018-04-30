@@ -301,6 +301,7 @@
                                                 <input class="col-md-8 col-xs-12" type="text" placeholder="Bắt buộc" name="name" required>
                                                 <label class="col-md-4 col-xs-12">Số điện thoại:</label>
                                                 <input class="col-md-8 col-xs-12" type="tel" placeholder="Để chúng tôi phục vụ bạn tốt hơn" name="phone">
+                                                <input type="hidden" name="status" value="1">
                                                 <br>
                                                 <textarea class="col-xs-12" rows="5" name="review" placeholder="Đánh giá của bạn cho sản phẩm"></textarea>
                                             </div>
