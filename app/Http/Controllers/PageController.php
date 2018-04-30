@@ -459,7 +459,11 @@ class PageController extends Controller
                         ->groupBy('spid')
                         ->get();
 
-        $getnumfb = Feedback::all();
+        $getnumfb = DB::select(DB::raw('SELECT count(*) as numfb, sp.id, sp.name
+                                        FROM feedbacks as fb, products as sp
+                                        WHERE fb.id_product = sp.id
+                                        AND fb.status = 1
+                                        GROUP BY sp.id'));
 
         return view('Admin.pageadmin.admindanhgia', compact('getlsp','getsp', 'getnumfb'));
 
@@ -472,6 +476,12 @@ class PageController extends Controller
         
         $fbsp = Feedback::where('id_product','=',$idfb)->get();
 
+        $findfb = Feedback::where('id_product', $idfb)->get();
+
+        foreach($findfb as $key){
+            $key->status = '0';
+            $key->save();
+        }
         return view('Admin.pageadmin.adminchitietdanhgia', compact('fbsp', 'getlsp', 'getsp'));
     }
 
@@ -486,7 +496,13 @@ class PageController extends Controller
                         ->groupBy('spid')
                         ->get();
 
-        return view('Admin.pageadmin.admindanhgiatheoloai', compact('getlsp','fb_theoloai'));
+        $getnumfb = DB::select(DB::raw('SELECT count(*) as numfb, sp.id, sp.name
+                                        FROM feedbacks as fb, products as sp
+                                        WHERE fb.id_product = sp.id
+                                        AND fb.status = 1
+                                        GROUP BY sp.id'));
+
+        return view('Admin.pageadmin.admindanhgiatheoloai', compact('getlsp','fb_theoloai', 'getnumfb'));
     }
 
     public function getadminXoadanhgia($fb){
