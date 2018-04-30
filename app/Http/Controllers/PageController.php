@@ -35,7 +35,7 @@ class PageController extends Controller
         $cart->add($product, $id);
         $req->session()->put('cart',$cart);
         // dd($cart);
-        return redirect()->back();
+        return redirect()->back()->with('add-cart','Thêm vào giỏ hàng thành công!');
     }
 
     public function getDelItemCart($id){
@@ -48,7 +48,7 @@ class PageController extends Controller
         else{
             Session::forget('cart');
         }
-        return redirect()->back();
+        return redirect()->back()->with('del-cart','Đã xoá sản phẩm khỏi giỏ hàng!');
     }
 
     public function getThanhToan(){
@@ -60,6 +60,7 @@ class PageController extends Controller
 
         $cus = new Customer;
         $cus->name = $req->cusname;
+        $cus->gender = $req->gender;
         $cus->email = $req->email;
         $cus->address = $req->address;
         $cus->phone = $req->phone;
@@ -215,6 +216,7 @@ class PageController extends Controller
     public function postCheckout(Request $req){
         $cus = new Customer;
         $cus->name = $req->cusname;
+        $cus->gender = $req->gender;
         $cus->email = $req->email;
         $cus->address = $req->address;
         $cus->phone = $req->phone;

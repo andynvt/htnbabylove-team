@@ -233,7 +233,7 @@
                     <div class="modal-body cart-center">
                         <ul>
                             <li>Họ tên: {{$c->name}}</li>
-                            {{-- <li>Giới tính: {{$c->gender}}</li> --}}
+                            <li>Giới tính: {{$c->gender}}</li>
                             <li>SĐT: {{$c->phone}}</li>
                             <li>Email: {{$c->email}}</li>
                             <li>Địa chỉ: {{$c->address}}</li>
@@ -243,8 +243,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                         @if($b->status == 1 || $b->status == 4)
-                        <form action=""></form>
-                        
+                        <form style="display: none" action=""></form>
                         <form action="{{ route('cancelUpdate', $b->id) }}" method="POST" style="display: inline-block;">
                             {{ csrf_field() }}
                             {{ method_field('PATCH') }}
@@ -344,7 +343,7 @@
                         </div>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                         @if($b->status == 1 || $b->status == 4)
-                        <form action=""></form>
+                        <form style="display: none" action=""></form>
 
                         <form action="{{ route('cancelUpdate', $b->id) }}" method="POST" style="display: inline-block;">
                             {{ csrf_field() }}

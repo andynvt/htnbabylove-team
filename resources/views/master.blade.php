@@ -39,9 +39,17 @@
     <link href="source/css/responsive_product_detail.css" rel="stylesheet" />
     <link href="source/css/feedback.css" rel="stylesheet" />
     <link href="source/css/chitietsanpham_custom.css" rel="stylesheet">
+    <link href="source/css/alert.css" rel="stylesheet">
 </head>
 
 <body>
+@if (session('del-cart'))
+    <body onload="alertbabyproject()"><div class="alert-babyproject">{{session('del-cart')}}</div></body>
+@elseif (session('add-cart')) 
+    <body onload="alertbabyproject()"><div class="alert-babyproject">{{session('add-cart')}}</div></body>
+@elseif (session('success'))
+    <body onload="alertbabyproject()"><div class="alert-babyproject">Cám ơn bạn đã đặt hàng của chúng tôi</div></body>
+@endif
     {{-- Modal liên hệ --}}
     <div class="modal fade cont-modal" id="contactModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -122,7 +130,15 @@
     <!-- #footer -->
     
     
-
+    <script>
+        function alertbabyproject() {
+            $(".modal-dialog").attr("data-dismiss", "modal");
+            $(".alert-babyproject").fadeIn(700);
+                setTimeout(function () {
+               $(".alert-babyproject").fadeOut(700);
+            }, 2000)
+        }
+    </script>
     <script type="text/javascript" src="source/js/cart.js"></script>
     <script type="text/javascript" src='source/js/modal.js'></script>
     <script type="text/javascript" src='source/js/index.js'></script>

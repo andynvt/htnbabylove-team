@@ -45,13 +45,27 @@ if (mysqli_connect_error())
                                     <div class="col-md-12"><strong>Email đặt hàng</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12 col-xs-12">
-                                        <input type="text" class="form-control form_size" name="email" value="" /> </div>
+                                        <input type="text" class="form-control form_size" name="email" value="" /> 
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Họ và tên</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control form_size" name="cusname" value="" /> </div>
+                                        <input type="text" class="form-control form_size" name="cusname" value="" /> 
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12"><strong>Giới tính</strong></div>
+                                    <div class="space10">&nbsp;</div>
+                                    <div class="col-md-12">
+                                        <select name="gender" class="form-control form_size ">
+                                            <option value="" selected>Chọn giới tính</option>
+                                            <option>Nam</option>
+                                            <option>Nữ</option>
+                                            <option>Khác</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Tỉnh/Thành Phố</strong></div>
@@ -97,7 +111,7 @@ if (mysqli_connect_error())
                                     <div class="col-md-12"><strong>Số điện thoại:</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <input type="text" name="phone" class="form-control form_size" value="" /> </div>
+                                        <input type="number" name="phone" class="form-control form_size" value="" /> </div>
                                 </div>
                                 <div class="space30">&nbsp;</div>
                                 <div class="form-group">
@@ -178,7 +192,7 @@ if (mysqli_connect_error())
                                                 <div class="col-md-5"> <strong><b class="lbl_TongTien">Tổng Tiền</b></strong> </div>
                                                 <div class="col-md-6">
                                                     <div class="pull-right span_content">
-                                                        <p><span><input type="hidden" name="tongtien" value="{{Session('cart')->totalPrice}}">{{number_format( Session('cart')->totalPrice )}}</span> đ</p>
+                                                        <p><span><input type="hidden" name="tongtien" value="{{number_format( Session('cart')->totalPrice)}}"><b style="font-size: 18px">{{number_format( Session('cart')->totalPrice )}} đ</b></span></p>
                                                     </div>
                                                     <br> 
                                                 </div>
@@ -253,9 +267,9 @@ if (mysqli_connect_error())
                                                 <div class="col-md-6">
                                                     <div class="pull-right span_content">
                                                         @if($mua->promotion_price == 0)
-                                                            <p><span><input type="hidden" name="tongtien" value="{{ ($mua->unit_price * $qtymua) }}">{{ ($mua->unit_price * $qtymua) }}</span>đ</p>
+                                                            <p><span><input type="hidden" name="tongtien" value="{{ ($mua->unit_price * $qtymua) }}"><b style="font-size: 18px">{{number_format( ($mua->unit_price * $qtymua) )}} đ</b></span></p>
                                                         @else
-                                                            <p><span><input type="hidden" name="tongtien" value="{{ ($mua->promotion_price * $qtymua) }}">{{ ($mua->promotion_price* $qtymua) }}</span>đ</p>
+                                                            <p><span><input type="hidden" name="tongtien" value="{{ ($mua->promotion_price * $qtymua) }}"><b style="font-size: 18px">{{number_format( ($mua->promotion_price* $qtymua) )}} đ</b></span></p>
                                                         @endif
                                                     </div>
                                                     <br> 

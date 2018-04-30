@@ -1,3 +1,6 @@
+@if (session('del-cart'))
+    <body onload="alertbabyproject()"><div class="alert-babyproject">{{session('del-cart')}}</div></body>
+@endif
 
 <div class="header-top">
     <div class="container-full">
@@ -44,7 +47,7 @@
                     <a href="{{ route('trang-chu') }}" class="menu-list navbar-home">
                         <li class="nav-item menu-li-list active hide-mobile">TRANG CHỦ</li>
                     </a>
-                    <a class="menu-list" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="menu-list" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <li class="nav-item menu-li-list hide-mobile">MENU <i class="fa fa-caret-down menu-down-icon"></i> </li>
                     </a>
                     <div class="dropdown-menu menu-drd col-lg-12" aria-labelledby="dropdownMenuLink">
@@ -60,17 +63,17 @@
                                 <div class="row"> </div>
                                 <div id="carouselExampleControls" class="carousel slide slider-index" data-ride="carousel">
                                     <div class="carousel-inner" role="listbox">
-                                        <div class="carousel-item active">
-                                            <a href="#"><img class="d-block img-fluid img-slide" src="storage/product/product_1.jpg"></a>
+                                        <div style="display: none">{{$i=0}}</div>
+                                        @foreach($slide_product as $slide)
+                                        <div class="carousel-item @if($i==0) active @endif" style="text-align: center;">
+                                            <a href="{{route('chitietsanpham', $slide->id_product)}}"><img class="d-block img-fluid img-slide" src="storage/product/{{$slide->image}}"></a>
+                                            <div class="space10">&nbsp;</div>
+                                            <a href="{{route('chitietsanpham', $slide->id_product)}}">{{$slide->name}}</a>
                                         </div>
-                                        <div class="carousel-item">
-                                            <a href="#"><img class="d-block img-fluid img-slide" src="storage/product/goi.jpg"></a>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <a href="#"><img class="d-block img-fluid img-slide" src="storage/product/goi.jpg"></a>
-                                        </div>
+                                        <div style="display: none">{{$i++}}</div>
+                                        @endforeach
                                     </div>
-                                    <a class="carousel-control-prev"  href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+                                    <a class="carousel-control-prev" type="button" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="false"></span> <span class="sr-only">Previous</span> </a>
                                     <a class="carousel-control-next"  href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
                                 </div>
                             </div>
@@ -150,7 +153,7 @@
                                     <div class="cart-product col-md-6 col-12">
                                         <div class="row">
                                             <div class="cart-div-img col-md-3 col-3">
-                                                <a href="#"> <img class="img-fluid cart-img" src="storage/product/{{$product['item']['img']}}"> </a>
+                                                <a> <img class="img-fluid cart-img" src="storage/product/{{$product['item']['img']}}"> </a>
                                             </div>
                                             <div class="col-md-9 col-9">
                                                 <div class="container">

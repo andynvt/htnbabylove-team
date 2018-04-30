@@ -37,6 +37,15 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
+       view()->composer('header',function($view){
+            $slide_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('status', 2)->take(5)
+                            ->groupBy('products.id')
+                            ->get();
+            $view->with('slide_product',$slide_product);
+        });
+
        view()->composer('page.thanhtoan',function($view){
             if(Session('cart')){
                 $oldCart = Session::get('cart');
@@ -60,7 +69,6 @@ class AppServiceProvider extends ServiceProvider
                             ->where('promotion_price', '<>', '0')
                             ->groupBy('products.id')
                             ->get();
-                           
             $view->with('promotion_product',$promotion_product);
         });
 
