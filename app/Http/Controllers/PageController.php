@@ -560,7 +560,8 @@ class PageController extends Controller
                 'image'=>$i,
             ]);
         }
-        return redirect()->back();    }
+        return redirect()->back()->with('addsp', 'Đã thêm!');    
+    }
 
     public function getadminSuasanpham($idsp){
         $product_type = ProductType::all();
@@ -624,7 +625,7 @@ class PageController extends Controller
             ]);
             $i++;
         }
-        return redirect()->back();
+        return redirect()->back()->with('editsp', 'Đã sửa!');
     }
 
     public function getadminXoasanpham($idsp){
@@ -664,7 +665,7 @@ class PageController extends Controller
         }
         
         Product::find($idsp)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('deletesp', 'Đã xoá!');
     }
 
     public function getadminLoaisanpham(){
@@ -679,20 +680,23 @@ class PageController extends Controller
         $producttype->save();
 
         $adminlsp = ProductType::all();
-        return redirect()->back()->with('add', 'Đã thêm loại sản phẩm');
+        return redirect()->back()->with('addlsp', 'Đã thêm: '.$req->categoriename);
     }
 
     public function postadminSualoaisanpham($idtype, Request $req){
+        $lspname = ProductType::where('id', $idtype)->value('type_name');
+
         $edittype = ProductType::find($idtype);
         $edittype->type_name  = $req->newtypename;
         $edittype->save();
 
-        return redirect()->back()->with('edit', 'Đã sửa thông tin loại sản phẩm');
+        return redirect()->back()->with('editlsp', 'Đã sửa: '.$lspname);
     }
 
     public function getadminXoaloaisanpham($idtype){
+        $lspname = ProductType::where('id', $idtype)->value('type_name');
         ProductType::find($idtype)->delete();
-        return redirect()->back()->with('delete', 'Đã xoá loại sản phẩm!');
+        return redirect()->back()->with('deletelsp', 'Đã xoá: '.$lspname);
     }
     
     public function getadminKhachhang(){
@@ -728,7 +732,7 @@ class PageController extends Controller
             $message->from('ngodangdt@gmail.com', 'HTN_BabyLove');
             $message->to($e,'')->subject($subject);
         });
-        return redirect()->back()->with('success', 'Đơn hàng được xác nhận');
+        return redirect()->back()->with('confirmbill', 'Đã xác nhận đơn hàng');
     }
 
     public function cancelUpdate($id){
@@ -748,7 +752,7 @@ class PageController extends Controller
             $message->from('ngodangdt@gmail.com', 'HTN_BabyLove');
             $message->to($e,'')->subject($subject);
         });
-        return redirect()->back()->with('cancle', 'Đơn hàng bị huỷ');
+        return redirect()->back()->with('cancelbill', 'Đã huỷ đơn hàng');
     }
 
     public function getadminDoanhthu(){
