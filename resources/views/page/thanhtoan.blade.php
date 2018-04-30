@@ -26,10 +26,9 @@ if (mysqli_connect_error())
           
             <div class="clearfix"></div>
             @if(Session::has('cart'))
-                <form action="{{ route('dathang') }}" method="post" class="beta-form-checkout">
+                <form action="{{ route('dathang') }}" method="post" class="beta-form-checkout" id="checkOutForm">
             @else
-                <form action="{{ route('thanhtoantest') }}" method="post" class="beta-form-checkout">
-                
+                <form action="{{ route('thanhtoantest') }}" method="post" class="beta-form-checkout" id="checkOutForm">
             @endif
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
@@ -42,24 +41,24 @@ if (mysqli_connect_error())
                             <div class="adress-checkout">
                                 <!--SHIPPING METHOD-->
                                 <div class="form-group">
-                                    <div class="col-md-12"><strong>Email đặt hàng</strong></div>
-                                    <div class="space10">&nbsp;</div>
-                                    <div class="col-md-12 col-xs-12">
-                                        <input type="text" class="form-control form_size" name="email" value="" /> 
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <div class="col-md-12"><strong>Họ và tên</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control form_size" name="cusname" value="" /> 
+                                        <input type="text" class="form-control form_size" name="cusname" id="cusname" minlength="3" pattern="^([a-zA-Z0-9)$" required="required" maxlength="20"/> 
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12"><strong>Email đặt hàng</strong></div>
+                                    <div class="space10">&nbsp;</div>
+                                    <div class="col-md-12 col-xs-12">
+                                        <input type="email" class="form-control form_size" name="email" id="email" required /> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Giới tính</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <select name="gender" class="form-control form_size ">
+                                        <select name="gender" class="form-control form_size " id="gender" required>
                                             <option value="" selected>Chọn giới tính</option>
                                             <option>Nam</option>
                                             <option>Nữ</option>
@@ -71,7 +70,7 @@ if (mysqli_connect_error())
                                     <div class="col-md-12"><strong>Tỉnh/Thành Phố</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <select class="form-control form_size thanhpho" id="select" name="city">
+                                        <select class="form-control form_size thanhpho" id="city" name="city" required>
                                             <option value="">Tỉnh/Thành Phố </option>
 												<?php
 												$sql = "select * from cities";
@@ -95,7 +94,7 @@ if (mysqli_connect_error())
                                     <div class="col-md-12"><strong>Quận/Huyện</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <select class="form-control form_size quan_huyen " id="select" name="district">
+                                        <select class="form-control form_size quan_huyen" id="district" name="district" required> 
                                             <option value="0">Quận/Huyện</option>
                                         </select>
                                     </div>
@@ -105,13 +104,13 @@ if (mysqli_connect_error())
                                         <div class="space10">&nbsp;</div>
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="text" name="address" class="form-control form_size" value="" /> </div>
+                                        <input type="text" name="address" class="form-control form_size" id="address" required/> </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Số điện thoại:</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <input type="number" name="phone" class="form-control form_size" value="" /> </div>
+                                        <input type="number" name="phone" class="form-control form_size" id="phone" required/> </div>
                                 </div>
                                 <div class="space30">&nbsp;</div>
                                 <div class="form-group">
@@ -279,7 +278,7 @@ if (mysqli_connect_error())
                                         <div class="space30">&nbsp;</div>
                                         <div class="form-group">
                                             <div class="col-md-12 col-sm-12 col-xs-12 container_btncsgh">
-                                                <button type="submit" class="btn btn-primary btn-submit-fix submitbtn_dathang">Đặt hàng</button>
+                                                <button type="submit" class="btn btn-primary btn-submit-fix submitbtn_dathang" id="submit">Đặt hàng</button>
                                             </div>
                                         </div>
                                     </div>
