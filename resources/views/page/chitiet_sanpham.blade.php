@@ -107,7 +107,6 @@
                     <div class="col-md-8 col-sm-12">
                         <div class="single-item-body">
                             <h3>{{ $sanpham->name }}</h3>
-                            <p class="summary-product">{{ $sanpham->description }}.</p>
                             <hr/>
                             <p class="single-item-price">
                                 <span class="present-price">
@@ -122,7 +121,7 @@
                             <form action="{{ route('chitietsp', $sanpham->id) }}" method="POST" accept-charset="utf-8">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="select-size-product">
-                                    <label class="choose-qty">Chọn số lượng:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn số lượng bạn muốn mua"></i></label>
+                                    <label class="choose-qty">Chọn số lượng</label>
                                     <br/>
                                     <div class="space10">&nbsp;</div>
                                     <div class="input-group mb-3" style="width: 45%;">
@@ -135,7 +134,7 @@
                                         </div>
                                     </div>
                                     <div class="space10">&nbsp;</div>
-                                    <label class="choose-qty">Chọn màu sắc:&nbsp;<i class="fa fa-question-circle" id="color-icon" data-toggle="tooltip" data-placement="top" title="Chọn màu bạn muốn mua"></i></label>
+                                    <label class="choose-qty">Chọn màu sắc</label>
                                     <div class="form-group">
                                         <select name="colorbuy">
                                             @foreach($getcl as $cl)
@@ -153,14 +152,6 @@
                                         <div class="col-lg-5 col-md-12">
                                             <button type="submit" class="btn btn-buy btn-full button"><span>Mua Ngay </span></button>
                                         </div>
-                                    </div>
-                                    <div class="flash"></div>
-                                    <div class="product-note">
-                                        <h3>Thông Tin & Khuyến Mãi</h3>
-                                        <ul>
-                                            <li>- <span style="font-weight: 400;">KHUYẾN MÃI :</span> nhận <span style="color: #DC2684">bao lì xì may mắn</span> khi mua các sản phẩm tại cửa hàng <a href="">Xem chi tiết!</a></li>
-                                            <li>- Mua Áo dài Tết cho bé xúng xính ngày Tết. <a href="">Xem ngay!</a></li>
-                                        </ul>
                                     </div>
                                 </div>
                             </form>

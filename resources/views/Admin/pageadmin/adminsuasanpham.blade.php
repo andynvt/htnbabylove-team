@@ -96,12 +96,12 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="ten">Tên:</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="ten" name="newname" value="{{ $sp->name }}"> </div>
+                                                <input type="text" class="form-control w50" id="ten" name="newname" value="{{ $sp->name }}" required> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="maloai">Loại sản phẩm:</label>
                                             <div class="col-sm-8">
-                                                <select class="form-control w50" name="newtype">
+                                                <select class="form-control w50" name="newtype" required>
                                                     @foreach($product_type as $lsp)
                                                     @if($lsp->id == $sp->id_type)
                                                         <option value="{{$id_type}}" selected>{{ $type_name }}</option>
@@ -116,18 +116,18 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="giagoc">Giá gốc:</label>
                                             <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="giagoc" placeholder="VD: 100000" name="new_unit_price" min="0" value="{{ $sp->unit_price }}"> </div>
+                                                <input type="number" class="form-control w50" id="giagoc" placeholder="VD: 100000" name="new_unit_price" min="0" value="{{ $sp->unit_price }}" required> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="magiamgia">Giá khuyến mãi (Nếu có):</label>
                                             <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="new_promotion_price" min="0" value="{{ $sp->promotion_price }}"> 
+                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="new_promotion_price" min="0" value="{{ $sp->promotion_price }}" required> 
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="soluong">Kích thước:</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="soluong" placeholder="VD: 30x30x30" name="newsize" value="{{ $sp->size }}">
+                                                <input type="text" class="form-control w50" id="soluong" placeholder="VD: 30x30x30" name="newsize" value="{{ $sp->size }}" required>
                                             </div>
                                         </div>
                                         {{-- <input type="hidden" value="1" name="trangthai"> --}}
@@ -147,7 +147,7 @@
                                             <label class="control-label col-sm-4" for="soluong">Nhập màu:</label>
                                             <div class="col-sm-4 type-color">
                                                 @foreach($getcl as $cl)
-                                                <input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newcolor[]" multiple value="{{ $cl->color }}">
+                                                <input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newcolor[]" multiple value="{{ $cl->color }}" >
                                                 @endforeach
                                             </div>
                                             <p class="col-sm-8 col-sm-offset-4" style="color: #9A9A9A;">(*) Mỗi ô một màu</p>
@@ -202,11 +202,9 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="thongtincoban">Thông tin sản phẩm:</label>
                                             <div class="col-sm-8">
-                                                <textarea class="form-control w50" id="{{ $sp->id }}" name="newdesc" value="" placeholder=""></textarea>
+                                                <textarea class="form-control w50" name="newdesc" rows="10" required>{{ $sp->description }}</textarea>
                                             </div>
-                                            <script>
-                                                $('#{{ $sp->id }}').val('{{ $sp->description }}');
-                                            </script>
+                                            
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-offset-6 col-sm-8">

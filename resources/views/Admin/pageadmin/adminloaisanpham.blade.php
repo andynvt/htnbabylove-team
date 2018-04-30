@@ -81,7 +81,7 @@
                                 <form method="post" action="{{ route('adminthemloaisanpham') }}">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group ">
-                                        <input type="text " class="form-control" name="categoriename" placeholder="Tên loại sản phẩm "> 
+                                        <input type="text " class="form-control" name="categoriename" placeholder="Tên loại sản phẩm " required> 
                                     </div>
                                     <button type="submit" class="btn btn-primary">Thêm</button>
                                 </form>
@@ -160,7 +160,7 @@
         <div class="modal-body modal-edit-lsp">
             {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
             {{ csrf_field() }}
-            <input type="text" name="newtypename" value="{{ $lsp->type_name }}">
+            <input type="text" name="newtypename" value="{{ $lsp->type_name }}" required>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>

@@ -79,12 +79,12 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="ten">Tên:</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="ten" placeholder="Nhập tên" name="ten"> </div>
+                                                <input type="text" class="form-control w50" id="ten" placeholder="Nhập tên" name="ten" required> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="maloai">Loại sản phẩm:</label>
                                             <div class="col-sm-8">
-                                                <select class="form-control w50" name="loaisanpham">
+                                                <select class="form-control w50" name="loaisanpham" required>
                                                     @foreach($addlsp as $lsp)
                                                     <option value="{{$lsp->id}}">{{ $lsp->type_name }}</option>
                                                     @endforeach
@@ -95,18 +95,18 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="giagoc">Giá gốc:</label>
                                             <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="giagoc" placeholder="VD: 100000" name="giagoc" min="0"> </div>
+                                                <input type="number" class="form-control w50" id="giagoc" placeholder="VD: 100000" name="giagoc" min="0" required> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="magiamgia">Giá khuyến mãi (Nếu có):</label>
                                             <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="giakhuyenmai" min="0"> 
+                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="giakhuyenmai" min="0" required> 
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="soluong">Kích thước:</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="soluong" placeholder="VD: 30x30x30" name="kichthuoc">
+                                                <input type="text" class="form-control w50" id="soluong" placeholder="VD: 30x30x30" name="kichthuoc" required>
                                             </div>
                                         </div>
                                         <input type="hidden" value="1" name="trangthai">
@@ -116,7 +116,7 @@
                                                 <div class="w50">
                                                     <button class=" btn btn-default btn-number-color" type="button">Chọn số lượng màu</button>
                                                     <div class="admin-num-color">
-                                                        <input type="number" class="form-control" placeholder="Nhập số lượng màu" min="0">
+                                                        <input type="number" class="form-control" placeholder="Nhập số lượng màu" min="0" required>
                                                         <button class="btn btn-default btn-selected-number" type="button">OK</button>
                                                     </div>
                                                 </div>
@@ -134,7 +134,7 @@
                                                 });
 
                                                 $('.btn-selected-number').on('click', function(){
-                                                    var ip = '<input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="mausp[]" multiple>';
+                                                    var ip = '<input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="mausp[]" multiple required>';
                                                     var qtycolor = $('.admin-num-color input').val();
 
                                                     $('.admin-num-color').css('display', 'none');
@@ -160,7 +160,7 @@
                                                     <div class="themhinh">
                                                         <button class="btn btn-default dehinh" style="cursor: pointer">
                                                            <i class="fa fa-plus"></i>
-                                                           <input type="file" name="images[]" multiple accept="image/png, image/jpg, image/jpeg">
+                                                           <input type="file" name="images[]" multiple accept="image/png, image/jpg, image/jpeg" required>
                                                        </button>
     
                                                         {{-- {!! Form::file('image', array('class' => 'image')) !!} --}}
@@ -177,7 +177,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="thongtincoban">Thông tin sản phẩm:</label>
                                             <div class="col-sm-8">
-                                                <textarea type="text" class="form-control w50" id="thongtincoban" placeholder="Nhập thông tin mô tả" name="mota"></textarea>
+                                                <textarea type="text" class="form-control w50" id="thongtincoban" placeholder="Nhập thông tin mô tả" name="mota" required rows="10"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
