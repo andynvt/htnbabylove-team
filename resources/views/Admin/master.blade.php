@@ -47,7 +47,98 @@
 </head>
 
 <body>
+    @if (session('deletelsp'))
+        <body onload="admin.showNotification('top','right')"></body>
+    @elseif (session('editlsp'))
+        <body onload="admin.showNotification('top','right')"></body>
+    @elseif(session('addlsp'))
+        <body onload="admin.showNotification('top','right')"></body>
+    @elseif (session('deletefb'))
+        <body onload="admin.showNotification('top','right')"></body>
+    @elseif (session('confirmbill'))
+        <body onload="admin.showNotification('top','right')"></body>
+    @elseif (session('cancelbill'))
+        <body onload="admin.showNotification('top','right')"></body>
+    @elseif (session('deletesp'))
+        <body onload="admin.showNotification('top','right')"></body>
+    @elseif (session('editsp'))
+        <body onload="admin.showNotification('top','right')"></body>
+    @elseif (session('addsp'))
+        <body onload="admin.showNotification('top','right')"></body>
+    @endif
 
+    {{-- 1: Xanh dương   2: Xanh lá cây  3: Vàng  4: Đỏ --}}
+    <script>
+        admin = {
+            showNotification: function(from, align){
+
+                @if(session('deletelsp'))
+                color = Math.floor(4);
+                $.notify({
+                    icon: "ti-trash",
+                    message: "{{ session('deletelsp') }}"
+                }
+                @elseif (session('editlsp'))
+                color = Math.floor(3);
+                $.notify({
+                    icon: "ti-pencil",
+                    message: "{{ session('editlsp') }}"
+                }
+                @elseif(session('addlsp'))
+                color = Math.floor(2);
+                $.notify({
+                    icon: "ti-plus",
+                    message: "{{ session('addlsp') }}"
+                }
+                @elseif(session('deletefb'))
+                color = Math.floor(4);
+                $.notify({
+                    icon: "ti-trash",
+                    message: "{{ session('deletefb') }}"
+                }
+                @elseif (session('confirmbill'))
+                color = Math.floor(2);
+                $.notify({
+                    icon: "ti-check",
+                    message: "{{ session('confirmbill') }}"
+                }
+                @elseif (session('cancelbill'))
+                color = Math.floor(4);
+                $.notify({
+                    icon: "ti-close",
+                    message: "{{ session('cancelbill') }}"
+                }
+                @elseif(session('deletesp'))
+                color = Math.floor(4);
+                $.notify({
+                    icon: "ti-trash",
+                    message: "{{ session('deletesp') }}"
+                }
+                @elseif (session('editsp'))
+                color = Math.floor(3);
+                $.notify({
+                    icon: "ti-pencil",
+                    message: "{{ session('editsp') }}"
+                }
+                @elseif(session('addsp'))
+                color = Math.floor(2);
+                $.notify({
+                    icon: "ti-plus",
+                    message: "{{ session('addsp') }}"
+                }
+                @endif
+                ,{
+                    type: type[color],
+                    timer: 4000,
+                    placement: {
+                        from: from,
+                        align: align
+                    }
+                });
+            }
+        }
+    </script>
+    
     <div id="content-admin">
         @yield('contentadmin')
     </div>
@@ -66,6 +157,7 @@
             }, 2000)
         }
     </script>
+
 	<script>
         function sortTable(n) {
           var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -189,6 +281,7 @@
 <!--  Notifications Plugin    -->
 <script src="source/ADMIN/assets/js/bootstrap-notify.js"></script>
 <script src="source/ADMIN/vendor/animsition/js/animsition.min.js"></script>
+<script src="source/ADMIN/assets/js/demo.js"></script>
 
 <script src="source/ADMIN/js/main.js" type="text/javascript"></script>
 <script src="source/ADMIN/js/cart.js" type="text/javascript"></script>
