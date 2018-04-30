@@ -95,7 +95,7 @@ if (mysqli_connect_error())
                                     <div class="col-md-12"><strong>Quận/Huyện</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <select class="form-control form_size quan_huyen " id="select" name="hometown">
+                                        <select class="form-control form_size quan_huyen " id="select" name="district">
                                             <option value="0">Quận/Huyện</option>
                                         </select>
                                     </div>

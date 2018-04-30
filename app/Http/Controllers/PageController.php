@@ -12,6 +12,8 @@ use App\BillDetail;
 use App\ProductColor;
 use App\ProductImage;
 use App\Cart;
+use App\City;
+use App\District;
 use Session;
 use Illuminate\Console\Scheduling\Schedule;
 use DB;
@@ -58,11 +60,15 @@ class PageController extends Controller
     public function postDatHang(Request $req){
         $cart = Session::get('cart');
 
+        $city = City::where('id', $req->city)->value('name');
+        $district = District::where('id', $req->district)->value('name');
+        $full_address = $city.", ".$district.", ".$req->address;
+
         $cus = new Customer;
         $cus->name = $req->cusname;
         $cus->gender = $req->gender;
         $cus->email = $req->email;
-        $cus->address = $req->address;
+        $cus->address = $full_address;
         $cus->phone = $req->phone;
         $cus->save();
 
@@ -70,7 +76,7 @@ class PageController extends Controller
         $bill->id_customer = $cus->id;
         $bill->total_product = $cart->totalQty;
         $bill->total_price = $cart->totalPrice;
-        $bill->address = $req->address;
+        $bill->address = $full_address;
         $bill->status = 4;
         $bill->save();
 
@@ -214,11 +220,15 @@ class PageController extends Controller
     }
 
     public function postCheckout(Request $req){
+        $city = City::where('id', $req->city)->value('name');
+        $district = District::where('id', $req->district)->value('name');
+        $full_address = $city.", ".$district.", ".$req->address;
+
         $cus = new Customer;
         $cus->name = $req->cusname;
         $cus->gender = $req->gender;
         $cus->email = $req->email;
-        $cus->address = $req->address;
+        $cus->address = $full_address;
         $cus->phone = $req->phone;
         $cus->save();
 
@@ -226,7 +236,7 @@ class PageController extends Controller
         $bill->id_customer = $cus->id;
         $bill->total_product = $req->qty;
         $bill->total_price = $req->tongtien;
-        $bill->address = $req->address;
+        $bill->address = $full_address;
         $bill->status = 4;
         $bill->save();
 
