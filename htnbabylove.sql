@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 17, 2018 at 02:32 PM
+-- Generation Time: Apr 30, 2018 at 03:21 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bills` (
-  `id_bill` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `id_customer` int(10) UNSIGNED NOT NULL,
   `total_price` int(11) NOT NULL,
   `total_product` int(11) NOT NULL,
@@ -43,11 +43,34 @@ CREATE TABLE `bills` (
 -- Dumping data for table `bills`
 --
 
-INSERT INTO `bills` (`id_bill`, `id_customer`, `total_price`, `total_product`, `status`, `address`, `created_at`, `updated_at`) VALUES
-(1, 1, 140000, 14, 1, 'cù lao', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 2, 24000, 2, 2, 'cần thơ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 1, 120000, 6, 3, 'ninh kiều', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 2, 200000, 4, 4, '132', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `bills` (`id`, `id_customer`, `total_price`, `total_product`, `status`, `address`, `created_at`, `updated_at`) VALUES
+(1, 1, 375000, 5, 2, '6/2 KDC Mê Trô', '2018-04-22 16:15:52', '2018-04-22 16:15:52'),
+(2, 2, 300000, 4, 2, 'cần thơ', '2018-07-16 16:34:44', '2018-04-22 16:34:44'),
+(3, 3, 150000, 2, 4, 'Cần thơ', '2018-04-22 17:16:51', '2018-04-22 17:16:51'),
+(4, 4, 92000, 1, 3, '132', '2018-04-23 01:56:07', '2018-04-23 01:56:07'),
+(5, 5, 170000, 2, 4, '30/4', '2018-04-27 01:52:56', '2018-04-27 01:52:56'),
+(6, 6, 170000, 2, 4, '30/4', '2018-08-15 01:53:45', '2018-04-27 01:53:45'),
+(7, 7, 170000, 2, 4, '30/4', '2018-04-27 01:54:06', '2018-04-27 01:54:06'),
+(8, 8, 170000, 2, 4, '30/4', '2018-04-27 01:54:18', '2018-04-27 01:54:18'),
+(9, 9, 170000, 2, 4, '30/4', '2018-04-27 01:54:39', '2018-04-27 01:54:39'),
+(10, 10, 170000, 2, 4, '30/4', '2018-04-27 01:55:43', '2018-04-27 01:55:43'),
+(11, 11, 170000, 2, 4, '30/4', '2018-04-27 01:56:47', '2018-04-27 01:56:47'),
+(12, 12, 170000, 2, 4, '30/4', '2018-04-10 01:56:58', '2018-04-27 01:56:58'),
+(13, 13, 170000, 2, 4, '30/4', '2018-04-27 01:57:43', '2018-04-27 01:57:43'),
+(14, 14, 170000, 2, 4, '30/4', '2018-04-27 01:58:10', '2018-04-27 01:58:10'),
+(15, 15, 170000, 2, 4, '30/4', '2018-04-27 01:58:38', '2018-04-27 01:58:38'),
+(16, 16, 170000, 2, 4, '30/4', '2018-04-27 01:58:54', '2018-04-27 01:58:54'),
+(17, 17, 170000, 2, 4, '30/4', '2018-04-27 01:59:19', '2018-04-27 01:59:19'),
+(18, 18, 170000, 2, 4, '30/4', '2018-04-27 01:59:31', '2018-04-27 01:59:31'),
+(19, 19, 170000, 2, 4, '30/4', '2018-04-27 02:00:22', '2018-04-27 02:00:22'),
+(20, 20, 170000, 2, 4, '30/4', '2018-04-27 02:00:34', '2018-04-27 02:00:34'),
+(21, 21, 170000, 2, 4, '30/4', '2018-04-27 02:02:44', '2018-04-27 02:02:44'),
+(22, 22, 320000, 3, 4, '1111', '2018-04-27 02:07:27', '2018-04-27 02:07:27'),
+(23, 23, 160000, 2, 4, '12312', '2018-04-27 04:36:51', '2018-04-27 04:36:51'),
+(24, 24, 242000, 3, 2, '133333', '2018-04-27 04:38:56', '2018-04-27 04:38:56'),
+(25, 26, 75000, 1, 2, 'yyy', '2018-04-27 07:11:39', '2018-04-27 07:11:39'),
+(26, 27, 255000, 3, 2, 'cần thơ', '2018-04-27 07:42:54', '2018-04-27 07:42:54'),
+(27, 28, 262000, 3, 3, 'jj', '2018-04-27 07:44:55', '2018-04-27 07:44:55');
 
 -- --------------------------------------------------------
 
@@ -56,11 +79,14 @@ INSERT INTO `bills` (`id_bill`, `id_customer`, `total_price`, `total_product`, `
 --
 
 CREATE TABLE `bill_detail` (
-  `id_bill_detail` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `id_bill` int(10) UNSIGNED NOT NULL,
-  `id_detail` int(10) UNSIGNED NOT NULL,
+  `product_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` int(11) NOT NULL,
-  `unit_price` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -69,12 +95,22 @@ CREATE TABLE `bill_detail` (
 -- Dumping data for table `bill_detail`
 --
 
-INSERT INTO `bill_detail` (`id_bill_detail`, `id_bill`, `id_detail`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 12, 10000, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 2, 2, 2, 12000, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 3, 5, 6, 20000, '2018-04-16 17:00:00', '2018-04-16 17:00:00'),
-(4, 4, 10, 4, 50000, '2018-04-16 17:00:00', '2018-04-16 17:00:00'),
-(5, 1, 1, 2, 10000, '2018-04-16 17:00:00', '2018-04-16 17:00:00');
+INSERT INTO `bill_detail` (`id`, `id_bill`, `product_name`, `color`, `image`, `size`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Combo Áo Gối Trẻ Em Giá Rẻ', 'Trắng', '2018-04-22-22:01:47-465735576_imgp8797.jpg', '35x25 cm', 5, 75000, '2018-04-22 16:15:52', '2018-04-22 16:15:52'),
+(2, 2, 'Combo Áo Gối Trẻ Em Giá Rẻ', 'Nâu', '2018-04-22-22:01:47-465735576_imgp8797.jpg', '35x25 cm', 4, 75000, '2018-04-22 16:34:44', '2018-04-22 16:34:44'),
+(3, 3, 'Combo Áo Gối Trẻ Em Giá Rẻ', 'Trắng', '2018-04-22-22:01:47-465735576_imgp8797.jpg', '35x25 cm', 2, 75000, '2018-04-22 17:16:51', '2018-04-22 17:16:51'),
+(4, 4, 'Gối lõm hình chú hổ Beiner', 'Hồng', '2018-04-22-22:09:11-goi-lom-hinh-chu-ho-beiner-4649-_3_.jpg', '35x25 cm', 1, 92000, '2018-04-23 01:56:07', '2018-04-23 01:56:07'),
+(5, 21, 'Áo Gối Tím Hoa', '', '', '50x70 cm', 2, 85000, '2018-04-27 02:02:44', '2018-04-27 02:02:44'),
+(6, 22, 'Áo Gối Tím Hoa', '', '', '50x70 cm', 2, 85000, '2018-04-27 02:07:27', '2018-04-27 02:07:27'),
+(7, 22, 'Áo choàng ếch xanh - con vịt vàng', '', '', '52x38 cm', 1, 150000, '2018-04-27 02:07:27', '2018-04-27 02:07:27'),
+(8, 23, 'Áo Gối Tím Hoa', '', '', '50x70 cm', 1, 85000, '2018-04-27 04:36:51', '2018-04-27 04:36:51'),
+(9, 23, 'Combo Áo Gối Trẻ Em Giá Rẻ', '', '', '35x25 cm', 1, 75000, '2018-04-27 04:36:51', '2018-04-27 04:36:51'),
+(10, 24, 'Combo Áo Gối Trẻ Em Giá Rẻ', 'Trắng', '2018-04-22-22-01-47-465735576_imgp8797.jpg', '35x25 cm', 2, 75000, '2018-04-27 04:38:56', '2018-04-27 04:38:56'),
+(11, 24, 'Gối lõm hình chú hổ Beiner', 'Hồng', '2018-04-22-22-09-11-goi-lom-hinh-chu-ho-beiner-4649-_3_.jpg', '35x25 cm', 1, 92000, '2018-04-27 04:38:56', '2018-04-27 04:38:56'),
+(12, 25, 'Combo Áo Gối Trẻ Em Giá Rẻ', 'Trắng', '2018-04-22-22-01-47-465735576_imgp8797.jpg', '35x25 cm', 1, 75000, '2018-04-27 07:11:39', '2018-04-27 07:11:39'),
+(13, 26, 'Áo Gối Tím Hoa', 'Tím', '2018-04-22-21-50-21-0635669312623931460.jpg', '50x70 cm', 3, 85000, '2018-04-27 07:42:54', '2018-04-27 07:42:54'),
+(14, 27, 'Áo Gối Tím Hoa', 'Tím', '2018-04-22-21-50-21-0635669312623931460.jpg', '50x70 cm', 2, 85000, '2018-04-27 07:44:55', '2018-04-27 07:44:55'),
+(15, 27, 'Gối lõm hình chú hổ Beiner', 'Hồng', '2018-04-22-22-09-11-goi-lom-hinh-chu-ho-beiner-4649-_3_.jpg', '35x25 cm', 1, 92000, '2018-04-27 07:44:55', '2018-04-27 07:44:55');
 
 -- --------------------------------------------------------
 
@@ -83,7 +119,7 @@ INSERT INTO `bill_detail` (`id_bill_detail`, `id_bill`, `id_detail`, `quantity`,
 --
 
 CREATE TABLE `cities` (
-  `id_city` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -91,7 +127,7 @@ CREATE TABLE `cities` (
 -- Dumping data for table `cities`
 --
 
-INSERT INTO `cities` (`id_city`, `name`) VALUES
+INSERT INTO `cities` (`id`, `name`) VALUES
 (3, 'An Giang'),
 (4, 'Bà Rịa - Vũng Tàu'),
 (5, 'Bắc Giang'),
@@ -163,7 +199,7 @@ INSERT INTO `cities` (`id_city`, `name`) VALUES
 --
 
 CREATE TABLE `customers` (
-  `id_customer` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gender` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -177,9 +213,35 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id_customer`, `name`, `gender`, `email`, `address`, `phone`, `created_at`, `updated_at`) VALUES
-(1, 'huỳnh khắc duy', 'nam', 'anminh113@gmail.com', 'an minh kiên giang', '01222130554', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'võ hoài phong', 'nam', 'ádjwjajsd@gmail.com', 'hà nội', '0123472637628', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `customers` (`id`, `name`, `gender`, `email`, `address`, `phone`, `created_at`, `updated_at`) VALUES
+(1, 'Nguyễn Văn Tài', '', 'andy.nvt.vn@gmail.com', '6/2 KDC Mê Trô', '01666988779', '2018-04-22 16:15:52', '2018-04-22 16:15:52'),
+(2, 'tài', '', 'tai@gmail.com', 'cần thơ', '0987654321', '2018-04-22 16:34:44', '2018-04-22 16:34:44'),
+(3, 'Tìa', '', 'tai@gmail.com', 'Cần thơ', '1234566789', '2018-04-22 17:16:51', '2018-04-22 17:16:51'),
+(4, 'Phong Phung Phí', '', 'vo.hoaiphongamkg@gmail.com', '132', '0123', '2018-04-23 01:56:07', '2018-04-23 01:56:07'),
+(5, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:52:56', '2018-04-27 01:52:56'),
+(6, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:53:45', '2018-04-27 01:53:45'),
+(7, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:54:06', '2018-04-27 01:54:06'),
+(8, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:54:18', '2018-04-27 01:54:18'),
+(9, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:54:39', '2018-04-27 01:54:39'),
+(10, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:55:43', '2018-04-27 01:55:43'),
+(11, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:56:47', '2018-04-27 01:56:47'),
+(12, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:56:58', '2018-04-27 01:56:58'),
+(13, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:57:43', '2018-04-27 01:57:43'),
+(14, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:58:09', '2018-04-27 01:58:09'),
+(15, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:58:38', '2018-04-27 01:58:38'),
+(16, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:58:54', '2018-04-27 01:58:54'),
+(17, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:59:19', '2018-04-27 01:59:19'),
+(18, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 01:59:31', '2018-04-27 01:59:31'),
+(19, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 02:00:22', '2018-04-27 02:00:22'),
+(20, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 02:00:34', '2018-04-27 02:00:34'),
+(21, 'Phi', '', 'phipham4596@gmail.com', '30/4', '0987654321', '2018-04-27 02:02:44', '2018-04-27 02:02:44'),
+(22, 'tài', '', 'andy.nvt.vn@gmail.com', '1111', '0999999', '2018-04-27 02:07:27', '2018-04-27 02:07:27'),
+(23, 'Ng', '', 'abc@gmail.com', '12312', '213123', '2018-04-27 04:36:51', '2018-04-27 04:36:51'),
+(24, 'Tài', '', 'andy.nvt.vn@gmail.com', '133333', '1222', '2018-04-27 04:38:56', '2018-04-27 04:38:56'),
+(25, 'p', '', 'phipham4596@gmail.com', 'tt', '0909', '2018-04-27 07:08:39', '2018-04-27 07:08:39'),
+(26, 'p', '', 'phipham4596@gmail.com', 'yyy', '99', '2018-04-27 07:11:39', '2018-04-27 07:11:39'),
+(27, 'Tài', '', 'andy.nvt.vn@gmail.com', 'cần thơ', '0166', '2018-04-27 07:42:54', '2018-04-27 07:42:54'),
+(28, 'Ng', '', 'andy.nvt.vn@gmail.com', 'jj', '912', '2018-04-27 07:44:55', '2018-04-27 07:44:55');
 
 -- --------------------------------------------------------
 
@@ -188,7 +250,7 @@ INSERT INTO `customers` (`id_customer`, `name`, `gender`, `email`, `address`, `p
 --
 
 CREATE TABLE `districts` (
-  `id_district` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_city` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -197,7 +259,7 @@ CREATE TABLE `districts` (
 -- Dumping data for table `districts`
 --
 
-INSERT INTO `districts` (`id_district`, `name`, `id_city`) VALUES
+INSERT INTO `districts` (`id`, `name`, `id_city`) VALUES
 (1, 'Thành phố Long Xuyên', 3),
 (2, 'Thị xã Châu Đốc', 3),
 (3, 'Huyện An Phú', 3),
@@ -889,7 +951,7 @@ INSERT INTO `districts` (`id_district`, `name`, `id_city`) VALUES
 --
 
 CREATE TABLE `feedbacks` (
-  `id_feedback` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `id_product` int(10) UNSIGNED NOT NULL,
   `stars` int(11) NOT NULL,
   `reviewer` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -903,9 +965,11 @@ CREATE TABLE `feedbacks` (
 -- Dumping data for table `feedbacks`
 --
 
-INSERT INTO `feedbacks` (`id_feedback`, `id_product`, `stars`, `reviewer`, `tel`, `review`, `created_at`, `updated_at`) VALUES
-(1, 2, 3, 'Tìa', '01222130554', 'Như cớt', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 3, 1, 'Duy', '01222150657', 'như cẹt', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `feedbacks` (`id`, `id_product`, `stars`, `reviewer`, `tel`, `review`, `created_at`, `updated_at`) VALUES
+(1, 4, 5, 'Tài', '01', 'Đẹp quá à', '2018-04-22 16:04:27', '2018-04-22 16:04:27'),
+(2, 1, 4, 'Tài', '012', 'đẹp ghê', '2018-04-23 00:51:07', '2018-04-23 00:51:07'),
+(3, 19, 2, 'Phi', '02', 'Sản phẩm tốt nhưng màu sắc chưa đúng thực tế', '2018-04-23 01:00:43', '2018-04-23 01:00:43'),
+(4, 20, 3, 'Phi', '09876', 'Bình thường', '2018-04-27 07:49:41', '2018-04-27 07:49:41');
 
 -- --------------------------------------------------------
 
@@ -944,7 +1008,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `products` (
-  `id_product` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `id_type` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `unit_price` int(11) NOT NULL,
@@ -960,16 +1024,28 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id_product`, `id_type`, `name`, `unit_price`, `promotion_price`, `size`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 3, 'Áo Ấm', 10000, 0, '30x30x30', 'Đẹp quá đẹp', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 1, 'Gối nằm', 20000, 0, '30x30x10', 'Goi nam em be', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 3, 'Bo Simili', 100000, 0, '30x30x10', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 1, 'Goi beo', 50000, 0, '30x30x10', 'Bo cho em be', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 2, 'Gối Ôm', 50001, 50000, '30x30x10', 'Bo cho em be', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 3, 'Khan choang', 10000, 0, 'ML', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 4, 'Nem', 80000, 69999, '30x30x10', 'Bo cho em be', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(8, 2, 'Men', 12000, 0, 'XXXL', 'Bo cho em be', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(9, 1, 'Áo Choàng', 900000, 899999, '30x30x10', 'Bo cho em be', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `products` (`id`, `id_type`, `name`, `unit_price`, `promotion_price`, `size`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Áo Gối Tím Hoa', 100000, 85000, '50x70 cm', 'Áo gối tím xanh là sản phẩm hoàn hảo mang đến cho phòng ngủ của bạn sự đồng điệu và hài hòa.\r\nThiết kế đồng bộ, tinh tế mang đến cho bạn màu sắc tươi tắn, sinh động.\r\nKiểu dáng trang nhã, sang trọng, phù hợp với mọi không gian phòng ngủ.\r\nHọa tiết chính là những trái tim cách điệu trên phông nền tím sang trọng, tinh tế.\r\nChất liệu 100% cotton thoáng mát, mềm mại, tạo sự thoải mái, êm dịu khi sử dụng.\r\nKích thước: 50 x 70 cm.\r\nXuất xứ: Việt Nam.', 1, '2018-04-22 14:50:21', '2018-04-22 14:50:21'),
+(2, 1, 'Áo Gối Cotton Thắng Lợi', 40000, 0, '40x60 cm', 'Chất liệu vải cotton Thắng Lợi với đa dạng màu sắc mẫu mã \r\nThiết kế đơn giản với những đường may chắc chắn và tỉ mỉ.\r\nMàu sắc tinh tế cùng hoa văn trang nhã mang đến sự thẩm mỹ cho phòng ngủ của bạn.\r\nVải lâu phai màu, không bị nhăn và dễ giặt ủi.\r\nCó hai loại:  40 x 60 và 50 x 70 tùy theo mục đích sử dụng \r\nXuất xứ: công ty may Thắng Lợi\r\nLưu ý : Ngâm nước lạnh và xả 2 lần trước khi giặt với xà phòng', 2, '2018-04-22 14:55:21', '2018-04-22 14:55:21'),
+(3, 1, 'Áo Gối Vạn Thành', 130000, 0, '50x70 cm', 'Chất liệu 100% cotton cao cấp mang đến giấc ngủ ngon và sảng khoái cho gia đình bạn.\r\nMẫu mã đa dạng, hoa văn trang nhã với các màu sắc được bố trí tinh tế phù hợp với thị hiếu của nhiều khách hàng.\r\nĐường may tỉ mỉ, bền đẹp, vừa tăng độ chắc chắn, vừa thể hiện được gu thẩm mỹ cao của bạn.\r\nPhù hợp với nhiều không gian và nội thất khác nhau.\r\nHọa tiết: màu hồng, sọc trắng xanh, họa tiết ngôi sao, màu xám họa tiết hoa, hoa hồng, màu xám, màu xanh lá, sọc họa tiết trái tim, màu xanh.\r\nKích thước: 50cm x 70cm.', 1, '2018-04-22 14:58:18', '2018-04-22 14:58:18'),
+(4, 1, 'Combo Áo Gối Trẻ Em Giá Rẻ', 90000, 75000, '35x25 cm', 'Vô cùng êm ái với da bé\r\n\r\nKích thước và độ cao lý tưởng với trẻ nhỏ mang đến giấc ngủ thật ngon và êm đềm.\r\n\r\nKhông gây xù lông không ảnh hưởng đến sức khỏe bé\r\n\r\nSản phẩm hút ẩm và môi hôi tốt, tạo cảm giác ấm áp vào mùa đông và mát mẻ vào mùa nóng.', 2, '2018-04-22 15:01:47', '2018-04-22 15:01:47'),
+(5, 2, 'Gối bông trẻ em Ngọc Anh loại to', 55000, 0, '50x70 cm', '- Chất liệu: Gối bông Ngọc Anh gồm vỏ gối bằng vải cotton mềm mại và ruột bằng bông mềm đã xử lý nên rất an toàn giúp bé dễ chịu khi ngủ, chống mồ hôi trộm, thoáng đầu giúp bé ngủ ngon giấc hơn.\r\n\r\n- Màu sắc vỏ gối dễ thương: Với tone màu hồng với họa tiết đáng yêu.\r\n\r\n- Dành cho trẻ từ sơ sinh trở lên.\r\n\r\n- Xuất xứ: Việt Nam.', 1, '2018-04-22 15:06:22', '2018-04-22 15:06:22'),
+(6, 2, 'Gối lõm hình chú hổ Beiner', 100000, 92000, '35x25 cm', 'Gối lõm hình chú hổ Beine', 1, '2018-04-22 15:09:11', '2018-04-22 15:09:11'),
+(7, 2, 'Gối đầu cho bé KuKu', 195000, 0, '26x19 cm', 'Chất liệu cotton mềm mại\r\nThiết kế bảo vệ đầu bé\r\nHọa tiết ngộ nghĩnh', 2, '2018-04-22 15:12:00', '2018-04-22 15:12:00'),
+(8, 2, 'Gối nằm trẻ em Sông Hồng', 100000, 95000, '32x50 cm', 'Thêm một sự lựa chọn gối nằm cho các chàng hoàng tử của chúng ta, đó là sản phẩm Sông Hồng B13 001S. Điểm nhấn chính của sản phẩm là chú mèo Doraemon nhí nhảnh và đáng yêu. Đặc biệt với chất lượng từ vải Cotton nhập khẩu, sản phẩm mang tới cho trẻ nhỏ một giấc ngủ ngon, sâu giấc và tuyệt đối an toàn.\r\n\r\nHãng	May Sông Hồng\r\nThông số chuẩn xác	32 x 50cm\r\nThiết kế	Trọn bộ vỏ gối + ruột gối\r\nƯu điểm nổi bật	Cotton 100% chính hãng mát dịu, thoải mãi độc quyền chính hãng', 1, '2018-04-22 15:14:53', '2018-04-22 15:14:53'),
+(9, 2, 'Gối trẻ em êm ái hình ô tô - hàng VN', 80000, 53000, '30x45 cm', 'Gối không bị xẹp lún nên bé nằm gối lâu cũng không lo bị mỏi đầu.\r\nĐàn hồi tốt, giúp nâng đỡ đầu và cơ cổ của bé còn non mềm.\r\nĐộ thoáng khí cao, thấm hút mồ hôi và bay hơi nhanh.\r\nGối phối 2 màu độc đáo, nổi bật, tinh tế.\r\nThiết kế thêu hình ô tô ngộ nghĩnh và xinh xắn.\r\nKích thước: Dài 30cm x Rộng 45cm.\r\nChất liệu: Vải cara\r\nMàu sắc: Hồng, xanh.\r\nXuất xứ: Việt Nam', 1, '2018-04-22 15:17:31', '2018-04-22 15:17:31'),
+(10, 3, 'Khăn choàng cổ bông ấm trẻ em', 331000, 0, '75x13 cm', 'Khăn choàng cổ bông ấm trẻ em bền đẹp\r\nChất liệu: len', 1, '2018-04-22 15:20:37', '2018-04-22 15:20:37'),
+(11, 3, 'Khăn cổ thỏ xinh xắn cho bé từ 5-7tuổi Wing House', 714000, 516000, '130x13 cm', 'Chất liệu: Acrylic\r\nKích thước: 13x130cm', 2, '2018-04-22 15:22:38', '2018-04-22 15:22:38'),
+(12, 3, 'Bộ Mũ Khăn Len Mặt Cười Cho Bé', 110000, 0, '302x120 cm', '– Hình ngộ nghĩnh, màu sắc kết hợp sinh động, sặc sỡ, chắc chắn sẽ khiến bé yêu thích thú.\r\n– Chất liệu: Len mềm mại, không gây ngứa ngáy, khó chịu cho bé.\r\n– Màu sắc: xanh, đỏ, hồng, vàng,\r\nKích thước: khăn dài 120 cm, mũ: rộng đầu 302cm – cao 17cm, (sai số +- 3cm).', 1, '2018-04-22 15:26:39', '2018-04-22 15:26:39'),
+(13, 3, 'Combo 2 khăn choàng cổ cho bé', 119000, 0, '79x9 cm', 'Để bé yêu ấm áp và thời trang hơn trong mùa đông này với Mùa đông đến rồi, còn chần chờ gì nữa, hãy sắm ngay Combo 2 khăn choàng cổ cho bé, để bé yêu nhà bạn luôn ấm áp và dễ thương cùng bạn trải qua mùa đông không lạnh nhé!', 1, '2018-04-22 15:30:22', '2018-04-22 15:30:22'),
+(14, 4, 'Áo choàng ếch xanh - con vịt vàng', 149000, 150000, '52x38 cm', '_ Chất liệu: Fleece (dạ bông)\r\n \r\n_ Màu sắc: Vàng cam + xanh rêu \r\n \r\n_ Kích thước: dài áo 38cm, dài bao gồm nón 52cm, thích hợp cho trẻ từ 0 đến 4 tuổi.', 1, '2018-04-22 15:32:33', '2018-04-22 15:32:33'),
+(15, 4, 'Áo choàng bé gái dễ thương', 132000, 0, 'S, M, L', 'Áo choàng bé gái màu trắng', 2, '2018-04-22 15:34:43', '2018-04-22 15:34:43'),
+(16, 4, 'Áo choàng tắm trẻ em, hình Voi con hồng', 329000, 400000, 'S', 'Thông tin sản phẩm:\r\n– Màu sắc: hồng\r\n– Chất liệu: 100% cotton Mỹ\r\n– Xuất xứ: Việt Nam\r\nSợi cotton cao cấp\r\nNguồn gốc sợi bông quyết định 60% chất lượng khăn sản xuất, để có được một chiếc khăn bông đạt tiêu chuẩn chất lượng 5 sao, các sợi bông được chúng tôi nhập trực tiếp từ Mỹ, Ai Cập. Đây được xem là nơi có sợi cotton chất lượng và đẳng cấp nhất thế giới.\r\n100% cotton và luôn luôn như vậy\r\nBụi bông từ các loại khăn thông thường có pha PE cực kỳ độc hại cho đường hô hấp, đặc biệt là các bé. Chúng tôi hiểu đều này vì thế tất cả sản phẩm của chúng tôi đều sử dụng 100% coton thiên nhiên, đảm bảo an toàn tuyệt đối.', 1, '2018-04-22 15:36:41', '2018-04-22 15:36:41'),
+(17, 5, 'Mền băng lông Disney 1,5x2m mẫu Kitty', 230000, 0, '1,5x2 m', 'Chất liệu băng lông mềm mịn, dày và mượt. Hàng loại 1 chất không bị xơ.', 1, '2018-04-22 15:38:22', '2018-04-22 15:38:22'),
+(18, 5, 'Mền lông cừu trẻ em', 170000, 0, '1x1,3 m', '– Lông mềm mại mịn màng, màu sắc nhã nhặn.\r\n– Trọng lượng nhẹ, thoáng khí, tạo sự thoải mái.\r\n– Đem lại trải nghiệm giấc ngủ tuyệt vời.\r\n– Kích thước: 1m x 1,3m', 1, '2018-04-22 15:39:34', '2018-04-22 15:39:34'),
+(19, 5, 'Mền băng lông Hello Kitty 1,5x2m - loại dày', 260000, 230000, '1,5x2 m', '- Kích thước của chăn: 1,5x2m \r\n- Chăn băng lông rất mềm mịn, đắp vào luôn có cảm giác ấm áp, thoải mái và cực kỳ dễ chịu \r\n- Chăn có in hình Hello Kitty màu hồng rất xinh xắn và dễ thương. \r\n- Chăn có thể giặt bằng máy giặt mà vẫn đảm bảo không hề bị xù lông hay phai màu của chă n- vì vậy giặt việc giặt chăn không còn là vấn đề khó khăn cho các mẹ nhé.', 2, '2018-04-22 15:42:04', '2018-04-22 15:42:04'),
+(20, 6, 'Bộ chăn ga gối trẻ em thêu', 1150000, 0, 'Nhiều kích thước', 'Bộ chăn ga gối 100% cotton thêu các hình hoạt hình ngộ nghĩnh. Chất liệu cotton 100% thoáng mát, mềm mại hút ẩm tốt cho bé ngủ ngon giấc.  Hình thêu ngộ nghĩnh những người bạn hoạt hình thân thuộc của tuổi thơ. Cách phối màu hiện đại đơn giản. \r\n\r\nQuy cách: Bộ 4 sản phẩm\r\n- Ga giường màu không thêu : cho giường đơn kích cỡ 1m, 1,2m, 1,5mx2m\r\n- Vỏ chăn đơn thêu: 1,5x2m\r\n-Vỏ gối nằm thêu có diềm : 45x65 cm \r\n-Vỏ gối tựa thêu có diềm: 45x45 cm', 1, '2018-04-22 15:44:44', '2018-04-22 15:44:44'),
+(21, 6, 'Bộ chăn ga gối hình Công Chúa', 620000, 600000, 'Nhiều loại', 'CHĂN GA GỐI TRẺ EM HÌNH CÔNG CHÚA SOI GƯƠNG- MS: 010 THƯƠNG HIỆU DREAMKID GỒM:\r\n\r\n- 01 ga: 70cm x 1,2m.\r\n\r\n- 01 chăn trần bông siêu nhẹ: 90cm x 1,3m.\r\n\r\n- 01 vỏ gối nằm: 35cm x 50cm.\r\n\r\n- 01 vỏ gối ôm,: 22cm x 55cm.\r\n\r\nLựa chọn tiết kiệm dành cho các ba mẹ: Các ba mẹ có thể chọn vỏ chăn 2 lớp cotton nhẹ nhàng dùng vào mùa xuân,  hè và ruột chăn trần bông siêu nhẹ dày dùng cho mùa đông, ruột chăn trần bông mỏng dùng cho mùa thu.\r\n\r\nThoải mái đặt theo yêu cầu mẫu và kích thước riêng cho giường của bé các mẹ nhé!', 1, '2018-04-22 15:46:23', '2018-04-22 15:46:23');
 
 -- --------------------------------------------------------
 
@@ -978,7 +1054,7 @@ INSERT INTO `products` (`id_product`, `id_type`, `name`, `unit_price`, `promotio
 --
 
 CREATE TABLE `product_color` (
-  `id_color` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `id_detail` int(10) UNSIGNED NOT NULL,
   `color` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -987,18 +1063,51 @@ CREATE TABLE `product_color` (
 -- Dumping data for table `product_color`
 --
 
-INSERT INTO `product_color` (`id_color`, `id_detail`, `color`) VALUES
-(1, 1, 'orange'),
-(2, 2, 'orange'),
-(3, 2, 'black'),
-(4, 2, 'red'),
-(5, 4, 'blue'),
-(6, 5, 'green'),
-(7, 6, 'red'),
-(8, 7, 'yellow'),
-(9, 8, '#f90'),
-(10, 9, 'white'),
-(11, 10, 'black');
+INSERT INTO `product_color` (`id`, `id_detail`, `color`) VALUES
+(1, 1, 'Tím'),
+(2, 2, 'Xanh Trắng'),
+(3, 2, 'Đỏ Xanh'),
+(4, 2, 'Hồng Trắng'),
+(5, 2, 'Nâu Xanh'),
+(6, 3, 'Xanh Dương'),
+(7, 3, 'Vàng'),
+(8, 4, 'Trắng'),
+(9, 4, 'Xanh'),
+(10, 4, 'Nâu'),
+(11, 4, 'Vàng'),
+(12, 5, 'Hồng'),
+(13, 6, 'Hồng'),
+(14, 7, 'Hồng'),
+(15, 7, 'Nâu'),
+(16, 7, 'Vàng'),
+(17, 8, 'Hồng'),
+(18, 8, 'Xanh'),
+(19, 9, 'Hồng'),
+(20, 9, 'Xanh Lá'),
+(21, 10, 'Đỏ'),
+(22, 10, 'Trắng'),
+(23, 10, 'Nâu'),
+(24, 10, 'Hồng'),
+(25, 10, 'Xanh'),
+(26, 11, 'Màu Hỗ Hợp'),
+(27, 12, 'Xanh'),
+(28, 12, 'Vàng'),
+(29, 29, '0'),
+(30, 12, 'Hồng'),
+(31, 12, 'Xám'),
+(32, 13, 'Hồng'),
+(33, 13, 'Xanh'),
+(34, 13, 'Trắng'),
+(35, 14, 'Xanh'),
+(36, 14, 'Vàng'),
+(37, 15, 'Trắng'),
+(38, 16, 'Hồng'),
+(39, 17, 'Hồng Kitty'),
+(40, 18, 'Xanh Doraemon'),
+(41, 19, 'Hồng Kitty'),
+(42, 20, 'Hoạt hình'),
+(43, 21, 'Hồng'),
+(44, 22, '1');
 
 -- --------------------------------------------------------
 
@@ -1007,7 +1116,7 @@ INSERT INTO `product_color` (`id_color`, `id_detail`, `color`) VALUES
 --
 
 CREATE TABLE `product_detail` (
-  `id_detail` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `id_product` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1015,19 +1124,30 @@ CREATE TABLE `product_detail` (
 -- Dumping data for table `product_detail`
 --
 
-INSERT INTO `product_detail` (`id_detail`, `id_product`) VALUES
-(7, 1),
-(5, 2),
+INSERT INTO `product_detail` (`id`, `id_product`) VALUES
+(1, 1),
+(2, 2),
 (3, 3),
 (4, 4),
-(6, 5),
-(9, 5),
-(10, 5),
-(11, 5),
-(1, 6),
-(8, 7),
-(2, 8),
-(12, 9);
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10),
+(11, 11),
+(12, 12),
+(13, 13),
+(14, 14),
+(15, 15),
+(16, 16),
+(17, 17),
+(18, 18),
+(19, 19),
+(20, 20),
+(21, 21),
+(22, 22),
+(23, 23);
 
 -- --------------------------------------------------------
 
@@ -1036,7 +1156,7 @@ INSERT INTO `product_detail` (`id_detail`, `id_product`) VALUES
 --
 
 CREATE TABLE `product_image` (
-  `id_image` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `id_detail` int(10) UNSIGNED NOT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1045,18 +1165,42 @@ CREATE TABLE `product_image` (
 -- Dumping data for table `product_image`
 --
 
-INSERT INTO `product_image` (`id_image`, `id_detail`, `image`) VALUES
-(1, 1, 'img_1.jpg'),
-(2, 2, 'goi.jpg'),
-(3, 2, 'product_1.jpg'),
-(4, 2, 'quanao1.jpg'),
-(5, 4, 'quanao2.jpg'),
-(6, 5, 'quanao3.jpg'),
-(7, 6, 'quanao4.jpg'),
-(8, 7, 'quanao1.jpg'),
-(9, 8, 'aosomi.jpg'),
-(10, 9, 'aosomi.jpg'),
-(11, 10, 'img3.jpg');
+INSERT INTO `product_image` (`id`, `id_detail`, `image`) VALUES
+(1, 1, '2018-04-22-21-50-21-0635669312623931460.jpg'),
+(2, 2, '2018-04-22-21-55-21-ao goi.jpg'),
+(3, 2, '2018-04-22-21-55-21-AOGNCTTL0000-600x458.jpg'),
+(4, 3, '2018-04-22-21-58-18-0635433625008124318.jpg'),
+(5, 3, '2018-04-22-21-58-18-ao-goi-van-thanh (2).jpg'),
+(6, 3, '2018-04-22-21-58-18-cm_b32200.jpg'),
+(7, 4, '2018-04-22-22-01-47-465735576_imgp8797.jpg'),
+(8, 4, '2018-04-22-22-01-47-1516599588_762428.jpg'),
+(9, 5, '2018-04-22-22-06-22-goi-bong-tre-em-ngoc-anh-loai-to-1.jpg'),
+(10, 6, '2018-04-22-22-09-11-goi-lom-hinh-chu-ho-beiner-4649-_3_.jpg'),
+(11, 7, '2018-04-22-22-12-00-goi-em-be-kuku-103234-2_1.jpg'),
+(12, 7, '2018-04-22-22-12-00-goi-em-be-kuku-103234-4_1.jpg'),
+(13, 7, '2018-04-22-22-12-00-goi-lom-kuku-2011-2.jpg'),
+(14, 8, '2018-04-22-22-14-53-goi-nam-tre-em-hoa-tiet-xinh-xan (6).jpg'),
+(15, 8, '2018-04-22-22-14-53-goi-tre-em-song-hong-hinh-meo-hello-kitty-b13-004-1.jpg'),
+(16, 9, '2018-04-22-22-17-31-goi-tre-em-em-ai-hinh-o-to-30cm-x-45cm-hang-vn.jpg'),
+(17, 10, '2018-04-22-22-20-37-1110407_L.jpg'),
+(18, 11, '2018-04-22-22-22-38-1761678_1_L.jpg'),
+(19, 11, '2018-04-22-22-22-38-1761678_2_L.jpg'),
+(20, 11, '2018-04-22-22-22-38-1761678_L.jpg'),
+(21, 12, '2018-04-22-22-26-39-15749915_669309629915745_420479710_n_master.jpg'),
+(22, 12, '2018-04-22-22-26-39-htb1jscwnfxxxxxhxpxxq6xxfxxxx_master.jpg'),
+(23, 13, '2018-04-22-22-30-22-b4cb7c90729372bfbd021ffceb390a0c.jpg'),
+(24, 13, '2018-04-22-22-30-22-d3386484b9e10b8d10fa5d954a90f175.jpg'),
+(25, 14, '2018-04-22-22-32-33-ao-choang-ech-xanh-con-vit-vang-1m4G3-13785789407518_2i2irmj86ctik_simg_19a19b_600x497_max.jpg'),
+(26, 14, '2018-04-22-22-32-33-ao-choang-ech-xanh-con-vit-vang-1m4G3-13785789407622_2i2irn2a3ig4f_simg_19a19b_600x497_max.jpg'),
+(27, 15, '2018-04-22-22-34-43-Ao-choang-be-gai-mau-trang.jpg'),
+(28, 16, '2018-04-22-22-36-41-ao-choang-tam-cho-em-be-hinh-voi-con.jpg'),
+(29, 17, '2018-04-22-22-38-22-2502358_17934.jpg'),
+(30, 18, '2018-04-22-22-39-34-Chăn-cừu-trẻ-em-170.jpg'),
+(31, 19, '2018-04-22-22-42-04-2942_1_chan_bang_long_hello_kitty_loai_day.jpg'),
+(32, 19, '2018-04-22-22-42-04-2942_chan_bang_long_hinh_hello_kitty.jpg'),
+(33, 20, '2018-04-22-22-44-44-1135.jpg'),
+(34, 21, '2018-04-22-22-46-23-IMG_20131213_103349_opt.jpg'),
+(35, 22, '2018-04-24-10-24-23-2942_chan_bang_long_hinh_hello_kitty.jpg');
 
 -- --------------------------------------------------------
 
@@ -1065,7 +1209,7 @@ INSERT INTO `product_image` (`id_image`, `id_detail`, `image`) VALUES
 --
 
 CREATE TABLE `product_type` (
-  `id_type` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `type_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1073,11 +1217,14 @@ CREATE TABLE `product_type` (
 -- Dumping data for table `product_type`
 --
 
-INSERT INTO `product_type` (`id_type`, `type_name`) VALUES
-(1, 'Goi'),
-(2, 'Bo'),
-(3, 'Aochoang'),
-(4, 'Men');
+INSERT INTO `product_type` (`id`, `type_name`) VALUES
+(1, 'Áo Gối'),
+(2, 'Gối'),
+(3, 'Khăn Choàng'),
+(4, 'Áo Choàng'),
+(5, 'Mền'),
+(6, 'Bộ Mền Gối'),
+(7, 'Mền 2');
 
 -- --------------------------------------------------------
 
@@ -1096,6 +1243,15 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'VoHoaiPhong', 'vo.hoaiphongamkg@gmail.com', '$2y$10$CEdbdsSMU9Nv.6yjdRMEtOhR0kdIiOBWtNR2Bup9upjueOPbcsM9m', 'auPM5uiRmTwnN0eNiRhHVdA3FdISHmXYP3XKmUPdMXhYsgHzeLG86FwDqCtj', NULL, NULL),
+(2, 'NguyenVanTai', 'abc@gmail.com', '$2y$10$DyySa0Oc5N2SiW..JpbFTOiXqQcZHgsdpkw3UxAD64zQJbBYejZ1S', 'LQw0XqhNvZl6QvqQG1b9GTcPZVCWzRM0hgj26JPOGKu5IWjGTgqN9437Xnzn', NULL, '2018-04-27 07:47:50'),
+(3, 'PhanNgocLongPhi', 'def@gmail.com', '$2y$10$jNxYitf.gZWgP96wQv9XcuQK6NxXL7wf4RZqkCnprYDze8StvOfS2', NULL, NULL, NULL);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -1103,41 +1259,40 @@ CREATE TABLE `users` (
 -- Indexes for table `bills`
 --
 ALTER TABLE `bills`
-  ADD PRIMARY KEY (`id_bill`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `bills_id_customer_foreign` (`id_customer`);
 
 --
 -- Indexes for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
-  ADD PRIMARY KEY (`id_bill_detail`),
-  ADD KEY `bill_detail_id_bill_foreign` (`id_bill`),
-  ADD KEY `bill_detail_id_detail_foreign` (`id_detail`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `bill_detail_id_bill_foreign` (`id_bill`);
 
 --
 -- Indexes for table `cities`
 --
 ALTER TABLE `cities`
-  ADD PRIMARY KEY (`id_city`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
-  ADD PRIMARY KEY (`id_customer`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `districts`
 --
 ALTER TABLE `districts`
-  ADD PRIMARY KEY (`id_district`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `districts_id_city_foreign` (`id_city`);
 
 --
 -- Indexes for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  ADD PRIMARY KEY (`id_feedback`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `feedbacks_id_product_foreign` (`id_product`);
 
 --
@@ -1150,35 +1305,35 @@ ALTER TABLE `migrations`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id_product`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `products_id_type_foreign` (`id_type`);
 
 --
 -- Indexes for table `product_color`
 --
 ALTER TABLE `product_color`
-  ADD PRIMARY KEY (`id_color`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `product_color_id_detail_foreign` (`id_detail`);
 
 --
 -- Indexes for table `product_detail`
 --
 ALTER TABLE `product_detail`
-  ADD PRIMARY KEY (`id_detail`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `product_detail_id_product_foreign` (`id_product`);
 
 --
 -- Indexes for table `product_image`
 --
 ALTER TABLE `product_image`
-  ADD PRIMARY KEY (`id_image`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `product_image_id_detail_foreign` (`id_detail`);
 
 --
 -- Indexes for table `product_type`
 --
 ALTER TABLE `product_type`
-  ADD PRIMARY KEY (`id_type`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -1195,37 +1350,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bills`
 --
 ALTER TABLE `bills`
-  MODIFY `id_bill` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
-  MODIFY `id_bill_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id_city` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id_customer` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `districts`
 --
 ALTER TABLE `districts`
-  MODIFY `id_district` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=687;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=687;
 
 --
 -- AUTO_INCREMENT for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `id_feedback` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1237,37 +1392,37 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `product_color`
 --
 ALTER TABLE `product_color`
-  MODIFY `id_color` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `product_detail`
 --
 ALTER TABLE `product_detail`
-  MODIFY `id_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `product_image`
 --
 ALTER TABLE `product_image`
-  MODIFY `id_image` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `product_type`
 --
 ALTER TABLE `product_type`
-  MODIFY `id_type` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -1277,50 +1432,49 @@ ALTER TABLE `users`
 -- Constraints for table `bills`
 --
 ALTER TABLE `bills`
-  ADD CONSTRAINT `bills_id_customer_foreign` FOREIGN KEY (`id_customer`) REFERENCES `customers` (`id_customer`);
+  ADD CONSTRAINT `bills_id_customer_foreign` FOREIGN KEY (`id_customer`) REFERENCES `customers` (`id`);
 
 --
 -- Constraints for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
-  ADD CONSTRAINT `bill_detail_id_bill_foreign` FOREIGN KEY (`id_bill`) REFERENCES `bills` (`id_bill`),
-  ADD CONSTRAINT `bill_detail_id_detail_foreign` FOREIGN KEY (`id_detail`) REFERENCES `product_detail` (`id_detail`);
+  ADD CONSTRAINT `bill_detail_id_bill_foreign` FOREIGN KEY (`id_bill`) REFERENCES `bills` (`id`);
 
 --
 -- Constraints for table `districts`
 --
 ALTER TABLE `districts`
-  ADD CONSTRAINT `districts_id_city_foreign` FOREIGN KEY (`id_city`) REFERENCES `cities` (`id_city`);
+  ADD CONSTRAINT `districts_id_city_foreign` FOREIGN KEY (`id_city`) REFERENCES `cities` (`id`);
 
 --
 -- Constraints for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  ADD CONSTRAINT `feedbacks_id_product_foreign` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`);
+  ADD CONSTRAINT `feedbacks_id_product_foreign` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
 
 --
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_id_type_foreign` FOREIGN KEY (`id_type`) REFERENCES `product_type` (`id_type`);
+  ADD CONSTRAINT `products_id_type_foreign` FOREIGN KEY (`id_type`) REFERENCES `product_type` (`id`);
 
 --
 -- Constraints for table `product_color`
 --
 ALTER TABLE `product_color`
-  ADD CONSTRAINT `product_color_id_detail_foreign` FOREIGN KEY (`id_detail`) REFERENCES `product_detail` (`id_detail`);
+  ADD CONSTRAINT `product_color_id_detail_foreign` FOREIGN KEY (`id_detail`) REFERENCES `product_detail` (`id`);
 
 --
 -- Constraints for table `product_detail`
 --
 ALTER TABLE `product_detail`
-  ADD CONSTRAINT `product_detail_id_product_foreign` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`);
+  ADD CONSTRAINT `product_detail_id_product_foreign` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
 
 --
 -- Constraints for table `product_image`
 --
 ALTER TABLE `product_image`
-  ADD CONSTRAINT `product_image_id_detail_foreign` FOREIGN KEY (`id_detail`) REFERENCES `product_detail` (`id_detail`);
+  ADD CONSTRAINT `product_image_id_detail_foreign` FOREIGN KEY (`id_detail`) REFERENCES `product_detail` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
