@@ -88,7 +88,6 @@
                             <div class="header">
                                 @foreach($id_product_edit as $sp)
 
-
                                 <form method="post" class="form-horizontal" action="{{route('adminsuasp',$sp->id)}}" enctype="multipart/form-data">
                                 <!-- Phan modal them san pham-->
                                 <div class="container-fluid">
@@ -184,7 +183,7 @@
                                             });
                                         </script>
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label class="control-label col-sm-4" for="hinhanh">Hình ảnh:</label>
                                             <div class="col-sm-8">
                                                 <div class="box-upload">
@@ -196,6 +195,46 @@
                                                     </div>
                                                 </div>
                                                 <p style="color: #9A9A9A;">(*) Chọn ảnh mới</p>
+                                            </div>
+                                        </div> --}}
+                                        <div class="form-group">
+                                            <label for="files" class="control-label col-sm-4">Hình ảnh: </label>
+                                            <div class="col-sm-4">
+                                                <button class="btn btn-default dehinh" style="cursor: pointer">
+                                                       <i class="fa fa-plus"></i> 
+                                                        <input type="file" multiple id="gallery-photo-add" name="newimage[]" accept="image/png, image/jpg, image/jpeg">
+                                                </button>
+                                                <div class="gallery"></div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $(function() {
+                                                // Multiple images preview in browser
+                                                var imagesPreview = function(input, placeToInsertImagePreview) {
+                                                    if (input.files) {
+                                                        var filesAmount = input.files.length;
+                                                        for (i = 0; i < filesAmount; i++) {
+                                                            var reader = new FileReader();
+                                                            reader.onload = function(event) {
+                                                                $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                                                            }
+                                                            reader.readAsDataURL(input.files[i]);
+                                                        }
+                                                    }
+                                                };
+                                                $('#gallery-photo-add').on('change', function() {
+                                                    imagesPreview(this, 'div.gallery');
+                                                });
+                                            });
+                                        </script>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4">Ảnh hiện tại</label>
+                                            <div class="col-sm-8 w-50">
+                                                @foreach($getimg as $img)
+                                                <div class="show-img">
+                                                    <img src="storage/product/{{$img->image}}">
+                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
 

@@ -580,8 +580,13 @@ class PageController extends Controller
                             ->where('sp.id', '=', $idsp)
                             ->select('product_color.color')
                             ->get();
-        // dd($id_type_edit);
-        return view('Admin.pageadmin.adminsuasanpham', compact('product_type', 'id_product_edit', 'product_name', 'id_type', 'type_name','not_type_name', 'adminlsp', 'editsp', 'getcl'));
+        $getimg = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
+                            ->leftjoin('products as sp', 'ctsp.id_product', '=' , 'sp.id')
+                            ->where('sp.id', '=', $idsp)
+                            ->select('product_image.image')
+                            ->get();
+        // dd($getimg);
+        return view('Admin.pageadmin.adminsuasanpham', compact('product_type', 'id_product_edit', 'product_name', 'id_type', 'type_name','not_type_name', 'adminlsp', 'editsp', 'getcl','getimg'));
     }
 
     public function postadminSuasanpham($idsp, Request $req){
@@ -595,7 +600,9 @@ class PageController extends Controller
             'description'=>$req->newdesc
         ]);
         $id_product->save();
-        $ctsanpham = ProductDetail::find($idsp);
+        $idctsp = ProductDetail::where('id_product',$idsp)->value('id');
+        $ctsanpham = ProductDetail::find($idctsp);
+        // dd($ctsanpham);
         $ctsanpham->id_product = $id_product->id;
         $ctsanpham->save();
 

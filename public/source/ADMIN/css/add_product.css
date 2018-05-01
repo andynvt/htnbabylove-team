@@ -28,3 +28,29 @@
 .w50{
     width: 50%;
 }
+.show-img{
+    display: inline-block;
+    overflow: hidden;
+    width: auto;
+    height: 100px;
+}
+.show-img img{
+    object-fit: contain;
+    width: 100px;
+    height: 100px;
+    padding: 0 10px;
+
+}
+.gallery{
+    display: inline-block;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+}
+
+.gallery img{
+    object-fit: contain;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+}

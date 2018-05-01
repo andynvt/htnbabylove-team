@@ -153,7 +153,7 @@
                                                     
                                                 });
                                             </script>
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label class="control-label col-sm-4" for="hinhanh">Hình ảnh:</label>
                                             <div class="col-sm-8">
                                                 <div class="box-upload">
@@ -161,18 +161,42 @@
                                                         <button class="btn btn-default dehinh" style="cursor: pointer">
                                                            <i class="fa fa-plus"></i>
                                                            <input type="file" name="images[]" multiple accept="image/png, image/jpg, image/jpeg" required>
-                                                       </button>
-    
-                                                        {{-- {!! Form::file('image', array('class' => 'image')) !!} --}}
-
-                                                       {{-- {!! Form::open(array('route' => 'fileUpload','enctype' => 'multipart/form-data')) !!}
-                                                       {!! Form::file('image', array('class' => 'image')) !!}
-                                                       {!! Form::close() !!}
- --}}                                                    </div>
+                                                       </button>                                               
+                                                   </div>
                                                 </div>
                                                 <p style="color: #9A9A9A;">(*) Trỏ chuột vào dấu cộng để xem tên các ảnh đã chọn</p>
                                             </div>
+                                        </div> --}}
+                                         <div class="form-group">
+                                            <label for="files" class="control-label col-sm-4">Hình ảnh: </label>
+                                            <div class="col-sm-4">
+                                                <button class="btn btn-default dehinh" style="cursor: pointer">
+                                                       <i class="fa fa-plus"></i> 
+                                                        <input type="file" multiple id="gallery-photo-add" name="images[]" accept="image/png, image/jpg, image/jpeg">
+                                                </button>
+                                                <div class="gallery"></div>
+                                            </div>
                                         </div>
+                                        <script>
+                                            $(function() {
+                                                // Multiple images preview in browser
+                                                var imagesPreview = function(input, placeToInsertImagePreview) {
+                                                    if (input.files) {
+                                                        var filesAmount = input.files.length;
+                                                        for (i = 0; i < filesAmount; i++) {
+                                                            var reader = new FileReader();
+                                                            reader.onload = function(event) {
+                                                                $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                                                            }
+                                                            reader.readAsDataURL(input.files[i]);
+                                                        }
+                                                    }
+                                                };
+                                                $('#gallery-photo-add').on('change', function() {
+                                                    imagesPreview(this, 'div.gallery');
+                                                });
+                                            });
+                                        </script>
 
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="thongtincoban">Thông tin sản phẩm:</label>
