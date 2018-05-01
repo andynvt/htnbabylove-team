@@ -100,17 +100,17 @@ class PageController extends Controller
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('promotion_price', '<>', '0')
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(6,['*'],'promotion_product');
         $new_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('status', 1)
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(6,['*'],'new_product');
         $hot_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('status', 2)
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(6,['*'],'hot_product');
 
         $lsp = ProductType::all();
         return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product','product_image','product_color'));
@@ -275,8 +275,7 @@ class PageController extends Controller
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)
                             ->groupBy('products.id')
-                            ->get();
-
+                            ->paginate(9,['*'],'product');
         // $product = Product::where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)->get();
 
         //cắt chuỗi của giá tiền
@@ -293,7 +292,7 @@ class PageController extends Controller
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(9,['*'],'product');
                 break;
 
                 case $value ;
@@ -302,7 +301,7 @@ class PageController extends Controller
                             ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
                             ->where('ty.id','=',$value)
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(9,['*'],'product');
 
                     
 
@@ -313,7 +312,7 @@ class PageController extends Controller
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->whereBetween('unit_price', [$giatien[0],$giatien[1]] )
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(9,['*'],'product');
 
                 break;
 
@@ -324,8 +323,7 @@ class PageController extends Controller
                             ->Where('sp.name','like','%'.$tensp.'%')
                             ->orwhere('ty.id','=',$value)
                             ->groupBy('products.id')
-                            ->get();
-                            dd($product);
+                            ->paginate(9,['*'],'product');
 
                    
                 break;
@@ -336,7 +334,7 @@ class PageController extends Controller
                             ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
                             ->orWhere('sp.name','like','%'.$tensp.'%')
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(9,['*'],'product');
 
                     
                 break;
@@ -348,7 +346,7 @@ class PageController extends Controller
                             ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
                             ->orwhere('ty.id','=',$value)
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(9,['*'],'product');
 
 
                
@@ -362,7 +360,7 @@ class PageController extends Controller
                             ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
                             ->orwhere('ty.id','=',$value)
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(9,['*'],'product');
 
                    
                 break;
@@ -381,20 +379,21 @@ class PageController extends Controller
        
        
     }
-
+// SELECT * FROM products 
+// WHERE name >= 'Áo Gối Tím Hoa' AND unit_price = 100000
 
     public function getTimkiemloai(Request $req){
         $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(9,['*'],'product');
 
         if($req->pro === 'sale'){
             $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('promotion_price', '<>', '0')
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(9,['*'],'product');
 
         }
         if($req->pro === 'new'){
@@ -402,7 +401,7 @@ class PageController extends Controller
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('status', 1)
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(9,['*'],'product');
 
         }
         if($req->pro === 'hot'){
@@ -410,7 +409,7 @@ class PageController extends Controller
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('status', 2)
                             ->groupBy('products.id')
-                            ->get();
+                            ->paginate(9,['*'],'product');
 
         }
         if($req->pro === 'giagiam'){
@@ -418,21 +417,16 @@ class PageController extends Controller
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->orderByRaw('unit_price  DESC')
                             ->groupBy('products.id')
-                            ->get();
-            // $product = DB::table('products')
-            //     ->orderByRaw('unit_price  DESC')
-            //     ->get();
-
+                            ->paginate(9,['*'],'product');
+           
         }
         if($req->pro === 'giatang'){
             $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->orderByRaw('unit_price  ASC')
                             ->groupBy('products.id')
-                            ->get();
-            // $product = DB::table('products')
-            //     ->orderByRaw('unit_price  ASC')
-            //     ->get();
+                            ->paginate(9,['*'],'product');
+           
 
         }
         

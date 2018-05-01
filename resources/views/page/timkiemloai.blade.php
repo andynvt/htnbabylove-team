@@ -19,7 +19,7 @@
                     <div class="space15">&nbsp;</div>
                     <div class="row">
                        @foreach($product as $new) 
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+                        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <div class="single-item">
                                 <div class="ribbon-wrapper">
                                     @if($new->promotion_price != 0)
@@ -33,7 +33,7 @@
                                 <div class="thumbnail">
                                     <a href="{{ route('chitietsanpham', $new->id_product) }}">
                                         <div class="containeroverlay">
-                                            <img src="storage/product/{{$new->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
+                                            <img src="storage/product/{{$new->image}}" alt="Thumbnail Image 1" class="img-responsive" width="768px">
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>
                                             </div>
@@ -71,6 +71,9 @@
                         </div>
                          @endforeach
                     </div>
+                    <div class="row justify-content-center">{{$product->links() }}
+                    </div>
+                    <div class="space20">&nbsp;</div>
                 </div>
             </div>
         </div>
