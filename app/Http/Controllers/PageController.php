@@ -669,6 +669,55 @@ class PageController extends Controller
         return redirect()->back()->with('deletesp', 'Đã xoá!');
     }
 
+    public function postadminXoanhieusanpham(Request $req){
+        $spdel = $req->delmsp;
+
+        dd($spdel);
+
+        $numdel = count($req->delmsp);
+
+        foreach($spdel as $key){
+            $cl = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=', 'ctsp.id')
+                                ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
+                                ->where('sp.id', $key)
+                                ->select('product_color.id')
+                                ->get();
+
+            $img = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
+                                ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
+                                ->where('sp.id', $key)
+                                ->select('product_image.id')
+                                ->get();
+
+            $dt = ProductDetail::leftjoin('products as sp', 'product_detail.id_product', '=', 'sp.id')
+                                ->where('sp.id', $key)
+                                ->select('product_detail.id')
+                                ->get();
+
+            if($cl){
+                foreach($cl as $temp){
+                    $temp->delete();
+                }
+            }
+            
+            if($img){
+                foreach($img as $temp){
+                    $temp->delete();
+                }
+            }
+
+            if($dt){
+                foreach($dt as $temp){
+                    $temp->delete();
+                }
+            }
+            
+            Product::find($key)->delete();
+        }
+
+        return redirect()->back()->with('deletesp', 'Đã xoá '.$numdel.' sản phẩm');
+    }
+
     public function getadminLoaisanpham(){
         $adminlsp = ProductType::all();
 

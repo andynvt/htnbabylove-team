@@ -98,39 +98,59 @@
 
                                 </script>
                                 <div class="container-fluid">
-                                    <table class="table table-bordered text-align" id="myTable" >
-                                        <thead>
-                                            <tr class="thead_change_color">
-                                                <th>Mã số</th>
-                                                <th onclick="sortTable(1)">Loại <span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6"></span></th>
-                                                <th>Tên</th>
-                                                <th>Giá Gốc</th>
-                                                <th>Giá Khuyến Mãi</th>
-                                                <th>Kích thước</th>
-                                                <th>Chi tiết</th>
-                                                <th>Sửa/Xóa</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($takesp as $sp)
-                                            <tr>
-                                                <td>{{ $sp->spid }}</td>
-                                                <td>{{ $sp->type_name }}</td>
-                                                <td>{{ $sp->name }}</td>
-                                                <td>{{ $sp->unit_price }}</td>
-                                                <td>{{ $sp->promotion_price }}</td>
-                                                <td>{{ $sp->size }}</td>
-                                                <td><a href="" data-toggle="modal" data-target="#ctsp_{{ $sp->spid }}">Xem</a></td>
-                                                <td class="text-center">
-                                                    <div class="">
-                                                        <a href="{{ route('adminsuasanpham', $sp->spid) }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
-                                                        <a href="{{ route('adminxoasanpham', $sp->spid) }}" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        	@endforeach
-                                        </tbody>
-                                    </table>
+                                    <form method="post" onsubmit="return submitForm(this);" action="{{ route('adminxoanhieusanpham') }}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <table class="table table-bordered text-align" id="myTable" >
+                                            <thead>
+                                                <tr class="thead_change_color">
+                                                    <th>Mã số</th>
+                                                    <th onclick="sortTable(1)">Loại <span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6"></span></th>
+                                                    <th>Tên</th>
+                                                    <th>Giá Gốc</th>
+                                                    <th>Giá Khuyến Mãi</th>
+                                                    <th>Kích thước</th>
+                                                    <th>Chi tiết</th>
+                                                    <th>
+                                                        <a id="open-del-check">Xoá nhiều</a>
+                                                        <button class="btn-delm-sp" id="del-check" type="submit">Xoá</button>
+                                                        
+                                                        <a class="btn-delm-sp" id="cancel-check">Huỷ</a>
+                                                        <div id="del-checkall">
+                                                            <a id="check-all" href="#myTable" data-toggle="checkboxes" data-action="check">
+                                                                Chọn hết
+                                                            </a>
+                                                            /
+                                                            <a id="uncheck-all" href="#myTable" data-toggle="checkboxes" data-action="uncheck">
+                                                                Bỏ chọn
+                                                            </a>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($takesp as $sp)
+                                                <tr>
+                                                    <td>{{ $sp->spid }}</td>
+                                                    <td>{{ $sp->type_name }}</td>
+                                                    <td class="text-left">{{ $sp->name }}</td>
+                                                    <td>{{ $sp->unit_price }}</td>
+                                                    <td>{{ $sp->promotion_price }}</td>
+                                                    <td>{{ $sp->size }}</td>
+                                                    <td><a href="" data-toggle="modal" data-target="#ctsp_{{ $sp->spid }}">Xem</a></td>
+                                                    <td class="text-center">
+                                                        <div class="del1-sp">
+                                                            <a href="{{ route('adminsuasanpham', $sp->spid) }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                            <a href="{{ route('adminxoasanpham', $sp->spid) }}" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                        </div>
+                                                        <div class="delm-sp">
+                                                            <input type="checkbox" name="delmsp[]" multiple value="{{ $sp->spid }}" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            	@endforeach
+                                            </tbody>
+                                        </table>
+                                    </form>
                                 </div>
                             </div>
                         </div>

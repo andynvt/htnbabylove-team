@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="source/ADMIN/css/util.css">
     <link rel="stylesheet" href="source/ADMIN/css/login.css">
     <link rel="stylesheet" href="source/ADMIN/css/imgcolor-admin.css">
-    <link rel="stylesheet" href="source/ADMIN/css/alert.css">
+    <link rel="stylesheet" href="source/ADMIN/css/adminsanpham.css">
 </head>
 
 <body>
@@ -155,6 +155,10 @@
                 setTimeout(function () {
                $(".alert-babyproject").fadeOut(700);
             }, 2000)
+        }
+
+        function submitForm() {
+            return confirm('Bạn có chắc muốn xoá?');
         }
     </script>
 
@@ -282,12 +286,13 @@
 <script src="source/ADMIN/assets/js/bootstrap-notify.js"></script>
 <script src="source/ADMIN/vendor/animsition/js/animsition.min.js"></script>
 <script src="source/ADMIN/assets/js/demo.js"></script>
+<script src="source/ADMIN/js/jquery.checkboxes-1.2.2.js" type="text/javascript"></script>
 
 <script src="source/ADMIN/js/main.js" type="text/javascript"></script>
 <script src="source/ADMIN/js/cart.js" type="text/javascript"></script>
 <script src="source/ADMIN/js/modal.js" type="text/javascript"></script>
 <script src="source/ADMIN/js/login.js" type="text/javascript"></script>
-
+<script src="source/ADMIN/js/adminsanpham.js" type="text/javascript"></script>
 
 </html>
 
