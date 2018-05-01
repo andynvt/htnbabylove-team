@@ -153,20 +153,6 @@
                                                     
                                                 });
                                             </script>
-                                        {{-- <div class="form-group">
-                                            <label class="control-label col-sm-4" for="hinhanh">Hình ảnh:</label>
-                                            <div class="col-sm-8">
-                                                <div class="box-upload">
-                                                    <div class="themhinh">
-                                                        <button class="btn btn-default dehinh" style="cursor: pointer">
-                                                           <i class="fa fa-plus"></i>
-                                                           <input type="file" name="images[]" multiple accept="image/png, image/jpg, image/jpeg" required>
-                                                       </button>                                               
-                                                   </div>
-                                                </div>
-                                                <p style="color: #9A9A9A;">(*) Trỏ chuột vào dấu cộng để xem tên các ảnh đã chọn</p>
-                                            </div>
-                                        </div> --}}
                                          <div class="form-group">
                                             <label for="files" class="control-label col-sm-4">Hình ảnh: </label>
                                             <div class="col-sm-4">
