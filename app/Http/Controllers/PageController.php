@@ -285,88 +285,79 @@ class PageController extends Controller
         // dd($giatien[0]);
 
         //tìm kiếm theo các tuỳ chọn
-        if(!empty($req->price)){
-            switch(  $tensp || $giatien || $value)  {
-                case $tensp :
-                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+      if(!empty($req->price)){
+            if(!empty($tensp) && !empty($value) && !empty($giatien)){
+                $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
-                            ->where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->Where([
+                                    ['products.name','like','%'.$tensp.'%'],
+                                    ['ty.id','=',$value],
+                                    ['products.unit_price', '>=', $giatien[0]],
+                                    ['products.unit_price', '<=', $giatien[1]],
+                                    ])
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
-                break;
-
-                case $value ;
-                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+            }
+            elseif(!empty($tensp) && !empty($value)){
+                $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->Where([
+                                    ['products.name','like','%'.$tensp.'%'],
+                                    ['ty.id','=',$value],
+                                    ])
+                            ->groupBy('products.id')
+                            ->paginate(9,['*'],'product');
+            }
+            elseif(!empty($tensp) && !empty($giatien)){
+                $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->Where([
+                                    ['products.name','like','%'.$tensp.'%'],
+                                    ['products.unit_price', '>=', $giatien[0]],
+                                    ['products.unit_price', '<=', $giatien[1]],
+                                    ])
+                            ->groupBy('products.id')
+                            ->paginate(9,['*'],'product');
+            }
+            elseif(!empty($value) && !empty($giatien)){
+                $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->Where([
+                                    ['ty.id','=',$value],
+                                    ['products.unit_price', '>=', $giatien[0]],
+                                    ['products.unit_price', '<=', $giatien[1]],
+                                    ])
+                            ->groupBy('products.id')
+                            ->paginate(9,['*'],'product');
+            }
+            elseif(!empty($tensp)){
+                $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('products.name','like','%'.$req->search.'%')->orWhere('products.unit_price',$req->search)
+                            ->groupBy('products.id')
+                            ->paginate(9,['*'],'product');
+            }
+            elseif(!empty($value)){
+                $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
                             ->where('ty.id','=',$value)
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
-
-                    
-
-                break;
-
-                case $giatien :
-                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
-                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
-                            ->whereBetween('unit_price', [$giatien[0],$giatien[1]] )
-                            ->groupBy('products.id')
-                            ->paginate(9,['*'],'product');
-
-                break;
-
-                case ($tensp && $value) :
-                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
-                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
-                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
-                            ->Where('sp.name','like','%'.$tensp.'%')
-                            ->orwhere('ty.id','=',$value)
-                            ->groupBy('products.id')
-                            ->paginate(9,['*'],'product');
-
-                   
-                break;
-
-                case ($tensp && $giatien) :
-                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
-                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
-                            ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
-                            ->orWhere('sp.name','like','%'.$tensp.'%')
-                            ->groupBy('products.id')
-                            ->paginate(9,['*'],'product');
-
-                    
-                break;
-
-                case ($value && $giatien) :
-                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
-                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
-                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
-                            ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
-                            ->orwhere('ty.id','=',$value)
-                            ->groupBy('products.id')
-                            ->paginate(9,['*'],'product');
-
-
-               
-                break;
-
-                case ($tensp && $value && $giatien) :
-                    $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
-                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
-                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
-                            ->Where('sp.name','like','%'.$tensp.'%')
-                            ->whereBetween('sp.unit_price', [$giatien[0],$giatien[1]] )
-                            ->orwhere('ty.id','=',$value)
-                            ->groupBy('products.id')
-                            ->paginate(9,['*'],'product');
-
-                   
-                break;
-                default:
-
             }
+            elseif(!empty($giatien)){
+                $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->whereBetween('products.unit_price', [$giatien[0],$giatien[1]] )
+                            ->groupBy('products.id')
+                            ->paginate(9,['*'],'product');
+            }
+            
+
         }
 
     
@@ -379,15 +370,10 @@ class PageController extends Controller
        
        
     }
-// SELECT * FROM products 
-// WHERE name >= 'Áo Gối Tím Hoa' AND unit_price = 100000
+
 
     public function getTimkiemloai(Request $req){
-        $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
-                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
-                            ->groupBy('products.id')
-                            ->paginate(9,['*'],'product');
-
+       
         if($req->pro === 'sale'){
             $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')

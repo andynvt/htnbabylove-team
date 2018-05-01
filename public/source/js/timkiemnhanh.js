@@ -2,9 +2,9 @@ $(function () {
     $("#pricefrom").slider({
         range: true
         , min: 0
-        , max: 999999
-        , step: 50
-        , value: [1000, 99999]
+        , max: 2500000
+        , step: 100
+        , value: [0, 2500000]
         , slide: function (event, ui) {
             $("#app_min_price").html("$" + ui.value[0]);
             $("#app_max_price").html("$" + ui.values[1]);
