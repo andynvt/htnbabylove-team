@@ -7,7 +7,7 @@ jQuery(function ($) {
             'width': '100%',
             'background': 'white',
             'z-index': '999',
-            'height': '53px'
+            // 'height': '53px'
         });
         else $cache.css({
             'position': 'relative',

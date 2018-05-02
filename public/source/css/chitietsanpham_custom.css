@@ -1,4 +1,4 @@
-/* Phan tuy chinh trang chitietsanpham */
+    /* Phan tuy chinh trang chitietsanpham */
 
 .header-top .pull-left {
     margin-left: -10px;
@@ -80,7 +80,7 @@
 }
 
 .select-size-product select {
-    width: 25%;
+    width: 45%;
 }
 
 .select-size-product label {
@@ -654,4 +654,13 @@ img {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+@media screen and (min-device-width: 200px) and (max-device-width: 998px) {
+    
+
+
+
+
+
 }

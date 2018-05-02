@@ -121,7 +121,7 @@
                             <form action="{{ route('chitietsp', $sanpham->id) }}" method="POST" accept-charset="utf-8">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="select-size-product">
-                                    <label class="choose-qty">Chọn số lượng</label>
+                                    <label class="choose-qty ">Chọn số lượng</label>
                                     <br/>
                                     <div class="space10">&nbsp;</div>
                                     <div class="input-group mb-3" style="width: 45%;">
@@ -135,7 +135,7 @@
                                     </div>
                                     <div class="space10">&nbsp;</div>
                                     <label class="choose-qty">Chọn màu sắc</label>
-                                    <div class="form-group">
+                                    <div class="form-group text-filter-re">
                                         <select name="colorbuy">
                                             @foreach($getcl as $cl)
                                                 <option>
@@ -164,7 +164,7 @@
                         <h5 class="title-intro-product">Chi Tiết Sản Phẩm</h5>
                     </div>
                     <div class="panel" id="tab-description">
-                        <p class="intro-product">{{ $sanpham->description }}.</p>
+                        <p class="intro-product ">{{ $sanpham->description }}.</p>
                         @foreach($getimg as $img)
                             <div class="img-product-show"> <img src="storage/product/{{ $img->image }}" /> </div>
                         @endforeach
@@ -321,55 +321,60 @@
                         <!-- <h4>Sản Phẩm Cùng Loại</h4> --><img src="storage/product/related.png" /> </div>
                     <div class="row">
                         @foreach($same_product as $same) 
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
-                                <div class="single-item">
-                                    <div class="ribbon-wrapper">
-                                        @if($same->promotion_price != 0)
-                                        <div class="ribbon1 sale">Sale</div>
-                                        @elseif($same->status == 1)
-                                        <div class="ribbon1 new">New</div>
-                                        @elseif($same->status == 2)
-                                        <div class="ribbon1 hot">Hot</div>
-                                        @endif
-                                    </div>
-                                    <div class="thumbnail">
-                                        <a href="{{ route('chitietsanpham', $same->id_product) }}">
-                                            <div class="containeroverlay">
-                                                <img src="storage/product/{{$same->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px">
-                                                <div class="overlay">
-                                                    <div class="text">Xem chi tiết</div>
-                                                </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                            <div class="single-item">
+                                <div class="ribbon-wrapper">
+                                    @if($same->promotion_price != 0)
+                                    <div class="ribbon1 sale">Sale</div>
+                                    @elseif($same->status == 1)
+                                    <div class="ribbon1 new">New</div>
+                                    @elseif($same->status == 2)
+                                    <div class="ribbon1 hot">Hot</div>
+                                    @endif
+                                </div>
+                                <div class="thumbnail">
+                                    <a href="{{ route('chitietsanpham', $same->id_product) }}">
+                                        <div class="containeroverlay">
+                                            
+                                            <img src="storage/product/{{$same->image}}" alt="Thumbnail Image 1" class="img-responsive" width="1024px">
+                                            
+                                             
+                                            <div class="overlay">
+                                                <div class="text">Xem chi tiết</div>
                                             </div>
+                                        </div>
+                                    </a>
+                                    <div class="caption">
+                                        <div class="space5">&nbsp;</div>
+                                        <a href="{{ route('chitietsanpham', $same->id_product) }}">
+                                        <b class="text-price text-price-re">
+                                                @if($same->promotion_price == 0)
+                                                    <span class="text-danger ">{{number_format($same->unit_price)}} đ</span> &nbsp;
+                                                @else
+                                                    <span class="text-danger ">{{number_format($same->promotion_price)}} đ</span> &nbsp;
+                                                    <span class="flash-del">{{number_format($same->unit_price)}} đ</span>
+                                                @endif
+                                                </b>
+                                        <div class="space10">&nbsp;</div>
+                                        <p class='text-left text-title text-title-re'>
+                                            <b>{{$same->name}}
+                                            </b>&nbsp;
+                                        </p>
                                         </a>
-                                        <div class="caption">
-                                            <div class="space5">&nbsp;</div>
-                                            <b class="text-price">
-                                                    @if($same->promotion_price == 0)
-                                                        <span class="text-danger ">{{number_format($same->unit_price)}} đ</span> &nbsp;
-                                                    @else
-                                                        <span class="text-danger ">{{number_format($same->promotion_price)}} đ</span> &nbsp;
-                                                        <span class="flash-del">{{number_format($same->unit_price)}} đ</span>
-                                                    @endif
-                                                    </b>
-                                            <div class="space10">&nbsp;</div>
-                                            <p class='text-left text-title'><b>{{$same->name}}</b>&nbsp;</p>
-                                            <button type="button" class="btn btn-buy btn-full button {{ $same->id_product }}" data-toggle="modal" data-target=" 
-                                                @if($same->promotion_price != 0)
+                                        <button type="button" class="btn btn-buy btn-buy-re btn-full button" data-toggle="modal" data-target="@if($same->promotion_price != 0)
                                                     #pro{{$same->id_product}}
                                                 @elseif($same->status == 1)
                                                     #new{{$same->id_product}}
                                                 @elseif($same->status == 2)
                                                     #hot{{$same->id_product}}
-                                                @endif">
-                                                <span>Mua Ngay </span>
-                                            </button>
-                                            <a class="btn btn-themvaogio btn-full " href="{{route('themgiohang',$same->id_product)}}">Thêm vào giỏ</a>
-                                            <hr>
-                                        </div>
+                                                @endif"><span>Mua Ngay </span></button>
+                                        <a class="btn btn-themvaogio btn-themvaogio-re btn-full " href="{{route('themgiohang',$same->id_product)}}" style="color: white">Thêm vào giỏ</a>
+                                        <hr>
                                     </div>
-                                    
                                 </div>
                             </div>
+                        </div>
+                            
                         @endforeach
                     </div>
                 </div>

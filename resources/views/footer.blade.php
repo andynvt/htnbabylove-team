@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid text-footer-re">
             <div class="row">
                 <div class="col-sm-4 ft_pc" style="text-align: left;">
                     <div class="address-office">

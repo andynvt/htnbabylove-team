@@ -355,8 +355,14 @@ body {
 .btn-modal{
     margin-left: 225%;
 }
+.control-label {
+    font-size: 16px;
+}
 
 @media screen and (min-device-width: 200px) and (max-device-width: 998px) {
+    .pagination{
+        font-size: 30px;
+    }
      .modal-dialog {
         max-width: 1024px;
         margin: 30px auto;
@@ -411,9 +417,77 @@ body {
     .container-fluid{
     width: 100%;
     }
+    .control-label {
+        font-size: 40px;
+        padding-left: 10px;  
+        line-height: 50px;
+    }
+   .text-filter-re{
+    height: 60px;
+    font-size:  35px;
+   }
+  
 
+  .ribbon-trangthai.hot{
+    margin-left: 25%;
+    border-radius: 50%;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+    padding: 2px 0px 2px 2px;
+    line-height: 72px;
+    font-size: 30px;
+    right: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .ribbon-trangthai.new{
+    margin-left: 25%;
+    border-radius: 50%;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+    padding: 2px 0px 2px 2px;
+    line-height: 72px;
+    font-size: 30px;
+    right: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .ribbon-trangthai.sale{
+    margin-left: 25%;
+    border-radius: 50%;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+    padding: 2px 0px 2px 2px;
+    line-height: 72px;
+    font-size: 30px;
+    right: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
 
-
+    .slider.slider-horizontal .slider-selection,
+    .slider.slider-horizontal .slider-track-low,
+    .slider.slider-horizontal .slider-track-high {
+        height: 20px
+    }
+    .slider-handle {
+        width: 30px;
+        height: 30px;
+    }
+    .form-group input[type="text"]{
+        height: 60px;
+    }
+    .form-group select.form-control:not([size]):not([multiple]){
+        height: 60px;
+    }
+    
+    .text-footer-re{
+        font-size: 30px;
+        line-height: 35px;
+    }
 
 }
 
@@ -430,9 +504,7 @@ body {
     
 }
 
-.control-label {
-    font-size: 16px;
-}
+
 
 
 /* Mau */

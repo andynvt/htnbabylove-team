@@ -88,7 +88,7 @@
                 <div class="clearfix"></div>
                 <div class="div-shop-cart" data-toggle="modal" data-target="#modal-cart">
                     <i class="fa fa-shopping-cart shop-cart"></i>
-                    <span id="number-cart">@if(Session::has('cart')){{Session('cart')->totalQty}} @else 0 @endif</span>
+                    <div id="number-cart"><span>@if(Session::has('cart')){{Session('cart')->totalQty}} @else 0 @endif</span></div>
                     <style>
                         .slider-index .carousel-item img{
                             margin: 0 auto;

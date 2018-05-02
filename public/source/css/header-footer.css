@@ -176,9 +176,9 @@ body {
 }
 
 .hamburger {
-    top: 2px;
+    top: 20px;
     color: black;
-    font-size: 35px;
+    font-size: 100px;
     border: none;
     background: none;
     margin: 0;
@@ -285,6 +285,9 @@ body {
     .header-body {
         display: none;
     }
+    .header-bottom{
+        height: 150px;
+    }
     .hamburger {
         position: relative;
         display: block;
@@ -292,11 +295,21 @@ body {
     .hide-mobile {
         display: none;
     }
+    .sidenav a {
+        font-size: 60px;
+        line-height: 65px;
+    }
     .logo-mobile {
         position: absolute;
         display: block;
         left: 50%;
         transform: translateX(-50%);
+        height: 100px;
+        width: 400px;
+        top: 20px;
+    }
+    .logo-mobile img{
+        width: 100%;
     }
 }
 
