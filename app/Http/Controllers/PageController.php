@@ -602,9 +602,7 @@ class PageController extends Controller
         $id_detail = ProductDetail::where('id_product',$idsp)->value('id');
         $id_color = ProductColor::where('id',$id_detail)->value('id');
         $id_image = ProductImage::where('id_detail',$id_detail)->get();
-        foreach ($id_image as $idi) {
-            $idim[] = $idi->id;
-        }
+        
         foreach ($req->newcolor as $key) {
             $colorsp = ProductColor::find($idsp);
             $colorsp->id_detail = $ctsanpham->id;
@@ -618,13 +616,25 @@ class PageController extends Controller
                 $img[] = $name;  
             }
         }
-        $i=0; 
-        foreach($idim as $idm){
-            ProductImage::where('id',$idm)->update([
-                'image'=>$img[$i]
-            ]);
-            $i++;
+        foreach ($id_image as $idi) {
+            DB::table('product_image')->where('id',$idi->id)->delete();
+            Storage::delete('app/public/product/'.$idi->image);
+            unlink(storage_path('app/public/product/'.$idi->image));
+            // $idim[] = $idi->id;
         }
+        foreach ($img as $i) {
+            ProductImage::insert( [
+                'id_detail'=>$ctsanpham->id,
+                'image'=>$i,
+            ]);
+        }
+        // $i=0; 
+        // foreach($idim as $idm){
+        //     ProductImage::where('id',$idm)->update([
+        //         'image'=>$img[$i]
+        //     ]);
+        //     $i++;
+        // }
         return redirect()->back()->with('editsp', 'Đã sửa!');
     }
 
