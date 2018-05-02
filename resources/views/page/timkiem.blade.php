@@ -36,7 +36,7 @@
                                     <a href="{{ route('chitietsanpham', $promo->id_product) }}">
                                         <div class="containeroverlay">
                                            
-                                            <img src="storage/product/{{$promo->image}}" alt="Thumbnail Image 1" class="img-responsive" width="768px">
+                                            <img src="storage/product/{{$promo->image}}" alt="Thumbnail Image 1" class="img-responsive" width="1024px">
                                             
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>

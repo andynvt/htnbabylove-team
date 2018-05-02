@@ -328,9 +328,7 @@ body {
         padding-top: 0;
         margin-top: -250px;
     }
-    .containeroverlay {
-        height: 768px;
-    }
+   
 }
 
 @media (min-width: 1024px) {
@@ -346,38 +344,91 @@ body {
         left: 11%;
         margin-top: -250px;
     }
+
+   
     
 }
 
+.btn-modal-huy{
+    margin-left: -110%;
+}
+.btn-modal{
+    margin-left: 225%;
+}
 
-
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+@media screen and (min-device-width: 200px) and (max-device-width: 998px) {
      .modal-dialog {
-        max-width: 1060px;
+        max-width: 1024px;
         margin: 30px auto;
     }
-    .text-price {
-        font-size: 20px;
+    .text-price-re {
+        height: 60px;
+        font-size: 52px;
+        padding-left: 10px;   
+        line-height: 65px;
     }
-    .text-title {
-       
-        font-size: 20px;   
+    .text-title-re {
+        height: 60px;
+        font-size: 52px;
+        padding-left: 10px;   
+        line-height: 65px;
+    }
+    .btn-buy-re{
+        height: 100px;
+        font-size: 52px;
+        padding-left: 10px;   
+        
+    }
+    .btn-themvaogio-re{
+        height: 100px;
+        font-size: 52px;
+        padding-left: 10px;   
+        
+    }
+    .btn-modal-re{
+        font-size: 40px;
+    }
+
+    .btn-modal-huy{
+        margin-left: 0%;
+    }
+    .btn-modal{
+        margin-left: 0%;
+    }
+    .text-modal-re{
+        font-size: 30px;
+    }
+    .text-thongtin-re{
+        font-size: 35px;
+         line-height: 43px;
+    }
+    .thumbnail-re{
+        margin-left: 25%; 
     }
     .containeroverlay {
         height: 768px;
     }
+    .container-fluid{
+    width: 100%;
+    }
+
+
+
 
 }
 
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
+
     .menuscroll {
         display: none;
     }
-    .img-responsive {}
+    
 }
 
-@media screen and (min-device-width: 769px) and (max-device-width: 2560px) {}
+@media screen and (min-device-width: 769px) and (max-device-width: 2560px) {
+    
+}
 
 .control-label {
     font-size: 16px;
