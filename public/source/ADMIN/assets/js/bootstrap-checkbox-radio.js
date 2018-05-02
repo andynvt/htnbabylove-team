@@ -72,11 +72,6 @@
     });
   }
 
-  $.fn.checkbox.defaults = {
-    template: '<span class="icons"><span class="first-icon fa fa-square fa-base"></span><span class="second-icon fa fa-check-square fa-base"></span></span>'
-  }
-
-
  /* CHECKBOX NO CONFLICT
   * ================== */
 
@@ -212,10 +207,6 @@
       if (option == 'check' || option == 'uncheck') data.setCheck(option)
       else if (option) data.setState();
     });
-  }
-
-  $.fn.radio.defaults = {
-    template: '<span class="icons"><span class="first-icon fa fa-circle-o fa-base"></span><span class="second-icon fa fa-dot-circle-o fa-base"></span></span>'
   }
 
 

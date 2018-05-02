@@ -145,15 +145,9 @@ body {
     cursor: pointer;
 }
 
-/*.btn-themvaogio-a {
-    background-color: #FF3E8D;
-    color: #fff !important;
-    cursor: pointer;
-}*/
-
 .btn-themvaogio-a, .btn-themvaogio-a:visited {
     background-color: #FF3E8D;
-    color: #fff !important;;
+    color: #fff !important;
     padding: 1px 1px;
     text-align: center;
     text-decoration: none;
@@ -166,7 +160,7 @@ body {
 }
 
 .btn-themvaogio:hover{
-    background: #E91E63;
+    background: #E91E63 !important;
     color: #fff;
 }
 
