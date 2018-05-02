@@ -201,6 +201,7 @@ class PageController extends Controller
         $fb->reviewer = $req->name;
         $fb->review = $req->review;
         $fb->tel = $req->phone;
+        $fb->status = 1;
         $fb->save();
 
         return redirect()->back();
@@ -488,6 +489,18 @@ class PageController extends Controller
     public function getadminXoadanhgia($fb){
         Feedback::find($fb)->delete();
         return redirect()->back()->with('deletefb', 'Đã xoá đánh giá');
+    }
+
+    public function postadminXoanhieudanhgia(Request $req){
+        $fb = $req->delmfb;
+
+        $numdelfb = count($req->delmfb);
+
+        foreach($fb as $key){
+            Feedback::find($key)->delete();
+        }
+
+        return redirect()->back()->with('deletefb', 'Đã xoá '.$numdelfb.' đánh giá');
     }
 
     public function getadminSanpham(){

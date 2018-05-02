@@ -122,6 +122,11 @@ Route::get('admin-xoadanhgia/{fb}', [
 	'uses' => 'PageController@getadminXoadanhgia'
 ]);
 
+Route::post('admin-xoanhieudanhgia', [
+	'as' => 'adminxoanhieudanhgia',
+	'uses' => 'PageController@postadminXoanhieudanhgia'
+]);
+
 Route::get('admin-sanpham', [
 	'as' => 'adminsanpham',
 	'uses' => 'PageController@getadminSanpham'

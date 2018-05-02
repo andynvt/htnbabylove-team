@@ -106,36 +106,56 @@
                                             })
 
                                         </script>
-                                        <table class="table table-bordered text-align align-tooltip-feedback">
-                                            <thead>
-                                                <tr class="thead_change_color">
-                                                    <th>Mã đánh giá</th>
-                                                    <th>Người đánh giá</th>
-                                                    <th>Số diện thoại</th>
-                                                    <th>Số sao</th>
-                                                    <th>Nội dung</th>
-                                                    <th>Xóa</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($fbsp as $fb)
-                                                <tr class="row-detail-feedback" data-toggle="tooltip" data-html="true" title="<p>Nội dung đánh giá:</p><p>{{ $fb->review }}</p>">
-                                                    <td>{{ $fb->id }}</td>
-                                                    <td>{{ $fb->reviewer }}</td>
-                                                    <td>{{ $fb->tel }}</td>
-                                                    <td>{{ $fb->stars }}</td>
-                                                    <td>{{ $fb->review }}</td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <a href="{{ route('adminxoadanhgia',$fb->id) }}" class="btn btn-danger btn-xs del_icon">
-                                                                <span class="glyphicon glyphicon-trash"></span> 
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                        <form method="post" action="{{ route('adminxoanhieudanhgia') }}">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <table class="table table-bordered text-align align-tooltip-feedback">
+                                                <thead>
+                                                    <tr class="thead_change_color">
+                                                        <th>Mã đánh giá</th>
+                                                        <th>Người đánh giá</th>
+                                                        <th>Số diện thoại</th>
+                                                        <th>Số sao</th>
+                                                        <th>Nội dung</th>
+                                                        <th>
+                                                            <a id="open-del-check">Xoá nhiều</a>
+                                                            <button class="btn-delm-sp" id="del-check" type="submit">Xoá</button>
+                                                            
+                                                            <a class="btn-delm-sp" id="cancel-check">Huỷ</a>
+                                                            <div id="del-checkall">
+                                                                <a id="check-all" href="#myTable" data-toggle="checkboxes" data-action="check">
+                                                                    Chọn hết
+                                                                </a>
+                                                                /
+                                                                <a id="uncheck-all" href="#myTable" data-toggle="checkboxes" data-action="uncheck">
+                                                                    Bỏ chọn
+                                                                </a>
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($fbsp as $fb)
+                                                    <tr class="row-detail-feedback" data-toggle="tooltip" data-html="true" title="<p>Nội dung đánh giá:</p><p>{{ $fb->review }}</p>">
+                                                        <td>{{ $fb->id }}</td>
+                                                        <td>{{ $fb->reviewer }}</td>
+                                                        <td>{{ $fb->tel }}</td>
+                                                        <td>{{ $fb->stars }}</td>
+                                                        <td>{{ $fb->review }}</td>
+                                                        <td>
+                                                            <div class="btn-group del1-sp">
+                                                                <a href="{{ route('adminxoadanhgia',$fb->id) }}" class="btn btn-danger btn-xs del_icon">
+                                                                    <span class="glyphicon glyphicon-trash"></span> 
+                                                                </a>
+                                                            </div>
+                                                            <div class="delm-sp">
+                                                                <input type="checkbox" name="delmfb[]" multiple value="{{ $fb->id }}" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
