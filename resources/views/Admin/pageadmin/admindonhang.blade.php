@@ -88,16 +88,16 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="danggui">1</td>
-                                            <td>Hàng đang gửi</td>
+                                            <td class="bihuy">1</td>
+                                            <td>Bị huỷ</td>
                                         </tr>
                                         <tr>
                                             <td class="hoantat">2</td>
-                                            <td>Hoàn thành</td>
+                                            <td>Hoàn tất</td>
                                         </tr>
                                         <tr>
-                                            <td class="bihuy">3</td>
-                                            <td>Bị huỷ</td>
+                                            <td class="danggui">3</td>
+                                            <td>Hàng đang gửi</td>
                                         </tr>
                                         <tr>
                                             <td class="choxacnhan">4</td>
@@ -137,7 +137,7 @@
                                         <thead>
                                             <tr class="thead_change_color">
                                                 <th>Mã hoá đơn</th>
-                                                <th  onclick="sortTable(1)">Trạng thái <span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6"></span></th>
+                                                <th >Trạng thái</th>
                                                 <th>Tổng tiền</th>
                                                 <th>Số lượng sản phẩm</th>
                                                 <th>Địa chỉ</th>
@@ -149,22 +149,22 @@
                                         <tbody>
                                         @foreach($bills as $b)
                                             @if($b->status == 1)
-                                                <tr class="danggui">
+                                                <tr class="bihuy">
                                             @elseif($b->status == 2)
                                                 <tr class="hoantat">
                                             @elseif($b->status == 3)
-                                                <tr class="bihuy">
+                                                <tr class="danggui">
                                             @elseif($b->status == 4)
                                                 <tr class="choxacnhan">
                                         @endif
                                             <td>{{ $b->id }}</td>
                                             <td>
-                                                @if($b->status == 1)
-                                                    Hàng đang gửi
+                                               @if($b->status == 1)
+                                                    Bị huỷ
                                                 @elseif($b->status == 2)
                                                     Hoàn tất
                                                 @elseif($b->status == 3)
-                                                    Bị huỷ
+                                                    Hàng đang gửi
                                                 @elseif($b->status == 4)
                                                     Chờ xác nhận
                                                 @endif
