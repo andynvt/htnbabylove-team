@@ -26,7 +26,6 @@
 
     <link href="source/css/about.css" rel="stylesheet" />
     <link href="source/css/private-policy.css" rel="stylesheet" />
-    <link href="source/css/chitietsanpham_custom.css" rel="stylesheet" />
     <link href="source/css/style.css" rel="stylesheet" title="style">
     <link href='source/css/index.css' rel='stylesheet' type='text/css'>
     <link href='source/css/menuscroll.css' rel='stylesheet' type='text/css'>

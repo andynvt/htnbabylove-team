@@ -16,9 +16,9 @@
         <div class="row">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('trang-chu') }}">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('loaisanpham', $id_lsp) }}">{{ $type_name }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('chitietsanpham', $sanpham->id) }}">{{ $sanpham->name }}</a></li>
+                    <li class="breadcrumb-item "><a href="{{ route('trang-chu') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item "><a href="{{ route('loaisanpham', $id_lsp) }}">{{ $type_name }}</a></li>
+                    <li class="breadcrumb-item  active" aria-current="page"><a href="{{ route('chitietsanpham', $sanpham->id) }}">{{ $sanpham->name }}</a></li>
                 </ol>
             </nav>
         </div>
@@ -27,16 +27,16 @@
         <div class="row" id="about-content">
             <div class="col-lg-9 col-md-12">
                 <div class="row">
-                    <div class="col-sm-4" id="show-images"> 
+                    <div class="col-lg-4 col-md-12" id="show-images"> 
                         <img src="storage/product/{{ $get1_proimg }}" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
                         <!-- <h2 style="text-align:center">Lightbox</h2> -->
-                        <div class="img-mini">
-                            <div class="row">
+                        <div class="img-mini ">
+                            
                                 @foreach($getimg as $img)
-                                <div class="column"> <img src="storage/product/{{ $img->image }}" style="width:100%; height: 50px"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> 
+                                <div class="column"> <img src="storage/product/{{ $img->image }}"   onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> 
                                 </div>
                                 @endforeach
-                            </div>
+                            
                         </div>
                         <div id="modal-img-mini" class="modal-img-mini"> <span class="close cursor" onclick="closeModal()">&times;</span>
                             <div class="modal-content">
@@ -104,17 +104,18 @@
 
                         </script>
                     </div>
-                    <div class="col-md-8 col-sm-12">
-                        <div class="single-item-body">
+                    <div class="img-mini-re">&nbsp;</div>
+                    <div class="col-lg-6 col-md-12 ">
+                        <div class="single-item-body text-name-sp-re">
                             <h3>{{ $sanpham->name }}</h3>
                             <hr/>
-                            <p class="single-item-price">
-                                <span class="present-price">
+                            <p class="single-item-price text-price-sp-re">
+                                <span class="present-price ">
                                     @if($sanpham->promotion_price == 0)
-                                        <span class="text-danger ">{{number_format($sanpham->unit_price)}} đ</span> &nbsp; 
+                                        <span class="text-danger  ">{{number_format($sanpham->unit_price)}} đ</span> &nbsp; 
                                     @else
                                         <span class="text-danger ">{{number_format($sanpham->promotion_price)}} đ</span> &nbsp;
-                                        <span class="flash-del">{{number_format($sanpham->unit_price)}} đ</span> 
+                                        <span class="flash-del ">{{number_format($sanpham->unit_price)}} đ</span> 
                                     @endif
                                 </span>
                             </p>
@@ -124,7 +125,7 @@
                                     <label class="choose-qty ">Chọn số lượng</label>
                                     <br/>
                                     <div class="space10">&nbsp;</div>
-                                    <div class="input-group mb-3" style="width: 45%;">
+                                    <div class="input-group mb-3 " >
                                         <div class="input-group-prepend">
                                             <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
                                         </div>
@@ -135,7 +136,7 @@
                                     </div>
                                     <div class="space10">&nbsp;</div>
                                     <label class="choose-qty">Chọn màu sắc</label>
-                                    <div class="form-group text-filter-re">
+                                    <div class="form-group text-sp-re">
                                         <select name="colorbuy">
                                             @foreach($getcl as $cl)
                                                 <option>
@@ -146,11 +147,11 @@
                                     </div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="row">
-                                        <div class="col-lg-5 col-md-12">
-                                            <a class="btn btn-themvaogio btn-full " href="{{route('themgiohang',$sanpham->id)}}"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+                                        <div class="col-lg-6 col-md-12">
+                                            <a class="btn btn-themvaogio btn-sp-re btn-full " href="{{route('themgiohang',$sanpham->id)}}"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
                                         </div>
-                                        <div class="col-lg-5 col-md-12">
-                                            <button type="submit" class="btn btn-buy btn-full button"><span>Mua Ngay </span></button>
+                                        <div class="col-lg-6 col-md-12">
+                                            <button type="submit" class="btn btn-buy btn-sp-re btn-full button"><span>Mua Ngay </span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +175,7 @@
                 <hr>
                 <div class="content-rate-product">
                     <div class="title-rate">
-                        <div class="title">
+                        <div class="title ">
                             <h3 style="text-transform: initial;">
                                 @if(count($feedback) == 0)
                                     Không có đánh giá nào
@@ -182,7 +183,7 @@
                                     Có {{ count($feedback) }} đánh giá sản phẩm {{ $sanpham->name }}
                                 @endif
                             </h3>
-                        </div>
+                        </div> <div class="space10">&nbsp;</div>
                         <div class="go-to-rate">
                             <!-- <a href="#text-comment">Gửi đánh giá của bạn</a> -->
                             <!-- Button to Open the Modal -->
@@ -387,23 +388,32 @@
                         <div class="beta-sales beta-lists">
                         @foreach($hot_product as $hot) 
                             <div class="media beta-sales-item">
-                                <a class="pull-left" href="{{ route('chitietsanpham', $hot->id_product) }}">
-                                    <img src="storage/product/{{$hot->image}}" alt="">
-                                </a>
-                                <div class="media-body"> <a href="{{ route('chitietsanpham', $hot->id_product) }}">{{$hot->name}}</a>
-                                    <p class="beta-sales-price">
-                                        @if($hot->promotion_price == 0)
-                                            <span class="text-danger ">{{number_format($hot->unit_price)}} đ</span> &nbsp;
-                                        @else
-                                            <span class="text-danger ">{{number_format($hot->promotion_price)}} đ</span> &nbsp;
-                                            <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
-                                        @endif
-                                    </p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#hot{{$hot->id_product}}"><span>Mua Ngay </span></button>
-                                    <a class="btn-ms btn-themvaogio-a btn-full " href="{{route('themgiohang',$hot->id_product)}}">Thêm vào giỏ</a>
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-12">
+                                    <a class="pull-left" href="{{ route('chitietsanpham', $hot->id_product) }}">
+                                        <img  src="storage/product/{{$hot->image}}" >
+                                    </a>
+                                </div>
+                                    <div class="col-lg-10 col-md-12">
+                                        <div class="media-body text-title-sp-re"> 
+                                            <a href="{{ route('chitietsanpham', $hot->id_product) }}">{{$hot->name}}</a>
+                                            <p class="beta-sales-price text-price-sp-re">
+                                                @if($hot->promotion_price == 0)
+                                                    <span class="text-danger ">{{number_format($hot->unit_price)}} đ</span> &nbsp;
+                                                @else
+                                                    <span class="text-danger ">{{number_format($hot->promotion_price)}} đ</span> &nbsp;
+                                                    <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
+                                                @endif
+                                            </p>
+                                            <button type="button" class="btn-ms btn-buy btn-buy-sp-re btn-full button" data-toggle="modal" data-target="#hot{{$hot->id_product}}">Mua Ngay</button>
+                                            <a class="btn-ms btn-themvaogio-a btn-buy-sp-re btn-full " href="{{route('themgiohang',$hot->id_product)}}">Thêm vào giỏ</a>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
+
                         @endforeach
+                        
                         </div>
                     </div>
                 </div>
@@ -414,11 +424,15 @@
                         <div class="beta-sales beta-lists">
                         @foreach($new_product as $new)
                             <div class="media beta-sales-item">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-12">
                                 <a class="pull-left" href="{{ route('chitietsanpham', $new->id_product) }}">
                                     <img src="storage/product/{{$new->image}}" alt="">
                                 </a>
-                                <div class="media-body"> <a href="{{ route('chitietsanpham', $new->id_product) }}">{{$new->name}}</a>
-                                    <p class="beta-sales-price">
+                                </div>
+                                <div class="col-lg-10 col-md-12">
+                                <div class="media-body text-title-sp-re"> <a href="{{ route('chitietsanpham', $new->id_product) }}">{{$new->name}}</a>
+                                    <p class="beta-sales-price text-price-sp-re">
                                         @if($new->promotion_price == 0)
                                             <span class="text-danger ">{{number_format($new->unit_price)}} đ</span> &nbsp;
                                         @else
@@ -426,9 +440,11 @@
                                             <span class="flash-del">{{number_format($new->unit_price)}} đ</span>
                                         @endif
                                     </p>
-                                    <button type="button" class="btn-ms btn-buy btn-full button" data-toggle="modal" data-target="#new{{$new->id_product}}"><span>Mua Ngay </span></button>
-                                    <a class="btn-ms btn-themvaogio-a btn-full " href="{{route('themgiohang',$new->id_product)}}">Thêm vào giỏ</a>
+                                    <button type="button" class="btn-ms btn-buy btn-buy-sp-re btn-full button" data-toggle="modal" data-target="#new{{$new->id_product}}"><span>Mua Ngay </span></button>
+                                    <a class="btn-ms btn-themvaogio-a btn-buy-sp-re btn-full " href="{{route('themgiohang',$new->id_product)}}">Thêm vào giỏ</a>
                                 </div>
+                                </div>
+                            </div>
                             </div>
                         @endforeach
                         </div>

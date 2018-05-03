@@ -80,7 +80,7 @@
 }
 
 .select-size-product select {
-    width: 45%;
+    height: 40px;
 }
 
 .select-size-product label {
@@ -656,8 +656,140 @@ img {
     cursor: pointer;
 }
 
+.img-mini{
+    height: 50px;
+}
+
+.beta-sales-item .pull-left img{
+    max-width: 768px;
+}
+
 @media screen and (min-device-width: 200px) and (max-device-width: 998px) {
+    .breadcrumb-item{
+        font-size: 30px; 
+    }
+    .breadcrumb-item.active{
+        font-size:30px;
+    }
+    .breadcrumb-item a{
+        font-size:30px;
+    }
+
+    .img-mini{
+        height: 120px;
+    }
+
+    .img-mini-re{
+        line-height: 50px;
+    }
     
+    .btn-sp-re{
+        height: 85px;
+        font-size: 45px;
+    }
+
+    .text-title-sp-re {
+        font-size: 25px;
+        line-height: 50px;
+    }
+   
+    .single-item-body .single-item-price .present-price span{
+        font-size: 45px;      
+    }
+    .woocommerce-tabs .panel .intro-product{
+        font-size: 35px;
+         line-height: 43px;
+    }
+    .select-size-product label{
+        font-size:30px;
+        line-height: 50px;
+    }
+
+    .text-sp-re{
+        height: 60px;
+        font-size:  45px;
+    }
+    .select-size-product select{
+        width: 100%;
+        height: 55px
+    }
+    .input-group.mb-3 {
+        width: 100%; 
+
+    }
+    .input-group.mb-3 input{
+        height: 55px;
+        font-size: 30px;
+    }
+    .title-intro-product{
+        font-size: 46px;
+    }
+    .content-rate-product .title-rate .title h3{
+        font-size: 35px;
+    }
+    .btn-sendfb{
+        height: 60px;
+        font-size: 35px;
+    }
+    .content-rate-product .title-rate .go-to-rate{
+        margin: 0 0 0 0;
+        padding: 0 0 0 0; 
+    }
+    .content-rate-product .content-rate .name-user{
+        font-size: 30px;
+        line-height: 50px;
+    }
+    .start-sum{
+        font-size: 30px;
+        line-height: 50px;
+    }
+    .comment p{
+        font-size: 30px;
+        line-height: 50px;
+    }
+    .aside .widget-title{
+        font-size: 60px;
+        line-height: 117px;
+    }
+    .beta-sales-item .pull-left img{
+           
+        width: 1024px;
+        height: 768px;
+        max-width: 100%;
+    }
+
+   .btn-buy-sp-re{
+        height: 100px;
+        font-size: 52px;
+        line-height: 94px 
+    }
+    .text-price-sp-re {
+       
+        font-size: 52px;
+        line-height: 65px;
+    }
+    .text-title-sp-re {
+        
+        font-size: 52px;
+        line-height: 65px;
+    }
+    .text-name-sp-re{
+        font-size: 28px;
+        display: block;
+            
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        
+    }
+    .text-name-sp-re h3{
+        line-height: 80.78px;
+    }
+
+   .pull-left{
+    margin-left: 0px;
+   }
 
 
 
