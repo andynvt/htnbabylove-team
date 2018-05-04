@@ -788,7 +788,7 @@ class PageController extends Controller
         
 
         Mail::send('email.xacnhan', $data, function($message) use ($e, $subject) {
-            $message->from('ngodangdt@gmail.com', 'HTN_BabyLove');
+            $message->from('ngodangdt@gmail.com', 'HTN BabyLove');
             $message->to($e,'')->subject($subject);
         });
         return redirect()->back()->with('confirmbill', 'Đã xác nhận đơn hàng');
@@ -808,7 +808,7 @@ class PageController extends Controller
         
 
         Mail::send('email.huydonhang', $data, function($message) use ($e, $subject) {
-            $message->from('ngodangdt@gmail.com', 'HTN_BabyLove');
+            $message->from('ngodangdt@gmail.com', 'HTN BabyLove');
             $message->to($e,'')->subject($subject);
         });
         return redirect()->back()->with('cancelbill', 'Đã huỷ đơn hàng');
