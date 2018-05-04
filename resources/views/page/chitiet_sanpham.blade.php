@@ -389,12 +389,13 @@
                         @foreach($hot_product as $hot) 
                             <div class="media beta-sales-item">
                                 <div class="row">
-                                    <div class="col-lg-2 col-md-12">
+                                    <div class="col-lg-12 col-md-12">
                                     <a class="pull-left" href="{{ route('chitietsanpham', $hot->id_product) }}">
                                         <img  src="storage/product/{{$hot->image}}" >
                                     </a>
                                 </div>
-                                    <div class="col-lg-10 col-md-12">
+                                <div class="space10">&nbsp;</div>
+                                    <div class="col-lg-12 col-md-12">
                                         <div class="media-body text-title-sp-re"> 
                                             <a href="{{ route('chitietsanpham', $hot->id_product) }}">{{$hot->name}}</a>
                                             <p class="beta-sales-price text-price-sp-re">
@@ -425,12 +426,12 @@
                         @foreach($new_product as $new)
                             <div class="media beta-sales-item">
                             <div class="row">
-                                <div class="col-lg-2 col-md-12">
+                                <div class="col-lg-12 col-md-12">
                                 <a class="pull-left" href="{{ route('chitietsanpham', $new->id_product) }}">
                                     <img src="storage/product/{{$new->image}}" alt="">
                                 </a>
                                 </div>
-                                <div class="col-lg-10 col-md-12">
+                                <div class="col-lg-12 col-md-12">
                                 <div class="media-body text-title-sp-re"> <a href="{{ route('chitietsanpham', $new->id_product) }}">{{$new->name}}</a>
                                     <p class="beta-sales-price text-price-sp-re">
                                         @if($new->promotion_price == 0)

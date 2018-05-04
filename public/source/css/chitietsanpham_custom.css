@@ -663,6 +663,20 @@ img {
 .beta-sales-item .pull-left img{
     max-width: 768px;
 }
+.beta-sales-item .pull-left{
+    margin-right: 0px; 
+}
+
+.beta-sales-item img{
+    width: 100%;
+
+    height: auto;
+
+}
+
+.pull-left {
+     margin-left: 0px; 
+}
 
 @media screen and (min-device-width: 200px) and (max-device-width: 998px) {
     .breadcrumb-item{
