@@ -403,6 +403,11 @@ body {
     }
     .text-modal-re{
         font-size: 30px;
+
+    }
+    .text-modal-re select{
+        height:  55px;
+        
     }
     .text-thongtin-re{
         font-size: 35px;
@@ -467,6 +472,18 @@ body {
     letter-spacing: 1.5px;
     text-transform: uppercase;
   }
+  .ribbon1{
+    width: 80px;
+    height: 80px;
+    padding: 28px 0;
+    left: 18px;
+    top: 9px;
+    font-size: 25px;
+  }
+  .ribbon-wrapper{
+    width: 100px;
+    height: 100px;
+  }
 
     .slider.slider-horizontal .slider-selection,
     .slider.slider-horizontal .slider-track-low,
@@ -487,6 +504,9 @@ body {
     .text-footer-re{
         font-size: 30px;
         line-height: 35px;
+    }
+    .text{
+        font-size: 35px;
     }
 
 }

@@ -58,7 +58,7 @@ if (mysqli_connect_error())
                                     <div class="col-md-12"><strong>Giới tính</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <select name="gender" class="form-control form_size " id="gender" required>
+                                        <select name="gender" class="form-control form_size text-tt-re " id="gender" required>
                                             <option value="" selected>Chọn giới tính</option>
                                             <option>Nam</option>
                                             <option>Nữ</option>
@@ -70,7 +70,7 @@ if (mysqli_connect_error())
                                     <div class="col-md-12"><strong>Tỉnh/Thành Phố</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <select class="form-control form_size thanhpho" id="city" name="city" required>
+                                        <select class="form-control form_size thanhpho text-tt-re" id="city" name="city" required>
                                             <option value="">Tỉnh/Thành Phố </option>
 												<?php
 												$sql = "select * from cities";
@@ -90,11 +90,11 @@ if (mysqli_connect_error())
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group ">
                                     <div class="col-md-12"><strong>Quận/Huyện</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <select class="form-control form_size quan_huyen" id="district" name="district" required> 
+                                        <select class="form-control form_size quan_huyen text-tt-re" id="district" name="district" required> 
                                             <option value="0">Quận/Huyện</option>
                                         </select>
                                     </div>
@@ -140,14 +140,13 @@ if (mysqli_connect_error())
                                 <div class="panel panel-info">
                                     <div class="panel-body">
                                     @foreach($product_cart as $product)
-
                                         <div id="overflowTest-checkout">
                                             <div class="body-cart-content-checkout">
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div class="col-sm-3 col-xs-3"> <img class="rounded" src="storage/product/{{$product['item']['img']}}"/> </div>
+                                                        <div class="col-lg-3 col-md-12 col-xs-3"> <img class="rounded" src="storage/product/{{$product['item']['img']}}"/> </div>
                                                         {{-- <input type="hidden" name="img" value="{{ $mua->image }}"> --}}
-                                                        <div class="col-sm-5 col-xs-5 span_content_body">
+                                                        <div class="col-lg-5 col-md-12 col-xs-5 span_content_body">
                                                             
                                                             <div class="col-xs-12 "><input type="hidden" name="proname" value="{{$product['item']['name']}}"><strong>{{ $product['item']['name'] }}</strong></div>
                                                             <div class="col-xs-12 span_content_body">
@@ -158,7 +157,7 @@ if (mysqli_connect_error())
                                                             </div>
                                                             <input type="hidden" name="size" value="{{ $product['item']['size'] }}">
                                                         </div>
-                                                        <div class="col-sm-3 col-xs-3 text-right ">
+                                                        <div class="col-lg-3 col-md-12 col-xs-3 text-right ">
                                                             @if($product['item']['promotion_price'] == 0)
                                                                 <input type="hidden" name="price" value="{{ $product['item']['unit_price'] }}">
                                                                 <p><span>{{ number_format($product['item']['unit_price']) }}</span> đ</p>
@@ -191,7 +190,7 @@ if (mysqli_connect_error())
                                                 <div class="col-md-5"> <strong><b class="lbl_TongTien">Tổng Tiền</b></strong> </div>
                                                 <div class="col-md-6">
                                                     <div class="pull-right span_content">
-                                                        <p><span><input type="hidden" name="tongtien" value="{{number_format( Session('cart')->totalPrice)}}"><b style="font-size: 18px">{{number_format( Session('cart')->totalPrice )}} đ</b></span></p>
+                                                        <p><span><input type="hidden" name="tongtien" value="{{number_format( Session('cart')->totalPrice)}}"><b>{{number_format( Session('cart')->totalPrice )}} đ</b></span></p>
                                                     </div>
                                                     <br> 
                                                 </div>
@@ -266,9 +265,9 @@ if (mysqli_connect_error())
                                                 <div class="col-md-6">
                                                     <div class="pull-right span_content">
                                                         @if($mua->promotion_price == 0)
-                                                            <p><span><input type="hidden" name="tongtien" value="{{ ($mua->unit_price * $qtymua) }}"><b style="font-size: 18px">{{number_format( ($mua->unit_price * $qtymua) )}} đ</b></span></p>
+                                                            <p><span><input type="hidden" name="tongtien" value="{{ ($mua->unit_price * $qtymua) }}"><b >{{number_format( ($mua->unit_price * $qtymua) )}} đ</b></span></p>
                                                         @else
-                                                            <p><span><input type="hidden" name="tongtien" value="{{ ($mua->promotion_price * $qtymua) }}"><b style="font-size: 18px">{{number_format( ($mua->promotion_price* $qtymua) )}} đ</b></span></p>
+                                                            <p><span><input type="hidden" name="tongtien" value="{{ ($mua->promotion_price * $qtymua) }}"><b >{{number_format( ($mua->promotion_price* $qtymua) )}} đ</b></span></p>
                                                         @endif
                                                     </div>
                                                     <br> 
