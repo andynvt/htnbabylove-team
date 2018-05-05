@@ -102,11 +102,6 @@
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn contact-btn mr-auto" value="Gửi đi" />
-                    <input type="reset" class="btn contact-btn mr-auto" onclick="contactDeleteForm()" value="Xoá trắng" />
-                    <button type="button" class="btn contact-btn" data-dismiss="modal">Đóng</button>
-                </div>
             </div>
         </div>
     </div>
