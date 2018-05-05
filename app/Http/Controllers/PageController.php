@@ -855,4 +855,16 @@ class PageController extends Controller
         return view('Admin.pageadmin.admintimkiem', compact('product','pro_type','tukhoa','tk_lsp', 'tk_kh','pro'));
 
     }
+	
+	//Lien he
+    public function postlh(Request $request){
+        $subject = $request->subject;
+        $email = $request->email;
+        $comment = $request->comment;
+
+        Mail::send('email.lienhe', array('email'=>$request["email"],'subject'=>$request["subject"], 'comment'=>$request['comment']), function($message){
+            $message->to('nguyenkimhan2013@gmail.com','HTN_BabyLove')->subject('Liên hệ từ khách hàng');
+        });
+        return redirect()->back()->with('lienhe', 'Đã gửi!');
+    }
 }

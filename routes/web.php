@@ -228,3 +228,8 @@ Route::get('admin-timkiem', [
 	'as' => 'admintimkiem',
 	'uses' => 'PageController@gettimkiemall'
 ]);
+
+Route::post('lien-he', [
+	'as' => 'lienhe',
+	'uses' => 'PageController@postlh'
+]);

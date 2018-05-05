@@ -67,7 +67,8 @@
                         </ul>
                     </div>
                     <h6 class="contact-head">2. Để lại lời nhắn</h6>
-                    <form action="#" method="post" id="contactForm">
+                    <form action="{{ route('lienhe') }}" method="post" id="contactForm">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 contact-input">
                                 <div class="input-group">
@@ -93,6 +94,11 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 contact-input">
                                 <textarea style="resize:vertical;" class="form-control" placeholder="Nội dung lời nhắn..." rows="6" name="comment" required></textarea>
                             </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn contact-btn mr-auto" value="Gửi đi" />
+                            <input type="reset" class="btn contact-btn mr-auto" onclick="contactDeleteForm()" value="Xoá trắng" />
+                            <button type="button" class="btn contact-btn" data-dismiss="modal">Đóng</button>
                         </div>
                     </form>
                 </div>
