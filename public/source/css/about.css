@@ -55,13 +55,9 @@
 
 .about-map {
     overflow: hidden;
-   
     padding-bottom: 56.25%;
     position: relative;
     height: 0;
-    
-    
-   
 }
 
 .about-map iframe {
@@ -78,4 +74,26 @@ clearfix() {
         content: "";
         clear: both
     }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    .about-p-content {
+        font-size: 35px;
+        line-height: 45px;
+    }
+
+    #about-content h4{
+        font-size: 50px;
+        padding: 10px 0;
+    }
+
+    .about-list {
+        font-size: 35px;
+        line-height: 45px;
+    }
+    .about-btn {
+        font-size: 35px;
+        margin: 10px;
+    }
+    
 }
