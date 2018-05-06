@@ -125,6 +125,50 @@
     .contact-btn{
         font-size: 35px;
     }
-    
+}
+@media (max-width: 767px){
+    .contact-x-close{
+        font-size: 25px;
+    }
+    .contact-title{
+        font-size: 25px;
+        padding: 10px 0;
+    }
+    .contact-head{
+        font-size: 25px;
+        line-height: 35px;
+        padding: 10px 0;
+    }
+    .contact-list, .contact-icon{
+        font-size: 23px;
+        line-height: 33px;
+    }
+    .contact-icon-m{
+        font-size: 20px;
+        line-height: 33px;
+    }
+    .contact-title-form{
+        position: relative;
+        font-size: 23px;
+        width: 176px;
+        height: 60px;
+    }
+    .contact-title-form span{
+        text-align: left;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50% ,-50%);
+    }
+    .contact-input input{
+        height: 60px;
+        font-size: 23px;
+    }
+    .contact-input textarea{
+        font-size: 23px;
+    }
+    .contact-btn{
+        font-size: 23px;
+    }
 
 }

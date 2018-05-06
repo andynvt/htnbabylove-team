@@ -40,8 +40,6 @@
                             <ul class="pp-list">
                                 <li>Công ty Cổ phần Xuất Nhập khẩu Hoàng Thuỷ Nguyên</li>
                                 <li>Địa chỉ: <a class="pp-b" href="https://www.google.com/maps/place/10%C2%B002'49.5%22N+105%C2%B045'46.1%22E/@10.0470926,105.7617037,18z/data=!3m1!4b1!4m5!3m4!1s0x0:0x0!8m2!3d10.04709!4d105.762798?hl=vi-VN">118E Mậu Thân, Quận Ninh Kiều, Tp. Cần Thơ</a></li>
-                                <li>Hotline: <a href="tel: 02923895554"><b class="pp-b">02923895554</b></a> hoặc <a href="tel: 0939058056 "><b class="pp-b">0939058056</b></a></li>
-                                <li>Email: <a href="mailto:nguyenkimhan2013@gmail.com"><b class="pp-b">nguyenkimhan2013@gmail.com</b></a></li>
                             </ul>
                         </div>
                         <h6 class="pp-head">5. Cam kết bảo mật thông tin cá nhân Khách hàng</h6>

@@ -87,24 +87,32 @@ clearfix() {
         font-size: 50px;
         padding: 10px 0;
     }
+    #about-content{
+        font-size: 40px;
+        line-height: 50px;
+    }
 
     .about-list {
-        font-size: 35px;
-        line-height: 45px;
+        font-size: 40px;
+        line-height: 50px;
+        padding-left: 1% !important;
     }
     .about-btn {
-        font-size: 35px;
+        font-size: 40px;    
         margin: 10px;
     }
-    
 }
-/*@media (max-width: 767px){*/
-/*    .about-p-content {
-        font-size: 30px;
-        line-height: 40px;
+@media (max-width: 767px){
+    .about-p-content {
+        font-size: 25px;
+        line-height: 35px;
     }
-    .about-list {
-        font-size: 30px;
-        line-height: 40px;
+    .list-a{
+        font-size: 25px;
+        line-height: 35px;
     }
-}*/
+    .about-btn {
+        font-size: 25px;    
+        margin: 5px;
+    }
+}

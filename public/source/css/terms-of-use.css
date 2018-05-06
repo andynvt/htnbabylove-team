@@ -63,6 +63,19 @@
         font-size: 35px;
         margin: 10px;
     }
-    
-
+}
+@media (max-width: 767px){
+    .tou-p-content {
+        font-size: 23px;
+        line-height: 35px;
+    }
+    .tou-head{
+        font-size: 25px;
+        line-height: 35px;
+        padding: 10px 0;
+    }
+    .tou-list {
+        font-size: 23px;
+        line-height: 35px;
+    }
 }
