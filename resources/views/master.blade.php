@@ -22,6 +22,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.css" rel='stylesheet' type='text/css'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css" rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+
+    {{-- alert --}}
+    <link href="source/css/iao-alert.css" rel="stylesheet" type="text/css">
     <!--    -->
 
     <link href="source/css/about.css" rel="stylesheet" />
@@ -38,16 +41,19 @@
     <link href="source/css/responsive_product_detail.css" rel="stylesheet" />
     <link href="source/css/feedback.css" rel="stylesheet" />
     <link href="source/css/chitietsanpham_custom.css" rel="stylesheet">
-    <link href="source/css/alert.css" rel="stylesheet">
 </head>
 
 <body>
 @if (session('del-cart'))
-    <body onload="alertbabyproject()"><div class="alert-babyproject">{{session('del-cart')}}</div></body>
+    <body onload="alert()"></body>
 @elseif (session('add-cart')) 
-    <body onload="alertbabyproject()"><div class="alert-babyproject">{{session('add-cart')}}</div></body>
-@elseif (session('success'))
-    <body onload="alertbabyproject()"><div class="alert-babyproject">Cám ơn bạn đã đặt hàng của chúng tôi</div></body>
+    <body onload="alert()"></body>
+@elseif (session('dathang'))
+    <body onload="alert()"></body>
+@elseif (session('danhgia'))
+    <body onload="alert()"></body>
+@elseif (session('lienhe'))
+    <body onload="alert()"></body>
 @endif
     {{-- Modal liên hệ --}}
     <div class="modal fade cont-modal" id="contactModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -131,14 +137,33 @@
     
     
     <script>
-        function alertbabyproject() {
-            $(".modal-dialog").attr("data-dismiss", "modal");
-            $(".alert-babyproject").fadeIn(700);
-                setTimeout(function () {
-               $(".alert-babyproject").fadeOut(700);
-            }, 2000)
-        }
+        function alert() {
+            $.iaoAlert({
+                    @if(session('del-cart'))
+                        msg: "{{session('del-cart')}}",
+                        type: "error",
+                        mode: "dark",
+                    @elseif(session('add-cart'))
+                    msg: "{{session('add-cart')}}",
+                    type: "success",
+                    mode: "dark",
+                    @elseif(session('dathang'))
+                    msg: "{{session('dathang')}}",
+                    type: "success",
+                    mode: "dark",
+                    @elseif(session('danhgia'))
+                    msg: "{{session('danhgia')}}",
+                    type: "success",
+                    mode: "dark",
+                    @elseif(session('lienhe'))
+                    msg: "{{session('lienhe')}}",
+                    type: "success",
+                    mode: "dark",
+                    @endif
+            })
+        };
     </script>
+    <script type="text/javascript" src="source/js/iao-alert.jquery.js"></script>
     <script type="text/javascript" src="source/js/cart.js"></script>
     <script type="text/javascript" src='source/js/modal.js'></script>
     <script type="text/javascript" src='source/js/index.js'></script>

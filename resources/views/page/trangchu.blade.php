@@ -1,9 +1,5 @@
 @extends('master') @section('content')
 
-@if (session('success'))
-    <body onload="alertbabyproject()"><div class="alert-babyproject">Cám ơn bạn đã đặt hàng của chúng tôi</div></body>
-@endif
-
 <div class="container-full">
     <!-- Trang Chu -->
     <div class="container-fluid">
@@ -98,6 +94,7 @@
                                             
                                             <img src="storage/product/{{$new->image}}" alt="Thumbnail Image 1" class="img-responsive" width="1024px">
                                             
+                                             
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>
                                             </div>

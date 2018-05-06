@@ -1,7 +1,3 @@
-@if (session('del-cart'))
-    <body onload="alertbabyproject()"><div class="alert-babyproject">{{session('del-cart')}}</div></body>
-@endif
-
 <div class="header-top">
     <div class="container-full">
         <div class="pull-left auto-width-left">
@@ -34,13 +30,15 @@
 </div>
 <!-- .header-body -->
 <div class="header-bottom" id="getFixed">
-    <div class="container-fluid ">
+    <div class="" style="padding: 0 15px; margin: 0 auto; height: 100%;">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            
+            <div class="div-hamburger">
+                <button class="navbar-toggler btn-humburger" type="button" aria-expanded="false" aria-label="Toggle navigation"> <span class="fa fa-bars hamburger" id="hamburger" onclick="openNav()"></span> 
+                </button>
+            </div>
             <div class="logo-mobile">
                 <a href="{{ route('trang-chu') }}"><img src="storage/product/logo%20mobile.png"></a>
-            </div>
-            <div class="div-hamburger">
-                <button class="navbar-toggler btn-humburger" type="button" aria-expanded="false" aria-label="Toggle navigation"> <span class="fa fa-bars hamburger" id="hamburger" onclick="openNav()"></span> </button>
             </div>
             <div class="div-menu">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menu-ul ">
@@ -85,30 +83,10 @@
                 <form class=" search-form" action="{{route('timkiem')}}">
                     <input type="text" name="search" placeholder="Bạn muốn tìm gì ?">
                     <input id="search_submit" value="" type="submit"> </form>
-                <div class="clearfix"></div>
+                    {{-- <div class="clearfix"></div> --}}
                 <div class="div-shop-cart" data-toggle="modal" data-target="#modal-cart">
                     <i class="fa fa-shopping-cart shop-cart"></i>
                     <div id="number-cart"><span>@if(Session::has('cart')){{Session('cart')->totalQty}} @else 0 @endif</span></div>
-                    <style>
-                        .slider-index .carousel-item img{
-                            margin: 0 auto;
-                            display: block;
-                            /*width: 60%;*/
-                        }
-                        #number-cart {
-                            position: absolute;
-                            top: -5px;
-                            right: -10px;
-                            color: white;
-                            background: #FF3E8D;
-                            border: 1px solid #FF3E8D;
-                            border-radius: 100%;
-                            padding: 0 5px;
-                            font-size: 13px;
-                            font-weight: 600;
-                        }
-
-                    </style>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -344,7 +322,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <p class=" text-price text-modal-re"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group text-modal-re">
-                                                    <select name="colorbuy" >
+                                                    <select name="colorbuy" style="height: 38px">
                                                         @foreach($product_color as $pro)
                                                             @if($promo->id_product == $pro->spid)
                                                                 <option>{{$pro->color}}</option>

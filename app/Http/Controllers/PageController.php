@@ -92,7 +92,7 @@ class PageController extends Controller
             $bill_detail->save(); 
         }
         Session::forget('cart');
-        return redirect()->action('PageController@getIndex')->with('success', 'Đặt hàng thàng công. Bạn chờ nhận mail xác nhận nhé!');
+        return redirect()->action('PageController@getIndex')->with('dathang', 'Đặt hàng thàng công. Bạn chờ nhận mail xác nhận nhé!');
     }
 
     public function getIndex(){
@@ -207,7 +207,7 @@ class PageController extends Controller
         $fb->status = 1;
         $fb->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('danhgia', 'Đã gửi đánh giá');
     }
 
     public function getAbout(){
@@ -256,7 +256,7 @@ class PageController extends Controller
 
         // dd($req->tongtien);
 
-        return redirect()->action('PageController@getIndex')->with('success', 'Cám ơn bạn đã đặt hàng');
+        return redirect()->action('PageController@getIndex')->with('dathang', 'Đặt hàng thàng công. Bạn chờ nhận mail xác nhận nhé!');
     }
 
     public function postChitietsp($id, Request $req){
