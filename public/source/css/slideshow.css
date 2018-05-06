@@ -502,10 +502,14 @@ body {
     }
     
     .text-footer-re{
-        font-size: 30px;
-        line-height: 35px;
+        font-size: 40px;
+        line-height: 45px;
     }
     .text{
+        font-size: 35px;
+    }
+    .cpr-l{
+        padding-top: 20px;
         font-size: 35px;
     }
 

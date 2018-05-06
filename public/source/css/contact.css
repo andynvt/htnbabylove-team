@@ -12,7 +12,7 @@
 }
 
 .contact-b {
-    color: #0F6CB2;
+    color: #C2185B;
     font-weight: 600
 }
 
@@ -32,7 +32,11 @@
 
 .contact-icon {
     font-size: 15px;
-    color: #0F6CB2;
+    color: #C2185B;
+}
+.contact-icon-m{
+    font-size: 13px;
+    color: #C2185B;
 }
 
 .contact-label {
@@ -50,21 +54,23 @@
     text-align: center;
     font-weight: 700;
     font-size: 16px;
-    color: black;
-    background: #d8eeff;
+    color: #C2185B;
+    background: #c2185b26;
     width: 80px;
     padding-top: 8px;
     padding-bottom: 0
 }
 
 .contact-btn {
-    background: #0F6CB2;
+    background: #C2185B;
     font-size: 15px;
     color: white
 }
 
 .contact-btn:hover {
-    background: #1386dd;
+    background: white;
+    color: #C2185B;
+    border: 2px solid #C2185B;
 }
 
 #contactModal {
@@ -73,4 +79,52 @@
 
 .cont-modal {
     margin-top: -80px !important;
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    .contact-x-close{
+        font-size: 45px;
+    }
+    .contact-title{
+        font-size: 50px;
+        padding: 10px 0;
+    }
+    .contact-head{
+        font-size: 40px;
+        line-height: 50px;
+        padding: 10px 0;
+    }
+    .contact-list, .contact-icon{
+        font-size: 35px;
+        line-height: 45px;
+    }
+    .contact-icon-m{
+        font-size: 32px;
+        line-height: 45px;
+    }
+    .contact-title-form{
+        position: relative;
+        font-size: 35px;
+        width: 250px;
+        height: 80px;
+    }
+    .contact-title-form span{
+        text-align: left;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50% ,-50%);
+    }
+    .contact-input input{
+        height: 80px;
+        font-size: 35px;
+    }
+    .contact-input textarea{
+        font-size: 35px;
+    }
+    .contact-btn{
+        font-size: 35px;
+    }
+    
+
 }

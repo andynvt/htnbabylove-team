@@ -21,7 +21,7 @@
 }
 
 .pp-b {
-    color: #0F6CB2;
+    color: #C2185B;
     font-weight: 600
 }
 
@@ -39,4 +39,31 @@
     list-style-type: disc;
     padding-left: 5%;
     text-align: justify
+}
+@media (max-width: 991px) and (min-width: 768px) {
+    .pp-p-content {
+        font-size: 35px;
+        line-height: 45px;
+    }
+    
+    #pp-content h4{
+        font-size: 50px;
+        padding: 10px 0;
+    }
+    .pp-head{
+        font-size: 45px;
+        line-height: 50px;
+        padding: 10px 0;
+    }
+
+    .pp-list {
+        font-size: 35px;
+        line-height: 45px;
+    }
+    .pp-btn {
+        font-size: 35px;
+        margin: 10px;
+    }
+    
+
 }

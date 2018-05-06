@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12 ft_mb">
-                    <div class="container-fluid col-sm-12 info_mb" style="width: 80%;">
+                    <div class="container-fluid col-sm-12 info_mb">
                         <ul class="info_mb1">
                             <li><a target="_blank" href="https://www.google.com/maps?ll=10.047031,105.762337&amp;z=17&amp;t=m&amp;hl=vi-VN&amp;gl=US&amp;mapclient=embed&amp;cid=15188758633380222862"><i class="fa fa-map-marker"></i>118E Mậu Thân, Q. Ninh Kiều, Tp. Cần Thơ</a></li>
                             <li><a href="tel:02923895554"><i class="fa fa-phone"></i> 0292 389 5554</a></li>
@@ -42,7 +42,8 @@
                         </ul>
                         <ul class="info_mb2">
                             <li><a href="{{ route('gioithieu') }}"><i class="fa fa-info-circle"></i>Giới Thiệu &nbsp;|</a></li>
-                            <li style="cursor: pointer" class="line"><a data-toggle="modal" data-target="#contactModal"><i class="fa fa-phone"></i>Liên Hệ &nbsp;|</a></li>
+                            <li style="cursor: pointer" class="line"><a data-toggle="modal" data-target="#contactModal"><i class="fa fa-phone"></i>Liên Hệ &nbsp;</a></li>
+                            <br>
                             <li><a href="{{ route('dieukhoan') }}"><i class="fa fa-balance-scale"></i>Điều khoản &nbsp;|</a></li>
                             <li><a href="{{ route('baomat') }}"><i class="fa fa-user-secret"></i>Bảo mật</a></li>
                         </ul>
@@ -54,8 +55,7 @@
 
                         </style>
                     </div>
-                    <p class="pull-center" style="text-align: center;">Privacy policy. (&copy;) 2018 WeShop
-                        <br/> Laravel Team 2018</p>
+                    <p class="pull-center cpr-l">&copy; 2018 HTN Baby Love</p>
                 </div>
             </div>
 </div>

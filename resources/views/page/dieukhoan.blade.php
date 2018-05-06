@@ -21,7 +21,7 @@
                         <h6 class="tou-head">1. Giới thiệu điều khoản</h6>
                         <p class="tou-p-content">Chào mừng quý khách hàng đến với <b>HTNBabyLove.com</b>.
                             <br>
-                            <br>Chúng tôi là Công ty Cổ phần Công ty Cổ phần Xuất Nhập khẩu Hoàng Thuỷ Nguyên có địa chỉ trụ sở tại 118E Mậu Thân, quận Ninh Kiều, tp. Cần Thơ, thành lập Sàn giao dịch thương mại điện tử thông qua website <b>www.HTNBabyLove.com</b> và đã được đăng ký chính thức với Bộ Công Thương Việt Nam.
+                            <br>Chúng tôi là Công ty Cổ phần Xuất Nhập khẩu Hoàng Thuỷ Nguyên có địa chỉ trụ sở tại 118E Mậu Thân, quận Ninh Kiều, tp. Cần Thơ, thành lập Sàn giao dịch thương mại điện tử thông qua website <b>www.HTNBabyLove.com</b> và đã được đăng ký chính thức với Bộ Công Thương Việt Nam.
                             <br>
                             <br>Khi quý khách hàng truy cập vào trang website của chúng tôi có nghĩa là quý khách đồng ý với các điều khoản này. Trang web có quyền thay đổi, chỉnh sửa, thêm hoặc lược bỏ bất kỳ phần nào trong Điều khoản mua bán hàng hoá này, vào bất cứ lúc nào. Các thay đổi có hiệu lực ngay khi được đăng trên trang web mà không cần thông báo trước. Và khi quý khách tiếp tục sử dụng trang web, sau khi các thay đổi về Điều khoản này được đăng tải, có nghĩa là quý khách chấp nhận với những thay đổi đó.
                             <br>

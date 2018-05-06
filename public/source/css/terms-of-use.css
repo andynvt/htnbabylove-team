@@ -33,10 +33,36 @@
 }
 
 .tou-b {
-    color: #0F6CB2;
+    color: #C2185B;
     font-weight: 600
 }
 
 .tou-b:hover {
     color: black
+}
+@media (max-width: 991px) and (min-width: 768px) {
+    .tou-p-content {
+        font-size: 35px;
+        line-height: 45px;
+    }
+    #pp-content h4{
+        font-size: 50px;
+        padding: 10px 0;
+    }
+    .tou-head{
+        font-size: 45px;
+        line-height: 50px;
+        padding: 10px 0;
+    }
+
+    .tou-list {
+        font-size: 35px;
+        line-height: 45px;
+    }
+    .tou-btn {
+        font-size: 35px;
+        margin: 10px;
+    }
+    
+
 }

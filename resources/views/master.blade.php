@@ -26,6 +26,7 @@
 
     <link href="source/css/about.css" rel="stylesheet" />
     <link href="source/css/private-policy.css" rel="stylesheet" />
+    <link href="source/css/terms-of-use.css" rel="stylesheet" />
     <link href="source/css/style.css" rel="stylesheet" title="style">
     <link href='source/css/index.css' rel='stylesheet' type='text/css'>
     <link href='source/css/menuscroll.css' rel='stylesheet' type='text/css'>
@@ -54,15 +55,15 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Liên hệ với chúng tôi</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    <h5 class="modal-title contact-title">Liên hệ với chúng tôi</h5>
+                    <button type="button" class="close contact-x-close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                 </div>
                 <div class="modal-body">
                     <h6 class="contact-head">1. Thông tin liên hệ</h6>
                     <div class="about-p-content">
                         <ul class="contact-list">
                             <li><i class="fa fa-phone-square contact-icon"></i>&nbsp;&nbsp;&nbsp;<a href="tel: 02923895554"><b class="contact-b">02923895554</b></a> hoặc <a href="tel: 0939058056 "><b class="contact-b">0939058056</b></a></li>
-                            <li><i class="fa fa-envelope contact-icon" style="font-size: 13px"></i>&nbsp;&nbsp;&nbsp;<a href="mailto:nguyenkimhan2013@gmail.com"><b class="contact-b">nguyenkimhan2013@gmail.com</b></a></li>
+                            <li><i class="fa fa-envelope contact-icon-m"></i>&nbsp;&nbsp;&nbsp;<a href="mailto:nguyenkimhan2013@gmail.com"><b class="contact-b">nguyenkimhan2013@gmail.com</b></a></li>
                             <li><i class="fa fa-location-arrow contact-icon"></i>&nbsp;&nbsp;&nbsp;<a target="_blank" class="contact-b" href="https://www.google.com/maps/place/10%C2%B002'49.5%22N+105%C2%B045'46.1%22E/@10.0470926,105.7617037,18z/data=!3m1!4b1!4m5!3m4!1s0x0:0x0!8m2!3d10.04709!4d105.762798?hl=vi-VN">118E Mậu Thân, Quận Ninh Kiều, Tp. Cần Thơ</a></li>
                         </ul>
                     </div>
@@ -72,27 +73,27 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 contact-input">
                                 <div class="input-group">
-                                    <div class="input-group-addon contact-title-form">Tên</div>
+                                    <div class="input-group-addon contact-title-form"><span>Tên</span></div>
                                     <input class="form-control" type="text" name="name" placeholder="Tên của bạn" required autofocus> </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 contact-input">
                                 <div class="input-group">
-                                    <div class="input-group-addon contact-title-form">Email</div>
+                                    <div class="input-group-addon contact-title-form"><span>Email</span></div>
                                     <input class="form-control" name="email" placeholder="Email" type="text" required /> </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 contact-input">
                                 <div class="input-group">
-                                    <div class="input-group-addon contact-title-form">Tiêu đề</div>
+                                    <div class="input-group-addon contact-title-form"><span>Tiêu đề</span></div>
                                     <input class="form-control" name="subject" placeholder="Tiêu đề" type="text" required /> </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 contact-input">
-                                <textarea style="resize:vertical;" class="form-control" placeholder="Nội dung lời nhắn..." rows="6" name="comment" required></textarea>
+                                <textarea style="resize:vertical;" class="form-control" placeholder="Nội dung lời nhắn..." rows="5" name="comment" required></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
