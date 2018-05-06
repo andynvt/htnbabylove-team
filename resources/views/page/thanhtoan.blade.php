@@ -139,8 +139,9 @@ if (mysqli_connect_error())
                             <div class="body-cart">
                                 <div class="panel panel-info">
                                     <div class="panel-body">
-                                    @foreach($product_cart as $product)
                                         <div id="overflowTest-checkout">
+                                        @foreach($product_cart as $product)
+
                                             <div class="body-cart-content-checkout">
                                                 <div class="form-group">
                                                     <div class="row">
@@ -174,10 +175,12 @@ if (mysqli_connect_error())
                                                 <!-- </div> -->
                                                 <!-- </div> -->
                                             </div>
+                                        @endforeach
+
                                             <!-- body-cart-content-checkout -->
                                         </div>
-                                    @endforeach
                                         <div class="space20">&nbsp;</div>
+
                                         {{-- <div class="">
                                             <div class="col-md-12 col-sm-12 col-xs-12 container_btncsgh">
                                                 <button type="submit" class="btn btn-primary btn-submit-fix submitbtn_cart">Chỉnh sửa giỏ hàng </button>
