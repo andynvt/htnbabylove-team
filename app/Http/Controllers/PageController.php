@@ -487,21 +487,21 @@ class PageController extends Controller
         return view('Admin.pageadmin.admindanhgiatheoloai', compact('getlsp','fb_theoloai', 'getnumfb'));
     }
 
-    public function getadminXoadanhgia($fb){
-        Feedback::find($fb)->delete();
-        return redirect()->back()->with('deletefb', 'Đã xoá đánh giá');
-    }
-
     public function postadminXoanhieudanhgia(Request $req){
-        $fb = $req->delmfb;
+        if($req->delmfb){
+            $fb = $req->delmfb;
+            $numdelfb = count($req->delmfb);
+            foreach($fb as $key){
+                Feedback::find($key)->delete();
+            }
 
-        $numdelfb = count($req->delmfb);
-
-        foreach($fb as $key){
-            Feedback::find($key)->delete();
+            return redirect()->back()->with('deletefb', 'Đã xoá '.$numdelfb.' đánh giá');
         }
 
-        return redirect()->back()->with('deletefb', 'Đã xoá '.$numdelfb.' đánh giá');
+        elseif ($req->del1fb) {
+            Feedback::find($req->del1fb)->delete();
+            return redirect()->back()->with('deletefb', 'Đã xoá 1 đánh giá');
+        }
     }
 
     public function getadminSanpham(){
@@ -554,7 +554,9 @@ class PageController extends Controller
                 'image'=>$i,
             ]);
         }
-        return redirect()->back()->with('addsp', 'Đã thêm!');    
+
+        $spname = $req->ten;
+        return redirect()->back()->with('addsp', 'Đã thêm: '.$spname);    
     }
 
     public function getadminSuasanpham($idsp){
@@ -639,93 +641,93 @@ class PageController extends Controller
         return redirect()->back()->with('editsp', 'Đã sửa!');
     }
 
-    public function getadminXoasanpham($idsp){
-        $cl = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=', 'ctsp.id')
+    public function postadminXoanhieusanpham(Request $req){
+        if($req->delmsp){
+            $spdel = $req->delmsp;
+            $numdel = count($req->delmsp);
+            foreach($spdel as $key){
+                $cl = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=', 'ctsp.id')
+                                    ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
+                                    ->where('sp.id', $key)
+                                    ->select('product_color.id')
+                                    ->get();
+
+                $img = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
+                                    ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
+                                    ->where('sp.id', $key)
+                                    ->select('product_image.id')
+                                    ->get();
+
+                $dt = ProductDetail::leftjoin('products as sp', 'product_detail.id_product', '=', 'sp.id')
+                                    ->where('sp.id', $key)
+                                    ->select('product_detail.id')
+                                    ->get();
+
+                if($cl){
+                    foreach($cl as $temp){
+                        $temp->delete();
+                    }
+                }
+                
+                if($img){
+                    foreach($img as $temp){
+                        $temp->delete();
+                    }
+                }
+
+                if($dt){
+                    foreach($dt as $temp){
+                        $temp->delete();
+                    }
+                }
+                
+                Product::find($key)->delete();
+            }
+
+            return redirect()->back()->with('deletesp', 'Đã xoá '.$numdel.' sản phẩm');
+        }
+        elseif($req->del1sp){
+            $cl = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=', 'ctsp.id')
                             ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
-                            ->where('sp.id', $idsp)
+                            ->where('sp.id', $req->del1sp)
                             ->select('product_color.id')
                             ->get();
 
-        $img = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
+            $img = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
                             ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
-                            ->where('sp.id', $idsp)
+                            ->where('sp.id', $req->del1sp)
                             ->select('product_image.id')
                             ->get();
 
-        $dt = ProductDetail::leftjoin('products as sp', 'product_detail.id_product', '=', 'sp.id')
-                            ->where('sp.id', $idsp)
+            $dt = ProductDetail::leftjoin('products as sp', 'product_detail.id_product', '=', 'sp.id')
+                            ->where('sp.id', $req->del1sp)
                             ->select('product_detail.id')
                             ->get();
 
-        if($cl){
-            foreach($cl as $key){
-                $key->delete();
-            }
-        }
-        
-        if($img){
-            foreach($img as $key){
-                $key->delete();
-            }
-        }
-
-        if($dt){
-            foreach($dt as $key){
-                $key->delete();
-            }
-        }
-        
-        Product::find($idsp)->delete();
-        return redirect()->back()->with('deletesp', 'Đã xoá!');
-    }
-
-    public function postadminXoanhieusanpham(Request $req){
-        $spdel = $req->delmsp;
-
-        dd($spdel);
-
-        $numdel = count($req->delmsp);
-
-        foreach($spdel as $key){
-            $cl = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=', 'ctsp.id')
-                                ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
-                                ->where('sp.id', $key)
-                                ->select('product_color.id')
-                                ->get();
-
-            $img = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
-                                ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
-                                ->where('sp.id', $key)
-                                ->select('product_image.id')
-                                ->get();
-
-            $dt = ProductDetail::leftjoin('products as sp', 'product_detail.id_product', '=', 'sp.id')
-                                ->where('sp.id', $key)
-                                ->select('product_detail.id')
-                                ->get();
-
             if($cl){
-                foreach($cl as $temp){
-                    $temp->delete();
+                foreach($cl as $key){
+                    $key->delete();
                 }
             }
             
             if($img){
-                foreach($img as $temp){
-                    $temp->delete();
+                foreach($img as $key){
+                    $key->delete();
                 }
             }
 
             if($dt){
-                foreach($dt as $temp){
-                    $temp->delete();
+                foreach($dt as $key){
+                    $key->delete();
                 }
             }
             
-            Product::find($key)->delete();
+            $spname = Product::where('id', $req->del1sp)->value('name');
+            Product::find($req->del1sp)->delete();
+            return redirect()->back()->with('deletesp', 'Đã xoá: '.$spname);
         }
 
-        return redirect()->back()->with('deletesp', 'Đã xoá '.$numdel.' sản phẩm');
+
     }
 
     public function getadminLoaisanpham(){
@@ -753,22 +755,24 @@ class PageController extends Controller
         return redirect()->back()->with('editlsp', 'Đã sửa: '.$lspname);
     }
 
-    public function getadminXoaloaisanpham($idtype){
-        $lspname = ProductType::where('id', $idtype)->value('type_name');
-        ProductType::find($idtype)->delete();
-        return redirect()->back()->with('deletelsp', 'Đã xoá: '.$lspname);
-    }
-
     public function postadminXoanhieuloaisanpham(Request $req){
-        $lsp = $req->delmlsp;
+        if($req->delmlsp){
+            $lsp = $req->delmlsp;
 
-        $numdellsp = count($req->delmlsp);
+            $numdellsp = count($req->delmlsp);
 
         foreach($lsp as $key){
             ProductType::find($key)->delete();
+            }
+            return redirect()->back()->with('deletelsp', 'Đã xoá '.$numdellsp.' loại');
         }
+        elseif($req->del1lsp){
 
-        return redirect()->back()->with('deletelsp', 'Đã xoá '.$numdellsp.' loại');
+            $lspname = ProductType::where('id', $req->del1lsp)->value('type_name');
+            ProductType::find($req->del1lsp)->delete();
+            return redirect()->back()->with('deletelsp', 'Đã xoá: '.$lspname);
+        }
+        
     }
     
     public function getadminKhachhang(){

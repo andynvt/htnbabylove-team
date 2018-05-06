@@ -107,7 +107,132 @@
     font-size: 18px;
 }
 
-@media screen and (min-device-width: 200px) and (max-device-width: 998px) {
+@media screen and (min-device-width: 100px) and (max-device-width: 425px) {
+    .header-title{
+        font-size: 35px;
+    }
+    .beta-form-checkout strong{
+        font-size: 15px;
+        /*line-height: 45px;*/
+    }
+    .beta-form-checkout input{
+        height: 38px;
+    }
+    .text-tt-re{
+        font-size: 12px;
+    }
+    .title_{
+        font-size: 18px;
+    }
+    .body-cart-content-checkout{
+        width: auto;
+        
+    }
+    .body-cart-content-checkout{
+        padding: 1px 0px 0px 1px; 
+    }
+    .beta-form-checkout h7{
+        /*font-size: 25px;
+        line-height: 40px;*/
+    }
+    .span_content_body{
+        line-height: 10px;
+        margin-left: 5px;
+    }
+    .text-right span{
+        font-size: 20px;
+    }
+    .text-right p{
+        font-size: 20px;
+        margin-right: 5px
+    }
+    .rounded{
+        width: 90%;
+        margin-left: 5%;
+        height: 90%;
+    }
+    .submitbtn_dathang{
+         height: 40px;
+    font-size: 20px;
+    }
+    .lbl_TongTien{
+        font-size: 20px ;
+    }
+    .span_content b{
+        font-size: 20px ;
+        margin-right: 5px;
+    }
+    .adress-checkout{
+        width: auto;
+        margin-left: 0%; 
+    }
+
+
+}
+
+@media screen and (min-device-width: 426px) and (max-device-width: 767px) {
+    .header-title{
+        font-size: 35px;
+    }
+    .beta-form-checkout strong{
+        font-size: 15px;
+        /*line-height: 45px;*/
+    }
+    .beta-form-checkout input{
+        height: 38px;
+    }
+    .text-tt-re{
+        font-size: 12px;
+    }
+    .title_{
+        font-size: 18px;
+    }
+    .body-cart-content-checkout{
+        width: auto;
+        
+    }
+    .body-cart-content-checkout{
+        padding: 1px 0px 0px 1px; 
+    }
+    .beta-form-checkout h7{
+        /*font-size: 25px;
+        line-height: 40px;*/
+    }
+    .span_content_body{
+        line-height: 10px;
+        margin-left: 5px;
+    }
+    .text-right span{
+        font-size: 20px;
+    }
+    .text-right p{
+        font-size: 20px;
+        margin-right: 5px
+    }
+    .rounded{
+        width: 90%;
+        margin-left: 5%;
+        height: 90%;
+    }
+    .submitbtn_dathang{
+         height: 40px;
+    font-size: 20px;
+    }
+    .lbl_TongTien{
+        font-size: 20px ;
+    }
+    .span_content b{
+        font-size: 20px ;
+        margin-right: 5px;
+    }
+    .adress-checkout{
+        width: auto;
+        margin-left: 0%; 
+    }
+
+
+}
+@media screen and (min-device-width: 768px) and (max-device-width: 991px) {
     .header-title{
         font-size: 35px;
     }
@@ -167,7 +292,6 @@
 /*media*/
 @media only screen and (max-width: 568px) and (min-width: 320px) {
 #overflowTest-checkout {
-    display: none;
     background-color: white;
 }
 .adress-checkout{

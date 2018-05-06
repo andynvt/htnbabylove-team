@@ -117,11 +117,6 @@ Route::get('admin-danhgiatheoloai/{fbtype}', [
 	'uses' => 'PageController@getadminDanhgiatheoloai'
 ])->middleware('adminLogin');
 
-Route::get('admin-xoadanhgia/{fb}', [
-	'as' => 'adminxoadanhgia',
-	'uses' => 'PageController@getadminXoadanhgia'
-]);
-
 Route::post('admin-xoanhieudanhgia', [
 	'as' => 'adminxoanhieudanhgia',
 	'uses' => 'PageController@postadminXoanhieudanhgia'
@@ -152,11 +147,6 @@ Route::post('admin-edit/{idsp}', [
 	'uses' => 'PageController@postadminSuasanpham'
 ]);
 
-Route::get('admin-xoasanpham/{idsp}', [
-	'as' => 'adminxoasanpham',
-	'uses' => 'PageController@getadminXoasanpham'
-]);
-
 Route::post('admin-xoanhieusanpham', [
 	'as' => 'adminxoanhieusanpham',
 	'uses' => 'PageController@postadminXoanhieusanpham'
@@ -180,11 +170,6 @@ Route::post('admin-themloaisanpham', [
 Route::post('admin-sualoaisanpham/{idtype}', [
 	'as' => 'adminsualoaisanpham',
 	'uses' => 'PageController@postadminSualoaisanpham'
-]);
-
-Route::get('admin-xoaloaisanpham/{idtype}', [
-	'as' => 'adminxoaloaisanpham',
-	'uses' => 'PageController@getadminXoaloaisanpham'
 ]);
 
 Route::post('admin-xoanhieuloaisanpham', [

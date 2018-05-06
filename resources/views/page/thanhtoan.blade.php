@@ -145,9 +145,9 @@ if (mysqli_connect_error())
                                             <div class="body-cart-content-checkout">
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div class="col-md-3 col-xs-3"> <img class="rounded" src="storage/product/{{$product['item']['img']}}"/> </div>
+                                                        <div class="col-md-3 col-sm-12"> <img class="rounded" src="storage/product/{{$product['item']['img']}}"/> </div>
                                                         {{-- <input type="hidden" name="img" value="{{ $mua->image }}"> --}}
-                                                        <div class="col-md-5  col-xs-5 span_content_body">
+                                                        <div class="col-md-5  col-sm-12 span_content_body">
                                                             
                                                             <div class="col-xs-12 "><input type="hidden" name="proname" value="{{$product['item']['name']}}"><strong>{{ $product['item']['name'] }}</strong></div>
                                                             <div class="col-xs-12 span_content_body">
@@ -158,7 +158,7 @@ if (mysqli_connect_error())
                                                             </div>
                                                             <input type="hidden" name="size" value="{{ $product['item']['size'] }}">
                                                         </div>
-                                                        <div class="col-md-3  col-xs-3 text-right ">
+                                                        <div class="col-md-3  col-sm-12 text-right ">
                                                             @if($product['item']['promotion_price'] == 0)
                                                                 <input type="hidden" name="price" value="{{ $product['item']['unit_price'] }}">
                                                                 <p><span>{{ number_format($product['item']['unit_price']) }}</span> đ</p>
@@ -190,8 +190,8 @@ if (mysqli_connect_error())
                                             <hr class="hrtitle_GH" /> </div>
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-md-5"> <strong><b class="lbl_TongTien">Tổng Tiền</b></strong> </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-5 col-xs-5"> <strong><b class="lbl_TongTien">Tổng Tiền</b></strong> </div>
+                                                <div class="col-md-6 col-xs-6">
                                                     <div class="pull-right span_content">
                                                         <p><span><input type="hidden" name="tongtien" value="{{number_format( Session('cart')->totalPrice)}}"><b>{{number_format( Session('cart')->totalPrice )}} đ</b></span></p>
                                                     </div>
