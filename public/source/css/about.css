@@ -98,8 +98,8 @@ clearfix() {
     }
     
 }
-@media (max-width: 767px){
-    .about-p-content {
+/*@media (max-width: 767px){*/
+/*    .about-p-content {
         font-size: 30px;
         line-height: 40px;
     }
@@ -107,4 +107,4 @@ clearfix() {
         font-size: 30px;
         line-height: 40px;
     }
-}
+}*/
