@@ -111,6 +111,13 @@
     .header-title{
         font-size: 35px;
     }
+    .full-checkout{
+        padding: 0px;
+    }
+    .cnt-user{
+        padding-right:  5px; 
+     padding-left: 5px; 
+    }
     .beta-form-checkout strong{
         font-size: 15px;
         /*line-height: 45px;*/
