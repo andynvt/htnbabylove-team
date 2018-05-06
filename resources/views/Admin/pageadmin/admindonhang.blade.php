@@ -173,7 +173,7 @@
                                             </td>
                                             <td>{{ number_format($b->total_price) }} đ</td>
                                             <td>{{ $b->total_product }}</td>
-                                            <td class="text-left">{{ $b->address }}</td>
+                                            <td>{{ $b->address }}</td>
                                             <td>{{ date('d-m-Y / H:ip', strtotime($b->created_at)) }}</td>
 
                                             <td><a href="" data-toggle="modal" data-target="#{{$b->id}}">Xem</a>

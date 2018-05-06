@@ -362,7 +362,140 @@ body {
         height:  35px;
         
     }
-@media screen and (min-device-width: 200px) and (max-device-width: 768px) {
+@media screen and (min-device-width: 100px) and (max-device-width: 425px) {
+    .pagination{
+        font-size: 30px;
+    }
+     .modal-dialog {
+        max-width: 1024px;
+        margin: 30px auto;
+    }
+    .text-price-re {
+        /*height: 60px;*/
+        font-size: 25px;
+        line-height: 27px;
+    }
+    .text-title-re {
+            height: 40px;
+    font-size: 25px;
+    padding-left: 10px;
+    line-height: 37px;
+    }
+    .btn-buy-re{
+        height: 48px;
+    font-size: 25px;
+        
+    }
+    .btn-themvaogio-re{
+        height: 48px;
+    font-size: 25px;
+        
+    }
+    .btn-modal-re{
+        font-size: 20px;
+    }
+
+    .btn-modal-huy{
+        margin-left: 0%;
+    }
+    .btn-modal{
+        margin-left: 0%;
+    }
+    .text-modal-re{
+        font-size: 20px;
+
+    }
+    .text-modal-re select{
+        height:  38px;
+        
+    }
+    .text-thongtin-re{
+        font-size: 20px;
+    line-height: 25px;
+    }
+    .thumbnail-re{
+        /*margin-left: 25%; */
+    }
+    .containeroverlay {
+        height: 400px;
+    }
+    .container-fluid{
+    width: 100%;
+    }
+    .control-label {
+        font-size: 25px;
+    line-height: 25px;
+     /*line-height: 49px;*/
+    }
+    .control-label-re{
+        margin-left: -1%;
+        line-height: 25px;
+    }
+   .text-filter-re{
+    /*height: 60px;
+    font-size:  35px;*/
+   }
+
+  
+
+  .ribbon-trangthai.hot{
+    margin-left: 20px
+  }
+  .ribbon-trangthai.new{
+    margin-left: 20px
+  }
+  .ribbon-trangthai.sale{
+   margin-left: 20px
+  }
+
+  .search-price{
+    margin-left: 15px;
+  }
+  /*.ribbon1{
+        width: 54px;
+    height: 54px;
+    padding: 16px 0;
+    left: 38px;
+    top: 9px;
+    font-size: 17px;
+  }
+  .ribbon-wrapper{
+    width: 100px;
+    height: 100px;
+  }*/
+
+    .slider.slider-horizontal .slider-selection,
+    .slider.slider-horizontal .slider-track-low,
+    .slider.slider-horizontal .slider-track-high {
+        height: 20px
+    }
+    .slider-handle {
+        width: 30px;
+        height: 30px;
+    }
+    .form-group input[type="text"]{
+        height: 38px;
+    }
+    .form-group select.form-control:not([size]):not([multiple]){
+        height: 38px;
+    }
+    
+    .text-footer-re{
+        font-size: 40px;
+        line-height: 45px;
+    }
+    .text{
+        font-size: 30px;
+        line-height: 50px;
+    }
+    .cpr-l{
+        padding-top: 20px;
+        font-size: 35px;
+    }
+
+}
+
+@media screen and (min-device-width: 452px) and (max-device-width: 768px) {
     .pagination{
         font-size: 30px;
     }
@@ -420,7 +553,7 @@ body {
         margin-left: 25%; 
     }
     .containeroverlay {
-        height: 768px;
+        height: 480px;
     }
     .container-fluid{
     width: 100%;

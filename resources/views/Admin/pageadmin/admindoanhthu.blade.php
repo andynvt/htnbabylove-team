@@ -161,7 +161,7 @@
                                                                             @endforeach
                                                                 ]
                                                                 , datasets: [{
-                                                                    label: "Doanh thu (Nghìn)"
+                                                                    label: "Doanh thu (Triệu)"
                                                                     , backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#dddddd", "#eeeeee", "#FF8A80", "#F48FB1", "#BA68C8", "#B39DDB", "#90CAF9"]
                                                                     , data: [
                                                                                 @foreach($dtdh as $price)

@@ -143,10 +143,9 @@
                                                         <td>{{ $fb->review }}</td>
                                                         <td>
                                                             <div class="btn-group del1-sp">
-                                                                <button type="submit" class="btn btn-danger btn-xs del_icon">
+                                                                <a href="{{ route('adminxoadanhgia',$fb->id) }}" class="btn btn-danger btn-xs del_icon">
                                                                     <span class="glyphicon glyphicon-trash"></span> 
-                                                                </button>
-                                                                <input type="hidden" name="del1fb" value="{{ $fb->id }}">
+                                                                </a>
                                                             </div>
                                                             <div class="delm-sp">
                                                                 <input type="checkbox" name="delmfb[]" multiple value="{{ $fb->id }}" />
