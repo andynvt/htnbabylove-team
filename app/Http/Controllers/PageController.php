@@ -438,8 +438,7 @@ class PageController extends Controller
                         ->join('feedbacks as fb', 'fb.id_product', '=', 'products.id')
                         ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                         ->select('products.id as spid', 'products.name', 'asp.image', 'fb.id as fbid')
-                        ->groupBy('spid')
-                        ->get();
+                        ->groupBy('spid')->get();
 
         $getnumfb = DB::select(DB::raw('SELECT count(*) as numfb, sp.id, sp.name
                                         FROM feedbacks as fb, products as sp
@@ -508,7 +507,8 @@ class PageController extends Controller
         $takesp = DB::table('products as sp')
                     ->leftjoin('product_type as lsp', 'sp.id_type' , '=', 'lsp.id')
                     ->select('sp.id as spid', 'lsp.type_name' , 'sp.name' , 'sp.unit_price' , 'sp.promotion_price' ,'sp.size' , 'sp.description' , 'sp.status')
-                    ->get();
+                    ->paginate(12,['*'],'product');
+                    // ->get();
 
         return view('Admin.pageadmin.adminsanpham', compact('takesp'));
     }
@@ -727,11 +727,10 @@ class PageController extends Controller
             return redirect()->back()->with('deletesp', 'Đã xoá: '.$spname);
         }
 
-
     }
 
     public function getadminLoaisanpham(){
-        $adminlsp = ProductType::all();
+        $adminlsp = ProductType::paginate(12,['*'],'product');
 
         return view('Admin.pageadmin.adminloaisanpham', compact('adminlsp'));
     }
@@ -776,13 +775,13 @@ class PageController extends Controller
     }
     
     public function getadminKhachhang(){
-        $table  = Customer::all();
+        $table  = Customer::paginate(12,['*'],'product');
         return view('Admin.pageadmin.adminkhachhang',compact('table'));
     }
 
     public function getadminDonhang(){
         $customers = Customer::all();
-        $bills = Bill::orderBy('status','desc')->get();
+        $bills = Bill::orderBy('status','desc')->paginate(12,['*'],'product');
         $bill_detail = BillDetail::all();
 
         $get_bill = DB::select(DB::raw('SELECT bd.id as bdid, b.id as bid, b.total_price, bd.product_name, bd.color, bd.image, bd.size, bd.quantity, bd.price, c.name FROM bill_detail as bd, customers as c, bills as b WHERE bd.id_bill in (SELECT b.id FROM bills WHERE b.id_customer in (SELECT c.id FROM customers))'));

@@ -153,6 +153,7 @@
                                             	@endforeach
                                             </tbody>
                                         </table>
+                                        <div class="row " style="text-align: center;">{{$takesp->links() }}</div>
                                     </form>
                                 </div>
                             </div>

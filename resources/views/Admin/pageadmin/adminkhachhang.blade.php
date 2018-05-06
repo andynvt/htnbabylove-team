@@ -128,6 +128,7 @@
                                         @endforeach
 
                                     </table>
+                                    <div class="row" style="text-align: center;">{{$table->links() }}</div>
                                 </div>
                             </div>
                         </div>

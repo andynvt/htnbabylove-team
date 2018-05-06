@@ -156,6 +156,7 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <div class="row" style="text-align: center;">{{$fbsp->links() }}</div>
                                         </form>
                                     </div>
                                 </div>

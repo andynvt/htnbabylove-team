@@ -203,6 +203,7 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                    <div class="row" style="text-align: center;">{{$bills->links() }}</div>
                                 </div>
                             </div>
                         </div>
