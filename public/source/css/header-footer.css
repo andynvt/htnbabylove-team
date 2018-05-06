@@ -36,7 +36,7 @@ body {
 
 .div-menu {
     background: white;
-    height: 48px;
+    /*height: 48px;*/
     width: 100%;
 }
 
@@ -186,6 +186,8 @@ body {
     padding: 0;
 }
 
+
+
 .hamburger:hover {
     color: black;
 }
@@ -228,6 +230,8 @@ body {
 .bg-light {
     background: white !important;
     height: 100%;
+    margin: 0 auto;
+    width: 80%;
 }
 
 .logo-mobile {
@@ -300,17 +304,32 @@ body {
         font-size: 60px;
         line-height: 65px;
     }
-    .logo-mobile {
-        position: absolute;
-        display: block;
-        left: 50%;
-        transform: translateX(-50%);
-        height: 100px;
-        width: 400px;
-        top: 20px;
+
+    .div-hamburger{
+        width: 25%;
+        display: inline-block;
+        height: 100%;
     }
+
+    .bg-light{
+        width: 100%;
+    }
+
+    .logo-mobile {
+        display: inline-block;
+        width: 50%;
+        overflow: hidden;
+    }
+
     .logo-mobile img{
         width: 100%;
+        object-fit: contain;
+    }
+
+    .menu-right{
+        width: 25%;
+        display: inline-block;
+        position: relative;
     }
 }
 

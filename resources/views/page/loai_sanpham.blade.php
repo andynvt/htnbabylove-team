@@ -12,7 +12,7 @@
         </div>
         <div class="col-lg-9 col-md-12">
             <div class="space10">&nbsp;</div>
-            <div class="text-left" style="font-size: 25px; font-weight: 600">{{$loai_ssp->type_name}} có {{count($product)}} sản phẩm </div>
+            <div class="text-left text-price-re" style=" font-weight: 600">{{$loai_ssp->type_name}} có {{count($product)}} sản phẩm </div>
             <div class="space15">&nbsp;</div>
             <div class="row">
              

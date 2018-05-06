@@ -116,12 +116,29 @@
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table table-bordered table-striped table-hover " id="myTable">
+
+                                <form method="post" onsubmit="return submitForm(this);" action="{{ route('adminxoanhieuloaisanpham') }}">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <table class="table table-bordered table-striped table-hover" id="tbl_lsp">
                                     <thead>
                                         <tr>
                                             <th onclick="sortTable(0)">Mã Loại<span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6; height: 1px; width: 1px; margin-top: 0.3em"></span></th>
                                             <th>Tên Loại</th>
-                                            <th class="text-center " style="width: 100px; ">Sửa/Xóa</th>
+                                            <th class="text-center">
+                                                <a id="open-del-check">Xoá nhiều</a>
+                                                <button class="btn-delm-sp" id="del-check" type="submit">Xoá</button>
+                                                
+                                                <a class="btn-delm-sp" id="cancel-check">Huỷ</a>
+                                                <div id="del-checkall">
+                                                    <a id="check-all" href="#tbl_lsp" data-toggle="checkboxes" data-action="check">
+                                                        Chọn hết
+                                                    </a>
+                                                    /
+                                                    <a id="uncheck-all" href="#tbl_lsp" data-toggle="checkboxes" data-action="uncheck">
+                                                        Bỏ chọn
+                                                    </a>
+                                                </div>
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -130,9 +147,12 @@
                                             <td>{{ $adlsp->id }}</td>
                                             <td>{{ $adlsp->type_name }}</td>
                                             <td class="text-center ">
-                                                <div class="btn-group ">
+                                                <div class="del1-sp">
                                                     <a class="btn btn-info btn-xs edit_icon" data-toggle="modal" data-target="#{{ $adlsp->id }}"> <span class="glyphicon glyphicon-edit"></span> </a>
                                                     <a href="{{ route('adminxoaloaisanpham', $adlsp->id) }}" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                </div>
+                                                <div class="delm-sp">
+                                                    <input type="checkbox" name="delmlsp[]" multiple value="{{ $adlsp->id }}" />
                                                 </div>
                                             </td>
                                         </tr>
@@ -140,6 +160,7 @@
                                         
                                     </tbody>
                                 </table>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -204,5 +225,16 @@
     }
 </style>
 
+<script>
+    $('#check-all').on('click', function(e){
+        $('#tbl_lsp').checkboxes('check');
+        e.preventDefault();
+    });
+
+    $('#uncheck-all').on('click', function(e){
+        $('#tbl_lsp').checkboxes('uncheck');
+        e.preventDefault();
+    });
+</script>
 
 @endsection

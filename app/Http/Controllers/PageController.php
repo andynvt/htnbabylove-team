@@ -92,23 +92,26 @@ class PageController extends Controller
             $bill_detail->save(); 
         }
         Session::forget('cart');
-        return redirect()->action('PageController@getIndex')->with('success', 'Đặt hàng thàng công. Bạn chờ nhận mail xác nhận nhé!');
+        return redirect()->action('PageController@getIndex')->with('dathang', 'Đặt hàng thàng công. Bạn chờ nhận mail xác nhận nhé!');
     }
 
     public function getIndex(){
         $promotion_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('promotion_price', '<>', '0')
+                            ->orderByRaw('unit_price  ASC')
                             ->groupBy('products.id')
                             ->paginate(6,['*'],'promotion_product');
         $new_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('status', 1)
+                            ->orderByRaw('unit_price  ASC')
                             ->groupBy('products.id')
                             ->paginate(6,['*'],'new_product');
         $hot_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('status', 2)
+                            ->orderByRaw('unit_price  ASC')
                             ->groupBy('products.id')
                             ->paginate(6,['*'],'hot_product');
 
@@ -204,7 +207,7 @@ class PageController extends Controller
         $fb->status = 1;
         $fb->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('danhgia', 'Đã gửi đánh giá');
     }
 
     public function getAbout(){
@@ -253,7 +256,7 @@ class PageController extends Controller
 
         // dd($req->tongtien);
 
-        return redirect()->action('PageController@getIndex')->with('success', 'Cám ơn bạn đã đặt hàng');
+        return redirect()->action('PageController@getIndex')->with('dathang', 'Đặt hàng thàng công. Bạn chờ nhận mail xác nhận nhé!');
     }
 
     public function postChitietsp($id, Request $req){
@@ -274,11 +277,10 @@ class PageController extends Controller
         $value = $req->members;
         $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
-                            ->where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)
+                            ->where('products.name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
-        // $product = Product::where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)->get();
-
+        // dd($product);
         //cắt chuỗi của giá tiền
         
         $giatien = explode(',', $req->price);
@@ -286,13 +288,14 @@ class PageController extends Controller
         // dd($giatien[0]);
 
         //tìm kiếm theo các tuỳ chọn
+
       if(!empty($req->price)){
             if(!empty($tensp) && !empty($value) && !empty($giatien)){
                 $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
                             ->Where([
-                                    ['products.name','like','%'.$tensp.'%'],
+                                    ['products.name','like','%'.$req->search.'%'],
                                     ['ty.id','=',$value],
                                     ['products.unit_price', '>=', $giatien[0]],
                                     ['products.unit_price', '<=', $giatien[1]],
@@ -357,8 +360,6 @@ class PageController extends Controller
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
             }
-            
-
         }
 
     
@@ -756,6 +757,18 @@ class PageController extends Controller
         $lspname = ProductType::where('id', $idtype)->value('type_name');
         ProductType::find($idtype)->delete();
         return redirect()->back()->with('deletelsp', 'Đã xoá: '.$lspname);
+    }
+
+    public function postadminXoanhieuloaisanpham(Request $req){
+        $lsp = $req->delmlsp;
+
+        $numdellsp = count($req->delmlsp);
+
+        foreach($lsp as $key){
+            ProductType::find($key)->delete();
+        }
+
+        return redirect()->back()->with('deletelsp', 'Đã xoá '.$numdellsp.' loại');
     }
     
     public function getadminKhachhang(){

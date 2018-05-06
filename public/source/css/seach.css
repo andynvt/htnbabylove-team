@@ -39,7 +39,7 @@
 
 .search-form input[type="submit"] {
     height: 30px;
-    width: 32px;
+    width: 30px;
     display: inline-block;
     background: url(https://png.icons8.com/android/24/000000/search.png) no-repeat;
     border: none;
@@ -74,44 +74,71 @@
 .div-shop-cart {
     /*        border: 1px solid black;*/
     position: absolute;
-    height: 30px;
+    /*height: 30px;*/
+    width: 30px;
     top: 50%;
     transform: translateY(-50%);
     right: 0;
+    text-align: center;
+}
+
+.slider-index .carousel-item img{
+    margin: 0 auto;
+    display: block;
+    /*width: 60%;*/
+}
+#number-cart {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    color: white;
+    background: #FF3E8D;
+    border: 1px solid #FF3E8D;
+    border-radius: 100%;
+    padding: 0 5px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 /*Responsive*/
 
 @media (max-width: 991px) and (min-width: 768px) {
     .search-form input[type="text"] {
-        width: 100px;
+        width: 50%;
         height: 100px;
         top: 70px;
         right: 105px;
-        padding-right: 100px;
+        padding-right: 120px;
+        margin-top: 10px;
     }
 
     .search-form input[type="text"]:focus {
-        width: 70%;
-        top: 73px;
+        width: 250%;
+        /*top: 73px;*/
         font-size: 40px;
-        height: 100px;
+        height: 100%;
         
     }
 
     .search-form input[type="submit"] {
         height: 100px;
-        width: 100px;
+        width: 50%;
         background: url(https://png.icons8.com/android/90/000000/search.png) no-repeat;
         background-color: white;
-        top: 70px;
+        /*top: 70px;*/
         right: 105px;
+        margin-top: 10px;
     }
+
+    .div-shop-cart{
+        width: 50%;
+    }
+
     .shop-cart {
         position: relative;
         display: inline-block;
-        top: -25px;
-        right: 5px;
+        /*top: -25px;*/
+        /*right: 5px;*/
         font-size: 100px;
     }
     #number-cart{

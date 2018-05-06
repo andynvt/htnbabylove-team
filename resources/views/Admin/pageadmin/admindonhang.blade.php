@@ -141,6 +141,7 @@
                                                 <th>Tổng tiền</th>
                                                 <th>Số lượng sản phẩm</th>
                                                 <th>Địa chỉ</th>
+                                                <th>Ngày đặt</th>
                                                 <th>Đơn hàng</th>
                                                 <th>Khách hàng</th>
                                                 <th>Thao tác</th>
@@ -173,6 +174,7 @@
                                             <td>{{ number_format($b->total_price) }} đ</td>
                                             <td>{{ $b->total_product }}</td>
                                             <td>{{ $b->address }}</td>
+                                            <td>{{ date('d-m-Y / H:ip', strtotime($b->created_at)) }}</td>
 
                                             <td><a href="" data-toggle="modal" data-target="#{{$b->id}}">Xem</a>
                                             </td>

@@ -1,9 +1,5 @@
 @extends('master') @section('content')
 
-@if (session('success'))
-    <body onload="alertbabyproject()"><div class="alert-babyproject">Cám ơn bạn đã đặt hàng của chúng tôi</div></body>
-@endif
-
 <div class="container-full">
     <!-- Trang Chu -->
     <div class="container-fluid">

@@ -139,14 +139,15 @@ if (mysqli_connect_error())
                             <div class="body-cart">
                                 <div class="panel panel-info">
                                     <div class="panel-body">
-                                    @foreach($product_cart as $product)
                                         <div id="overflowTest-checkout">
+                                        @foreach($product_cart as $product)
+
                                             <div class="body-cart-content-checkout">
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div class="col-md-3  col-xs-3"> <img class="rounded" src="storage/product/{{$product['item']['img']}}"/> </div>
+                                                        <div class="col-md-3 col-xs-3"> <img class="rounded" src="storage/product/{{$product['item']['img']}}"/> </div>
                                                         {{-- <input type="hidden" name="img" value="{{ $mua->image }}"> --}}
-                                                        <div class="col-md-5 col-xs-5 span_content_body">
+                                                        <div class="col-md-5  col-xs-5 span_content_body">
                                                             
                                                             <div class="col-xs-12 "><input type="hidden" name="proname" value="{{$product['item']['name']}}"><strong>{{ $product['item']['name'] }}</strong></div>
                                                             <div class="col-xs-12 span_content_body">
@@ -157,7 +158,7 @@ if (mysqli_connect_error())
                                                             </div>
                                                             <input type="hidden" name="size" value="{{ $product['item']['size'] }}">
                                                         </div>
-                                                        <div class="col-md-3 col-xs-3 text-right ">
+                                                        <div class="col-md-3  col-xs-3 text-right ">
                                                             @if($product['item']['promotion_price'] == 0)
                                                                 <input type="hidden" name="price" value="{{ $product['item']['unit_price'] }}">
                                                                 <p><span>{{ number_format($product['item']['unit_price']) }}</span> đ</p>
@@ -174,10 +175,12 @@ if (mysqli_connect_error())
                                                 <!-- </div> -->
                                                 <!-- </div> -->
                                             </div>
+                                        @endforeach
+
                                             <!-- body-cart-content-checkout -->
                                         </div>
-                                    @endforeach
                                         <div class="space20">&nbsp;</div>
+
                                         {{-- <div class="">
                                             <div class="col-md-12 col-sm-12 col-xs-12 container_btncsgh">
                                                 <button type="submit" class="btn btn-primary btn-submit-fix submitbtn_cart">Chỉnh sửa giỏ hàng </button>

@@ -187,6 +187,11 @@ Route::get('admin-xoaloaisanpham/{idtype}', [
 	'uses' => 'PageController@getadminXoaloaisanpham'
 ]);
 
+Route::post('admin-xoanhieuloaisanpham', [
+	'as' => 'adminxoanhieuloaisanpham',
+	'uses' => 'PageController@postadminXoanhieuloaisanpham'
+]);
+
 Route::get('admin-khachhang', [
 	'as' => 'adminkhachhang',
 	'uses' => 'PageController@getadminKhachhang'

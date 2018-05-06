@@ -358,8 +358,11 @@ body {
 .control-label {
     font-size: 16px;
 }
-
-@media screen and (min-device-width: 200px) and (max-device-width: 998px) {
+.text-modal-re select{
+        height:  35px;
+        
+    }
+@media screen and (min-device-width: 200px) and (max-device-width: 768px) {
     .pagination{
         font-size: 30px;
     }
@@ -424,13 +427,18 @@ body {
     }
     .control-label {
         font-size: 40px;
-        padding-left: 10px;  
+        
         line-height: 50px;
+    }
+    .control-label-re{
+        margin-left: -4%;
+        line-height: 65px;
     }
    .text-filter-re{
     height: 60px;
     font-size:  35px;
    }
+
   
 
   .ribbon-trangthai.hot{
@@ -506,7 +514,8 @@ body {
         line-height: 45px;
     }
     .text{
-        font-size: 35px;
+        font-size: 50px;
+        line-height: 50px;
     }
     .cpr-l{
         padding-top: 20px;
