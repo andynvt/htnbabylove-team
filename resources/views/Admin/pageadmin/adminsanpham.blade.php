@@ -140,7 +140,10 @@
                                                     <td class="text-center">
                                                         <div class="del1-sp">
                                                             <a href="{{ route('adminsuasanpham', $sp->spid) }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
-                                                            <a href="{{ route('adminxoasanpham', $sp->spid) }}" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                            <button type="submit" class="btn btn-danger btn-xs del_icon" data-toggle="tooltip" data-original-title="Xóa">
+                                                                <span class="glyphicon glyphicon-trash"></span> 
+                                                            </button>
+                                                            <input type="hidden" name="del1sp" value="{{ $sp->spid }}">
                                                         </div>
                                                         <div class="delm-sp">
                                                             <input type="checkbox" name="delmsp[]" multiple value="{{ $sp->spid }}" />

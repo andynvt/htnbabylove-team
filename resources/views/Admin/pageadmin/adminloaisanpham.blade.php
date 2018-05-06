@@ -149,7 +149,8 @@
                                             <td class="text-center ">
                                                 <div class="del1-sp">
                                                     <a class="btn btn-info btn-xs edit_icon" data-toggle="modal" data-target="#{{ $adlsp->id }}"> <span class="glyphicon glyphicon-edit"></span> </a>
-                                                    <a href="{{ route('adminxoaloaisanpham', $adlsp->id) }}" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-trash"></span> </a>
+                                                    <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                                                    <input type="hidden" name="del1lsp" value="{{ $adlsp->id }}">
                                                 </div>
                                                 <div class="delm-sp">
                                                     <input type="checkbox" name="delmlsp[]" multiple value="{{ $adlsp->id }}" />

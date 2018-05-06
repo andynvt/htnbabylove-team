@@ -131,67 +131,108 @@
 
                                 <div class="container-fluid">
                                 	@if(!empty($tukhoa))
-                                    <table class="table table-bordered text-align" id="myTable">
-
-                                        <thead>
-                                            <tr class="thead_change_color">
-                                                <th>Mã số</th>
-                                                <th onclick="sortTable(1)">Loại <span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6"></span></th>
-                                                <th>Tên</th>
-                                                <th>Giá Gốc</th>
-                                                <th>Giá Khuyến Mãi</th>
-                                                <th>Kích thước</th>
-                                                <th>Chi tiết</th>
-                                                <th>Sửa/Xóa</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($product as $sptk)
-                                            <tr>
-                                                <td>{{ $sptk->id_product }}</td>
-                                                <td>{{ $sptk->type_name }}</td>
-                                                <td>{{ $sptk->name }}</td>
-                                                <td>{{ $sptk->unit_price }}</td>
-                                                <td>{{ $sptk->promotion_price }}</td>
-                                                <td>{{ $sptk->size }}</td>
-                                               <td><a href="" data-toggle="modal" data-target="#ctsp_{{ $sptk->id_product }}">Xem</a></td>
-                                                <td class="text-center">
-                                                    <div class="">
-                                                        <a href="{{ route('adminsuasanpham', $sptk->id_product) }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
-                                                        <a href="{{ route('adminxoasanpham', $sptk->id_product) }}" class="btn btn-danger btn-xs del_icon" title="" data-toggle="tooltip" data-original-title="Xóa"> <span class="glyphicon glyphicon-trash"></span> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        	@endforeach
-                                        </tbody>
-                                    </table>
+                                    <form method="post" onsubmit="return submitForm(this);" action="{{ route('adminxoanhieusanpham') }}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <table class="table table-bordered text-align" id="tbl_tksp">
+                                            <thead>
+                                                <tr class="thead_change_color">
+                                                    <th>Mã số</th>
+                                                    <th onclick="sortTable(1)">Loại <span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6"></span></th>
+                                                    <th>Tên</th>
+                                                    <th>Giá Gốc</th>
+                                                    <th>Giá Khuyến Mãi</th>
+                                                    <th>Kích thước</th>
+                                                    <th>Chi tiết</th>
+                                                    <th>
+                                                        <a id="open-del-check">Xoá nhiều</a>
+                                                        <button class="btn-delm-sp" id="del-check" type="submit">Xoá</button>
+                                                        
+                                                        <a class="btn-delm-sp" id="cancel-check">Huỷ</a>
+                                                        <div id="del-checkall">
+                                                            <a id="check-all" href="#tbl_tksp" data-toggle="checkboxes" data-action="check">
+                                                                Chọn hết
+                                                            </a>
+                                                            /
+                                                            <a id="uncheck-all" href="#tbl_tksp" data-toggle="checkboxes" data-action="uncheck">
+                                                                Bỏ chọn
+                                                            </a>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($product as $sptk)
+                                                <tr>
+                                                    <td>{{ $sptk->id_product }}</td>
+                                                    <td>{{ $sptk->type_name }}</td>
+                                                    <td class="text-left">{{ $sptk->name }}</td>
+                                                    <td>{{ $sptk->unit_price }}</td>
+                                                    <td>{{ $sptk->promotion_price }}</td>
+                                                    <td>{{ $sptk->size }}</td>
+                                                   <td><a href="" data-toggle="modal" data-target="#ctsp_{{ $sptk->id_product }}">Xem</a></td>
+                                                    <td class="text-center">
+                                                        <div class="del1-sp">
+                                                            <a href="{{ route('adminsuasanpham', $sptk->id_product) }}" class="btn btn-info btn-xs edit_icon" title="" data-toggle="tooltip" data-original-title="Sửa"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                            <button type="submit" class="btn btn-danger btn-xs del_icon" data-toggle="tooltip" data-original-title="Xóa">
+                                                                <span class="glyphicon glyphicon-trash"></span> 
+                                                            </button>
+                                                            <input type="hidden" name="del1sp" value="{{ $sptk->id_product }}">
+                                                        </div>
+                                                        <div class="delm-sp">
+                                                            <input type="checkbox" name="delmsp[]" multiple value="{{ $sptk->id_product }}" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </form>
                                     @endif
 
                                     @if(!empty($tk_lsp))
-									 <table class="table table-bordered table-striped table-hover " id="myTable">
-                                    <thead>
-                                         <tr>
-                                            <th onclick="sortTable(0)">Mã Loại  <span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6"></span></th>
-                                            <th>Tên Loại</th>
-                                            <th class="text-center " style="width: 100px; ">Sửa/Xóa</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($pro_type as $adlsp)
-                                        <tr>
-                                            <td>{{ $adlsp->id }}</td>
-                                            <td>{{ $adlsp->type_name }}</td>
-                                            <td class="text-center ">
-                                                <div class="btn-group ">
-                                                    <a class="btn btn-info btn-xs edit_icon" data-toggle="modal" data-target="#{{ $adlsp->id }}"> <span class="glyphicon glyphicon-edit"></span> </a>
-                                                    <a href="{{ route('adminxoaloaisanpham', $adlsp->id) }}" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-trash"></span> </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                        
-                                    </tbody>
-                                </table>
+									<form method="post" onsubmit="return submitForm(this);" action="{{ route('adminxoanhieuloaisanpham') }}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <table class="table table-bordered table-striped table-hover " id="tbl_tklsp">
+                                            <thead>
+                                                 <tr>
+                                                    <th onclick="sortTable(0)">Mã Loại  <span class="glyphicon glyphicon-triangle-top" style="opacity: 0.6"></span></th>
+                                                    <th>Tên Loại</th>
+                                                    <th class="text-center">
+                                                        <a id="open-del-check">Xoá nhiều</a>
+                                                        <button class="btn-delm-sp" id="del-check" type="submit">Xoá</button>
+                                                        <a class="btn-delm-sp" id="cancel-check">Huỷ</a>
+                                                        <div id="del-checkall">
+                                                            <a id="check-all" href="#tbl_lsp" data-toggle="checkboxes" data-action="check">
+                                                                Chọn hết
+                                                            </a>
+                                                            /
+                                                            <a id="uncheck-all" href="#tbl_lsp" data-toggle="checkboxes" data-action="uncheck">
+                                                                Bỏ chọn
+                                                            </a>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($pro_type as $adlsp)
+                                                <tr>
+                                                    <td>{{ $adlsp->id }}</td>
+                                                    <td>{{ $adlsp->type_name }}</td>
+                                                    <td class="text-center ">
+                                                        <div class="del1-sp">
+                                                            <a class="btn btn-info btn-xs edit_icon" data-toggle="modal" data-target="#{{ $adlsp->id }}"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                                            <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                                                            <input type="hidden" name="del1lsp" value="{{ $adlsp->id }}">
+                                                        </div>
+                                                        <div class="delm-sp">
+                                                            <input type="checkbox" name="delmlsp[]" multiple value="{{ $adlsp->id }}" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </form>
                                     @endif                                  
 
                                     @if(!empty($tk_kh))
