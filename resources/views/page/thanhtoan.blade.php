@@ -144,9 +144,9 @@ if (mysqli_connect_error())
                                             <div class="body-cart-content-checkout">
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div class="col-lg-3 col-md-12 col-xs-3"> <img class="rounded" src="storage/product/{{$product['item']['img']}}"/> </div>
+                                                        <div class="col-md-3  col-xs-3"> <img class="rounded" src="storage/product/{{$product['item']['img']}}"/> </div>
                                                         {{-- <input type="hidden" name="img" value="{{ $mua->image }}"> --}}
-                                                        <div class="col-lg-5 col-md-12 col-xs-5 span_content_body">
+                                                        <div class="col-md-5 col-xs-5 span_content_body">
                                                             
                                                             <div class="col-xs-12 "><input type="hidden" name="proname" value="{{$product['item']['name']}}"><strong>{{ $product['item']['name'] }}</strong></div>
                                                             <div class="col-xs-12 span_content_body">
@@ -157,7 +157,7 @@ if (mysqli_connect_error())
                                                             </div>
                                                             <input type="hidden" name="size" value="{{ $product['item']['size'] }}">
                                                         </div>
-                                                        <div class="col-lg-3 col-md-12 col-xs-3 text-right ">
+                                                        <div class="col-md-3 col-xs-3 text-right ">
                                                             @if($product['item']['promotion_price'] == 0)
                                                                 <input type="hidden" name="price" value="{{ $product['item']['unit_price'] }}">
                                                                 <p><span>{{ number_format($product['item']['unit_price']) }}</span> đ</p>
