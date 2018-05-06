@@ -322,7 +322,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <p class=" text-price text-modal-re"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group text-modal-re">
-                                                    <select name="colorbuy" style="height: 38px">
+                                                    <select name="colorbuy" >
                                                         @foreach($product_color as $pro)
                                                             @if($promo->id_product == $pro->spid)
                                                                 <option>{{$pro->color}}</option>
@@ -433,7 +433,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <p class=" text-price text-modal-re"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group text-modal-re">
-                                                    <select name="colorbuy" style="height: 38px">
+                                                    <select name="colorbuy" >
                                                         @foreach($product_color as $pro)
                                                             @if($new->id_product == $pro->spid)
                                                                 <option>{{$pro->color}}</option>
@@ -542,7 +542,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <p class=" text-price text-modal-re"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group text-modal-re">
-                                                    <select name="colorbuy" style="height: 38px">
+                                                    <select name="colorbuy">
                                                         @foreach($product_color as $pro)
                                                             @if($hot->id_product == $pro->spid)
                                                                 <option>{{$pro->color}}</option>
