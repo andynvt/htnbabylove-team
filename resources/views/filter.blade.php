@@ -23,7 +23,7 @@
                                     <div class="space10">&nbsp;</div>
                                     <div class="row">
                                        
-                                        <div class="col-xs-4">
+                                        <div class="col-md-3 col-xs-4">
                                             {{-- @foreach($product as $pro) --}}
                                             <a href="{{ route('timkiemloai', $pro='sale') }}">
                                                 <div class="ribbon-trangthai sale" name='sale'>Sale</div>
@@ -32,7 +32,7 @@
                                             @endforeach --}}
                                         </div>
                                         <div class="col-xs-4">&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                        <div class="col-xs-4">
+                                        <div class="col-md-3 col-xs-4">
                                             {{-- @foreach($product as $pro) --}}
                                             <a href="{{ route('timkiemloai', $pro='new') }}">
                                                 <div class="ribbon-trangthai new" name='new'>New</div>
@@ -41,7 +41,7 @@
                                             @endforeach --}}
                                         </div>
                                         <div class="col-xs-4">&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                        <div class="col-xs-4 ">
+                                        <div class="col-md-3 col-xs-4 ">
                                             {{-- @foreach($product as $pro) --}}
                                             <a href="{{ route('timkiemloai', $pro='hot') }}">
                                                 <div class="ribbon-trangthai hot" name='hot'>Hot</div>
@@ -54,8 +54,8 @@
                 </div>
                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-xs-6"> <a href="{{ route('timkiemloai', $pro='giagiam') }}" class="control-label search-price">Giá giảm dần <i class="fa fa-sort-amount-desc"></i></a> </div>
-                                        <div class="col-xs-6"> <a href="{{ route('timkiemloai', $pro='giatang') }}" class="control-label search-price">Giá tăng dần <i class="fa fa-sort-amount-asc"></i></a> </div>
+                                        <div class="col-md-6 col-xs-6"> <a href="{{ route('timkiemloai', $pro='giagiam') }}" class="control-label search-price">Giá giảm dần <i class="fa fa-sort-amount-desc"></i></a> </div>
+                                        <div class="col-md-6 col-xs-6"> <a href="{{ route('timkiemloai', $pro='giatang') }}" class="control-label search-price">Giá tăng dần <i class="fa fa-sort-amount-asc"></i></a> </div>
                                     </div>
                 </div>
                 <div class="form-group">
