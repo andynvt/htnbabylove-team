@@ -59,7 +59,7 @@
                 <div class="form-group">
                                     <div class='row '>
                                         <div style="width: 90%; margin-left: 5%">
-                                            <label for="pricefrom" class="control-label" name='gia'>Giá:&nbsp;&nbsp;<b>
+                                            <label for="pricefrom" class="control-label control-label-re" name='gia'>Giá:&nbsp;&nbsp;<b>
                                                 <span id="outputmin" name="giatien"> Đồng</span> </b></label>
                                             <div class="input-group" style="width: 90%; margin-left: 5%; top: 10px;">
                                                 <input id="pricefrom" name="price" type="text" class="span2" /> </div>
@@ -67,7 +67,7 @@
 
                                     </div>
                 </div>
-                <div class="space10">&nbsp;</div>
+                <div class="space30">&nbsp;</div>
                 <div class=" text-center">
                     <input class="btn btn-themvaogio btn-themvaogio-re" id="search_submit" value="Tìm Kiếm" type="submit">
                 </div>

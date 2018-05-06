@@ -98,7 +98,6 @@
                                             
                                             <img src="storage/product/{{$new->image}}" alt="Thumbnail Image 1" class="img-responsive" width="1024px">
                                             
-                                             
                                             <div class="overlay">
                                                 <div class="text">Xem chi tiết</div>
                                             </div>

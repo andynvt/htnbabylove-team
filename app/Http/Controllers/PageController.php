@@ -99,16 +99,19 @@ class PageController extends Controller
         $promotion_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('promotion_price', '<>', '0')
+                            ->orderByRaw('unit_price  ASC')
                             ->groupBy('products.id')
                             ->paginate(6,['*'],'promotion_product');
         $new_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('status', 1)
+                            ->orderByRaw('unit_price  ASC')
                             ->groupBy('products.id')
                             ->paginate(6,['*'],'new_product');
         $hot_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('status', 2)
+                            ->orderByRaw('unit_price  ASC')
                             ->groupBy('products.id')
                             ->paginate(6,['*'],'hot_product');
 
@@ -274,11 +277,10 @@ class PageController extends Controller
         $value = $req->members;
         $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
-                            ->where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)
+                            ->where('products.name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
-        // $product = Product::where('name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)->get();
-
+        // dd($product);
         //cắt chuỗi của giá tiền
         
         $giatien = explode(',', $req->price);
@@ -286,13 +288,14 @@ class PageController extends Controller
         // dd($giatien[0]);
 
         //tìm kiếm theo các tuỳ chọn
+
       if(!empty($req->price)){
             if(!empty($tensp) && !empty($value) && !empty($giatien)){
                 $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
                             ->Where([
-                                    ['products.name','like','%'.$tensp.'%'],
+                                    ['products.name','like','%'.$req->search.'%'],
                                     ['ty.id','=',$value],
                                     ['products.unit_price', '>=', $giatien[0]],
                                     ['products.unit_price', '<=', $giatien[1]],
@@ -357,8 +360,6 @@ class PageController extends Controller
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
             }
-            
-
         }
 
     
