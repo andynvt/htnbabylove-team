@@ -20,6 +20,13 @@ iao-alert-box {
 	max-width: 500px;
 	overflow: auto;
 }
+
+@media (max-width: 768px){
+	iao-alert {
+		font-size: 20px;
+	}
+}
+
 iao-alert-box[position='top-left'] {
 	right: auto;
 	left: 0
