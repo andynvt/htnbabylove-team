@@ -149,7 +149,9 @@
                                     </div>
                                     <div class="cart-qty col-md-2 col-3">
                                         <div class="cart-input-qty">
-                                            <input type="text" name="soluong" class="form-control text-center new-qty" value="{{$product['qty']}}" readonly> <i class="fa fa-angle-double-down" aria-hidden="true"></i></div>
+                                            <input type="text" name="soluong" class="form-control text-center new-qty" value="{{$product['qty']}}" readonly> 
+                                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                                        </div>
                                         <div class="change-qty">
                                             <div class="input-group number-spinner input-change-qty"> 
                                                 <span class="input-group-btn">
@@ -198,37 +200,59 @@
                                 <div class="container">
                                     <div class="row mobile-cart-title">
                                         <div class="cart-div-img col-3">
-                                            <a href="#"> <img class="img-fluid cart-img" src="{{-- storage/product/{{$product}} --}}"> </a>
+                                            <a href="#"> <img class="img-fluid cart-img" src="storage/product/{{$product['item']['img']}}"> </a>
                                         </div>
-                                        <div class="cart-product-info col-6 offset-1">
+                                        <div class="cart-product-info col-7 offset-1">
                                             <div class="cart-product-name text-title"> 
                                                 <a href="#">{{$product['item']['name']}}</a> 
                                             </div>
-                                            <div class="cart-price"> {{$product['item']['unit_price']}} </div>
+                                            <div class="cart-price"> 
+                                                @if($product['item']['promotion_price'] == 0)
+                                                    {{number_format( $product['item']['unit_price'] )}} đ
+                                                @else
+                                                    {{number_format( $product['item']['promotion_price'] )}} đ
+                                                @endif
+                                            </div>
                                         </div>
                                         <div class="col-1" style="text-align: right"> <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
                                     </div>
                                     <div class="row mobile-cart-info">
-                                        <label class="col-5">Size:</label>
+                                        <label class="col-4">Size:</label>
                                         <label class="col-7">{{$product['item']['size']}}</label>
-                                        <label class="col-5">Số lượng: 1</label>
+                                        <label class="col-4">Số lượng: </label>
                                         <div class="col-7 cart-qty">
                                             <div class="cart-input-qty">
-                                                <input type="text" name="soluong" class="form-control text-center new-qty" value="1" readonly> <i class="fa fa-angle-double-down" aria-hidden="true"></i> </div>
-                                            <div class="change-qty col-3">
-                                                <div class="input-group number-spinner input-change-qty"> <span class="input-group-btn">
+                                            <input type="text" name="soluong" class="form-control text-center new-qty" value="{{$product['qty']}}" readonly> 
+                                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="change-qty">
+                                            <div class="input-group number-spinner input-change-qty"> 
+                                                <span class="input-group-btn">
                                                     <button type="button" class="btn btn-change-qty" data-dir="dwn"><i class="fa fa-minus"></i></button>
                                                 </span>
-                                                    <input type="text" name="soluong" class="form-control text-center" value="1"> <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-change-qty" data-dir="up">&nbsp;<i class="fa fa-plus"></i></button>
-                                                </span> </div>
-                                                <div class="div-confirm-change-qty">
-                                                    <button class="confirm-change-qty" type="button"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
-                                                </div>
+
+                                                <input type="text" name="" class="form-control text-center" value="{{$product['qty']}}"> 
+
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-change-qty" data-dir="up">&nbsp;
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                </span> 
                                             </div>
+                                            <div class="div-confirm-change-qty">
+                                                <button class="confirm-change-qty" type="button"><i class="fa fa-check"></i></button>
+                                                <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
+                                            </div>
+                                            <script>
+                                                $(".confirm-change-qty").on('click', function () {
+                                                    $(this).parents(".change-qty").css("display", "none");
+                                                    var qtyproduct =  $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').val();
+                                                    $(this).parents('.change-qty').prev('.cart-input-qty').find('input').val(qtyproduct);
+                                                });
+                                            </script>
                                         </div>
-                                        <label class="col-5">Màu:</label>
+                                        </div>
+                                        <label class="col-4">Màu:</label>
                                         <div class="form-group change-color col-7">
                                             Đỏ
                                         </div>
