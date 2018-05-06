@@ -510,8 +510,8 @@ body {
     }
     
     .text-footer-re{
-        font-size: 40px;
-        line-height: 45px;
+        font-size: 34px;
+        line-height: 0px;
     }
     .text{
         font-size: 50px;

@@ -79,8 +79,8 @@ clearfix() {
 @media (max-width: 991px) and (min-width: 768px) {
     
     .about-p-content {
-        font-size: 35px;
-        line-height: 45px;
+        font-size: 40px;
+        line-height: 50px;
     }
 
     #about-content h4{
@@ -97,4 +97,14 @@ clearfix() {
         margin: 10px;
     }
     
+}
+@media (max-width: 767px){
+    .about-p-content {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .about-list {
+        font-size: 30px;
+        line-height: 40px;
+    }
 }

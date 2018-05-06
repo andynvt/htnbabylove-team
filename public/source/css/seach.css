@@ -25,7 +25,7 @@
 }
 
 .search-form input[type="text"]:focus {
-    width: 55%;
+    width: 61%;
     height: 100%;
     top: 50%;
     z-index: 1;
@@ -146,8 +146,8 @@
         width: 45px;
         height: 45px;
         font-size: 30px !important;
-        top: -20px !important;
-        right: -5px !important;
+        top: 0px !important;
+        right: -2px !important;
     }
     #number-cart span{
         position: absolute;
@@ -157,23 +157,59 @@
     }
 }
 
-@media (max-width: 767px) and (min-width: 425px) {
+@media (max-width: 767px)  {
     .search-form input[type="text"] {
-        font-size: 18px;
+        height: 50px;
+        width: 50px;
+        right: 43px;
+        padding-right: 55px;
+        /*border: 1px solid blue;*/
     }
+
     .search-form input[type="text"]:focus {
-        width: 60%;
+        height: 75%;
+        top: 54%;
+        font-size: 20px;
+        /*border: 1px solid red;*/
+    }
+
+    .search-form input[type="submit"] {
+        height: 50px;
+        width: 50px;
+        background: url(https://png.icons8.com/android/43/000000/search.png) no-repeat;
+        right: 46px;
+        /*border: 1px solid black;*/
+
+    }
+    .div-shop-cart{
+        top: 50%;
+        width: 50px;
+        height: 55px;
     }
     .shop-cart {
-        top: -10px;
+        font-size: 50px;
+    }
+    #number-cart{
+        text-align: center;
+        width: 25px;
+        height: 25px;
+        font-size: 17px !important;
+        top: 0px !important;
+        right: -2px !important;
+    }
+    #number-cart span{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
     }
 }
 
-@media (max-width: 424px) {
+/*@media (max-width: 424px) {
     .search-form input[type="text"] {
         font-size: 16px;
     }
     .search-form input[type="text"]:focus {
         width: 55%;
     }
-}
+}*/

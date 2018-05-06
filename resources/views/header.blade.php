@@ -30,7 +30,7 @@
 </div>
 <!-- .header-body -->
 <div class="header-bottom" id="getFixed">
-    <div class="" style="padding: 0 15px; margin: 0 auto; height: 100%;">
+    <div class="" style="padding: 0 10px; margin: 0 auto; height: 100%;">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             
             <div class="div-hamburger">
