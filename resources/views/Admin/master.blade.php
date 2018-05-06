@@ -149,14 +149,6 @@
             $('[data-toggle="tooltip"]').tooltip();
         });
 
-        function alertbabyproject() {
-            $(".modal-dialog").attr("data-dismiss", "modal");
-            $(".alert-babyproject").fadeIn(700);
-                setTimeout(function () {
-               $(".alert-babyproject").fadeOut(700);
-            }, 2000)
-        }
-
         function submitForm() {
             return confirm('Bạn có chắc muốn xoá?');
         }

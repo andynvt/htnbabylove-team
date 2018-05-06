@@ -758,6 +758,18 @@ class PageController extends Controller
         ProductType::find($idtype)->delete();
         return redirect()->back()->with('deletelsp', 'Đã xoá: '.$lspname);
     }
+
+    public function postadminXoanhieuloaisanpham(Request $req){
+        $lsp = $req->delmlsp;
+
+        $numdellsp = count($req->delmlsp);
+
+        foreach($lsp as $key){
+            ProductType::find($key)->delete();
+        }
+
+        return redirect()->back()->with('deletelsp', 'Đã xoá '.$numdellsp.' loại');
+    }
     
     public function getadminKhachhang(){
         $table  = Customer::all();

@@ -100,7 +100,7 @@
                                 <div class="container-fluid">
                                     <form method="post" onsubmit="return submitForm(this);" action="{{ route('adminxoanhieusanpham') }}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <table class="table table-bordered text-align" id="myTable" >
+                                        <table class="table table-bordered text-align" id="tbl_sanpham" >
                                             <thead>
                                                 <tr class="thead_change_color">
                                                     <th>Mã số</th>
@@ -116,11 +116,11 @@
                                                         
                                                         <a class="btn-delm-sp" id="cancel-check">Huỷ</a>
                                                         <div id="del-checkall">
-                                                            <a id="check-all" href="#myTable" data-toggle="checkboxes" data-action="check">
+                                                            <a id="check-all" href="#tbl_sanpham" data-toggle="checkboxes" data-action="check">
                                                                 Chọn hết
                                                             </a>
                                                             /
-                                                            <a id="uncheck-all" href="#myTable" data-toggle="checkboxes" data-action="uncheck">
+                                                            <a id="uncheck-all" href="#tbl_sanpham" data-toggle="checkboxes" data-action="uncheck">
                                                                 Bỏ chọn
                                                             </a>
                                                         </div>
@@ -159,5 +159,17 @@
             </div>
         </div>
 </div>
+
+<script>
+    $('#check-all').on('click', function(e){
+        $('#tbl_sanpham').checkboxes('check');
+        e.preventDefault();
+    });
+
+    $('#uncheck-all').on('click', function(e){
+        $('#tbl_sanpham').checkboxes('uncheck');
+        e.preventDefault();
+    });
+</script>
 
 @endsection
