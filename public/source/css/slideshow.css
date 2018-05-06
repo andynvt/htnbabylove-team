@@ -358,7 +358,10 @@ body {
 .control-label {
     font-size: 16px;
 }
-
+.text-modal-re select{
+        height:  35px;
+        
+    }
 @media screen and (min-device-width: 200px) and (max-device-width: 768px) {
     .pagination{
         font-size: 30px;
