@@ -731,8 +731,13 @@ class PageController extends Controller
 
     public function getadminLoaisanpham(){
         $adminlsp = ProductType::paginate(12,['*'],'product');
+        $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->groupBy('products.id')
+                            ->get();
 
-        return view('Admin.pageadmin.adminloaisanpham', compact('adminlsp'));
+        return view('Admin.pageadmin.adminloaisanpham', compact('adminlsp','product'));
     }
 
     public function postThemloaisanpham(Request $req){

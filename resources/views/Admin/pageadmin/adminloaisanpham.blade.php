@@ -149,7 +149,32 @@
                                             <td class="text-center ">
                                                 <div class="del1-sp">
                                                     <a class="btn btn-info btn-xs edit_icon" data-toggle="modal" data-target="#{{ $adlsp->id }}"> <span class="glyphicon glyphicon-edit"></span> </a>
-                                                    <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+
+                                                    {{--STAR lấy số sp theo loại --}}
+                                                    @if($adlsp->id !=0)
+                                                        <?php  $i=0;?>
+                                                        @foreach($product as $pro)
+                                                            @if($pro->id == $adlsp->id)
+                                                                <?php  $i++;?>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                    {{--END lấy số sp theo loại --}}
+
+                                                    <?php  
+                                                        if($i == 0){
+                                                            ?>
+                                                            <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                                                            <?php
+                                                        }
+                                                        else{
+                                                            ?>
+                                                            Có
+                                                            <?php echo $i?>
+                                                            sản phẩm
+                                                            <?php
+                                                        }
+                                                    ?>
                                                     <input type="hidden" name="del1lsp" value="{{ $adlsp->id }}">
                                                 </div>
                                                 <div class="delm-sp">
