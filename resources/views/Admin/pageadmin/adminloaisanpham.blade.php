@@ -168,10 +168,10 @@
                                                             <?php
                                                         }
                                                         else{
-                                                            ?>
-                                                            Có
+                                                            ?><div title="Không thể xóa khi còn sản phẩm ">
+                                                            (Có
                                                             <?php echo $i?>
-                                                            sản phẩm
+                                                            sản phẩm)</div>
                                                             <?php
                                                         }
                                                     ?>
