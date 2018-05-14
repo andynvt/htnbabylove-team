@@ -2,15 +2,13 @@
     margin-top: 7px;
 }
 .btn-magrin{
-    margin-left: -10px;
-    margin-right: 10px;
+    /*margin-left: -10px;
+    margin-right: 10px;*/
 }
 .btn-magrin2{
-    border-radius: 3px;
     border: 1px solid #dedede;
     background: #dedede;
     color: #fff;
-    width: 10%;
 }
 .btn-magrin2:hover{
     background: #adadad;
@@ -26,7 +24,7 @@
     width: 10%;
 }
 .w50{
-    width: 50%;
+    width: 70%;
 }
 .show-img{
     display: inline-block;

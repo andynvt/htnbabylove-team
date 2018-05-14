@@ -455,11 +455,10 @@ class PageController extends Controller
 
         $getsp = Product::where('id', '=', $idfb)->value('name') ;
         
-        $fbsp = Feedback::where('id_product','=',$idfb)->get();
+        $fbsp = Feedback::where('id_product', $idfb)->paginate(10,['*'],'fbsp');
 
-        $findfb = Feedback::where('id_product', $idfb)->get();
 
-        foreach($findfb as $key){
+        foreach($fbsp as $key){
             $key->status = '0';
             $key->save();
         }
@@ -507,7 +506,7 @@ class PageController extends Controller
         $takesp = DB::table('products as sp')
                     ->leftjoin('product_type as lsp', 'sp.id_type' , '=', 'lsp.id')
                     ->select('sp.id as spid', 'lsp.type_name' , 'sp.name' , 'sp.unit_price' , 'sp.promotion_price' ,'sp.size' , 'sp.description' , 'sp.status')
-                    ->paginate(12,['*'],'product');
+                    ->paginate(10,['*'],'product');
                     // ->get();
 
         return view('Admin.pageadmin.adminsanpham', compact('takesp'));
@@ -574,7 +573,7 @@ class PageController extends Controller
         $getcl = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=', 'ctsp.id')
                             ->leftjoin('products as sp', 'ctsp.id_product', '=' , 'sp.id')
                             ->where('sp.id', '=', $idsp)
-                            ->select('product_color.color')
+                            ->select('product_color.id as idcl','product_color.color')
                             ->get();
         $getimg = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
                             ->leftjoin('products as sp', 'ctsp.id_product', '=' , 'sp.id')
@@ -583,6 +582,13 @@ class PageController extends Controller
                             ->get();
         // dd($getimg);
         return view('Admin.pageadmin.adminsuasanpham', compact('product_type', 'id_product_edit', 'product_name', 'id_type', 'type_name','not_type_name', 'adminlsp', 'editsp', 'getcl','getimg'));
+    }
+
+    public function AjaxSuamausp(Request $req){
+        $idcl = $req->iddelcl;
+        ProductColor::find($idcl)->delete();
+
+        return response()->json(['data' => $idcl]);
     }
 
     public function postadminSuasanpham($idsp, Request $req){
@@ -598,20 +604,25 @@ class PageController extends Controller
         $id_product->save();
         $idctsp = ProductDetail::where('id_product',$idsp)->value('id');
         $ctsanpham = ProductDetail::find($idctsp);
-        // dd($ctsanpham);
+        
         $ctsanpham->id_product = $id_product->id;
         $ctsanpham->save();
 
         $id_detail = ProductDetail::where('id_product',$idsp)->value('id');
         $id_color = ProductColor::where('id',$id_detail)->value('id');
         $id_image = ProductImage::where('id_detail',$id_detail)->get();
-        
+
+        $colorsp = ProductColor::where('id_detail',$idsp)->select('id')->get();
+        foreach($colorsp as $cl){
+            $cl->delete();
+        }
         foreach ($req->newcolor as $key) {
-            $colorsp = ProductColor::find($idsp);
+            $colorsp = new ProductColor;
             $colorsp->id_detail = $ctsanpham->id;
             $colorsp->color = $key;
             $colorsp->save();
         }
+
         if($req->hasfile('newimage')){
             foreach($req->file('newimage') as $image){
                 $name=date('Y-m-d-H-i-s')."-".$image->getClientOriginalName();
@@ -631,14 +642,8 @@ class PageController extends Controller
                 'image'=>$i,
             ]);
         }
-        // $i=0; 
-        // foreach($idim as $idm){
-        //     ProductImage::where('id',$idm)->update([
-        //         'image'=>$img[$i]
-        //     ]);
-        //     $i++;
-        // }
-        return redirect()->back()->with('editsp', 'Đã sửa!');
+
+        return redirect()->back()->with('editsp', 'Đã sửa: '.$id_product->name);
     }
 
     public function postadminXoanhieusanpham(Request $req){
@@ -730,10 +735,8 @@ class PageController extends Controller
     }
 
     public function getadminLoaisanpham(){
-        $adminlsp = ProductType::paginate(12,['*'],'product');
-        $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
-                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
-                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+        $adminlsp = ProductType::paginate(10,['*'],'product');
+        $product = Product::join('product_type as ty', 'products.id_type', '=', 'ty.id')
                             ->groupBy('products.id')
                             ->get();
 

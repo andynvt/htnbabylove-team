@@ -143,7 +143,7 @@
         @yield('contentadmin')
     </div>
 
-
+    {{-- Script tổng --}}
     <script>
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
@@ -154,6 +154,7 @@
         }
     </script>
 
+    {{-- Script sắp xếp bảng --}}
 	<script>
         function sortTable(n) {
           var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;

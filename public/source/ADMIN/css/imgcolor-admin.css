@@ -36,12 +36,6 @@
     display: none;
 }
 
-.admin-color input{
-    display: inline-block !important;
-    margin: 5px 10px 5px 0;
-    width: 20%;
-}
-
 .dehinh {
     width: 50px;
     height: 50px;

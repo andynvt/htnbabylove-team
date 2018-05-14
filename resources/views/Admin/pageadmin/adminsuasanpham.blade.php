@@ -100,7 +100,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="maloai">Loại sản phẩm:</label>
                                             <div class="col-sm-8">
-                                                <select class="form-control w50" name="newtype" required>
+                                                <select class="form-control w50" id="maloai" name="newtype" required>
                                                     @foreach($product_type as $lsp)
                                                     @if($lsp->id == $sp->id_type)
                                                         <option value="{{$id_type}}" selected>{{ $type_name }}</option>
@@ -124,9 +124,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-4" for="soluong">Kích thước:</label>
+                                            <label class="control-label col-sm-4" for="kichthuoc">Kích thước:</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="soluong" placeholder="VD: 30x30x30" name="newsize" value="{{ $sp->size }}" required>
+                                                <input type="text" class="form-control w50" id="kichthuoc" placeholder="VD: 30x30x30" name="newsize" value="{{ $sp->size }}" required>
                                             </div>
                                         </div>
                                         {{-- <input type="hidden" value="1" name="trangthai"> --}}
@@ -134,54 +134,31 @@
                                             <label class="control-label col-sm-4" for="mausac">Màu sắc:</label>
                                             <div class="admin-add-color col-sm-8">
                                                 <div class="w50">
-                                                    <button class=" btn btn-default btn-number-color" type="button">Chọn số lượng màu</button>
+                                                    <button class=" btn btn-default btn-number-color" type="button">Thêm màu mới</button>
                                                     <div class="admin-num-color">
                                                         <input type="number" class="form-control" placeholder="Nhập số lượng màu" min="0">
-                                                        <button class="btn btn-default btn-selected-number" type="button">OK</button>
+                                                        <button class="btn btn-default btn-selected-number" type="button">Thêm</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group admin-color">
                                             <label class="control-label col-sm-4" for="soluong">Nhập màu:</label>
-                                            <div class="col-sm-4 type-color">
-                                                @foreach($getcl as $cl)
-                                                <input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newcolor[]" multiple value="{{ $cl->color }}" >
-                                                @endforeach
+                                            <div class="col-sm-8">
+                                                <div class="w50 type-color">
+                                                    @foreach($getcl as $cl)
+                                                        <div class="div-color" id="{{ $cl->idcl }}">
+                                                            <div class="old-color">
+                                                                <input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newcolor[]" multiple value="{{ $cl->color }}" >
+                                                                <a><i data-toggle="tooltip" title="Xoá" class="fa fa-close"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
                                             </div>
                                             <p class="col-sm-8 col-sm-offset-4" style="color: #9A9A9A;">(*) Mỗi ô một màu</p>
                                         </div>
 
-                                        <style>
-                                            .admin-color{
-                                                display: block;
-                                            }
-                                        </style>
-                                        <script>
-                                            $('.btn-number-color').on('click',function(){
-                                                $('.admin-num-color').css('display', 'block');
-                                            });
-
-                                            $('.btn-selected-number').on('click', function(){
-                                                var ip = '<input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newcolor[]" multiple>';
-                                                var qtycolor = $('.admin-num-color input').val();
-
-                                                $('.admin-num-color').css('display', 'none');
-                                                $('.type-color').empty();
-                                                
-                                                $('.admin-color').css('display', 'block');
-
-                                                if(qtycolor > 0){
-                                                    for($i = 1; $i<=qtycolor; $i++){
-                                                        $('.type-color').append(ip);
-                                                    }
-                                                }
-                                                else{
-                                                    $('.admin-color').css('display', 'none');
-                                                }
-                                                
-                                            });
-                                        </script>
                                         <div class="form-group">
                                             <label for="files" class="control-label col-sm-4">Hình ảnh: </label>
                                             <div class="col-sm-4">
@@ -230,8 +207,8 @@
                                             
                                         </div>
                                         <div class="form-group">
-                                            <div class="col-sm-offset-6 col-sm-8">
-                                                <button type="button" class="btn btn-light btn-magrin2"><a href="{{route('adminsanpham')}}">Hủy</a></button>
+                                            <div class="col-sm-offset-4 col-sm-8">
+                                                <a type="button" class="btn btn-light btn-magrin2" href="{{route('adminsanpham')}}">Hủy</a>
                                                 <button type="submit" class="btn btn-primary btn-magrin btn-submit">Lưu lại</button>
                                             </div>
                                         </div>
@@ -248,4 +225,60 @@
             </div>
         </div>
     </div>
+
+{{-- Script sửa sản phẩm --}}
+<script>
+    $('.btn-number-color').on('click',function(){
+        $('.admin-num-color').css('display', 'block');
+    });
+
+    $('.btn-selected-number').on('click', function(){
+        var ip = '<div class="div-color"> <div class="new-color"> <input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newcolor[]" multiple value=""> <a><i data-toggle="tooltip" title="Xoá" class="fa fa-close"></i></a> </div> </div>';
+
+        var qtycolor = $('.admin-num-color input').val();
+
+        $('.admin-num-color').css('display', 'none');
+        $('.admin-color').css('display', 'block');
+
+        if(qtycolor > 0){
+            for($i = 1; $i<=qtycolor; $i++){
+                $('.type-color').append(ip);
+            }
+        }
+
+        $('.div-color a').on('click', function(){
+            var boolean = $(this).parent('div').attr('class');
+            if(boolean == 'new-color'){
+                $(this).parents('.div-color').remove();
+            }
+        });
+    });
+
+    $('.div-color a').on('click', function(){
+        var idcl = $(this).parents('.div-color').attr('id');
+        $.get('suamausp', {iddelcl: idcl}, function(data){});
+        $(this).parents('.div-color').remove();
+    });
+</script>
+
+{{-- style sửa sản phẩm --}}
+<style>
+    .admin-color{
+        display: block;
+    }
+    .div-color{
+        position: relative;
+        width: 25%;
+        display: inline-block !important;
+        margin: 5px 10px 5px 0;
+    }
+    .div-color i{
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+
 @endsection
