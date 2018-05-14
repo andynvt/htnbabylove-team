@@ -112,15 +112,23 @@ class AppServiceProvider extends ServiceProvider
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->groupBy('products.id')
                             ->get();         
-          
                 $view->with('product',$product);
         });
+        
         view()->composer('Admin.master',function($view){
             $product_color = ProductColor::leftjoin('product_detail as ctsp', 'product_color.id_detail', '=' , 'ctsp.id')
                             ->leftjoin('products as sp', 'ctsp.id_product', '=', 'sp.id')
                             ->select('sp.id as spid', 'product_color.color')
                             ->get();
             $view->with('product_color',$product_color);
+        });
+
+        view()->composer('Admin.master',function($view){
+            $product_image = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
+                            ->join('products as sp', 'ctsp.id_product', '=', 'sp.id')
+                            ->get();
+                            // ->where('sp.id', $id)
+            $view->with('product_image',$product_image);
         });
        
     }

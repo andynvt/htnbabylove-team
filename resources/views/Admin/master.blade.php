@@ -209,15 +209,30 @@
                     <div class="container-full">
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
-                                <div class="single-item">
-                                    <div class="ribbon-wrapper">
-                                        {{-- <div class="ribbon1 sale buy-item">Sale</div> --}}
+                                <div class="container-filud">
+                                  <div id="myCarousel{{ $sp->id_product }}" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+
+                                      <div class="item active">
+                                        <img src="storage/product/{{$sp->image}}"  class="img-responsive" width="480px">
+                                      </div>
+                                    @foreach($product_image as $anh)
+                                    @if($sp->id_product == $anh->id)
+                                      <div class="item">
+                                        <img src="storage/product/{{$anh->image}}"  class="img-responsive" width="480px">
+                                        
+                                      </div>
+                                    @endif
+                                    @endforeach
                                     </div>
-                                    <div class="thumbnail">
-                                        <div class="containeroverlay"> 
-                                            
-                                                <img src="storage/product/{{$sp->image}}" alt="Thumbnail Image 1" class="img-responsive" width="480px"></div>
-                                    </div>
+                                    <!-- Left and right controls -->
+                                    <a class="left carousel-control" href="#myCarousel{{ $sp->id_product }}" data-slide="prev">
+                                      <span class="glyphicon glyphicon-chevron-left"></span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel{{ $sp->id_product }}" data-slide="next">
+                                      <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </a>
+                                  </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-offset-0">
