@@ -148,7 +148,7 @@
                                     <div class="space10">&nbsp;</div>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-12">
-                                            <a class="btn btn-themvaogio btn-sp-re btn-full " href="{{route('themgiohang',$sanpham->id)}}"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+                                            <a class="btn btn-themvaogio btn-sp-re btn-full" href="{{route('themgiohang',$sanpham->id)}}"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
                                         </div>
                                         <div class="col-lg-6 col-md-12">
                                             <button type="submit" class="btn btn-buy btn-sp-re btn-full button"><span>Mua Ngay </span></button>

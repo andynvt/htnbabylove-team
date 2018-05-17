@@ -223,3 +223,6 @@ Route::post('lien-he', [
 	'as' => 'lienhe',
 	'uses' => 'PageController@postlh'
 ]);
+
+Route::get('mausp', 'PageController@getAddtoCart');
+Route::get('changeqty', 'PageController@getChangeqty');

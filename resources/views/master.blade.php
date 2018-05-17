@@ -138,7 +138,7 @@
     <!-- #footer -->
     
     
-    <script>
+    {{-- <script>
         function alert() {
             $.iaoAlert({
                     @if(session('del-cart'))
@@ -164,7 +164,7 @@
                     @endif
             })
         };
-    </script>
+    </script> --}}
     <script type="text/javascript" src="source/js/iao-alert.jquery.js"></script>
     <script type="text/javascript" src="source/js/cart.js"></script>
     <script type="text/javascript" src='source/js/modal.js'></script>

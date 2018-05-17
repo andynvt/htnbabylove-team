@@ -138,7 +138,17 @@
                                                     <div class="cart-product-name text-title"> 
                                                         <a href="#"></a>{{$product['item']['name']}}</div>
                                                     <div class="cart-product-info">
-                                                        <div class="form-group change-color">
+                                                       {{--  <select name="colorbuy" id="colorbuy">
+                                                        @foreach($color as $cl)
+                                                            @if($product['item']['id'] == $cl->id_detail)
+                                                                <option selected value="{{$product['item']['color']}}">{{$product['item']['color']}}</option>
+                                                            @else
+                                                                <option value="{{$cl->color}}">{{$cl->color}}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select> --}}
+
+                                                        <div class="form-group change-color" id="cld_{{$product['item']['id']}}">
                                                             {{$product['item']['color']}}
                                                         </div>
                                                         <div>Size: {{$product['item']['size']}} </div>
@@ -174,7 +184,9 @@
                                                 $(".confirm-change-qty").on('click', function () {
                                                     $(this).parents(".change-qty").css("display", "none");
                                                     var qtyproduct =  $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').val();
-                                                    $(this).parents('.change-qty').prev('.cart-input-qty').find('input').val(qtyproduct);
+                                                    $.get('changeqty', {newqty: qtyproduct}, function(data){
+                                                        $(this).parents('.change-qty').prev('.cart-input-qty').find('input').val(data);
+                                                    });
                                                 });
                                             </script>
                                         </div>
@@ -253,8 +265,8 @@
                                         </div>
                                         </div>
                                         <label class="col-4">Màu:</label>
-                                        <div class="form-group change-color col-7">
-                                            Đỏ
+                                        <div class="form-group change-color col-7" id="clm_{{$product['item']['id']}}">
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -287,7 +299,7 @@
        
     <div class="modal fade" id="pro{{$promo->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
-        <form action="{{ route('chitietsp', $promo->id_product) }}" method="post">    
+        <form action="{{ route('chitietsp', $promo->id_product) }}" method="post"> 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">  
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -346,10 +358,10 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <p class=" text-price text-modal-re"><b>&nbsp;Màu sắc:</b></p>
                                                 <div class="form-group text-modal-re">
-                                                    <select name="colorbuy" >
+                                                    <select name="colorbuy" id="colorbuy">
                                                         @foreach($product_color as $pro)
                                                             @if($promo->id_product == $pro->spid)
-                                                                <option>{{$pro->color}}</option>
+                                                                <option value="{{$pro->color}}">{{$pro->color}}</option>
                                                             @endif
                                                         @endforeach
                                                     </select>
@@ -371,9 +383,23 @@
                                     <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Huỷ</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
-                                    <a class="btn btn-buy btn-modal-re btn-modal btn-full " href="{{route('themgiohang',$promo->id_product)}}">Thêm Vào Giỏ</a>
+                                    <a class="btn btn-buy btn-modal-re btn-modal btn-full " id="tvg_{{ $promo->id_product }}" >Thêm Vào Giỏ</a>
                                     
                                 </div>
+                                <script>
+                            $('#tvg_{{ $promo->id_product }}').on('click',function(){
+                                var color = $(this).parents('.modal-footer').prev('.modal-body').find('select').val();
+                                var qty = $(this).parents('.modal-footer').prev('.modal-body').find('input').val();
+                                var id = '{{ $promo->id_product }}';
+                                // alert(qty);
+                                $.get('mausp', {colorbuy: color, qtybuy: qty, id:id}, function(cl, qty, id, cart){
+                                    // console.log(cl, qty, id, cart);
+                                    $('#cld_{{$promo->id_product}}').html(cl);
+                                    $('#clm_{{$promo->id_product}}').html(cl);
+
+                                });
+                            });
+                        </script>
                                 <div class="col-lg-3 col-md-4 col-xs-12">
                                     @if(Session::has('cart'))
                                         <a class="btn btn-buy btn-modal-re btn-modal btn-full button" href="{{route('themgiohang',$promo->id_product)}}"><span>Thanh Toán</span></a>
@@ -385,7 +411,7 @@
                         </div>
                     </div>
                 </div>
-            </div>             
+            </div>  
         </form>
     </div>
        
@@ -482,9 +508,10 @@
                                     <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Huỷ</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
-                                    <a class="btn btn-buy btn-modal-re btn-modal btn-full " href="{{route('themgiohang',$new->id_product)}}">Thêm Vào Giỏ</a>
+                                    <a class="btn btn-buy btn-modal-re btn-modal btn-full "  href="{{route('themgiohang',$new->id_product)}}">Thêm Vào Giỏ</a>
                                     
                                 </div>
+                                
                                 <div class="col-lg-3 col-md-4 col-xs-12">
                                     @if(Session::has('cart'))
                                         <a class="btn btn-buy btn-modal-re btn-modal btn-full button" href="{{route('themgiohang',$new->id_product)}}"><span>Thanh Toán</span></a>
