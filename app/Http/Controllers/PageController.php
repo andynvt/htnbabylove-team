@@ -600,12 +600,12 @@ class PageController extends Controller
         return view('Admin.pageadmin.adminsuasanpham', compact('product_type', 'id_product_edit', 'product_name', 'id_type', 'type_name','not_type_name', 'adminlsp', 'editsp', 'getcl','getimg'));
     }
 
-    public function AjaxSuamausp(Request $req){
-        $idcl = $req->iddelcl;
-        ProductColor::find($idcl)->delete();
+    // public function AjaxSuamausp(Request $req){
+    //     $idcl = $req->iddelcl;
+    //     ProductColor::find($idcl)->delete();
 
-        return response()->json(['data' => $idcl]);
-    }
+    //     return response()->json(['data' => $idcl]);
+    // }
 
     public function postadminSuasanpham($idsp, Request $req){
         $id_product = Product::find($idsp);

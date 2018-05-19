@@ -255,8 +255,6 @@
     });
 
     $('.div-color a').on('click', function(){
-        var idcl = $(this).parents('.div-color').attr('id');
-        $.get('suamausp', {iddelcl: idcl}, function(data){});
         $(this).parents('.div-color').remove();
     });
 </script>
