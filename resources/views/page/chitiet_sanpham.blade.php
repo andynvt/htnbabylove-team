@@ -148,10 +148,13 @@
                                     <div class="space10">&nbsp;</div>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-12">
-                                            <a class="btn btn-themvaogio btn-sp-re btn-full" href="{{route('themgiohang',$sanpham->id)}}"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+                                            <a class="btn btn-themvaogio btn-sp-re btn-full" href="{{route('themnhanh',$sanpham->id)}}"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
                                         </div>
                                         <div class="col-lg-6 col-md-12">
+                                            @if(Session::has('cart'))
+                                            @else
                                             <button type="submit" class="btn btn-buy btn-sp-re btn-full button"><span>Mua Ngay </span></button>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -369,7 +372,7 @@
                                                 @elseif($same->status == 2)
                                                     #hot{{$same->id_product}}
                                                 @endif"><span>Mua Ngay </span></button>
-                                        <a class="btn btn-themvaogio btn-themvaogio-re btn-full " href="{{route('themgiohang',$same->id_product)}}" style="color: white">Thêm vào giỏ</a>
+                                        <a class="btn btn-themvaogio btn-themvaogio-re btn-full " href="{{route('themnhanh',$same->id_product)}}" style="color: white">Thêm vào giỏ</a>
                                         <hr>
                                     </div>
                                 </div>
@@ -407,7 +410,7 @@
                                                 @endif
                                             </p>
                                             <button type="button" class="btn-ms btn-buy btn-buy-sp-re btn-full button" data-toggle="modal" data-target="#hot{{$hot->id_product}}">Mua Ngay</button>
-                                            <a class="btn-ms btn-themvaogio-a btn-buy-sp-re btn-full " href="{{route('themgiohang',$hot->id_product)}}">Thêm vào giỏ</a>
+                                            <a class="btn-ms btn-themvaogio-a btn-buy-sp-re btn-full " href="{{route('themnhanh',$hot->id_product)}}">Thêm vào giỏ</a>
                                     </div>
                                 </div>
                                 </div>
@@ -442,7 +445,9 @@
                                         @endif
                                     </p>
                                     <button type="button" class="btn-ms btn-buy btn-buy-sp-re btn-full button" data-toggle="modal" data-target="#new{{$new->id_product}}"><span>Mua Ngay </span></button>
-                                    <a class="btn-ms btn-themvaogio-a btn-buy-sp-re btn-full " href="{{route('themgiohang',$new->id_product)}}">Thêm vào giỏ</a>
+
+
+                                    <a class="btn-ms btn-themvaogio-a btn-buy-sp-re btn-full " href="{{route('themnhanh',$new->id_product)}}">Thêm vào giỏ</a>
                                 </div>
                                 </div>
                             </div>

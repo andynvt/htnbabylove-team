@@ -137,16 +137,6 @@
                                                     <div class="cart-product-name text-title"> 
                                                         <a href="#"></a>{{$product['item']['name']}}</div>
                                                     <div class="cart-product-info">
-                                                       {{--  <select name="colorbuy" id="colorbuy">
-                                                        @foreach($color as $cl)
-                                                            @if($product['item']['id'] == $cl->id_detail)
-                                                                <option selected value="{{$product['item']['color']}}">{{$product['item']['color']}}</option>
-                                                            @else
-                                                                <option value="{{$cl->color}}">{{$cl->color}}</option>
-                                                            @endif
-                                                        @endforeach
-                                                    </select> --}}
-
                                                         <div class="form-group change-color" id="cld_{{$product['item']['id']}}">
                                                             {{$product['item']['color']}}
                                                         </div>
@@ -382,32 +372,25 @@
                                     <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Huỷ</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
-                                    <a class="btn btn-buy btn-modal-re btn-modal btn-full " id="tvg_{{ $promo->id_product }}" >Thêm Vào Giỏ</a>
-                                    
+                                    <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full " id="tvg_{{ $promo->id_product }}" >Thêm Vào Giỏ</a>
                                 </div>
                                 <script>
                             $('#tvg_{{ $promo->id_product }}').on('click',function(){
                                 var color = $(this).parents('.modal-footer').prev('.modal-body').find('select').val();
                                 var qty = $(this).parents('.modal-footer').prev('.modal-body').find('input').val();
                                 var id = '{{ $promo->id_product }}';
-                                // alert(qty);
                                 $.get('mausp', {colorbuy: color, qtybuy: qty, id:id}, function(cl, qty, id, cart){
-                                    // console.log(cl, qty, id, cart);
                                     $('#cld_{{$promo->id_product}}').html(cl);
                                     $('#clm_{{$promo->id_product}}').html(cl);
-                                    
                                     location.reload();
-                                    // alert_test1();
-
                                 });
                             });
                                 </script>
-                        {{-- @if(Session('')) --}}
                                 <div class="col-lg-3 col-md-4 col-xs-12">
                                     @if(Session::has('cart'))
-                                        <a class="btn btn-buy btn-modal-re btn-modal btn-full button" href="{{route('themgiohang',$promo->id_product)}}"><span>Thanh Toán</span></a>
+                                        <a class="btn btn-buy btn-modal-re btn-modal btn-full button" href="{{route('themnhanh',$promo->id_product)}}"><span>Thanh Toán</span></a>
                                     @else
-                                        <button class="btn btn-buy btn-modal-re btn-modal btn-full button" type="submit"><span>Thanh Toán</span></button>
+                                        <button class="btn btn-buy btn-modal-re btn-modal btn-full button" type="submit"><span>Mua Nhanh</span></button>
                                     @endif
                                 </div>
                             </div>
@@ -511,13 +494,25 @@
                                     <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Huỷ</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
-                                    <a class="btn btn-buy btn-modal-re btn-modal btn-full "  href="{{route('themgiohang',$new->id_product)}}">Thêm Vào Giỏ</a>
+                                    <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_{{ $new->id_product }}" >Thêm Vào Giỏ</a>
                                     
                                 </div>
+                                <script>
+                            $('#tvg_{{ $new->id_product }}').on('click',function(){
+                                var color = $(this).parents('.modal-footer').prev('.modal-body').find('select').val();
+                                var qty = $(this).parents('.modal-footer').prev('.modal-body').find('input').val();
+                                var id = '{{ $new->id_product }}';
+                                $.get('mausp', {colorbuy: color, qtybuy: qty, id:id}, function(cl, qty, id, cart){
+                                    $('#cld_{{$new->id_product}}').html(cl);
+                                    $('#clm_{{$new->id_product}}').html(cl);
+                                    location.reload();
+                                });
+                            });
+                                </script>
                                 
                                 <div class="col-lg-3 col-md-4 col-xs-12">
                                     @if(Session::has('cart'))
-                                        <a class="btn btn-buy btn-modal-re btn-modal btn-full button" href="{{route('themgiohang',$new->id_product)}}"><span>Thanh Toán</span></a>
+                                        <a class="btn btn-buy btn-modal-re btn-modal btn-full button" href="{{route('themnhanh',$new->id_product)}}"><span>Thanh Toán</span></a>
                                     @else
                                         <button class="btn btn-buy btn-modal-re btn-modal btn-full button" type="submit"><span>Thanh Toán</span></button>
                                     @endif
@@ -560,9 +555,7 @@
                                         @endif
                                         </div>
                                         <div class="thumbnail ">
-                                          
                                             <img src="storage/product/{{$hot->image}}" alt="Thumbnail Image 1" class="thumbnail-re" width="480px">
-                                          
                                         </div>
                                     </div>
                                 </div>
@@ -621,12 +614,23 @@
                                     <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Huỷ</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
-                                    <a class="btn btn-buy btn-modal-re btn-modal btn-full " href="{{route('themgiohang',$hot->id_product)}}">Thêm Vào Giỏ</a>
-                                    
+                                    <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_{{ $hot->id_product }}" >Thêm Vào Giỏ</a>
                                 </div>
+                                <script>
+                            $('#tvg_{{ $hot->id_product }}').on('click',function(){
+                                var color = $(this).parents('.modal-footer').prev('.modal-body').find('select').val();
+                                var qty = $(this).parents('.modal-footer').prev('.modal-body').find('input').val();
+                                var id = '{{ $hot->id_product }}';
+                                $.get('mausp', {colorbuy: color, qtybuy: qty, id:id}, function(cl, qty, id, cart){
+                                    $('#cld_{{$hot->id_product}}').html(cl);
+                                    $('#clm_{{$hot->id_product}}').html(cl);
+                                    location.reload();
+                                });
+                            });
+                                </script>
                                 <div class="col-lg-3 col-md-4 col-xs-12">
                                     @if(Session::has('cart'))
-                                        <a class="btn btn-buy btn-modal-re btn-modal btn-full button" href="{{route('themgiohang',$hot->id_product)}}"><span>Thanh Toán</span></a>
+                                        <a class="btn btn-buy btn-modal-re btn-modal btn-full button" href="{{route('themnhanh',$hot->id_product)}}"><span>Thanh Toán</span></a>
                                     @else
                                         <button class="btn btn-buy btn-modal-re btn-modal btn-full button" type="submit"><span>Thanh Toán</span></button>
                                     @endif

@@ -68,7 +68,7 @@
                                                 @elseif($promo->status == 2)
                                                 #hot{{$promo->id_product}}
                                                 @endif"><span>Mua Ngay </span></button>
-                                        <a class="btn btn-themvaogio btn-themvaogio-re btn-full " href="{{route('themgiohang',$promo->id_product)}}" style="color: white">Thêm vào giỏ</a>
+                                        <a class="btn btn-themvaogio btn-themvaogio-re btn-full " href="{{route('themnhanh',$promo->id_product)}}" style="color: white">Thêm vào giỏ</a>
                                         <hr>
                                     </div>
                                 </div>
