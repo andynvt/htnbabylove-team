@@ -59,6 +59,10 @@
         <body onload="admin.showNotification('top','right')"></body>
     @elseif (session('cancelbill'))
         <body onload="admin.showNotification('top','right')"></body>
+    @elseif (session('successbill'))
+        <body onload="admin.showNotification('top','right')"></body>
+    @elseif (session('failbill'))
+        <body onload="admin.showNotification('top','right')"></body>
     @elseif (session('deletesp'))
         <body onload="admin.showNotification('top','right')"></body>
     @elseif (session('editsp'))
@@ -107,6 +111,18 @@
                 $.notify({
                     icon: "ti-close",
                     message: "{{ session('cancelbill') }}"
+                }
+                @elseif (session('successbill'))
+                color = Math.floor(2);
+                $.notify({
+                    icon: "ti-check",
+                    message: "{{ session('successbill') }}"
+                }
+                @elseif (session('failbill'))
+                color = Math.floor(4);
+                $.notify({
+                    icon: "ti-close",
+                    message: "{{ session('failbill') }}"
                 }
                 @elseif(session('deletesp'))
                 color = Math.floor(4);

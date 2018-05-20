@@ -73,10 +73,12 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 ">
                         <div class="panel panel-default ">
-                            <div class="panel-heading "> <strong>
-                <span class="glyphicon glyphicon-th "></span>
-                <span>Chú thích</span>
-              </strong> </div>
+                            <div class="panel-heading "> 
+                                <strong>
+                                    <span class="glyphicon glyphicon-th "></span>
+                                    <span>Chú thích</span>
+                                </strong> 
+                            </div>
                             <div class="container-fluid">
                                 <div class="space10">&nbsp;</div>
                                 <table class="table table-bordered text-align">
@@ -97,7 +99,7 @@
                                         </tr>
                                         <tr>
                                             <td class="danggui">3</td>
-                                            <td>Hàng đang gửi</td>
+                                            <td>Đang gửi</td>
                                         </tr>
                                         <tr>
                                             <td class="choxacnhan">4</td>
@@ -108,13 +110,14 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
                                 <div class="feedback-item-name">
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <p>Danh sách đơn hàng</p>
+                                            <p>Danh sách đơn hàng chờ xác nhận</p>
                                         </div>
                                         <div class="col-md-1">
                                             <p></p>
@@ -125,13 +128,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="content table-responsive table-full-width st_table">
-                                <script type="text/javascript">
-                                    $(function() {
-                                        $('[data-toggle="tooltip"]').tooltip()
-                                    })
 
-                                </script>
+                            <div class="content table-responsive table-full-width st_table">
                                 <div class="container-fluid">
                                     <table class="table table-bordered text-align" id="myTable">
                                         <thead>
@@ -148,62 +146,207 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($bills as $b)
-                                            @if($b->status == 1)
-                                                <tr class="bihuy">
-                                            @elseif($b->status == 2)
-                                                <tr class="hoantat">
-                                            @elseif($b->status == 3)
-                                                <tr class="danggui">
-                                            @elseif($b->status == 4)
-                                                <tr class="choxacnhan">
-                                        @endif
-                                            <td>{{ $b->id }}</td>
+                                        @foreach($checkbill as $cb)
+                                        <tr class="choxacnhan">
+                                            <td>{{ $cb->id }}</td>
                                             <td>
-                                               @if($b->status == 1)
-                                                    Bị huỷ
-                                                @elseif($b->status == 2)
-                                                    Hoàn tất
-                                                @elseif($b->status == 3)
-                                                    Hàng đang gửi
-                                                @elseif($b->status == 4)
-                                                    Chờ xác nhận
-                                                @endif
-
+                                                Chờ xác nhận
                                             </td>
-                                            <td>{{ number_format($b->total_price) }} đ</td>
-                                            <td>{{ $b->total_product }}</td>
-                                            <td class="text-left">{{ $b->address }}</td>
-                                            <td>{{ date('d-m-Y / H:ip', strtotime($b->created_at)) }}</td>
+                                            <td>{{ number_format($cb->total_price) }} đ</td>
+                                            <td>{{ $cb->total_product }}</td>
+                                            <td class="text-left">{{ $cb->address }}</td>
+                                            <td>{{ date('d-m-Y / H:ip', strtotime($cb->created_at)) }}</td>
 
-                                            <td><a href="" data-toggle="modal" data-target="#{{$b->id}}">Xem</a>
+                                            <td><a href="" data-toggle="modal" data-target="#{{$cb->id}}">Xem</a>
                                             </td>
-                                            <td><a href="" data-toggle="modal" data-target="#c{{$b->id}}">Xem</a>
+                                            <td><a href="" data-toggle="modal" data-target="#c{{$cb->id}}">Xem</a>
                                             </td>
                                             <td>
-                                                <div class="">
-                                                @if($b->status == 1 || $b->status == 4)
-                                              
-                                                    <form action="{{ route('completedUpdate', $b->id) }}" method="POST">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('PATCH') }}
-                                                        <button class="btn btn-info btn-xs edit_icon" type="submit" data-toggle="tooltip" data-original-title="Duyệt đơn hàng">
-                                                            <i class="fa fa-check"></i></button>
-                                                    </form>
-                                                    <form action="{{ route('cancelUpdate', $b->id) }}" method="POST">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('PATCH') }}
-                                                        <button class="btn btn-info btn-xs edit_icon" type="submit" data-toggle="tooltip" data-original-title="Huỷ đơn hàng">
-                                                            <i class="fa fa-times"></i></button>
-                                                    </form>
-                                                @endif
-                                                </div>
+                                                <button class="btn btn-info btn-xs edit_icon" id="check_{{$cb->id}}" type="submit" data-toggle="tooltip" data-original-title="Duyệt đơn hàng">
+                                                    <i class="fa fa-check"></i></button>
+                                                <button class="btn btn-info btn-xs edit_icon" id="cancle_{{$cb->id}}" type="submit" data-toggle="tooltip" data-original-title="Huỷ đơn hàng">
+                                                    <i class="fa fa-times"></i></button>
                                             </td>
-                                            </tr>
+                                        </tr>
+                                        <script>
+                                            $('#check_{{$cb->id}}').on('click', function(){
+                                                var checkid = "{{ $cb->id }}";
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "check-bill",
+                                                    data: {checkid: checkid},
+                                                    beforeSend: function(){
+                                                        $('.block-form').css('display', 'block');
+                                                    },
+                                                    success: function(data){
+                                                        location.reload();
+                                                    }
+                                                });
+                                            });
+
+                                            $('#cancle_{{$cb->id}}').on('click', function(){
+                                                var cancleid = "{{ $cb->id }}";
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "cancle-bill",
+                                                    data: {cancleid: cancleid},
+                                                    beforeSend: function(){
+                                                        $('.block-form').css('display', 'block');
+                                                    },
+                                                    success: function(data){
+                                                        location.reload();
+                                                    }
+                                                });
+                                            });
+                                        </script>
                                         @endforeach
                                         </tbody>
                                     </table>
-                                    <div class="row" style="text-align: center;">{{$bills->links() }}</div>
+                                    <div class="row" style="text-align: center;">{{$checkbill->links() }}</div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="header">
+                                <div class="feedback-item-name">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <p>Danh sách đơn hàng đang được gửi</p>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <p></p>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content table-responsive table-full-width st_table">
+                                <div class="container-fluid">
+                                    <table class="table table-bordered text-align" id="myTable">
+                                        <thead>
+                                            <tr class="thead_change_color">
+                                                <th>Mã hoá đơn</th>
+                                                <th >Trạng thái</th>
+                                                <th>Tổng tiền</th>
+                                                <th>Số lượng sản phẩm</th>
+                                                <th>Địa chỉ</th>
+                                                <th>Ngày đặt</th>
+                                                <th>Đơn hàng</th>
+                                                <th>Khách hàng</th>
+                                                <th>Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($sendbill as $sb)
+                                        <tr class="danggui">
+                                            <td>{{ $sb->id }}</td>
+                                            <td>
+                                                Đang gửi
+                                            </td>
+                                            <td>{{ number_format($sb->total_price) }} đ</td>
+                                            <td>{{ $sb->total_product }}</td>
+                                            <td class="text-left">{{ $sb->address }}</td>
+                                            <td>{{ date('d-m-Y / H:ip', strtotime($sb->created_at)) }}</td>
+
+                                            <td><a href="" data-toggle="modal" data-target="#{{$sb->id}}">Xem</a>
+                                            </td>
+                                            <td><a href="" data-toggle="modal" data-target="#c{{$sb->id}}">Xem</a>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-info btn-xs edit_icon" id="s_{{ $sb->id }}" type="button" data-toggle="tooltip" data-original-title="Thành công">
+                                                    <i class="fa fa-check"></i>
+                                                </button>
+                                                <button class="btn btn-info btn-xs edit_icon" id="f_{{ $sb->id }}" type="button" data-toggle="tooltip" data-original-title="Thất bại">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <script>
+                                            $('#s_{{ $sb->id }}').on('click', function(){
+                                                var successid = "{{ $sb->id }}";
+                                                $.get('success-bill', {successid: successid}, function(data){
+                                                    location.reload();
+                                                });
+                                            });
+
+                                            $('#f_{{ $sb->id }}').on('click', function(){
+                                                var failid = "{{ $sb->id }}";
+                                                $.get('fail-bill', {failid: failid}, function(data){
+                                                    location.reload();
+                                                });
+                                            });
+                                        </script>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                    <div class="row" style="text-align: center;">{{$sendbill->links() }}</div>
+                                </div>
+                            </div>
+
+                            <div class="header">
+                                <div class="feedback-item-name">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <p>Danh sách đơn hàng hoàn tất</p>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <p></p>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content table-responsive table-full-width st_table">
+                                <div class="container-fluid">
+                                    <table class="table table-bordered text-align" id="myTable">
+                                        <thead>
+                                            <tr class="thead_change_color">
+                                                <th>Mã hoá đơn</th>
+                                                <th >Trạng thái</th>
+                                                <th>Tổng tiền</th>
+                                                <th>Số lượng sản phẩm</th>
+                                                <th>Địa chỉ</th>
+                                                <th>Ngày đặt</th>
+                                                <th>Đơn hàng</th>
+                                                <th>Khách hàng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($otherbill as $ob)
+                                        @if($ob->status == 2)
+                                        <tr class="hoantat">
+                                        @else
+                                        <tr class="bihuy">
+                                        @endif
+                                            <td>{{ $sb->id }}</td>
+                                            <td>
+                                                @if($ob->status == 2)
+                                                    Hoàn tất
+                                                @else
+                                                    Bị huỷ
+                                                @endif
+                                            </td>
+                                            <td>{{ number_format($ob->total_price) }} đ</td>
+                                            <td>{{ $ob->total_product }}</td>
+                                            <td class="text-left">{{ $ob->address }}</td>
+                                            <td>{{ date('d-m-Y / H:ip', strtotime($ob->created_at)) }}</td>
+
+                                            <td><a href="" data-toggle="modal" data-target="#{{$ob->id}}">Xem</a>
+                                            </td>
+                                            <td><a href="" data-toggle="modal" data-target="#c{{$ob->id}}">Xem</a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                    <div class="row" style="text-align: center;">{{$otherbill->links() }}</div>
                                 </div>
                             </div>
                         </div>
@@ -212,8 +355,9 @@
             </div>
         </div>
 </div>
+
 <!-- Modal xem khách hàng -->
-    <form action="" method="post">
+    {{-- <form action="" method="post">
         <!-- The Modal -->
         @foreach($bills as $b)
         @foreach($customers as $c)
@@ -234,7 +378,6 @@
                             <li>SĐT: {{$c->phone}}</li>
                             <li>Email: {{$c->email}}</li>
                             <li>Địa chỉ: {{$c->address}}</li>
-
                         </ul>
                     </div>
                     <div class="modal-footer">
@@ -260,9 +403,10 @@
         @endif
         @endforeach
         @endforeach
-    </form>
-    <!-- Modal xem đơn hàng -->
-    <form action="" method="post">
+    </form> --}}
+
+<!-- Modal xem đơn hàng -->
+    {{-- <form action="" method="post">
         <!-- The Modal -->
         @foreach($get_bill as $gb)
         @foreach($bills as $b)
@@ -298,9 +442,12 @@
                                                 </div>
                                                 <div class="col-md-9 col-9">
                                                     <div class="container-filud">
-                                                        <div class="cart-product-name text-title"> <a href="#">
-                                                                  <b style="font-size:15px;">{{$gbb->product_name}}
-</b>                                                                </a> </div>
+                                                        <div class="cart-product-name text-title"> 
+                                                            <a href="#">
+                                                                <b style="font-size:15px;">{{$gbb->product_name}}
+                                                                </b>                                                                
+                                                            </a> 
+                                                        </div>
                                                         <div class="cart-product-info">
                                                             <div>Màu: {{$gbb->color}}</div>
                                                             <div> Size: {{$gbb->size}} </div>
@@ -364,10 +511,14 @@
         @endif
         @endforeach
         @endforeach
-    </form>
-        
-    </script>
+    </form> --}}
 
-    
+    <div class="block-form">
+        <div class="loader">
+            <div class="spinner-bill"></div>
+            <br>
+            Đang xử lý, vui lòng chờ trong giây lát...
+        </div>
+    </div>
 
-    @endsection
+@endsection

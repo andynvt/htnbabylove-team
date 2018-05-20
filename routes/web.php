@@ -192,15 +192,11 @@ Route::get('admin-donhang', [
 	'uses' => 'PageController@getadminDonhang'
 ])->middleware('adminLogin');
 
-Route::patch('admin-donhang/{id}', [
-	'as' => 'completedUpdate',
-	'uses' => 'PageController@completedUpdate'
-]);
+Route::get('check-bill', 'PageController@completedUpdate');
+Route::get('cancle-bill', 'PageController@cancelUpdate');
 
-Route::patch('/tasks/completed/{id}', [
-	'as' => 'cancelUpdate',
-	'uses' => 'PageController@cancelUpdate'
-]);
+Route::get('success-bill', 'PageController@AjaxSuccessbill');
+Route::get('fail-bill', 'PageController@AjaxFailbill');
 
 Route::get('admin-doanhthu', [
 	'as' => 'admindoanhthu',

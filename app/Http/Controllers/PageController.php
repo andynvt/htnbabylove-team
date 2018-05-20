@@ -814,23 +814,28 @@ class PageController extends Controller
     }
     
     public function getadminKhachhang(){
-        $table  = Customer::paginate(12,['*'],'product');
+        $table  = Customer::paginate(10,['*'],'product');
         return view('Admin.pageadmin.adminkhachhang',compact('table'));
     }
 
     public function getadminDonhang(){
         $customers = Customer::all();
-        $bills = Bill::orderBy('status','desc')->paginate(12,['*'],'product');
+        $bills = Bill::orderBy('status','desc')->paginate(10,['*'],'product');
         $bill_detail = BillDetail::all();
 
+        $checkbill = Bill::where('status', 4)->paginate(10,['*'],'product');
+        $sendbill = Bill::where('status', 3)->paginate(10,['*'],'product');
+        $otherbill = Bill::where('status','<', 3)->paginate(10,['*'],'product');
+
         $get_bill = DB::select(DB::raw('SELECT bd.id as bdid, b.id as bid, b.total_price, bd.product_name, bd.color, bd.image, bd.size, bd.quantity, bd.price, c.name FROM bill_detail as bd, customers as c, bills as b WHERE bd.id_bill in (SELECT b.id FROM bills WHERE b.id_customer in (SELECT c.id FROM customers))'));
-        // dd($get_bill);
+        // dd($checkbill);
                         // dd($get_bill);
-        return view('Admin.pageadmin.admindonhang', compact('get_bill','bills','customers','bill_detail'));
+        return view('Admin.pageadmin.admindonhang', compact('get_bill','bills','customers','bill_detail', 'checkbill', 'sendbill', 'otherbill'));
     }
 
-    public function completedUpdate($id){
-        DB::table('bills')->where('id', $id)->update(['status' => 2]);
+    public function completedUpdate(Request $req){
+        $id = $req->checkid;
+        DB::table('bills')->where('id', $id)->update(['status' => 3]);
 		$customers = Customer::all();
         $bills = Bill::all();
 
@@ -846,27 +851,47 @@ class PageController extends Controller
             $message->from('nguyenkimhan2013@gmail.com', 'HTN BabyLove');
             $message->to($e,'')->subject($subject);
         });
-        return redirect()->back()->with('confirmbill', 'Đã xác nhận đơn hàng');
+
+        $req->session()->flash('confirmbill', 'Đã xác nhận đơn hàng');
+        return response()->json();
     }
 
-    public function cancelUpdate($id){
-        DB::table('bills')->where('id', $id)->update(['status' => 3]);
+    public function cancelUpdate(Request $req){
+        $id = $req->cancleid;
+        DB::table('bills')->where('id', $id)->update(['status' => 1]);
 		$customers = Customer::all();
         $bills = Bill::all();
 
         $e = Customer::join('bills as b','customers.id','=','b.id_customer')->where('b.id',$id)->value('email');
-        // $to =  $customers->email;
         $subject = 'Đơn Hàng Bị Huỷ';
         $data = array(
             'contents' => ''
         );
         
-
         Mail::send('email.huydonhang', $data, function($message) use ($e, $subject) {
             $message->from('nguyenkimhan2013@gmail.com', 'HTN BabyLove');
             $message->to($e,'')->subject($subject);
         });
-        return redirect()->back()->with('cancelbill', 'Đã huỷ đơn hàng');
+
+        $req->session()->flash('cancelbill', 'Đã huỷ đơn hàng');
+        return response()->json();
+    }
+
+    public function AjaxSuccessbill(Request $req){
+        $bill = Bill::find($req->successid);
+        $bill->status = 2;
+        $bill->save();
+
+        $req->session()->flash('successbill','Đơn hàng đã gửi thành công');
+        return response()->json(['data'=>$bill]);
+    }
+    public function AjaxFailbill(Request $req){
+        $bill = Bill::find($req->failid);
+        $bill->status = 1;
+        $bill->save();
+
+        $req->session()->flash('failbill','Đơn hàng đã gửi thất bại');
+        return response()->json(['data'=>$bill]);
     }
 
     public function getadminDoanhthu(){
