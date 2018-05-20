@@ -76,6 +76,11 @@ Route::get('add-to-cart/{id}',[
 	'uses'=>'PageController@getAddtoCart'
 ]);
 
+Route::get('quick-add-cart/{id}',[
+	'as'=>'themnhanh',
+	'uses'=>'PageController@getQuickAddCart'
+]);
+
 Route::get('del-cart/{id}',[
 	'as'=>'xoagiohang',
 	'uses'=>'PageController@getDelItemCart'

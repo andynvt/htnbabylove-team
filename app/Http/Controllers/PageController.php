@@ -30,7 +30,6 @@ class PageController extends Controller
         $id = $req->id;
         $product = Product::find($id);
         $img = DB::select(DB::raw('SELECT image FROM product_image WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products WHERE id='.$id.')) LIMIT 1'));
-        // $color = DB::select(DB::raw('SELECT color FROM product_color WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products WHERE id='.$id.')) LIMIT 1'));
 
         $product['sl'] = $sl;
         $product['img'] = $img[0]->image;
@@ -43,8 +42,24 @@ class PageController extends Controller
         $cart->add($product, $id, $sl);
         $req->session()->put('cart',$cart);
         // dd($cart);
-        // return redirect()->back()->with('add-cart','Thêm vào giỏ hàng thành công!');
-        return response()->json(['cl' => $color, 'qty' => $sl, 'id'=> $id, 'cart' => $cart])->redirect()->back();
+        $req->session()->flash('add-cart','Thêm vào giỏ hàng thành công!');
+        return response()->json(['cl' => $color, 'qty' => $sl, 'id'=> $id, 'cart' => $cart]);
+    }
+
+    public function getQuickAddCart(Request $req, $id){
+        $product = Product::find($id);
+        $img = DB::select(DB::raw('SELECT image FROM product_image WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products WHERE id='.$id.')) LIMIT 1'));
+        $color = DB::select(DB::raw('SELECT color FROM product_color WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products WHERE id='.$id.')) LIMIT 1'));
+        $sl = 1;
+        $product['sl'] = $sl;
+        $product['img'] = $img[0]->image;
+        $product['color'] = $color[0]->color;
+        
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $id, $sl);
+        $req->session()->put('cart',$cart);
+        return redirect()->back()->with('add-cart','Thêm vào giỏ hàng thành công!');
     }
 
     public function getChangeqty(Request $req){

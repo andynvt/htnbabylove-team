@@ -120,7 +120,6 @@
                         <div class="col-sm-2" style="text-align: center"> Xóa </div>    
                     </div>
                     
-
                     <div class="cart-content">
                         <!--desktop-->
                         <div class="desktop-cart">
@@ -396,10 +395,14 @@
                                     // console.log(cl, qty, id, cart);
                                     $('#cld_{{$promo->id_product}}').html(cl);
                                     $('#clm_{{$promo->id_product}}').html(cl);
+                                    
+                                    location.reload();
+                                    // alert_test1();
 
                                 });
                             });
-                        </script>
+                                </script>
+                        {{-- @if(Session('')) --}}
                                 <div class="col-lg-3 col-md-4 col-xs-12">
                                     @if(Session::has('cart'))
                                         <a class="btn btn-buy btn-modal-re btn-modal btn-full button" href="{{route('themgiohang',$promo->id_product)}}"><span>Thanh Toán</span></a>

@@ -30,13 +30,13 @@ class Cart
 			$giohang['price'] = $item->unit_price * $giohang['qty'];
 			$this->items[$id] = $giohang;
 			$this->totalQty += $sl;
-			$this->totalPrice += $item->unit_price;
+			$this->totalPrice += $item->unit_price * $sl;
 		}
 		else{
 			$giohang['price'] = $item->promotion_price * $giohang['qty'];
 			$this->items[$id] = $giohang;
 			$this->totalQty += $sl;
-			$this->totalPrice += $item->promotion_price;
+			$this->totalPrice += $item->promotion_price * $sl;
 		}
 		
 	}

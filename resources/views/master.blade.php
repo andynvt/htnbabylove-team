@@ -47,15 +47,15 @@
 
 <body>
 @if (session('del-cart'))
-    <body onload="alert()"></body>
+    <body onload="alert_test()"></body>
 @elseif (session('add-cart')) 
-    <body onload="alert()"></body>
+    <body onload="alert_test()"></body>
 @elseif (session('dathang'))
-    <body onload="alert()"></body>
+    <body onload="alert_test()"></body>
 @elseif (session('danhgia'))
-    <body onload="alert()"></body>
+    <body onload="alert_test()"></body>
 @elseif (session('lienhe'))
-    <body onload="alert()"></body>
+    <body onload="alert_test()"></body>
 @endif
     {{-- Modal liên hệ --}}
     <div class="modal fade cont-modal" id="contactModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -138,8 +138,8 @@
     <!-- #footer -->
     
     
-    {{-- <script>
-        function alert() {
+    <script>
+        function alert_test() {
             $.iaoAlert({
                     @if(session('del-cart'))
                         msg: "{{session('del-cart')}}",
@@ -164,7 +164,7 @@
                     @endif
             })
         };
-    </script> --}}
+    </script>
     <script type="text/javascript" src="source/js/iao-alert.jquery.js"></script>
     <script type="text/javascript" src="source/js/cart.js"></script>
     <script type="text/javascript" src='source/js/modal.js'></script>
