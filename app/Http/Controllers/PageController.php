@@ -177,7 +177,7 @@ class PageController extends Controller
         $feedback = Feedback::leftjoin('products as sp', 'feedbacks.id_product', '=' ,'sp.id')
                             ->where('sp.id', $id)
                             ->select('sp.id as spid', 'feedbacks.id as fbid', 'feedbacks.stars', 'feedbacks.reviewer', 'feedbacks.tel', 'feedbacks.review', 'feedbacks.created_at')
-                            ->get();
+                            ->paginate(10,['*'],'feedback');
 
         $type_name = ProductType::join('products as sp', 'product_type.id', '=', 'sp.id_type')
                             ->where('sp.id', $id)

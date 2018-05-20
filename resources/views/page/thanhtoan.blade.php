@@ -110,7 +110,7 @@ if (mysqli_connect_error())
                                     <div class="col-md-12"><strong>Số điện thoại:</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
-                                        <input type="number" name="phone" class="form-control form_size" id="phone" required/> </div>
+                                        <input type="tel" pattern="[0-9]{10,11}" title="Vui lòng nhập đúng định dạng" name="phone" class="form-control form_size" id="phone" required/> </div>
                                 </div>
                                 <div class="space30">&nbsp;</div>
                                 <div class="form-group">
@@ -263,9 +263,9 @@ if (mysqli_connect_error())
                                         <div class="">
                                             <hr class="hrtitle_GH" /> </div>
                                         <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-5"> <strong><b class="lbl_TongTien">Tổng Tiền</b></strong> </div>
-                                                <div class="col-md-6">
+                                            <div class="">
+                                                <div class="col-md-5 col-6"> <strong><b class="lbl_TongTien">Tổng Tiền</b></strong> </div>
+                                                <div class="col-md-6 col-6">
                                                     <div class="pull-right span_content">
                                                         @if($mua->promotion_price == 0)
                                                             <p><span><input type="hidden" name="tongtien" value="{{ ($mua->unit_price * $qtymua) }}"><b >{{number_format( ($mua->unit_price * $qtymua) )}} đ</b></span></p>

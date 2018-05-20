@@ -234,7 +234,7 @@
                                                             <i class='fa fa-star fa-fw'></i>
                                                         </li>
                                                     </ul>
-                                                    <input type="hidden" name="ratingValue" id="star-feedback">
+                                                    <input style="height: 0; border: 1px solid #fff; background: #fff" type="number" required name="ratingValue" id="star-feedback">
                                                 </div>
                                                 <div class='success-box'>
                                                     <div class="text-message"></div>
@@ -248,18 +248,12 @@
                                 <div class="modal-body">
                                     <h3 id="change-feed-back">Viết đánh giá của bạn</h3>
                                     <div class="content-feed-back row clearfix">
-                                        {{-- <div class="radio col-sm-12 gender-feedback">
-                                            <label><input type="radio" name="gt"><span>Anh</span></label>
-                                            <label><input type="radio" name="gt"><span>Chị</span></label>
-                                        </div> --}}
-                                        <input type="hidden" name="gender" id="gender">
                                         <div class="info-feedback col-sm-12">
                                             <div class="row">
                                                 <label class="col-md-4 col-xs-12">Họ tên:</label>
-                                                <input class="col-md-8 col-xs-12" type="text" placeholder="Bắt buộc" name="name" required>
+                                                <input class="col-md-8 col-xs-12" id="vali-name" type="text" placeholder="Tên của bạn" name="cusname" required>
                                                 <label class="col-md-4 col-xs-12">Số điện thoại:</label>
-                                                <input class="col-md-8 col-xs-12" type="tel" placeholder="Để chúng tôi phục vụ bạn tốt hơn" name="phone">
-                                                <input type="hidden" name="status" value="1">
+                                                <input class="col-md-8 col-xs-12" id="vali-tel" type="tel" placeholder="Số điện thoại" name="cusphone" required pattern="[0-9]{9,10}" title="Không đúng định dạng số điện thoại">
                                                 <br>
                                                 <textarea class="col-xs-12" rows="5" name="review" placeholder="Đánh giá của bạn cho sản phẩm"></textarea>
                                             </div>
