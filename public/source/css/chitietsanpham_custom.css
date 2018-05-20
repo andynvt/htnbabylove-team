@@ -1,5 +1,7 @@
     /* Phan tuy chinh trang chitietsanpham */
-
+.btn-buy-sp{
+    height: 30px
+}
 .row > .column {
   padding: 0 8px;
 }
@@ -21,7 +23,7 @@
 
 
 /* The Modal (background) */
-.modal {
+.modal1 {
   display: none;
   position: fixed;
   z-index: 999;
@@ -35,7 +37,7 @@
 }
 
 /* Modal Content */
-.modal-content {
+.modal-content1 {
   position: relative;
   background-color: #fefefe;
   margin: auto;

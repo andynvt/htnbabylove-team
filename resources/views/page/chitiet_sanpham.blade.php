@@ -35,9 +35,9 @@
                           
                         </div>
 
-                        <div id="myModal{{$sanpham->id}}" class="modal">
+                        <div id="myModal{{$sanpham->id}}" class="modal modal1">
                           <span class="close cursor" onclick="closeModal()">&times;</span>
-                          <div class="modal-content">
+                          <div class="modal-content modal-content1">
                             @foreach($getimg as $img)
                             <div class="mySlides">
                               <img src="storage/product/{{ $img->image }}" style="width:100%; height: 80%">
@@ -366,8 +366,8 @@
                                                     <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
                                                 @endif
                                             </p>
-                                            <button type="button" class="btn-ms btn-buy btn-buy-sp-re btn-full button" data-toggle="modal" data-target="#hot{{$hot->id_product}}">Mua Ngay</button>
-                                            <a class="btn-ms btn-themvaogio-a btn-buy-sp-re btn-full " href="{{route('themnhanh',$hot->id_product)}}">Thêm vào giỏ</a>
+                                            <button type="button" class="btn-ms btn-buy btn-buy-sp btn-buy-sp-re btn-full button" data-toggle="modal" data-target="#hot{{$hot->id_product}}">Mua Ngay</button>
+                                            <a class="btn-ms btn-themvaogio-a btn-buy-sp btn-buy-sp-re btn-full " href="{{route('themnhanh',$hot->id_product)}}">Thêm vào giỏ</a>
                                     </div>
                                 </div>
                                 </div>
@@ -401,10 +401,10 @@
                                             <span class="flash-del">{{number_format($new->unit_price)}} đ</span>
                                         @endif
                                     </p>
-                                    <button type="button" class="btn-ms btn-buy btn-buy-sp-re btn-full button" data-toggle="modal" data-target="#new{{$new->id_product}}"><span>Mua Ngay </span></button>
+                                    <button type="button" class="btn-ms btn-buy btn-buy-sp btn-buy-sp-re btn-full button" data-toggle="modal" data-target="#new{{$new->id_product}}"><span>Mua Ngay </span></button>
 
 
-                                    <a class="btn-ms btn-themvaogio-a btn-buy-sp-re btn-full " href="{{route('themnhanh',$new->id_product)}}">Thêm vào giỏ</a>
+                                    <a class="btn-ms btn-themvaogio-a btn-buy-sp btn-buy-sp-re btn-full " href="{{route('themnhanh',$new->id_product)}}">Thêm vào giỏ</a>
                                 </div>
                                 </div>
                             </div>
