@@ -843,7 +843,7 @@ class PageController extends Controller
         
 
         Mail::send('email.xacnhan', $data, function($message) use ($e, $subject) {
-            $message->from('ngodangdt@gmail.com', 'HTN BabyLove');
+            $message->from('nguyenkimhan2013@gmail.com', 'HTN BabyLove');
             $message->to($e,'')->subject($subject);
         });
         return redirect()->back()->with('confirmbill', 'Đã xác nhận đơn hàng');
@@ -863,7 +863,7 @@ class PageController extends Controller
         
 
         Mail::send('email.huydonhang', $data, function($message) use ($e, $subject) {
-            $message->from('ngodangdt@gmail.com', 'HTN BabyLove');
+            $message->from('nguyenkimhan2013@gmail.com', 'HTN BabyLove');
             $message->to($e,'')->subject($subject);
         });
         return redirect()->back()->with('cancelbill', 'Đã huỷ đơn hàng');
@@ -918,7 +918,7 @@ class PageController extends Controller
         $comment = $request->comment;
 
         Mail::send('email.lienhe', array('email'=>$request["email"],'subject'=>$request["subject"], 'comment'=>$request['comment']), function($message){
-            $message->to('nguyenkimhan2013@gmail.com','HTN_BabyLove')->subject('Liên hệ từ khách hàng');
+            $message->to('nguyenkimhan2013@gmail.com','HTN BabyLove')->subject('Liên hệ từ khách hàng');
         });
         return redirect()->back()->with('lienhe', 'Đã gửi!');
     }

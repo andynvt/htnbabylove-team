@@ -28,81 +28,44 @@
             <div class="col-lg-9 col-md-12">
                 <div class="row">
                     <div class="col-lg-4 col-md-12" id="show-images"> 
-                        <img src="storage/product/{{ $get1_proimg }}" style="width:100%" onclick="openModal();currentSlide(1)" alt="">
-                        <!-- <h2 style="text-align:center">Lightbox</h2> -->
-                        <div class="img-mini ">
-                            
-                                @foreach($getimg as $img)
-                                <div class="column"> <img src="storage/product/{{ $img->image }}"   onclick="openModal();currentSlide(1)" class="hover-shadow cursor"> 
-                                </div>
-                                @endforeach
-                            
+                        <div class="row">
+                          <div class="column1">
+                            <img src="storage/product/{{ $get1_proimg }}" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                          </div>
+                          
                         </div>
-                        <div id="modal-img-mini" class="modal-img-mini"> <span class="close cursor" onclick="closeModal()">&times;</span>
-                            <div class="modal-content">
-                                @foreach($getimg as $img)
-                                <div class="slide-img-mini">
-                                    <div class="numbertext">1 / 4</div> <img src="storage/product/{{ $img->image }}" style="width:100%"> 
-                                </div>
-                                @endforeach
-                                <a style="color: #288AD6" class="prev" onclick="plusSlides(-1)">&#10094;</a> 
-                                <a style="color: #288AD6" class="next" onclick="plusSlides(1)">&#10095;</a>
 
-                                <div class="caption-container">
-                                    <p id="caption"></p>
-                                </div>
-
-                                <div class="row" id="bg-modal-product">
-                                    @foreach($getimg as $img)
-                                    <div class="column"> <img class="demo cursor" src="storage/product/{{ $img->image }}" style="width:100%" onclick="currentSlide(1)" alt="{{ $img->name }}"> 
-                                    </div>
-                                    @endforeach
-                                </div>
+                        <div id="myModal{{$sanpham->id}}" class="modal">
+                          <span class="close cursor" onclick="closeModal()">&times;</span>
+                          <div class="modal-content">
+                            @foreach($getimg as $img)
+                            <div class="mySlides">
+                              <img src="storage/product/{{ $img->image }}" style="width:100%; height: 80%">
                             </div>
+                            @endforeach
+                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                            
+
+                            <div class="row" style="float: left; padding: 20px">
+                                <?php $i=1;?>
+                            @foreach($getimg as $img)
+                                
+                            <div class="column" >
+                              <img class="demo cursor" src="storage/product/{{$img->image}}" style="width:50%" onclick="currentSlide(<?php echo $i; ?>)" >
+                              <?php $i= ++$i;?>
+                            </div>
+                            
+                            @endforeach
+                            
+                            </div>
+                          </div>
                         </div>
-                        <!-- </div> -->
-                        <script>
-                            function openModal() {
-                                document.getElementById('modal-img-mini').style.display = "block";
-                            }
 
-                            function closeModal() {
-                                document.getElementById('modal-img-mini').style.display = "none";
-                            }
-                            var slideIndex = 1;
-                            showSlides(slideIndex);
 
-                            function plusSlides(n) {
-                                showSlides(slideIndex += n);
-                            }
-
-                            function currentSlide(n) {
-                                showSlides(slideIndex = n);
-                            }
-
-                            function showSlides(n) {
-                                var i;
-                                var slides = document.getElementsByClassName("slide-img-mini");
-                                var dots = document.getElementsByClassName("demo");
-                                var captionText = document.getElementById("caption");
-                                if (n > slides.length) {
-                                    slideIndex = 1
-                                }
-                                if (n < 1) {
-                                    slideIndex = slides.length
-                                }
-                                for (i = 0; i < slides.length; i++) {
-                                    slides[i].style.display = "none";
-                                }
-                                for (i = 0; i < dots.length; i++) {
-                                    dots[i].className = dots[i].className.replace(" active", "");
-                                }
-                                slides[slideIndex - 1].style.display = "block";
-                                dots[slideIndex - 1].className += " active";
-                                captionText.innerHTML = dots[slideIndex - 1].alt;
-                            }
-
-                        </script>
+                        
+                        
                     </div>
                     <div class="img-mini-re">&nbsp;</div>
                     <div class="col-lg-6 col-md-12 ">
@@ -464,46 +427,44 @@
     </div>
     <!-- .container -->
     <script>
-        function openModal() {
-            document.getElementById('modal-img-mini').style.display = "block";
-        }
+                            function openModal() {
+                                  document.getElementById('myModal{{$sanpham->id}}').style.display = "block";
+                                }
 
-        function closeModal() {
-            document.getElementById('modal-img-mini').style.display = "none";
-        }
-        var slideIndex = 1;
-        showSlides(slideIndex);
+                                function closeModal() {
+                                  document.getElementById('myModal{{$sanpham->id}}').style.display = "none";
+                                }
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
+                                var slideIndex = 1;
+                                showSlides(slideIndex);
 
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
+                                function plusSlides(n) {
+                                  showSlides(slideIndex += n);
+                                }
 
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("slide-img-mini");
-            var dots = document.getElementsByClassName("demo");
-            var captionText = document.getElementById("caption");
-            if (n > slides.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = slides.length
-            }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-            captionText.innerHTML = dots[slideIndex - 1].alt;
-        }
+                                function currentSlide(n) {
+                                  showSlides(slideIndex = n);
+                                }
 
-    </script>
+                                function showSlides(n) {
+                                  var i;
+                                  var slides = document.getElementsByClassName("mySlides");
+                                  var dots = document.getElementsByClassName("demo");
+                                  var captionText = document.getElementById("caption");
+                                  if (n > slides.length) {slideIndex = 1}
+                                  if (n < 1) {slideIndex = slides.length}
+                                  for (i = 0; i < slides.length; i++) {
+                                      slides[i].style.display = "none";
+                                  }
+                                  for (i = 0; i < dots.length; i++) {
+                                      dots[i].className = dots[i].className.replace(" active", "");
+                                  }
+                                  slides[slideIndex-1].style.display = "block";
+                                  dots[slideIndex-1].className += " active";
+                                  captionText.innerHTML = dots[slideIndex-1].alt;
+                                }
+
+                        </script>
+       
 </div> 
 @endsection
