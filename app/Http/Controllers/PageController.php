@@ -894,9 +894,15 @@ class PageController extends Controller
     }
 
     public function getadminDoanhthu(){
-        $getmonth = DB::select(DB::raw('SELECT month(created_at) as month FROM bills GROUP BY month'));
-        $dtdh = DB::select(DB::raw('SELECT month(created_at) as month, sum(total_price) as tongtien, sum(total_product) as tongsp, count(*) as numbill FROM bills GROUP BY month(created_at)'));
-        return view('Admin.pageadmin.admindoanhthu', compact('dtdh', 'getmonth'));
+        $dtdh = DB::select(DB::raw('SELECT month(created_at) as month, sum(total_price) as tongtien, sum(total_product) as tongsp, count(*) as numbill FROM bills WHERE status = 2 GROUP BY month'));
+
+        $totalbill = DB::select(DB::raw('SELECT month(created_at) as month, count(*) as numbill FROM bills GROUP BY month'));
+
+        $successbill = DB::select(DB::raw('SELECT month(created_at) as month, count(*) as succbill FROM bills WHERE status = 2 GROUP BY month'));
+
+        $failbill = DB::select(DB::raw('SELECT month(created_at) as month, count(*) as failbill FROM bills WHERE status = 1 GROUP BY month'));
+        // dd($failbill);
+        return view('Admin.pageadmin.admindoanhthu', compact('dtdh', 'totalbill', 'successbill', 'failbill'));
     }
 	
 	public function gettimkiemall(Request $request){
