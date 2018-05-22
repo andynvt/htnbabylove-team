@@ -101,6 +101,7 @@
 <div class="clearfix"></div>
     <!-- Gio hang-->
 <form action="{{route('thanhtoan')}}" method="get">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <!-- The Modal -->
     <div class="modal fade modalcart" id="modal-cart">
         <div class="modal-dialog modal-lg">
@@ -108,7 +109,7 @@
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">Giỏ hàng @if(Session::has('cart')) (có {{Session('cart')->totalQty}} sản phẩm) @else Trống @endif</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" style="color: black" data-dismiss="modal">&times;</button>
                 </div>
                 @if(Session::has('cart'))
                 <!-- Modal body -->
@@ -157,7 +158,7 @@
                                                     <button type="button" class="btn btn-change-qty" data-dir="dwn"><i class="fa fa-minus"></i></button>
                                                 </span>
 
-                                                <input type="text" name="" class="form-control text-center" value="{{$product['qty']}}"> 
+                                                <input type="text" name="" class="form-control text-center" id="{{ $product['item']['id'] }}" value="{{$product['qty']}}"> 
 
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-change-qty" data-dir="up">&nbsp;
@@ -169,15 +170,6 @@
                                                 <button class="confirm-change-qty" type="button"><i class="fa fa-check"></i></button>
                                                 <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
                                             </div>
-                                            <script>
-                                                $(".confirm-change-qty").on('click', function () {
-                                                    $(this).parents(".change-qty").css("display", "none");
-                                                    var qtyproduct =  $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').val();
-                                                    $.get('changeqty', {newqty: qtyproduct}, function(data){
-                                                        $(this).parents('.change-qty').prev('.cart-input-qty').find('input').val(data);
-                                                    });
-                                                });
-                                            </script>
                                         </div>
                                     </div>
                                     <div class="unit-price col-md-2" style="text-align: right"> 
@@ -191,6 +183,24 @@
                                 </div>
                             </div>
                         @endforeach
+                        <script>
+                            $(".confirm-change-qty").on('click', function () {
+                                $(this).parents(".change-qty").css("display", "none");
+                                var qtyproduct =  $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').val();
+                                var id = $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').attr('id');
+                                
+                                $.ajax({
+                                    url: 'changeqty',
+                                    type: 'GET',
+                                    data: {id: id, newqty: qtyproduct},
+                                    success: function(data){
+                                        // $(this).parents('.change-qty').prev('.cart-input-qty').find('input').val(data);
+                                        // location.reload();
+                                        console.log(data);
+                                    }
+                                });
+                            });
+                        </script>
 
                         </div>
                         <!--end desktop-->

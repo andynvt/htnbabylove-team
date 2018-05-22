@@ -59,16 +59,16 @@ class PageController extends Controller
         $cart = new Cart($oldCart);
         $cart->add($product, $id, $sl);
         $req->session()->put('cart',$cart);
+
         return redirect()->back()->with('add-cart','Thêm vào giỏ hàng thành công!');
     }
 
     public function getChangeqty(Request $req){
-        $newqty = $req->newqty;
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
-        $cart->edit($newqty);
+        $id = $req->id;
+        $sl = $req->newqty;
+        // Cart::update($id, $sl);
 
-        return response()->json(['data' => $cart->items['qty']]);
+        return response()->json(['data' => $sl]);
     }
     
     public function getDelItemCart($id){
