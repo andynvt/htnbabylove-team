@@ -132,12 +132,14 @@
                                         </div>
                                          <div class="form-group">
                                             <label for="files" class="control-label col-sm-4">Hình ảnh: </label>
-                                            <div class="col-sm-4">
-                                                <button class="btn btn-default dehinh" style="cursor: pointer">
-                                                       <i class="fa fa-plus"></i> 
-                                                        <input type="file" multiple id="gallery-photo-add" name="images[]" accept="image/png, image/jpg, image/jpeg">
-                                                </button>
-                                                <div class="gallery"></div>
+                                            <div class="col-sm-8">
+                                                <div class="w50">
+                                                    <button class="btn btn-default dehinh" style="cursor: pointer">
+                                                           <i class="fa fa-plus"></i> 
+                                                            <input type="file" multiple id="gallery-photo-add" name="images[]" accept="image/png, image/jpg, image/jpeg">
+                                                    </button>
+                                                    <div class="gallery"></div>
+                                                </div>
                                             </div>
                                         </div>
                                         <script>

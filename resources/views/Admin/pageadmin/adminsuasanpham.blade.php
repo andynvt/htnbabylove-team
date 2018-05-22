@@ -146,13 +146,15 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="files" class="control-label col-sm-4">Hình ảnh: </label>
-                                            <div class="col-sm-4">
-                                                <button class="btn btn-default dehinh" style="cursor: pointer">
+                                            <label for="files" class="control-label col-sm-4">Thêm ảnh mới: </label>
+                                            <div class="col-sm-8">
+                                                <div class="w50">
+                                                    <button class="btn btn-default dehinh" style="cursor: pointer">
                                                        <i class="fa fa-plus"></i> 
                                                         <input type="file" multiple id="gallery-photo-add" name="newimage[]" accept="image/png, image/jpg, image/jpeg">
-                                                </button>
-                                                <div class="gallery"></div>
+                                                    </button>
+                                                    <div class="gallery"></div>
+                                                </div>
                                             </div>
                                         </div>
                                         <script>
@@ -175,13 +177,17 @@
                                             });
                                         </script>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-4">Ảnh hiện tại</label>
-                                            <div class="col-sm-8 w-50">
-                                                @foreach($getimg as $img)
-                                                <div class="show-img">
-                                                    <img src="storage/product/{{$img->image}}">
+                                            <label class="control-label col-sm-4">Ảnh hiện tại:</label>
+                                            <div class="col-sm-8">
+                                                <div class="w50">
+                                                    @foreach($getimg as $img)
+                                                        <div class="show-img">
+                                                            <img src="storage/product/{{$img->image}}">
+                                                            <i class="fa fa-close"></i>
+                                                            <input type="hidden" value="{{ $img->iid }}">
+                                                        </div>
+                                                    @endforeach
                                                 </div>
-                                                @endforeach
                                             </div>
                                         </div>
 
@@ -242,6 +248,20 @@
 
     $('.div-color a').on('click', function(){
         $(this).parents('.div-color').remove();
+    });
+
+    $('.show-img i').on('click', function(){
+        var iid = $(this).next('input').val();
+        var delimg = submitForm();
+        if(delimg == true){
+            $.ajax({
+                type: "GET",
+                url: "xoa-img",
+                data: {iid: iid},
+                success: function(data){}
+            });
+            $(this).parents('.show-img').remove();
+        }
     });
 </script>
 

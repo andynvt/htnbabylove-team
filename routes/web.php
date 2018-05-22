@@ -152,6 +152,8 @@ Route::post('admin-edit/{idsp}', [
 	'uses' => 'PageController@postadminSuasanpham'
 ]);
 
+Route::get('xoa-img', 'PageController@AjaxXoaimg');
+
 Route::post('admin-xoanhieusanpham', [
 	'as' => 'adminxoanhieusanpham',
 	'uses' => 'PageController@postadminXoanhieusanpham'

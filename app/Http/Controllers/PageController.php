@@ -609,18 +609,11 @@ class PageController extends Controller
         $getimg = ProductImage::leftjoin('product_detail as ctsp', 'product_image.id_detail', '=', 'ctsp.id')
                             ->leftjoin('products as sp', 'ctsp.id_product', '=' , 'sp.id')
                             ->where('sp.id', '=', $idsp)
-                            ->select('product_image.image')
+                            ->select('product_image.id as iid','product_image.image')
                             ->get();
         // dd($getimg);
         return view('Admin.pageadmin.adminsuasanpham', compact('product_type', 'id_product_edit', 'product_name', 'id_type', 'type_name','not_type_name', 'adminlsp', 'editsp', 'getcl','getimg'));
     }
-
-    // public function AjaxSuamausp(Request $req){
-    //     $idcl = $req->iddelcl;
-    //     ProductColor::find($idcl)->delete();
-
-    //     return response()->json(['data' => $idcl]);
-    // }
 
     public function postadminSuasanpham($idsp, Request $req){
         $id_product = Product::find($idsp);
@@ -660,22 +653,28 @@ class PageController extends Controller
                 $image->move('storage/product', $name);  
                 $img[] = $name;  
             }
-        }
-        foreach ($id_image as $idi) {
-            DB::table('product_image')->where('id',$idi->id)->delete();
-            Storage::delete('app/public/product/'.$idi->image);
-            unlink(storage_path('app/public/product/'.$idi->image));
-            // $idim[] = $idi->id;
-        }
-        foreach ($img as $i) {
-            ProductImage::insert( [
-                'id_detail'=>$ctsanpham->id,
-                'image'=>$i,
-            ]);
-        }
 
+            foreach ($img as $i) {
+                ProductImage::insert( [
+                    'id_detail'=>$ctsanpham->id,
+                    'image'=>$i,
+                ]);
+            }
+        }
         return redirect()->back()->with('editsp', 'Đã sửa: '.$id_product->name);
     }
+
+    public function AjaxXoaimg(Request $req){
+        $idimg = ProductImage::find($req->iid);
+
+        ProductImage::find($idimg->id)->delete();
+        Storage::delete('app/public/product/'.$idimg->image);
+        unlink(storage_path('app/public/product/'.$idimg->image));
+
+        $req->session()->flash('deleleimg', 'Đã xoá ảnh');
+        return response()->json(['data' => $idimg->id]);
+    }
+    
 
     public function postadminXoanhieusanpham(Request $req){
         if($req->delmsp){

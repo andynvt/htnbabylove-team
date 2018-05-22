@@ -26,27 +26,38 @@
 .w50{
     width: 70%;
 }
-.show-img{
+
+.show-img {
     display: inline-block;
     overflow: hidden;
     width: auto;
     height: 100px;
+    position: relative;
 }
-.show-img img{
+
+.show-img img {
     object-fit: contain;
     width: 100px;
     height: 100px;
     padding: 0 10px;
-
 }
-.gallery{
+
+.show-img i{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.gallery {
     display: inline-block;
     overflow: hidden;
     width: auto;
     height: auto;
 }
 
-.gallery img{
+.gallery img {
     object-fit: contain;
     width: 100px;
     height: 100px;
