@@ -33,9 +33,9 @@ class AppServiceProvider extends ServiceProvider
             if(Session('cart')){
                 $oldCart = Session::get('cart');
                 $cart = new Cart($oldCart);
-                // $color = ProductColor::find($cart->items['id']);
+                $color = ProductColor::all();
                 // dd($cart);
-                $view->with(['cart'=>Session::get('cart'), 'product_cart'=>$cart->items, 'totalPrice'=>$cart->totalPrice, 'totalQty'=>$cart->totalQty]);
+                $view->with(['cart'=>Session::get('cart'), 'product_cart'=>$cart->items, 'totalPrice'=>$cart->totalPrice, 'totalQty'=>$cart->totalQty, 'color'=>$color]);
             }
         });
 
