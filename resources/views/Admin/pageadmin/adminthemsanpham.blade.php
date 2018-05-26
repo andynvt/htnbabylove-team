@@ -72,14 +72,14 @@
                         <div class="card">
                             <div class="header">
 
-                                <!--                                Phan modal them san pham-->
+                                <!--Phan modal them san pham-->
                                 <div class="container-fluid">
                                     <form method="POST" class="form-horizontal" action="{{ route('adminthemsp') }}" enctype="multipart/form-data" id="formUpload">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="ten">Tên:</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="ten" placeholder="Nhập tên" name="ten" required> </div>
+                                                <input type="text" class="form-control w50" id="ten" placeholder="Nhập tên" name="ten" required autofocus> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="maloai">Loại sản phẩm:</label>
@@ -100,9 +100,10 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="magiamgia">Giá khuyến mãi (Nếu có):</label>
                                             <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="giakhuyenmai" min="0" required> 
+                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="giakhuyenmai" required> 
                                             </div>
                                         </div>
+
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="soluong">Kích thước:</label>
                                             <div class="col-sm-8">
@@ -136,7 +137,7 @@
                                                 <div class="w50">
                                                     <button class="btn btn-default dehinh" style="cursor: pointer">
                                                            <i class="fa fa-plus"></i> 
-                                                            <input type="file" multiple id="gallery-photo-add" name="images[]" accept="image/png, image/jpg, image/jpeg">
+                                                            <input type="file" multiple id="gallery-photo-add" name="images[]" accept="image/png, image/jpg, image/jpeg" required>
                                                     </button>
                                                     <div class="gallery"></div>
                                                 </div>
@@ -192,7 +193,7 @@
     });
 
     $('.btn-selected-number').on('click', function(){
-        var ip = '<input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="mausp[]" multiple required>';
+        var ip = '<input type="text" class="form-control" id="soluong" placeholder="Nhập màu" name="mausp[]" multiple required>';
         var qtycolor = $('.admin-num-color input').val();
 
         $('.admin-num-color').css('display', 'none');
@@ -209,6 +210,12 @@
             $('.admin-color').css('display', 'none');
         }
         
+    });
+
+    // Bắt lỗi nhập giá
+    $('#giagoc').on('blur', function(){
+        var unitprice = $('#giagoc').val();
+        $('#magiamgia').attr('max', unitprice);
     });
 </script>
 

@@ -135,7 +135,7 @@
                                                     @foreach($getcl as $cl)
                                                         <div class="div-color" id="{{ $cl->idcl }}">
                                                             <div class="old-color">
-                                                                <input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newcolor[]" multiple value="{{ $cl->color }}" >
+                                                                <input type="text" class="form-control" id="soluong" placeholder="Nhập màu" name="newcolor[]" multiple value="{{ $cl->color }}" >
                                                                 <a><i data-toggle="tooltip" title="Xoá" class="fa fa-close"></i></a>
                                                             </div>
                                                         </div>
@@ -225,7 +225,7 @@
     });
 
     $('.btn-selected-number').on('click', function(){
-        var ip = '<div class="div-color"> <div class="new-color"> <input type="text" class="form-control" id="soluong" placeholder="Đỏ" name="newcolor[]" multiple value=""> <a><i data-toggle="tooltip" title="Xoá" class="fa fa-close"></i></a> </div> </div>';
+        var ip = '<div class="div-color"> <div class="new-color"> <input type="text" class="form-control" id="soluong" placeholder="Nhập màu" name="newcolor[]" multiple value=""> <a><i data-toggle="tooltip" title="Xoá" class="fa fa-close"></i></a> </div> </div>';
 
         var qtycolor = $('.admin-num-color input').val();
 
