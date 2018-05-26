@@ -81,7 +81,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="ten">Tên:</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control w50" id="ten" name="newname" value="{{ $sp->name }}" required> </div>
+                                                <input type="text" class="form-control w50" id="ten" name="newname" value="{{ $sp->name }}" required autofocus> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="maloai">Loại sản phẩm:</label>
@@ -106,7 +106,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="magiamgia">Giá khuyến mãi (Nếu có):</label>
                                             <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="new_promotion_price" min="0" value="{{ $sp->promotion_price }}" required> 
+                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="new_promotion_price" min="0" max="{{ $sp->unit_price }}" value="{{ $sp->promotion_price }}" required> 
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -151,7 +151,7 @@
                                                 <div class="w50">
                                                     <button class="btn btn-default dehinh" style="cursor: pointer">
                                                        <i class="fa fa-plus"></i> 
-                                                        <input type="file" multiple id="gallery-photo-add" name="newimage[]" accept="image/png, image/jpg, image/jpeg">
+                                                        <input type="file" multiple id="gallery-photo-add" name="newimage[]" accept="image/png, image/jpg, image/jpeg" required>
                                                     </button>
                                                     <div class="gallery"></div>
                                                 </div>
@@ -219,7 +219,7 @@
     </div>
 
 {{-- Script sửa sản phẩm --}}
-<script>
+<script>    
     $('.btn-number-color').on('click',function(){
         $('.admin-num-color').css('display', 'block');
     });
@@ -262,6 +262,12 @@
             });
             $(this).parents('.show-img').remove();
         }
+    });
+
+    // Bắt lỗi nhập giá
+    $('#giagoc').on('blur', function(){
+        var unitprice = $('#giagoc').val();
+        $('#magiamgia').attr('max', unitprice);
     });
 </script>
 

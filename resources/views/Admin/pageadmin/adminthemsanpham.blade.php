@@ -100,7 +100,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="magiamgia">Giá khuyến mãi (Nếu có):</label>
                                             <div class="col-sm-8">
-                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="giakhuyenmai" required> 
+                                                <input type="number" class="form-control w50" id="magiamgia" placeholder="VD: 100000" name="giakhuyenmai" min="0" required> 
                                             </div>
                                         </div>
 
