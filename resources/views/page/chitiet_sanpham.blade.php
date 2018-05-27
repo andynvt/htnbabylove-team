@@ -366,7 +366,7 @@
                                                     <span class="flash-del">{{number_format($hot->unit_price)}} đ</span>
                                                 @endif
                                             </p>
-                                            <button type="button" class="btn-ms btn-buy btn-buy-sp btn-buy-sp-re btn-full button" data-toggle="modal" data-target="#hot{{$hot->id_product}}">Mua Ngay</button>
+                                            <button type="button" class="btn-ms btn-buy btn-buy-sp btn-buy-sp-re btn-full button" data-toggle="modal" data-target="#hot{{$hot->id_product}}"><span>Mua Ngay </span></button>
                                             <a class="btn-ms btn-themvaogio-a btn-buy-sp btn-buy-sp-re btn-full " href="{{route('themnhanh',$hot->id_product)}}">Thêm vào giỏ</a>
                                     </div>
                                 </div>

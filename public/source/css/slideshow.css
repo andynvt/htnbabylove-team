@@ -29,7 +29,7 @@ body {
     position: relative;
     background-size: cover;
     background-position: center;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .panel-title a {
@@ -145,7 +145,8 @@ body {
     cursor: pointer;
 }
 
-.btn-themvaogio-a, .btn-themvaogio-a:visited {
+.btn-themvaogio-a,
+.btn-themvaogio-a:visited {
     background-color: #FF3E8D;
     color: #fff !important;
     padding: 5px 1px;
@@ -155,11 +156,12 @@ body {
 }
 
 
-.btn-themvaogio-a:hover, .btn-themvaogio-a:active {
+.btn-themvaogio-a:hover,
+.btn-themvaogio-a:active {
     background-color: #E91E63;
 }
 
-.btn-themvaogio:hover{
+.btn-themvaogio:hover {
     background: #E91E63 !important;
     color: #fff;
 }
@@ -207,7 +209,7 @@ body {
     border: 0px solid #e1e1e1!important
 }
 
-.panel-default > .panel-heading .panel-title a {
+.panel-default>.panel-heading .panel-title a {
     padding: 0px 15px 5px 15px;
     width: 100%;
     height: 100%;
@@ -311,6 +313,10 @@ body {
     top: 0;
 }
 
+.modal-title {
+    font-size: 20px;
+}
+
 @media (min-width: 992px) and (max-width: 1024px) {
     .modal-dialog {
         max-width: 860px;
@@ -328,7 +334,6 @@ body {
         padding-top: 0;
         margin-top: -250px;
     }
-   
 }
 
 @media (min-width: 1024px) {
@@ -344,29 +349,29 @@ body {
         left: 11%;
         margin-top: -250px;
     }
-
-   
-    
 }
 
-.btn-modal-huy{
+.btn-modal-huy {
     margin-left: -110%;
 }
-.btn-modal{
+
+.btn-modal {
     margin-left: 225%;
 }
+
 .control-label {
     font-size: 16px;
 }
-.text-modal-re select{
-        height:  35px;
-        
-    }
+
+.text-modal-re select {
+    height: 35px;
+}
+
 @media screen and (min-device-width: 100px) and (max-device-width: 425px) {
-    .pagination{
+    .pagination {
         font-size: 30px;
     }
-     .modal-dialog {
+    .modal-dialog {
         max-width: 1024px;
         margin: 30px auto;
     }
@@ -376,82 +381,78 @@ body {
         line-height: 27px;
     }
     .text-title-re {
-            height: 40px;
-    font-size: 25px;
-    padding-left: 10px;
-    line-height: 37px;
+        height: 40px;
+        font-size: 25px;
+        padding-left: 10px;
+        line-height: 37px;
     }
-    .btn-buy-re{
+    .btn-buy-re {
         height: 48px;
-    font-size: 25px;
-        
+        font-size: 25px;
     }
-    .btn-themvaogio-re{
+    .btn-themvaogio-re {
         height: 48px;
-    font-size: 25px;
-        
+        font-size: 25px;
     }
-    .btn-modal-re{
+    .btn-modal-re {
         font-size: 20px;
     }
 
-    .btn-modal-huy{
+    .btn-modal-huy {
         margin-left: 0%;
     }
-    .btn-modal{
+    .btn-modal {
         margin-left: 0%;
     }
-    .text-modal-re{
+    .text-modal-re {
         font-size: 20px;
-
     }
-    .text-modal-re select{
-        height:  38px;
-        
+    .text-modal-re select {
+        height: 38px;
     }
-    .text-thongtin-re{
+    .text-thongtin-re {
         font-size: 20px;
-    line-height: 25px;
+        line-height: 25px;
     }
-    .thumbnail-re{
+    .thumbnail-re {
         /*margin-left: 25%; */
     }
     .containeroverlay {
         height: 400px;
     }
-    .container-fluid{
-    width: 100%;
+    .container-fluid {
+        width: 100%;
     }
     .control-label {
         font-size: 25px;
-    line-height: 25px;
-     /*line-height: 49px;*/
+        line-height: 25px;
+        /*line-height: 49px;*/
     }
-    .control-label-re{
+    .control-label-re {
         margin-left: -1%;
         line-height: 25px;
     }
-   .text-filter-re{
-    /*height: 60px;
+    .text-filter-re {
+        /*height: 60px;
     font-size:  35px;*/
-   }
+    }
 
-  
 
-  .ribbon-trangthai.hot{
-    margin-left: 20px
-  }
-  .ribbon-trangthai.new{
-    margin-left: 20px
-  }
-  .ribbon-trangthai.sale{
-   margin-left: 20px
-  }
 
-  .search-price{
-    margin-left: 15px;
-  }
-  /*.ribbon1{
+    .ribbon-trangthai.hot {
+        margin-left: 20px
+    }
+    .ribbon-trangthai.new {
+        margin-left: 20px
+    }
+    .ribbon-trangthai.sale {
+        margin-left: 20px
+    }
+
+    .search-price {
+        margin-left: 15px;
+    }
+    /*.ribbon1{
         width: 54px;
     height: 54px;
     padding: 16px 0;
@@ -463,7 +464,6 @@ body {
     width: 100px;
     height: 100px;
   }*/
-
     .slider.slider-horizontal .slider-selection,
     .slider.slider-horizontal .slider-track-low,
     .slider.slider-horizontal .slider-track-high {
@@ -473,158 +473,153 @@ body {
         width: 30px;
         height: 30px;
     }
-    .form-group input[type="text"]{
+    .form-group input[type="text"] {
         height: 38px;
     }
-    .form-group select.form-control:not([size]):not([multiple]){
+    .form-group select.form-control:not([size]):not([multiple]) {
         height: 38px;
     }
-    
-    .text-footer-re{
+
+    .text-footer-re {
         font-size: 40px;
         line-height: 45px;
     }
-    .text{
+    .text {
         font-size: 30px;
         line-height: 50px;
     }
-    .cpr-l{
+    .cpr-l {
         padding-top: 20px;
         font-size: 35px;
     }
-
 }
 
 @media screen and (min-device-width: 452px) and (max-device-width: 768px) {
-    .pagination{
+    .pagination {
         font-size: 30px;
     }
-     .modal-dialog {
+    .modal-dialog {
         max-width: 1024px;
         margin: 30px auto;
     }
     .text-price-re {
         height: 60px;
         font-size: 52px;
-        padding-left: 10px;   
+        padding-left: 10px;
         line-height: 65px;
     }
     .text-title-re {
         height: 60px;
         font-size: 52px;
-        padding-left: 10px;   
+        padding-left: 10px;
         line-height: 65px;
     }
-    .btn-buy-re{
+    .btn-buy-re {
         height: 100px;
         font-size: 52px;
-        padding-left: 10px;   
-        
+        padding-left: 10px;
     }
-    .btn-themvaogio-re{
+    .btn-themvaogio-re {
         height: 100px;
         font-size: 52px;
-        padding-left: 10px;   
-        
+        padding-left: 10px;
     }
-    .btn-modal-re{
+    .btn-modal-re {
         font-size: 40px;
     }
 
-    .btn-modal-huy{
+    .btn-modal-huy {
         margin-left: 0%;
     }
-    .btn-modal{
+    .btn-modal {
         margin-left: 0%;
     }
-    .text-modal-re{
+    .text-modal-re {
         font-size: 30px;
-
     }
-    .text-modal-re select{
-        height:  55px;
-        
+    .text-modal-re select {
+        height: 55px;
     }
-    .text-thongtin-re{
+    .text-thongtin-re {
         font-size: 35px;
-         line-height: 43px;
+        line-height: 43px;
     }
-    .thumbnail-re{
-        margin-left: 25%; 
+    .thumbnail-re {
+        margin-left: 25%;
     }
     .containeroverlay {
         height: 480px;
     }
-    .container-fluid{
-    width: 100%;
+    .container-fluid {
+        width: 100%;
     }
     .control-label {
         font-size: 40px;
-        
+
         line-height: 50px;
     }
-    .control-label-re{
+    .control-label-re {
         margin-left: -4%;
         line-height: 65px;
     }
-   .text-filter-re{
-    height: 60px;
-    font-size:  35px;
-   }
+    .text-filter-re {
+        height: 60px;
+        font-size: 35px;
+    }
 
-  
 
-  .ribbon-trangthai.hot{
-    margin-left: 25%;
-    border-radius: 50%;
-    text-align: center;
-    width: 80px;
-    height: 80px;
-    padding: 2px 0px 2px 2px;
-    line-height: 72px;
-    font-size: 30px;
-    right: 14px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-  }
-  .ribbon-trangthai.new{
-    margin-left: 25%;
-    border-radius: 50%;
-    text-align: center;
-    width: 80px;
-    height: 80px;
-    padding: 2px 0px 2px 2px;
-    line-height: 72px;
-    font-size: 30px;
-    right: 14px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-  }
-  .ribbon-trangthai.sale{
-    margin-left: 25%;
-    border-radius: 50%;
-    text-align: center;
-    width: 80px;
-    height: 80px;
-    padding: 2px 0px 2px 2px;
-    line-height: 72px;
-    font-size: 30px;
-    right: 14px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-  }
-  .ribbon1{
-    width: 80px;
-    height: 80px;
-    padding: 28px 0;
-    left: 18px;
-    top: 9px;
-    font-size: 25px;
-  }
-  .ribbon-wrapper{
-    width: 100px;
-    height: 100px;
-  }
+
+    .ribbon-trangthai.hot {
+        margin-left: 25%;
+        border-radius: 50%;
+        text-align: center;
+        width: 80px;
+        height: 80px;
+        padding: 2px 0px 2px 2px;
+        line-height: 72px;
+        font-size: 30px;
+        right: 14px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    .ribbon-trangthai.new {
+        margin-left: 25%;
+        border-radius: 50%;
+        text-align: center;
+        width: 80px;
+        height: 80px;
+        padding: 2px 0px 2px 2px;
+        line-height: 72px;
+        font-size: 30px;
+        right: 14px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    .ribbon-trangthai.sale {
+        margin-left: 25%;
+        border-radius: 50%;
+        text-align: center;
+        width: 80px;
+        height: 80px;
+        padding: 2px 0px 2px 2px;
+        line-height: 72px;
+        font-size: 30px;
+        right: 14px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    .ribbon1 {
+        width: 80px;
+        height: 80px;
+        padding: 28px 0;
+        left: 18px;
+        top: 9px;
+        font-size: 25px;
+    }
+    .ribbon-wrapper {
+        width: 100px;
+        height: 100px;
+    }
 
     .slider.slider-horizontal .slider-selection,
     .slider.slider-horizontal .slider-track-low,
@@ -635,40 +630,37 @@ body {
         width: 30px;
         height: 30px;
     }
-    .form-group input[type="text"]{
+    .form-group input[type="text"] {
         height: 60px;
     }
-    .form-group select.form-control:not([size]):not([multiple]){
+    .form-group select.form-control:not([size]):not([multiple]) {
         height: 60px;
     }
-    
-    .text-footer-re{
+
+    .text-footer-re {
         font-size: 34px;
         line-height: 0px;
     }
-    .text{
+    .text {
         font-size: 50px;
         line-height: 50px;
     }
-    .cpr-l{
+    .cpr-l {
         padding-top: 20px;
         font-size: 35px;
     }
-
 }
 
 
 @media (min-width: 768px) {
 
-    .menuscroll {
+   /* .menuscroll {
         display: none;
-    }
-    
+    }*/
 }
 
-@media screen and (min-device-width: 769px) and (max-device-width: 2560px) {
-    
-}
+@media screen and (min-device-width: 769px) and (max-device-width: 2560px) {}
+
 
 
 
@@ -702,7 +694,7 @@ body {
     width: 100%;
 }
 
-._select_color_drop > li {
+._select_color_drop>li {
     display: inline-block;
     padding: 7px;
     border-right: 1px solid rgba(192, 192, 192, 0.55);
@@ -710,15 +702,15 @@ body {
     float: left;
 }
 
-._select_color_drop > li > .color,
-.btn > span.color {
+._select_color_drop>li>.color,
+.btn>span.color {
     width: 25px;
     height: 25px;
     border-radius: 2px;
     float: left;
 }
 
-.btn > span.color {
+.btn>span.color {
     margin-right: 10px
 }
 
@@ -738,6 +730,7 @@ body {
 .progress-bar-black {
     background: linear-gradient(90deg, #79D63C 25%, transparent 25%, transparent 50%, #79D63C 50%, #79D63C 75%, transparent 75%, transparent);
 }
+
 
 
 /*back to top*/
@@ -760,7 +753,6 @@ body {
 
 .button span:after {
     content: '\00bb';
-    /*  content: "\f07a";*/
     position: absolute;
     opacity: 0;
     top: 0;
@@ -782,12 +774,12 @@ body {
 .sticky {}
 
 .pagination {
-   -webkit-box-pack: center!important;
+    -webkit-box-pack: center!important;
     -ms-flex-pack: center!important;
     justify-content: center!important;
 }
 
-.pagination li span{
+.pagination li span {
     position: relative;
     float: left;
     padding: 6px 12px;
@@ -797,6 +789,11 @@ body {
     text-decoration: none;
     background-color: #337ab7;
     border: 1px solid #ddd;
+}
+
+.pagination .disabled span {
+    color: #000 !important;
+    background-color: #fff !important;
 }
 
 .pagination li a {
@@ -811,10 +808,13 @@ body {
     border: 1px solid #ddd;
 }
 
+
 /*.pagination li.active {
     background-color: #4EAAFF;
     color: white;
     border: 1px solid #4EAAFF;
 }*/
 
-.pagination li:hover:not(.active) {background-color: #ddd;}
+.pagination li:hover:not(.active) {
+    background-color: #ddd;
+}

@@ -129,7 +129,7 @@
     <!-- #content -->
 
     <div class="menuscroll" style="float: right;">
-        <a class="btn btn-up btn-top" href="javascript:void(0);" style="display: inline;"><i class="fa fa-angle-up" style="margin-left:-2px; color: fff !important;"></i></a>
+        <a class="btn btn-up btn-top" href="javascript:void(0);" style="display: none;"><i class="fa fa-angle-up" style="margin-left:-2px; color: fff !important;"></i></a>
     </div>
     <div id="footer" class="color-div">
         @include('footer')
