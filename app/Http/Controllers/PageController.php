@@ -66,21 +66,24 @@ class PageController extends Controller
     public function getChangeqty(Request $req){
         $id = $req->id;
         $newqty = $req->newqty;
-        // $oldqty = $req->oldqty;
+        $oldqty = $req->oldqty;
+        // $kq = $newqty - $oldqty;
 
         $product = Product::find($id);
         $oldCart = Session('cart')?Session::get('cart'):null;
 
         // tổng số lượng của cart cũ (chắc v)
-        $oldtotalCart = $oldCart->totalQty;
+        // $oldtotalCart = $oldCart->totalQty;
+        // $totalNewQty = $oldtotalCart + $kq;
 
         $cart = new Cart($oldCart);
-        $cart->update($product,$id, $newqty, $oldtotalCart);
+
+        $cart->update($product,$id, $newqty, $oldqty);
         $req->session()->put('cart',$cart);
 
         // oldqty và sl chỉ dùng để ktra, có thể xoá về sau
 
-        return response()->json(['data' => $cart, 'oldtotalCart'=>$oldtotalCart, 'newqty'=>$newqty]);
+        return response()->json(['data' => $cart, 'oldqty' => $oldqty]);
     }
     
     public function getDelItemCart($id){

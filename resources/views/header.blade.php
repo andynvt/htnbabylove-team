@@ -168,7 +168,6 @@
                                             </div>
                                             <div class="div-confirm-change-qty">
                                                 <button class="confirm-change-qty" type="button"><i class="fa fa-check"></i></button>
-                                                <input id="oldqty_{{ $product['item']['id'] }}" type="hidden" value="{{$product['qty']}}">
                                                 <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
                                             </div>
                                         </div>
@@ -191,18 +190,18 @@
                                 var id = $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').attr('id');
                                 var token = $('input[name="_token"').val();
 
-                                var oldqty = $(this).parent('.div-confirm-change-qty').find('#oldqty_{{ $product['item']['id'] }}').val();
+                                var oldqty = $(this).parents(".change-qty").prev('.cart-input-qty').find('input').val();
                                 
                                 $.ajax({
                                     url: 'changeqty',
                                     type: 'GET',
                                     data: {token: token, id: id, newqty: newqty, oldqty: oldqty},
-                                    success: function(data, oldtotalCart, newqty){
+                                    success: function(data, oldqty){
                                         // $(this).parents('.change-qty').prev('.cart-input-qty').find('input').val(data);
-                                        // location.reload();
+                                        location.reload();
 
                                         // oldqty và sl chỉ dùng để ktra, có thể xoá về sau nhưng k đc xoá biến truyền đi
-                                        console.log(data, oldtotalCart, newqty);
+                                        console.log(data, oldqty);
                                         // Đã tính được tổng số lượng, tổng tiền. Nếu thêm 2 sp vào giỏ hàng thì xảy ra lỗi k xác định được Session của những cái thêm vô trước -> k đếm đc sl, tt nữa
                                     }
                                 });
