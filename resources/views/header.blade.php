@@ -108,7 +108,7 @@
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Giỏ hàng @if(Session::has('cart')) (có {{Session('cart')->totalQty}} sản phẩm) @else Trống @endif</h4>
+                    <div class="modal-title text-price-re" style=" font-weight: 450">Giỏ hàng @if(Session::has('cart')) (có {{Session('cart')->totalQty}} sản phẩm) @else Trống @endif</div>
                     <button type="button" class="close" style="color: black" data-dismiss="modal">&times;</button>
                 </div>
                 @if(Session::has('cart'))

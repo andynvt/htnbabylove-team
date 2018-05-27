@@ -72,3 +72,20 @@
     transform: translate(5px, -5px);
     font-size: 14px;
 }
+
+@media screen and (min-device-width: 100px) and (max-device-width: 425px) {
+    .btn-up {
+        right: 6px !important;
+        bottom: 6vh;
+    }
+}
+
+@media screen and (min-device-width: 452px) and (max-device-width: 768px) {
+    .btn-up {
+        height: 70px;
+        width: 70px;
+        line-height: 50px;
+        right: 6px !important;
+        bottom: 6vh;
+    }
+}
