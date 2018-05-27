@@ -125,7 +125,7 @@
                         <!--desktop-->
                         <div class="desktop-cart">
                         @foreach($product_cart as $product)
-                        
+                        {{$product['item']['color']}}
                             <div class="cart-item">
                                 <div class="row align-items-center">
                                     <div class="cart-product col-md-6 col-12">
@@ -388,17 +388,18 @@
                                     <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Huỷ</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
-                                    <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full " id="tvg_{{ $promo->id_product }}" >Thêm Vào Giỏ</a>
+                                    <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full " id="tvg_pro_{{ $promo->id_product }}" >Thêm Vào Giỏ</a>
                                 </div>
                                 <script>
-                            $('#tvg_{{ $promo->id_product }}').on('click',function(){
+                            $('#tvg_pro_{{ $promo->id_product }}').on('click',function(){
                                 var color = $(this).parents('.modal-footer').prev('.modal-body').find('select').val();
                                 var qty = $(this).parents('.modal-footer').prev('.modal-body').find('input').val();
                                 var id = '{{ $promo->id_product }}';
                                 $.get('mausp', {colorbuy: color, qtybuy: qty, id:id}, function(cl, qty, id, cart){
                                     $('#cld_{{$promo->id_product}}').html(cl);
                                     $('#clm_{{$promo->id_product}}').html(cl);
-                                    location.reload();
+                                    // location.reload();
+                                    console.log(cl, qty, id, cart);
                                 });
                             });
                                 </script>
@@ -510,11 +511,11 @@
                                     <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Huỷ</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
-                                    <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_{{ $new->id_product }}" >Thêm Vào Giỏ</a>
+                                    <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_new_{{ $new->id_product }}" >Thêm Vào Giỏ</a>
                                     
                                 </div>
                                 <script>
-                            $('#tvg_{{ $new->id_product }}').on('click',function(){
+                            $('#tvg_new_{{ $new->id_product }}').on('click',function(){
                                 var color = $(this).parents('.modal-footer').prev('.modal-body').find('select').val();
                                 var qty = $(this).parents('.modal-footer').prev('.modal-body').find('input').val();
                                 var id = '{{ $new->id_product }}';
@@ -630,10 +631,10 @@
                                     <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Huỷ</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
-                                    <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_{{ $hot->id_product }}" >Thêm Vào Giỏ</a>
+                                    <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_hot_{{ $hot->id_product }}" >Thêm Vào Giỏ</a>
                                 </div>
                                 <script>
-                            $('#tvg_{{ $hot->id_product }}').on('click',function(){
+                            $('#tvg_hot_{{ $hot->id_product }}').on('click',function(){
                                 var color = $(this).parents('.modal-footer').prev('.modal-body').find('select').val();
                                 var qty = $(this).parents('.modal-footer').prev('.modal-body').find('input').val();
                                 var id = '{{ $hot->id_product }}';

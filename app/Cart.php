@@ -55,7 +55,7 @@ class Cart
 			$giohang['price'] = $item->unit_price * $giohang['qty'];
 
 			// newqty của sp
-			$giohang['qty'] = $item->newqty += $newqty;
+			$giohang['qty'] = $newqty;
 
 			$this->items[$id]['qty'] = $newqty;
 			$this->totalQty -= $oldqty;
