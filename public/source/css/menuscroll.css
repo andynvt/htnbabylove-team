@@ -82,9 +82,9 @@
 
 @media screen and (min-device-width: 452px) and (max-device-width: 768px) {
     .btn-up {
-        height: 70px;
+      /*  height: 70px;
         width: 70px;
-        line-height: 50px;
+        line-height: 50px;*/
         right: 6px !important;
         bottom: 6vh;
     }

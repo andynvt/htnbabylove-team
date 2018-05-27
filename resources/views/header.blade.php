@@ -271,13 +271,13 @@
                                         </div>
                                         </div>
                                         <label class="col-4">Màu:</label>
-                                        <div class="form-group change-color col-7" id="clm_{{$product['item']['id']}}">
-                                            
+                                        <div class="form-group change-color " id="cld_{{$product['item']['id']}}"> 
+                                           <label class="col-7"> {{$product['item']['color']}}</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <hr> 
+                            
                         @endforeach
                             <!--end cart-item-->
                         </div>
