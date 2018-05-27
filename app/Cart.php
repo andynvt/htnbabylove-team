@@ -38,7 +38,6 @@ class Cart
 			$this->totalQty += $sl;
 			$this->totalPrice += $item->promotion_price * $sl;
 		}
-		
 	}
 
 	public function update($item,$id, $newqty, $oldqty)
@@ -69,7 +68,7 @@ class Cart
 			$giohang['price'] = $item->promotion_price * $giohang['qty'];
 
 			// newqty của sp
-			$giohang['qty'] = $item->newqty += $newqty;
+			$giohang['qty'] = $newqty;
 
 			$this->items[$id]['qty'] = $newqty;
 
