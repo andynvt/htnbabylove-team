@@ -81,7 +81,7 @@ Route::get('quick-add-cart/{id}',[
 	'uses'=>'PageController@getQuickAddCart'
 ]);
 
-Route::get('del-cart/{id}',[
+Route::get('del-cart/{id}/{color}',[
 	'as'=>'xoagiohang',
 	'uses'=>'PageController@getDelItemCart'
 ]);

@@ -31,14 +31,15 @@ class PageController extends Controller
         $product = Product::find($id);
         $img = DB::select(DB::raw('SELECT image FROM product_image WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products WHERE id='.$id.')) LIMIT 1'));
 
+        $idcheck = $id.", ".$color;
+
         $product['sl'] = $sl;
         $product['img'] = $img[0]->image;
         $product['color'] = $color;
-        // $product['color'] = $color[0]->color;
         
         $oldCart = Session('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
-        $cart->add($product, $id, $sl);
+        $cart->add($product, $idcheck, $sl, $color);
         $req->session()->put('cart',$cart);
         // dd($cart);
         $req->session()->flash('add-cart','Thêm vào giỏ hàng thành công!');
@@ -66,29 +67,26 @@ class PageController extends Controller
         $id = $req->id;
         $newqty = $req->newqty;
         $oldqty = $req->oldqty;
-        // $kq = $newqty - $oldqty;
+        $color = $req->color;
+
+        $idcheck = $id.", ".$color;
 
         $product = Product::find($id);
         $oldCart = Session('cart')?Session::get('cart'):null;
 
-        // tổng số lượng của cart cũ (chắc v)
-        // $oldtotalCart = $oldCart->totalQty;
-        // $totalNewQty = $oldtotalCart + $kq;
-
         $cart = new Cart($oldCart);
 
-        $cart->update($product,$id, $newqty, $oldqty);
+        $cart->update($product,$idcheck, $newqty, $oldqty);
         $req->session()->put('cart',$cart);
-
-        // oldqty và sl chỉ dùng để ktra, có thể xoá về sau
 
         return response()->json(['data' => $cart, 'oldqty' => $oldqty]);
     }
     
-    public function getDelItemCart($id){
+    public function getDelItemCart($id, $color){
+        $idcheck = $id.", ".$color;
         $oldCart = Session::has('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
-        $cart->removeItem($id);
+        $cart->removeItem($idcheck);
         if(count($cart->items) > 0){
             Session::put('cart',$cart);
         }
@@ -144,11 +142,9 @@ class PageController extends Controller
         $promotion_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('promotion_price', '<>', '0')
-                            ->select('products.*', 'ctsp.id_product', 'asp.id_detail','asp.image', 'products.created_at')
                             ->orderByRaw('unit_price  ASC')
                             ->groupBy('products.id')
                             ->paginate(6,['*'],'promotion_product');
-        // dd($promotion_product);
         $new_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('status', 1)

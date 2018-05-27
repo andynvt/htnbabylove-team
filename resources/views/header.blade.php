@@ -179,30 +179,28 @@
                                             {{number_format( $product['item']['promotion_price'] )}} đ
                                         @endif
                                     </div>
-                                    <div class="col-md-2 align-self-center" style="text-align: center"> <a class="" href="{{route('xoagiohang',$product['item']['id'])}}"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
+                                    <div class="col-md-2 align-self-center" style="text-align: center"> <a class="" href="{{ route('xoagiohang', [$product['item']['id'], $product['item']['color'] ]) }}"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
                                 </div>
                             </div>
                         @endforeach
                         <script>
                             $(".confirm-change-qty").on('click', function () {
                                 $(this).parents(".change-qty").css("display", "none");
-                                var newqty =  $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').val();
-                                var id = $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').attr('id');
                                 var token = $('input[name="_token"').val();
 
+                                var newqty =  $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').val();
+                                var id = $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').attr('id');
+
                                 var oldqty = $(this).parents(".change-qty").prev('.cart-input-qty').find('input').val();
-                                
+
+                                var color = '{{ $product['item']['color'] }}';
+
                                 $.ajax({
                                     url: 'changeqty',
                                     type: 'GET',
-                                    data: {token: token, id: id, newqty: newqty, oldqty: oldqty},
+                                    data: {token: token, id: id, newqty: newqty, oldqty: oldqty, color: color},
                                     success: function(data, oldqty){
-                                        // $(this).parents('.change-qty').prev('.cart-input-qty').find('input').val(data);
                                         location.reload();
-
-                                        // oldqty và sl chỉ dùng để ktra, có thể xoá về sau nhưng k đc xoá biến truyền đi
-                                        console.log(data, oldqty);
-                                        // Đã tính được tổng số lượng, tổng tiền. Nếu thêm 2 sp vào giỏ hàng thì xảy ra lỗi k xác định được Session của những cái thêm vô trước -> k đếm đc sl, tt nữa
                                     }
                                 });
                             });
@@ -398,7 +396,7 @@
                                 $.get('mausp', {colorbuy: color, qtybuy: qty, id:id}, function(cl, qty, id, cart){
                                     $('#cld_{{$promo->id_product}}').html(cl);
                                     $('#clm_{{$promo->id_product}}').html(cl);
-                                    // location.reload();
+                                    location.reload();
                                     console.log(cl, qty, id, cart);
                                 });
                             });
