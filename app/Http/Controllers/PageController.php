@@ -35,7 +35,6 @@ class PageController extends Controller
         $product['img'] = $img[0]->image;
         $product['color'] = $color;
         // $product['color'] = $color[0]->color;
-
         
         $oldCart = Session('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
@@ -145,9 +144,11 @@ class PageController extends Controller
         $promotion_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('promotion_price', '<>', '0')
+                            ->select('products.*', 'ctsp.id_product', 'asp.id_detail','asp.image', 'products.created_at')
                             ->orderByRaw('unit_price  ASC')
                             ->groupBy('products.id')
                             ->paginate(6,['*'],'promotion_product');
+        // dd($promotion_product);
         $new_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
                             ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
                             ->where('status', 1)
@@ -853,20 +854,27 @@ class PageController extends Controller
         $bills = Bill::all();
 
         $e = Customer::join('bills as b','customers.id','=','b.id_customer')->where('b.id',$id)->value('email');
-        // $to =  $customers->email;
-        $subject = 'Đơn Hàng Đã Được Xác Nhận';
-        $data = array(
-            'contents' => ''
-        );
-        
 
-        Mail::send('email.xacnhan', $data, function($message) use ($e, $subject) {
-            $message->from('nguyenkimhan2013@gmail.com', 'HTN BabyLove');
-            $message->to($e,'')->subject($subject);
-        });
+        if($e){
+            // $to =  $customers->email;
+            $subject = 'Đơn Hàng Đã Được Xác Nhận';
+            $data = array(
+                'contents' => ''
+            );
+            
+            Mail::send('email.xacnhan', $data, function($message) use ($e, $subject) {
+                $message->from('nguyenkimhan2013@gmail.com', 'HTN BabyLove');
+                $message->to($e,'')->subject($subject);
+            });
 
-        $req->session()->flash('confirmbill', 'Đã xác nhận đơn hàng');
-        return response()->json();
+            $req->session()->flash('confirmbill', 'Đã xác nhận đơn hàng');
+            return response()->json();  
+        }
+
+        else{
+            $req->session()->flash('confirmbillnomail', 'Đã xác nhận đơn hàng - Không gửi được mail');
+            return response()->json(); 
+        }
     }
 
     public function cancelUpdate(Request $req){
@@ -876,18 +884,25 @@ class PageController extends Controller
         $bills = Bill::all();
 
         $e = Customer::join('bills as b','customers.id','=','b.id_customer')->where('b.id',$id)->value('email');
-        $subject = 'Đơn Hàng Bị Huỷ';
-        $data = array(
-            'contents' => ''
-        );
-        
-        Mail::send('email.huydonhang', $data, function($message) use ($e, $subject) {
-            $message->from('nguyenkimhan2013@gmail.com', 'HTN BabyLove');
-            $message->to($e,'')->subject($subject);
-        });
 
-        $req->session()->flash('cancelbill', 'Đã huỷ đơn hàng');
-        return response()->json();
+        if($e){
+            $subject = 'Đơn Hàng Bị Huỷ';
+            $data = array(
+                'contents' => ''
+            );
+            
+            Mail::send('email.huydonhang', $data, function($message) use ($e, $subject) {
+                $message->from('nguyenkimhan2013@gmail.com', 'HTN BabyLove');
+                $message->to($e,'')->subject($subject);
+            });
+
+            $req->session()->flash('cancelbill', 'Đã huỷ đơn hàng');
+            return response()->json();
+        }
+        else{
+            $req->session()->flash('cancelbillnomail', 'Đã huỷ đơn hàng - Không gửi được mail');
+            return response()->json();
+        }
     }
 
     public function AjaxSuccessbill(Request $req){

@@ -57,7 +57,11 @@
         <body onload="admin.showNotification('top','right')"></body>
     @elseif (session('confirmbill'))
         <body onload="admin.showNotification('top','right')"></body>
+    @elseif (session('confirmbillnomail'))
+        <body onload="admin.showNotification('top','right')"></body>
     @elseif (session('cancelbill'))
+        <body onload="admin.showNotification('top','right')"></body>
+    @elseif (session('cancelbillnomail'))
         <body onload="admin.showNotification('top','right')"></body>
     @elseif (session('successbill'))
         <body onload="admin.showNotification('top','right')"></body>
@@ -70,6 +74,7 @@
     @elseif (session('addsp'))
         <body onload="admin.showNotification('top','right')"></body>
     @endif
+
 
     {{-- 1: Xanh dương   2: Xanh lá cây  3: Vàng  4: Đỏ --}}
     <script>
@@ -111,6 +116,18 @@
                 $.notify({
                     icon: "ti-close",
                     message: "{{ session('cancelbill') }}"
+                }
+                @elseif (session('confirmbillnomail'))
+                color = Math.floor(2);
+                $.notify({
+                    icon: "ti-check",
+                    message: "{{ session('confirmbillnomail') }}"
+                }
+                @elseif (session('cancelbillnomail'))
+                color = Math.floor(4);
+                $.notify({
+                    icon: "ti-close",
+                    message: "{{ session('cancelbillnomail') }}"
                 }
                 @elseif (session('successbill'))
                 color = Math.floor(2);
