@@ -125,7 +125,6 @@
                         <!--desktop-->
                         <div class="desktop-cart">
                         @foreach($product_cart as $product)
-                        {{$product['item']['color']}}
                             <div class="cart-item">
                                 <div class="row align-items-center">
                                     <div class="cart-product col-md-6 col-12">
