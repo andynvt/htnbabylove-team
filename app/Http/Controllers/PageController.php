@@ -50,6 +50,9 @@ class PageController extends Controller
         $product = Product::find($id);
         $img = DB::select(DB::raw('SELECT image FROM product_image WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products WHERE id='.$id.')) LIMIT 1'));
         $color = DB::select(DB::raw('SELECT color FROM product_color WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products WHERE id='.$id.')) LIMIT 1'));
+
+        $idcheck = $id.", ".$color[0]->color;
+
         $sl = 1;
         $product['sl'] = $sl;
         $product['img'] = $img[0]->image;
@@ -57,7 +60,7 @@ class PageController extends Controller
         
         $oldCart = Session('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
-        $cart->add($product, $id, $sl);
+        $cart->add($product, $idcheck, $sl, $color);
         $req->session()->put('cart',$cart);
 
         return redirect()->back()->with('add-cart','Thêm vào giỏ hàng thành công!');
@@ -79,7 +82,7 @@ class PageController extends Controller
         $cart->update($product,$idcheck, $newqty, $oldqty);
         $req->session()->put('cart',$cart);
 
-        return response()->json(['data' => $cart, 'oldqty' => $oldqty]);
+        return response()->json(['data' => $cart, 'oldqty' => $oldqty, 'newqty' => $newqty, 'color' => $color, 'id' => $id, 'idcheck' => $idcheck]);
     }
     
     public function getDelItemCart($id, $color){

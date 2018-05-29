@@ -9,7 +9,7 @@
         <div class="pull-right auto-width-right header-top-right">
             <ul class="top-details menu-beta l-inline header-top-row">
                 <li><a href="{{ route('gioithieu') }}"><i class="fa fa-info-circle"></i>Giới Thiệu</a></li>
-                <li data-toggle="modal" data-target="#contactModal" class="line"><a><i class="fa fa-phone"></i>Liên Hệ</a></li>
+                <li data-toggle="modal" data-target="#contactModal" class="line" style="cursor: pointer"><a><i class="fa fa-phone"></i>Liên Hệ</a></li>
             </ul>
         </div>
         <div class="clearfix"></div>
@@ -120,11 +120,11 @@
                         <div class="col-sm-2" style="text-align: right"> Đơn giá </div>
                         <div class="col-sm-2" style="text-align: center"> Xóa </div>    
                     </div>
-                    
                     <div class="cart-content">
                         <!--desktop-->
                         <div class="desktop-cart">
                         @foreach($product_cart as $product)
+                            {{-- cart-item --}}
                             <div class="cart-item">
                                 <div class="row align-items-center">
                                     <div class="cart-product col-md-6 col-12">
@@ -181,35 +181,15 @@
                                     <div class="col-md-2 align-self-center" style="text-align: center"> <a class="" href="{{ route('xoagiohang', [$product['item']['id'], $product['item']['color'] ]) }}"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
                                 </div>
                             </div>
+                            <!--end cart-item-->
                         @endforeach
-                        <script>
-                            $(".confirm-change-qty").on('click', function () {
-                                $(this).parents(".change-qty").css("display", "none");
-                                var token = $('input[name="_token"').val();
-
-                                var newqty =  $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').val();
-                                var id = $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').attr('id');
-
-                                var oldqty = $(this).parents(".change-qty").prev('.cart-input-qty').find('input').val();
-
-                                var color = '{{ $product['item']['color'] }}';
-
-                                $.ajax({
-                                    url: 'changeqty',
-                                    type: 'GET',
-                                    data: {token: token, id: id, newqty: newqty, oldqty: oldqty, color: color},
-                                    success: function(data, oldqty){
-                                        location.reload();
-                                    }
-                                });
-                            });
-                        </script>
-
                         </div>
                         <!--end desktop-->
+
                         <!--mobile-->
                         <div class="mobile-cart">
                         @foreach($product_cart as $product)
+                            {{-- cart-item --}}
                             <div class="cart-item">
                                 <div class="container">
                                     <div class="row mobile-cart-title">
@@ -220,7 +200,7 @@
                                             <div class="cart-product-name text-title"> 
                                                 <a href="#">{{$product['item']['name']}}</a> 
                                             </div>
-                                            <div class="cart-price"> 
+                                            <div class="cart-price"> Đơn giá:
                                                 @if($product['item']['promotion_price'] == 0)
                                                     {{number_format( $product['item']['unit_price'] )}} đ
                                                 @else
@@ -228,7 +208,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="col-1" style="text-align: right"> <a class="" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
+                                        <div class="col-1" style="text-align: right"> <a class="" href="{{ route('xoagiohang', [$product['item']['id'], $product['item']['color'] ]) }}"><i class="fa fa-trash" aria-hidden="true"></i></a> </div>
                                     </div>
                                     <div class="row mobile-cart-info">
                                         <label class="col-4">Size:</label>
@@ -236,59 +216,86 @@
                                         <label class="col-4">Số lượng: </label>
                                         <div class="col-7 cart-qty">
                                             <div class="cart-input-qty">
-                                            <input type="text" name="soluong" class="form-control text-center new-qty" value="{{$product['qty']}}" readonly> 
-                                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="change-qty">
-                                            <div class="input-group number-spinner input-change-qty"> 
-                                                <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-change-qty" data-dir="dwn"><i class="fa fa-minus"></i></button>
-                                                </span>
-
-                                                <input type="text" name="" class="form-control text-center" value="{{$product['qty']}}"> 
-
-                                                <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-change-qty" data-dir="up">&nbsp;
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
-                                                </span> 
+                                                <input type="text" name="soluong" class="form-control text-center new-qty" value="{{$product['qty']}}" readonly> 
+                                                <i class="fa fa-angle-double-down" aria-hidden="true"></i>
                                             </div>
-                                            <div class="div-confirm-change-qty">
-                                                <button class="confirm-change-qty" type="button"><i class="fa fa-check"></i></button>
-                                                <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
+                                            <div class="change-qty">
+                                                <div class="input-group number-spinner input-change-qty"> 
+                                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-change-qty" data-dir="dwn"><i class="fa fa-minus"></i></button>
+                                                    </span>
+
+                                                    <input type="text" name="" class="form-control text-center" id="{{ $product['item']['id'] }}" value="{{$product['qty']}}"> 
+
+                                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-change-qty" data-dir="up">&nbsp;
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </span> 
+                                                </div>
+                                                <div class="div-confirm-change-qty">
+                                                    <button class="confirm-change-qty" type="button"><i class="fa fa-check"></i></button>
+                                                    <button class="cancle-change-qty" type="button"><i class="fa fa-times"></i></button>
+                                                </div>
                                             </div>
-                                            <script>
-                                                $(".confirm-change-qty").on('click', function () {
-                                                    $(this).parents(".change-qty").css("display", "none");
-                                                    var qtyproduct =  $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').val();
-                                                    $(this).parents('.change-qty').prev('.cart-input-qty').find('input').val(qtyproduct);
-                                                });
-                                            </script>
-                                        </div>
                                         </div>
                                         <label class="col-4">Màu:</label>
-                                        <div class="form-group change-color " id="cld_{{$product['item']['id']}}"> 
+                                        <div class="form-group change-color" id="cld_{{$product['item']['id']}}"> 
                                            <label class="col-7"> {{$product['item']['color']}}</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                        @endforeach
                             <!--end cart-item-->
+                        @endforeach
                         </div>
                         <!--end mobile-->
+
+                        {{-- script change qty --}}
+                        <script>
+                            $(".confirm-change-qty").on('click', function () {
+                                $(this).parents(".change-qty").css("display", "none");
+                                var token = $('input[name="_token"').val();
+
+                                var newqty =  $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').val();
+                                var id = $(this).parent(".div-confirm-change-qty").prev('.input-change-qty').find('input').attr('id');
+
+                                var oldqty = $(this).parents(".change-qty").prev('.cart-input-qty').find('input').val();
+
+                                var screensize = screen.width;
+
+                                if(screensize > 768){
+                                    var color = $(this).parents('.cart-qty').prev('.cart-product').find('.change-color').html();
+                                }
+                                else {
+                                    var color = $(this).parents('.mobile-cart-info').find('.change-color label').html();
+                                }
+
+                                $.ajax({
+                                    url: 'changeqty',
+                                    type: 'GET',
+                                    data: {token: token, id: id, newqty: newqty, oldqty: oldqty, color: color},
+                                    success: function(data, oldqty, newqty, color, id, idcheck){
+                                        location.reload();
+                                        console.log(data, oldqty, newqty, color, id, idcheck)
+                                    }
+                                });
+                            });
+                        </script>
+                        {{-- end script change qty --}}
+
                     </div>
                 </div>
                 <div class="cart-order">
                     <div class="cart-total-price col-md-4 offset-md-6 col-12">
                         <div class="row">
-                            <div class="col-md-5 col-5"> Tổng tiền: </div>
+                            <div class="col-md-5 col-5" style="padding-left: 15px;"> Tổng tiền: </div>
                             <div class="col-md-7 col-7 total-price"> {{number_format( Session('cart')->totalPrice )}} đ </div>
                         </div>
                     </div>
                     <div class="div-btn-order col-md-4 offset-md-6">
-                        <input class="btn-order" type="submit" value="đặt hàng" name="order"> </div>
+                        <input class="btn-order" type="submit" value="đặt hàng" name="order"> 
+                    </div>
                 </div>
                 @endif
             </div>
@@ -298,7 +305,6 @@
 
 <!--  Modal Mua Nhanh promotion-->
     @foreach($promotion_product as $promo ) 
-       
     <div class="modal fade" id="pro{{$promo->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
         <form action="{{ route('chitietsp', $promo->id_product) }}" method="post"> 
@@ -307,7 +313,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title text-title-modal " id="exampleModalLongTitle">{{$promo->name}}</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: black"> <span aria-hidden="true">&times;</span> </button>
                     </div>
                     <div class="modal-body">
                         <div class="container-full">
@@ -324,9 +330,7 @@
                                         @endif
                                         </div>
                                         <div class="thumbnail ">
-                                          
                                             <img src="storage/product/{{$promo->image}}" alt="Thumbnail Image 1" class="thumbnail-re" width="480px">
-                                          
                                         </div>
                                     </div>
                                 </div>
@@ -334,11 +338,11 @@
                                     <div class="space10">&nbsp;</div>
                                    <b class="text-price text-modal-re">
                                                 @if($promo->promotion_price == 0)
-                                                            <span class="text-danger ">{{number_format($promo->unit_price)}} đ</span> &nbsp;
-                                                        @else
-                                                            <span class="text-danger ">{{number_format($promo->promotion_price)}} đ</span> &nbsp;
-                                                            <span class="flash-del">{{number_format($promo->unit_price)}} đ</span>
-                                                        @endif
+                                                    <span class="text-danger ">{{number_format($promo->unit_price)}} đ</span> &nbsp;
+                                                @else
+                                                    <span class="text-danger ">{{number_format($promo->promotion_price)}} đ</span> &nbsp;
+                                                    <span class="flash-del">{{number_format($promo->unit_price)}} đ</span>
+                                                @endif
                                                 </b>
                                                 <div class="space10">&nbsp;</div>
                                     <div class="container-full">
@@ -388,17 +392,17 @@
                                     <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full " id="tvg_pro_{{ $promo->id_product }}" >Thêm Vào Giỏ</a>
                                 </div>
                                 <script>
-                            $('#tvg_pro_{{ $promo->id_product }}').on('click',function(){
-                                var color = $(this).parents('.modal-footer').prev('.modal-body').find('select').val();
-                                var qty = $(this).parents('.modal-footer').prev('.modal-body').find('input').val();
-                                var id = '{{ $promo->id_product }}';
-                                $.get('mausp', {colorbuy: color, qtybuy: qty, id:id}, function(cl, qty, id, cart){
-                                    $('#cld_{{$promo->id_product}}').html(cl);
-                                    $('#clm_{{$promo->id_product}}').html(cl);
-                                    location.reload();
-                                    console.log(cl, qty, id, cart);
-                                });
-                            });
+                                    $('#tvg_pro_{{ $promo->id_product }}').on('click',function(){
+                                        var color = $(this).parents('.modal-footer').prev('.modal-body').find('select').val();
+                                        var qty = $(this).parents('.modal-footer').prev('.modal-body').find('input').val();
+                                        var id = '{{ $promo->id_product }}';
+                                        $.get('mausp', {colorbuy: color, qtybuy: qty, id:id}, function(cl, qty, id, cart){
+                                            $('#cld_{{$promo->id_product}}').html(cl);
+                                            $('#clm_{{$promo->id_product}}').html(cl);
+                                            location.reload();
+                                            console.log(cl, qty, id, cart);
+                                        });
+                                    });
                                 </script>
                                 <div class="col-lg-3 col-md-4 col-xs-12">
                                     @if(Session::has('cart'))
@@ -414,14 +418,11 @@
             </div>  
         </form>
     </div>
-       
-  
     @endforeach
-    <!--  Modal Mua Nhanh promotion-->
+<!--  Modal Mua Nhanh promotion-->
 
-    <!--  Modal Mua Nhanh new-->
+<!--  Modal Mua Nhanh new-->
     @foreach($new_product as $new ) 
-    
     <div class="modal fade" id="new{{$new->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
         <form action="{{ route('chitietsp', $new->id_product) }}" method="post">    
@@ -430,7 +431,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title text-title-modal " id="exampleModalLongTitle">{{$new->name}}</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: black"> <span aria-hidden="true">&times;</span> </button>
                     </div>
                     <div class="modal-body">
                         <div class="container-full">
@@ -538,11 +539,10 @@
             </div>             
         </form>
     </div>
-   
     @endforeach
-    <!--  Modal Mua Nhanh new-->
+<!--  Modal Mua Nhanh new-->
 
-    <!--  Modal Mua Nhanh hot-->
+<!--  Modal Mua Nhanh hot-->
     @foreach($hot_product as $hot ) 
     <div class="modal fade" id="hot{{$hot->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--  Modal Mua Nhanh-->
@@ -552,7 +552,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title text-title-modal " id="exampleModalLongTitle">{{$hot->name}}</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: black"> <span aria-hidden="true">&times;</span> </button>
                     </div>
                     <div class="modal-body">
                         <div class="container-full">
@@ -657,4 +657,4 @@
         </form>
     </div>
     @endforeach
-    <!--  Modal Mua Nhanh hot-->
+<!--  Modal Mua Nhanh hot-->
