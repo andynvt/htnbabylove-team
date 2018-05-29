@@ -139,62 +139,45 @@
                 </div>
                 <!-- <div class="space50">&nbsp;</div> -->
                 <hr>
+                <div class="clearfix"></div>
                 <div class="content-rate-product">
                     <div class="title-rate">
                         <div class="title ">
-                            <h3 style="text-transform: initial;">
+                            <h5 style="text-transform: initial;">
                                 @if(count($feedback) == 0)
                                     Không có đánh giá nào
                                 @else
                                     Có {{ count($feedback) }} đánh giá sản phẩm {{ $sanpham->name }}
                                 @endif
-                            </h3>
-                        </div> <div class="space10">&nbsp;</div>
+                            </h5>
+                        </div> 
+                        <div class="space10">&nbsp;</div>
                         <div class="go-to-rate">
-                            <!-- <a href="#text-comment">Gửi đánh giá của bạn</a> -->
-                            <!-- Button to Open the Modal -->
-
                             <button type="button" class="btn-sendfb" data-toggle="modal" data-target="#feedback"> Gửi đánh giá của bạn </button>
                         </div>
                     </div>
-                        @foreach($feedback as $fb) 
-                            <div class="content-rate">
-                                <div class="name-user"> <span>{{$fb->reviewer}}</span> </div>
-                                <div class="time-post"> <span>{{$fb->create_at}}</span> </div>
-                                <div class="star-rate">
-                                    <div class="start-sum">
-                                        <input id="{{ $fb->fbid }}" type="hidden" value="{{ $fb->stars }}">
-                                        <div class="khong-duoc-xoa"></div>
-                                        <script>
-                                            for($i=0; $i < {{ $fb->stars }} ; $i++){
-                                                $('#{{ $fb->fbid }}').next('.khong-duoc-xoa').append('<i class="fa fa-star fa-fw"></i>');
-                                            }
-                                        </script>
-                                    </div>
-                                    <div class="comment">
-                                        <p>{{ $fb->review }}</p>
-                                    </div>
+                    @foreach($feedback as $fb) 
+                        <div class="content-rate">
+                            <div class="name-user"> <span>Khách hàng: {{$fb->reviewer}}</span> </div>
+                            <div class="time-post"> <span>Ngày gửi: {{$fb->created_at}}</span> </div>
+                            <div class="star-rate">
+                                <div class="start-sum">
+                                    <input id="{{ $fb->fbid }}" type="hidden" value="{{ $fb->stars }}">
+                                    <div class="khong-duoc-xoa"></div>
+                                    <script>
+                                        for($i=0; $i < {{ $fb->stars }} ; $i++){
+                                            $('#{{ $fb->fbid }}').next('.khong-duoc-xoa').append('<i class="fa fa-star fa-fw"></i>');
+                                        }
+                                    </script>
+                                </div>
+                                <div class="comment">
+                                    <p>Nội dung: {{ $fb->review }}</p>
                                 </div>
                             </div>
-                        @endforeach 
-
-                    {{-- <div class="pagination-comment">
-                        <div class="row" id="frame-paging">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">«</span> <span class="sr-only">Previous</span> </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next"> <span aria-hidden="true">»</span> <span class="sr-only">Next</span> </a>
-                                    </li>
-                                </ul>
-                            </nav>
                         </div>
-                    </div> --}}
+                        <hr>
+                    @endforeach
+                    <div class="row justify-content-center">{{$feedback->links() }} </div>
                     <hr>
                     <div class="text-comment" id="text-comment"> </div>
                 </div>

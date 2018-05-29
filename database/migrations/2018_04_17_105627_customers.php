@@ -17,7 +17,7 @@ class Customers extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('gender');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('address');
             $table->string('phone');
             $table->timestamps();
