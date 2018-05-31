@@ -389,7 +389,7 @@
                                     <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Huỷ</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
-                                    <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full " id="tvg_pro_{{ $promo->id_product }}" >Thêm Vào Giỏ</a>
+                                    <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_pro_{{ $promo->id_product }}">Thêm Vào Giỏ</a>
                                 </div>
                                 <script>
                                     $('#tvg_pro_{{ $promo->id_product }}').on('click',function(){

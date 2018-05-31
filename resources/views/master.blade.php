@@ -50,6 +50,8 @@
     <body onload="alert_test()"></body>
 @elseif (session('add-cart')) 
     <body onload="alert_test()"></body>
+@elseif (session('change-qty')) 
+    <body onload="alert_test()"></body>
 @elseif (session('dathang'))
     <body onload="alert_test()"></body>
 @elseif (session('danhgia'))
@@ -147,6 +149,10 @@
                         mode: "dark",
                     @elseif(session('add-cart'))
                     msg: "{{session('add-cart')}}",
+                    type: "success",
+                    mode: "dark",
+                    @elseif(session('change-qty'))
+                    msg: "{{session('change-qty')}}",
                     type: "success",
                     mode: "dark",
                     @elseif(session('dathang'))

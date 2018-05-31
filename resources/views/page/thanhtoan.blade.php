@@ -48,6 +48,12 @@ if (mysqli_connect_error())
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <div class="col-md-12"><strong>Số điện thoại:</strong></div>
+                                    <div class="space10">&nbsp;</div>
+                                    <div class="col-md-12">
+                                        <input type="tel" pattern="[0-9]{10,11}" title="Vui lòng nhập đúng định dạng" name="phone" class="form-control form_size" id="phone" placeholder="0xxxxxxxxx"/> </div>
+                                </div>
+                                <div class="form-group">
                                     <div class="col-md-12"><strong>Email đặt hàng</strong></div>
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12 col-xs-12">
@@ -59,8 +65,8 @@ if (mysqli_connect_error())
                                     <div class="space10">&nbsp;</div>
                                     <div class="col-md-12">
                                         <select name="gender" class="form-control form_size text-tt-re " id="gender" required>
-                                            <option value="" selected>Chọn giới tính</option>
-                                            <option>Nam</option>
+                                            {{-- <option value="" selected>Chọn giới tính</option> --}}
+                                            <option selected>Nam</option>
                                             <option>Nữ</option>
                                             <option>Khác</option>
                                         </select>
@@ -105,12 +111,6 @@ if (mysqli_connect_error())
                                     </div>
                                     <div class="col-md-12">
                                         <input type="text" name="address" class="form-control form_size" id="address" placeholder="Địa chỉ" required/> </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12"><strong>Số điện thoại:</strong></div>
-                                    <div class="space10">&nbsp;</div>
-                                    <div class="col-md-12">
-                                        <input type="tel" pattern="[0-9]{10,11}" title="Vui lòng nhập đúng định dạng" name="phone" class="form-control form_size" id="phone" placeholder="0xxxxxxxxx" required/> </div>
                                 </div>
                                 <div class="space30">&nbsp;</div>
                                 <div class="form-group">
@@ -170,23 +170,12 @@ if (mysqli_connect_error())
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{-- <div class="form-group">
-                                                    <hr class="hr_sp" /> 
-                                                </div> --}}
-                                                <!-- </div> -->
-                                                <!-- </div> -->
                                             </div>
                                         @endforeach
 
                                             <!-- body-cart-content-checkout -->
                                         </div>
                                         <div class="space20">&nbsp;</div>
-
-                                        {{-- <div class="">
-                                            <div class="col-md-12 col-sm-12 col-xs-12 container_btncsgh">
-                                                <button type="submit" class="btn btn-primary btn-submit-fix submitbtn_cart">Chỉnh sửa giỏ hàng </button>
-                                            </div>
-                                        </div> --}}
                                         <div class="">
                                             <hr class="hrtitle_GH" /> </div>
                                         <div class="form-group">

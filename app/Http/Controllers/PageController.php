@@ -28,6 +28,7 @@ class PageController extends Controller
         $color = $req->colorbuy;
         $sl = $req->qtybuy;
         $id = $req->id;
+        // dd($id);
         $product = Product::find($id);
         $img = DB::select(DB::raw('SELECT image FROM product_image WHERE id_detail in (SELECT id FROM product_detail WHERE id_product in (SELECT id FROM products WHERE id='.$id.')) LIMIT 1'));
 
@@ -82,6 +83,7 @@ class PageController extends Controller
         $cart->update($product,$idcheck, $newqty, $oldqty);
         $req->session()->put('cart',$cart);
 
+        $req->session()->flash('change-qty','Đã cập nhật giỏ hàng');
         return response()->json(['data' => $cart, 'oldqty' => $oldqty, 'newqty' => $newqty, 'color' => $color, 'id' => $id, 'idcheck' => $idcheck]);
     }
     
@@ -105,6 +107,8 @@ class PageController extends Controller
 
     public function postDatHang(Request $req){
         $cart = Session::get('cart');
+
+        // dd($cart);
 
         $city = City::where('id', $req->city)->value('name');
         $district = District::where('id', $req->district)->value('name');

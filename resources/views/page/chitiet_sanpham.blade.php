@@ -62,10 +62,6 @@
                             </div>
                           </div>
                         </div>
-
-
-                        
-                        
                     </div>
                     <div class="img-mini-re">&nbsp;</div>
                     <div class="col-lg-6 col-md-12 ">
@@ -88,7 +84,7 @@
                                     <label class="choose-qty ">Chọn số lượng</label>
                                     <br/>
                                     <div class="space10">&nbsp;</div>
-                                    <div class="input-group mb-3 " >
+                                    <div class="input-group mb-3" >
                                         <div class="input-group-prepend">
                                             <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
                                         </div>
@@ -108,10 +104,10 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="space10">&nbsp;</div>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-12">
-                                            <a class="btn btn-themvaogio btn-sp-re btn-full" href="{{route('themnhanh',$sanpham->id)}}"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+                                            <input type="hidden" name="id" value="{{ $sanpham->id }}">
+                                            <a class="btn btn-themvaogio btn-sp-re btn-full" id="tvg_detail_{{ $sanpham->id }}"></i> Thêm vào giỏ</a>
                                         </div>
                                         <div class="col-lg-6 col-md-12">
                                             @if(Session::has('cart'))
@@ -120,6 +116,17 @@
                                             @endif
                                         </div>
                                     </div>
+                                    <script>
+                                        $('#tvg_detail_{{ $sanpham->id }}').on('click',function(){
+                                            var id = $(this).prev('input').val();
+                                            var color = $(this).parents('.row').prev().find('select').val();
+                                            var qty = $(this).parents('.select-size-product').find('input').val();
+
+                                            $.get('mausp', {colorbuy: color, qtybuy: qty, id:id}, function(cl, qty, id){
+                                                location.reload();
+                                            });
+                                        });
+                                    </script>
                                 </div>
                             </form>
                         </div>                        
