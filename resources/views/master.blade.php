@@ -171,6 +171,13 @@
             })
         };
     </script>
+
+    <script>
+        $( ".search-form input[type='text']" ).focus(function() {
+            $('.search-form input[type="submit"]').css('z-index', 4)
+        });
+    </script>
+
     <script type="text/javascript" src="source/js/iao-alert.jquery.js"></script>
     <script type="text/javascript" src="source/js/cart.js"></script>
     <script type="text/javascript" src='source/js/modal.js'></script>
