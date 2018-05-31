@@ -172,6 +172,7 @@
                                                     }
                                                 };
                                                 $('#gallery-photo-add').on('change', function() {
+                                                    $('.gallery').empty();
                                                     imagesPreview(this, 'div.gallery');
                                                 });
                                             });
