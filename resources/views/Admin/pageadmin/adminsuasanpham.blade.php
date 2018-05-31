@@ -110,6 +110,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label class="control-label col-sm-4" for="hot">Sản phẩm hot?</label>
+                                            <div class="col-sm-1">
+                                                <input type="checkbox" class="form-control" name="sphot" id="hot" style="margin: 0; padding: 0; width: 30px"> 
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="control-label col-sm-4" for="kichthuoc">Kích thước:</label>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control w50" id="kichthuoc" placeholder="VD: 30x30x30" name="newsize" value="{{ $sp->size }}" required>
@@ -151,7 +157,7 @@
                                                 <div class="w50">
                                                     <button class="btn btn-default dehinh" style="cursor: pointer">
                                                        <i class="fa fa-plus"></i> 
-                                                        <input type="file" multiple id="gallery-photo-add" name="newimage[]" accept="image/png, image/jpg, image/jpeg" required>
+                                                        <input type="file" multiple id="gallery-photo-add" name="newimage[]" accept="image/png, image/jpg, image/jpeg">
                                                     </button>
                                                     <div class="gallery"></div>
                                                 </div>

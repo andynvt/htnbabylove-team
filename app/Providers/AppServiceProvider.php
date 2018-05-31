@@ -10,6 +10,7 @@ use App\ProductDetail;
 use App\Bill;
 use App\ProductImage;
 use App\ProductColor;
+use App\BillDetail;
 use DB;
 use App\Cart;
 use Session;
@@ -92,8 +93,18 @@ class AppServiceProvider extends ServiceProvider
             $view->with('hot_product',$hot_product);
         });
 
+        view()->composer('master',function($view){
+            // Cập nhật trạng thái
+            $daysp = Product::select('id','created_at as pday')->get();
+            $cntsp = count($daysp);
+            for($i = 0 ; $i < $cntsp ; $i++){
+                $minus = DB::select(DB::raw('SELECT DATEDIFF(now(), "'.$daysp[$i]->pday.'") as ngay'));
+                if($minus[0]->ngay > 14){
+                    DB::table('products')->where('id', $daysp[$i]->id)->update(['status' => 10]); 
+                }
+            }
+        });
        
-
         view()->composer('Admin.pageadmin.admindanhgia', function($view){
             $loai_sp = ProductType::all();
             $view->with('loai_sp',$loai_sp);

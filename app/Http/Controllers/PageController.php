@@ -637,14 +637,28 @@ class PageController extends Controller
 
     public function postadminSuasanpham($idsp, Request $req){
         $id_product = Product::find($idsp);
-        Product::where('id',$idsp)->update([
-            'name'=>$req->newname,
-            'id_type'=>$req->newtype,
-            'unit_price'=>$req->new_unit_price,
-            'promotion_price'=>$req->new_promotion_price,
-            'size'=>$req->newsize,
-            'description'=>$req->newdesc
-        ]);
+        if($req->sphot == "on"){
+            Product::where('id',$idsp)->update([
+                'name'=>$req->newname,
+                'id_type'=>$req->newtype,
+                'unit_price'=>$req->new_unit_price,
+                'promotion_price'=>$req->new_promotion_price,
+                'size'=>$req->newsize,
+                'description'=>$req->newdesc,
+                'status'=>2
+            ]);
+
+        }
+        else {
+            Product::where('id',$idsp)->update([
+                'name'=>$req->newname,
+                'id_type'=>$req->newtype,
+                'unit_price'=>$req->new_unit_price,
+                'promotion_price'=>$req->new_promotion_price,
+                'size'=>$req->newsize,
+                'description'=>$req->newdesc
+            ]);
+        }
         $id_product->save();
         $idctsp = ProductDetail::where('id_product',$idsp)->value('id');
         $ctsanpham = ProductDetail::find($idctsp);
