@@ -77,5 +77,5 @@
         </form>
                             <!-- Tim kiem -->
     </div>
-    <div class="space20">&nbsp;</div>
+    <div class="space60">&nbsp;</div>
 </div>
