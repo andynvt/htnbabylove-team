@@ -137,7 +137,7 @@ class PageController extends Controller
             $bill_detail->color = $value['item']['color'];
             $bill_detail->quantity = $value['qty'];
             $bill_detail->size = $value['item']['size'];
-            $bill_detail->price = ($value['price']/$value['qty']);
+            $bill_detail->price = $value['price'];
             $bill_detail->image = $value['item']['img'];
             $bill_detail->save(); 
         }

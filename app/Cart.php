@@ -27,13 +27,13 @@ class Cart
 		$giamgia = $item->promotion_price;
 
 		if($giamgia == 0){
-			$giohang['price'] = $item->unit_price * $giohang['qty'];
+			$giohang['price'] = $item->unit_price;
 			$this->items[$idcheck] = $giohang;
 			$this->totalQty += $sl;
 			$this->totalPrice += $item->unit_price * $sl;
 		}
 		else{
-			$giohang['price'] = $item->promotion_price * $giohang['qty'];
+			$giohang['price'] = $item->promotion_price;
 			$this->items[$idcheck] = $giohang;
 			$this->totalQty += $sl;
 			$this->totalPrice += $item->promotion_price * $sl;
