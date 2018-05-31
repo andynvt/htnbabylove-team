@@ -84,7 +84,7 @@
                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                                             <form action="{{route('admintimkiem')}}"  method="get">
                                                 <input id="search" name="tukhoa" type="text" placeholder="Tìm kiếm..." required="" />
-                                                <button id="search_submit" value="Rechercher" type="submit"></button> 
+                                                <input id="search_submit" value="Rechercher" type="submit">
                                             </form>
                                         </div>
                                     </div>

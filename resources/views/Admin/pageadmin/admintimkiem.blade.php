@@ -83,42 +83,40 @@
                         	@if(!empty($tk_kh))
                             	<span style="color: red;  opacity: 0.8">{{$tk_kh}}</span>
                         	@endif
-
-
                         </h4>
                         </div>
                     </div>
-                     <div class="col-md-1">
-                            <p></p>
+                    <div class="col-md-1">
+                        <p></p>
+                    </div>
+                    <div class="col-md-3 ">
+                        <div id="wrap">
+                        	@if(!empty($tukhoa))
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <form action="{{route('admintimkiem')}}"  method="get">
+                                <input id="search" name="tukhoa" type="text" placeholder="Tìm kiếm..." required="">
+                                <input id="search_submit" value="Rechercher" type="submit">
+                            </form>
+                            @endif
+
+                            @if(!empty($tk_lsp))
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <form action="{{route('admintimkiem')}}"  method="get">
+                                <input id="search" name="tk_lsp" type="text" placeholder="Tìm kiếm..." required="">
+                                <input id="search_submit" value="Rechercher" type="submit">
+                            </form>
+                            @endif
+
+                            @if(!empty($tk_kh))
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <form action="{{route('admintimkiem')}}"  method="get">
+                                <input id="search" name="tk_kh" type="text" placeholder="Tìm kiếm..." required="">
+                                <input id="search_submit" value="Rechercher" type="submit">
+                            </form>
+                            @endif
+
                         </div>
-                        <div class="col-md-3 ">
-                            <div id="wrap">
-                            	@if(!empty($tukhoa))
-                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                <form action="{{route('admintimkiem')}}"  method="get">
-                                    <input id="search" name="tukhoa" type="text" placeholder="Tìm kiếm..." required="">
-                                    <button id="search_submit" value="Rechercher" type="submit"></button> 
-                                </form>
-                                @endif
-
-                                @if(!empty($tk_lsp))
-                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                <form action="{{route('admintimkiem')}}"  method="get">
-                                    <input id="search" name="tk_lsp" type="text" placeholder="Tìm kiếm..." required="">
-                                    <button id="search_submit" value="Rechercher" type="submit"></button> 
-                                </form>
-                                @endif
-
-                                @if(!empty($tk_kh))
-                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                <form action="{{route('admintimkiem')}}"  method="get">
-                                    <input id="search" name="tk_kh" type="text" placeholder="Tìm kiếm..." required="">
-                                    <button id="search_submit" value="Rechercher" type="submit"></button> 
-                                </form>
-                                @endif
-
-                            </div>
-                        </div>
+                    </div>
                     <div class="col-md-12">
                         <div class="card">
                             <div class="content table-responsive table-full-width st_table">

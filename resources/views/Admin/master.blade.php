@@ -318,6 +318,12 @@
 
 </body>
 
+<script>
+    $( "#wrap input[type='text']" ).focus(function() {
+        $('#wrap input[type="submit"]').css('z-index', 4)
+    });
+</script>   
+
 <!--   Core JS Files   -->
 <!--  Checkbox, Radio & Switch Plugins -->
 <script src="source/ADMIN/assets/js/bootstrap-checkbox-radio.js"></script>
