@@ -837,9 +837,9 @@ class PageController extends Controller
         $customers = Customer::all();
         $bills = Bill::orderBy('status','desc')->paginate(10,['*'],'product');
 
-        $checkbill = Bill::where('status', 4)->paginate(10,['*'],'product');
-        $sendbill = Bill::where('status', 3)->paginate(10,['*'],'product');
-        $otherbill = Bill::where('status','<', 3)->orderBy('status','desc')->paginate(10,['*'],'product');
+        $checkbill = Bill::where('status', 4)->paginate(10,['*'],'checkbill');
+        $sendbill = Bill::where('status', 3)->paginate(10,['*'],'sendbill');
+        $otherbill = Bill::where('status','<', 3)->orderBy('status','desc')->paginate(10,['*'],'otherbill');
 
         $get_bill = DB::select(DB::raw('SELECT bd.id as bdid, b.id as bid, b.total_price, bd.product_name, bd.color, bd.image, bd.size, bd.quantity, bd.price, c.name FROM bill_detail as bd, customers as c, bills as b WHERE bd.id_bill in (SELECT b.id FROM bills WHERE b.id_customer in (SELECT c.id FROM customers))'));
         // dd($checkbill);
