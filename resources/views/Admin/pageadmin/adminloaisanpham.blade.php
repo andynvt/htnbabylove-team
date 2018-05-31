@@ -156,7 +156,7 @@
                                                 }
                                                 else{
                                             ?>
-                                                    <div data-toggle="modal" data-target="#sp_{{ $adlsp->id }}" title="Không thể xóa khi còn sản phẩm">
+                                                    <div data-toggle="modal" data-target="#sp_{{ $adlsp->id }}" title="Không thể xóa khi còn sản phẩm" style="cursor: pointer;">
                                                         (Có
                                                         <?php echo $i;?>
                                                         sản phẩm)

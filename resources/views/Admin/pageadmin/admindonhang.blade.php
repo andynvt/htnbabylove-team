@@ -384,15 +384,15 @@
                         <p>Họ tên:</p>
                         <p>Giới tính:</p>
                         <p>SĐT:</p>
-                        <p>Email:</p>
                         <p>Địa chỉ:</p>
+                        <p>Email:</p>
                     </div>
                     <div class="col-md-10">
                         <p>{{$c->name}}</p>
                         <p>{{$c->gender}}</p>
                         <p>{{$c->phone}}</p>
-                        <p>{{$c->email}}</p>
                         <p>{{$c->address}}</p>
+                        <p>{{$c->email}}</p>
                     </div>
                 </div>
                 <div class="modal-footer">
