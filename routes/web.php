@@ -125,7 +125,7 @@ Route::get('admin-danhgiatheoloai/{fbtype}', [
 Route::post('admin-xoanhieudanhgia', [
 	'as' => 'adminxoanhieudanhgia',
 	'uses' => 'PageController@postadminXoanhieudanhgia'
-]);
+])->middleware('adminLogin');
 
 Route::get('admin-sanpham', [
 	'as' => 'adminsanpham',
@@ -145,19 +145,19 @@ Route::get('admin-themsanpham', [
 Route::get('admin-suasanpham/{idsp}', [
 	'as' => 'adminsuasanpham',
 	'uses' => 'PageController@getadminSuasanpham'
-]);
+])->middleware('adminLogin');
 
 Route::post('admin-edit/{idsp}', [
 	'as' => 'adminsuasp',
 	'uses' => 'PageController@postadminSuasanpham'
-]);
+])->middleware('adminLogin');
 
-Route::get('xoa-img', 'PageController@AjaxXoaimg');
+Route::get('xoa-img', 'PageController@AjaxXoaimg')->middleware('adminLogin');
 
 Route::post('admin-xoanhieusanpham', [
 	'as' => 'adminxoanhieusanpham',
 	'uses' => 'PageController@postadminXoanhieusanpham'
-]);
+])->middleware('adminLogin');
 
 Route::post('admin-themloaisanpham', [
 	'as' => 'adminthemloaisanpham',
@@ -172,17 +172,17 @@ Route::get('admin-loaisanpham', [
 Route::post('admin-themloaisanpham', [
 	'as' => 'adminthemloaisanpham',
 	'uses' => 'PageController@postThemloaisanpham'
-]);
+])->middleware('adminLogin');
 
 Route::post('admin-sualoaisanpham/{idtype}', [
 	'as' => 'adminsualoaisanpham',
 	'uses' => 'PageController@postadminSualoaisanpham'
-]);
+])->middleware('adminLogin');
 
 Route::post('admin-xoanhieuloaisanpham', [
 	'as' => 'adminxoanhieuloaisanpham',
 	'uses' => 'PageController@postadminXoanhieuloaisanpham'
-]);
+])->middleware('adminLogin');
 
 Route::get('admin-khachhang', [
 	'as' => 'adminkhachhang',
@@ -194,11 +194,11 @@ Route::get('admin-donhang', [
 	'uses' => 'PageController@getadminDonhang'
 ])->middleware('adminLogin');
 
-Route::get('check-bill', 'PageController@completedUpdate');
-Route::get('cancle-bill', 'PageController@cancelUpdate');
+Route::get('check-bill', 'PageController@completedUpdate')->middleware('adminLogin');
+Route::get('cancle-bill', 'PageController@cancelUpdate')->middleware('adminLogin');
 
-Route::get('success-bill', 'PageController@AjaxSuccessbill');
-Route::get('fail-bill', 'PageController@AjaxFailbill');
+Route::get('success-bill', 'PageController@AjaxSuccessbill')->middleware('adminLogin');
+Route::get('fail-bill', 'PageController@AjaxFailbill')->middleware('adminLogin');
 
 Route::get('admin-doanhthu', [
 	'as' => 'admindoanhthu',
@@ -208,19 +208,19 @@ Route::get('admin-doanhthu', [
 Route::get('dangxuat',[
 	'as'=>'dangxuat',
 	'uses'=>'UserController@getDangXuatAdmin'
-]);
+])->middleware('adminLogin');
 
 Route::get('admin-index', 'UserController@getdangnhapAdmin');
 Route::post('admin-index', 'UserController@postdangnhapAdmin');
 Route::post('sua/{id}',[
 	'as' => 'suaAdmin',
 	'uses' => 'UserController@postSuaAdmin'
-]);
+])->middleware('adminLogin');
 
 Route::get('admin-timkiem', [
 	'as' => 'admintimkiem',
 	'uses' => 'PageController@gettimkiemall'
-]);
+])->middleware('adminLogin');
 
 Route::post('lien-he', [
 	'as' => 'lienhe',
