@@ -152,7 +152,7 @@ Route::post('admin-edit/{idsp}', [
 	'uses' => 'PageController@postadminSuasanpham'
 ])->middleware('adminLogin');
 
-Route::get('xoa-img', 'PageController@AjaxXoaimg')->middleware('adminLogin');
+Route::get('xoa-img', 'PageController@AjaxXoaimg');
 
 Route::post('admin-xoanhieusanpham', [
 	'as' => 'adminxoanhieusanpham',
@@ -194,11 +194,11 @@ Route::get('admin-donhang', [
 	'uses' => 'PageController@getadminDonhang'
 ])->middleware('adminLogin');
 
-Route::get('check-bill', 'PageController@completedUpdate')->middleware('adminLogin');
-Route::get('cancle-bill', 'PageController@cancelUpdate')->middleware('adminLogin');
+Route::get('check-bill', 'PageController@completedUpdate');
+Route::get('cancle-bill', 'PageController@cancelUpdate');
 
-Route::get('success-bill', 'PageController@AjaxSuccessbill')->middleware('adminLogin');
-Route::get('fail-bill', 'PageController@AjaxFailbill')->middleware('adminLogin');
+Route::get('success-bill', 'PageController@AjaxSuccessbill');
+Route::get('fail-bill', 'PageController@AjaxFailbill');
 
 Route::get('admin-doanhthu', [
 	'as' => 'admindoanhthu',
