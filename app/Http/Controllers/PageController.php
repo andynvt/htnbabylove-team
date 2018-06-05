@@ -595,36 +595,39 @@ class PageController extends Controller
                 $image->move('storage/product', $name);  
                 $img[] = $name;  
             }
+
+            $sanpham->name = $req->ten;
+            $sanpham->unit_price = $req->giagoc;
+            $sanpham->promotion_price = $req->giakhuyenmai;
+            $sanpham->size = $req->kichthuoc;
+            $sanpham->status = $req->trangthai;
+            $sanpham->description = $req->mota;
+            $id_type = $req->loaisanpham;
+            $sanpham->id_type = $id_type;
+            $sanpham->save();
+
+            $ctsanpham->id_product = $sanpham->id;
+            $ctsanpham->save();
+
+            foreach ($req->mausp as $key) {
+                $colorsp = new ProductColor;
+                $colorsp->id_detail = $ctsanpham->id;
+                $colorsp->color = $key;
+                $colorsp->save();
+            }
+            foreach($img as $i){
+                ProductImage::insert( [
+                    'id_detail'=>$ctsanpham->id,
+                    'image'=>$i,
+                ]);
+            }
+
+            $spname = $req->ten;
+            return redirect()->back()->with('addsp', 'Đã thêm: '.$spname);
         }
-
-        $sanpham->name = $req->ten;
-        $sanpham->unit_price = $req->giagoc;
-        $sanpham->promotion_price = $req->giakhuyenmai;
-        $sanpham->size = $req->kichthuoc;
-        $sanpham->status = $req->trangthai;
-        $sanpham->description = $req->mota;
-        $id_type = $req->loaisanpham;
-        $sanpham->id_type = $id_type;
-        $sanpham->save();
-
-        $ctsanpham->id_product = $sanpham->id;
-        $ctsanpham->save();
-
-        foreach ($req->mausp as $key) {
-            $colorsp = new ProductColor;
-            $colorsp->id_detail = $ctsanpham->id;
-            $colorsp->color = $key;
-            $colorsp->save();
+        else{
+            return redirect()->back()->with('failaddsp', 'Hình ảnh có kích thước lớn hơn 2mb');
         }
-        foreach($img as $i){
-            ProductImage::insert( [
-                'id_detail'=>$ctsanpham->id,
-                'image'=>$i,
-            ]);
-        }
-
-        $spname = $req->ten;
-        return redirect()->back()->with('addsp', 'Đã thêm: '.$spname);    
     }
 
     public function getadminSuasanpham($idsp){

@@ -92,8 +92,8 @@
                                 <form method="post" action="{{route('suaAdmin', Auth::user()->id)}}" class="clearfix">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <div class="form-group">
-                                        <label for="username" class="control-label">Tên tài khoản</label>
-                                        <input type="text" class="form-control" name="name" placeholder="Tên tài khoản" value="{{Auth::user()->name}}" disabled="">
+                                        <label for="username" class="control-label">Tên người dùng</label>
+                                        <input type="text" class="form-control" name="username" placeholder="Tên tài khoản" value="{{Auth::user()->name}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="username" class="control-label">Mật khẩu</label>

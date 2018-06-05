@@ -73,6 +73,8 @@
         <body onload="admin.showNotification('top','right')"></body>
     @elseif (session('addsp'))
         <body onload="admin.showNotification('top','right')"></body>
+    @elseif (session('failaddsp'))
+        <body onload="admin.showNotification('top','right')"></body>
     @endif
 
 
@@ -158,6 +160,12 @@
                 $.notify({
                     icon: "ti-plus",
                     message: "{{ session('addsp') }}"
+                }
+                @elseif(session('failaddsp'))
+                color = Math.floor(4);
+                $.notify({
+                    icon: "ti-close",
+                    message: "{{ session('failaddsp') }}"
                 }
                 @endif
                 ,{
