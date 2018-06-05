@@ -159,6 +159,7 @@
                                                        <i class="fa fa-plus"></i> 
                                                         <input type="file" multiple id="gallery-photo-add" name="newimage[]" accept="image/png, image/jpg, image/jpeg">
                                                     </button>
+                                                    <p class="col-sm-12" style="color: #9A9A9A; padding-left: 0">(*) Kích thước ảnh nhỏ hơn 2mb (2048kb)</p>
                                                     <div class="gallery"></div>
                                                 </div>
                                             </div>
