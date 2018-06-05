@@ -16,9 +16,10 @@
                 </div>
                 <div class="col-lg-9 col-md-12">
                     <!-- San pham -->
+
                     <!-- Hang 1 -->
                     <!-- San pham khuyen mai -->
-                    <div class="text-left text-price-re" style=" font-weight: 600"> Sản Phẩm Khuyến Mãi ({{count($promotion_product)}} sản phẩm)</div>
+                    <div class="text-left text-price-re" style=" font-weight: 600"> Sản Phẩm Khuyến Mãi ({{ $cntpro }} sản phẩm)</div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
                         @foreach($promotion_product as $promo ) 
@@ -69,11 +70,13 @@
                     </div>
                     <div class="row justify-content-center">{{$promotion_product->links() }}
                     </div>
+
                     <div class="space20">&nbsp;</div>
+
                     <!-- Hang 2 -->
                     <!-- San pham moi -->
                     <div class="space10">&nbsp;</div>
-                    <div class="text-left text-price-re" style=" font-weight: 600"> Sản Phẩm Mới ({{count($new_product)}} sản phẩm)</div>
+                    <div class="text-left text-price-re" style=" font-weight: 600"> Sản Phẩm Mới ({{ $cntnew }} sản phẩm)</div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
                         @foreach($new_product as $new) 
@@ -128,11 +131,13 @@
                     </div>
                     <div class="row justify-content-center">{{$new_product->links() }}
                     </div>
+
                     <div class="space20">&nbsp;</div>
+
                     <!-- Hang 3 -->
-                    <!-- San pham -->
+                    <!-- San pham hot-->
                     <div class="space10">&nbsp;</div>
-                    <div class="text-left text-price-re" style=" font-weight: 600">Sản Phẩm Hot ({{count($hot_product)}} sản phẩm)</div>
+                    <div class="text-left text-price-re" style=" font-weight: 600">Sản Phẩm Hot ({{ $cnthot }} sản phẩm)</div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
                         @foreach($hot_product as $hot) 
@@ -182,6 +187,61 @@
                     <div class="row justify-content-center">{{$hot_product->links() }}
                     </div>
                     <div class="space20">&nbsp;</div>
+
+                    <!-- Hang 4 -->
+                    <!-- San pham khac-->
+                    <div class="space10">&nbsp;</div>
+                    <div class="text-left text-price-re" style=" font-weight: 600">Sản Phẩm Khác ({{ $cntnor }} sản phẩm)</div>
+                    <div class="space15">&nbsp;</div>
+                    <div class="row">
+                        @foreach($normal_product as $nor) 
+                        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                            <div class="single-item">
+                                <div class="ribbon-wrapper">
+                                    @if($nor->promotion_price != 0)
+                                    <div class="ribbon1 sale">Sale</div>
+                                    @elseif($nor->status == 1)
+                                    <div class="ribbon1 new">New</div>
+                                    @elseif($nor->status == 2)
+                                    <div class="ribbon1 hot">Hot</div>
+                                    @endif
+                                </div>
+                                <div class="thumbnail">
+                                    <a href="{{ route('chitietsanpham', $nor->id_product) }}">
+                                        <div class="containeroverlay">
+                                            <img src="storage/product/{{$nor->image}}" alt="Thumbnail Image 1" class="img-responsive" width="1024px">
+                                           
+                                            <div class="overlay">
+                                                <div class="text">Xem chi tiết</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="caption">
+                                        <div class="space5">&nbsp;</div>
+                                        <a href="{{ route('chitietsanpham', $nor->id_product) }}"> <b class="text-price text-price-re">
+                                                    @if($nor->promotion_price == 0)
+                                                        <span class="text-danger ">{{number_format($nor->unit_price)}} đ</span> &nbsp;
+                                                    @else
+                                                        <span class="text-danger ">{{number_format($nor->promotion_price)}} đ</span> &nbsp;
+                                                        <span class="flash-del">{{number_format($nor->unit_price)}} đ</span>
+                                                    @endif
+                                                </b>
+                                                    <div class="space10">&nbsp;</div>
+                                                    <p class='text-left text-title text-title-re'><b>{{$nor->name}}</b>&nbsp;</p>
+                                            </a>
+                                        <button type="button" class="btn btn-buy btn-buy-re btn-full button" data-toggle="modal" data-target="#nor{{$nor->id_product}}"><span>Mua Ngay </span></button>
+                                        <a class="btn btn-themvaogio btn-themvaogio-re btn-full " href="{{route('themnhanh',$nor->id_product)}}" style="color: white">Thêm vào giỏ</a>
+                                        <hr> </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                         @endforeach
+                    </div>
+                    <div class="row justify-content-center">{{$normal_product->links() }}
+                    </div>
+                    <div class="space20">&nbsp;</div>
+
                 </div>
             </div>
         </div>

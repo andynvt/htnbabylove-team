@@ -94,6 +94,18 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('master',function($view){
+            $normal_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where([
+                                ['status', 10],
+                                ['promotion_price', 0]
+                            ])
+                            ->groupBy('products.id')
+                            ->get();
+            $view->with('normal_product',$normal_product);
+        });
+
+        view()->composer('master',function($view){
             // Cập nhật trạng thái
             $daysp = Product::select('id','created_at as pday')->get();
             $cntsp = count($daysp);

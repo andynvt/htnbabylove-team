@@ -60,11 +60,13 @@
                                         </p>
                                         </a>
                                         <button type="button" class="btn btn-buy btn-buy-re btn-full button" data-toggle="modal" data-target="@if($promo->promotion_price != 0)
-                                                #pro{{$promo->id_product}}
+                                                    #pro{{$promo->id_product}}
                                                 @elseif($promo->status == 1)
-                                                #new{{$promo->id_product}}
+                                                    #new{{$promo->id_product}}
                                                 @elseif($promo->status == 2)
-                                                #hot{{$promo->id_product}}
+                                                    #hot{{$promo->id_product}}
+                                                @elseif($promo->status == 10 && $promo->promotion_price == 0)
+                                                    #nor{{$promo->id_product}}
                                                 @endif"><span>Mua Ngay </span></button>
                                         <a class="btn btn-themvaogio btn-themvaogio-re btn-full " href="{{route('themnhanh',$promo->id_product)}}" style="color: white">Thêm vào giỏ</a>
                                         <hr>

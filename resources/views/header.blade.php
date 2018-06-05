@@ -386,7 +386,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-2 col-md-3 col-xs-12">
-                                    <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Huỷ</button>
+                                    <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Đóng</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
                                     <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_pro_{{ $promo->id_product }}">Thêm Vào Giỏ</a>
@@ -506,7 +506,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-2 col-md-3 col-xs-12">
-                                    <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Huỷ</button>
+                                    <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Đóng</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
                                     <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_new_{{ $new->id_product }}" >Thêm Vào Giỏ</a>
@@ -625,7 +625,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-2 col-md-3 col-xs-12">
-                                    <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Huỷ</button>
+                                    <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Đóng</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
                                     <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_hot_{{ $hot->id_product }}" >Thêm Vào Giỏ</a>
@@ -658,3 +658,120 @@
     </div>
     @endforeach
 <!--  Modal Mua Nhanh hot-->
+
+<!--  Modal Mua Nhanh normal-->
+    @foreach($normal_product as $nor ) 
+    <div class="modal fade" id="nor{{$nor->id_product}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <!--  Modal Mua Nhanh-->
+        <form action="{{ route('chitietsp', $nor->id_product) }}" method="post">    
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">  
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-title-modal " id="exampleModalLongTitle">{{$nor->name}}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: black"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-full">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="single-item">
+                                        <div class="ribbon-wrapper">
+                                        @if($nor->promotion_price != 0)
+                                        <div class="ribbon1 sale">Sale</div>
+                                        @elseif($nor->status == 1)
+                                        <div class="ribbon1 new">New</div>
+                                        @elseif($nor->status == 2)
+                                        <div class="ribbon1 hot">Hot</div>
+                                        @endif
+                                        </div>
+                                        <div class="thumbnail ">
+                                            <img src="storage/product/{{$nor->image}}" alt="Thumbnail Image 1" class="thumbnail-re" width="480px">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="space10">&nbsp;</div>
+                                   <b class="text-price text-modal-re">
+                                                @if($nor->promotion_price == 0)
+                                                            <span class="text-danger ">{{number_format($nor->unit_price)}} đ</span> &nbsp;
+                                                        @else
+                                                            <span class="text-danger ">{{number_format($nor->promotion_price)}} đ</span> &nbsp;
+                                                            <span class="flash-del">{{number_format($nor->unit_price)}} đ</span>
+                                                        @endif
+                                                </b>
+                                                <div class="space10">&nbsp;</div>
+                                    <div class="container-full">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <p class=" text-price text-modal-re"><b>&nbsp;Số lượng:</b></p>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-outline-secondary" type="button" data-dir="dwn"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                    <input type="text" class="form-control text-center text-modal-re" name="qtyspbuy" value="1">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary" type="button" data-dir="up"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="space15">&nbsp;</div>
+                                            </div>
+                                            <!--   <div class="space30">&nbsp;</div>-->
+                                            <div class="col-lg-6 col-md-6">
+                                                <p class=" text-price text-modal-re"><b>&nbsp;Màu sắc:</b></p>
+                                                <div class="form-group text-modal-re">
+                                                    <select name="colorbuy" >
+                                                        @foreach($product_color as $pro)
+                                                            @if($nor->id_product == $pro->spid)
+                                                                <option>{{$pro->color}}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="space10">&nbsp;</div>
+                                            </div>
+                                            <p class=" text-price text-thongtin-re"><b>&nbsp;Thông tin cơ bản:</b></p>
+                                            <div class="col-lg-12 text-thongtin-re">{{$nor->description}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3 col-xs-12">
+                                    <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Đóng</button>
+                                </div>
+                                <div class="col-lg-3 col-md-5 col-xs-12">
+                                    <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_hot_{{ $nor->id_product }}" >Thêm Vào Giỏ</a>
+                                </div>
+                                <script>
+                            $('#tvg_hot_{{ $nor->id_product }}').on('click',function(){
+                                var color = $(this).parents('.modal-footer').prev('.modal-body').find('select').val();
+                                var qty = $(this).parents('.modal-footer').prev('.modal-body').find('input').val();
+                                var id = '{{ $nor->id_product }}';
+                                $.get('mausp', {colorbuy: color, qtybuy: qty, id:id}, function(cl, qty, id, cart){
+                                    $('#cld_{{$nor->id_product}}').html(cl);
+                                    $('#clm_{{$nor->id_product}}').html(cl);
+                                    location.reload();
+                                });
+                            });
+                                </script>
+                                <div class="col-lg-3 col-md-4 col-xs-12">
+                                    @if(Session::has('cart'))
+                                        <a class="btn btn-buy btn-modal-re btn-modal btn-full button" href="{{route('themnhanh',$nor->id_product)}}"><span>Thanh Toán</span></a>
+                                    @else
+                                        <button class="btn btn-buy btn-modal-re btn-modal btn-full button" type="submit"><span>Thanh Toán</span></button>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>             
+        </form>
+    </div>
+    @endforeach
+<!--  Modal Mua Nhanh normal-->

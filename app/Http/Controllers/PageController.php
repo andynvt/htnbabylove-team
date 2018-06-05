@@ -164,9 +164,27 @@ class PageController extends Controller
                             ->orderByRaw('unit_price  ASC')
                             ->groupBy('products.id')
                             ->paginate(6,['*'],'hot_product');
+        $normal_product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where([
+                                ['status', 10],
+                                ['promotion_price', 0]
+                            ])
+                            ->orderByRaw('unit_price  ASC')
+                            ->groupBy('products.id')
+                            ->paginate(6,['*'],'normal_product');
+
+        $cntpro = Product::where('promotion_price', '<>', '0')->count('*');
+        $cntnew = Product::where('products.status', 1)->count('*');
+        $cnthot = Product::where('products.status', 2)->count('*');
+        $cntnor = Product::where([
+                                ['status', 10],
+                                ['promotion_price', 0]
+                                ])->count('*');
+        // dd($cnthot);
 
         $lsp = ProductType::all();
-        return view('page.trangchu',compact('new_product','hot_product','promotion_product','detail_product','lsp','product','product_image','product_color'));
+        return view('page.trangchu',compact('new_product','hot_product','promotion_product','normal_product','detail_product','lsp','product','product_image','product_color', 'cntpro', 'cntnew', 'cnthot', 'cntnor'));
     }
 
     public function getLoaiSP($type){

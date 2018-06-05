@@ -318,6 +318,8 @@
                                                     #new{{$same->id_product}}
                                                 @elseif($same->status == 2)
                                                     #hot{{$same->id_product}}
+                                                @elseif($same->status == 10 && $same->promotion_price == 0)
+                                                    #nor{{$same->id_product}}
                                                 @endif"><span>Mua Ngay </span></button>
                                         <a class="btn btn-themvaogio btn-themvaogio-re btn-full " href="{{route('themnhanh',$same->id_product)}}" style="color: white">Thêm vào giỏ</a>
                                         <hr>
@@ -411,44 +413,44 @@
     </div>
     <!-- .container -->
     <script>
-                            function openModal() {
-                                  document.getElementById('myModal{{$sanpham->id}}').style.display = "block";
-                                }
+        function openModal() {
+              document.getElementById('myModal{{$sanpham->id}}').style.display = "block";
+            }
 
-                                function closeModal() {
-                                  document.getElementById('myModal{{$sanpham->id}}').style.display = "none";
-                                }
+            function closeModal() {
+              document.getElementById('myModal{{$sanpham->id}}').style.display = "none";
+            }
 
-                                var slideIndex = 1;
-                                showSlides(slideIndex);
+            var slideIndex = 1;
+            showSlides(slideIndex);
 
-                                function plusSlides(n) {
-                                  showSlides(slideIndex += n);
-                                }
+            function plusSlides(n) {
+              showSlides(slideIndex += n);
+            }
 
-                                function currentSlide(n) {
-                                  showSlides(slideIndex = n);
-                                }
+            function currentSlide(n) {
+              showSlides(slideIndex = n);
+            }
 
-                                function showSlides(n) {
-                                  var i;
-                                  var slides = document.getElementsByClassName("mySlides");
-                                  var dots = document.getElementsByClassName("demo");
-                                  var captionText = document.getElementById("caption");
-                                  if (n > slides.length) {slideIndex = 1}
-                                  if (n < 1) {slideIndex = slides.length}
-                                  for (i = 0; i < slides.length; i++) {
-                                      slides[i].style.display = "none";
-                                  }
-                                  for (i = 0; i < dots.length; i++) {
-                                      dots[i].className = dots[i].className.replace(" active", "");
-                                  }
-                                  slides[slideIndex-1].style.display = "block";
-                                  dots[slideIndex-1].className += " active";
-                                  captionText.innerHTML = dots[slideIndex-1].alt;
-                                }
+            function showSlides(n) {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("demo");
+              var captionText = document.getElementById("caption");
+              if (n > slides.length) {slideIndex = 1}
+              if (n < 1) {slideIndex = slides.length}
+              for (i = 0; i < slides.length; i++) {
+                  slides[i].style.display = "none";
+              }
+              for (i = 0; i < dots.length; i++) {
+                  dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";
+              dots[slideIndex-1].className += " active";
+              captionText.innerHTML = dots[slideIndex-1].alt;
+            }
 
-                        </script>
+    </script>
        
 </div> 
 @endsection
