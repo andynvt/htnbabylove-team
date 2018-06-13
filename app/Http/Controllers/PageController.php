@@ -589,6 +589,7 @@ class PageController extends Controller
     public function postadminThemsanpham(Request $req){
         $sanpham = new Product;
         $ctsanpham = new ProductDetail;
+
         if($req->hasfile('images')){
             foreach($req->file('images') as $image){
                 $name=date('Y-m-d-H-i-s')."-".$image->getClientOriginalName();
@@ -608,6 +609,7 @@ class PageController extends Controller
 
             $ctsanpham->id_product = $sanpham->id;
             $ctsanpham->save();
+
 
             foreach ($req->mausp as $key) {
                 $colorsp = new ProductColor;
@@ -695,11 +697,14 @@ class PageController extends Controller
         foreach($colorsp as $cl){
             $cl->delete();
         }
-        foreach ($req->newcolor as $key) {
-            $colorsp = new ProductColor;
-            $colorsp->id_detail = $ctsanpham->id;
-            $colorsp->color = $key;
-            $colorsp->save();
+
+        if($req->newcolor){
+            foreach ($req->newcolor as $key) {
+                $colorsp = new ProductColor;
+                $colorsp->id_detail = $ctsanpham->id;
+                $colorsp->color = $key;
+                $colorsp->save();
+            }
         }
 
         if($req->hasfile('newimage')){
