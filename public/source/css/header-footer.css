@@ -370,8 +370,8 @@ body {
         object-fit: contain;
     }
     .sidenav a {
-        font-size: 30px;
-        line-height: 40px;
+        font-size: 16px;
+        line-height: 20px;
     }
 
     .ft_pc {

@@ -349,6 +349,11 @@ class PageController extends Controller
                             ->where('products.name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
+        $cntpro = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('products.name','like','%'.$req->search.'%')->orWhere('unit_price',$req->search)
+                            ->groupBy('products.id')->count('*');
+
         // dd($product);
         //cắt chuỗi của giá tiền
         
@@ -371,6 +376,16 @@ class PageController extends Controller
                                     ])
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
+                $cntpro = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->Where([
+                                    ['products.name','like','%'.$req->search.'%'],
+                                    ['ty.id','=',$value],
+                                    ['products.unit_price', '>=', $giatien[0]],
+                                    ['products.unit_price', '<=', $giatien[1]],
+                                    ])
+                            ->groupBy('products.id')->count('*');
             }
             elseif(!empty($tensp) && !empty($value)){
                 $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
@@ -382,6 +397,14 @@ class PageController extends Controller
                                     ])
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
+                $cntpro = $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->Where([
+                                    ['products.name','like','%'.$tensp.'%'],
+                                    ['ty.id','=',$value],
+                                    ])
+                            ->groupBy('products.id')->count('*');
             }
             elseif(!empty($tensp) && !empty($giatien)){
                 $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
@@ -394,6 +417,15 @@ class PageController extends Controller
                                     ])
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
+                $cntpro = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->Where([
+                                    ['products.name','like','%'.$tensp.'%'],
+                                    ['products.unit_price', '>=', $giatien[0]],
+                                    ['products.unit_price', '<=', $giatien[1]],
+                                    ])
+                            ->groupBy('products.id')->count('*');
             }
             elseif(!empty($value) && !empty($giatien)){
                 $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
@@ -406,6 +438,16 @@ class PageController extends Controller
                                     ])
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
+                $cntpro = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->Where([
+                                    ['ty.id','=',$value],
+                                    ['products.unit_price', '>=', $giatien[0]],
+                                    ['products.unit_price', '<=', $giatien[1]],
+                                    ])
+                            ->groupBy('products.id')->count('*');
+
             }
             elseif(!empty($tensp)){
                 $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
@@ -413,6 +455,10 @@ class PageController extends Controller
                             ->where('products.name','like','%'.$req->search.'%')->orWhere('products.unit_price',$req->search)
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
+                $cntpro = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->where('products.name','like','%'.$req->search.'%')->orWhere('products.unit_price',$req->search)
+                            ->groupBy('products.id')->count('*');
             }
             elseif(!empty($value)){
                 $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
@@ -421,6 +467,11 @@ class PageController extends Controller
                             ->where('ty.id','=',$value)
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
+                $cntpro = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->join('product_type as ty', 'products.id_type', '=', 'ty.id')
+                            ->where('ty.id','=',$value)
+                            ->groupBy('products.id')->count('*');
             }
             elseif(!empty($giatien)){
                 $product = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
@@ -428,16 +479,21 @@ class PageController extends Controller
                             ->whereBetween('products.unit_price', [$giatien[0],$giatien[1]] )
                             ->groupBy('products.id')
                             ->paginate(9,['*'],'product');
+                $cntpro = Product::join('product_detail as ctsp', 'products.id', '=', 'ctsp.id_product')
+                            ->join('product_image as asp', 'ctsp.id', '=', 'asp.id_detail')
+                            ->whereBetween('products.unit_price', [$giatien[0],$giatien[1]] )
+                            ->groupBy('products.id')->count('*');
             }
         }
-
+        $cntpro = Product::where('promotion_price', '<>', '0')->count('*');
+        
     
      // dd($product);
     
         
         $lsp = ProductType::all();
 
-        return view('page.timkiem',compact('lsp','product'));
+        return view('page.timkiem',compact('lsp','product', 'cntpro'));
        
        
     }

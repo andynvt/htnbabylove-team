@@ -1,5 +1,22 @@
+html,
 body {
-    /*background-color: #F5F5F5;*/
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#container {
+    min-height: 100%;
+    position: relative;
+}
+
+#content-body {}
+
+#footer {
+    z-index: 999;
+
+    bottom: 0;
+    width: 100%;
 }
 
 .carousel-indicators li {
@@ -183,6 +200,7 @@ body {
 .well {
     margin-top: 10px;
     max-width: 100%;
+    display: block;
 }
 
 .well1 {}
@@ -369,7 +387,7 @@ body {
 
 @media screen and (min-device-width: 100px) and (max-device-width: 425px) {
     .pagination {
-        font-size: 30px;
+        font-size: 17px;
     }
     .modal-dialog {
         max-width: 1024px;
@@ -377,25 +395,25 @@ body {
     }
     .text-price-re {
         /*height: 60px;*/
-        font-size: 25px;
+        font-size: 22px;
         line-height: 27px;
     }
     .text-title-re {
-        height: 40px;
-        font-size: 25px;
-        padding-left: 10px;
+        height: 26px;
+        font-size: 20px;
+        padding-left: 5px;
         line-height: 37px;
     }
     .btn-buy-re {
         height: 48px;
-        font-size: 25px;
+        font-size: 22px;
     }
     .btn-themvaogio-re {
         height: 48px;
-        font-size: 25px;
+        font-size: 22px;
     }
     .btn-modal-re {
-        font-size: 20px;
+        font-size: 17px;
     }
 
     .btn-modal-huy {
@@ -405,13 +423,13 @@ body {
         margin-left: 0%;
     }
     .text-modal-re {
-        font-size: 20px;
+        font-size: 17px;
     }
     .text-modal-re select {
-        height: 38px;
+        height: 35px;
     }
     .text-thongtin-re {
-        font-size: 20px;
+        font-size: 17px;
         line-height: 25px;
     }
     .thumbnail-re {
@@ -424,7 +442,7 @@ body {
         width: 100%;
     }
     .control-label {
-        font-size: 25px;
+        font-size: 22px;
         line-height: 25px;
         /*line-height: 49px;*/
     }
@@ -474,29 +492,29 @@ body {
         height: 30px;
     }
     .form-group input[type="text"] {
-        height: 38px;
+        height: 35px;
     }
     .form-group select.form-control:not([size]):not([multiple]) {
-        height: 38px;
+        height: 35px;
     }
 
     .text-footer-re {
-        font-size: 40px;
+        font-size: 37px;
         line-height: 45px;
     }
     .text {
-        font-size: 30px;
+        font-size: 27px;
         line-height: 50px;
     }
     .cpr-l {
         padding-top: 20px;
-        font-size: 35px;
+        font-size: 32px;
     }
 }
 
 @media screen and (min-device-width: 452px) and (max-device-width: 768px) {
     .pagination {
-        font-size: 30px;
+        font-size: 17px;
     }
     .modal-dialog {
         max-width: 1024px;
@@ -504,28 +522,28 @@ body {
     }
     .text-price-re {
         height: 60px;
-        font-size: 52px;
+        font-size: 49px;
         padding-left: 10px;
         line-height: 65px;
     }
     .text-title-re {
-        height: 60px;
-        font-size: 52px;
-        padding-left: 10px;
-        line-height: 65px;
+        height: 26px;
+        font-size: 20px;
+        padding-left: 5px;
+        line-height: 37px;
     }
     .btn-buy-re {
         height: 100px;
-        font-size: 52px;
+        font-size: 49px;
         padding-left: 10px;
     }
     .btn-themvaogio-re {
         height: 100px;
-        font-size: 52px;
+        font-size: 49px;
         padding-left: 10px;
     }
     .btn-modal-re {
-        font-size: 40px;
+        font-size: 37px;
     }
 
     .btn-modal-huy {
@@ -535,13 +553,13 @@ body {
         margin-left: 0%;
     }
     .text-modal-re {
-        font-size: 30px;
+        font-size: 27px;
     }
     .text-modal-re select {
-        height: 55px;
+        height: 52px;
     }
     .text-thongtin-re {
-        font-size: 35px;
+        font-size: 32px;
         line-height: 43px;
     }
     .thumbnail-re {
@@ -554,7 +572,7 @@ body {
         width: 100%;
     }
     .control-label {
-        font-size: 40px;
+        font-size: 37px;
 
         line-height: 50px;
     }
@@ -564,7 +582,7 @@ body {
     }
     .text-filter-re {
         height: 60px;
-        font-size: 35px;
+        font-size: 32px;
     }
 
 
@@ -638,28 +656,30 @@ body {
     }
 
     .text-footer-re {
-        font-size: 34px;
+        font-size: 31px;
         line-height: 0px;
     }
     .text {
-        font-size: 50px;
+        font-size: 49px;
         line-height: 50px;
     }
     .cpr-l {
         padding-top: 20px;
-        font-size: 35px;
+        font-size: 32px;
     }
 }
 
 
 @media (min-width: 768px) {
 
-   /* .menuscroll {
+    /* .menuscroll {
         display: none;
     }*/
 }
 
 @media screen and (min-device-width: 769px) and (max-device-width: 2560px) {}
+
+
 
 
 
@@ -730,6 +750,8 @@ body {
 .progress-bar-black {
     background: linear-gradient(90deg, #79D63C 25%, transparent 25%, transparent 50%, #79D63C 50%, #79D63C 75%, transparent 75%, transparent);
 }
+
+
 
 
 
@@ -807,6 +829,8 @@ body {
     background-color: #fff;
     border: 1px solid #ddd;
 }
+
+
 
 
 /*.pagination li.active {

@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-lg-9 col-md-12">  
                     <div class="space10">&nbsp;</div>
-                    <div class="text-left text-price-re" style="font-weight: 600"> Tìm Thấy {{count($product)}} Sản Phẩm </div>
+                    <div class="text-left text-price-re" style="font-weight: 600"> Tìm Thấy {{count($cntpro)}} Sản Phẩm </div>
                     <div class="space15">&nbsp;</div>
                     <div class="row">
                        @foreach($product as $promo) 

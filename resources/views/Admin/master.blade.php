@@ -278,14 +278,15 @@
                             </div>
                             <div class="col-lg-6 col-md-offset-0">
                                 <div class="space10">&nbsp;</div>
-                                <p class="text-danger text-price-model"><b class="text-price">
-                                                @if($sp->promotion_price == 0)
-                                                            <span class="text-danger ">{{number_format($sp->unit_price)}} đ</span> &nbsp;
-                                                        @else
-                                                            <span class="text-danger ">{{number_format($sp->promotion_price)}} đ</span> &nbsp;
-                                                            <span class="flash-del">{{number_format($sp->unit_price)}} đ</span>
-                                                        @endif
-                                                </b></p>
+                                <p class=" text-price-model"><b class="text-price">
+                                    @if($sp->promotion_price == 0)
+                                                <span class=" ">Giá gốc: {{number_format($sp->unit_price)}} đ</span> &nbsp;
+                                            @else
+                                                <span class=" ">Giá khuyến mãi: {{number_format($sp->promotion_price)}} đ</span> &nbsp;
+                                                <br>
+                                                <span class="flash-del">Giá gốc: {{number_format($sp->unit_price)}} đ</span>
+                                            @endif
+                                    </b></p>
                                 <div class="container-filud">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
@@ -295,12 +296,12 @@
                                             <p class=" text-price"><b>&nbsp;Màu sắc:</b></p>
                                             <div class="form-group">
                                                 <select name="colorbuy" style="height: 38px">
-                                                        @foreach($product_color as $pro)
-                                                            @if($sp->id_product == $pro->spid)
-                                                                <option>{{$pro->color}}</option>
-                                                            @endif
-                                                        @endforeach
-                                                    </select>
+                                                    @foreach($product_color as $pro)
+                                                        @if($sp->id_product == $pro->spid)
+                                                            <option>{{$pro->color}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="space10">&nbsp;</div>
                                         </div>

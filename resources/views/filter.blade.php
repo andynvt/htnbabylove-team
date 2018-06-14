@@ -1,4 +1,4 @@
-<div id="navbar">
+<div id="navbar" style=" background-color: #f9f9f9; z-index: 999">
 <!-- Menu -->
     <div class="well">
     <h5 class="text-left text-price-re">Lọc Sản Phẩm Theo:</h5>
@@ -18,56 +18,56 @@
                     </select>
                 </div>
                 <div class="form-group">
-                                    <label for="priceto" class="control-label">Trạng thái:</label>
-                                    <br>
-                                    <div class="space10">&nbsp;</div>
-                                    <div class="row">
-                                       
-                                        <div class="col-md-3 col-3">
-                                            {{-- @foreach($product as $pro) --}}
-                                            <a href="{{ route('timkiemloai', $pro='sale') }}">
-                                                <div class="ribbon-trangthai sale" name='sale'>Sale</div>
-                                            </a>
-                                            {{-- @break
-                                            @endforeach --}}
-                                        </div>
-                                        <div class="col-xs-4">&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                        <div class="col-md-3 col-3">
-                                            {{-- @foreach($product as $pro) --}}
-                                            <a href="{{ route('timkiemloai', $pro='new') }}">
-                                                <div class="ribbon-trangthai new" name='new'>New</div>
-                                            </a>
-                                            {{-- @break
-                                            @endforeach --}}
-                                        </div>
-                                        <div class="col-xs-4">&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                        <div class="col-md-3 col-3 ">
-                                            {{-- @foreach($product as $pro) --}}
-                                            <a href="{{ route('timkiemloai', $pro='hot') }}">
-                                                <div class="ribbon-trangthai hot" name='hot'>Hot</div>
-                                            </a>
-                                            {{-- @break
-                                            @endforeach --}}
-                                        </div>
-                                        
-                                    </div>
+                    <label for="priceto" class="control-label">Trạng thái:</label>
+                    <br>
+                    <div class="space10">&nbsp;</div>
+                    <div class="row">
+                       
+                        <div class="col-md-3 col-3">
+                            {{-- @foreach($product as $pro) --}}
+                            <a href="{{ route('timkiemloai', $pro='sale') }}">
+                                <div class="ribbon-trangthai sale" name='sale'>Sale</div>
+                            </a>
+                            {{-- @break
+                            @endforeach --}}
+                        </div>
+                        <div class="col-xs-4">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div class="col-md-3 col-3">
+                            {{-- @foreach($product as $pro) --}}
+                            <a href="{{ route('timkiemloai', $pro='new') }}">
+                                <div class="ribbon-trangthai new" name='new'>New</div>
+                            </a>
+                            {{-- @break
+                            @endforeach --}}
+                        </div>
+                        <div class="col-xs-4">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div class="col-md-3 col-3 ">
+                            {{-- @foreach($product as $pro) --}}
+                            <a href="{{ route('timkiemloai', $pro='hot') }}">
+                                <div class="ribbon-trangthai hot" name='hot'>Hot</div>
+                            </a>
+                            {{-- @break
+                            @endforeach --}}
+                        </div>
+                        
+                    </div>
                 </div>
                 <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6 col-xs-6"> <a href="{{ route('timkiemloai', $pro='giagiam') }}" class="control-label search-price">Giá giảm dần <i class="fa fa-sort-amount-desc"></i></a> </div>
-                                        <div class="col-md-6 col-xs-6"> <a href="{{ route('timkiemloai', $pro='giatang') }}" class="control-label search-price">Giá tăng dần <i class="fa fa-sort-amount-asc"></i></a> </div>
-                                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6"> <a href="{{ route('timkiemloai', $pro='giagiam') }}" class="control-label search-price">Giá giảm dần <i class="fa fa-sort-amount-desc"></i></a> </div>
+                        <div class="col-md-6 col-xs-6"> <a href="{{ route('timkiemloai', $pro='giatang') }}" class="control-label search-price">Giá tăng dần <i class="fa fa-sort-amount-asc"></i></a> </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                                    <div class='row '>
-                                        <div style="width: 90%; margin-left: 5%">
-                                            <label for="pricefrom" class="control-label control-label-re" name='gia'>Giá:&nbsp;&nbsp;<b>
-                                                <span id="outputmin" name="giatien"> Đồng</span> </b></label>
-                                            <div class="input-group" style="width: 90%; margin-left: 5%; top: 10px;">
-                                                <input id="pricefrom" name="price" type="text" class="span2" /> </div>
-                                        </div>
+                    <div class='row '>
+                        <div style="width: 90%; margin-left: 5%">
+                            <label for="pricefrom" class="control-label control-label-re" name='gia'>Giá:&nbsp;&nbsp;<b>
+                                <span id="outputmin" name="giatien"> Đồng</span> </b></label>
+                            <div class="input-group" style="width: 90%; margin-left: 5%; top: 10px;">
+                                <input id="pricefrom" name="price" type="text" class="span2" /> </div>
+                        </div>
 
-                                    </div>
+                    </div>
                 </div>
                 <div class="space30">&nbsp;</div>
                 <div class=" text-center">

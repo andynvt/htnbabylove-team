@@ -2,6 +2,7 @@
     <title>{{$loai_ssp->type_name}} | HTN Baby Love</title>
 </head>
 @extends('master')
+
 @section('content')
 
     <div class="container-fluid">
@@ -88,6 +89,23 @@
         </div>
         
     </div>
+    <script>
+    window.onscroll = function() {
+        myFunction()
+    };
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= 180) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+
+    }
+
+</script>
 
 
 @endsection
