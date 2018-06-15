@@ -253,6 +253,7 @@
 
                         {{-- script change qty --}}
                         <script>
+                            
                             $(".confirm-change-qty").on('click', function () {
                                 $(this).parents(".change-qty").css("display", "none");
                                 var token = $('input[name="_token"').val();
@@ -278,13 +279,11 @@
                                     data: {token: token, id: id, newqty: newqty, oldqty: oldqty, color: color},
                                     success: function(data){
                                         console.log(data);
-                                        // alert(data.totalQty);
-                                        $('.total-price').html(data.totalPrice + " đ");
-                                        $('#number-cart').html(data.totalQty);
+                                        $('.total-price').html(data[1] + " đ");
+                                        $('#number-cart').html(data[0].totalQty);
                                         alert_change_cart();
                                     }
                                 });
-
                                 $(this).parents(".change-qty").prev('.cart-input-qty').find('input').val(newqty);
                             });
                         </script>
@@ -392,7 +391,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-2 col-md-3 col-xs-12">
-                                    <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Đóng</button>
+                                    <button class="btn btn-themvaogio btn-modal-re btn-modal-huy btn-full" data-dismiss="modal">Đóng</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
                                     <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_pro_{{ $promo->id_product }}">Thêm Vào Giỏ</a>
@@ -512,7 +511,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-2 col-md-3 col-xs-12">
-                                    <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Đóng</button>
+                                    <button class="btn btn-themvaogio btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Đóng</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
                                     <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_new_{{ $new->id_product }}" >Thêm Vào Giỏ</a>
@@ -631,7 +630,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-2 col-md-3 col-xs-12">
-                                    <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Đóng</button>
+                                    <button class="btn btn-themvaogio btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Đóng</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
                                     <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_hot_{{ $hot->id_product }}" >Thêm Vào Giỏ</a>
@@ -748,7 +747,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-2 col-md-3 col-xs-12">
-                                    <button class="btn btn-danger btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Đóng</button>
+                                    <button class="btn btn-themvaogio btn-modal-re btn-modal-huy btn-full " data-dismiss="modal">Đóng</button>
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-xs-12">
                                     <a style="color: white;" class="btn btn-buy btn-modal-re btn-modal btn-full" id="tvg_hot_{{ $nor->id_product }}" >Thêm Vào Giỏ</a>
