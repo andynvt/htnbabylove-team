@@ -14,13 +14,13 @@ $(function () {
             $("#app_max_price").html("$" + ui.value[1]);
         }
     , }).on('slide', function () {
-        $('#outputmin').html(formatCurrency(this.value));
-        // $('#outputmax').html(this.value);
+        var res = this.value.split(",");
+        $('#outputmin').html(formatCurrency(res[0]) + " - " + formatCurrency(res[1]));
     }).trigger('slide');
 });
 
 function formatCurrency(number){
     var n = number.split('').reverse().join("");
     var n2 = n.replace(/\d\d\d(?!$)/g, "$&,");    
-    return  n2.split('').reverse().join('') + 'VNĐ';
+    return  n2.split('').reverse().join('') + 'đ';
 }
