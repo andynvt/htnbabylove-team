@@ -83,8 +83,10 @@ class PageController extends Controller
         $cart->update($product,$idcheck, $newqty, $oldqty);
         $req->session()->put('cart',$cart);
 
-        $req->session()->flash('change-qty','Đã cập nhật giỏ hàng');
-        return response()->json(['data' => $cart, 'oldqty' => $oldqty, 'newqty' => $newqty, 'color' => $color, 'id' => $id, 'idcheck' => $idcheck]);
+        // $req->session()->flash('change-qty','Đã cập nhật giỏ hàng');
+        // return response()->json(['data' => $cart, 'oldqty' => $oldqty, 'newqty' => $newqty, 'color' => $color, 'id' => $id, 'idcheck' => $idcheck]);
+
+        return json_encode($cart);
     }
     
     public function getDelItemCart($id, $color){

@@ -274,12 +274,18 @@
                                 $.ajax({
                                     url: 'changeqty',
                                     type: 'GET',
+                                    dataType: 'json',
                                     data: {token: token, id: id, newqty: newqty, oldqty: oldqty, color: color},
-                                    success: function(data, oldqty, newqty, color, id, idcheck){
-                                        location.reload();
-                                        console.log(data, oldqty, newqty, color, id, idcheck)
+                                    success: function(data){
+                                        console.log(data);
+                                        // alert(data.totalQty);
+                                        $('.total-price').html(data.totalPrice + " đ");
+                                        $('#number-cart').html(data.totalQty);
+                                        alert_change_cart();
                                     }
                                 });
+
+                                $(this).parents(".change-qty").prev('.cart-input-qty').find('input').val(newqty);
                             });
                         </script>
                         {{-- end script change qty --}}
@@ -773,5 +779,15 @@
             </div>             
         </form>
     </div>
+
+    <script>
+        function alert_change_cart() {
+            $.iaoAlert({
+                    msg: "Đã cập nhật giỏ hàng",
+                    type: "success",
+                    mode: "dark",
+            })
+        };
+    </script>
     @endforeach
 <!--  Modal Mua Nhanh normal-->

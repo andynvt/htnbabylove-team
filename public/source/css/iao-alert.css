@@ -19,6 +19,7 @@ iao-alert-box {
 	box-sizing: border-box;
 	max-width: 500px;
 	overflow: auto;
+	z-index: 9999 !important;
 }
 
 @media (max-width: 768px){
