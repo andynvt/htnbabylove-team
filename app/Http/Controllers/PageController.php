@@ -724,7 +724,8 @@ class PageController extends Controller
                 'unit_price'=>$req->new_unit_price,
                 'promotion_price'=>$req->new_promotion_price,
                 'size'=>$req->newsize,
-                'description'=>$req->newdesc
+                'description'=>$req->newdesc,
+                'status'=>1
             ]);
         }
         $id_product->save();

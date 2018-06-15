@@ -107,11 +107,12 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('master',function($view){
             // Cập nhật trạng thái
-            $daysp = Product::select('id','created_at as pday')->get();
+            $daysp = Product::select('id','created_at as pday', 'status')->get();
             $cntsp = count($daysp);
             for($i = 0 ; $i < $cntsp ; $i++){
                 $minus = DB::select(DB::raw('SELECT DATEDIFF(now(), "'.$daysp[$i]->pday.'") as ngay'));
-                if($minus[0]->ngay > 14){
+                $stt = $daysp[$i]->status;
+                if($minus[0]->ngay > 14 && $stt != 2){
                     DB::table('products')->where('id', $daysp[$i]->id)->update(['status' => 10]); 
                 }
             }

@@ -114,6 +114,12 @@
                                             <div class="col-sm-1">
                                                 <input type="checkbox" class="form-control" name="sphot" id="hot" style="margin: 0; padding: 0; width: 30px"> 
                                             </div>
+                                            <script>
+                                                var $stt = '{{ $sp->status }}';
+                                                if($stt == 2){
+                                                    $('input[type="checkbox"]').attr('checked', 'checked');
+                                                }
+                                            </script>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-4" for="kichthuoc">Kích thước:</label>
