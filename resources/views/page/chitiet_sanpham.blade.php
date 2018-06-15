@@ -151,10 +151,10 @@
                     <div class="title-rate">
                         <div class="title ">
                             <h5 style="text-transform: initial;">
-                                @if(count($feedback) == 0)
+                                @if($cntfb == 0)
                                     Không có đánh giá nào
                                 @else
-                                    Có {{ count($feedback) }} đánh giá sản phẩm {{ $sanpham->name }}
+                                    Có {{ $cntfb }} đánh giá sản phẩm {{ $sanpham->name }}
                                 @endif
                             </h5>
                         </div> 

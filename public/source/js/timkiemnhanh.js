@@ -11,7 +11,7 @@ $(function () {
         // }
         // , stop: function (event, ui) {
         //     $("#app_min_price").html("$" + ui.value[0]);
-        //     $("#app_max_price").html("$" + ui.value[1]);
+            // $("#app_max_price").html("$" + ui.value[1]);
         // }
     , }).on('slide', function () {
         // $('#outputmin').html(this.value);
